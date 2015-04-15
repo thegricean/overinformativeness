@@ -96,7 +96,7 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 - Here's an interesting issue:
 	- on the one hand, people generate inferences from modificational material in order to avoid thinking the speaker overspecifies (contrastive inferences used in a lot of Tanenhaus offspring work, eg Sedivy, Heller), especially with size adjectives
 
-- on the other hand, there doesn't seem to be a cost to "actual" overspecification (in general....)
+	- on the other hand, there doesn't seem to be a cost to "actual" overspecification (in general....)
 
 --> can we think about this from a noisy channel perspective: in essence, "actual" overspecification is redundant signal. Consider two different scenarios.
 	1. We know that either for the speaker or for us, it's plausibly hard to produce/interpret the referential expression right (ie when there's either difficulty, incrementality-related; or there's eg a complex visual scene or maybe other objects that I might misinterprets as being reasonable referents for the expression produced).
