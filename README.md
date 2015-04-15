@@ -69,7 +69,7 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - 50% overspecification of size adjectives with a privileged contrast (Nadig & Sedivy 2002)
 
-- 33% location overspecification **what was the alternative?** (Engelhardt et al 2006)
+- 33% location overspecification in "put the apple on the towel on the other towel" type sentences in one-referent contexts (Engelhardt et al 2006)
 
 - "type and colour omnipresent" (Pechmann and others) -- conclusion: these help create a perceptual gestalt **please there are often syntactic reasons to mention the type because they're usually nouns -- what about languages where they're not nouns? what about other languages more generally?**
 
@@ -84,18 +84,17 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - BUT: overspecification can also be detrimental for listeners (Engelhardt et al 2010, Sedivy et al 1999)
 
-## General points
+## General points/questions
 
-So we know that people like to overspecify color but not size/shape. What if there's a contextual QUD that really favors information about size/shape but doesn't care about color? Is there any research on this?
+- So we know that people like to overspecify color but not size/shape. What if there's a contextual QUD that really favors information about size/shape but doesn't care about color? Is there any research on this?
 
-Discussion point: their notion of 'utility'. There's not sth inherently evil to utility; in fact, you can build preferences into the utility function. All you can say is that the utility function is not yet complex enough to capture people's actual preferences yet.
+- Discussion point: Gatt et al's notion of 'utility'. There's not sth inherently evil to utility; in fact, you can build preferences into the utility function. All you can say is that the utility function is not yet complex enough to capture people's actual preferences yet.
 
-Can we get preferences with costs of *utterances* alone? Or with prior salience of *properties*? Generally, those guys collapse utterance and property concept. This doesn't seem right, because you could in preinciple use different utterances to refer to the same property, so there must be at least two separate things going on that in these simple cases maybe collapse into one.
+- Can we get preferences with costs of *utterances* alone? Or with prior salience of *properties*? Generally, those guys collapse utterance and property concept. This doesn't seem right, because you could in preinciple use different utterances to refer to the same property, so there must be at least two separate things going on that in these simple cases maybe collapse into one.
 
 
-Here's an interesting issue:
-
-- on the one hand, people generate inferences from modificational material in order to avoid thinking the speaker overspecifies (contrastive inferences used in a lot of Tanenhaus offspring work, eg Sedivy, Heller), especially with size adjectives
+- Here's an interesting issue:
+	- on the one hand, people generate inferences from modificational material in order to avoid thinking the speaker overspecifies (contrastive inferences used in a lot of Tanenhaus offspring work, eg Sedivy, Heller), especially with size adjectives
 
 - on the other hand, there doesn't seem to be a cost to "actual" overspecification (in general....)
 
