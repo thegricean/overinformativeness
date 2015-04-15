@@ -1,24 +1,25 @@
 # Overinformativeness
 
 
-- see if there's anything you can get working in a model
+## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
 
-## State of the field (from Davies & Katsos, in press)
-
-Speakers are sometimes overinformative / overspecify their referring expressions. Why? When? Research has identified **hearer- vs speaker-oriented reasons for overinforming**/overspecifying REs.
+Speakers are sometimes overinformative / overspecify their referring expressions. Why? When? Generally: **hearer- vs speaker-oriented reasons for overinforming**/overspecifying REs.
 
 ### Speaker-oriented reasons for overspecifying
 
-- incrementality (buy time, not enough time to figure out what's discriminating and what isn't)
+- incrementality (buy time, not enough time to figure out what's discriminating and what isn't, Pechmann 1989)
 
 - perceptual salience (especially color is overspecified -- but what's the reference for there being variation within color? variation within color suggests it's not something monolithic about *color*, but something about **the function that different colors in different contexts serve**)
 
-### Hearer-oriented reasons for overspecifying
+- overspecification can be detrimental for listeners (Engelhardt et al 2010; Sedivy et al 1999)
 
-- facilitation of hearer's reference resolution (subset identification, hearer incrementality considerations) -- think about the fact that in general, visual scenes are incredibly complex, it may be that **on average, color is more helpful in carving up world perceptually than size is** -- can we manipulate that?
+### Hearer/addressee-oriented reasons for overspecifying
+
+- facilitation of hearer's reference resolution (subset identification, hearer incrementality considerations, Deutsch 1976, Nadig & Sedivy 2002, Paraboni et al 2006, Engelhardt et al 2006, Arts et al 2011, Davies & Katsos 2009) -- think about the fact that in general, visual scenes are incredibly complex, it may be that **on average, color is more helpful in carving up world perceptually than size is** 
 
 - levels of informativeness interact with discourse goals (unclear whether it's speaker- or hearer-oriented, Maes, Arts & Noordman 2004): more overspecification when teaching hearer a long-term skill than on one-shot tasks; more overspecification when perceptual common ground is high; generally: Davies rightly says overspecification is expected when precision is important and risk of misunderstanding high
 
+- Pechmann 1989 brings up information theory: redundant information is good because it can help compensate for partial loss of information. He then immediately dismisses this by saying that the redundant information isn't truly redundant because it's not distinguishing and at best can reduce the size of the domain. --> but when in dire straits, that may be a good start!!
 
 ### The relevance of prior experience
 
@@ -77,15 +78,6 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - adjectives have typical ordering preferences (Pechmann 1989 and references therein): eg in English size before color, but violations are OK when there's contrastive stress on the color adjective or when color is particularly salient. Different languages, different preferences, which might give some insight into incrementality vs other explanations by looking at how people operate within the bounds of grammer (or are willing to violate rules)
 
-### Reasons for overspecifying
-
-- addresee-oriented processes (like Davies & Katsos): ease of referent identification. evidence for this from studies that show that listeners find it easier to identify a traget referent when the speaker's description is overspecified (Deutsch 1976, Nadig & Sedivy 2002, Paraboni et al 2006, Engelhardt et al 2006, Arts et al 2011, Davies & Katsos 2009)
-
-- spaeker-oriented processes: sometimes a target referent is contrasted with a previously mentioned one despite it no longer being visually present (Levelt 1989)
-
-- BUT: overspecification can also be detrimental for listeners (Engelhardt et al 2010, Sedivy et al 1999)
-
-- Pechmann 1989 brings up information theory: redundant information helps is good because it can help compensate for partial loss of information. He then immediately dismisses this by saying that the redundant information isn't truly redundant because it's not distinguishing and at best can reduce the size of the domain. --> but when in dire straits, that may be a good start!!
 
 ## General points/questions
 
@@ -141,3 +133,7 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 	2. Listener ratings of utterances in different contexts -- neutral: modifier better than no-modifier in two-referent condition, but maybe slightly worse in one-referent condition, but barely
 
 	3. Eye-tracking in only one-referent contexts -- these results are pretty opaque: they're a little slower to look to the target location with the modifier than without -- it would have been interesting to see the breakup by modifier, seeing as how they preferred the modifier when both origin and target location were the same (eg both towels). Our prediction in this case: cost goes away.
+
+## TODO
+
+- see if there's anything you can get working in a model
