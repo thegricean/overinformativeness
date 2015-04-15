@@ -94,6 +94,7 @@ Can we get preferences with costs of *utterances* alone? Or with prior salience 
 
 
 Here's an interesting issue:
+
 	- on the one hand, people generate inferences from modificational material in order to avoid thinking the speaker overspecifies (contrastive inferences used in a lot of Tanenhaus offspring work, eg Sedivy, Heller), especially with size adjectives
 
 	- on the other hand, there doesn't seem to be a cost to "actual" overspecification (in general....)
