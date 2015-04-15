@@ -107,9 +107,22 @@ Here's an interesting issue:
 		
 ==> This is basically like the way Flo and I (and Roger and his student Mark Myslin) have been thinking about things: extra signal can be produced either because it helps with processing, or because you want to convey some meaning. 
 
-==> I think this also fits in well with Dan Grodner and Julie Sedivy's 2011 finding: 
+==> I think this also fits in well with Dan Grodner and Julie Sedivy's 2011 findings: 
 
 1. In production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana.
 
 2. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.
 
+
+Does it fit in with Engelhardt et al 2006 findings? 
+Their design: 4 sentence types*2 referent confexts (either one or two referents): 
+(1) Put the apple on the towel.
+(2) Put the apple in the box.
+(3) Put the apple on the towel on the other towel.
+(4) Put the apple on the towel in the box.
+
+1. Production: People produce modifier in two-referent conditions all the time (good), but even in one-referent conditions 1/3 of the time (and more for towel than box, but this is probably because of the non-uniqueness of "towel")
+
+2. Listener ratings of utterances in different contexts: modifier better than no-modifier in two-referent condition, but maybe slightly worse in one-referent condition, but barely
+
+3. Eye-tracking in only one-referent contexts: they're a little slower to look to the target location with the modifier than without -- it would have been interesting to see the breakup by modifier, seeing as how they preferred the modifier when both origin and target location were the same (eg both towels). Our prediction in this case: cost goes away.
