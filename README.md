@@ -15,7 +15,7 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 ### Hearer/addressee-oriented reasons for overspecifying
 
-- facilitation of hearer's reference resolution (subset identification, hearer incrementality considerations, Deutsch 1976, Nadig & Sedivy 2002, Paraboni et al 2006, Engelhardt et al 2006, Arts et al 2011, Davies & Katsos 2009) -- think about the fact that in general, visual scenes are incredibly complex, it may be that **on average, color is more helpful in carving up world perceptually than size is** 
+- facilitation of hearer's reference resolution (subset identification, hearer incrementality considerations, Deutsch 1976, Nadig & Sedivy 2002, Paraboni et al 2006, Engelhardt et al 2006, Arts et al 2011, Davies & Katsos 2009) -- think about the fact that in general, visual scenes are incredibly complex, it may be that **on average, color is more helpful in carving up world perceptually than size is. More generally: things that are easier to distinguish perceptually should be more involved in overspecification?** 
 
 - levels of informativeness interact with discourse goals (unclear whether it's speaker- or hearer-oriented, Maes, Arts & Noordman 2004): more overspecification when teaching hearer a long-term skill than on one-shot tasks; more overspecification when perceptual common ground is high; generally: Davies rightly says overspecification is expected when precision is important and risk of misunderstanding high
 
@@ -37,11 +37,22 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - visual processing and optimal linguistic encoding may compromise each other through sharing of cognitive resources
 
-### Interesting facts
+### Laundry list of overspecification results
 
 - lower overspecification rates in simpler visual arrays (Davies & Katsos, 2009, 2013)
 
-- more overspecification when speaking to an actual listener than a hypothetical one
+- more overspecification as number of distractors increases (Pechmann 1989, Koolen et al 2011)
+
+- color vs size: people overspecify color 21% of the time (Pechmann 1989)
+
+- 50% overspecification of size adjectives with a privileged contrast (Nadig & Sedivy 2002)
+
+- 33% location overspecification in "put the apple on the towel on the other towel" type sentences in one-referent contexts (Engelhardt et al 2006)
+
+- "type and colour omnipresent" (Pechmann and others) -- conclusion: these help create a perceptual gestalt **there are syntactic reasons to mention the type because they're usually nouns -- what about languages where they're not nouns? what about other languages more generally?**
+
+- more overspecification when talking to a real speaker (van der Wege 2009)
+
 
 
 ## Are we Bayesian referring expression generators? (Gatt et al, 2013)
@@ -56,30 +67,16 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 	- **PRO** (van Gompel et al 2012): motivated by the color-over-size-preference lightbulb experiment; combines discriminatory power & preference, as well as stochasticity; 2 parameters: preference for color, eagernes to overspecify
 
 
-## Overview of factors causing overspecification (Koolen et al, 2011)
-
-- this paper also frames the issue as one of how to decide which attributes to include in a target description, rather than talking about which words to use, even though one property can be referred to in many different ways ("red", "reddish", "bright", "colored")
-
-- starting point, as always: why don't we just slect minimally identifying properties?
-
-- focus on definite descriptions: definite determiner, head noun, one or more (pre- or post-nominal) modifiers
-
-### Results overview
-
-- color vs size: people overspecify color 21% of the time (Pechmann 1989)
-
-- 50% overspecification of size adjectives with a privileged contrast (Nadig & Sedivy 2002)
-
-- 33% location overspecification in "put the apple on the towel on the other towel" type sentences in one-referent contexts (Engelhardt et al 2006)
-
-- "type and colour omnipresent" (Pechmann and others) -- conclusion: these help create a perceptual gestalt **please there are often syntactic reasons to mention the type because they're usually nouns -- what about languages where they're not nouns? what about other languages more generally?**
-
-- more overspecification when talking to a real speaker (van der Wege 2009)
-
-- adjectives have typical ordering preferences (Pechmann 1989 and references therein): eg in English size before color, but violations are OK when there's contrastive stress on the color adjective or when color is particularly salient. Different languages, different preferences, which might give some insight into incrementality vs other explanations by looking at how people operate within the bounds of grammer (or are willing to violate rules)
-
-
 ## General points/questions
+
+Has anyone compiled a list of overspecification rates for different modifiers (color, size, location, age, orientation, etc)?
+
+General focus on definite descriptions: definite determiner, head noun, one or more (pre- or post-nominal) modifiers. What happens if we move away from that?
+
+Adjectives have typical ordering preferences (Pechmann 1989 and references therein): eg in English size before color, but violations are OK when there's contrastive stress on the color adjective or when color is particularly salient. Different languages, different preferences, which might give some insight into incrementality vs other explanations by looking at how people operate within the bounds of grammer (or are willing to violate rules). Tom Wasow mentioned Richard Futtrell's undergrad thesis on German vs English, where the finding is that there's a lot less overspecification in German, which has grammatical gender, than in English. Explanation: prenominal overspecification (eg "cute small puppy") serves as probabilistic cue to referent, just as grammatical gender is in German.
+
+
+Koolen et al 2011 (like so many others) frames the issue as one of how to decide which attributes to include in a target description, rather than talking about which words to use, even though one property can be referred to in many different ways ("red", "reddish", "bright", "colored"). Does anyone look at the way that the number of an object's features (if we even want to commit to such a number existing...) interacts with the number of utterance alternatives for referring to that feature (if we want to commit to such a number existing...)?
 
 So we know that people like to overspecify color but not size/shape. What if there's a contextual QUD that really favors information about size/shape but doesn't care about color? Is there any research on this?
 
@@ -136,4 +133,3 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 ## TODO
 
-- see if there's anything you can get working in a model
