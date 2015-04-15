@@ -75,6 +75,7 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - more overspecification when talking to a real speaker (van der Wege 2009)
 
+- adjectives have typical ordering preferences (Pechmann 1989 and references therein): eg in English size before color, but violations are OK when there's contrastive stress on the color adjective or when color is particularly salient. Different languages, different preferences, which might give some insight into incrementality vs other explanations by looking at how people operate within the bounds of grammer (or are willing to violate rules)
 
 ### Reasons for overspecifying
 
@@ -84,14 +85,17 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - BUT: overspecification can also be detrimental for listeners (Engelhardt et al 2010, Sedivy et al 1999)
 
+- Pechmann 1989 brings up information theory: redundant information helps is good because it can help compensate for partial loss of information. He then immediately dismisses this by saying that the redundant information isn't truly redundant because it's not distinguishing and at best can reduce the size of the domain. --> but when in dire straits, that may be a good start!!
+
 ## General points/questions
 
 So we know that people like to overspecify color but not size/shape. What if there's a contextual QUD that really favors information about size/shape but doesn't care about color? Is there any research on this?
 
-Discussion point: Gatt et al's notion of 'utility'. There's not sth inherently evil to utility; in fact, you can build preferences into the utility function. All you can say is that the utility function is not yet complex enough to capture people's actual preferences yet.
+Gatt et al's notion of 'utility'. There's not sth inherently evil to utility; in fact, you can build preferences into the utility function. All you can say is that the utility function is not yet complex enough to capture people's actual preferences yet.
 
 Can we get preferences with costs of *utterances* alone? Or with prior salience of *properties*? Generally, those guys collapse utterance and property concept. This doesn't seem right, because you could in preinciple use different utterances to refer to the same property, so there must be at least two separate things going on that in these simple cases maybe collapse into one.
 
+There's something unsatisfying about just saying there are preferences. **Where do the preferences come from?** And can you shift the preferences around contextually, either with the QUD or with visual properties of the scene (eg by making the differences in color much smaller and the differences in size much larger)? That seems to me to be the more interesting thing. 
 
 **Here's an interesting issue:**
 
@@ -122,6 +126,8 @@ Can we get preferences with costs of *utterances* alone? Or with prior salience 
 - more overspecification when talking to a real speaker (van der Wege 2009)
 
 - lower overspecification rates in simpler visual arrays (Davies & Katsos, 2009, 2013)
+
+- more overspecification as number of distractors increases (Pechmann 1989, Koolen et al 2011)
 
 - Does it fit in with Engelhardt et al 2006 findings? 
 Their design: 4 sentence types*2 referent confexts (either one or two referents): 
