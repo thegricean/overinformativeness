@@ -121,6 +121,8 @@ Can we get preferences with costs of *utterances* alone? Or with prior salience 
 
 - more overspecification when talking to a real speaker (van der Wege 2009)
 
+- lower overspecification rates in simpler visual arrays (Davies & Katsos, 2009, 2013)
+
 - Does it fit in with Engelhardt et al 2006 findings? 
 Their design: 4 sentence types*2 referent confexts (either one or two referents): 
 (1) Put the apple on the towel.
