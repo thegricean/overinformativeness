@@ -133,3 +133,36 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 ## TODO
 
+### Noah's email comments
+
+-is degree of OS goal relative?
+
+-expt comparing naming-to-select expriment (scene in cg) to naming-to-describe (scene not in cg)?
+
+-is this all about colors?
+
+-stability as a determining factor in referential exp selection? arrangement is not reliable…
+
+-and what about the impact of free vars (e.g. for size)?
+
+-QUD?
+
+-corpus-based costs?
+
+-noise in channel or interpretation (stability) means that ‘unnecessary’ modifiers can be probabilistically useful.
+
+   -but cf sedivy “yellow banana” wrt channel noise.
+
+-see futrell thesis on pronominal adjs vs gender.
+
+-“explaining away” manipulations of “noise”.. leads to differentially interpreting the over specified expressions?
+
+-interaction with the “frame”: full expression with predicate. implicates quite different goals, etc.
+
+-RSA:
+	
+	-cost, interpretation stability, perceptual stability, lexical class.
+	
+	-baseline: RSA + corpus determined costs? then add correlation of properties? then add lexical class?
+
+
