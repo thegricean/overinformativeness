@@ -150,7 +150,8 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 -corpus-based costs?
 
 -noise in channel or interpretation (stability) means that ‘unnecessary’ modifiers can be probabilistically useful.
-	-but cf sedivy “yellow banana” wrt channel noise.
+
+ -but cf sedivy “yellow banana” wrt channel noise.
 
 -see futrell thesis on pronominal adjs vs gender.
 
@@ -159,8 +160,9 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 -interaction with the “frame”: full expression with predicate. implicates quite different goals, etc.
 
 -RSA:
-	-cost, interpretation stability, perceptual stability, lexical class.
+
+ -cost, interpretation stability, perceptual stability, lexical class.
 	
-	-baseline: RSA + corpus determined costs? then add correlation of properties? then add lexical class?
+ -baseline: RSA + corpus determined costs? then add correlation of properties? then add lexical class?
 
 
