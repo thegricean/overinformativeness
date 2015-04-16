@@ -151,7 +151,7 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 -noise in channel or interpretation (stability) means that ‘unnecessary’ modifiers can be probabilistically useful.
 
-	 - but cf sedivy “yellow banana” wrt channel noise.
+  - but cf sedivy “yellow banana” wrt channel noise.
 
 -see futrell thesis on pronominal adjs vs gender.
 
