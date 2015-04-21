@@ -2,11 +2,10 @@
 
 ## Interesting phenomena to replicate/model
 
-| Paper			| Language		| Result|
-| --------------|:-------------:| ----- |
-| Sedivy 2003	| English		| in production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.|
+| Paper			| Language		| Result| ToDo |
+| --------------|:-------------:| ----- | ---- |
+| Sedivy 2003	| English		| In production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.| replicate production result in Robert's interactive paradigm; come up with a clever way to replicate comprehension result that doesn't require eye-tracking?|
 
-1. Sedivy (2003), English: in production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.
 
 	- **replicate production result in Robert's interactive paradigm**
 	
