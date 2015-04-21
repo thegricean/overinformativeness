@@ -4,19 +4,11 @@
 
 | Paper			| Language		| Result| ToDo |
 | --------------|:-------------:| ----- | ---- |
-| Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  replicate in Robert's interactive paradigm |
-| Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Come up with a clever way to replicate that doesn't require eye-tracking?|
-
-
-	- **replicate production result in Robert's interactive paradigm**
-	
-	- come up with a clever way to replicate the comprehension experiment that doesn't require eye-tracking?
-	
-2. Westerbeek et al (2014), Dutch: the probability that speakers redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks.
-
-3. Davies & Katsos (2009, 2013), English: lower overspecification rates in simpler visual arrays
-
-4. Pechmann (1989), Koolen et al (2011), Dutch: more overspecification as number of distractors increases
+| Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  Replicate in Robert's interactive paradigm |
+| Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Clever way to replicate that doesn't require eye-tracking?|
+| Westerbeek et al 2014 | Dutch | The probability that speakers redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication |
+| Davies & Katsos 2009, 2013 | English | Lower overspecification rates in simpler visual arrays | figure out what is meant by "simplicity" here |
+| Pechmann 1989; Koolen et al 2011 | Dutch | More overspecification as number of distractors increases | replicate (lower priority) |
 
 ## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
 
