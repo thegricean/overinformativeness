@@ -4,7 +4,9 @@
 
 | Paper			| Language		| Result| ToDo |
 | --------------|:-------------:| ----- | ---- |
-| Sedivy 2003	| English		| In production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.| replicate production result in Robert's interactive paradigm; come up with a clever way to replicate comprehension result that doesn't require eye-tracking?|
+| Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  replicate in Robert's interactive paradigm |
+
+| Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Come up with a clever way to replicate that doesn't require eye-tracking?|
 
 
 	- **replicate production result in Robert's interactive paradigm**
