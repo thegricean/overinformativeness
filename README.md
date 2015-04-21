@@ -9,6 +9,8 @@
 | Westerbeek et al 2014 | Dutch | The probability that **speakers** redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication |
 | Davies & Katsos 2009, 2013 | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here |
 | Pechmann 1989; Koolen et al 2011 | Dutch | **Speakers** overspecify more as number of distractors increases | replicate (lower priority) |
+| Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size | replicate once you have a model working that derives this not from sth special about color/size, but from differential noise in color and size dimension; need to test at least one novel prediction that falls out of the model|
+| Gatt et al 2013 | Dutch | **Weird datapoint**: No difference in overspecification rates for size, color, pattern| |
 
 ## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
 
