@@ -2,6 +2,10 @@
 
 ## Interesting phenomena to replicate/model
 
+| Paper			| Language		| Result|
+| --------------|:-------------:| -----:|
+| Sedivy 2003	| English		| bla|
+
 1. Sedivy (2003), English: in production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.
 
 	- **replicate production result in Robert's interactive paradigm**
@@ -9,6 +13,10 @@
 	- come up with a clever way to replicate the comprehension experiment that doesn't require eye-tracking?
 	
 2. Westerbeek et al (2014), Dutch: the probability that speakers redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks.
+
+3. Davies & Katsos (2009, 2013), English: lower overspecification rates in simpler visual arrays
+
+4. Pechmann (1989), Koolen et al (2011), Dutch: more overspecification as number of distractors increases
 
 ## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
 
