@@ -62,6 +62,7 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 
 - more overspecification when talking to a real speaker (van der Wege 2009)
 
+- Mitchell, Reiter, and Van Deemter (2013) investigate effects of atypicality and show that speakers prefer to mention the shape or material of objects when it is atypical (e.g., "octagonal mug", "wooden key") --> but they didn't look for a gradient effect, only binary typical/atypical
 
 ### Laundry list of potentially relevant results from vision (taken mostly from Westerbeek et al 2014)
 
@@ -70,6 +71,8 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 - Recognition is slower when (color-diagnostic) objects are presented in atypical colors than when they are typically colored (e.g., Naor-Raz, Tarr, & Kersten, 2003; Tanaka et al., 2001; Therriault, Yaxley, & Zwaan, 2009).
 
 - Furthermore, the contribution of color in object recognition is stronger for objects with a simple and unchar- acteristic shape (e.g., oranges) than for objects with more complex shapes (e.g., fire trucks; Price & Humphreys, 1989).
+
+- objects that have a color different from stored object knowledge are known to attract visual attention. Becker, Pashler, and Lubin (2007) eye-tracked participants who were presented with naturalistic scenes containing an object in an atypical color (a green hand), or in a typical color (a flesh-colored hand). Participants fixated earlier, more often, and longer on the green hand than on the normal hand. This result could not be ascribed to green being more salient than flesh-color, which Becker et al. controlled for by swapping the hand's color with a mug (which is equally typical in green or flesh- color).
 
 ## Are we Bayesian referring expression generators? (Gatt et al, 2013)
 
