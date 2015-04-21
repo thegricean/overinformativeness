@@ -1,5 +1,14 @@
 # Overinformativeness
 
+## Interesting phenomena to replicate/model
+
+1. Sedivy (2003): in production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. In comprehension, color modifiers lead to contrastive inferences when the color is predictable, but not when it's not. Ie there's early convergence on the yellow banana but not on the yellow cup.
+
+	- **replicate production result in Robert's interactive paradigm**
+	
+	- come up with a clever way to replicate the comprehension experiment that doesn't require eye-tracking?
+	
+2. Westerbeek et al (2014): the probability that speakers redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality	
 
 ## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
 
@@ -54,6 +63,13 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 - more overspecification when talking to a real speaker (van der Wege 2009)
 
 
+### Laundry list of potentially relevant results from vision (taken mostly from Westerbeek et al 2014)
+
+- For objects that have one or more typical colors associated with them (i.e., color-diagnostic objects, for example tomatoes which are typically red), this knowledge contains color information (e.g., Tanaka, Weiskopf, & Williams, 2001).
+
+- Recognition is slower when (color-diagnostic) objects are presented in atypical colors than when they are typically colored (e.g., Naor-Raz, Tarr, & Kersten, 2003; Tanaka et al., 2001; Therriault, Yaxley, & Zwaan, 2009).
+
+- Furthermore, the contribution of color in object recognition is stronger for objects with a simple and unchar- acteristic shape (e.g., oranges) than for objects with more complex shapes (e.g., fire trucks; Price & Humphreys, 1989).
 
 ## Are we Bayesian referring expression generators? (Gatt et al, 2013)
 
@@ -106,7 +122,7 @@ There's something unsatisfying about just saying there are preferences. **Where 
 
 **What findings does this go well with?**
 
-- Dan Grodner and Julie Sedivy's 2011 findings: 
+- Julie Sedivy's 2003 findings: 
 
 	1. In production, people tend to be more over-informative in terms of producing a color term when the color is less predictable from the category denoted by the noun than if it is more predictable. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana.
 
