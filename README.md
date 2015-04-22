@@ -10,6 +10,7 @@
 | Davies & Katsos 2009, 2013 | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here |
 | Pechmann 1989; Koolen et al 2011 | Dutch | **Speakers** overspecify more as number of distractors increases | replicate (lower priority) |
 | Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size | replicate once you have a model working that derives this not from sth special about color/size, but from differential noise in color and size dimension; need to test at least one novel prediction that falls out of the model|
+| Koolen et al 2013 | Dutch | Speakers overspecify color less (at ~5%) when all objects are of the same (very similar) color than when there is a lot of color variation (~25%) | |
 | Gatt et al 2013 | Dutch | **Weird datapoint**: No difference in overspecification rates for size, color, pattern| |
 
 ## State of the field (from Davies & Katsos, in press; Koolen et al, 2011)
