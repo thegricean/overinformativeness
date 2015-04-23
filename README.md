@@ -153,6 +153,56 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 	3. Eye-tracking in only one-referent contexts -- these results are pretty opaque: they're a little slower to look to the target location with the modifier than without -- it would have been interesting to see the breakup by modifier, seeing as how they preferred the modifier when both origin and target location were the same (eg both towels). Our prediction in this case: cost goes away.
 
+## Ajective ordering restrictions/preferences (Sproat & Shih 1991)
+
+- generally: 
+	1. SIZE > COLOR > PROVENANCE
+	2. QUALITY > SHAPE
+	3. SIZE > SHAPE
+	
+- Mandarin allows both SIZE COLOR and COLOR SIZE, but only if both modifiers are "-de"-marked, otherwise only SIZE COLOR
+
+- propose two types of modification: 
+	1. direct (subtypes: hierarchical & parallel) 
+	2. indirect (via coindexation), based on manner of theta-role assignment (this bit is a little dubious)
+
+- according to them, indirect modification plays out in Mandarin as relative clauses, in Arabic as adjunction 
+
+- their primary claim: "Restrictions on the ordering of multiple adjectival modifiers --- henceforth AOR --- obtain iff the adjectives involved are hierarchical direct modifiers."
+
+- what matters: linear ordering or head proximity? they say head proximity.
+
+- semantic factors: absoluteness as major determinant of ordering pref (color, shape as examples --> but: these too need not be absolute; is there already evidence out there or can we show this?)
+
+- missing piece of the puzzle for them: why should AOR be confined to cases of direct hierarchical modification cross-linguistically?
+
+- Claim: violation of preferences needs special comma intonation, then can be interpreted as parallel (ie independent modification of head noun).
+	(1a) She loves all those Oriental, orange, wonderful ivories.
+	(1b) *She loves all those Oriental orange wonderful ivories.	
+	(2a) She loves all those wonderful, orange, Oriental, ivories.
+	(2b) She loves all those wonderful orange Oriental ivories.
+
+- they dismiss the possibility that determiners are modifiers, but it's not clear that one should!! eg German. And that the possessives and other non-canonical definite determiners in the partitive "some" database follow the modified rather than the unmodified head pattern
+
+- Cross-linguistic generalizations:
+	1. Direct modification & associated cluster of properties (ie AOR following universal pattern): Dutch, Greek, Kannada, Mokilese (in Mokilese, pattern in reverse because it has only post-nominal modification)
+	2. Indirect modification & associated cluster of properties (ie no AOR): Japanese, Thai, Arabic
+	3. Parallel modiifcation: French -- no AOR postnominally, but only few adjectives allowed to occur pre-nominally
+	
+- in English: reordering adjectives that differ in absoluteness is a lot worse than reordering adjectives that don't differ in absoluteness
+
+- From Wulff 2003: In a sequence of adjectives, those denoting non-inherent qualities precede inherent adjectives (cf. Whorf 1945; Biber et al. 1999:599)
+
+- From Wulff 2003: Adjectives which are less dependent on comparison are put nearer to the head noun (cf. Martin 1969b; Posner 1986)
+
+- From Wulff 2003: Quirk et al. (1985: 1341) argue for a subjective-objective gradience determining AO such that “modifiers relating to properties which are (relatively) inherent in the head of the noun phrase . . . will tend to be placed nearer to the head and be preceded by modifiers concerned with what is relatively a matter of opinion.” --> see also Hetzron’s (1978) subjectivity-objectivity gradience and hypothesized order of adjectives, 13 classes
+
+- From Wulff 2003: semantically congruent adjectives ("poor wretched child" vs "poor happy child") have (i) significantly more stable ordering preferences in attributive as well as predicative contexts, (ii) significantly subjectively stronger prenominal ordering preferences, and (iii) are judged significantly more acceptable (cf. Richards 1977:494–499). With semantically incongruent adjectives, the factor of affective loading comes into play: Richards argues the ordering of incongruent adjectives is governed by a ‘first the good news, then the bad news’ principle
+
+- From Wulff 2003: Lockhart and Martin (1969) were able to demonstrate that those adjectives that tend to stand closest to a noun are the ones which are remembered most easily upon the occurrence of the noun. --> semantic association! "Local proximity to the head noun indicates greater noun-specific frequency." (Posner 1986)
+
+- From Wulff 2003: Finally, the general frequency of the adjective has been claimed to influence its position in a string (cf., e.g., Bock 1982) such that more frequent adjectives precede less frequent ones.
+
 ## TODO
 
 ### Noah's email comments
