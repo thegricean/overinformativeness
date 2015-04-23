@@ -159,6 +159,8 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 	1. SIZE > COLOR > PROVENANCE
 	2. QUALITY > SHAPE
 	3. SIZE > SHAPE
+	4. POSSESSIVE > SPEAKER-ORIENTED > SUBJECT-ORIENTED > MANNER/THEMATIC (Cinque 1994)
+	5. VALUE > DIMENSION > PHYSICAL PROPERTY > SPEED > HUMAN PROPENSITY > AGE > COLOR (Dixon, 1982)
 	
 - Mandarin allows both SIZE COLOR and COLOR SIZE, but only if both modifiers are "-de"-marked, otherwise only SIZE COLOR
 
