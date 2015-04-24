@@ -1,0 +1,147 @@
+
+(define n 3000) ;mh-query iterations (fairly stable at around 10000)
+
+(define objecttypes '(objecttype1 objecttype2 objecttype3 objecttype4 objecttype5 objecttype6 objecttype7))
+
+(define super-left-peak (list .9 .01 .01 .01 .01 .01 .01 .01 .01 .01 .01))
+(define super-right-peak (list .01 .01 .01 .01 .01 .01 .01 .01 .01 .01 .9))
+(define left-peak (list .8 .11 .01 .01 .01 .01 .01 .01 .01 .01 .01))
+(define right-peak (list .01 .01 .01 .01 .01 .01 .01 .01 .01 .11 .8))
+(define flat (list .09 .09 .09 .09 .09 .09 .09 .09 .09 .09 .09))
+(define mid-peak (list .01 .02 .04 .08 .16 .38 .16 .08 .04 .02 .01))
+(define super-mid-peak (list .002 .008 .01 .03 .1 .7 .1 .03 .01 .008 .002))
+
+(define scale-values (list 0 1 2 3 4 5 6 7 8 9 10))
+
+ (define adj-model
+   (mem
+    (lambda (objecttype)
+     
+      ; distribution of fake priors for color and size (where both color and size are treated as discretized abstract dimensions)
+      ; first list is color, second list is size
+      (define bins
+        (case objecttype
+              (('objecttype1)      (super-left-peak)   ; these objects strongly tend to be yellow
+                                   (super-left-peak))  ; these objects tend to be very small
+              (('objecttype2)      (super-left-peak)   ; these objects strongly tend to be yellow
+                                   (left-peak))        ; these objects tend to be small
+              (('objecttype3)  	   (super-left-peak)   ; these objects strongly tend to be yellow
+              					   (flat))		       ; these objects come in all sizes
+              (('objecttype4)      (super-left-peak)   ; these objects strongly tend to be yellow
+              					   (mid-peak))         ; these objects tend to be mid-sized
+              (('objecttype5)      (super-left-peak)   ; these objects strongly tend to be yellow
+              					   (super-mid-peak))   ; these objects strongly tend to be mid-sized
+              (('objecttype6)      (super-left-peak)   ; these objects strongly tend to be yellow
+              					   (right-peak))       ; these objects tend to be large
+              (('objecttype7)      (super-left-peak)   ; these objects strongly tend to be yellow
+              					   (super-right-peak)) ; these objects tend to be very large
+              (else '(()()))))
+     
+      ;get prior distributions
+      (define (color-prior) (apply multinomial scale-values (first bins))
+      (define (size-prior) (apply multinomial scale-values (second bins))      
+     
+      ;prior distribution for theta is uniform over possible values
+      (define (color-theta-prior) (uniform-draw scale-values))
+      (define (size-theta-prior) (uniform-draw scale-values))      
+          
+      (define (utterance-prior) (multinomial '(adj-color adj-size no-utt) '(0.33 0.33 0.33))) ; uniform costs, but change this for basic model
+     
+      ;"""top level: L1"""
+      ;pragmatic listener jointly infers theta (cutoff for adjective to be true)
+      ;and degree (value of object being described)
+      (define pragmatic-listener
+        (mem 
+         (lambda (utterance)
+           ;query price and theta given speaker would have said that
+           (mh-query n 5
+                     (define color (color-prior))
+                     (define color-theta (color-theta-prior))
+                     (define size (size-prior))
+                     (define size-theta (size-theta-prior))
+
+                     (list color color-theta size size-theta)
+						
+					 (and 	
+	                     (eq? (apply multinomial (speaker color color-theta)) utterance)
+	                     (eq? (apply multinomial (speaker size size-theta)) utterance)
+	                  )))))
+     
+;;      """mid level: S1"""
+      ;speaker chooses and utterance so the literal listener will guess the correct degree
+      (define speaker
+        (mem 
+         (lambda (color color-theta size size-theta)
+           ;query utterance given literal listener would guess price given theta
+           (enumeration-query
+            (define u (utterance-prior))
+            
+            u
+            
+	        (eq? (apply multinomial (literal-listener u color-theta size-theta))
+    	         (list color size)
+    	    )))))
+     
+;;      """base level: L0"""
+      ;literal listener conditions prior distribution on utterance being true CONTINUE HERE
+      (define literal-listener
+        (mem 
+         (lambda (u color-theta size-theta);objecttype)
+           (define prior-dist bins);(bins objecttype))
+           (define (posterior-given-adjective)
+            
+             ;prior distribution is originally in the form:
+             ;(list list-of-values list-of-probabilities).
+             ;want to change this to:
+             ;(list (list val1 prob1) (list val2 prob2) ... )
+             (define bin-pairs (map list
+                                    (first prior-dist)
+                                    (second prior-dist)))
+            
+             ;only keep pairs where the value is above threshold theta
+             (define filtered-bin-pairs (fold
+                                         (lambda (a lst) (if (>= (first a) theta)
+                                                             (pair a lst)
+                                                             lst))
+                                         '()
+                                         bin-pairs))
+            
+             ;reformat into multinomial form (list list-of-values list-of-probabilities)
+             ;church will renormalize
+             (list (map first filtered-bin-pairs) (map second filtered-bin-pairs)))
+          
+           ;if utterance is expensive, return posterior given expensive
+           ;otherwise (if no utterance) return prior
+           (if (eq? u 'adjective)
+               (posterior-given-adjective)
+               prior-dist))))
+     
+;;      (define samples (pragmatic-listener 'adjective))
+;;      (define prices (map first samples))
+;;      (define thetas (map second samples))
+     
+;;      (list prices thetas))))
+
+;; (define human-posterior
+;;   (mem
+;;    (lambda (objecttype)
+;;      (define posterior-bins
+;;        (case objecttype
+;;              (('watch) '((25 75 125 175 225 275 325 375 425 475 525 575 625 675 725 775 825 875 925 975 1025 1075 1125 1175 1225 1275 1325 1375 1425 1475 1525 1575 1625 1675 1725 1775 1825 1875 1925 1975 2025 2075 2125 2175 2225 2275 2325 2375 2425 2475 2525 2575 2625 2675 2725 2775 2825 2875 2925)
+;;                          (0.0094918676 0.0160250432 0.0220625116 0.0134282261 0.019440928 0.0227043616 0.0247748416 0.0263280433 0.0290211242 0.0281442435 0.0279293432 0.0291842912 0.0269263378 0.0258990441 0.0213844552 0.0226149004 0.0221720191 0.0226790749 0.0235018613 0.0240290062 0.0192637981 0.0195461549 0.0196076874 0.0194833361 0.0185093215 0.0175102908 0.0170210292 0.0162911172 0.0154411573 0.0148709111 0.0146761868 0.0148805472 0.0145587656 0.0143880126 0.0140760482 0.0136062441 0.0135940465 0.0133021563 0.0131153693 0.0133371032 0.0136722016 0.0139438587 0.0138114842 0.0135037004 0.0129322781 0.012256317 0.011739368 0.0114562312 0.0114545158 0.0113672773 0.0115022525 0.0114139332 0.0112462475 0.0110998635 0.010800291 0.0105849676 0.010503554 0.0103342407 0.0111091463)))
+;;              (('laptop) '((25 75 125 175 225 275 325 375 425 475 525 575 625 675 725 775 825 875 925 975 1025 1075 1125 1175 1225 1275 1325 1375 1425 1475 1525 1575 1625 1675 1725 1775 1825 1875 1925 1975 2025 2075 2125 2175 2225 2275 2325 2375 2425)
+;;                           (0.001209868 0.0016045715 0.002160416 0.0025724297 0.0037721363 0.0047613159 0.0064009801 0.0091254082 0.0132499403 0.0174944397 0.0197162409 0.0215838634 0.0227900375 0.0238630533 0.0268718853 0.0289719214 0.0305785103 0.0316325296 0.0327045237 0.0335830781 0.0287254778 0.0255009292 0.0244541238 0.0228734305 0.0230647343 0.0225073048 0.0225287081 0.0229841407 0.0231955298 0.0236818859 0.0231217209 0.0239631075 0.0242442794 0.0252963589 0.0261277001 0.0265922965 0.0265587752 0.0258151067 0.025256619 0.0243642201 0.0237226927 0.0214555842 0.0204470999 0.0195469915 0.0185217273 0.0186142313 0.0177192002 0.0174146461 0.017054228)))
+;;              (('coffee-maker) '((2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98 102 106 110 114 118 122 126 130 134 138 142 146 150 154 158 162 166 170 174 178 182 186 190 194 198 202 206 210 214 218 222 226 230 234 238 242 246 250 254 258 262 266)
+;;                                 (0.0012006208 0.0017111714 0.0018599742 0.0024493708 0.003138257 0.0038484742 0.0044852641 0.0058977602 0.0071471283 0.0100450115 0.0107615539 0.0125201669 0.0150877109 0.0156579629 0.0162734621 0.0157309712 0.0166362817 0.0179815088 0.0192937029 0.0176959421 0.0178707626 0.0183286766 0.0183543053 0.0182825945 0.0183399492 0.0187933138 0.0162637251 0.0168989578 0.0172222305 0.0177550251 0.0167531768 0.0167945563 0.0163602449 0.0167818815 0.0172534975 0.017167389 0.0172229436 0.0185321853 0.019085594 0.0189585256 0.017759584 0.0173952903 0.0179253179 0.0176629419 0.0178727503 0.0176793736 0.0178764628 0.0175494855 0.0173945457 0.0169409939 0.0174650443 0.0170007005 0.0159381736 0.0149266869 0.0147892517 0.0145716585 0.0142780804 0.0146967067 0.0155588011 0.0155191586 0.0162360889 0.0164509276 0.016656641 0.0172812493 0.0169653883 0.0167345738 0.0164322921)))
+;;              (else '(()()))))
+;;      (map pair (first posterior-bins) (second posterior-bins)))))
+
+;; ;density function doens't like discretizations right now...
+;; (define (smooth-density lst name width)
+;;   (density (map (lambda (x) (uniform (- x width) (+ x width))) lst) name))
+
+;; (define objecttype 'laptop)
+;; (multiviz
+;;  (smooth-density (first (adj-model objecttype)) "Prices" 25)
+;;  (scatter (human-posterior objecttype) "People")
+;;  (smooth-density (second (adj-model objecttype)) "Thetas" 25))
