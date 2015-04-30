@@ -207,36 +207,23 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 ## TODO
 
-### Noah's email comments
+### Modeling
 
-- is degree of OS goal relative?
+#### Threshold semantics models
 
-- expt comparing naming-to-select expriment (scene in cg) to naming-to-describe (scene not in cg)?
+Play around with different shapes of priors and utterance costs and values to communicate. For all combinations (735, see overinformativeness.md) run model and create pretty plots. Figure out exactly what the main things are that you're interested in.
 
-- is this all about colors?
+#### Boolean property models
 
-- stability as a determining factor in referential exp selection? arrangement is not reliable…
+Get rid of the threshold semantics and instead model features like size and color as binary things. Eg assume four utterances: "blue", "yellow", "big", "small", and combinations thereof. The semantics of each is just true if property holds, false otherwise. Create contexts as worlds consisting of different numbers of objects with different properties.  (Make blue/yellow and big/small mutually exclusive.) Then do just standard RSA with varying costs (uniform, penalty for each additional word, penalty for each additional word unless that word is color, smaller penalty for adding color). Vary priors on features.
 
-- and what about the impact of free vars (e.g. for size)?
+Get to the point where you can look at the effect of the following factors on overspecification
+- increasing number of objects in world
+- increasing color variance in world
+- predictability of color from word
 
-- QUD?
+### Experiments
 
-- corpus-based costs?
-
-- noise in channel or interpretation (stability) means that ‘unnecessary’ modifiers can be probabilistically useful.
-
-  - but cf sedivy “yellow banana” wrt channel noise.
-
-- see futrell thesis on pronominal adjs vs gender.
-
-- “explaining away” manipulations of “noise”.. leads to differentially interpreting the over specified expressions?
-
-- interaction with the “frame”: full expression with predicate. implicates quite different goals, etc.
-
-- RSA:
-
-  - cost, interpretation stability, perceptual stability, lexical class.
-	
-  - baseline: RSA + corpus determined costs? then add correlation of properties? then add lexical class?
+Wait for the modeling results, then start replicating exps in table above and figure out potentially new exps if model makes interesting new predictions.
 
 

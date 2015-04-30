@@ -11,7 +11,7 @@
 (define mid-peak (list .01 .02 .04 .08 .16 .38 .16 .08 .04 .02 .01))
 (define super-mid-peak (list .002 .008 .01 .03 .1 .7 .1 .03 .01 .008 .002))
 
-(define scale-values (list 0 1 2 3 4 5 6 7 8 9 10))
+(define scale-values (list 0 .1 .2 .3 .4 .5 .6 .7 .8 .9 .1))
 
  (define adj-model
    (mem
@@ -21,20 +21,20 @@
       ; first list is color, second list is size
       (define bins
         (case objecttype
-              (('objecttype1)      (super-left-peak)   ; these objects strongly tend to be yellow
-                                   (super-left-peak))  ; these objects tend to be very small
-              (('objecttype2)      (super-left-peak)   ; these objects strongly tend to be yellow
-                                   (left-peak))        ; these objects tend to be small
-              (('objecttype3)  	   (super-left-peak)   ; these objects strongly tend to be yellow
-              					   (flat))		       ; these objects come in all sizes
-              (('objecttype4)      (super-left-peak)   ; these objects strongly tend to be yellow
-              					   (mid-peak))         ; these objects tend to be mid-sized
-              (('objecttype5)      (super-left-peak)   ; these objects strongly tend to be yellow
-              					   (super-mid-peak))   ; these objects strongly tend to be mid-sized
-              (('objecttype6)      (super-left-peak)   ; these objects strongly tend to be yellow
-              					   (right-peak))       ; these objects tend to be large
-              (('objecttype7)      (super-left-peak)   ; these objects strongly tend to be yellow
-              					   (super-right-peak)) ; these objects tend to be very large
+              (('objecttype1)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+                                   		 (super-left-peak)))  ; these objects tend to be very small
+              (('objecttype2)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+                                         (left-peak)))        ; these objects tend to be small
+              (('objecttype3)  	   (list (super-left-peak)    ; these objects strongly tend to be yellow
+              					   		 (flat)))		      ; these objects come in all sizes
+              (('objecttype4)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+              					         (mid-peak)))         ; these objects tend to be mid-sized
+              (('objecttype5)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+              					         (super-mid-peak)))   ; these objects strongly tend to be mid-sized
+              (('objecttype6)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+              					   		 (right-peak)))       ; these objects tend to be large
+              (('objecttype7)      (list (super-left-peak)    ; these objects strongly tend to be yellow
+              					   		 (super-right-peak))) ; these objects tend to be very large
               (else '(()()))))
      
       ;get prior distributions
@@ -45,7 +45,7 @@
       (define (color-theta-prior) (uniform-draw scale-values))
       (define (size-theta-prior) (uniform-draw scale-values))      
           
-      (define (utterance-prior) (multinomial '(adj-color adj-size no-utt) '(0.33 0.33 0.33))) ; uniform costs, but change this for basic model
+      (define (utterance-prior) (multinomial '(adj-color adj-size adj-size-color no-utt) '(0.25 0.25 0.25 .25))) ; uniform costs, but change this for basic model
      
       ;"""top level: L1"""
       ;pragmatic listener jointly infers theta (cutoff for adjective to be true)
@@ -83,24 +83,32 @@
     	    )))))
      
 ;;      """base level: L0"""
-      ;literal listener conditions prior distribution on utterance being true CONTINUE HERE
+      ;literal listener conditions prior distribution on utterance being true 
       (define literal-listener
         (mem 
          (lambda (u color-theta size-theta);objecttype)
            (define prior-dist bins);(bins objecttype))
            (define (posterior-given-adjective)
             
-             ;prior distribution is originally in the form:
-             ;(list list-of-values list-of-probabilities).
+             ;prior distributions are originally in the form:
+             ;(list list-of-color-probabilities list-of-size-probabilities).
              ;want to change this to:
-             ;(list (list val1 prob1) (list val2 prob2) ... )
-             (define bin-pairs (map list
-                                    (first prior-dist)
-                                    (second prior-dist)))
+             ;(list (list 
+             ;	(list val1 c-prob1) (list val2 c-prob2) ... )             
+             ;  (list val1 s-prob1) (list val2 s-prob2) ... )             
+             ; erin originally converted this to: (list (list val1 prob1) (list val2 prob2) ... )
+             (define bin-pairs (list  (map list
+                                       scale-values
+                                       (first prior-dist))
+                                      (map list
+                                       scale-values                                      
+                                       (second prior-dist))))
             
-             ;only keep pairs where the value is above threshold theta
+             ;only keep pairs where the values are above their respective threshold thetas -- CONTINUE HERE you somehow need to get the joint distribution and then only keep the (color-value size-value probability) combos that match the criterion
+             
              (define filtered-bin-pairs (fold
-                                         (lambda (a lst) (if (>= (first a) theta)
+                                         (lambda (a lst) (if (and (>= (first (first a)) color-theta)
+                                         							  (first (second a)) size-theta)
                                                              (pair a lst)
                                                              lst))
                                          '()
