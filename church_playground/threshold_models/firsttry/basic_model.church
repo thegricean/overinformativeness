@@ -1,0 +1,122 @@
+(define n 100) ;mh-query iterations in pragmatic speaker
+
+(define (scale-prior dist-type)
+	(case dist-type
+		(('super-left-peak) (list .96 .01 .01 .01 .01))
+		(('super-right-peak) (list .01 .01 .01 .01 .96))
+		(('left-peak) (list .7 .2 .06 .03 .01))
+		(('right-peak) (list .01 .03 .06 .2 .7))
+		(('flat) (list .2 .2 .2 .2 .2))
+		(('mid-peak) (list .05 .2 .5 .2 .05))
+		(('super-mid-peak) (list .01 .1 .78 .1 .01))
+		))
+
+; color and size share a scale with 5 values
+(define scale-values (list 0 .1 .2 .3 .4))   
+
+;prior distribution for theta is uniform over possible values
+(define (color-theta-prior) (uniform-draw scale-values))
+(define (size-theta-prior) (uniform-draw scale-values))      
+
+
+(define (meaning utterance color size color-theta size-theta)
+  (case utterance
+        (('no-utt) true)
+        (('adj-color) (>= color color-theta))
+        (('adj-size) (>= size size-theta))
+        (('adj-size-color)
+         (and (meaning 'adj-color color size color-theta size-theta)
+              (meaning 'adj-size color size color-theta size-theta)))))
+
+(define literal-listener
+  (mem 
+   (lambda (utterance color-theta size-theta object-color-prior object-size-prior)
+     (enumeration-query
+;      (define prior-dist bins);(bins objecttype))
+      (define color (multinomial scale-values (scale-prior object-color-prior)))
+      (define size (multinomial scale-values (scale-prior object-size-prior)))
+      
+      (list color size)
+      
+      (meaning utterance color size color-theta size-theta)))))
+
+(define (scatterify-dist dist)
+  (apply map (append (list (lambda (val prob) (list val prob)))
+                     dist)))
+
+(define speaker 
+  (mem 
+   (lambda (color color-theta size size-theta costs object-color-prior object-size-prior)
+     ;query utterance given literal listener would guess price given theta
+     (enumeration-query
+      (define utterance-prior
+        (case costs
+              (('uniform) '(.25 .25 .25 .25)) ; color size colorandsize silence
+              (('prefer-fewer-words) '(.5 .5 .05 5))        	
+              (('prefer-fewer-words-and-color) '(2 .5 .05 5))))      
+      (define u  (multinomial '(adj-color adj-size adj-size-color no-utt) utterance-prior))
+
+      u
+
+      (equal? (apply multinomial (literal-listener u color-theta size-theta object-color-prior object-size-prior))
+              (list color size)
+              )))))
+
+(define pragmatic-listener
+  (mem 
+   (lambda (utterance costs object-color-prior object-size-prior)
+     (enumeration-query
+      (define color (multinomial scale-values (scale-prior object-color-prior)))
+      (define size (multinomial scale-values (scale-prior object-size-prior)))
+      (define color-theta (color-theta-prior))
+      (define size-theta (size-theta-prior))
+
+      (list color size)
+
+      (equal? (apply multinomial (speaker color color-theta size size-theta costs object-color-prior object-size-prior)) 
+      		  utterance)
+
+      ))))
+;;;
+
+
+
+(define pragmatic-speaker
+  (mem
+   (lambda (object-color-prior object-size-prior color size costs)
+     (mh-query n 5
+               (define utterance-prior
+                 (case costs
+                       (('uniform) '(.25 .25 .25 .25)) ; color size colorandsize silence
+                       (('prefer-fewer-words) '(.5 .5 .05 5))        	
+                       (('prefer-fewer-words-and-color) '(2 .5 .05 5))))        	        	
+
+               (define utt  (multinomial '(adj-color adj-size adj-size-color no-utt) utterance-prior))
+
+               utt
+
+               (equal? (apply multinomial (pragmatic-listener utt costs object-color-prior object-size-prior))
+                       (list color size)
+                       )))))
+
+(define objpriors '(super-left-peak super-right-peak left-peak right-peak flat mid-peak super-mid-peak))
+(define objvalues '(0 .1 .2 .3 .4))
+(define costs '(uniform prefer-fewer-words prefer-fewer-words-and-color))
+
+;(define objpriors '(super-left-peak))
+;(define objvalues '(0))
+;(define costs '(uniform prefer-fewer-words))
+
+(write-csv
+	(map (lambda (objprior1)
+	       (map (lambda (objprior2)
+	              (map (lambda (objvalue1)
+	                     (map (lambda (objvalue2)       
+	                            (map (lambda (cost)       
+	                                   (list objprior1 objprior2 objvalue1 objvalue2 cost (pragmatic-speaker objprior1 objprior2 objvalue1 objvalue2 cost)))
+	                                 costs))
+	                          objvalues))
+	                   objvalues))				               
+	            objpriors))
+	     objpriors)
+	"/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/church_playground/prior_results.txt")
