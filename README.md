@@ -213,7 +213,7 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 Play around with different shapes of priors and utterance costs and values to communicate. For all combinations (735, see overinformativeness.md) run model and create pretty plots. Figure out exactly what the main things are that you're interested in.
 
-![alt text](/church_playground/threshold_models/firsttry/graphs/matched_variance.png "Matched variances and object values")
+![Plot of speaker probabilities for matched variance priors and object values](/church_playground/threshold_models/firsttry/graphs/matched_variance.jpg "Matched variances and object values")
 
 #### Boolean property models
 

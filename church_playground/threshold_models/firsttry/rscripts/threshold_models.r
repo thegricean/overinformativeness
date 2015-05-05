@@ -77,4 +77,5 @@ ggplot(gat, aes(x=ValueCombo,y=Probability,color=Utterance,group=Utterance)) +
   geom_point() +
   geom_line() +
   facet_grid(ColorPrior~Cost)
-ggsave("graphs/matched_variance.png",width=12,height=10)
+ggsave("graphs/matched_variance.pdf",width=12,height=10)
+ggsave("graphs/matched_variance.jpg",width=12,height=10)
