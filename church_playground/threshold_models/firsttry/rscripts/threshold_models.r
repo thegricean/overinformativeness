@@ -73,9 +73,25 @@ head(matched)
 gat = matched %>% gather(Utterance, Probability, ProbColor:ProbSilence)
 gat$Cost = factor(x=as.character(gat$Costs), levels=c("uniform","prefer-fewer-words","prefer-fewer-words-and-color"))
 gat$Utterance = gsub("Prob","",gat$Utterance)
-ggplot(gat, aes(x=ValueCombo,y=Probability,color=Utterance,group=Utterance)) +
+gat$Utterance = as.character(gat$Utterance)
+
+# add priors:
+priors = data.frame(ColorValue=rep(seq(0,0.4,by=0.1),21),
+                    Cost=rep(rep(levels(gat$Cost),each=5),7),
+                    Utterance="Prior",
+                    ColorPrior=rep(levels(gat$ColorPrior),each=15),
+                    Probability=c(rep(c(.2,.2,.2,.2,.2),3),rep(c(.96,.01,.01,.01,.01),3),rep(c(.7,.2,.06,.03,.01),3),rep(c(.05,.2,.5,.2,.05),3),rep(c(.01,.1,.78,.1,.01),3),rep(c(.01,.03,.06,.2,.7),3),rep(c(.01,.01,.01,.01,.96),3)))
+head(priors)
+
+gatp = merge(gat, priors, all=T)
+gatp$Utterance = factor(x=as.character(gatp$Utterance),levels=c("Prior","Silence","Color","Size","ColorSize"))
+summary(gatp)
+
+ggplot(gatp, aes(x=ColorValue,y=Probability,color=Utterance,group=Utterance)) +
   geom_point() +
   geom_line() +
+  scale_color_manual(values=c("gray60","black","red","blue","purple")) +
+  xlab("Object value (same for 'color' and 'size')") +
   facet_grid(ColorPrior~Cost)
 ggsave("graphs/matched_variance.pdf",width=12,height=10)
 ggsave("graphs/matched_variance.jpg",width=12,height=10)

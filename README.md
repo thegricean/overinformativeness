@@ -211,7 +211,9 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 #### Threshold semantics models
 
-Play around with different shapes of priors and utterance costs and values to communicate. For all combinations (735, see overinformativeness.md) run model and create pretty plots. Figure out exactly what the main things are that you're interested in.
+Played around with different shapes of priors and utterance costs and values to communicate. For all combinations (3675, see overinformativeness.md) ran model and created some visualizations of the most interesting effects.
+
+ 
 
 ![Plot of speaker probabilities for matched variance priors and object values](/church_playground/threshold_models/firsttry/graphs/matched_variance.jpg "Matched variances and object values")
 
