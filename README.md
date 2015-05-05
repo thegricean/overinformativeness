@@ -213,6 +213,8 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 Play around with different shapes of priors and utterance costs and values to communicate. For all combinations (735, see overinformativeness.md) run model and create pretty plots. Figure out exactly what the main things are that you're interested in.
 
+![alt text](/church_playground/threshold_models/firsttry/graphs/uttprobs_colorsilencecosts.pdf "Realistic costs")
+
 #### Boolean property models
 
 Get rid of the threshold semantics and instead model features like size and color as binary things. Eg assume four utterances: "blue", "yellow", "big", "small", and combinations thereof. The semantics of each is just true if property holds, false otherwise. Create contexts as worlds consisting of different numbers of objects with different properties.  (Make blue/yellow and big/small mutually exclusive.) Then do just standard RSA with varying costs (uniform, penalty for each additional word, penalty for each additional word unless that word is color, smaller penalty for adding color). Vary priors on features.
