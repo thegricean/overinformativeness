@@ -89,7 +89,7 @@ summary(gatp)
 
 ggplot(gatp, aes(x=ColorValue,y=Probability,color=Utterance,group=Utterance)) +
   geom_point() +
-  geom_line() +
+  geom_line(size=2) +
   scale_color_manual(values=c("gray60","black","red","blue","purple")) +
   xlab("Object value (same for 'color' and 'size')") +
   facet_grid(ColorPrior~Cost)
