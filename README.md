@@ -233,7 +233,17 @@ Played around with different shapes of priors and utterance costs and values to 
 
 - The model is an S2 speaker that chooses an utterance from among the above 4, given an object (ie two values from the scale) and knowledge about that object type's color and size prior. The speaker reasons (mh-query) about a pragmatic L1 listener who infers the object's color and size. The pragmatic listener reasons (enumeration-query) about what an S1 speaker would have said who knows about the object's color and size value, the object types' color and size priors, and the thresholds for using 'color' and 'size'. The S1 tries to be informative (enumeration-query) to a literal listener who knows the thresholds, object type priors, and utterance and infers (enumeration-query) object values. 
 
-**Speaker results** --- utterance probabilities for objects that match in size and color value as well as in size and color prior.
+**Speaker results** --- utterance probabilities for objects that match in size and color value as well as in object type size and color prior.
+
+- Most basic result: as object value increases, silence becomes less likely -- this is just in the nature of the threshold semantics. 
+
+- What is said instead of silence dpends on both costs and priors.
+	
+	- when costs are uniform, color-and-size is almost always the preferred alternative
+	
+	- when there's a penalty for each added word, color-and-size is only really good for communicating high-value objects when the priors are very left-peaked, otherwise color-and-size is never used. Color and size individually are sometimes used, but mostly the word penalty gives silence a huge boost. 
+	
+	- when there's a penalty for added words, but less for color than for size, color-and-size is used even less (and again only for communicating high-value objects with very left peaked priors). Silence is now a somewhat less viable option than when every word counts. Color is increasingly used to communicate high value objects, especially when the prior is left or mid peaked. 
  
 
 ![Plot of speaker probabilities for matched variance priors and object values](/church_playground/threshold_models/firsttry/graphs/matched_variance.jpg "Matched variances and object values")
