@@ -239,7 +239,7 @@ Played around with different shapes of priors and utterance costs and values to 
 
 - What is said instead of silence dpends on both costs and priors.
 	
-	- when costs are uniform, color-and-size is almost always the preferred alternative
+	- when costs are uniform, color-and-size is almost always the preferred alternative -- this is of course heavily dependent on the fact that we're looking here only at objects that are identical in value on both dimensions
 	
 	- when there's a penalty for each added word, color-and-size is only really good for communicating high-value objects when the priors are very left-peaked, otherwise color-and-size is never used. Color and size individually are sometimes used, but mostly the word penalty gives silence a huge boost. 
 	
