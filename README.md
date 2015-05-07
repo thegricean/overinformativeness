@@ -231,7 +231,7 @@ Played around with different shapes of priors and utterance costs and values to 
 
 - there are seven possible priors on each dimension (color, size), giving 49 different combinations of priors: flat, super-left-peak, left-peak, mid-peak, super-mid-peak, right-peak, super-right-peak
 
-- The model is an S2 speaker that chooses an utterance from among the above 4, given an object (ie two values from the scale) and knowledge about that object type's color and size prior. The speaker reasons about a pragmatic L1 listener who infers the object's color and size. The pragmatic listener reasons about what an S1 speaker would have said who knows about the object's color and size value, the object types' color and size priors, and the thresholds for using 'color' and 'size'. The S1 tries to be informative to a literal listener who knows the thresholds, object values, and utterance. 
+- The model is an S2 speaker that chooses an utterance from among the above 4, given an object (ie two values from the scale) and knowledge about that object type's color and size prior. The speaker reasons (mh-query) about a pragmatic L1 listener who infers the object's color and size. The pragmatic listener reasons (enumeration-query) about what an S1 speaker would have said who knows about the object's color and size value, the object types' color and size priors, and the thresholds for using 'color' and 'size'. The S1 tries to be informative (enumeration-query) to a literal listener who knows the thresholds, object type priors, and utterance and infers (enumeration-query) object values. 
 
 **Speaker results** --- utterance probabilities for objects that match in size and color value as well as in size and color prior.
  
