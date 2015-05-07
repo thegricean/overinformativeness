@@ -213,9 +213,9 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 Played around with different shapes of priors and utterance costs and values to communicate. For all combinations (3675, see overinformativeness.md) ran model and created some visualizations of the most interesting effects.
 
-Assumptions
+**Assumptions**
 
-- utterances: silence, color, size, color-and-size
+- four utterances: silence, color, size, color-and-size. The semantics of color and size is: 'true' if actual color/size above some threshold (to be inferred). The semantics of color-and-size is the conjunction of the individual meanings. Semantics of silence is 'true'.
 
 - utterance costs:
 	
@@ -225,7 +225,15 @@ Assumptions
 		
 	- prefer-fewer-words-and-color: silence 2.5 times as likely as color, which is 4 times as likely as size, which is ten times as likely as color-and-size
 		
-		
+- both size and color are expressed on the same discretized scale with 5 values
+
+- each object to be communicated has two values, one for color and one for size (gives 25 potential objects)
+
+- there are seven possible priors on each dimension (color, size), giving 49 different combinations of priors: flat, super-left-peak, left-peak, mid-peak, super-mid-peak, right-peak, super-right-peak
+
+- The model is an S2 speaker that chooses an utterance from among the above 4, given an object (ie two values from the scale) and knowledge about that object type's color and size prior. The speaker reasons about a pragmatic L1 listener who infers the object's color and size. The pragmatic listener reasons about what an S1 speaker would have said who knows about the object's color and size value, the object types' color and size priors, and the thresholds for using 'color' and 'size'. The S1 tries to be informative to a literal listener who knows the thresholds, object values, and utterance. 
+
+**Speaker results** --- utterance probabilities for objects that match in size and color value as well as in size and color prior.
  
 
 ![Plot of speaker probabilities for matched variance priors and object values](/church_playground/threshold_models/firsttry/graphs/matched_variance.jpg "Matched variances and object values")
