@@ -213,16 +213,17 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 Played around with different shapes of priors and utterance costs and values to communicate. For all combinations (3675, see overinformativeness.md) ran model and created some visualizations of the most interesting effects.
 
-Assumptions 
-	- utterances: silence, color, size, color-and-size
+Assumptions
 
-	- utterance costs:
+- utterances: silence, color, size, color-and-size
+
+- utterance costs:
 	
-		- uniform: same cost for each utterance
+	- uniform: same cost for each utterance
 		
-		- prefer-fewer-words: silence 10 times as likely as color/size, which in turn are ten times as likely as color-and-size
+	- prefer-fewer-words: silence 10 times as likely as color/size, which in turn are ten times as likely as color-and-size
 		
-		- prefer-fewer-words-and-color: silence 2.5 times as likely as color, which is 4 times as likely as size, which is ten times as likely as color-and-size
+	- prefer-fewer-words-and-color: silence 2.5 times as likely as color, which is 4 times as likely as size, which is ten times as likely as color-and-size
 		
 		
  
