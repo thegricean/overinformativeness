@@ -4,12 +4,12 @@
 
 | Paper			| Language		| Result| ToDo |
 | --------------|:-------------:| ----- | ---- |
-| Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  Replicate in Robert's interactive paradigm |
-| Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Clever way to replicate that doesn't require eye-tracking?|
-| Westerbeek et al 2014 | Dutch | The probability that **speakers** redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication |
-| Davies & Katsos 2009, 2013 | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here |
-| Pechmann 1989; Koolen et al 2011 | Dutch | **Speakers** overspecify more as number of distractors increases | replicate (lower priority) |
 | Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size | replicate once you have a model working that derives this not from sth special about color/size, but from differential noise in color and size dimension; need to test at least one novel prediction that falls out of the model|
+| Pechmann 1989; Koolen et al 2011 | Dutch | **Speakers** overspecify more as number of distractors increases | replicate (lower priority) |
+| Davies & Katsos 2009, 2013 | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here |
+| Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  Replicate in Robert's interactive paradigm |
+| Westerbeek et al 2014 | Dutch | The probability that **speakers** redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication |
+| Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Clever way to replicate that doesn't require eye-tracking?|
 | Koolen et al 2013 | Dutch | **Speakers** overspecify color less (at ~5%) when all objects are of the same (very similar) color than when there is a lot of color variation (~25%) | |
 | Gatt et al 2013 | Dutch | **Weird datapoint**: No difference in overspecification rates for size, color, pattern| |
 
@@ -153,7 +153,9 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 
 	3. Eye-tracking in only one-referent contexts -- these results are pretty opaque: they're a little slower to look to the target location with the modifier than without -- it would have been interesting to see the breakup by modifier, seeing as how they preferred the modifier when both origin and target location were the same (eg both towels). Our prediction in this case: cost goes away.
 
-## Ajective ordering restrictions/preferences (Sproat & Shih 1991)
+## Ajective ordering restrictions/preferences 
+
+### Sproat & Shih 1991
 
 - generally: 
 	1. SIZE > COLOR > PROVENANCE
@@ -193,17 +195,33 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 	
 - in English: reordering adjectives that differ in absoluteness is a lot worse than reordering adjectives that don't differ in absoluteness
 
-- From Wulff 2003: In a sequence of adjectives, those denoting non-inherent qualities precede inherent adjectives (cf. Whorf 1945; Biber et al. 1999:599)
+### Wulff 2003
 
-- From Wulff 2003: Adjectives which are less dependent on comparison are put nearer to the head noun (cf. Martin 1969b; Posner 1986)
+- In a sequence of adjectives, those denoting non-inherent qualities precede inherent adjectives (cf. Whorf 1945; Biber et al. 1999:599)
 
-- From Wulff 2003: Quirk et al. (1985: 1341) argue for a subjective-objective gradience determining AO such that “modifiers relating to properties which are (relatively) inherent in the head of the noun phrase . . . will tend to be placed nearer to the head and be preceded by modifiers concerned with what is relatively a matter of opinion.” --> see also Hetzron’s (1978) subjectivity-objectivity gradience and hypothesized order of adjectives, 13 classes
+- Adjectives which are less dependent on comparison are put nearer to the head noun (cf. Martin 1969b; Posner 1986)
 
-- From Wulff 2003: semantically congruent adjectives ("poor wretched child" vs "poor happy child") have (i) significantly more stable ordering preferences in attributive as well as predicative contexts, (ii) significantly subjectively stronger prenominal ordering preferences, and (iii) are judged significantly more acceptable (cf. Richards 1977:494–499). With semantically incongruent adjectives, the factor of affective loading comes into play: Richards argues the ordering of incongruent adjectives is governed by a ‘first the good news, then the bad news’ principle
+- Quirk et al. (1985: 1341) argue for a subjective-objective gradience determining AO such that “modifiers relating to properties which are (relatively) inherent in the head of the noun phrase . . . will tend to be placed nearer to the head and be preceded by modifiers concerned with what is relatively a matter of opinion.” --> see also Hetzron’s (1978) subjectivity-objectivity gradience and hypothesized order of adjectives, 13 classes
 
-- From Wulff 2003: Lockhart and Martin (1969) were able to demonstrate that those adjectives that tend to stand closest to a noun are the ones which are remembered most easily upon the occurrence of the noun. --> semantic association! "Local proximity to the head noun indicates greater noun-specific frequency." (Posner 1986)
+- semantically congruent adjectives ("poor wretched child" vs "poor happy child") have (i) significantly more stable ordering preferences in attributive as well as predicative contexts, (ii) significantly subjectively stronger prenominal ordering preferences, and (iii) are judged significantly more acceptable (cf. Richards 1977:494–499). With semantically incongruent adjectives, the factor of affective loading comes into play: Richards argues the ordering of incongruent adjectives is governed by a ‘first the good news, then the bad news’ principle
 
-- From Wulff 2003: Finally, the general frequency of the adjective has been claimed to influence its position in a string (cf., e.g., Bock 1982) such that more frequent adjectives precede less frequent ones.
+- Lockhart and Martin (1969) were able to demonstrate that those adjectives that tend to stand closest to a noun are the ones which are remembered most easily upon the occurrence of the noun. --> semantic association! "Local proximity to the head noun indicates greater noun-specific frequency." (Posner 1986)
+
+- Finally, the general frequency of the adjective has been claimed to influence its position in a string (cf., e.g., Bock 1982) such that more frequent adjectives precede less frequent ones.
+
+### Futrell 2010
+
+- goal: push an information-theoretic account of the function-form relationship in German noun class (gender)
+
+- usefulness of gender: it gives you an early cue to noun form, semantics, and NP referent (if applicable); that is, it reduces the noun's entropy along multiple dimensions
+
+- But how does that relate to our finding that things typically get less noisy as you approach the noun?
+
+- Reflexes of efficient noun class system in German:
+	
+	- frequently co-occurring (and thus a priori more confusable) nouns are more likely than chance to be in different genders
+	
+	
 
 ## TODO
 
