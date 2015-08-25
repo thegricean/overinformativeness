@@ -2,9 +2,9 @@
 
 ## Interesting phenomena to replicate/model
 
-| Paper			| Language		| Result| ToDo |
-| --------------|:-------------:| ----- | ---- |
-| Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size. Gatt, when size sufficient: 78.6%d/80.2%e (cs), 21.1%d/16.5%e (s), 0.3%d/3.3%e (c). Gatt, when color sufficient: 10.2%d/8.1%e (cs), 0.3%d/0%e (s), 89.5%d/91.9%e (c) | replicate once you have a model working that derives this not from sth special about color/size, but from differential noise in color and size dimension; need to test at least one novel prediction that falls out of the model|
+| Paper			| Language		| Result| ToDo | Progress |
+| --------------|:-------------:| ----- | ---- | -------- |
+| Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size. Gatt, when size sufficient: 78.6%d/80.2%e (cs), 21.1%d/16.5%e (s), 0.3%d/3.3%e (c). Gatt, when color sufficient: 10.2%d/8.1%e (cs), 0.3%d/0%e (s), 89.5%d/91.9%e (c) | replicate once you have a model working that derives this not from sth special about color/size, but from differential noise in color and size dimension; need to test at least one novel prediction that falls out of the model| with extra word penalty and cheap color, get "big_red" to be preferred over "big"/"red", but order of "big" and "red" wrong |
 | Pechmann 1989; Koolen et al 2011 | Dutch | **Speakers** overspecify more as number of distractors increases | replicate (lower priority) |
 | Davies & Katsos 2009, 2013 | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here |
 | Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  Replicate in Robert's interactive paradigm |
