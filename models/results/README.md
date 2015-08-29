@@ -2,11 +2,13 @@
 
 We use the model in overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a small yellow object (where objects don't differ in type). This is formally equivalent to the situations described in [Gatt, van Gompel, Krahmer, and van Deemter (2011, CogSci)](http://staff.um.edu.mt/albert.gatt/pubs/precogsci2011.pdf). Model predictions for optimal parameters (eye-balling) are shown alongside the empirical data for both Dutch and English from the paper. Graphs with a fuller exploration of the parameter space are in /graphs.
 
+The results look really nice and fall out purely from an asymmetry in how noisy the predicates are.
+
 
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011](/models/results/graphs/model.vs.empirical.jpg "Model vs empirical")
 
 
-The model has the following free parameters: *color cost, size cost, color fidelity, size fidelity, speaker optimality*. 
+The model has the following free parameters: **color cost, size cost, color fidelity, size fidelity, speaker optimality**. 
 
 | Parameter        | Range            | Optimal |
 | -----------------| -----------------| --------|
@@ -14,7 +16,7 @@ The model has the following free parameters: *color cost, size cost, color fidel
 | Size cost | .1 - 1 in increments of .1 | .1  (.2 in some cases, but cost asymmetry not necessary!) |
 | Color fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .8, .85, .9, .999 (but mostly .999) |
 | Size fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .7, .75, .8 |
-| Speaker optimality | 1 - 18 in increments of 1 | >10 for basic overinformativeness effect, >15 for the color-only preference for the small yellow object|
+| Speaker optimality | 1 - 18 in increments of 1 | >10 for basic overinformativeness effect, >15 for the color-only preference when referring to the small yellow object|
 
 **Important things of note:**
 
@@ -22,6 +24,8 @@ The model has the following free parameters: *color cost, size cost, color fidel
 
 2. very high speaker optimality necessary -- do we care about this?
 
-3. asymmetry in fidelity necessary -- ie, color fidelity needs to be higher than size fidelity. This is awesome.
+3. asymmetry in fidelity necessary -- ie, color fidelity needs to be higher than size fidelity. This is awesome and as we hoped.
+
+# Next steps
 
 
