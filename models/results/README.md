@@ -28,4 +28,8 @@ The model has the following free parameters: **color cost, size cost, color fide
 
 # Next steps
 
+1. Replicate Gatt et al empirically? Or ask to get their full dataset to generate predictions for all contexts they used?
 
+2. Check whether rates are actually similar across different papers and if not, where the differences lie and whether they're deep (ie require extra modeling) or not (ie noise).
+
+3. Move on to modeling next finding: increase in overmodification rate as number of distractors increases.
