@@ -1,3 +1,5 @@
+;; Model created August 28 2015 by jdegen
+
 (define (power dist a) (list (first dist) 
                              (map (lambda (x) (pow x a)) (second dist))))
 
