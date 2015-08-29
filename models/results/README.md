@@ -6,4 +6,22 @@ We use the model in overinformativeness.church to generate predictions for the s
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011](/models/results/graphs/model.vs.empirical.jpg "Model vs empirical")
 
 
+The model has the following free parameters: *color cost, size cost, color fidelity, size fidelity, speaker optimality*. 
+
+| Parameter        | Range            | Optimal |
+| -----------------| -----------------| --------|
+| Color cost | .1 - 1 in increments of .1 | .1  |
+| Size cost | .1 - 1 in increments of .1 | .1  (.2 in some cases, but cost asymmetry not necessary!) |
+| Color fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .8, .85, .9, .999 (but mostly .999) |
+| Size fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .7, .75, .8 |
+| Speaker optimality | 1 - 18 in increments of 1 | >10 for basic overinformativeness effect, >15 for the color-only preference for the small yellow object|
+
+**Important things of note:**
+
+1. NO COST ASYMMETRY NECESSARY (in fact, cost asymmetries make results worse, except in certain cases when size costs .2 and color .1)
+
+2. very high speaker optimality necessary -- do we care about this?
+
+3. asymmetry in fidelity necessary -- ie, color fidelity needs to be higher than size fidelity. This is awesome.
+
 
