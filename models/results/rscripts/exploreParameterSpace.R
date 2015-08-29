@@ -114,8 +114,9 @@ ggsave("graphs/o3_cc.1_sc.1.pdf",width=20,height=15)
 t = droplevels(subset(r, color_fidelity == .999 & size_fidelity == .8 & color_cost == .1 & size_cost == .1 & speaker.opt == 17))
 t
 t$DataType = "model prediction"
+t$object = as.factor(ifelse(t$object == "o1", "big red", ifelse(t$object == "o2", "small red", "small yellow")))
 
-emp = data.frame(object = rep(rep(c("o1","o2","o3"),each=7),2),DataType=rep(c("empirical (Dutch)","empirical (English)"),each=21),Utterance=rep(levels(r$Utterance),6),Probability=c(.21,.003,.79,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,.003,0,.9,.1,.17,.03,.8,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0,.92,.08))
+emp = data.frame(object = rep(rep(c("big red","small red","small yellow"),each=7),2),DataType=rep(c("empirical (Dutch)","empirical (English)"),each=21),Utterance=rep(levels(r$Utterance),6),Probability=c(.21,.003,.79,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,.003,0,.9,.1,.17,.03,.8,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,0,0,0,0,0,.92,.08))
 head(emp)
 
 toplot = merge(t,emp,all=T)
