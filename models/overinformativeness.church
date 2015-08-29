@@ -1,0 +1,155 @@
+(define (power dist a) (list (first dist) 
+                             (map (lambda (x) (pow x a)) (second dist))))
+
+; Free parameters:
+;(define color_fidelity .9) ; 1 - noise probability (color -- higher means less noise)
+;(define size_fidelity .7) ; 1 - noise probability (size -- higher meanss less noise)
+;(define color_cost .1) ; lower means less costly
+;(define size_cost .3) ; lower means less costly
+;(define speaker-opt 5) ; standard speaker optimality parameter
+(define listener-opt 1) ; non-standard listener optimality parameter -- leave unchanged
+
+
+; A context is a list of lists, where sub-lists represent objects with a name (unique ID), a size feature and a color feature (currently only implemented for two features -- TODO: extend!)
+(define context (list (list 'o1 'big 'red)
+                      (list 'o2 'small 'red)
+                      (list 'o3 'small 'yellow)))
+
+; Extracts a list of object IDs for the objects in the context
+(define objs
+  (map (lambda (obj)
+         (first obj))
+       context))
+
+; Helper function for utterances: Strips the original context of object IDs
+(define pruned-context 
+  (map (lambda (cont) 
+         (drop cont 1))
+       context))		
+
+; Helper function for utterances: concatenates an object's features to create a "_"-separated two-word utterance like "big_red"
+(define (gen-utt obj)
+  (append obj (list (string-append (first obj) '_ (second obj)))))
+
+; Generates the set of alternatives for the context by taking all feature conjunctions as utterances as well as each individual feature (currently only implemented for two-feature objects)
+(define utterances
+  (union (flatten (map (lambda (obj) 
+                         (gen-utt obj)) 
+                       pruned-context))))
+
+; Helper function for utterance-atoms: Tests whether an utterance consists of just one word (multi-word utterances are separated by "_")
+(define (is-atom? utt) (= (length (regexp-split utt '_)) 1))
+
+; Extracts all the utterance atoms (one-word utterances) from the set of contextually generated utterances
+(define utterance-atoms (first (partition is-atom? utterances)))
+
+; The basic lexicon that encodes noisy semantics for words (ie correctly returns true/false with probability determined by fidelity parameter)
+(define (lexicon utterance obj color_fidelity size_fidelity)
+  (if (> (list-index (check-features obj) utterance) -1)
+      (flip (get-fidelity utterance color_fidelity size_fidelity))
+      (flip (- 1 (get-fidelity utterance color_fidelity size_fidelity)))))
+
+
+; Helper function for lexicon: Returns a list of an object's features
+(define (check-features obj)
+  (list-ref pruned-context (list-index objs obj)))
+
+; Helper function for lexicon: Retrieves the fidelity of a predicate (currently only implemented for color and size)
+; Danger: assumes only the listed colors and will return size fidelity for ANY predicate that's not in the color list
+(define (get-fidelity utterance color_fidelity size_fidelity)
+  (if (> (list-index 
+          '(red orange yellow green blue purple black brown pink white)
+          utterance) -1)
+      color_fidelity
+      size_fidelity)) 
+
+; Tests whether an object is in the extension of an utterance -- directly applies lexicon if the utterance is a one-word utterance atom; builds meaning compositionally otherwise (only works for at most two-word utterances)
+(define (meaning utterance obj color_fidelity size_fidelity)
+  (if (lexical-item? utterance)
+      (lexicon utterance obj color_fidelity size_fidelity)
+      (comp-meaning utterance obj color_fidelity size_fidelity)))
+
+; Helper function for meaning: Splits a two-word utterance into its parts and returns the conjoined sub-meanings
+(define (comp-meaning utterance obj color_fidelity size_fidelity)
+  (define subs (regexp-split utterance '_))
+  (and 
+  	(meaning (first subs) obj color_fidelity size_fidelity) 
+  	(meaning (second subs) obj color_fidelity size_fidelity)))
+
+
+; Helper function for meaning: Checks whether an utterance is a lexical item (i.e. an utterance atom)
+(define (lexical-item? utterance)
+  (> (list-index utterance-atoms utterance) -1))
+
+; Generates a cost vector for the utterances, with a fixed cost for an extra word (free parameter defined at beginning of file). One-word utterances have cost 1.
+(define (costs color_cost size_cost)
+  (map (lambda (utt)
+         (sum (map (lambda (word) 
+                           (if (or (equal? word 'red) 
+                                   (equal? word 'yellow)) 
+                               color_cost size_cost)) 
+                         (regexp-split utt '_))))
+       utterances))
+
+
+; The standard literal listener that infers a distribution over objects, given an utterance
+(define literal-listener 
+  (mem (lambda (utterance color_fidelity size_fidelity)
+         (enumeration-query
+          (define obj (uniform-draw objs))
+
+          obj
+
+          (meaning utterance obj color_fidelity size_fidelity)))))
+
+; A pragmatic speaker that infers a distribution over utterances, given an object he has in mind -- TODO: should you be conditioning on truth of utterance?
+; Maybe somewhat non-standard: softmax on literal listener
+(define pragmatic-speaker 
+  (mem (lambda (obj color_fidelity size_fidelity color_cost size_cost)
+  
+         (enumeration-query        
+          (define utterance (multinomial utterances 
+                                         (map (lambda (c) (exp (- c))) (costs color_cost size_cost))))
+
+          utterance
+
+          ;          (and
+          (equal? obj
+                  (apply multinomial
+                         (power (literal-listener utterance color_fidelity size_fidelity) listener-opt)))
+          ;           (meaning utterance obj))
+          ))))
+
+
+(define run-speaker 
+	(lambda (obj color_fidelity size_fidelity color_cost size_cost speaker-opt)
+	(define results (power (pragmatic-speaker obj color_fidelity size_fidelity color_cost size_cost) speaker-opt))
+	(define utts (first results))
+	(define probs (second results))
+	(list (flatten (list 'object 'color_fidelity 'size_fidelity 'color_cost 'size_cost 'speaker-opt utts)) (flatten (list  obj color_fidelity size_fidelity color_cost size_cost speaker-opt (map (lambda (p) (/ p (sum probs))) probs))))
+	))	
+	
+
+(define color_fidelities (list .7 .75 .8 .85 .9 .999)) ; 1 - noise probability (color -- higher means less noise)
+(define size_fidelities (list .7 .75 .8 .85 .9 .999)) ; 1 - noise probability (size -- higher meanss less noise)
+(define color_costs (list .1 .2 .3)) ; lower means less costly
+(define size_costs  (list .1 .2 .3)) ; lower means less costly
+(define speaker-opts (list 5 10 11 12 13 14 15 16 17 18)) 
+
+
+(write-csv
+	(map (lambda (obj)
+	       (map (lambda (color_fidelity)
+	              (map (lambda (size_fidelity)
+	                     (map (lambda (color_cost)       
+	                            (map (lambda (size_cost)
+									(map (lambda (speaker-opt)       
+	                                   	(run-speaker obj color_fidelity size_fidelity color_cost size_cost speaker-opt))
+										speaker-opts))
+	                                 size_costs))
+	                          color_costs))
+	                   size_fidelities))				               
+	            color_fidelities))
+	     objs)
+	"/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/results/raw/results.txt")	
+
