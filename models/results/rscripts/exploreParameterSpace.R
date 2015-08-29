@@ -130,3 +130,4 @@ ggplot(toplot, aes(x=Utterance,y=Probability,fill=DataType)) +
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1),plot.title = element_text(size=10)) 
   
 ggsave("graphs/model.vs.empirical.pdf",height=6)
+ggsave("graphs/model.vs.empirical.jpg")
