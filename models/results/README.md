@@ -33,3 +33,5 @@ The model has the following free parameters: **color cost, size cost, color fide
 2. Check whether rates are actually similar across different papers and if not, where the differences lie and whether they're deep (ie require extra modeling) or not (ie noise).
 
 3. Move on to modeling next finding: increase in overmodification rate as number of distractors increases.
+
+4. Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
