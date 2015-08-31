@@ -28,10 +28,14 @@ The model has the following free parameters: **color cost, size cost, color fide
 
 # Next steps
 
-1. Replicate Gatt et al empirically? Or ask to get their full dataset to generate predictions for all contexts they used?
+1. Modeling: get the 'number of distractors' effect
 
-2. Check whether rates are actually similar across different papers and if not, where the differences lie and whether they're deep (ie require extra modeling) or not (ie noise).
+2. Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
 
-3. Move on to modeling next finding: increase in overmodification rate as number of distractors increases.
+3. Figure out exactly what the empirical results are for the color variation results (ie, how was color variation actually manipulated, what do the contexts look like?)
 
-4. Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
+4. Modeling: ask Albert for the 2011 dataset (for later modeling)
+
+5. Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
+
+6. Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
