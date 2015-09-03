@@ -5,7 +5,7 @@ We use the model in overinformativeness.church to generate predictions for the s
 The results look really nice and fall out purely from an asymmetry in how noisy the predicates are.
 
 
-![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011](/models/results/graphs/model.vs.empirical.jpg "Model vs empirical")
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011](/models/1_basic_overinformativeness/results/graphs/model.vs.empirical.jpg "Model vs empirical")
 
 
 The model has the following free parameters: **color cost, size cost, color fidelity, size fidelity, speaker optimality**. 
