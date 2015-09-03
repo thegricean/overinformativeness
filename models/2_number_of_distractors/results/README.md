@@ -7,3 +7,5 @@ We use the model in overinformativeness.church to generate predictions for the s
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt10.jpg "Model (speaker optimality = 10)")
 
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt15.jpg "Model (speaker optimality = 15)")
+
+Note that when distractortype is "varied", that means that there is one distractor that shares the non-distinguishing feature with the target (eg, when the target is big and red, and size is sufficient to distinguish, this distractor is small and red) and all other distractors share neither feature with the target (ie in our example, all other distractors are small and yellow). 
