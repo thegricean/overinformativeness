@@ -128,7 +128,7 @@ Fillers: four pictures of Greebles. **only 4 instead of 8 -- ie clearly distingu
 		- high variation: 27% (8% sd) color mention		
 		
 
-Their between-experiment analysis didn't show any differences in overspecification rates between experiments, only between conditions.			
+Their between-experiment analysis didn't show any differences in overspecification rates between experiments, only between conditions. **So these minor modifications in degree/type of scene variation have no effect? See whether this is predicted by model.**			
 
 ## General points/questions
 
