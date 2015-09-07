@@ -88,6 +88,25 @@ Speakers are sometimes overinformative / overspecify their referring expressions
 	- **RSA** (Frank & Goodman 2012): basically the Greedy Algorithm with stochasticity; can't get all the preference-based results --> **Judith, make sure you get a good overview of what the preference-based results are!! eg they claim that "overspecification may actually be detrimental to listeners", citing Engelhardt et al -- read this! --, but it's not clear that it always is; find the counter-refs; this is important because it affects how strongly you can sell the `people aren't rational' line**
 	- **PRO** (van Gompel et al 2012): motivated by the color-over-size-preference lightbulb experiment; combines discriminatory power & preference, as well as stochasticity; 2 parameters: preference for color, eagernes to overspecify
 
+## Scene variation results (Koolen et al., 2013)
+
+Two conditions (low vs high variation) in each experiment, using furniture stimuli that could vary in four features:
+
+- **type:** chair, sofa, fan, television, desk
+- **color:** red, blue, green, brown, gray
+- **orientation:** front, back, left, right
+- **size:** large, small
+
+Each critical trial contained eight items: one target (for which color was not necessary for identification) and seven distractors.
+
+1. Exp. 1:  
+
+	- low variation: furniture items differed in _type_
+	- high variation: objects differed in all features
+
+2. Exp. 2:
+
+3. Exp. 3:
 
 ## General points/questions
 
