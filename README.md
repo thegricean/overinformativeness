@@ -99,14 +99,36 @@ Two conditions (low vs high variation) in each experiment, using furniture stimu
 
 Each critical trial contained eight items: one target (for which color was not necessary for identification) and seven distractors.
 
-1. Exp. 1:  
+Fillers: four pictures of Greebles. **only 4 instead of 8 -- ie clearly distinguishable from critical trials. Problem?**
 
-	- low variation: furniture items differed in _type_
-	- high variation: objects differed in all features
+1. Exp. 1:  on critical trials (20 out of 60), mentioning _type_ was sufficient to distinguish the target. 
 
-2. Exp. 2:
+	- low variation: furniture items differed only in _type_
+	- high variation: objects differed in all features (but Fig. 2 suggests that color was in fact it would **not** be overinformative if we assume you don't have to mention a noun, though it's not clear if it was on all trials)
+	- result:
+		- low variation: 4% (2% sd) color mention
+		- high variation: 25% (6% sd) color mention
 
-3. Exp. 3:
+2. Exp. 2: same as Exp. 1, with following exception:
+
+	- low variation: items differed in _type_, _orientation_, and _size_ (ie low variation condition has more variation than in Exp. 1)
+	- mentioning _type and one other distinguishing feature (not color)_ was sufficient to distinguish
+	- result: 
+		- low variation: 9% (5% sd) color mention
+		- high variation: 18% (5% sd) color mention
+	
+
+3. Exp. 3: 
+	
+	- low variation: furniture items differed in _orientation and size_
+	- high variation: furniture items differed in _type, color, orientation, and size_ 
+	- mentioning _type and one other distinguishing feature (not color)_ was sufficient to distinguish
+	- result:
+		- low variation: 10% (5% sd) color mention
+		- high variation: 27% (8% sd) color mention		
+		
+
+Their between-experiment analysis didn't show any differences in overspecification rates between experiments, only between conditions.			
 
 ## General points/questions
 
