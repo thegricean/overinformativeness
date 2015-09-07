@@ -318,7 +318,7 @@ Note that when distractortype is "varied", that means that there is one distract
 
 The effects we want to get are:
 
-- ~~basic asymmetry in redundant use of color vs. size adjectives~~ **done**
+- ~~basic asymmetry in redundant use of color vs. size adjectives~~ ***done***
 - ~~increasing number of objects in world leads to more redundant color use~~ **done**
 - increasing color variance in world leads to more redundant color use
 - increasing predictability of color from noun category leads to decrease in redundant color use
