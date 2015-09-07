@@ -314,33 +314,27 @@ We use the model in 2_number_of_distractors/overinformativeness.church to genera
 
 Note that when distractortype is "varied", that means that there is one distractor that shares the non-distinguishing feature with the target (eg, when the target is big and red, and size is sufficient to distinguish, this distractor is small and red) and all other distractors share neither feature with the target (ie in our example, all other distractors are small and yellow). 
 
-### Next steps
+### To Be Done
 
 The effects we want to get are:
 
 - ~~basic asymmetry in redundant use of color vs. size adjectives~~ ***done***
-- ~~increasing number of objects in world leads to more redundant color use~~ **done**
-- increasing color variance in world leads to more redundant color use
+- ~~increasing number of objects in world leads to more redundant color use~~ ***done***
+- increasing scene variation in world leads to more redundant color use
 - increasing predictability of color from noun category leads to decrease in redundant color use
 
 The next steps on the road to this are:
 
-1. Modeling: get the 'number of distractors' effect
+- Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
 
-2. Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
+- Figure out exactly what the empirical results are for the color variation results (ie, how was color variation actually manipulated, what do the contexts look like?)
 
-3. Figure out exactly what the empirical results are for the color variation results (ie, how was color variation actually manipulated, what do the contexts look like?)
+	- Koolen et al (2013) operationalize scene variation as the number of dimensions along which the objects in the scene differ **this doesn't seem feasible in the large scheme of things, no?**
 
-4. Modeling: ask Albert for the 2011 dataset (for later modeling)
+- Modeling: ask Albert for the 2011 dataset (for later modeling)
 
-5. Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
+- Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
 
-6. Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
-
-
-
-### Experiments
-
-Wait for the modeling results, then start replicating exps in table above and figure out potentially new exps if model makes interesting new predictions.
+- Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
 
 
