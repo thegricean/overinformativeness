@@ -314,9 +314,11 @@ Played around with different shapes of priors and utterance costs and values to 
 Get rid of the threshold semantics and instead model features like size and color as binary things. Eg assume four utterances: "blue", "yellow", "big", "small", and combinations thereof. The semantics of each is just true if property holds, false otherwise. Create contexts as worlds consisting of different numbers of objects with different properties.  (Make blue/yellow and big/small mutually exclusive.) Then do just standard RSA with varying costs (uniform, penalty for each additional word, penalty for each additional word unless that word is color, smaller penalty for adding color). Vary priors on features.
 
 
-#### Basic overinformativeness effect (based on Gatt et al, 2011)
+#### Basic asymmetry in overinformativeness for color on size (based on Gatt et al, 2011, but already documented by Pechmann, 1989)
 
-We use the model in 1_basic_overinformativeness/overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a small yellow object (where objects don't differ in type). This is formally equivalent to the situations described in [Gatt, van Gompel, Krahmer, and van Deemter (2011, CogSci)](http://staff.um.edu.mt/albert.gatt/pubs/precogsci2011.pdf). Model predictions for optimal parameters (eye-balling) are shown alongside the empirical data for both Dutch and English from the paper. Graphs with a fuller exploration of the parameter space are in /graphs.
+We use the model in 1_basic_overinformativeness/overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a small yellow object. This is formally equivalent to the situations described in [Gatt, van Gompel, Krahmer, and van Deemter (2011, CogSci)](http://staff.um.edu.mt/albert.gatt/pubs/precogsci2011.pdf) -- see the figure. Model predictions for optimal parameters (eye-balling) are shown alongside the empirical data for both Dutch and English from the paper. Graphs with a fuller exploration of the parameter space are in /graphs.
+
+![Image of target condition from Gatt et al 2011](/images/lightbulbs.jpg "Critical context")
 
 The results look really nice and fall out purely from an asymmetry in how noisy the predicates are.
 
@@ -354,6 +356,15 @@ We use the model in 2_number_of_distractors/overinformativeness.church to genera
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt15.jpg "Model (speaker optimality = 15)")
 
 Note that when distractortype is "varied", that means that there is one distractor that shares the non-distinguishing feature with the target (eg, when the target is big and red, and size is sufficient to distinguish, this distractor is small and red) and all other distractors share neither feature with the target (ie in our example, all other distractors are small and yellow). 
+
+#### Scene variation effect (based on Koolen et al, 2013)
+
+![Figure 2 from Koolen et al 2013 (Exp 1)](/images/koolen2013-exp1.jpg "Exp 1 context from Koolen et al 2013")
+
+![Figure 4 from Koolen et al 2013 (Exp 2)](/images/koolen2013-exp2.jpg "Exp 2 context from Koolen et al 2013")
+
+![Figure 6 from Koolen et al 2013 (Exp 3)](/images/koolen2013-exp2.jpg "Exp 3 context from Koolen et al 2013")
+
 
 ### To Be Done
 
