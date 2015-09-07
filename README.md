@@ -223,11 +223,13 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 	
 	
 
-## TODO
+## Preliminary results
 
 ### Modeling
 
 #### Threshold semantics models
+
+**Note: this is now outdated, but might be re-integrated at some later point.**
 
 Played around with different shapes of priors and utterance costs and values to communicate. For all combinations (3675, see overinformativeness.md) ran model and created some visualizations of the most interesting effects.
 
