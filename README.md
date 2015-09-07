@@ -223,11 +223,11 @@ Their design: 4 sentence types*2 referent confexts (either one or two referents)
 	
 	
 
-## Preliminary results
+# Preliminary results
 
-### Modeling
+## Modeling
 
-#### Threshold semantics models
+### Threshold semantics models
 
 *Note: this is now outdated, but might be re-integrated at some later point.*
 
@@ -268,14 +268,76 @@ Played around with different shapes of priors and utterance costs and values to 
 
 ![Plot of speaker probabilities for matched variance priors and object values](/church_playground/threshold_models/firsttry/graphs/matched_variance.jpg "Matched variances and object values")
 
-#### Boolean property models
+### Boolean property models
 
 Get rid of the threshold semantics and instead model features like size and color as binary things. Eg assume four utterances: "blue", "yellow", "big", "small", and combinations thereof. The semantics of each is just true if property holds, false otherwise. Create contexts as worlds consisting of different numbers of objects with different properties.  (Make blue/yellow and big/small mutually exclusive.) Then do just standard RSA with varying costs (uniform, penalty for each additional word, penalty for each additional word unless that word is color, smaller penalty for adding color). Vary priors on features.
 
-Get to the point where you can look at the effect of the following factors on overspecification
-- increasing number of objects in world
-- increasing color variance in world
-- predictability of color from word
+
+#### Basic overinformativeness effect (based on Gatt et al, 2011)
+
+We use the model in 1_basic_overinformativeness/overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a small yellow object (where objects don't differ in type). This is formally equivalent to the situations described in [Gatt, van Gompel, Krahmer, and van Deemter (2011, CogSci)](http://staff.um.edu.mt/albert.gatt/pubs/precogsci2011.pdf). Model predictions for optimal parameters (eye-balling) are shown alongside the empirical data for both Dutch and English from the paper. Graphs with a fuller exploration of the parameter space are in /graphs.
+
+The results look really nice and fall out purely from an asymmetry in how noisy the predicates are.
+
+
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011](/models/1_basic_overinformativeness/results/graphs/model.vs.empirical.jpg "Model vs empirical")
+
+
+The model has the following free parameters: **color cost, size cost, color fidelity, size fidelity, speaker optimality**. 
+
+| Parameter        | Range            | Optimal |
+| -----------------| -----------------| --------|
+| Color cost | .1 - 1 in increments of .1 | .1  |
+| Size cost | .1 - 1 in increments of .1 | .1  (.2 in some cases, but cost asymmetry not necessary!) |
+| Color fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .8, .85, .9, .999 (but mostly .999) |
+| Size fidelity | .5 .6 .7 .75 .8 .85 .9 .999 | .7, .75, .8 |
+| Speaker optimality | 1 - 18 in increments of 1 | >10 for basic overinformativeness effect, >15 for the color-only preference when referring to the small yellow object|
+
+**Important things of note:**
+
+1. NO COST ASYMMETRY NECESSARY (in fact, cost asymmetries make results worse, except in certain cases when size costs .2 and color .1)
+
+2. very high speaker optimality necessary -- do we care about this?
+
+3. asymmetry in fidelity necessary -- ie, color fidelity needs to be higher than size fidelity. This is awesome and as we hoped.
+
+
+#### Number of distractors effect (based on the under review paper)
+
+We use the model in 2_number_of_distractors/overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a varying number of additional small (either red or yellow)  objects (where objects don't differ in type). The model predicts an increase in redundant color use with increasing number of distractors when the color of the distractors is different from the color of the target object, but not when it's the same. A similar effect is *not* predicted for redundant size use. Utterance probabilities are shown for speaker optimalities of 5, 10, and 15. Beyond 4 distractors, there is no additional effect of number of distractors (because overmodification is already at ceiling).
+
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt5.jpg "Model (speaker optimality = 5)")
+
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt10.jpg "Model (speaker optimality = 10)")
+
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt15.jpg "Model (speaker optimality = 15)")
+
+Note that when distractortype is "varied", that means that there is one distractor that shares the non-distinguishing feature with the target (eg, when the target is big and red, and size is sufficient to distinguish, this distractor is small and red) and all other distractors share neither feature with the target (ie in our example, all other distractors are small and yellow). 
+
+### Next steps
+
+The effects we want to get are:
+
+- ~~basic asymmetry in redundant use of color vs. size adjectives~~ **done**
+- ~~increasing number of objects in world leads to more redundant color use~~ **done**
+- increasing color variance in world leads to more redundant color use
+- increasing predictability of color from noun category leads to decrease in redundant color use
+
+The next steps on the road to this are:
+
+1. Modeling: get the 'number of distractors' effect
+
+2. Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
+
+3. Figure out exactly what the empirical results are for the color variation results (ie, how was color variation actually manipulated, what do the contexts look like?)
+
+4. Modeling: ask Albert for the 2011 dataset (for later modeling)
+
+5. Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
+
+6. Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
+
+
 
 ### Experiments
 
