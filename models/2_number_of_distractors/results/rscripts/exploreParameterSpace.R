@@ -45,7 +45,8 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   geom_point() +
   geom_line() +
   facet_grid(sufficientproperty~Utterance) +
-  scale_x_continuous(breaks=c(2,3,4))   
+  scale_x_continuous(breaks=c(2,3,4)) +
+  scale_y_continuous(limits=c(0,1))
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt15.pdf",width=18,height=6)
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt15.jpg",width=15,height=4)
 
@@ -53,7 +54,8 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   geom_point() +
   geom_line() +
   facet_grid(sufficientproperty~Utterance) +
-  scale_x_continuous(breaks=c(2,3,4))   
+  scale_x_continuous(breaks=c(2,3,4)) +
+  scale_y_continuous(limits=c(0,1))  
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt10.pdf",width=18,height=6)
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt10.jpg",width=15,height=4)
 
@@ -61,7 +63,8 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   geom_point() +
   geom_line() +
   facet_grid(sufficientproperty~Utterance) +
-  scale_x_continuous(breaks=c(2,3,4))   
+  scale_x_continuous(breaks=c(2,3,4)) +
+  scale_y_continuous(limits=c(0,1))  
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt5.pdf",width=18,height=6)
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt5.jpg",width=15,height=4)
 
