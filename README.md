@@ -383,13 +383,11 @@ The effects we want to get are:
 
 The next steps on the road to this are:
 
+- Modeling: create some pretty plots for the scene variation result! then you can cross off the effect from the list :)
+
 - Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
 
-- Figure out exactly what the empirical results are for the color variation results (ie, how was color variation actually manipulated, what do the contexts look like?)
-
-	- Koolen et al (2013) operationalize scene variation as the number of dimensions along which the objects in the scene differ **this doesn't seem feasible in the large scheme of things, no?**
-
-- Modeling: ask Albert for the 2011 dataset (for later modeling)
+- Modeling: wait for Albert's dataset
 
 - Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
 
