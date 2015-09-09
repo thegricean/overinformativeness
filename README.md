@@ -359,6 +359,10 @@ Note that when distractortype is "varied", that means that there is one distract
 
 #### Scene variation effect (based on Koolen et al, 2013)
 
+Beta stage. So far the model has been extended to include type (eg "chair"), and type is a necessary part of the utterance. There are now two new parameters: type fidelity and type cost. Setting these to .95 (between color and size fidelity) and .1 (same as color and size) gets the low vs high variation asymmetry -- ie more (redundant) color mention in high than low variation contexts for the first two of the following contexts taken from Koolen et al 2013. (Note that orientation is not yet included in the model, so context 3 can't yet be captured, and who knows what leaving out orientation does to the results of contexts 1 and 2.)
+
+The effect of variation seems to rely on an asymmetry in type and color fidelity: type fidelity needs to be somewhat lower than color fidelity. Full exploration of the space is yet to be conducted.
+
 ![Figure 2 from Koolen et al 2013 (Exp 1)](/images/koolen2013-exp1.jpg "Exp 1 context from Koolen et al 2013")
 
 ![Figure 4 from Koolen et al 2013 (Exp 2)](/images/koolen2013-exp2.jpg "Exp 2 context from Koolen et al 2013")
