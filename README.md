@@ -349,7 +349,7 @@ The model has the following free parameters: **color cost, size cost, color fide
 
 We use the model in 2_number_of_distractors/overinformativeness.church to generate predictions for the situation in which there is a big red object, a small red object, and a varying number of additional small (either red or yellow)  objects (where objects don't differ in type). The model predicts an increase in redundant color use with increasing number of distractors when the color of the distractors is different from the color of the target object, but not when it's the same. A similar effect is *not* predicted for redundant size use. Utterance probabilities are shown for speaker optimalities of 5, 10, and 15. Beyond 4 distractors, there is no additional effect of number of distractors (because overmodification is already at ceiling).
 
-![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt5.jpg "Model (speaker optimality = 5)")
+![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt3.jpg "Model (speaker optimality = 5)")
 
 ![Plot of model predicted speaker probabilities for situation described in Gatt et al 2011 as a function of number and property of distractors](/models/2_number_of_distractors/results/graphs/cf.999_sf.8_ccss.1_spopt10.jpg "Model (speaker optimality = 10)")
 
