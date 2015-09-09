@@ -363,7 +363,7 @@ Note that when distractortype is "varied", that means that there is one distract
 
 ![Figure 4 from Koolen et al 2013 (Exp 2)](/images/koolen2013-exp2.jpg "Exp 2 context from Koolen et al 2013")
 
-![Figure 6 from Koolen et al 2013 (Exp 3)](/images/koolen2013-exp2.jpg "Exp 3 context from Koolen et al 2013")
+![Figure 6 from Koolen et al 2013 (Exp 3)](/images/koolen2013-exp3.jpg "Exp 3 context from Koolen et al 2013")
 
 
 ### To Be Done
