@@ -363,6 +363,8 @@ Beta stage. So far the model has been extended to include type (eg "chair"), and
 
 The effect of variation seems to rely on an asymmetry in type and color fidelity: type fidelity needs to be somewhat lower than color fidelity. Full exploration of the space is yet to be conducted.
 
+Should we write to them, too, to see if they'll share their data?
+
 ![Figure 2 from Koolen et al 2013 (Exp 1)](/images/koolen2013-exp1.jpg "Exp 1 context from Koolen et al 2013")
 
 ![Figure 4 from Koolen et al 2013 (Exp 2)](/images/koolen2013-exp2.jpg "Exp 2 context from Koolen et al 2013")
