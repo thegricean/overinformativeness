@@ -47,6 +47,7 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   facet_grid(sufficientproperty~Utterance) +
   scale_x_continuous(breaks=c(2,3,4))   
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt15.pdf",width=18,height=6)
+ggsave("graphs/cf.999_sf.8_ccss.1_spopt15.jpg",width=15,height=4)
 
 ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)) == 10,],aes(x=numdistractors,y=Probability,color=distractortype,group=distractortype)) +
   geom_point() +
@@ -54,6 +55,7 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   facet_grid(sufficientproperty~Utterance) +
   scale_x_continuous(breaks=c(2,3,4))   
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt10.pdf",width=18,height=6)
+ggsave("graphs/cf.999_sf.8_ccss.1_spopt10.jpg",width=15,height=4)
 
 ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)) == 5,],aes(x=numdistractors,y=Probability,color=distractortype,group=distractortype)) +
   geom_point() +
@@ -61,6 +63,7 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
   facet_grid(sufficientproperty~Utterance) +
   scale_x_continuous(breaks=c(2,3,4))   
 ggsave("graphs/cf.999_sf.8_ccss.1_spopt5.pdf",width=18,height=6)
+ggsave("graphs/cf.999_sf.8_ccss.1_spopt5.jpg",width=15,height=4)
 
 
 
