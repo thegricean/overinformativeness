@@ -396,7 +396,7 @@ The next steps on the road to this are:
 
 - Modeling: write to Rud to see if he'll share the full dataset?
 
-- Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
+- Modeling: think about how to get the color predictability effect (global QUD type of mechanism? conditional prior?)
 
 - Modeling: wait for Albert's dataset
 
