@@ -52,11 +52,12 @@ toplot[toplot$Probability < .0001,]$Probability = NA
 toplot = na.omit(toplot)
 nrow(toplot)
 toplot$Expression = factor(x=as.character(toplot$Utterance),levels=c("couch","small_couch","blue_couch","small_blue_couch","small_chair","small_brown_chair","fan","big_fan","green_fan","big_green_fan","big_chair","big_red_chair"))
+toplot$Context = factor(x=as.character(toplot$context),levels=c("lowvariation_exp1","lowvariation_exp2","highvariation_exp1","highvariation_exp2"))
 
 ggplot(toplot,aes(x=Expression,y=Probability,color=speaker.opt,group=speaker.opt)) +
   geom_point() +
   geom_line() +
-  facet_grid(type_fidelity~context,scales="free_x") +
+  facet_grid(type_fidelity~Context,scales="free_x") +
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
 ggsave("graphs/cf.999_sf.8_cstcost.1.jpg",width=10,height=8)
 
