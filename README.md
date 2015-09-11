@@ -380,8 +380,6 @@ This plot shows utterance probabilities for the low and high variation condition
 
 ![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1.jpg "Model predictions for Exps. 1 and 2")
 
-Should we write to them, too, to see if they'll share their data?
-
 
 ### To Be Done
 
@@ -389,12 +387,14 @@ The effects we want to get are:
 
 - ~~basic asymmetry in redundant use of color vs. size adjectives~~ ***done***
 - ~~increasing number of objects in world leads to more redundant color use~~ ***done***
-- increasing scene variation in world leads to more redundant color use
+- ~~increasing scene variation in world leads to more redundant color use~~ ***done***
 - increasing predictability of color from noun category leads to decrease in redundant color use
 
 The next steps on the road to this are:
 
-- Modeling: create some pretty plots for the scene variation result! then you can cross off the effect from the list :)
+- Modeling: make sure the same qualitative result holds for scene variation when you introduce "one" as an alternative
+
+- Modeling: write to Rud to see if he'll share the full dataset?
 
 - Modeling: think about how to get the color predictability effect (global QUD type of mechanism?)
 
