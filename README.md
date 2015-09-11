@@ -371,11 +371,12 @@ Beta stage. So far the model has been extended to include type (eg "chair"), and
 **Exp. 3**. Left: low variation. Right: high variation.
 ![Figure 6 from Koolen et al 2013 (Exp 3)](/images/koolen2013-exp3.jpg "Exp 3 context from Koolen et al 2013")
 
-Important: **type fidelity has to be lower than color fidelity to get the effect**. If it isn't, the high variation condition behaves like the low variation condition (see the plot below). The asymmetry is too great (empirically the overmodification values are around .25 in the high variation and .05 in the low variation condition), but it's there. Note that orientation is not yet included in the model, so the context from Exp. 3 above can't yet be captured, and who knows what leaving out orientation does to the results of the contexts from Exps. 1 and 2. In addition, the alternative "one" is not included. 
+Free parameters of the model are set as follows (based on earlier results reported above): **size cost .1, color cost .1, size fidelity .8, color fidelity .999**.
+
+Important: **type fidelity has to be lower than color fidelity to get the effect**. If it isn't, the high variation condition behaves like the low variation condition (see the plot below, in particular the qualitative jump in the high variation conditions between when type fidelity is lower than color fidelity vs the last row where it's equal). The asymmetry is too great (empirically the overmodification values are around .25 in the high variation and .05 in the low variation condition), but it's there. Note that orientation is not yet included in the model, so the context from Exp. 3 above can't yet be captured, and who knows what leaving out orientation does to the results of the contexts from Exps. 1 and 2. In addition, the alternative "one" is not included. 
 
 This plot shows utterance probabilities for the low and high variation conditions in Exps. 1 and 2 above (only for those utterances that have a probability greater than .05 under some parameter setting). For the remaining utterances, values are only plotted if utterance probability is greater than .0001. Rows indicate different type fidelities. Columns indicate the different experimental conditions, which map directly onto the pictures above. Colors indicate different speaker optimalities. 
 
-Other free parameters of the model are set as follows (based on earlier results reported above): size cost .1, color cost .1, size fidelity .8, color fidelity .999.
 
 ![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1.jpg "Model predictions for Exps. 1 and 2")
 
