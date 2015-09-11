@@ -359,17 +359,27 @@ Note that when distractortype is "varied", that means that there is one distract
 
 #### Scene variation effect (based on Koolen et al, 2013)
 
-Beta stage. So far the model has been extended to include type (eg "chair"), and type is a necessary part of the utterance. There are now two new parameters: type fidelity and type cost. Setting these to .95 (between color and size fidelity) and .1 (same as color and size) gets the low vs high variation asymmetry -- ie more (redundant) color mention in high than low variation contexts for the first two of the following contexts taken from Koolen et al 2013. The asymmetry is too great, but at least it's there. (Note that orientation is not yet included in the model, so context 3 can't yet be captured, and who knows what leaving out orientation does to the results of contexts 1 and 2.)
+Beta stage. So far the model has been extended to include type (eg "chair"), and type is a necessary part of the utterance. There are now two new parameters: type fidelity and type cost. (Type cost is actually irrelevant since mentioning type is mandatory.) The model gets the low vs high variation asymmetry -- ie more (redundant) color mention in high variation than low variation contexts for the first two of the following contexts taken from Koolen et al 2013. These correspond to the target conditions in their Exps. 1 and 2. I haven't yet tried modelng the third context, i.e. the one that requires inclusion of an orientation feature.
 
-The effect of variation seems to rely on an asymmetry in type and color fidelity: type fidelity needs to be somewhat lower than color fidelity. Full exploration of the space is yet to be conducted.
 
-Should we write to them, too, to see if they'll share their data?
-
+**Exp. 1**. Left: low variation. Right: high variation.
 ![Figure 2 from Koolen et al 2013 (Exp 1)](/images/koolen2013-exp1.jpg "Exp 1 context from Koolen et al 2013")
 
+**Exp. 2**. Left: low variation. Right: high variation.
 ![Figure 4 from Koolen et al 2013 (Exp 2)](/images/koolen2013-exp2.jpg "Exp 2 context from Koolen et al 2013")
 
+**Exp. 3**. Left: low variation. Right: high variation.
 ![Figure 6 from Koolen et al 2013 (Exp 3)](/images/koolen2013-exp3.jpg "Exp 3 context from Koolen et al 2013")
+
+Important: **type fidelity has to be lower than color fidelity to get the effect**. If it isn't, the high variation condition behaves like the low variation condition (see the plot below). The asymmetry is too great (empirically the overmodification values are around .25 in the high variation and .05 in the low variation condition), but it's there. Note that orientation is not yet included in the model, so the context from Exp. 3 above can't yet be captured, and who knows what leaving out orientation does to the results of the contexts from Exps. 1 and 2. In addition, the alternative "one" is not included. 
+
+This plot shows utterance probabilities for the low and high variation conditions in Exps. 1 and 2 above (only for those utterances that have a probability greater than .05 under some parameter setting). For the remaining utterances, values are only plotted if utterance probability is greater than .0001. Rows indicate different type fidelities. Columns indicate the different experimental conditions, which map directly onto the pictures above. Colors indicate different speaker optimalities. 
+
+Other free parameters of the model are set as follows (based on earlier results reported above): size cost .1, color cost .1, size fidelity .8, color fidelity .999.
+
+![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1.jpg "Model predictions for Exps. 1 and 2")
+
+Should we write to them, too, to see if they'll share their data?
 
 
 ### To Be Done
