@@ -405,3 +405,8 @@ The next steps on the road to this are:
 - Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
 
 
+### To Be Written
+
+1. Theory paper that focuses on demonstrating that we can get the four qualitative effects on the list above with a basic version of the model. This paper will include no experiments of our own, except maybe one using faultless disagreement to show that for the stimuli in question color is indeed less noisy than size (and less noisy than type, too?).
+
+2. Experimental paper for which we first need to go about piloting a bunch of things in order to find a paradigm within which we both replicate the important qualitative effects that have been found previously, and which we can use as an experimental basis to model the crap out of in one fell swoop.
