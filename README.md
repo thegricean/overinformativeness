@@ -380,7 +380,7 @@ This plot shows utterance probabilities for the low and high variation condition
 
 ![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1.jpg "Model predictions for Exps. 1 and 2")
 
-**Including "one" as an alternative to mentioning type (and which is in the extension of every object) retains the overinformativeness effect**, though the probability of producing "one" may well be too high:
+**Including "one" as an alternative to mentioning type (and which is in the extension of every object) retains the overinformativeness effect**, though the probability of producing "one" may well be too high (see plot below). Interestingly, "one" is only produced in the high, but not in the low variation conditions -- presumably, because in the low variation conditions the ratio of type to "one" informativeness is much higher than in the high variation conditions.
 
 ![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1_one.jpg "Model predictions for Exps. 1 and 2 with 'one' alternative")
 
