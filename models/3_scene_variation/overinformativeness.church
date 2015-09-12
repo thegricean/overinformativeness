@@ -24,7 +24,7 @@
          ; Danger: assumes only the listed colors and will return size fidelity for ANY predicate that's not in the color list
          (define (get-fidelity utterance color_fidelity size_fidelity type_fidelity)
            (if (> (list-index 
-                   '(red orange yellow green blue purple black brown pink white)
+                   '(red orange yellow green blue purple black brown pink white gray)
                    utterance) -1)
                color_fidelity
                (if (> (list-index

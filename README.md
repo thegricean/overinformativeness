@@ -380,6 +380,11 @@ This plot shows utterance probabilities for the low and high variation condition
 
 ![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1.jpg "Model predictions for Exps. 1 and 2")
 
+Including "one" as an alternative to mentioning type (and which is in the extension of every object) retains the overinformativeness effect, though the probability of producing "one" may well be too high:
+
+![Results of model exploration](/models/3_scene_variation/results/graphs/cf.999_sf.8_cstcost.1_one.jpg "Model predictions for Exps. 1 and 2 with 'one' alternative")
+
+Rows indicate different fidelities for "one". Clearly, fidelity doesn't matter. (Why not?) The plot is the result of setting free parameters of the model as follows: **size cost .1, color cost .1, type cost .1, size fidelity .8, color fidelity .999, type fidelity .9**.
 
 ### To Be Done
 
