@@ -130,6 +130,30 @@ Fillers: four pictures of Greebles. **only 4 instead of 8 -- ie clearly distingu
 
 Their between-experiment analysis didn't show any differences in overspecification rates between experiments, only between conditions. **So these minor modifications in degree/type of scene variation have no effect? See whether this is predicted by model.**			
 
+## Color predictability results (Westerbeek et al., 2014)
+
+On all critical trials, mentioning color was redundant. Filler trials consisted of greebles (no color). All critical trials were separated by a filler. Each critical scene contained six objects, positioned randomly in a three by two grid, in three different colors (each on two objects such that the target's color was never unique within a scene). Typicality was equalized in the scenes by selecting two somewhat typical objects, two atypical ones, and two falling in-between typical and atypical, for a mean typicality score over all objects in a scene between 40 and 60. (Typicality scores estimated in pre-test.) They only analyzed cases where type was mentioned (otherwise it's unclear whether the color is typical).
+
+
+1. Exp. 1: 
+	- 42 critical trials. 
+	- **Types** (14, each one appearing three times with colors that spanned typicality range): apple, banana, carrot, cheese, corn, grapes, lemon, lettuce, orange, pear, pepper, pineapple, pumpkin, tomato
+	- **Result**: Color mention decreased with increasing color typicality, r=.86.
+
+2. Exp. 2: 
+	- 16 critical trials and 32 greeble trials.
+	- **Types** (16, half simple from Exp. 1 and half complex). **Color** typical or atypical. Each participant saw each item in only one color condition.
+		- Simple: basketball, lemon, lettuce, orange, strawberry, tennis ball, tomato, watermelon
+		- Complex: broccoli, carrot, cheese, chick, crocodile, gold- fish, lobster, phone booth
+	- **Result**: replication of typicality effect from Exp. 1 (categorical rather than continuous result). In addition: more redundant color use for complex than simple objects (THIS FITS WITH THE KOOLEN ET AL 2013 SCENE VARIATION RESULT.) 
+	
+	Color typicality | Shape complexity | Proportion of color use
+	-----------------|------------------|----------------
+	typical | simple | 12%
+	typical | complex | 16%
+	atypical | simple | 65%
+	atypical | complex | 85%
+
 ## General points/questions
 
 Has anyone compiled a list of overspecification rates for different modifiers (color, size, location, age, orientation, etc)?
