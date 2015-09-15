@@ -391,7 +391,7 @@ Rows indicate different fidelities for "one". Clearly, fidelity doesn't matter. 
 **Exp. 1**. 
 | Typical	| Intermediate	| Atypical |
 | --------- | ------------- | ----- |
-![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-typical.jpg "Exp 1 typical color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-intermediate.jpg "Exp 1 intermediate color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-atypical.jpg "Exp 1 atypical color context from Westerbeek et al 2014") |
+| ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-typical.jpg "Exp 1 typical color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-intermediate.jpg "Exp 1 intermediate color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-atypical.jpg "Exp 1 atypical color context from Westerbeek et al 2014") |
 
 
 ### To Be Done
