@@ -386,6 +386,14 @@ This plot shows utterance probabilities for the low and high variation condition
 
 Rows indicate different fidelities for "one". Clearly, fidelity doesn't matter. (Why not?) The plot is the result of setting free parameters of the model as follows: **size cost .1, color cost .1, type cost .1, size fidelity .8, color fidelity .999, type fidelity .9**.
 
+#### Color predictability effect (based on Westerbeek et al, 2014)
+
+**Exp. 1**. 
+| Typical	| Intermediate	| Atypical |
+| --------- | ------------- | ----- |
+![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-typical.jpg "Exp 1 typical color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-intermediate.jpg "Exp 1 intermediate color context from Westerbeek et al 2014") | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/koolen2014-exp1-atypical.jpg "Exp 1 atypical color context from Westerbeek et al 2014") |
+
+
 ### To Be Done
 
 The effects we want to get are:
@@ -396,8 +404,6 @@ The effects we want to get are:
 - increasing predictability of color from noun category leads to decrease in redundant color use
 
 The next steps on the road to this are:
-
-- Modeling: make sure the same qualitative result holds for scene variation when you introduce "one" as an alternative
 
 - Modeling: write to Rud to see if he'll share the full dataset?
 
