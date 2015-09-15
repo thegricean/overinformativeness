@@ -389,6 +389,7 @@ Rows indicate different fidelities for "one". Clearly, fidelity doesn't matter. 
 #### Color predictability effect (based on Westerbeek et al, 2014)
 
 **Exp. 1**. 
+
 Target color typicality | Example context |
 :----------:|:-------------: |
 Typical | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek2014-exp1-typical.jpg "Exp 1 typical color context from Westerbeek et al 2014") |
