@@ -429,7 +429,7 @@ Empirical results:
 
 Where to put the effect?
 
-1. Conditional prior: we at some point put this out there as a potential explanation. I actually don't see anymore what we could possibly have meant with this. **confused**
+1. Conditional prior: we at some point put this out there as a potential explanation. But I don't think this can work: the adjectives get their semantics--which is what determines their informativeness relative to other adjectives--on a context-by-context basis. So any notion of prior experience with the adjectives would have to come in somewhere else. Where? **confused**
 
 2. Brute force: have a noun-conditional adjective cost; i.e., for each adjective, hard-wire its cost (but vary it by noun). **ad hoc, unelegant, unwieldy, bad at scaling up, boring**
 
