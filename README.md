@@ -421,6 +421,10 @@ Intermediate | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek
 Atypical | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek2014-exp1-atypical.jpg "Exp 1 atypical color context from Westerbeek et al 2014") |
 
 
+Results:
+
+![Figure 3 from Westerbeek et al 2014 (Results of Exp 1)](/images/westerbeek2014-results.jpg "Exp 1 color predictability effect from Westerbeek et al 2014") 
+
 ### To Be Done
 
 The effects we want to get are:
