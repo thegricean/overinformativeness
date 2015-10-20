@@ -433,7 +433,7 @@ Where to put the effect?
 
 2. Brute force: have a noun-conditional adjective cost; i.e., for each adjective, hard-wire its cost (but vary it by noun). **ad hoc, unelegant, unwieldy, bad at scaling up, boring**
 
-3. QUD mechanism: assume that the speaker assumes the listener wants to know not just the identity of the object, but also its color. In that case, the more predictable the color is, the less use there is in mentioning it. Conversely, the less predictable, the more it should be mentioned. ** how to justify the assumption that the listener wants to know about color? why not other features? or should we assume this is instead a speaker-internal can't-do-otherwise pressure having to do with the salience of the color when it's unpredictable? in which case it should probably go directly into the cost after all...**
+3. QUD mechanism: assume that the speaker assumes the listener wants to know not just the identity of the object, but also its color. In that case, the more predictable the color is, the less use there is in mentioning it. Conversely, the less predictable, the more it should be mentioned. **how to justify the assumption that the listener wants to know about color? why not other features? or should we assume this is instead a speaker-internal can't-do-otherwise pressure having to do with the salience of the color when it's unpredictable? in which case it should probably go directly into the cost after all...**
 
 ### To Be Done
 
