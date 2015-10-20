@@ -421,9 +421,19 @@ Intermediate | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek
 Atypical | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek2014-exp1-atypical.jpg "Exp 1 atypical color context from Westerbeek et al 2014") |
 
 
-Results:
+Empirical results:
 
 ![Figure 3 from Westerbeek et al 2014 (Results of Exp 1)](/images/westerbeek-results.jpg "Exp 1 color predictability effect from Westerbeek et al 2014") 
+
+**Modeling problems:**
+
+Where to put the effect?
+
+1. Conditional prior: we at some point put this out there as a potential explanation. I actually don't see anymore what we could possibly have meant with this. **confused**
+
+2. Brute force: have a noun-conditional adjective cost; i.e., for each adjective, hard-wire its cost (but vary it by noun). **ad hoc, unelegant, unwieldy, bad at scaling up, boring**
+
+3. QUD mechanism: assume that the speaker assumes the listener wants to know not just the identity of the object, but also its color. In that case, the more predictable the color is, the less use there is in mentioning it. Conversely, the less predictable, the more it should be mentioned. ** how to justify the assumption that the listener wants to know about color? why not other features? or should we assume this is instead a speaker-internal can't-do-otherwise pressure having to do with the salience of the color when it's unpredictable? in which case it should probably go directly into the cost after all...**
 
 ### To Be Done
 
@@ -445,6 +455,7 @@ The next steps on the road to this are:
 - Get familiar with Robert's paradigm to do production study a la Gatt (need to validate first, ie do we get similar results with written production as the Dutch have been getting in spoken production?)
 
 - Run experiment with adjectives that are between SIZE and COLOR on the ordering preference scale: empirically, are overmodification rates correlated with position on the scale? (eg age, texture, shape, material)
+
 
 
 ### To Be Written
