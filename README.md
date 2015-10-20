@@ -423,7 +423,7 @@ Atypical | ![Figure 2 from Westerbeek et al 2014 (Exp 1)](/images/westerbeek2014
 
 Results:
 
-![Figure 3 from Westerbeek et al 2014 (Results of Exp 1)](/images/westerbeek2014-results.jpg "Exp 1 color predictability effect from Westerbeek et al 2014") 
+![Figure 3 from Westerbeek et al 2014 (Results of Exp 1)](/images/westerbeek-results.jpg "Exp 1 color predictability effect from Westerbeek et al 2014") 
 
 ### To Be Done
 
