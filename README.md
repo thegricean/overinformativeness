@@ -431,7 +431,7 @@ Where to put the effect?
 
 1. Conditional prior: we at some point put this out there as a potential explanation. But I don't think this can work: the adjectives get their semantics--which is what determines their informativeness relative to other adjectives--on a context-by-context basis. So any notion of prior experience with the adjectives would have to come in somewhere else. Where? **confused**
 
-2. Brute force: have a noun-conditional adjective cost; i.e., for each adjective, hard-wire its cost (but vary it by noun). **ad hoc, unelegant, unwieldy, bad at scaling up, boring**
+2. Brute force: have a noun-conditional adjective cost; i.e., for each adjective, hard-wire its cost (but vary it by noun). **ad hoc, unelegant, unwieldy, bad at scaling up, boring. But implemented and works.**
 
 3. QUD mechanism: assume that the speaker assumes the listener wants to know not just the identity of the object, but also its color. In that case, the more predictable the color is, the less use there is in mentioning it. Conversely, the less predictable, the more it should be mentioned. **how to justify the assumption that the listener wants to know about color? why not other features? or should we assume this is instead a speaker-internal can't-do-otherwise pressure having to do with the salience of the color when it's unpredictable? in which case it should probably go directly into the cost after all...**
 
@@ -445,6 +445,10 @@ The effects we want to get are:
 - increasing predictability of color from noun category leads to decrease in redundant color use
 
 The next steps on the road to this are:
+
+- Modeling: put together two models that integrate the one-object color predictability model
+	- one that simulates visual search difficulty in the listener that the speaker knows about; ie, the literal listener needs to wrongly infer yellow banana if the utterance is "banana" and the banana is actually blue (isn't that already happening? but i guess the question is what happens if you put it in context)
+	- one that has a "double-qud" -- ie, the listener needs to want to infer both the referent that the speaker has in mind, as well as the way the world is (ie which features an object has)
 
 - Modeling: write to Rud to see if he'll share the full dataset?
 
