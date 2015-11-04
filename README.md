@@ -5,10 +5,10 @@
 | Paper			| Language		| Result| ToDo | Progress |
 | --------------|:-------------:| ----- | ---- | -------- |
 | Pechmann 1989; Belke & Meyer 2002; Engelhardt et al 2006, Gatt et al 2011, many others | English, Dutch | **Speakers** overspecify color more than size. Gatt, when size sufficient: 78.6%d/80.2%e (cs), 21.1%d/16.5%e (s), 0.3%d/3.3%e (c). Gatt, when color sufficient: 10.2%d/8.1%e (cs), 0.3%d/0%e (s), 89.5%d/91.9%e (c) | replicate empirically? | got this! see model overinformativeness.church,  which derives overmodification preferences not from sth special about color/size costs, but from differential noise in color and size dimension |
-|  | Dutch | **Speakers** overspecify more as number of distractors increases | replicate, model |
-| Davies & Katsos 2009, 2013; Koolen et al, 2013 Cognitive Science | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here and model? |
+|  | Dutch | **Speakers** overspecify more as number of distractors increases | replicate, model | model gets it. |
+| Davies & Katsos 2009, 2013; Koolen et al, 2013 Cognitive Science | English | **Speakers** overspecify less in simpler visual arrays | figure out what is meant by "simplicity" here and model? | model gets it. |
 | Sedivy 2003	| English		| **Speakers** use color more over-informatively when the color is less predictable from the noun category. So, people say "yellow cup" a lot even when there is only one cup, but they don't say "yellow banana" when there is only one banana. |  Replicate in Robert's interactive paradigm |
-| Westerbeek et al 2014 | Dutch | The probability that **speakers** redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication |
+| Westerbeek et al 2014 | Dutch | The probability that **speakers** redundantly include color in their descriptions is almost linearly predicted by the degree of color atypicality. Smaller effect: color mentioned more for objects with simple (ie not very informative as to type) shapes, eg oranges vs fire trucks. | replicate as part of Sedivy 2003 replication | model sort of gets it. in progress.|
 | Sedivy 2003	| English		| **Listeners** draw more/faster contrastive inferences from color modifiers when the color is predictable. Ie there's early convergence on the yellow banana but not on the yellow cup.| Clever way to replicate that doesn't require eye-tracking?|
 | Koolen et al 2013 | Dutch | **Speakers** overspecify color less (at ~5%) when all objects are of the same (very similar) color than when there is a lot of color variation (~25%) | |
 | Gatt et al 2013 | Dutch | **Weird datapoint**: No difference in overspecification rates for size, color, pattern| |
@@ -446,9 +446,27 @@ The effects we want to get are:
 
 The next steps on the road to this are:
 
-- Modeling: put together two models that integrate the one-object color predictability model
-	- one that simulates visual search difficulty in the listener that the speaker knows about; ie, the literal listener needs to wrongly infer yellow banana if the utterance is "banana" and the banana is actually blue (isn't that already happening? but i guess the question is what happens if you put it in context)
-	- one that has a "double-qud" -- ie, the listener needs to want to infer both the referent that the speaker has in mind, as well as the way the world is (ie which features an object has)
+*Notes from lab meeting, 11/04/2015:*
+
+- Modeling: update color predictability model to get it closer to the "noisy truth conditions" one, by having fidelity depend on object type, such that type is less likely to be true for weirdly colored things. I.e., this is like a noisy semantics plus feature statistics model. Practical: update the get-fidelity function such that the flip probability depends on (is?) P(color|type).
+
+- Experiments: Gatt et al 2011 replication (Caroline)
+
+- Experiments/model exploration: there's a lot one can do in the "number of distractors" domain. Probe model predictions for following IV variations:
+
+	1. number of distractors
+	
+	2. ratio of same- vs different-color distractors
+	
+	3. vary fidelity of color; if it's not at .999 (ie not super-duper-high), are there gradient predictions for overmodification even when all distractors are of the same color, as opposed to the flat lines that are predicted for .999?
+	
+- Experiments/model exploration:
+
+	1. Explore more systematically what the color predictability model predicts for a particular color typicality value, if you vary the tpicality of the other contextually available objects of the same color 
+	
+	2. Can you do typicality experiments with other properties? Texture? Material? What's the relation of the fidelity parameter to *subjectivity*? To *typicality/predictability*? To *perceptual uncertainty* (in listener, in speaker)?	
+
+*Previous notes:*
 
 - Modeling: write to Rud to see if he'll share the full dataset?
 
