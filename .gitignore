@@ -1,3 +1,10 @@
+*.config
+*.input
+*.properties
+*.question
+*.results
+*.success
+*_invoice.csv
 *.Rhistory
 *.DS_Store*
 corpus_results/data/*
