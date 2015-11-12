@@ -264,9 +264,9 @@ client_connect_to_server = function(game) {
     $('#messages').empty();
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
-      $('#instructs').empty().append("Round " + (game.roundNum + 1));
+      $('#instructs').empty().append("Round " + (game.roundNum + 1) + " of 108");
     } else {
-      $('#roundnumber').empty().append("Round ", game.roundNum + 2);
+      $('#roundnumber').empty().append("Round ", game.roundNum + 2, " of 108");
     }
   });
 
@@ -305,7 +305,7 @@ client_onjoingame = function(num_players, role) {
     $('#instructs').append("Send messages to describe the target to the listener. Please do not refresh the page!")
     $("#submitbutton").remove();
   } else {
-    $('#instructs').append("Click on the target object which is described to you by the speaker. Please do not refresh page!")
+    $('#instructs').append("Click on the target object which is described to you by the speaker. Please do not refresh the page!")
     $("#submitbutton").remove();
   }
 
