@@ -10,3 +10,22 @@ head(d)
 nrow(d)
 d$speakerMessages
 summary(d)
+
+table(d$condition,d$typeMentioned)
+table(d$condition,d$colorMentioned)
+table(d$condition,d$sizeMentioned)
+
+targets = droplevels(subset(d, condition != "filler"))
+nrow(targets)
+agr = targets %>%
+  select(sizeMentioned,colorMentioned,typeMentioned,condition) %>%
+  gather(Feature,Mentioned,-condition)
+agr$Feature = gsub("Mentioned","",as.character(agr$Feature))
+agr = droplevels(subset(agr,Mentioned == "True"))
+head(agr)
+
+# plot histogram of mentioned features by condition
+ggplot(agr, aes(x=Feature)) +
+  geom_histogram() +
+  facet_wrap(~condition)
+ggsave("graphs/mentioned_features_by_condition.pdf",width=8,height=3.5)
