@@ -1,6 +1,0 @@
-gameid,time,roundNum,name,targetStatus,speakerLocs, listenerLocs
-5681-c,1447279893695,1,sheep,distractor,1,3
-5681-c,1447279894269,2,toilet,distractor,1,3
-5681-c,1447279894750,3,cherries,distractor,2,3
-5681-c,1447279895184,4,small_green_pepper,distractor,1,3
-5681-c,1447279895617,5,big_blue_toothbrush,target,1,3

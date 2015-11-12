@@ -1,8 +1,0 @@
-gameid,time,roundNum,name,targetStatus,speakerLocs,listenerLocs
-4106-9,1447282800934,1,elephant,target,3,3,filler
-4106-9,1447282801481,2,big_blue_book,distractor,3,3,sizeOnly
-4106-9,1447282803710,3,car,distractor,1,3,filler
-4106-9,1447282804353,4,sheep,distractor,1,3,filler
-4106-9,1447282804883,5,strawberry,distractor,2,3,filler
-4106-9,1447282805515,6,snowflake,distractor,1,3,filler
-4106-9,1447282827453,7,small_purple_bracelet,target,1,3,colorOnly

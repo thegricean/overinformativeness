@@ -1,6 +1,0 @@
-gameid,time,roundNum,name,targetStatus,speakerLocs,listenerLocs
-1291-5,1447280850946,1,television,distractor,1,3
-1291-5,1447280851389,2,tooth,distractor,1,3
-1291-5,1447280851821,3,tire,distractor,1,3
-1291-5,1447280852621,4,carrot,target,1,3
-1291-5,1447280854308,5,garbagecan,distractor,3,3
