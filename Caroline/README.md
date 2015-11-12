@@ -1,6 +1,22 @@
 # Overinformativeness
 ## Notes and ideas from the papers by Judith
 
+## ToDo
+
+**Judith:** 
+
+1. put study on mturk
+
+2. initial pre-processing of speaker data to create columns of color/size mention for each message
+
+**Caroline:**
+
+1. Check automatic message annotation.
+
+2. Add extra columns for type of modification (pre-postnominal).
+
+...then we reconvene and make pretty plots of analyses listed below...
+
 ## Analyses
 
 ### Listener (sanity checks)
