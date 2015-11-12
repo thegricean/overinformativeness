@@ -1,0 +1,4 @@
+gameid,time,roundNum,name,targetStatus,speakerLocs,listenerLocs
+4318-d,1447281640533,1,small_orange_cap,target,3,3
+4318-d,1447281640973,2,santahat,distractor,3,3
+4318-d,1447281641183,3,kitten,distractor,1,3

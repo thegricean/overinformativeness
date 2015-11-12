@@ -1,0 +1,6 @@
+gameid,time,roundNum,name,targetStatus,speakerLocs,listenerLocs
+9629-9,1447282560061,1,clarinet,distractor,3,3
+9629-9,1447282560590,2,kiwi,distractor,1,3
+9629-9,1447282560840,3,rubberduck,distractor,1,3
+9629-9,1447282561037,4,small_white_phone,distractor,1,3
+9629-9,1447282561256,5,elephant,target,1,3

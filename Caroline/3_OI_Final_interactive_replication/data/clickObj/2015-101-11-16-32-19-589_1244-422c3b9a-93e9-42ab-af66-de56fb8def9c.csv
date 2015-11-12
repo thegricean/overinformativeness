@@ -1,0 +1,3 @@
+gameid, time, roundNum, nameClickedObj, targetStatusClickedObj, speakerLocsClickedObj, listenerLocsClickedObj, alternative1Name, alternative1TargetStatus, alternative1SpeakerLocs, alternative1ListenerLocs, alternative2Name, alternative2TargetStatus, alternative2SpeakerLocs, alternative2ListenerLocs 
+1244-4,1447288350503,1,tophat,target,3,3,filler,schoolbus,distractor,1,1,toilet,distractor,2,2
+1244-4,1447288384423,2,small_black_book,distractor,3,2,sizeOnly,big_black_book,target,2,3,small_blue_book,distractor,1,1

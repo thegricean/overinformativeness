@@ -1,0 +1,6 @@
+gameid,time,roundNum,name,targetStatus,speakerLocs,listenerLocs
+5542-a,1447280218588,1,piano,distractor,3,3
+5542-a,1447280219547,2,small_purple_hairdryer,target,3,3
+5542-a,1447280220092,3,santahat,target,3,3
+5542-a,1447280220546,4,bison,distractor,3,3
+5542-a,1447280221282,5,big_blue_guitar,target,1,3

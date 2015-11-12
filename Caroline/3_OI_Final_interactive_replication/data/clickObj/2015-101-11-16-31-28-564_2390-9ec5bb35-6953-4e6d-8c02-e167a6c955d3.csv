@@ -1,0 +1,9 @@
+gameid, time, roundNum, nameClickedObj, targetStatusClickedObj, speakerLocsClickedObj, listenerLocsClickedObj, alternative1Name, alternative1TargetStatus, alternative1SpeakerLocs, alternative1ListenerLocs, alternative2Name, alternative2TargetStatus, alternative2SpeakerLocs, alternative2ListenerLocs 
+2390-9,1447288290592,1,garlic,distractor,3,3,filler,polarbear,distractor,2,1,camera,target,1,2
+2390-9,1447288292307,2,big_black_avocado,distractor,3,3,sizeOnly,big_green_avocado,distractor,1,1,small_black_avocado,target,2,2
+2390-9,1447288292768,3,santahat,distractor,1,3,filler,garbagecan,target,3,2,mailbox,distractor,2,1
+2390-9,1447288293204,4,tire,distractor,3,3,filler,snake,target,2,1,lemon,distractor,1,2
+2390-9,1447288293470,5,artichoke,distractor,1,3,filler,penguin,distractor,2,2,bear,target,3,1
+2390-9,1447288293663,6,hotdog,distractor,3,3,filler,car,target,1,1,camera,distractor,2,2
+2390-9,1447288296033,7,carrot,distractor,2,3,filler,lime,distractor,1,1,bulldozer,target,3,2
+2390-9,1447288296682,8,elephant,target,3,3,filler,cactus,distractor,1,1,camera,distractor,2,2

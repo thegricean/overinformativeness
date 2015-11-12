@@ -1,0 +1,10 @@
+gameid,time,roundNum,name,targetStatus,speakerLocs, listenerLocs
+3631-0,1447280028948,1,coconut,target,1,3
+3631-0,1447280029411,2,fox,distractor,2,3
+3631-0,1447280029770,3,car,distractor,3,3
+3631-0,1447280029971,4,egg,distractor,1,3
+3631-0,1447280030210,5,big_purple_yarn,target,1,3
+3631-0,1447280030630,6,big_green_pepper,distractor,1,3
+3631-0,1447280030984,7,gloves,target,2,3
+3631-0,1447280031481,8,dresser,target,1,3
+3631-0,1447280031876,9,snowflake,distractor,2,3
