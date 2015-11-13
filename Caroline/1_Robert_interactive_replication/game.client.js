@@ -260,15 +260,15 @@ client_connect_to_server = function(game) {
     $('#messages').empty();
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
-      $('#instructs').empty().append("Round " + (game.roundNum + 1) + 
+      $('#instructs').empty().append("Round " + (game.roundNum + 1) + " of 108" + 
 				     " score: " + data.score + " correct!");
       //when game is over we want to store the totalScore of the game to send to mmturkey
       // game.data.totalScore = _.extend(game.data.totalScore, 
       //   {'totalScore' : totalScore}); 
     } else {
-      $('#roundnumber').empty().append("Round ", game.roundNum + 2);
+      $('#roundnumber').empty().append("Round ", game.roundNum + 2, " of 108");
     }
-    $('#score').empty().append("Round " + (game.roundNum + 1) + 
+    $('#score').empty().append("Round " + (game.roundNum + 1) + " of 108" + 
 			       " score: " + data.score + " correct!");
     var player = game.get_player(my_id)
     player.currentHighlightX = null;
@@ -307,10 +307,10 @@ client_onjoingame = function(num_players, role) {
   // Update w/ role (can only move stuff if agent)
   $('#roleLabel').append(role + '.');
   if(role === "director") {
-    $('#instructs').append("Send messages to help the matcher move their images to match yours. Please do not refresh page!")
+    $('#instructs').append("Send messages to help the matcher move their images to match yours. Please do not refresh the page!")
     $("#submitbutton").remove();
   } else {
-    $('#instructs').append("Move your images to match the director's board. Please do not refresh page!")
+    $('#instructs').append("Move your images to match the director's board. Please do not refresh the page!")
     $("#submitbutton").show();
   }
 
