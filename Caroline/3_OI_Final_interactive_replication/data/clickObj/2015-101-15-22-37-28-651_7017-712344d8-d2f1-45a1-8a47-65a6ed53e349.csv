@@ -1,0 +1,5 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+7017-7,1447655861316,1,filler,cactus,distractor,3,3,tennisball,distractor,1,2,dresser,target,2,1
+7017-7,1447655862188,2,filler,gloves,target,3,3,trumpet,distractor,1,2,camera,distractor,2,1
+7017-7,1447655870756,3,colorOnly,big_purple_bike,distractor,3,3,small_purple_bike,distractor,2,2,big_red_bike,target,1,1
+7017-7,1447655871247,4,filler,firehydrant,target,3,3,kiwi,distractor,2,2,crocodile,distractor,1,1

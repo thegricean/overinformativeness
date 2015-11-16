@@ -1,0 +1,5 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+1719-b,1447656368600,1,colorOnly,small_yellow_shoe,distractor,2,3,small_white_shoe,target,1,2,big_yellow_shoe,distractor,3,1
+1719-b,1447656368890,2,filler,watermelon,distractor,3,3,snowflake,target,2,2,tophat,distractor,1,1
+1719-b,1447656369863,3,filler,tooth,distractor,3,3,television,target,1,1,fireextinguisher,distractor,2,2
+1719-b,1447656370393,4,filler,eggplant,target,3,3,pumpkin,distractor,2,1,snake,distractor,1,2

@@ -190,6 +190,8 @@ client_addnewround = function(game) {
   $('#roundnumber').append(game.roundNum);
 };
 
+var called = false; // global variable called checks whether a chatmessage was sent. initially set to false
+
 // Associates callback functions corresponding to different socket messages
 client_connect_to_server = function(game) {
   //Store a local reference to our connection to the server
@@ -230,13 +232,18 @@ client_connect_to_server = function(game) {
     }
   });
 
+  
+
   // Update messages log when other players send chat
   game.socket.on('chatMessage', function(data){
+    called = true; // A message was sent! thus, set called to true
     var otherRole = my_role === "speaker" ? "listener" : "speaker";
     var source = data.user === my_id ? "You" : otherRole;
     var col = source === "You" ? "#363636" : "#707070";
     $('.typing-msg').remove();
     $('#messages').append($('<li style="padding: 5px 10px; background: ' + col + '">').text(source + ": " + data.msg));
+    //var messageExists = false;
+    //if (data.msg != ''){messageExists = true};
     $('#messages').stop().animate({
       scrollTop: $("#messages")[0].scrollHeight
     }, 800);
@@ -335,20 +342,27 @@ function mouseClickListener(evt) {
   var bRect = game.viewport.getBoundingClientRect();
   mouseX = (evt.clientX - bRect.left)*(game.viewport.width/bRect.width);
   mouseY = (evt.clientY - bRect.top)*(game.viewport.height/bRect.height);
-  for (i=0; i < game.objects.length; i++) {
-    var obj = game.objects[i];
-    //var condition = game.trialList[0];
-    if (hitTest(obj, mouseX, mouseY)) {
-      alternative1 = _.sample(_.without(game.objects, obj));
-      alternative2 = _.sample(_.without(game.objects, obj, alternative1));
-      console.log("alt1Name: " + alternative1.fullName);
-      console.log("alt2Name: " + alternative2.fullName);
-      game.socket.send("clickedObj." + obj.fullName + "." + obj.targetStatus + "." + obj.speakerCoords.gridX + 
-        "." + obj.listenerCoords.gridX + "." + obj.condition + "." + alternative1.fullName + 
-        "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX + 
-        "." + alternative1.listenerCoords.gridX + "." + alternative2.fullName + "." + alternative2.targetStatus + 
-        "." + alternative2.speakerCoords.gridX + "." + alternative2.listenerCoords.gridX);
-    }
+  //alert('called: ' + called);
+  if (called == false){ // if message was not sent, don't do anything
+
+  }
+  else{ // if message was sent, procede to normal click procedure
+    called = false;
+    for (i=0; i < game.objects.length; i++) {
+      var obj = game.objects[i];
+      //var condition = game.trialList[0];
+      if (hitTest(obj, mouseX, mouseY)) {
+        alternative1 = _.sample(_.without(game.objects, obj));
+        alternative2 = _.sample(_.without(game.objects, obj, alternative1));
+        console.log("alt1Name: " + alternative1.fullName);
+        console.log("alt2Name: " + alternative2.fullName);
+        game.socket.send("clickedObj." + obj.fullName + "." + obj.targetStatus + "." + obj.speakerCoords.gridX + 
+          "." + obj.listenerCoords.gridX + "." + obj.condition + "." + alternative1.fullName + 
+          "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX + 
+          "." + alternative1.listenerCoords.gridX + "." + alternative2.fullName + "." + alternative2.targetStatus + 
+          "." + alternative2.speakerCoords.gridX + "." + alternative2.listenerCoords.gridX);
+      }
+  }
     // else {
     //   game.socket.send("nonClickedObj." + obj.fullName + "." + obj.targetStatus + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX + "." + obj.condition);
     // }
