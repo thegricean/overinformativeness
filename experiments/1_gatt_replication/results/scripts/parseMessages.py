@@ -2,9 +2,9 @@ import os, csv
 
 datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/3_OI_Final_interactive_replication/data/"
 
-csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/3_OI_Final_interactive_replication/data/message/") if o.endswith('csv')]
+csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/3_OI_Final_interactive_replication/data/message/") if (o.endswith('csv') & o.startswith('2015-101-16'))]
 
-csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/3_OI_Final_interactive_replication/data/clickObj/") if o.endswith('csv')]
+csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/3_OI_Final_interactive_replication/data/clickObj/") if (o.endswith('csv') & o.startswith('2015-101-16'))]
 
 
 # helper function to get messages associated with a particular trial
@@ -33,13 +33,13 @@ def getMessages(trial, messages):
 # first make sure that for every trial file there's a message file
 for t in csv_trialnames:
 	shared = False
-	gameid = t[0:26]
+	gameid = t[0:20]
 	for m in csv_messagenames:	
 		if m.startswith(gameid):
 			shared = True
 
 	if shared == False:
-		print t
+		print "corresponding message file not found: " + gameid
 		csv_trialnames.pop(csv_trialnames.index(t))
 
 print csv_messagenames
@@ -55,7 +55,7 @@ finaltriallines = []
 
 # the meaty bit
 for k,m in enumerate(csv_messagenames):
-	print m
+	#print m
 	messagelines = []
 	triallines = []
 
@@ -75,9 +75,9 @@ for k,m in enumerate(csv_messagenames):
 		triallines[i]['speakerMessages'] = "___".join(mess['speakermessages'])
 		triallines[i]['listenerMessages'] = "___".join(mess['listenermessages'])
 		triallines[i]['messageTimeStamps'] = "___".join(mess['times'])
-		print i
-		print k
-		print mess['speakermessages']
+		#print i
+		#print k
+		#print mess['speakermessages']
 		try:
 			triallines[i]['refExp']	= mess['speakermessages'][0]
 		except IndexError:
