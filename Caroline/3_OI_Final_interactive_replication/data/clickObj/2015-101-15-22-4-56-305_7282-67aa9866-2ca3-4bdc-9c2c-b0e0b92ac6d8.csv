@@ -1,0 +1,23 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+7282-6,1447653897816,1,sizeOnly,big_purple_rug,distractor,3,3,big_blue_rug,distractor,2,1,small_purple_rug,target,1,2
+7282-6,1447653898190,2,filler,garbagecan,target,1,3,lion,distractor,3,2,carrot,distractor,2,1
+7282-6,1447653898373,3,sizeOnly,big_purple_bracelet,distractor,3,3,big_green_bracelet,distractor,1,2,small_green_bracelet,target,2,1
+7282-6,1447653898559,4,filler,tire,target,1,3,flamingo,distractor,2,1,crocodile,distractor,3,2
+7282-6,1447653898735,5,sizeOnly,small_white_shoe,distractor,3,3,big_white_shoe,target,2,1,small_yellow_shoe,distractor,1,2
+7282-6,1447653898928,6,filler,orange,distractor,1,3,bulldozer,distractor,2,1,ketchup,target,3,2
+7282-6,1447653899095,7,filler,garlic,distractor,2,3,smokedetector,distractor,1,1,tophat,target,3,2
+7282-6,1447653899265,8,filler,fireextinguisher,distractor,3,3,crocodile,target,1,1,grapefruit,distractor,2,2
+7282-6,1447653899447,9,filler,lemon,distractor,1,3,strawberry,distractor,3,2,feather,target,2,1
+7282-6,1447653899624,10,colorAndSize,small_pink_hairdryer,target,2,3,big_purple_hairdryer,distractor,1,1,big_purple_hairdryer,distractor,3,2
+7282-6,1447653899806,11,filler,teddybear,target,2,3,mailbox,distractor,3,2,ketchup,distractor,1,1
+7282-6,1447653899991,12,filler,penguin,target,3,3,snowflake,distractor,2,1,baseball,distractor,1,2
+7282-6,1447653900190,13,filler,smokedetector,distractor,3,3,lime,distractor,1,1,bear,target,2,2
+7282-6,1447653900374,14,colorOnly,big_red_yarn,distractor,2,3,small_purple_yarn,target,1,1,small_red_yarn,distractor,3,2
+7282-6,1447653900559,15,colorAndSize,small_yellow_balloon,target,2,3,big_pink_balloon,distractor,3,2,big_pink_balloon,distractor,1,1
+7282-6,1447653900750,16,filler,kiwi,distractor,1,3,cherries,distractor,3,2,tire,target,2,1
+7282-6,1447653902973,17,filler,carrot,distractor,2,3,horse,distractor,3,2,bison,target,1,1
+7282-6,1447653903567,18,filler,baseball,target,1,3,tooth,distractor,3,1,camera,distractor,2,2
+7282-6,1447653903829,19,sizeOnly,big_black_avocado,distractor,2,3,small_black_avocado,target,1,2,big_green_avocado,distractor,3,1
+7282-6,1447653904028,20,colorOnly,small_blue_tack,target,1,3,big_red_tack,distractor,2,2,small_red_tack,distractor,3,1
+7282-6,1447653904228,21,filler,gloves,distractor,1,3,binoculars,distractor,3,1,raspberry,target,2,2
+7282-6,1447653904429,22,sizeOnly,small_orange_cushion,distractor,3,3,small_blue_cushion,distractor,2,1,big_orange_cushion,target,1,2

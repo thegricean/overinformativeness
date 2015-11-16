@@ -51,7 +51,7 @@ game_server.server_onMessage = function(client,message) {
     writeData(client, "clickedObj", message_parts)
     _.map(all, function(p){
       p.player.instance.emit( 'newRoundUpdate', {user: client.userid});});
-    gc.newRound()
+    gc.newRound() //$('#chatbox').val() != '')
     break; 
   
   case 'playerTyping' :
