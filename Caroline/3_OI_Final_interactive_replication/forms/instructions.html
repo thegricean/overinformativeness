@@ -53,8 +53,8 @@
       <center><img src="images/objectBoard.png" alt="Example gameplay" style="width:600px;height:200px"></center>
     </p>
 <p>
-    You'll each have the same 3 images but the order they are in will
-	be different. 
+    You'll each have the same 3 images <b> but the order they are in will
+	be different. </b>
 
 </p>
 
@@ -64,7 +64,7 @@
     the <b> Listener </b>. For each round, one of the three objects is the target, which
     can be identified by a <b> black box</b> around it. Only the speaker can see which object is the target. The task of the speaker
     is to tell the listener which one of the objects is the target and the listener in turn needs to select the right
-    object based on this information provided by the speaker. 
+    object based on this information provided by the speaker. Remember that it doesn't make sense to describe the location of the target object, since the order of the images is different for the listener and the speaker.
 </p>
 
 <p>
@@ -167,6 +167,12 @@ Just hold tight. Another turker should join the game within the next few minutes
       </br>
 
   </br> 
+  The locations of the three objects are the same for the speaker and the listener.
+      </br>
+      <input type="radio" name="location" value="no"> True
+      </br>
+      <input type="radio" name="location" value="yes"> False
+      </br>
     
   </br>
   Have you participated in this study before? 
@@ -205,10 +211,11 @@ Just hold tight. Another turker should join the game within the next few minutes
         var ans3 = $('input[name="round"]:checked').val();
         var ans4 = $('input[name="message"]:checked').val();
         var ans5 = $('input[name="comp"]:checked').val();
-        var ans6 = $('input[name="completed"]:checked').val();
+        var ans6 = $('input[name="location"]:checked').val();
+        var ans7 = $('input[name="completed"]:checked').val();
 
         if(ans1 == "yes" && ans2 == "yes" && ans3 == "yes" && 
-           ans4 == "yes" && ans5 == "yes" && ans6 == "yes") { 
+           ans4 == "yes" && ans5 == "yes" && ans6 == "yes" && ans7 ++ "yes") { 
            var workerId = urlParams.workerId;
            var assignmentId = urlParams.assignmentId;
            var hitId = urlParams.hitId;
