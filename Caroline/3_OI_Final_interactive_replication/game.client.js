@@ -143,16 +143,14 @@ client_onMessage = function(data) {
       //alert("game.obj names" + game.objects[0].name + game.objects[1].name + game.objects[2].name);
       // look through game.objects, find the one with objectName, highlight it
       //alert("gameobjs[0].name: " + game.objects[0].name);
-      var crit
-      if (game.objects[0].name == highlightClickObjName) {
-        crit = game.objects[0]
-      }
-      else if (game.objects[1].name == highlightClickObjName) {
-        crit = game.objects[1]
-      }
-      else {
-        crit = game.objects[2]
-      }
+      var crit;
+      if (game.objects[0].fullName == highlightClickObjName) {
+        crit = game.objects[0];
+      } else if (game.objects[1].fullName == highlightClickObjName) {
+        crit = game.objects[1];
+      } else if (game.objects[2].fullName == highlightClickObjName) {
+        crit = game.objects[2];
+      } else {};
       var upperLeftX = crit.listenerCoords.gridPixelX;
       //alert("reached highlight");
       var upperLeftY = crit.listenerCoords.gridPixelY;
