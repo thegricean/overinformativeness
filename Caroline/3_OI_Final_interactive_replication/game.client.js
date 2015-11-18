@@ -138,6 +138,81 @@ client_onMessage = function(data) {
       console.log("received end message...")
       break;
 
+    case 'highlightObj' :
+      var highlightClickObjName = commanddata;
+      //alert("game.obj names" + game.objects[0].name + game.objects[1].name + game.objects[2].name);
+      // look through game.objects, find the one with objectName, highlight it
+      //alert("gameobjs[0].name: " + game.objects[0].name);
+      var crit
+      if (game.objects[0].name == highlightClickObjName) {
+        crit = game.objects[0]
+      }
+      else if (game.objects[1].name == highlightClickObjName) {
+        crit = game.objects[1]
+      }
+      else {
+        crit = game.objects[2]
+      }
+      var upperLeftX = crit.listenerCoords.gridPixelX;
+      //alert("reached highlight");
+      var upperLeftY = crit.listenerCoords.gridPixelY;
+      //alert("reached highlight" + upperLeftY);
+      if (upperLeftX != null && upperLeftY != null) {
+        game.ctx.beginPath();
+        game.ctx.lineWidth="30";
+        game.ctx.strokeStyle="red";
+        game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+        game.ctx.stroke();
+      }
+
+      // for (i=0; i < game.objects.length; i++) {
+      //   var obj = game.objects[i];
+      //   var crit;
+      //   //alert("obj.name" + obj.name);
+      //   if (obj.name == highlightClickObjName){
+      //     crit = _.clone(obj)
+      //   }
+      //     var crit = 
+      //     var upperLeftX = crit.listenerCoords.gridPixelX;
+      //     //alert("reached highlight");
+      //     var upperLeftY = crit.listenerCoords.gridPixelY;
+      //     //alert("reached highlight" + upperLeftY);
+      //     if (upperLeftX != null && upperLeftY != null) {
+      //       game.ctx.beginPath();
+      //       game.ctx.lineWidth="30";
+      //       game.ctx.strokeStyle="red";
+      //       game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+      //       game.ctx.stroke();
+      //     }
+      //   }
+      //   else{}
+      //}
+      //   var highlightClickObj = _.filter(game.objects, function(x){ return x[i].name ==  highlightClickObjName })
+      //   //alert("highObj: " + highlightClickObj.name);
+      //   var upperLeftX = highlightClickObj.listenerCoords.gridPixelX;
+      //   //alert("reached highlight" + upperLeftX);
+      //   var upperLeftY = highlightClickObj.listenerCoords.gridPixelY;
+      //   if (upperLeftX != null && upperLeftY != null) {
+      //     game.ctx.beginPath();
+      //     game.ctx.lineWidth="30";
+      //     game.ctx.strokeStyle="red";
+      //     game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+      //     game.ctx.stroke();
+      //   }
+      // }
+      // for (var n = 0; n < highlightClickObj.length; n++){
+      //   var upperLeftX = highlightClickObj[n].speakerCoords.gridPixelX;
+      //   alert("reached highlight" + upperLeftX);
+      //   var upperLeftY = highlightClickObj[n].speakerCoords.gridPixelY;
+      //   if (upperLeftX != null && upperLeftY != null) {
+      //     game.ctx.beginPath();
+      //     game.ctx.lineWidth="30";
+      //     game.ctx.strokeStyle="red";
+      //     game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+      //     game.ctx.stroke();
+      //   }
+      break;
+
     case 'alert' : // Not in database, so you can't play...
       alert('You did not enter an ID'); 
       window.location.replace('http://nodejs.org'); break;

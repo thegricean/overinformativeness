@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+8639-1,1447793655420,1,colorOnly,small_purple_butterfly,distractor,1,2,big_blue_butterfly,target,2,1,big_purple_butterfly,distractor,3,3

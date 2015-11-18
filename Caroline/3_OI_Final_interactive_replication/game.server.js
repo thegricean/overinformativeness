@@ -43,15 +43,36 @@ game_server.server_onMessage = function(client,message) {
   var all = gc.get_active_players();
   var target = gc.get_player(client.userid);
   var others = gc.get_others(client.userid);
-
+  function printObject(o) {
+  var out = '';
+  for (var p in o) {
+    out += p + ': ' + o[p] + '\n';
+  }
+  console.log("others: " + out);
+}
+printObject(others[0]); // this outputs [0]: id [1]: player
+//console.log("others id" + others[0].id);
+  //alert(JSON.stringify(others, null, 4));
+  //console.dir("others " + others);
 
   switch(message_type) {
     
   case 'clickedObj' :
-    writeData(client, "clickedObj", message_parts)
-    _.map(all, function(p){
-      p.player.instance.emit( 'newRoundUpdate', {user: client.userid});});
-    gc.newRound() //$('#chatbox').val() != '')
+    writeData(client, "clickedObj", message_parts);
+    //var otherPlayer = gc.get_others(client.userid);
+    // alert("others: " + others[0]);
+    //if (client.role == listener)
+    //var other = gc.get_others(client.userid);
+    others[0].player.instance.send("s.highlightObj." + message_parts[1]);
+    //_.map(, function(p) {p})
+    //otherPlayer.send("s.highlightObj." + message_parts[1]) // others.instance.send?, others might be an array
+    setTimeout(function() {
+      _.map(all, function(p){
+        p.player.instance.emit( 'newRoundUpdate', {user: client.userid} );
+      });
+      gc.newRound() //$('#chatbox').val() != '')  
+    }, 3000);
+    
     break; 
   
   case 'playerTyping' :

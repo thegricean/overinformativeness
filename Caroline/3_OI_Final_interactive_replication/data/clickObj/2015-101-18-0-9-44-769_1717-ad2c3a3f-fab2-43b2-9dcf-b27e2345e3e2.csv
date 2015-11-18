@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+1717-a,1447834192260,1,colorAndSize,big_green_rock,distractor,3,1,big_green_rock,distractor,1,2,small_purple_rock,target,2,3
