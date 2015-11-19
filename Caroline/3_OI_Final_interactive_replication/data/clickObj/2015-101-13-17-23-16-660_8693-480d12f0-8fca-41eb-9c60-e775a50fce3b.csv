@@ -1,0 +1,20 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+8693-4,1447453414628,1,filler,polarbear,target,2,2,trumpet,distractor,3,3,crocodile,distractor,1,1
+8693-4,1447453448421,2,filler,artichoke,distractor,3,3,mailbox,target,2,1,horse,distractor,1,2
+8693-4,1447453463392,3,filler,orange,target,3,2,kiwi,distractor,1,1,mailbox,distractor,2,3
+8693-4,1447453472558,4,filler,teddybear,distractor,1,2,broccoli,distractor,2,3,toilet,target,3,1
+8693-4,1447453477264,5,filler,dresser,target,1,3,trumpet,distractor,2,2,feather,distractor,3,1
+8693-4,1447453479732,6,filler,car,target,2,3,watermelon,distractor,1,2,grapefruit,distractor,3,1
+8693-4,1447453481087,7,filler,penguin,distractor,2,3,teddybear,target,3,2,binoculars,distractor,1,1
+8693-4,1447453482562,8,colorAndSize,small_red_toothbrush,distractor,3,3,big_blue_toothbrush,target,2,1,small_red_toothbrush,distractor,1,2
+8693-4,1447453483428,9,filler,lion,distractor,3,3,orange,distractor,2,1,horse,target,1,2
+8693-4,1447453485110,10,colorOnly,small_pink_bucket,target,1,3,big_red_bucket,distractor,3,1,small_red_bucket,distractor,2,2
+8693-4,1447453485944,11,filler,smokedetector,distractor,1,3,raspberry,distractor,2,2,horse,target,3,1
+8693-4,1447453487002,12,filler,raspberry,distractor,3,3,hotdog,target,2,2,orange,distractor,1,1
+8693-4,1447453488772,13,colorAndSize,small_pink_framee,distractor,2,3,small_pink_framee,distractor,1,2,big_green_framee,target,3,1
+8693-4,1447453489718,14,filler,binoculars,target,2,3,lobster,distractor,1,2,fireextinguisher,distractor,3,1
+8693-4,1447453490798,15,filler,lime,distractor,2,3,rhinoceros,target,1,1,baseball,distractor,3,2
+8693-4,1447453494122,16,filler,cherries,target,3,3,baseball,distractor,2,1,dresser,distractor,1,2
+8693-4,1447453509681,17,filler,rubberduck,distractor,3,3,feather,target,1,2,trumpet,distractor,2,1
+8693-4,1447453682858,18,sizeOnly,big_yellow_shoe,target,1,3,small_yellow_shoe,distractor,2,2,small_white_shoe,distractor,3,1
+8693-4,1447453683892,19,filler,lobster,distractor,1,3,schoolbus,distractor,3,1,watermelon,target,2,2

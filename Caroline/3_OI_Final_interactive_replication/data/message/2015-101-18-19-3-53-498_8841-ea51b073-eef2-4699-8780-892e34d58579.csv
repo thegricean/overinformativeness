@@ -1,0 +1,5 @@
+gameid,time,roundNum,sender,contents
+8841-e,1447891437774,1,speaker,"tomato"
+8841-e,1447891458116,2,speaker,"bla"
+8841-e,1447891462400,2,listener,"asdf"
+8841-e,1447891473707,3,speaker,"truck"

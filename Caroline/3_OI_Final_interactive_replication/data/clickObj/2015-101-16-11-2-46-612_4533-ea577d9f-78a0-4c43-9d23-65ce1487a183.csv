@@ -1,0 +1,4 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+4533-e,1447689775125,1,filler,garlic,target,1,2,violin,distractor,2,3,pumpkin,distractor,3,1
+4533-e,1447689782757,2,filler,tomato,target,2,1,lemon,distractor,3,2,gloves,distractor,1,3
+4533-e,1447689794748,3,filler,strawberry,target,1,3,ketchup,distractor,2,2,tomato,distractor,3,1

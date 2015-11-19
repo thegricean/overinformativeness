@@ -1,0 +1,4 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+8841-e,1447891440437,1,filler,polarbear,distractor,1,2,tomato,target,2,3,violin,distractor,3,1
+8841-e,1447891464234,2,colorAndSize,small_blue_toothbrush,distractor,1,2,small_blue_toothbrush,distractor,2,1,big_red_toothbrush,target,3,3
+8841-e,1447891475463,3,filler,firetruck,target,3,3,broccoli,distractor,1,2,baseball,distractor,2,1

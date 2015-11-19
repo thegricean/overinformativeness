@@ -1,0 +1,10 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+8139-a,1447389155088,1,filler,violin,distractor,1,2,santahat,target,3,1,sheep,distractor,2,3
+8139-a,1447389156030,2,filler,clarinet,distractor,3,3,kiwi,distractor,1,1,lobster,target,2,2
+8139-a,1447389156879,3,filler,egg,distractor,1,1,motorcycle,distractor,3,3,carrot,target,2,2
+8139-a,1447389157840,4,filler,dresser,target,1,2,cherries,distractor,2,1,kitten,distractor,3,3
+8139-a,1447389159626,5,filler,raspberry,target,3,3,gloves,distractor,1,2,egg,distractor,2,1
+8139-a,1447389160505,6,filler,snowflake,distractor,2,2,watermelon,distractor,1,3,basketball,target,3,1
+8139-a,1447389161254,7,filler,tennisball,distractor,3,3,hotdog,distractor,1,2,car,target,2,1
+8139-a,1447389162035,8,colorOnly,big_green_avocado,distractor,3,2,small_black_avocado,target,2,3,small_green_avocado,distractor,1,1
+8139-a,1447389163138,9,filler,chick,distractor,3,1,football,target,1,2,flamingo,distractor,2,3
