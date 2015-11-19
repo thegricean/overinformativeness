@@ -1,0 +1,325 @@
+gameid	 time	 roundNum	 condition	 nameClickedObj	 targetStatusClickedObj	 spLocsClickedObj	 lisLocsClickedObj	 alt1Name	 alt1TargetStatus	 alt1SpLocs	 alt1LisLocs	 alt2Name	 alt2TargetStatus	 alt2SpLocs	 alt2LisLocs 	numMessages	numSMessages	numLMessages	speakerMessages	listenerMessages	messageTimeStamps	refExp	sizeMentioned	colorMentioned	typeMentioned	clickedType	clickedSize	clickedColor
+6346-e	1447955871634	1	colorAndSize	small_green_jacket	target	1	3	big_brown_jacket	distractor	3	2	big_brown_jacket	distractor	2	1	1	1	0	the green one		1447955870174	the green one	False	True	False	jacket	small	green
+6346-e	1447955905336	2	sizeOnly	big_blue_butterfly	target	3	3	small_blue_butterfly	distractor	2	2	small_purple_butterfly	distractor	1	1	1	1	0	blue butterfly, largest		1447955902293	blue butterfly, largest	False	True	False	butterfly	big	blue
+6346-e	1447955920043	3	colorAndSize	big_red_candle	target	3	3	small_blue_candle	distractor	1	2	small_blue_candle	distractor	2	1	1	1	0	pink candle		1447955918030	pink candle	False	False	True	candle	big	red
+6346-e	1447955931746	4	colorAndSize	big_blue_tack	target	2	2	small_red_tack	distractor	3	3	small_red_tack	distractor	1	1	1	1	0	blue pin		1447955930517	blue pin	False	True	False	tack	big	blue
+6346-e	1447955939402	5	filler	camera	target	1	3	tennisball	distractor	2	2	coconut	distractor	3	1	1	1	0	camera		1447955938144	camera	False	False	True	camera	NA	NA
+6346-e	1447955951656	6	filler	teddybear	target	1	2	mailbox	distractor	3	1	clarinet	distractor	2	3	1	1	0	stuffed animal		1447955950073	stuffed animal	False	False	False	teddybear	NA	NA
+6346-e	1447955965565	7	sizeOnly	big_yellow_balloon	target	3	2	small_pink_balloon	distractor	2	3	small_yellow_balloon	distractor	1	1	1	1	0	larger yellow balloon		1447955964022	larger yellow balloon	False	True	True	balloon	big	yellow
+6346-e	1447955974862	8	filler	banana	target	1	1	rubberduck	distractor	3	2	tooth	distractor	2	3	1	1	0	banana		1447955971894	banana	False	False	True	banana	NA	NA
+6346-e	1447955984305	9	colorOnly	small_black_comb	target	1	3	big_blue_comb	distractor	3	2	small_blue_comb	distractor	2	1	1	1	0	black comb		1447955982398	black comb	False	True	True	comb	small	black
+6346-e	1447955993109	10	filler	kiwi	target	2	3	sheep	distractor	3	2	tomato	distractor	1	1	1	1	0	kiwi		1447955990952	kiwi	False	False	True	kiwi	NA	NA
+6346-e	1447956009777	11	filler	dresser	target	1	3	flamingo	distractor	2	1	car	distractor	3	2	1	1	0	wooden drawers		1447956008390	wooden drawers	False	False	False	dresser	NA	NA
+6346-e	1447956016187	12	filler	lemon	target	2	1	feather	distractor	1	3	sheep	distractor	3	2	1	1	0	lemon		1447956014869	lemon	False	False	True	lemon	NA	NA
+6346-e	1447956025013	13	filler	rhinoceros	target	3	3	ketchup	distractor	1	2	snake	distractor	2	1	1	1	0	rhino		1447956023624	rhino	False	False	False	rhinoceros	NA	NA
+6346-e	1447956039508	14	filler	violin	target	2	1	chick	distractor	1	2	watermelon	distractor	3	3	1	1	0	musical instrument		1447956038087	musical instrument	False	False	False	violin	NA	NA
+6346-e	1447956050539	15	filler	toilet	target	1	3	snake	distractor	3	1	eggplant	distractor	2	2	1	1	0	toilet		1447956049206	toilet	False	False	True	toilet	NA	NA
+6346-e	1447956063042	16	filler	football	target	2	1	santahat	distractor	1	2	binoculars	distractor	3	3	1	1	0	football		1447956060814	football	False	False	True	football	NA	NA
+6346-e	1447956070875	17	filler	bear	target	2	1	football	distractor	1	3	lime	distractor	3	2	1	1	0	bear		1447956068622	bear	False	False	True	bear	NA	NA
+6346-e	1447956078130	18	filler	rhinoceros	target	3	1	iguana	distractor	2	3	dresser	distractor	1	2	1	1	0	rhino		1447956076567	rhino	False	False	False	rhinoceros	NA	NA
+6346-e	1447956088645	19	sizeOnly	small_yellow_shoe	target	2	2	big_white_shoe	distractor	3	3	big_yellow_shoe	distractor	1	1	1	1	0	smaller yellow shoe		1447956086823	smaller yellow shoe	False	True	True	shoe	small	yellow
+6346-e	1447956096023	20	filler	banana	target	3	3	kiwi	distractor	1	1	horse	distractor	2	2	1	1	0	banana		1447956094294	banana	False	False	True	banana	NA	NA
+6346-e	1447956106110	21	filler	carrot	target	2	1	tomato	distractor	1	2	lobster	distractor	3	3	1	1	0	carrot		1447956102078	carrot	False	False	True	carrot	NA	NA
+6346-e	1447956113671	22	filler	tooth	target	1	3	kiwi	distractor	2	1	feather	distractor	3	2	1	1	0	tooth		1447956112161	tooth	False	False	True	tooth	NA	NA
+6346-e	1447956121215	23	filler	snake	target	3	1	lobster	distractor	1	2	tooth	distractor	2	3	1	1	0	snake		1447956119521	snake	False	False	True	snake	NA	NA
+6346-e	1447956136101	24	colorAndSize	small_blue_golfball	target	1	2	big_pink_golfball	distractor	2	1	big_pink_golfball	distractor	3	3	1	1	0	blue one		1447956135039	blue one	False	True	False	golfball	small	blue
+6346-e	1447956148296	25	colorAndSize	small_purple_stapler	target	2	3	big_red_stapler	distractor	1	2	big_red_stapler	distractor	3	1	1	1	0	purple stapler		1447956146807	purple stapler	False	True	True	stapler	small	purple
+6346-e	1447956162447	26	filler	zucchini	target	2	3	flamingo	distractor	3	1	feather	distractor	1	2	1	1	0	green		1447956160736	green	False	False	False	zucchini	NA	NA
+6346-e	1447956170181	27	filler	eggplant	target	3	3	chick	distractor	1	2	elephant	distractor	2	1	1	1	0	eggplant		1447956168569	eggplant	False	False	True	eggplant	NA	NA
+6346-e	1447956177237	28	filler	egg	target	3	3	snake	distractor	2	1	sheep	distractor	1	2	1	1	0	egg		1447956175612	egg	False	False	True	egg	NA	NA
+6346-e	1447956185328	29	filler	eggplant	target	1	3	tire	distractor	3	1	egg	distractor	2	2	1	1	0	eggplant		1447956183488	eggplant	False	False	True	eggplant	NA	NA
+6346-e	1447956194878	30	colorAndSize	big_blue_toothbrush	target	3	1	small_red_toothbrush	distractor	2	2	small_red_toothbrush	distractor	1	3	1	1	0	blue toothbrush		1447956192864	blue toothbrush	False	True	True	toothbrush	big	blue
+6346-e	1447956207091	31	colorOnly	big_orange_napkin	target	1	2	small_yellow_napkin	distractor	3	3	big_yellow_napkin	distractor	2	1	1	1	0	orange		1447956205898	orange	False	True	False	napkin	big	orange
+6346-e	1447956217240	32	filler	broccoli	target	3	3	tophat	distractor	1	2	car	distractor	2	1	1	1	0	broccoli		1447956215392	broccoli	False	False	True	broccoli	NA	NA
+6346-e	1447956227769	33	filler	trumpet	target	2	2	snowflake	distractor	3	3	bison	distractor	1	1	1	1	0	trumpet		1447956224344	trumpet	False	False	True	trumpet	NA	NA
+6346-e	1447956243061	34	filler	watermelon	target	3	2	horse	distractor	2	1	lion	distractor	1	3	1	1	0	watermelon		1447956235432	watermelon	False	False	True	watermelon	NA	NA
+6346-e	1447956253509	35	filler	dresser	target	1	3	television	distractor	2	1	raspberry	distractor	3	2	1	1	0	wooden drawers		1447956252131	wooden drawers	False	False	False	dresser	NA	NA
+6346-e	1447956262968	36	filler	motorcycle	target	3	3	elephant	distractor	1	1	crocodile	distractor	2	2	1	1	0	motorcycle		1447956261985	motorcycle	False	False	True	motorcycle	NA	NA
+6346-e	1447956272195	37	colorOnly	small_green_pepper	target	2	2	big_red_pepper	distractor	3	3	small_red_pepper	distractor	1	1	1	1	0	green pepper		1447956270625	green pepper	False	True	True	pepper	small	green
+6346-e	1447956280683	38	filler	lime	target	2	1	tennisball	distractor	3	2	firetruck	distractor	1	3	1	1	0	lime		1447956278385	lime	False	False	True	lime	NA	NA
+6346-e	1447956291041	39	colorOnly	small_red_bike	target	1	3	small_purple_bike	distractor	3	2	big_purple_bike	distractor	2	1	1	1	0	red bicycle		1447956288703	red bicycle	False	True	False	bike	small	red
+6346-e	1447956297519	40	filler	rhinoceros	target	3	2	kiwi	distractor	1	1	tomato	distractor	2	3	1	1	0	rhino		1447956296097	rhino	False	False	False	rhinoceros	NA	NA
+6346-e	1447956303704	41	filler	lime	target	1	1	violin	distractor	2	3	football	distractor	3	2	1	1	0	lime		1447956302417	lime	False	False	True	lime	NA	NA
+6346-e	1447956311009	42	filler	schoolbus	target	3	3	hotdog	distractor	1	1	mailbox	distractor	2	2	1	1	0	bus		1447956309369	bus	False	False	False	schoolbus	NA	NA
+6346-e	1447956317106	43	filler	lion	target	1	3	coconut	distractor	2	1	tomato	distractor	3	2	1	1	0	lion		1447956315899	lion	False	False	True	lion	NA	NA
+6346-e	1447956333867	44	filler	bulldozer	target	3	3	car	distractor	2	1	tennisball	distractor	1	2	1	1	0	tractor		1447956331777	tractor	False	False	False	bulldozer	NA	NA
+6346-e	1447956344873	45	filler	cherries	target	3	3	basketball	distractor	1	2	orange	distractor	2	1	1	1	0	cherries		1447956343284	cherries	False	False	True	cherries	NA	NA
+6346-e	1447956356438	46	filler	bison	target	3	3	lion	distractor	2	1	fox	distractor	1	2	1	1	0	bison		1447956353945	bison	False	False	True	bison	NA	NA
+6346-e	1447956369375	47	colorAndSize	small_pink_hairdryer	target	2	3	big_purple_hairdryer	distractor	1	1	big_purple_hairdryer	distractor	3	2	1	1	0	small pink one		1447956368187	small pink one	True	True	False	hairdryer	small	pink
+6346-e	1447956376437	48	filler	bison	target	1	2	sheep	distractor	2	3	smokedetector	distractor	3	1	1	1	0	bison		1447956375274	bison	False	False	True	bison	NA	NA
+6346-e	1447956387729	49	filler	clarinet	target	1	1	bulldozer	distractor	2	3	hotdog	distractor	3	2	1	1	0	musical instrument		1447956385961	musical instrument	False	False	False	clarinet	NA	NA
+6346-e	1447956396056	50	colorOnly	small_white_weddingcake	target	1	1	small_pink_weddingcake	distractor	3	3	big_pink_weddingcake	distractor	2	2	1	1	0	white cake		1447956394649	white cake	False	True	False	weddingcake	small	white
+6346-e	1447956409880	51	sizeOnly	big_red_chair	target	2	2	small_red_chair	distractor	3	3	small_green_chair	distractor	1	1	1	1	0	larger orange seat		1447956407476	larger orange seat	False	False	False	chair	big	red
+6346-e	1447956417585	52	filler	ketchup	target	3	2	watermelon	distractor	2	3	dresser	distractor	1	1	1	1	0	ketchup		1447956415892	ketchup	False	False	True	ketchup	NA	NA
+6346-e	1447956428520	53	colorAndSize	big_purple_ornament	target	3	2	small_blue_ornament	distractor	1	1	small_blue_ornament	distractor	2	3	1	1	0	purple ornament		1447956427138	purple ornament	False	True	True	ornament	big	purple
+6346-e	1447956440660	54	filler	pumpkin	target	2	2	binoculars	distractor	3	1	fox	distractor	1	3	1	1	0	pumpkin		1447956434227	pumpkin	False	False	True	pumpkin	NA	NA
+6346-e	1447956448716	55	filler	feather	target	3	1	smokedetector	distractor	2	2	eggplant	distractor	1	3	1	1	0	feather		1447956446869	feather	False	False	True	feather	NA	NA
+6346-e	1447956458125	56	filler	flamingo	target	2	1	egg	distractor	3	2	coconut	distractor	1	3	1	1	0	flamingo		1447956455490	flamingo	False	False	True	flamingo	NA	NA
+6346-e	1447956466888	57	filler	lobster	target	2	1	bulldozer	distractor	1	2	schoolbus	distractor	3	3	1	1	0	lobster		1447956463789	lobster	False	False	True	lobster	NA	NA
+6346-e	1447956476756	58	filler	trumpet	target	3	2	feather	distractor	2	3	motorcycle	distractor	1	1	1	1	0	trumpet		1447956474435	trumpet	False	False	True	trumpet	NA	NA
+6346-e	1447956484972	59	filler	cactus	target	3	1	mailbox	distractor	1	3	teddybear	distractor	2	2	1	1	0	cactus		1447956483683	cactus	False	False	True	cactus	NA	NA
+6346-e	1447956494987	60	sizeOnly	small_pink_phone	target	2	1	big_white_phone	distractor	3	2	big_pink_phone	distractor	1	3	1	1	0	small pink phone		1447956493492	small pink phone	True	True	True	phone	small	pink
+6346-e	1447956503761	61	filler	mailbox	target	2	2	lemon	distractor	1	1	feather	distractor	3	3	1	1	0	mailbox		1447956501838	mailbox	False	False	True	mailbox	NA	NA
+6346-e	1447956510668	62	filler	orange	target	3	1	iguana	distractor	1	3	polarbear	distractor	2	2	1	1	0	orange		1447956509331	orange	False	False	True	orange	NA	NA
+6346-e	1447956521851	63	colorAndSize	small_purple_billiardball	target	1	1	big_orange_billiardball	distractor	3	3	big_orange_billiardball	distractor	2	2	1	1	0	pink one		1447956519659	pink one	False	False	False	billiardball	small	purple
+6346-e	1447956530501	64	filler	grapefruit	target	2	1	sheep	distractor	1	3	motorcycle	distractor	3	2	1	1	0	grapefruit		1447956528923	grapefruit	False	False	True	grapefruit	NA	NA
+6346-e	1447956538091	65	filler	car	target	1	2	dresser	distractor	3	1	penguin	distractor	2	3	1	1	0	car		1447956535835	car	False	False	True	car	NA	NA
+6346-e	1447956545403	66	filler	camera	target	3	3	orange	distractor	2	2	santahat	distractor	1	1	1	1	0	camera		1447956543710	camera	False	False	True	camera	NA	NA
+6346-e	1447956556715	67	colorAndSize	small_black_turtle	target	1	2	big_brown_turtle	distractor	2	3	big_brown_turtle	distractor	3	1	1	1	0	black turtle		1447956555277	black turtle	False	True	True	turtle	small	black
+6346-e	1447956569953	68	filler	garbagecan	target	1	1	tomato	distractor	3	2	ketchup	distractor	2	3	1	1	0	garbage can		1447956567467	garbage can	False	False	False	garbagecan	NA	NA
+6346-e	1447956578863	69	colorAndSize	big_orange_cap	target	1	3	small_blue_cap	distractor	2	1	small_blue_cap	distractor	3	2	1	1	0	orange cap		1447956577844	orange cap	False	True	True	cap	big	orange
+6346-e	1447956588353	70	filler	raspberry	target	3	2	garbagecan	distractor	2	1	snake	distractor	1	3	1	1	0	raspberry		1447956585717	raspberry	False	False	True	raspberry	NA	NA
+6346-e	1447956599298	71	filler	tophat	target	2	3	cactus	distractor	3	2	crocodile	distractor	1	1	1	1	0	black hat		1447956597939	black hat	False	False	False	tophat	NA	NA
+6346-e	1447956605698	72	filler	kiwi	target	2	3	horse	distractor	1	2	carrot	distractor	3	1	1	1	0	kiwi		1447956604142	kiwi	False	False	True	kiwi	NA	NA
+6346-e	1447956611975	73	filler	elephant	target	1	3	raspberry	distractor	2	1	lime	distractor	3	2	1	1	0	elephant		1447956610982	elephant	False	False	True	elephant	NA	NA
+6346-e	1447956623229	74	filler	crocodile	target	3	2	watermelon	distractor	2	1	camera	distractor	1	3	1	1	0	alligator		1447956621766	alligator	False	False	False	crocodile	NA	NA
+6346-e	1447956638776	75	colorOnly	small_pink_teacup	target	1	1	small_white_teacup	distractor	3	3	big_white_teacup	distractor	2	2	1	1	0	pink dish		1447956637150	pink dish	False	True	False	teacup	small	pink
+6346-e	1447956646392	76	filler	grapefruit	target	1	3	banana	distractor	3	1	sheep	distractor	2	2	1	1	0	grapefruit		1447956644694	grapefruit	False	False	True	grapefruit	NA	NA
+6346-e	1447956653409	77	filler	kitten	target	2	2	penguin	distractor	3	3	iguana	distractor	1	1	1	1	0	kitten		1447956652182	kitten	False	False	True	kitten	NA	NA
+6346-e	1447956663528	78	sizeOnly	small_red_bucket	target	1	1	big_red_bucket	distractor	3	2	big_pink_bucket	distractor	2	3	1	1	0	small red pail		1447956660372	small red pail	True	True	False	bucket	small	red
+6346-e	1447956671966	79	filler	teddybear	target	2	3	dresser	distractor	3	1	orange	distractor	1	2	1	1	0	stuffed animal		1447956670588	stuffed animal	False	False	False	teddybear	NA	NA
+6346-e	1447956680916	80	colorOnly	small_blue_book	target	3	3	small_black_book	distractor	2	2	big_black_book	distractor	1	1	1	1	0	blue book		1447956679117	blue book	False	True	True	book	small	blue
+6346-e	1447956687227	81	filler	lemon	target	3	3	firehydrant	distractor	2	2	basketball	distractor	1	1	1	1	0	lemon		1447956685797	lemon	False	False	True	lemon	NA	NA
+6346-e	1447956696031	82	filler	dresser	target	2	3	iguana	distractor	3	1	ketchup	distractor	1	2	1	1	0	wooden drawers		1447956694256	wooden drawers	False	False	False	dresser	NA	NA
+6346-e	1447956704433	83	filler	coconut	target	1	2	teddybear	distractor	3	1	tophat	distractor	2	3	1	1	0	coconut		1447956702805	coconut	False	False	True	coconut	NA	NA
+6346-e	1447956713647	84	filler	garbagecan	target	3	2	snowflake	distractor	2	1	binoculars	distractor	1	3	1	1	0	red can		1447956712487	red can	False	False	False	garbagecan	NA	NA
+6346-e	1447956721850	85	filler	pumpkin	target	3	3	banana	distractor	1	1	smokedetector	distractor	2	2	1	1	0	pumpkin		1447956719837	pumpkin	False	False	True	pumpkin	NA	NA
+6346-e	1447956734747	86	sizeOnly	small_purple_rock	target	1	3	big_purple_rock	distractor	2	2	big_green_rock	distractor	3	1	1	1	0	smaller purple one		1447956732413	smaller purple one	False	True	False	rock	small	purple
+6346-e	1447956745031	87	colorOnly	small_purple_yarn	target	3	1	small_red_yarn	distractor	1	3	big_red_yarn	distractor	2	2	1	1	0	purple threat		1447956742853	purple threat	False	True	False	yarn	small	purple
+6346-e	1447956758356	88	sizeOnly	small_pink_framee	target	3	1	big_green_framee	distractor	2	3	big_pink_framee	distractor	1	2	1	1	0	smaller pink frame		1447956756694	smaller pink frame	False	True	False	framee	small	pink
+6346-e	1447956766651	89	filler	snowflake	target	3	1	strawberry	distractor	1	3	egg	distractor	2	2	1	1	0	snowflake		1447956765158	snowflake	False	False	True	snowflake	NA	NA
+6346-e	1447956777451	90	colorOnly	small_blue_cushion	target	3	1	small_orange_cushion	distractor	2	3	big_orange_cushion	distractor	1	2	1	1	0	blue one		1447956775973	blue one	False	True	False	cushion	small	blue
+6346-e	1447956787726	91	filler	fireextinguisher	target	1	1	penguin	distractor	2	3	toilet	distractor	3	2	1	1	0	fire extinguisher		1447956786194	fire extinguisher	False	False	False	fireextinguisher	NA	NA
+6346-e	1447956798594	92	colorOnly	small_brown_belt	target	2	2	small_black_belt	distractor	1	1	big_black_belt	distractor	3	3	1	1	0	brown belt		1447956794766	brown belt	False	True	True	belt	small	brown
+6346-e	1447956805262	93	filler	penguin	target	3	3	basketball	distractor	2	2	bulldozer	distractor	1	1	1	1	0	penguin		1447956804016	penguin	False	False	True	penguin	NA	NA
+6346-e	1447956821617	94	filler	binoculars	target	3	1	piano	distractor	2	3	strawberry	distractor	1	2	1	1	0	binocular		1447956815018	binocular	False	False	False	binoculars	NA	NA
+6346-e	1447956833375	95	sizeOnly	small_red_flower	target	2	1	big_red_flower	distractor	1	2	big_purple_flower	distractor	3	3	1	1	0	smaller red flower		1447956831639	smaller red flower	False	True	True	flower	small	red
+6346-e	1447956843790	96	colorAndSize	big_green_bracelet	target	3	2	small_purple_bracelet	distractor	1	3	small_purple_bracelet	distractor	2	1	1	1	0	green one		1447956842959	green one	False	True	False	bracelet	big	green
+6346-e	1447956856430	97	colorOnly	big_blue_rug	target	1	1	big_purple_rug	distractor	2	3	small_purple_rug	distractor	3	2	1	1	0	blue carpet		1447956855039	blue carpet	False	True	False	rug	big	blue
+6346-e	1447956870545	98	sizeOnly	small_blue_guitar	target	3	2	big_blue_guitar	distractor	2	3	big_green_guitar	distractor	1	1	1	1	0	smaller blue guitar		1447956868566	smaller blue guitar	False	True	True	guitar	small	blue
+6346-e	1447956883745	99	filler	lemon	target	2	1	eggplant	distractor	1	2	gloves	distractor	3	3	1	1	0	lemon		1447956875295	lemon	False	False	True	lemon	NA	NA
+6346-e	1447956892424	100	filler	baseball	target	2	3	mailbox	distractor	1	2	tophat	distractor	3	1	1	1	0	baseball		1447956889425	baseball	False	False	True	baseball	NA	NA
+6346-e	1447956899835	101	filler	hotdog	target	2	3	motorcycle	distractor	3	2	smokedetector	distractor	1	1	1	1	0	hotdog		1447956898263	hotdog	False	False	True	hotdog	NA	NA
+6346-e	1447956912647	102	filler	violin	target	1	2	artichoke	distractor	3	1	lemon	distractor	2	3	1	1	0	violin		1447956910528	violin	False	False	True	violin	NA	NA
+6346-e	1447956921206	103	filler	carrot	target	2	1	snowflake	distractor	3	3	grapefruit	distractor	1	2	1	1	0	carrot		1447956918114	carrot	False	False	True	carrot	NA	NA
+6346-e	1447956931375	104	filler	trumpet	target	3	3	strawberry	distractor	2	1	baseball	distractor	1	2	1	1	0	trumpet		1447956929744	trumpet	False	False	True	trumpet	NA	NA
+6346-e	1447956942782	105	colorOnly	big_purple_coathanger	target	2	2	big_orange_coathanger	distractor	1	1	small_orange_coathanger	distractor	3	3	1	1	0	purple one		1447956941041	purple one	False	True	False	coathanger	big	purple
+6346-e	1447956951653	106	filler	garlic	target	1	2	violin	distractor	3	1	sheep	distractor	2	3	1	1	0	garlic bulb		1447956949583	garlic bulb	False	False	True	garlic	NA	NA
+6346-e	1447956963860	107	sizeOnly	big_black_avocado	target	3	1	small_black_avocado	distractor	1	3	small_green_avocado	distractor	2	2	1	1	0	larger black avocado		1447956962008	larger black avocado	False	True	True	avocado	big	black
+6346-e	1447956979768	108	sizeOnly	small_blue_folder	target	1	1	big_blue_folder	distractor	3	3	big_green_folder	distractor	2	2	2	1	1	smaller blue folder	Thanks for making that go so smoothly!	1447956973952___1447956975515	smaller blue folder	False	True	True	folder	small	blue
+1265-a	1447957959380	1	filler	tophat	target	3	3	lobster	distractor	1	1	snowflake	distractor	2	2	1	1	0	hat		1447957956977	hat	False	False	False	tophat	NA	NA
+1265-a	1447957965460	2	filler	bison	target	3	2	tomato	distractor	2	1	garlic	distractor	1	3	1	1	0	bison		1447957964317	bison	False	False	True	bison	NA	NA
+1265-a	1447957976540	3	filler	dresser	target	3	3	ketchup	distractor	2	2	bear	distractor	1	1	1	1	0	drawer		1447957975075	drawer	False	False	False	dresser	NA	NA
+1265-a	1447957982092	4	filler	santahat	target	1	2	car	distractor	3	1	schoolbus	distractor	2	3	1	1	0	hat		1447957980695	hat	False	False	False	santahat	NA	NA
+1265-a	1447957987420	5	colorOnly	big_blue_cushion	target	1	3	small_orange_cushion	distractor	2	2	big_orange_cushion	distractor	3	1	1	1	0	blue		1447957986313	blue	False	True	False	cushion	big	blue
+1265-a	1447957993060	6	colorAndSize	big_purple_billiardball	target	3	3	small_orange_billiardball	distractor	2	1	small_orange_billiardball	distractor	1	2	1	1	0	purple		1447957991979	purple	False	True	False	billiardball	big	purple
+1265-a	1447957999221	7	filler	tooth	target	3	1	firetruck	distractor	1	2	lion	distractor	2	3	1	1	0	tooth		1447957997580	tooth	False	False	True	tooth	NA	NA
+1265-a	1447958005052	8	filler	orange	target	1	3	egg	distractor	3	1	tire	distractor	2	2	1	1	0	orange		1447958003433	orange	False	False	True	orange	NA	NA
+1265-a	1447958012261	9	colorOnly	big_red_toothbrush	target	3	2	small_blue_toothbrush	distractor	1	3	big_blue_toothbrush	distractor	2	1	1	1	0	red		1447958009611	red	False	True	False	toothbrush	big	red
+1265-a	1447958020493	10	filler	snake	target	1	3	artichoke	distractor	2	2	baseball	distractor	3	1	1	1	0	snake		1447958019263	snake	False	False	True	snake	NA	NA
+1265-a	1447958026220	11	filler	car	target	1	1	santahat	distractor	2	3	tomato	distractor	3	2	1	1	0	car		1447958024525	car	False	False	True	car	NA	NA
+1265-a	1447958033412	12	filler	rubberduck	target	1	3	bear	distractor	3	2	ketchup	distractor	2	1	1	1	0	duck		1447958030986	duck	False	False	False	rubberduck	NA	NA
+1265-a	1447958040865	13	sizeOnly	small_blue_ornament	target	1	1	big_blue_ornament	distractor	3	3	big_purple_ornament	distractor	2	2	1	1	0	small		1447958038167	small	True	False	False	ornament	small	blue
+1265-a	1447958048548	14	colorAndSize	small_blue_guitar	target	1	2	big_green_guitar	distractor	3	1	big_green_guitar	distractor	2	3	1	1	0	small		1447958046828	small	True	False	False	guitar	small	blue
+1265-a	1447958054140	15	filler	egg	target	1	1	gloves	distractor	2	3	dresser	distractor	3	2	1	1	0	egg		1447958052485	egg	False	False	True	egg	NA	NA
+1265-a	1447958060372	16	filler	tomato	target	3	1	tire	distractor	2	3	eggplant	distractor	1	2	1	1	0	tomato		1447958059149	tomato	False	False	True	tomato	NA	NA
+1265-a	1447958067292	17	colorAndSize	big_green_avocado	target	3	3	small_black_avocado	distractor	1	2	small_black_avocado	distractor	2	1	1	1	0	big		1447958065598	big	True	False	False	avocado	big	green
+1265-a	1447958073212	18	colorAndSize	small_pink_bucket	target	1	2	big_red_bucket	distractor	2	1	big_red_bucket	distractor	3	3	1	1	0	small		1447958071883	small	True	False	False	bucket	small	pink
+1265-a	1447958079374	19	filler	basketball	target	3	2	banana	distractor	1	1	grapefruit	distractor	2	3	1	1	0	ball		1447958077852	ball	False	False	False	basketball	NA	NA
+1265-a	1447958085189	20	colorAndSize	big_red_bike	target	1	1	small_purple_bike	distractor	3	2	small_purple_bike	distractor	2	3	1	1	0	red		1447958083779	red	False	True	False	bike	big	red
+1265-a	1447958092140	21	filler	tire	target	2	1	eggplant	distractor	3	3	bison	distractor	1	2	1	1	0	tire		1447958090183	tire	False	False	True	tire	NA	NA
+1265-a	1447958098893	22	filler	bison	target	1	2	tire	distractor	2	1	polarbear	distractor	3	3	1	1	0	bison		1447958096659	bison	False	False	True	bison	NA	NA
+1265-a	1447958104452	23	filler	garlic	target	2	3	elephant	distractor	1	1	motorcycle	distractor	3	2	1	1	0	garlic		1447958103181	garlic	False	False	True	garlic	NA	NA
+1265-a	1447958110693	24	filler	rhinoceros	target	2	2	penguin	distractor	1	1	piano	distractor	3	3	1	1	0	rhino		1447958109132	rhino	False	False	False	rhinoceros	NA	NA
+1265-a	1447958116581	25	sizeOnly	small_green_chair	target	3	3	big_green_chair	distractor	2	1	big_red_chair	distractor	1	2	1	1	0	small		1447958115052	small	True	False	False	chair	small	green
+1265-a	1447958122549	26	colorOnly	big_pink_balloon	target	1	1	big_yellow_balloon	distractor	2	2	small_yellow_balloon	distractor	3	3	1	1	0	purple		1447958121445	purple	False	False	False	balloon	big	pink
+1265-a	1447958128669	27	filler	kiwi	target	3	1	fireextinguisher	distractor	1	2	penguin	distractor	2	3	1	1	0	fruit		1447958127114	fruit	False	False	False	kiwi	NA	NA
+1265-a	1447958134180	28	filler	motorcycle	target	1	1	cactus	distractor	2	2	eggplant	distractor	3	3	1	1	0	bike		1447958132868	bike	False	False	False	motorcycle	NA	NA
+1265-a	1447958140261	29	filler	kiwi	target	2	1	violin	distractor	3	3	pumpkin	distractor	1	2	1	1	0	kiwi		1447958139129	kiwi	False	False	True	kiwi	NA	NA
+1265-a	1447958147172	30	colorAndSize	big_purple_rug	target	1	3	small_blue_rug	distractor	2	1	small_blue_rug	distractor	3	2	1	1	0	purple		1447958145975	purple	False	True	False	rug	big	purple
+1265-a	1447958152581	31	colorAndSize	big_purple_coathanger	target	1	2	small_orange_coathanger	distractor	3	1	small_orange_coathanger	distractor	2	3	1	1	0	purple		1447958151760	purple	False	True	False	coathanger	big	purple
+1265-a	1447958158253	32	filler	horse	target	3	3	smokedetector	distractor	1	1	lobster	distractor	2	2	1	1	0	horse		1447958157060	horse	False	False	True	horse	NA	NA
+1265-a	1447958165181	33	sizeOnly	big_green_jacket	target	3	3	small_green_jacket	distractor	1	2	small_brown_jacket	distractor	2	1	1	1	0	large		1447958164093	large	False	False	False	jacket	big	green
+1265-a	1447958170706	34	colorOnly	big_blue_book	target	2	2	big_black_book	distractor	1	3	small_black_book	distractor	3	1	1	1	0	blue		1447958169794	blue	False	True	False	book	big	blue
+1265-a	1447958177572	35	filler	elephant	target	3	3	teddybear	distractor	2	2	rhinoceros	distractor	1	1	1	1	0	elephant		1447958176236	elephant	False	False	True	elephant	NA	NA
+1265-a	1447958186852	36	filler	broccoli	target	3	1	hotdog	distractor	1	2	zucchini	distractor	2	3	1	1	0	broccoli		1447958185417	broccoli	False	False	True	broccoli	NA	NA
+1265-a	1447958192716	37	filler	teddybear	target	3	1	firetruck	distractor	2	3	pumpkin	distractor	1	2	1	1	0	teddy		1447958190987	teddy	False	False	False	teddybear	NA	NA
+1265-a	1447958199740	38	filler	smokedetector	target	1	3	carrot	distractor	3	1	garlic	distractor	2	2	1	1	0	alarm		1447958198518	alarm	False	False	False	smokedetector	NA	NA
+1265-a	1447958205300	39	filler	lemon	target	1	1	binoculars	distractor	2	2	smokedetector	distractor	3	3	1	1	0	lemon		1447958204111	lemon	False	False	True	lemon	NA	NA
+1265-a	1447958210582	40	colorAndSize	big_red_yarn	target	3	1	small_purple_yarn	distractor	2	3	small_purple_yarn	distractor	1	2	1	1	0	red		1447958209721	red	False	True	False	yarn	big	red
+1265-a	1447958215581	41	filler	santahat	target	1	2	feather	distractor	3	1	polarbear	distractor	2	3	1	1	0	hat		1447958214377	hat	False	False	False	santahat	NA	NA
+1265-a	1447958221381	42	sizeOnly	small_black_comb	target	1	3	big_black_comb	distractor	2	2	big_blue_comb	distractor	3	1	1	1	0	small		1447958220014	small	True	False	False	comb	small	black
+1265-a	1447958228052	43	sizeOnly	big_pink_teacup	target	3	2	small_pink_teacup	distractor	1	1	small_white_teacup	distractor	2	3	1	1	0	large		1447958226907	large	False	False	False	teacup	big	pink
+1265-a	1447958233428	44	filler	car	target	3	2	camera	distractor	2	1	banana	distractor	1	3	1	1	0	car		1447958231892	car	False	False	True	car	NA	NA
+1265-a	1447958238853	45	filler	motorcycle	target	2	2	teddybear	distractor	1	1	fox	distractor	3	3	1	1	0	bike		1447958237520	bike	False	False	False	motorcycle	NA	NA
+1265-a	1447958244412	46	filler	teddybear	target	2	1	toilet	distractor	3	3	elephant	distractor	1	2	1	1	0	teddy		1447958243137	teddy	False	False	False	teddybear	NA	NA
+1265-a	1447958251732	47	colorOnly	big_orange_napkin	target	1	3	small_yellow_napkin	distractor	2	1	big_yellow_napkin	distractor	3	2	1	1	0	orange		1447958250387	orange	False	True	False	napkin	big	orange
+1265-a	1447958258052	48	colorOnly	big_orange_cap	target	3	2	small_blue_cap	distractor	2	3	big_blue_cap	distractor	1	1	1	1	0	orange		1447958256942	orange	False	True	False	cap	big	orange
+1265-a	1447958263893	49	colorOnly	small_blue_tack	target	2	1	small_red_tack	distractor	1	2	big_red_tack	distractor	3	3	2	2	0	small___blue		1447958262550___1447958264354	small	True	False	False	tack	small	blue
+1265-a	1447958270540	50	colorAndSize	small_pink_framee	target	1	1	big_green_framee	distractor	3	3	big_green_framee	distractor	2	2	1	1	0	pink		1447958269229	pink	False	True	False	framee	small	pink
+1265-a	1447958276572	51	filler	lime	target	3	3	smokedetector	distractor	1	1	rubberduck	distractor	2	2	1	1	0	lime		1447958275447	lime	False	False	True	lime	NA	NA
+1265-a	1447958282652	52	filler	cactus	target	3	2	feather	distractor	1	3	coconut	distractor	2	1	1	1	0	cactus		1447958281437	cactus	False	False	True	cactus	NA	NA
+1265-a	1447958287652	53	filler	car	target	2	2	kiwi	distractor	1	3	binoculars	distractor	3	1	1	1	0	car		1447958286574	car	False	False	True	car	NA	NA
+1265-a	1447958292972	54	filler	motorcycle	target	1	1	crocodile	distractor	2	2	firetruck	distractor	3	3	1	1	0	bike		1447958291691	bike	False	False	False	motorcycle	NA	NA
+1265-a	1447958299180	55	filler	mailbox	target	1	1	binoculars	distractor	2	2	hotdog	distractor	3	3	1	1	0	mail		1447958298000	mail	False	False	False	mailbox	NA	NA
+1265-a	1447958306173	56	filler	eggplant	target	1	2	iguana	distractor	3	3	bulldozer	distractor	2	1	1	1	0	eggplant		1447958304939	eggplant	False	False	True	eggplant	NA	NA
+1265-a	1447958313420	57	filler	cactus	target	2	2	bulldozer	distractor	3	3	violin	distractor	1	1	1	1	0	cactus		1447958312060	cactus	False	False	True	cactus	NA	NA
+1265-a	1447958319580	58	filler	lemon	target	3	3	smokedetector	distractor	1	2	eggplant	distractor	2	1	1	1	0	lemon		1447958318285	lemon	False	False	True	lemon	NA	NA
+1265-a	1447958325020	59	colorAndSize	small_black_turtle	target	3	3	big_brown_turtle	distractor	1	1	big_brown_turtle	distractor	2	2	1	1	0	small		1447958324075	small	True	False	False	turtle	small	black
+1265-a	1447958330693	60	colorOnly	big_green_bracelet	target	2	2	big_purple_bracelet	distractor	3	3	small_purple_bracelet	distractor	1	1	1	1	0	green		1447958329953	green	False	True	False	bracelet	big	green
+1265-a	1447958337341	61	filler	tennisball	target	3	1	fox	distractor	2	2	carrot	distractor	1	3	1	1	0	ball		1447958336036	ball	False	False	False	tennisball	NA	NA
+1265-a	1447958343229	62	filler	garbagecan	target	1	2	schoolbus	distractor	2	1	tooth	distractor	3	3	1	1	0	trash		1447958341957	trash	False	False	False	garbagecan	NA	NA
+1265-a	1447958348341	63	filler	carrot	target	3	1	tooth	distractor	2	3	lion	distractor	1	2	1	1	0	carrot		1447958347148	carrot	False	False	True	carrot	NA	NA
+1265-a	1447958354861	64	sizeOnly	small_pink_hairdryer	target	2	2	big_pink_hairdryer	distractor	3	3	big_purple_hairdryer	distractor	1	1	1	1	0	small		1447958353371	small	True	False	False	hairdryer	small	pink
+1265-a	1447958364092	65	filler	clarinet	target	3	1	bulldozer	distractor	1	2	lion	distractor	2	3	1	1	0	clarinet		1447958362584	clarinet	False	False	True	clarinet	NA	NA
+1265-a	1447958369892	66	filler	crocodile	target	1	1	piano	distractor	2	3	hotdog	distractor	3	2	1	1	0	alligator		1447958368700	alligator	False	False	False	crocodile	NA	NA
+1265-a	1447958376172	67	filler	chick	target	3	3	santahat	distractor	1	2	artichoke	distractor	2	1	1	1	0	chick		1447958374557	chick	False	False	True	chick	NA	NA
+1265-a	1447958384388	68	sizeOnly	big_green_pepper	target	2	3	small_green_pepper	distractor	3	2	small_red_pepper	distractor	1	1	1	1	0	large		1447958382897	large	False	False	False	pepper	big	green
+1265-a	1447958390092	69	filler	feather	target	3	1	fox	distractor	1	3	tooth	distractor	2	2	1	1	0	feather		1447958388849	feather	False	False	True	feather	NA	NA
+1265-a	1447958395492	70	filler	smokedetector	target	2	3	banana	distractor	3	2	dresser	distractor	1	1	1	1	0	alarm		1447958394336	alarm	False	False	False	smokedetector	NA	NA
+1265-a	1447958411464	71	filler	gloves	target	2	1	eggplant	distractor	3	2	egg	distractor	1	3	1	1	0	glove		1447958400302	glove	False	False	False	gloves	NA	NA
+1265-a	1447958417729	72	filler	kitten	target	2	1	television	distractor	3	2	fireextinguisher	distractor	1	3	1	1	0	kitten		1447958416054	kitten	False	False	True	kitten	NA	NA
+1265-a	1447958424530	73	colorOnly	small_pink_weddingcake	target	1	1	big_white_weddingcake	distractor	3	3	small_white_weddingcake	distractor	2	2	1	1	0	pink		1447958423640	pink	False	True	False	weddingcake	small	pink
+1265-a	1447958434529	74	filler	bulldozer	target	1	3	kiwi	distractor	3	2	elephant	distractor	2	1	1	1	0	machine		1447958432057	machine	False	False	False	bulldozer	NA	NA
+1265-a	1447958440969	75	filler	coconut	target	2	1	santahat	distractor	1	3	carrot	distractor	3	2	1	1	0	coconut		1447958439752	coconut	False	False	True	coconut	NA	NA
+1265-a	1447958450291	76	filler	iguana	target	3	3	lime	distractor	1	1	trumpet	distractor	2	2	1	1	0	reptile		1447958448684	reptile	False	False	False	iguana	NA	NA
+1265-a	1447958456290	77	filler	tooth	target	3	2	rhinoceros	distractor	2	3	gloves	distractor	1	1	1	1	0	tooth		1447958454785	tooth	False	False	True	tooth	NA	NA
+1265-a	1447958462049	78	filler	feather	target	1	1	snowflake	distractor	2	2	cherries	distractor	3	3	1	1	0	feather		1447958460636	feather	False	False	True	feather	NA	NA
+1265-a	1447958468049	79	filler	grapefruit	target	3	1	violin	distractor	2	3	motorcycle	distractor	1	2	1	1	0	fruit		1447958466596	fruit	False	False	False	grapefruit	NA	NA
+1265-a	1447958473650	80	sizeOnly	big_white_shoe	target	3	2	small_white_shoe	distractor	2	1	small_yellow_shoe	distractor	1	3	1	1	0	large		1447958472549	large	False	False	False	shoe	big	white
+1265-a	1447958480809	81	colorOnly	big_purple_butterfly	target	3	2	small_blue_butterfly	distractor	2	1	big_blue_butterfly	distractor	1	3	1	1	0	purple		1447958479658	purple	False	True	False	butterfly	big	purple
+1265-a	1447958487449	82	filler	cactus	target	1	2	lion	distractor	3	3	pumpkin	distractor	2	1	1	1	0	cactus		1447958485991	cactus	False	False	True	cactus	NA	NA
+1265-a	1447958492969	83	filler	bulldozer	target	1	2	iguana	distractor	3	1	snake	distractor	2	3	1	1	0	machine		1447958491900	machine	False	False	False	bulldozer	NA	NA
+1265-a	1447958500369	84	sizeOnly	big_white_phone	target	2	3	small_pink_phone	distractor	1	2	small_white_phone	distractor	3	1	1	1	0	large		1447958498890	large	False	False	False	phone	big	white
+1265-a	1447958505881	85	filler	cherries	target	2	3	binoculars	distractor	1	1	crocodile	distractor	3	2	1	1	0	fruit		1447958504316	fruit	False	False	False	cherries	NA	NA
+1265-a	1447958512681	86	filler	toilet	target	3	3	lion	distractor	2	1	sheep	distractor	1	2	1	1	0	toilet		1447958510058	toilet	False	False	True	toilet	NA	NA
+1265-a	1447958517729	87	filler	egg	target	3	2	raspberry	distractor	2	1	rhinoceros	distractor	1	3	1	1	0	egg		1447958516466	egg	False	False	True	egg	NA	NA
+1265-a	1447958524721	88	filler	firetruck	target	2	1	bulldozer	distractor	1	3	sheep	distractor	3	2	1	1	0	fire		1447958522737	fire	False	False	False	firetruck	NA	NA
+1265-a	1447958530841	89	filler	snake	target	3	1	artichoke	distractor	1	3	sheep	distractor	2	2	1	1	0	snake		1447958529395	snake	False	False	True	snake	NA	NA
+1265-a	1447958540570	90	filler	zucchini	target	1	2	orange	distractor	3	3	motorcycle	distractor	2	1	1	1	0	zuccini		1447958539009	zuccini	False	False	False	zucchini	NA	NA
+1265-a	1447958546810	91	colorOnly	small_purple_rock	target	2	1	big_green_rock	distractor	1	3	small_green_rock	distractor	3	2	1	1	0	purple		1447958545603	purple	False	True	False	rock	small	purple
+1265-a	1447958552010	92	filler	firetruck	target	2	1	iguana	distractor	1	3	artichoke	distractor	3	2	1	1	0	fire		1447958550734	fire	False	False	False	firetruck	NA	NA
+1265-a	1447958558129	93	filler	firehydrant	target	1	1	polarbear	distractor	2	2	strawberry	distractor	3	3	1	1	0	fire		1447958556755	fire	False	False	False	firehydrant	NA	NA
+1265-a	1447958563849	94	filler	television	target	1	1	eggplant	distractor	2	2	santahat	distractor	3	3	1	1	0	tv		1447958562696	tv	False	False	False	television	NA	NA
+1265-a	1447958568945	95	colorAndSize	big_blue_candle	target	1	3	small_red_candle	distractor	2	1	small_red_candle	distractor	3	2	1	1	0	blue		1447958567973	blue	False	True	False	candle	big	blue
+1265-a	1447958575049	96	filler	schoolbus	target	3	3	garbagecan	distractor	1	2	basketball	distractor	2	1	1	1	0	school		1447958573775	school	False	False	False	schoolbus	NA	NA
+1265-a	1447958583329	97	colorOnly	big_brown_belt	target	3	2	small_black_belt	distractor	2	3	big_black_belt	distractor	1	1	1	1	0	brown		1447958582063	brown	False	True	False	belt	big	brown
+1265-a	1447958588809	98	sizeOnly	small_purple_stapler	target	1	1	big_red_stapler	distractor	2	3	big_purple_stapler	distractor	3	2	1	1	0	small		1447958587740	small	True	False	False	stapler	small	purple
+1265-a	1447958595561	99	filler	trumpet	target	1	1	snake	distractor	2	2	baseball	distractor	3	3	1	1	0	trumpet		1447958594338	trumpet	False	False	True	trumpet	NA	NA
+1265-a	1447958600809	100	filler	lion	target	3	1	schoolbus	distractor	2	2	banana	distractor	1	3	1	1	0	lion		1447958599507	lion	False	False	True	lion	NA	NA
+1265-a	1447958606609	101	colorAndSize	big_green_folder	target	2	1	small_blue_folder	distractor	1	2	small_blue_folder	distractor	3	3	1	1	0	green		1447958605280	green	False	True	False	folder	big	green
+1265-a	1447958611529	102	filler	firetruck	target	1	1	watermelon	distractor	3	2	eggplant	distractor	2	3	1	1	0	fire		1447958610180	fire	False	False	False	firetruck	NA	NA
+1265-a	1447958617137	103	sizeOnly	small_red_flower	target	1	3	big_red_flower	distractor	3	1	big_purple_flower	distractor	2	2	1	1	0	small		1447958615760	small	True	False	False	flower	small	red
+1265-a	1447958624569	104	filler	clarinet	target	3	3	bison	distractor	1	2	ketchup	distractor	2	1	1	1	0	clarinet		1447958623417	clarinet	False	False	True	clarinet	NA	NA
+1265-a	1447958631442	105	filler	carrot	target	1	1	tire	distractor	3	2	santahat	distractor	2	3	1	1	0	carrot		1447958629791	carrot	False	False	True	carrot	NA	NA
+1265-a	1447958636769	106	filler	egg	target	1	2	binoculars	distractor	2	3	bear	distractor	3	1	1	1	0	egg		1447958635757	egg	False	False	True	egg	NA	NA
+1265-a	1447958642985	107	filler	lemon	target	3	1	coconut	distractor	1	3	clarinet	distractor	2	2	1	1	0	lemon		1447958640915	lemon	False	False	True	lemon	NA	NA
+1265-a	1447958649417	108	sizeOnly	small_blue_golfball	target	2	3	big_blue_golfball	distractor	1	2	big_pink_golfball	distractor	3	1	1	1	0	small		1447958648105	small	True	False	False	golfball	small	blue
+7257-5	1447956491866	1	colorAndSize	small_red_chair	target	3	3	big_green_chair	distractor	2	2	big_green_chair	distractor	1	1	1	1	0	red chair		1447956490309	red chair	False	True	True	chair	small	red
+7257-5	1447956500569	2	sizeOnly	big_white_weddingcake	target	3	3	small_pink_weddingcake	distractor	2	1	small_white_weddingcake	distractor	1	2	1	1	0	biggest cake		1447956498900	biggest cake	False	False	False	weddingcake	big	white
+7257-5	1447956507895	3	filler	iguana	target	1	1	football	distractor	3	3	strawberry	distractor	2	2	1	1	0	animal		1447956506634	animal	False	False	False	iguana	NA	NA
+7257-5	1447956515244	4	sizeOnly	big_green_bracelet	target	3	2	small_purple_bracelet	distractor	1	1	small_green_bracelet	distractor	2	3	1	1	0	biggest		1447956514187	biggest	False	False	False	bracelet	big	green
+7257-5	1447956522440	5	filler	firetruck	target	2	1	cactus	distractor	1	3	smokedetector	distractor	3	2	1	1	0	fire truck		1447956520792	fire truck	False	False	False	firetruck	NA	NA
+7257-5	1447956531094	6	filler	piano	target	2	1	rubberduck	distractor	3	3	hotdog	distractor	1	2	1	1	0	piano		1447956527858	piano	False	False	True	piano	NA	NA
+7257-5	1447956541779	7	colorOnly	small_black_avocado	target	1	1	small_green_avocado	distractor	3	2	big_green_avocado	distractor	2	3	1	1	0	small black		1447956539491	small black	True	True	False	avocado	small	black
+7257-5	1447956548535	8	filler	teddybear	target	3	1	baseball	distractor	2	3	lemon	distractor	1	2	1	1	0	teddy		1447956545944	teddy	False	False	False	teddybear	NA	NA
+7257-5	1447956554416	9	filler	hotdog	target	3	2	lobster	distractor	2	3	bear	distractor	1	1	1	1	0	hot dog		1447956553317	hot dog	False	False	False	hotdog	NA	NA
+7257-5	1447956564120	10	colorAndSize	small_purple_hairdryer	target	2	2	big_pink_hairdryer	distractor	3	1	big_pink_hairdryer	distractor	1	3	1	1	0	smallest purple		1447956563012	smallest purple	False	True	False	hairdryer	small	purple
+7257-5	1447956571819	11	filler	motorcycle	target	3	2	lime	distractor	2	1	grapefruit	distractor	1	3	1	1	0	motorcycle		1447956569561	motorcycle	False	False	True	motorcycle	NA	NA
+7257-5	1447956577354	12	colorOnly	small_white_shoe	target	3	1	small_yellow_shoe	distractor	2	2	big_yellow_shoe	distractor	1	3	1	1	0	white		1447956576270	white	False	True	False	shoe	small	white
+7257-5	1447956584876	13	filler	trumpet	target	1	3	flamingo	distractor	3	1	watermelon	distractor	2	2	1	1	0	music 		1447956583590	music 	False	False	False	trumpet	NA	NA
+7257-5	1447956591627	14	filler	violin	target	1	2	kiwi	distractor	3	1	feather	distractor	2	3	1	1	0	music		1447956589790	music	False	False	False	violin	NA	NA
+7257-5	1447956598211	15	filler	piano	target	3	1	polarbear	distractor	1	3	binoculars	distractor	2	2	1	1	0	piano		1447956595748	piano	False	False	True	piano	NA	NA
+7257-5	1447956604653	16	filler	snake	target	3	2	schoolbus	distractor	2	3	mailbox	distractor	1	1	1	1	0	snake		1447956602592	snake	False	False	True	snake	NA	NA
+7257-5	1447956610772	17	colorOnly	small_green_framee	target	3	1	big_pink_framee	distractor	1	3	small_pink_framee	distractor	2	2	1	1	0	green		1447956609331	green	False	True	False	framee	small	green
+7257-5	1447956618481	18	filler	bulldozer	target	3	2	tophat	distractor	1	3	tooth	distractor	2	1	1	1	0	bulldozer		1447956616314	bulldozer	False	False	True	bulldozer	NA	NA
+7257-5	1447956625428	19	filler	gloves	target	1	3	chick	distractor	3	1	camera	distractor	2	2	1	1	0	glove		1447956623549	glove	False	False	False	gloves	NA	NA
+7257-5	1447956630604	20	colorOnly	big_blue_butterfly	target	1	3	big_purple_butterfly	distractor	2	2	small_purple_butterfly	distractor	3	1	1	1	0	blue		1447956629512	blue	False	True	False	butterfly	big	blue
+7257-5	1447956638237	21	filler	garbagecan	target	1	3	banana	distractor	3	2	dresser	distractor	2	1	1	1	0	garbage		1447956636218	garbage	False	False	False	garbagecan	NA	NA
+7257-5	1447956644323	22	filler	santahat	target	1	3	fireextinguisher	distractor	3	2	chick	distractor	2	1	1	1	0	santa hat		1447956643330	santa hat	False	False	False	santahat	NA	NA
+7257-5	1447956655648	23	filler	chick	target	1	3	motorcycle	distractor	2	2	crocodile	distractor	3	1	2	1	1	bird	I don't get the point of this	1447956648484___1447956654147	bird	False	False	False	chick	NA	NA
+7257-5	1447956670098	24	colorAndSize	big_blue_comb	target	1	2	small_black_comb	distractor	3	1	small_black_comb	distractor	2	3	1	1	0	i dont either  lol big comb		1447956667011	i dont either  lol big comb	True	False	True	comb	big	blue
+7257-5	1447956675813	25	filler	baseball	target	1	3	watermelon	distractor	3	1	lemon	distractor	2	2	1	1	0	baseball		1447956674608	baseball	False	False	True	baseball	NA	NA
+7257-5	1447956682251	26	colorAndSize	small_purple_yarn	target	2	2	big_red_yarn	distractor	1	1	big_red_yarn	distractor	3	3	1	1	0	purple		1447956680666	purple	False	True	False	yarn	small	purple
+7257-5	1447956694635	27	sizeOnly	big_purple_bike	target	2	3	small_purple_bike	distractor	3	1	small_red_bike	distractor	1	2	2	1	1	big purple	.~~~~~~the stuff I do for $2~~~50	1447956692257___1447956692526	big purple	True	True	False	bike	big	purple
+7257-5	1447956701968	28	filler	penguin	target	2	2	crocodile	distractor	3	3	toilet	distractor	1	1	2	2	0	same here!___penguin		1447956696643___1447956700916	same here!	False	False	False	penguin	NA	NA
+7257-5	1447956707041	29	colorOnly	big_red_stapler	target	1	2	big_purple_stapler	distractor	3	3	small_purple_stapler	distractor	2	1	1	1	0	red		1447956705840	red	False	True	False	stapler	big	red
+7257-5	1447956714686	30	filler	binoculars	target	2	1	sheep	distractor	1	3	polarbear	distractor	3	2	1	1	0	binocular		1447956713148	binocular	False	False	False	binoculars	NA	NA
+7257-5	1447956719784	31	colorOnly	small_red_flower	target	3	3	small_purple_flower	distractor	1	1	big_purple_flower	distractor	2	2	2	2	0	im just glad you're quick!___red		1447956717763___1447956718539	im just glad you're quick!	False	False	False	flower	small	red
+7257-5	1447956725601	32	filler	watermelon	target	2	3	artichoke	distractor	3	2	cherries	distractor	1	1	2	1	1	watermelon	hahaha you too	1447956723449___1447956724475	watermelon	False	False	True	watermelon	NA	NA
+7257-5	1447956731711	33	filler	kitten	target	2	3	car	distractor	3	2	polarbear	distractor	1	1	1	1	0	cat		1447956729760	cat	False	False	False	kitten	NA	NA
+7257-5	1447956737066	34	filler	violin	target	3	2	lobster	distractor	1	1	iguana	distractor	2	3	1	1	0	muisc		1447956736256	muisc	False	False	False	violin	NA	NA
+7257-5	1447956742238	35	filler	iguana	target	2	2	toilet	distractor	1	3	garbagecan	distractor	3	1	1	1	0	lizard		1447956741427	lizard	False	False	False	iguana	NA	NA
+7257-5	1447956747981	36	filler	teddybear	target	3	2	tire	distractor	2	1	elephant	distractor	1	3	1	1	0	teddy		1447956747249	teddy	False	False	False	teddybear	NA	NA
+7257-5	1447956753735	37	colorAndSize	big_pink_golfball	target	2	1	small_blue_golfball	distractor	3	2	small_blue_golfball	distractor	1	3	1	1	0	pink		1447956752818	pink	False	True	False	golfball	big	pink
+7257-5	1447956759171	38	filler	football	target	3	2	gloves	distractor	1	1	tophat	distractor	2	3	1	1	0	football		1447956758291	football	False	False	True	football	NA	NA
+7257-5	1447956764795	39	filler	feather	target	1	3	motorcycle	distractor	2	2	lime	distractor	3	1	1	1	0	feather		1447956763499	feather	False	False	True	feather	NA	NA
+7257-5	1447956770192	40	filler	tire	target	1	2	camera	distractor	2	3	grapefruit	distractor	3	1	1	1	0	tire		1447956769035	tire	False	False	True	tire	NA	NA
+7257-5	1447956778100	41	filler	football	target	3	1	raspberry	distractor	1	2	egg	distractor	2	3	1	1	0	football		1447956774825	football	False	False	True	football	NA	NA
+7257-5	1447956784398	42	filler	strawberry	target	3	3	tennisball	distractor	2	2	santahat	distractor	1	1	1	1	0	strawberry		1447956783171	strawberry	False	False	True	strawberry	NA	NA
+7257-5	1447956790732	43	sizeOnly	big_purple_rug	target	2	3	small_purple_rug	distractor	3	1	small_blue_rug	distractor	1	2	1	1	0	biggest		1447956789844	biggest	False	False	False	rug	big	purple
+7257-5	1447956795552	44	filler	teddybear	target	2	3	smokedetector	distractor	1	2	snake	distractor	3	1	1	1	0	teddy		1447956794530	teddy	False	False	False	teddybear	NA	NA
+7257-5	1447956802203	45	sizeOnly	big_white_phone	target	1	1	small_white_phone	distractor	2	3	small_pink_phone	distractor	3	2	1	1	0	biggest		1447956800810	biggest	False	False	False	phone	big	white
+7257-5	1447956807291	46	colorAndSize	big_blue_book	target	3	3	small_black_book	distractor	2	1	small_black_book	distractor	1	2	1	1	0	biggest		1447956806535	biggest	False	False	False	book	big	blue
+7257-5	1447956812856	47	filler	rhinoceros	target	2	2	dresser	distractor	1	3	piano	distractor	3	1	1	1	0	animal		1447956811922	animal	False	False	False	rhinoceros	NA	NA
+7257-5	1447956818739	48	sizeOnly	big_red_toothbrush	target	1	2	small_red_toothbrush	distractor	2	3	small_blue_toothbrush	distractor	3	1	1	1	0	biggest		1447956818041	biggest	False	False	False	toothbrush	big	red
+7257-5	1447956823727	49	colorOnly	small_blue_ornament	target	1	2	small_purple_ornament	distractor	2	3	big_purple_ornament	distractor	3	1	1	1	0	blue		1447956822897	blue	False	True	False	ornament	small	blue
+7257-5	1447956830231	50	filler	flamingo	target	2	3	camera	distractor	3	2	rubberduck	distractor	1	1	1	1	0	pelican		1447956829020	pelican	False	False	False	flamingo	NA	NA
+7257-5	1447956836677	51	sizeOnly	small_black_turtle	target	3	2	big_brown_turtle	distractor	1	3	big_black_turtle	distractor	2	1	1	1	0	smallest		1447956835653	smallest	False	False	False	turtle	small	black
+7257-5	1447956844932	52	sizeOnly	big_orange_billiardball	target	2	3	small_orange_billiardball	distractor	3	2	small_purple_billiardball	distractor	1	1	1	1	0	biggest		1447956843946	biggest	False	False	False	billiardball	big	orange
+7257-5	1447956850925	53	colorAndSize	small_yellow_napkin	target	3	2	big_orange_napkin	distractor	1	3	big_orange_napkin	distractor	2	1	1	1	0	yellow		1447956849832	yellow	False	True	False	napkin	small	yellow
+7257-5	1447956855990	54	filler	feather	target	3	3	clarinet	distractor	2	1	tophat	distractor	1	2	1	1	0	feather		1447956854930	feather	False	False	True	feather	NA	NA
+7257-5	1447956861869	55	filler	bear	target	3	3	lemon	distractor	2	1	cactus	distractor	1	2	1	1	0	animal		1447956860770	animal	False	False	False	bear	NA	NA
+7257-5	1447956867628	56	filler	dresser	target	3	1	polarbear	distractor	2	2	strawberry	distractor	1	3	1	1	0	dresser		1447956866290	dresser	False	False	True	dresser	NA	NA
+7257-5	1447956873474	57	filler	chick	target	3	1	snake	distractor	1	2	snowflake	distractor	2	3	1	1	0	chick		1447956872418	chick	False	False	True	chick	NA	NA
+7257-5	1447956881107	58	filler	crocodile	target	3	3	watermelon	distractor	2	2	coconut	distractor	1	1	1	1	0	animal		1447956879290	animal	False	False	False	crocodile	NA	NA
+7257-5	1447956886439	59	filler	santahat	target	2	3	violin	distractor	1	1	garlic	distractor	3	2	1	1	0	santa		1447956885194	santa	False	False	False	santahat	NA	NA
+7257-5	1447956893415	60	filler	rhinoceros	target	2	3	polarbear	distractor	1	1	cactus	distractor	3	2	1	1	0	rhino		1447956891979	rhino	False	False	False	rhinoceros	NA	NA
+7257-5	1447956901223	61	sizeOnly	big_orange_coathanger	target	2	2	small_purple_coathanger	distractor	3	1	small_orange_coathanger	distractor	1	3	1	1	0	big brown		1447956899884	big brown	True	False	False	coathanger	big	orange
+7257-5	1447956906952	62	filler	lion	target	2	2	baseball	distractor	3	3	chick	distractor	1	1	1	1	0	lion		1447956905969	lion	False	False	True	lion	NA	NA
+7257-5	1447956913071	63	sizeOnly	small_blue_cap	target	2	3	big_orange_cap	distractor	1	2	big_blue_cap	distractor	3	1	1	1	0	small blue		1447956912044	small blue	True	True	False	cap	small	blue
+7257-5	1447956919827	64	sizeOnly	small_green_jacket	target	2	2	big_green_jacket	distractor	3	3	big_brown_jacket	distractor	1	1	1	1	0	small green		1447956918638	small green	True	True	False	jacket	small	green
+7257-5	1447956925584	65	filler	camera	target	1	1	carrot	distractor	3	2	horse	distractor	2	3	1	1	0	camera		1447956924352	camera	False	False	True	camera	NA	NA
+7257-5	1447956930979	66	filler	elephant	target	2	1	toilet	distractor	1	2	grapefruit	distractor	3	3	1	1	0	elephant		1447956930011	elephant	False	False	True	elephant	NA	NA
+7257-5	1447956936708	67	filler	flamingo	target	3	2	trumpet	distractor	1	3	coconut	distractor	2	1	1	1	0	pelican		1447956935308	pelican	False	False	False	flamingo	NA	NA
+7257-5	1447956943584	68	colorAndSize	small_green_rock	target	1	1	big_purple_rock	distractor	3	3	big_purple_rock	distractor	2	2	1	1	0	green		1447956941228	green	False	True	False	rock	small	green
+7257-5	1447956948755	69	filler	rubberduck	target	3	2	coconut	distractor	2	3	schoolbus	distractor	1	1	1	1	0	duck		1447956947908	duck	False	False	False	rubberduck	NA	NA
+7257-5	1447956953723	70	filler	television	target	2	1	clarinet	distractor	3	2	schoolbus	distractor	1	3	1	1	0	tv		1447956952615	tv	False	False	False	television	NA	NA
+7257-5	1447956958777	71	filler	horse	target	1	3	rhinoceros	distractor	2	2	eggplant	distractor	3	1	1	1	0	horse		1447956957673	horse	False	False	True	horse	NA	NA
+7257-5	1447956963830	72	filler	chick	target	1	1	toilet	distractor	3	3	artichoke	distractor	2	2	1	1	0	chick		1447956962770	chick	False	False	True	chick	NA	NA
+7257-5	1447956969303	73	colorAndSize	big_pink_bucket	target	1	3	small_red_bucket	distractor	3	2	small_red_bucket	distractor	2	1	1	1	0	pink		1447956968203	pink	False	True	False	bucket	big	pink
+7257-5	1447956974175	74	filler	tire	target	1	3	lion	distractor	3	2	binoculars	distractor	2	1	1	1	0	tire		1447956973067	tire	False	False	True	tire	NA	NA
+7257-5	1447956981187	75	colorAndSize	big_orange_cushion	target	3	1	small_blue_cushion	distractor	2	3	small_blue_cushion	distractor	1	2	1	1	0	big orange		1447956980274	big orange	True	True	False	cushion	big	orange
+7257-5	1447956986600	76	filler	crocodile	target	2	2	violin	distractor	1	1	gloves	distractor	3	3	1	1	0	animal		1447956985569	animal	False	False	False	crocodile	NA	NA
+7257-5	1447956991160	77	filler	television	target	1	3	gloves	distractor	2	2	cherries	distractor	3	1	1	1	0	tv		1447956990106	tv	False	False	False	television	NA	NA
+7257-5	1447956995972	78	colorAndSize	big_yellow_balloon	target	3	2	small_pink_balloon	distractor	1	3	small_pink_balloon	distractor	2	1	1	1	0	yellow		1447956995576	yellow	False	True	False	balloon	big	yellow
+7257-5	1447957001644	79	filler	garbagecan	target	1	2	piano	distractor	3	1	flamingo	distractor	2	3	1	1	0	garbage		1447957000577	garbage	False	False	False	garbagecan	NA	NA
+7257-5	1447957007158	80	filler	lobster	target	2	1	horse	distractor	1	2	bulldozer	distractor	3	3	1	1	0	lobster		1447957006082	lobster	False	False	True	lobster	NA	NA
+7257-5	1447957014954	81	filler	bison	target	1	2	chick	distractor	3	3	piano	distractor	2	1	1	1	0	horns		1447957013827	horns	False	False	False	bison	NA	NA
+7257-5	1447957021100	82	filler	santahat	target	2	2	strawberry	distractor	3	1	sheep	distractor	1	3	1	1	0	santa		1447957019819	santa	False	False	False	santahat	NA	NA
+7257-5	1447957026430	83	colorOnly	small_white_teacup	target	2	1	small_pink_teacup	distractor	1	2	big_pink_teacup	distractor	3	3	1	1	0	white		1447957025431	white	False	True	False	teacup	small	white
+7257-5	1447957031392	84	filler	lion	target	1	2	ketchup	distractor	3	1	camera	distractor	2	3	1	1	0	lion		1447957030513	lion	False	False	True	lion	NA	NA
+7257-5	1447957036793	85	filler	ketchup	target	1	3	feather	distractor	3	2	polarbear	distractor	2	1	1	1	0	food		1447957035281	food	False	False	False	ketchup	NA	NA
+7257-5	1447957042365	86	filler	flamingo	target	1	3	schoolbus	distractor	2	1	firehydrant	distractor	3	2	1	1	0	pelican		1447957040970	pelican	False	False	False	flamingo	NA	NA
+7257-5	1447957047868	87	colorOnly	big_green_guitar	target	2	3	small_blue_guitar	distractor	3	2	big_blue_guitar	distractor	1	1	1	1	0	green		1447957046700	green	False	True	False	guitar	big	green
+7257-5	1447957053525	88	filler	tennisball	target	3	1	firehydrant	distractor	1	2	camera	distractor	2	3	1	1	0	tennis		1447957052166	tennis	False	False	False	tennisball	NA	NA
+7257-5	1447957062138	89	filler	raspberry	target	2	3	schoolbus	distractor	3	1	kiwi	distractor	1	2	1	1	0	red		1447957058700	red	False	False	False	raspberry	NA	NA
+7257-5	1447957067887	90	colorOnly	big_blue_folder	target	1	1	small_green_folder	distractor	3	3	big_green_folder	distractor	2	2	1	1	0	blue		1447957066543	blue	False	True	False	folder	big	blue
+7257-5	1447957072707	91	filler	santahat	target	1	1	lime	distractor	2	2	feather	distractor	3	3	1	1	0	santa		1447957071625	santa	False	False	False	santahat	NA	NA
+7257-5	1447957078665	92	sizeOnly	small_red_candle	target	1	1	big_red_candle	distractor	2	3	big_blue_candle	distractor	3	2	1	1	0	small red		1447957077610	small red	True	True	False	candle	small	red
+7257-5	1447957084876	93	filler	zucchini	target	2	1	bulldozer	distractor	3	3	tennisball	distractor	1	2	1	1	0	cucumber		1447957083720	cucumber	False	False	False	zucchini	NA	NA
+7257-5	1447957090928	94	filler	carrot	target	1	1	raspberry	distractor	3	2	flamingo	distractor	2	3	1	1	0	carrot		1447957089112	carrot	False	False	True	carrot	NA	NA
+7257-5	1447957095808	95	colorOnly	big_red_pepper	target	1	1	big_green_pepper	distractor	2	2	small_green_pepper	distractor	3	3	1	1	0	red		1447957094564	red	False	True	False	pepper	big	red
+7257-5	1447957103500	96	filler	binoculars	target	3	2	carrot	distractor	2	1	chick	distractor	1	3	1	1	0	bionicular		1447957102547	bionicular	False	False	False	binoculars	NA	NA
+7257-5	1447957109231	97	filler	watermelon	target	1	1	kitten	distractor	2	2	coconut	distractor	3	3	1	1	0	watermelon		1447957108184	watermelon	False	False	True	watermelon	NA	NA
+7257-5	1447957115199	98	filler	cactus	target	1	3	hotdog	distractor	3	2	fireextinguisher	distractor	2	1	1	1	0	cactus		1447957113870	cactus	False	False	True	cactus	NA	NA
+7257-5	1447957121648	99	filler	rhinoceros	target	3	1	watermelon	distractor	2	3	baseball	distractor	1	2	1	1	0	rhino		1447957120458	rhino	False	False	False	rhinoceros	NA	NA
+7257-5	1447957127108	100	colorOnly	big_blue_tack	target	2	3	big_red_tack	distractor	1	1	small_red_tack	distractor	3	2	1	1	0	blue		1447957125857	blue	False	True	False	tack	big	blue
+7257-5	1447957133057	101	filler	snowflake	target	1	1	carrot	distractor	3	3	hotdog	distractor	2	2	1	1	0	snowflake		1447957131833	snowflake	False	False	True	snowflake	NA	NA
+7257-5	1447957139247	102	filler	garbagecan	target	3	3	clarinet	distractor	1	1	rubberduck	distractor	2	2	1	1	0	garbage		1447957138060	garbage	False	False	False	garbagecan	NA	NA
+7257-5	1447957146490	103	filler	fireextinguisher	target	3	1	cherries	distractor	2	3	football	distractor	1	2	1	1	0	fire ext.		1447957145235	fire ext.	False	False	False	fireextinguisher	NA	NA
+7257-5	1447957153347	104	filler	watermelon	distractor	2	2	horse	distractor	1	1	pumpkin	target	3	3	1	1	0	pumpkin		1447957151246	pumpkin	False	False	False	watermelon	NA	NA
+7257-5	1447957158840	105	filler	car	target	1	2	snowflake	distractor	3	3	bear	distractor	2	1	1	1	0	car		1447957157737	car	False	False	True	car	NA	NA
+7257-5	1447957165552	106	filler	grapefruit	target	2	3	egg	distractor	1	2	rubberduck	distractor	3	1	1	1	0	fruit		1447957164396	fruit	False	False	False	grapefruit	NA	NA
+7257-5	1447957174841	107	colorAndSize	big_black_belt	target	3	1	small_brown_belt	distractor	2	2	small_brown_belt	distractor	1	3	2	1	1	biggest	yo, it's been real!	1447957171031___1447957172691	biggest	False	False	False	belt	big	black
+7257-5	1447957193599	108	filler	coconut	target	2	2	rhinoceros	distractor	1	1	lime	distractor	3	3	2	1	1	thanks for not abandoning!    brown food	you too :)	1447957185963___1447957192691	thanks for not abandoning!    brown food	False	False	False	coconut	NA	NA
