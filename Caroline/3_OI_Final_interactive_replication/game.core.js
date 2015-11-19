@@ -361,8 +361,8 @@ game_core.prototype.makeTrialList = function () {
           gridY : tuple[2][1],
           trueX : listenerGridCell.centerX - object.width/2,
           trueY : listenerGridCell.centerY - object.height/2,
-          gridPixelX: speakerGridCell.centerX - 150,
-          gridPixelY: speakerGridCell.centerY - 150
+          gridPixelX: listenerGridCell.centerX - 150,
+          gridPixelY: listenerGridCell.centerY - 150
         };
         return object;
     });
