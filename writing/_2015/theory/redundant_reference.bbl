@@ -1,0 +1,225 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Davies%
+\ \BBA {} Katsos%
+}{%
+Davies%
+\ \BBA {} Katsos%
+}{%
+{\protect \APACyear {2009}}%
+}]{%
+davies2009}
+\APACinsertmetastar {%
+davies2009}%
+\begin{APACrefauthors}%
+Davies, C.%
+\BCBT {}\ \BBA {} Katsos, N.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Are Interlocutors as Sensitive to Over-informativeness
+  as they are to Under-informativeness?}} {{Are Interlocutors as Sensitive to
+  Over-informativeness as they are to Under-informativeness?}}{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the Workshop on Production of Referring
+  Expressions: Bridging Computational and Psycholinguistic Approaches
+  (PRE-CogSci-09, Amsterdam).} {Proceedings of the workshop on production of
+  referring expressions: Bridging computational and psycholinguistic approaches
+  (pre-cogsci-09, amsterdam).}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Engelhardt%
+, Bailey%
+\BCBL {}\ \BBA {} Ferreira%
+}{%
+Engelhardt%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+engelhardt2006a}
+\APACinsertmetastar {%
+engelhardt2006a}%
+\begin{APACrefauthors}%
+Engelhardt, P.%
+, Bailey, K.%
+\BCBL {}\ \BBA {} Ferreira, F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{may}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Do speakers and listeners observe the Gricean Maxim of
+  Quantity?}} {{Do speakers and listeners observe the Gricean Maxim of
+  Quantity?}}{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Memory and Language}{54}{4}{554--573}.
+\newblock
+\begin{APACrefURL}
+  \url{http://linkinghub.elsevier.com/retrieve/pii/S0749596X05001518}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1016/j.jml.2005.12.009} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Gatt%
+, van Gompel%
+, Krahmer%
+\BCBL {}\ \BBA {} van Deemter%
+}{%
+Gatt%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+gatt2011}
+\APACinsertmetastar {%
+gatt2011}%
+\begin{APACrefauthors}%
+Gatt, A.%
+, van Gompel, R\BPBI P\BPBI G.%
+, Krahmer, E.%
+\BCBL {}\ \BBA {} van Deemter, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Non-deterministic attribute selection in reference
+  production}} {{Non-deterministic attribute selection in reference
+  production}}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the workshop on production of referring
+  expressions: Bridging the gap between empirical, computational and
+  psycholinguistic approaches to reference (pre-cogsci’11).} {Proceedings of
+  the workshop on production of referring expressions: Bridging the gap between
+  empirical, computational and psycholinguistic approaches to reference
+  (pre-cogsci’11).}
+\newblock
+\APACaddressPublisher{Boston}{}.
+\newblock
+\begin{APACrefURL}
+  \url{E:$\backslash$Disser$\backslash$Bibliography$\backslash$gatt2011non.pdf}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Koolen%
+, Goudbeek%
+\BCBL {}\ \BBA {} Krahmer%
+}{%
+Koolen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+koolen2013}
+\APACinsertmetastar {%
+koolen2013}%
+\begin{APACrefauthors}%
+Koolen, R.%
+, Goudbeek, M.%
+\BCBL {}\ \BBA {} Krahmer, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{The effect of scene variation on the redundant use of
+  color in definite reference}} {{The effect of scene variation on the
+  redundant use of color in definite reference}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Cognitive Science}{37}{2}{395--411}.
+\newblock
+\begin{APACrefDOI} \doi{10.1111/cogs.12019} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pechmann%
+}{%
+Pechmann%
+}{%
+{\protect \APACyear {1989}}%
+}]{%
+Pechmann1989}
+\APACinsertmetastar {%
+Pechmann1989}%
+\begin{APACrefauthors}%
+Pechmann, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1989}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Incremental speech production and referential
+  overspecification}} {{Incremental speech production and referential
+  overspecification}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Linguistics}{27}{1}{89--110}.
+\newblock
+\begin{APACrefDOI} \doi{10.1515/ling.1989.27.1.89} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sedivy%
+}{%
+Sedivy%
+}{%
+{\protect \APACyear {2003}}%
+}]{%
+sedivy2003a}
+\APACinsertmetastar {%
+sedivy2003a}%
+\begin{APACrefauthors}%
+Sedivy, J\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{jan}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Pragmatic versus form-based accounts of referential
+  contrast: evidence for effects of informativity expectations.}} {{Pragmatic
+  versus form-based accounts of referential contrast: evidence for effects of
+  informativity expectations.}}{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of psycholinguistic research}{32}{1}{3--23}.
+\newblock
+\begin{APACrefURL} \url{http://www.ncbi.nlm.nih.gov/pubmed/12647560}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Westerbeek%
+, Koolen%
+\BCBL {}\ \BBA {} Maes%
+}{%
+Westerbeek%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+Westerbeek2014}
+\APACinsertmetastar {%
+Westerbeek2014}%
+\begin{APACrefauthors}%
+Westerbeek, H.%
+, Koolen, R.%
+\BCBL {}\ \BBA {} Maes, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{On the role of object knowledge in reference
+  production: Effects of color typicality on content determination}} {{On the
+  role of object knowledge in reference production: Effects of color typicality
+  on content determination}}.{\BBCQ}
+\newblock
+\BIn{} P.~Bello, M.~Guarini, M.~McShane\BCBL {}\ \BBA {} B.~Scassellati\
+  (\BEDS), \APACrefbtitle {Proceedings of the 36th Annual Conference of the
+  Cognitive Science Society.} {Proceedings of the 36th annual conference of the
+  cognitive science society.}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
