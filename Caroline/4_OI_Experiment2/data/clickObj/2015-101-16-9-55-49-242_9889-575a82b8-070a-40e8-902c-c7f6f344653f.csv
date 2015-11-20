@@ -1,0 +1,3 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+9889-5,1447696551346,1,filler,lemon,distractor,2,3,cactus,target,3,1,kitten,distractor,1,2
+9889-5,1447696551938,2,filler,binoculars,target,1,3,dresser,distractor,2,2,motorcycle,distractor,3,1

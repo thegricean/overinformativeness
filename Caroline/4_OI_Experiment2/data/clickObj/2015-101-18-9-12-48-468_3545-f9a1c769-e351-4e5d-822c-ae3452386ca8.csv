@@ -1,0 +1,14 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+3545-f,1447866775724,1,colorAndSize,big_green_avocado,target,1,1,small_black_avocado,distractor,2,3,small_black_avocado,distractor,3,2
+3545-f,1447866785787,2,filler,eggplant,target,3,1,kitten,distractor,2,2,mailbox,distractor,1,3
+3545-f,1447866793601,3,colorAndSize,big_blue_cap,target,2,3,small_orange_cap,distractor,3,2,small_orange_cap,distractor,1,1
+3545-f,1447866801070,4,colorAndSize,big_red_stapler,target,3,2,small_purple_stapler,distractor,1,1,small_purple_stapler,distractor,2,3
+3545-f,1447866811101,5,filler,orange,target,2,1,cactus,distractor,1,3,bulldozer,distractor,3,2
+3545-f,1447866819909,6,filler,lion,target,3,3,garlic,distractor,2,2,flamingo,distractor,1,1
+3545-f,1447866828319,7,filler,binoculars,target,2,3,carrot,distractor,3,1,mailbox,distractor,1,2
+3545-f,1447866835760,8,filler,broccoli,target,2,2,violin,distractor,1,3,kiwi,distractor,3,1
+3545-f,1447866844330,9,filler,orange,target,3,1,bulldozer,distractor,1,2,snake,distractor,2,3
+3545-f,1447866852079,10,colorOnly,small_red_chair,target,1,1,small_green_chair,distractor,3,3,big_green_chair,distractor,2,2
+3545-f,1447866860753,11,filler,rhinoceros,target,2,1,crocodile,distractor,1,2,baseball,distractor,3,3
+3545-f,1447866869229,12,filler,fireextinguisher,target,1,1,penguin,distractor,2,2,violin,distractor,3,3
+3545-f,1447866890078,13,colorAndSize,big_orange_napkin,target,3,1,small_yellow_napkin,distractor,2,3,small_yellow_napkin,distractor,1,2

@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+3720-8,1447834778898,1,colorAndSize,small_white_phone,distractor,3,1,big_pink_phone,target,2,2,small_white_phone,distractor,1,3

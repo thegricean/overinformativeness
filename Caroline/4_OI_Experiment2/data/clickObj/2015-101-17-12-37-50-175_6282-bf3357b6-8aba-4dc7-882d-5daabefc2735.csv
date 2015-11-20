@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+6282-b,1447792685626,1,filler,violin,target,2,3,horse,distractor,3,1,binoculars,distractor,1,2

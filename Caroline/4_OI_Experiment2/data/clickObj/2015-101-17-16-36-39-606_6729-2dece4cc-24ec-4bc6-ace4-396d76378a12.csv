@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+6729-2,1447807002829,1,colorOnly,big_pink_framee,target,1,1,small_green_framee,distractor,2,2,big_green_framee,distractor,3,3
