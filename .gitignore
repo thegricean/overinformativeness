@@ -1,3 +1,10 @@
+*/writing/_2015/theory/redundant_reference.pdf
+*/writing/2016/cogsci/refexp.pdf
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+*.aux
 *.config
 *.input
 *.properties
