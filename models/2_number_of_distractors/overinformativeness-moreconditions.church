@@ -141,7 +141,7 @@
 (define size_fidelities (list .7 .75 .8 .85 .9 .999)) ; 1 - noise probability (size -- higher meanss less noise)
 (define color_costs (list .1 .2)) ; lower means less costly
 (define size_costs  (list .1 .2)) ; lower means less costly
-(define speaker-opts (list 5 10 11 15 18)) 
+(define speaker-opts (list 2 3 4 5 10 15)) 
 ;syntax of contexts: SUFFICIENTDIMENSION_SAMESIZE_DIFFSIZE_SAMECOLOR_DIFFCOLOR (same/diff from target)
 (define contexts (list (list 'size_0_2_1_1
                              (list (list 'o1 'big 'red)

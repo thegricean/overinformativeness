@@ -16,7 +16,7 @@ head(r)
 nrow(r)
 names(r)
 summary(r)
-d=r
+
 
 # gather values
 r = r %>%
@@ -70,7 +70,31 @@ ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt5.pdf",width=12,height=3.
 ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt5.jpg",width=15,height=4)
 
 
+ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)  == 4),],aes(x=as.factor(samecolor),y=Probability,color=as.factor(numdistractors),group=as.factor(numdistractors))) +
+  geom_point() +
+  geom_line() +
+  facet_grid(sufficientproperty~Utterance) +
+  #scale_x_continuous(name="Number of distractors with same color") +
+  scale_y_continuous(limits=c(0,1))
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt4.pdf",width=12,height=3.5)
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt4.jpg",width=15,height=4)
 
+ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)  == 3),],aes(x=as.factor(samecolor),y=Probability,color=as.factor(numdistractors),group=as.factor(numdistractors))) +
+  geom_point() +
+  geom_line() +
+  facet_grid(sufficientproperty~Utterance) +
+  #scale_x_continuous(name="Number of distractors with same color") +
+  scale_y_continuous(limits=c(0,1))
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt3.pdf",width=12,height=3.5)
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt3.jpg",width=15,height=4)
 
+ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)  == 2),],aes(x=as.factor(samecolor),y=Probability,color=as.factor(numdistractors),group=as.factor(numdistractors))) +
+  geom_point() +
+  geom_line() +
+  facet_grid(sufficientproperty~Utterance) +
+  #scale_x_continuous(name="Number of distractors with same color") +
+  scale_y_continuous(limits=c(0,1))
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.pdf",width=12,height=3.5)
+ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.jpg",width=15,height=4)
 
 

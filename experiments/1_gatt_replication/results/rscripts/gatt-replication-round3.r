@@ -3,7 +3,6 @@ setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/exper
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results_round3_modified.csv",sep=",", header=T, quote="")
-d = read.table(file="data/results_round3.csv",sep="\t", header=T, quote="")
 head(d)
 nrow(d)
 d$speakerMessages
@@ -59,7 +58,7 @@ head(agr)
 ggplot(agr, aes(x=Feature)) +
   geom_histogram() +
   facet_wrap(~condition)
-ggsave("graphs_round2/mentioned_features_by_condition.pdf",width=8,height=3.5)
+ggsave("graphs_round3/mentioned_features_by_condition.pdf",width=8,height=3.5)
 
 targets$UtteranceType = as.factor(ifelse(targets$sizeMentioned & targets$colorMentioned, "size and color", ifelse(targets$sizeMentioned, "size", ifelse(targets$colorMentioned, "color","OTHER"))))
 targets = droplevels(targets[!is.na(targets$UtteranceType),])
@@ -82,7 +81,7 @@ ggplot(agr, aes(x=Utterance,y=Probability)) +
   geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~condition)
-ggsave("graphs_round2/mentioned_features_by_condition_other.pdf",width=10,height=3.5)
+ggsave("graphs_round3/mentioned_features_by_condition_other.pdf",width=10,height=3.5)
 
 # plot by half
 agr = targets %>%
@@ -99,7 +98,7 @@ ggplot(agr, aes(x=Utterance,y=Probability,fill=Half)) +
   geom_bar(stat="identity",position=dodge) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25,position=dodge) +
   facet_wrap(~condition)
-ggsave("graphs_round2/mentioned_features_by_condition_other_half.pdf",width=10,height=3.5)
+ggsave("graphs_round3/mentioned_features_by_condition_other_half.pdf",width=10,height=3.5)
 
 # plot by quarter
 agr = targets %>%
@@ -116,17 +115,14 @@ ggplot(agr, aes(x=Utterance,y=Probability,fill=Quarter)) +
   geom_bar(stat="identity",position=dodge) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25,position=dodge) +
   facet_wrap(~condition)
-ggsave("graphs_round2/mentioned_features_by_condition_other_quarter.pdf",width=10,height=3.5)
+ggsave("graphs_round3/mentioned_features_by_condition_other_quarter.pdf",width=10,height=3.5)
 
 # plot individual variation on targets
-# 10 people tend to always mention color redundantly in the size-only condition
-# 7 pepole tend to only mention size in the size-only condition
-# all the redundant size mentions in the color-only condition come from one subject
 ggplot(targets, aes(x=UtteranceType,fill=condition)) +
   geom_histogram() +
   facet_wrap(~gameid) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs_round2/individual_variation.pdf",width=10,height=8)
+ggsave("graphs_round3/individual_variation.pdf",width=10,height=8)
 
 
 ### FILLER ANALYSIS
@@ -160,7 +156,7 @@ summary(gathered)
 ggplot(gathered, aes(x=Mentioned)) +
   geom_histogram() +
   facet_wrap(~Feature)
-ggsave("graphs_round2/fillers.pdf",width=8,height=6)
+ggsave("graphs_round3/fillers.pdf",width=8,height=6)
 
 # test for individual variation in fillers
 gathered = fillers %>%
@@ -177,28 +173,7 @@ ggplot(t, aes(x=Feature,y=Proportion,fill=Feature)) +
   geom_bar(stat="identity") +
   facet_wrap(~gameid) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs_round2/fillers_individuals.pdf",width=11,height=9)
-
-# get only the guys who usually say "type", to look at some examples of where they say "superclass"
-super_short = droplevels(subset(fillers,gameid %in% c("4194-7","5357-c","7844-6","8223-f","1022-7","3261-5") & superclassMentioned == TRUE))
-nrow(super_short)
-super_short[,c("gameid","refExp","nameClickedObj","alt1Name","alt2Name")]
-
-super_long = droplevels(subset(fillers,! (gameid %in% c("4194-7","5357-c","7844-6","8223-f","1022-7","3261-5")) & superclassMentioned == TRUE))
-nrow(super_long)
-super_long[,c("gameid","refExp","nameClickedObj","alt1Name","alt2Name")]
-
-other_short = droplevels(subset(fillers, ! (gameid %in% c("2036-f","2809-4","3700-f","5518-8","3075-1","8879-f")) & otherFeatureMentioned == TRUE))
-nrow(other_short)
-other_short[,c("gameid","refExp","nameClickedObj","alt1Name","alt2Name")]
-
-other_long = droplevels(subset(fillers,gameid %in% c("2036-f","2809-4","3700-f","5518-8","3075-1","8879-f") & otherFeatureMentioned == TRUE))
-nrow(other_long)
-other_long[,c("gameid","refExp","nameClickedObj","alt1Name","alt2Name")]
-
-color = droplevels(subset(fillers, colorMentioned == TRUE))
-nrow(color)
-color[,c("gameid","refExp","nameClickedObj","alt1Name","alt2Name")]
+ggsave("graphs_round3/fillers_individuals.pdf",width=11,height=9)
 
 
 ### ANALYSIS
