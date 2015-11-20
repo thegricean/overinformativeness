@@ -48,7 +48,7 @@ var game_core = function(game_instance){
   // $('#roundnumber').append(this.roundNum + 2);
 
   // How many rounds do we want people to complete?
-  this.numRounds = 108;
+  this.numRounds = 72;
 
   // How many mistakes have the pair made on the current trial?
   this.attemptNum = 0;
@@ -158,25 +158,26 @@ game_core.prototype.newRound = function() {
 // Randomly sets tangram locations for each round
 game_core.prototype.makeTrialList = function () {
   var local_this = this;
-  //console.log(local_this);
   //Make a list of targets and fillers so we can delete objects which have already been used
+  //List of target objects for colorSize experiment:
   var criticalObjsList = _.shuffle(_.filter(objectList, function(x){return x.type == "critical_trial"}));
-  //console.log("criticalObjs", criticalObjsList)
-  //_.shuffle(criticalObjsList);
-  var fillerList = _.shuffle(_.filter(objectList, function(x){return x.type == "filler"}));
-  //console.log("fillers", fillerList)
-  var conditionList = _.shuffle(["filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
-    "filler", "filler", "filler", "filler", "filler", "filler", 
+  //List of target objects for SubSuper experiment:
+  var criticalObjsListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.status == "target")}));
+  //List of distrClass1 objects for SubSuper experiment:
+  var distrClass1ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.status == "distrClass1")}));
+  //List of distrClass2 objects for SubSuper experiment:
+  var distrClass2ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.status == "distrClass2")}));
+  //List of distrClass3 objects for SubSuper experiment:
+  var distrClass3ListSubSuper = _.shuffle(_.clone(distrClass2ListSubSuper));
+  //Make conditions:
+  var conditionList = _.shuffle(["distr12", "distr12", "distr12", "distr12", "distr12", 
+    "distr12", "distr12", "distr12", "distr12", 
+    "distr22", "distr22", "distr22", "distr22", "distr22", 
+    "distr22", "distr22", "distr22", "distr22", 
+    "distr23", "distr23", "distr23", "distr23", "distr23", 
+    "distr23", "distr23", "distr23", "distr23", 
+    "distr33", "distr33", "distr33", "distr33", "distr33", 
+    "distr33", "distr33", "distr33", "distr33", 
     "colorOnly", "colorOnly", "colorOnly", "colorOnly", "colorOnly", "colorOnly", 
     "colorOnly", "colorOnly", "colorOnly", "colorOnly", "colorOnly", "colorOnly", 
     "sizeOnly", "sizeOnly", "sizeOnly", "sizeOnly", "sizeOnly", "sizeOnly", 
@@ -185,37 +186,132 @@ game_core.prototype.makeTrialList = function () {
     "colorAndSize", "colorAndSize", "colorAndSize", "colorAndSize", "colorAndSize", "colorAndSize" 
    ])
   var trialList =_.map(conditionList, function(condition) { //creating a list?
-    if (condition == "filler"){
-      fillerList = _.clone(fillerList);
-      console.log("condition is filler")
-      // Specify the 3 objects:
-      var targetFillerObj = _.sample(fillerList);
-      //Specify distr1:
-      var distr1 = _.sample(fillerList);
-      //Check if disr = target (we want 3 unique objects in the filler conditions!!)
-      while (distr1.name == targetFillerObj.name){distr1 = _.sample(fillerList)};
-      // Specify distr2:
-      var distr2 = _.sample(fillerList);
-      //Check uniqueness
-      while (distr2.name == targetFillerObj.name || distr2.name == distr1.name){distr2 = _.sample(fillerList)};
-      // Specify locations of 3 objects
-      targetFillerObj.targetStatus = "target";
-      distr1.targetStatus = "distractor";
-      distr2.targetStatus = "distractor";
-      // Specify full name of object:
-      targetFillerObj.fullName = targetFillerObj.name ;
-      distr1.fullName = distr1.name;
-      distr2.fullName = distr2.name;
-      // Attach condition attribute to objects
-      targetFillerObj.condition = condition;
-      distr1.condition = condition;
-      distr2.condition = condition;
-      var objectList = [targetFillerObj, distr1, distr2];
-      //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
-      var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
-      var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+    // SubSuper Experiment trials:
+    if (condition == "distr12" || condition == "distr22" || condition == "distr23" || condition == "distr33"){
+      // target list that we can modify s.t. every target is used exactly once
+      criticalObjsListSubSuper = _.clone(criticalObjsListSubSuper);
+      distrClass1ListSubSuper = _.clone(distrClass1ListSubSuper);
+      distrClass2ListSubSuper = _.clone(distrClass2ListSubSuper);
+      distrClass3ListSubSuper = _.clone(distrClass3ListSubSuper);
+      if (condition == "distr12"){
+        console.log("condition is distr12")
+        // Specify the 3 objects:
+        var targetDistr12 = _.sample(criticalObjsListSubSuper);
+        // Remove target from target list s.t. every target is only used once
+        criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr12);
+        // Specify distr1:
+        var distr1Distr12 = _.sample(_.filter(distrClass1ListSubSuper, function(x){ return x.domain == targetDistr12.domain; }));
+        // Remove distr1 from distrClass1 list s.t. every distr in Class1 is only used once
+        distrClass1ListSubSuper = _.without(distrClass1ListSubSuper, distr1Distr12);
+        // Specify distr2:
+        var distr2Distr12 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.domain == targetDistr12.domain; }));
+        // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
+        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr12);
+        // Specify locations of 3 objects
+        targetDistr12.targetStatus = "target";
+        distr1Distr12.targetStatus = "distractor";
+        distr2Distr12.targetStatus = "distractor";
+        // Specify full name of object:
+        targetDistr12.fullName = targetDistr12.name ;
+        distr1Distr12.fullName = distr1Distr12.name;
+        distr2Distr12.fullName = distr2Distr12.name;
+        // Attach condition attribute to objects
+        targetDistr12.condition = condition;
+        distr1Distr12.condition = condition;
+        distr2Distr12.condition = condition;
+        var objectList = [targetDistr12, distr1Distr12, distr2Distr12];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+      } else if (condition == "distr22"){
+        console.log("condition is distr22")
+        // Specify the 3 objects:
+        var targetDistr22 = _.sample(criticalObjsListSubSuper);
+        // Remove target from target list s.t. every target is only used once
+        criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr22);
+        // Specify distr1:
+        var distr1Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.domain == targetDistr22.domain; }));
+        // Remove distr1 from distrClass2 list s.t. every distr in Class2 is only used once
+        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr22);
+        // Specify distr2:
+        var distr2Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.domain == targetDistr22.domain; }));
+        // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
+        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr22);
+        // Specify locations of 3 objects
+        targetDistr22.targetStatus = "target";
+        distr1Distr22.targetStatus = "distractor";
+        distr2Distr22.targetStatus = "distractor";
+        // Specify full name of object:
+        targetDistr22.fullName = targetDistr22.name ;
+        distr1Distr22.fullName = distr1Distr22.name;
+        distr2Distr22.fullName = distr2Distr22.name;
+        // Attach condition attribute to objects
+        targetDistr22.condition = condition;
+        distr1Distr22.condition = condition;
+        distr2Distr22.condition = condition;
+        var objectList = [targetDistr22, distr1Distr22, distr2Distr22];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+      } else if (condition == "distr23"){
+        console.log("condition is distr23")
+        // Specify the 3 objects:
+        var targetDistr23 = _.sample(criticalObjsListSubSuper);
+        // Remove target from target list s.t. every target is only used once
+        criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr23);
+        // Specify distr1:
+        var distr1Distr23 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.domain == targetDistr23.domain; }));
+        // Remove distr1 from distrClass2 list s.t. every distr in Class2 is only used once
+        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr23);
+        // Specify distr2:
+        var distr2Distr23 = _.sample(distrClass3ListSubSuper);
+        while (distr2Distr23.name == distr1Distr23.name){distr2Distr23 = _.sample(distrClass3ListSubSuper)};
+        // Specify locations of 3 objects
+        targetDistr23.targetStatus = "target";
+        distr1Distr23.targetStatus = "distractor";
+        distr2Distr23.targetStatus = "distractor";
+        // Specify full name of object:
+        targetDistr23.fullName = targetDistr23.name ;
+        distr1Distr23.fullName = distr1Distr23.name;
+        distr2Distr23.fullName = distr2Distr23.name;
+        // Attach condition attribute to objects
+        targetDistr23.condition = condition;
+        distr1Distr23.condition = condition;
+        distr2Distr23.condition = condition;
+        var objectList = [targetDistr23, distr1Distr23, distr2Distr23];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+      } else {  //if (condition == "distr33")
+        console.log("condition is distr33")
+        // Specify the 3 objects:
+        var targetDistr33 = _.sample(criticalObjsListSubSuper);
+        // Remove target from target list s.t. every target is only used once
+        criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr33);
+        // Specify distr1:
+        var distr1Distr33 = _.sample(distrClass3ListSubSuper);
+        // Specify distr2:
+        var distr2Distr33 = _.sample(distrClass3ListSubSuper);
+        while (distr2Distr33.name == distr1Distr33.name){distr2Distr33 = _.sample(distrClass3ListSubSuper)};
+        // Specify locations of 3 objects
+        targetDistr33.targetStatus = "target";
+        distr1Distr33.targetStatus = "distractor";
+        distr2Distr33.targetStatus = "distractor";
+        // Specify full name of object:
+        targetDistr33.fullName = targetDistr33.name ;
+        distr1Distr33.fullName = distr1Distr33.name;
+        distr2Distr33.fullName = distr2Distr33.name;
+        // Attach condition attribute to objects
+        targetDistr33.condition = condition;
+        distr1Distr33.condition = condition;
+        distr2Distr33.condition = condition;
+        var objectList = [targetDistr33, distr1Distr33, distr2Distr33];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
+      }
     }
-    //else if it's a critical trial (colorOnly, sizeOnly, colorAndSize):
+    // ColorSize experiment trials:
     else {
       criticalObjsList = _.clone(criticalObjsList);
       // Set the type of the critical object before setting the kind of critical condition, in order to accomodate all objects
@@ -224,7 +320,7 @@ game_core.prototype.makeTrialList = function () {
       if (condition == "colorOnly"){
         console.log("condition is colorOnly");
         var targetCriticalObj = _.sample(criticalObjsList);
-        // console.log("before", criticalObjsList)
+        console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -251,7 +347,6 @@ game_core.prototype.makeTrialList = function () {
         targetCriticalObj.condition = condition;
         distr1.condition = condition;
         distr2.condition = condition;
-        var objectList = [targetFillerObj, distr1, distr2];
         // Specify url of stimuli
         targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
         distr1.url = "stimuli/" + distr1.fullName + ".jpg";

@@ -72,7 +72,7 @@ printObject(others[0]); // this outputs [0]: id [1]: player
         p.player.instance.emit( 'newRoundUpdate', {user: client.userid} );
       });
       gc.newRound() //$('#chatbox').val() != '')  
-    }, 2000);
+    }, 1000);
     
     break; 
   

@@ -370,9 +370,9 @@ client_connect_to_server = function(game) {
     $('#messages').empty();
     if(game.roundNum+2 > game.numRounds) {
       $('#roundnumber').empty()
-      $('#instructs').empty().append("Round " + (game.roundNum + 1) + " of 108");
+      $('#instructs').empty().append("Round " + (game.roundNum + 1) + " of 72");
     } else {
-      $('#roundnumber').empty().append("Round ", game.roundNum + 2, " of 108");
+      $('#roundnumber').empty().append("Round ", game.roundNum + 2, " of 72");
     }
   });
 
