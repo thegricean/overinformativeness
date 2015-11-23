@@ -46,7 +46,7 @@ function make_slides(f) {
      $(".contbutton").click(function() {
 	  var ok_to_go_on = true;
 	  console.log($("#objectlabel").val());
-	  if ($("#objectlabel").val().length < 3) {
+	  if ($("#objectlabel").val().length < 2) {
 	  	ok_to_go_on = false;
 	  }
       if (ok_to_go_on) {
