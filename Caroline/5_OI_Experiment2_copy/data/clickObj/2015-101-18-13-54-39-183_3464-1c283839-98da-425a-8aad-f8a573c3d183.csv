@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+3464-1,1447883689886,1,sizeOnly,small_blue_guitar,target,1,3,big_blue_guitar,distractor,3,2,big_green_guitar,distractor,2,1

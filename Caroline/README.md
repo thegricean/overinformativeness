@@ -37,7 +37,7 @@
 **Judith:** 
 
 1. put study on mturk
-
+instructions
 2. initial pre-processing of speaker data to create columns of color/size mention for each message
 
 **Caroline:**
@@ -46,7 +46,7 @@
 
 2. Add extra columns for type of modification (pre-postnominal).
 
-...then we reconvene and make pretty plots of analyses listed below...
+...then we reconvene and make pretty plots of analyses listed below...objectSet
 
 ## Analyses
 

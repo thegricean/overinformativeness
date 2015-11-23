@@ -1,0 +1,6 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+4870-e,1447653391741,1,filler,schoolbus,target,2,3,football,distractor,1,2,teddybear,distractor,3,1
+4870-e,1447653392145,2,filler,broccoli,target,3,3,pumpkin,distractor,1,2,elephant,distractor,2,1
+4870-e,1447653392337,3,filler,rubberduck,distractor,3,3,cherries,distractor,2,1,garbagecan,target,1,2
+4870-e,1447653392516,4,sizeOnly,small_black_belt,distractor,3,3,big_black_belt,target,1,2,small_brown_belt,distractor,2,1
+4870-e,1447653392701,5,filler,kitten,distractor,3,3,flamingo,distractor,1,2,kiwi,target,2,1

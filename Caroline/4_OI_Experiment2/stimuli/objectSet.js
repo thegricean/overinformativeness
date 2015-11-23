@@ -125,30 +125,22 @@ var schoolbus = {
 	url: 'stimuli/schoolbus.jpg', name: "schoolbus", color: [], size: [], type: "subSuperTrial", status: "target", domain: 6, length: 9, freqBNC: 62, width: 260, height: 127}
 var firetruck = {
 	url: 'stimuli/firetruck.jpg', name: "firetruck", color: [], size: [], type: "subSuperTrial", status: "target", domain: 6, length: 9, freqBNC: 1, width: 260, height: 107}
-var tree = {
-	url: 'stimuli/tree.png', name: "tree", color: [], size: [], type: "subSuperTrial", status: "target", domain: 7, length: 4, freqBNC: 6136, width: 217, height: 262}
-var bush = {
-	url: 'stimuli/bush.jpg', name: "bush", color: [], size: [], type: "subSuperTrial", status: "target", domain: 7, length: 4, freqBNC: 3717, width: 259, height: 188}
-var dandelion = {
-	url: 'stimuli/dandelion.jpg', name: "dandelion", color: [], size: [], type: "subSuperTrial", status: "target", domain: 7, length: 9, freqBNC: 140, width: 189, height: 260}
-var palmTree = {
-	url: 'stimuli/palmTree.png', name: "palmTree", color: [], size: [], type: "subSuperTrial", status: "target", domain: 7, length: 8, freqBNC: 35, width: 175, height: 262}
 var rose = {
 	url: 'stimuli/rose.jpg', name: "rose", color: [], size: [], type: "subSuperTrial", status: "target", domain: 8, length: 4, freqBNC: 10639, width: 207, height: 262}
 var daisy = {
 	url: 'stimuli/daisy.png', name: "daisy", color: [], size: [], type: "subSuperTrial", status: "target", domain: 8, length: 5, freqBNC: 622, width: 186, height: 260}
 var sunflower = {
 	url: 'stimuli/sunflower.png', name: "sunflower", color: [], size: [], type: "subSuperTrial", status: "target", domain: 8, length: 9, freqBNC: 115, width: 237, height: 262}
-var cherryBlossom = {
-	url: 'stimuli/cherryBlossom.jpg', name: "cherryBlossom", color: [], size: [], type: "subSuperTrial", status: "target", domain: 8, length: 13, freqBNC: 22, width: 260, height: 195}
+var dandelion = {
+	url: 'stimuli/dandelion.jpg', name: "dandelion", color: [], size: [], type: "subSuperTrial", status: "target", domain: 7, length: 9, freqBNC: 140, width: 189, height: 260}
 var igloo = {
 	url: 'stimuli/igloo.jpg', name: "igloo", color: [], size: [], type: "subSuperTrial", status: "target", domain: 9, length: 5, freqBNC: 22, width: 260, height: 183}
 var tent = {
 	url: 'stimuli/tent.jpg', name: "tent", color: [], size: [], type: "subSuperTrial", status: "target", domain: 9, length: 4, freqBNC: 1097, width: 260, height: 191}
 var treehouse = {
 	url: 'stimuli/treehouse.jpg', name: "treehouse", color: [], size: [], type: "subSuperTrial", status: "target", domain: 9, length: 9, freqBNC: 30, width: 289, height: 262}
-var apartment = {
-	url: 'stimuli/apartment.jpg', name: "apartment", color: [], size: [], type: "subSuperTrial", status: "target", domain: 9, length: 9, freqBNC: 1233, width: 182, height: 262}
+var highrise = {
+	url: 'stimuli/highrise.jpg', name: "highrise", color: [], size: [], type: "subSuperTrial", status: "target", domain: 9, length: 9, freqBNC: 1233, width: 182, height: 262}
 
 // distrClass1 objects in SubSuperClass manipulation trials (e.g. dog2)
 
@@ -201,14 +193,6 @@ var motorcycle = {
 	url: 'stimuli/motorcycle.jpg', name: "motorcycle", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 6, length: null, freqBNC: null, width: 260, height: 170}
 var garbageTruck = {
 	url: 'stimuli/garbageTruck.jpg', name: "garbageTruck", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 6, length: null, freqBNC: null, width: 260, height: 148}
-var cactus = {
-	url: 'stimuli/cactus.jpg', name: "cactus", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 7, length: null, freqBNC: null, width: 260, height: 253}
-var farn = {
-	url: 'stimuli/farn.jpg', name: "farn", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 7, length: null, freqBNC: null, width: 259, height: 242}
-var moss = {
-	url: 'stimuli/moss.jpg', name: "moss", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 7, length: null, freqBNC: null, width: 260, height: 174}
-var primrose = {
-	url: 'stimuli/primrose.jpg', name: "primrose", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 7, length: null, freqBNC: null, width: 194, height: 261}
 var tulip = {
 	url: 'stimuli/tulip.jpg', name: "tulip", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 8, length: null, freqBNC: null, width: 233, height: 262}
 var lily = {
@@ -221,8 +205,8 @@ var hut = {
 	url: 'stimuli/hut.jpg', name: "hut", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 9, length: null, freqBNC: null, width: 260, height: 259}
 var cottage = {
 	url: 'stimuli/cottage.jpg', name: "cottage", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 9, length: null, freqBNC: null, width: 260, height: 174}
-var caravan = {
-	url: 'stimuli/caravan.jpg', name: "caravan", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 9, length: null, freqBNC: null, width: 260, height: 164}
+var trailer = {
+	url: 'stimuli/trailer.jpg', name: "trailer", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 9, length: null, freqBNC: null, width: 260, height: 164}
 var castle = {
 	url: 'stimuli/castle.jpg', name: "castle", color: [], size: [], type: "subSuperTrial", status: "distrClass1", domain: 9, length: null, freqBNC: null, width: 260, height: 260}
 
@@ -330,23 +314,6 @@ var shirt = {
 var shoes = {
 	url: 'stimuli/shoes.jpg', name: "shoes", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 6, length: null, freqBNC: null, width: 260, height: 142}
 
-var boy = {
-	url: 'stimuli/boy.jpg', name: "boy", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 259, height: 307}
-var girl = {
-	url: 'stimuli/girl.jpg', name: "girl", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 260, height: 248}
-var hamster = {
-	url: 'stimuli/hamster.jpg', name: "hamster", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 236, height: 261}
-var mushroom = {
-	url: 'stimuli/mushroom.png', name: "mushroom", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 246, height: 260}
-var snake = {
-	url: 'stimuli/snake.jpg', name: "snake", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 260, height: 249}
-var lobster = {
-	url: 'stimuli/lobster.jpg', name: "lobster", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 260, height: 225}
-var sheep = {
-	url: 'stimuli/sheep.jpg', name: "sheep", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 250, height: 260}
-var elephant = {
-	url: 'stimuli/elephant.jpg', name: "elephant", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 7, length: null, freqBNC: null, width: 260, height: 175}
-
 var fir = {
 	url: 'stimuli/fir.jpg', name: "fir", color: [], size: [], type: "subSuperTrial", status: "distrClass2", domain: 8, length: null, freqBNC: null, width: 219, height: 262}
 var rosemary = {
@@ -391,18 +358,17 @@ var objectList = [
 
 	pug, lab, dalmatian, greyhound, peas, corn, zucchini, broccoli, lime,
 	kiwi, pineapple, grapefruit, bed, chair2, cupboard, bookshelf, piano, flute, 
-	saxophone, clarinet, car, bike2, schoolbus, firetruck, tree, bush, dandelion, 
-	palmTree, rose, daisy, sunflower, cherryBlossom, igloo, tent, treehouse, apartment, 
+	saxophone, clarinet, car, bike2, schoolbus, firetruck, dandelion, rose, daisy, 
+	sunflower, igloo, tent, treehouse, highrise, 
 	collie, chihuahua, dachshund, beagle, carrot, tomato, pepper2, pumpkin, cherries, 
 	orange, banana, peach, dresser, closet, table, couch, banjo, guitar, violin, trumpet, 
-	train, ship, motorcycle, garbageTruck, cactus, farn, moss, primrose, tulip, lily, 
-	violet, hyacinth, hut, cottage, caravan, castle, bear, penguin, crocodile, horse, 
+	train, ship, motorcycle, garbageTruck, tulip, lily, 
+	violet, hyacinth, hut, cottage, trailer, castle, bear, penguin, crocodile, horse, 
 	flamingo, iguana, rhino, lion, hotdog, fries, bread, cheese, ketchup, sandwich, 
 	chocolate, pancake, cookies, sushi, burger, muffin, pasta, egg, rice, pizza, tv, 
 	rubberduck, camera, teddybear, basketball, tire, baseball, toilet, tennisball, tooth, 
 	football, tophat, smokedetector, pencil, firehydrant, eraser, binoculars, laptop, 
-	garbagecan, backpack, mailbox, shirt, gloves, shoes, boy, girl, hamster, mushroom, snake, 
-	lobster, sheep, elephant, fir, grasses, rosemary, strawberryPlant, ivy, cherryTree, pottedPlant, 
+	garbagecan, backpack, mailbox, shirt, gloves, shoes, fir, grasses, rosemary, strawberryPlant, ivy, cherryTree, pottedPlant, 
 	chive, barber, church, shop, trainStation, museum, airport, school, restaurant
 
 ]

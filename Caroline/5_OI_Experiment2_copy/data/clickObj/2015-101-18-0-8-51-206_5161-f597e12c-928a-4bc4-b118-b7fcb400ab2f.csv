@@ -1,0 +1,3 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+5161-f,1447834134270,1,filler,chick,target,1,2,banana,distractor,2,3,ketchup,distractor,3,1
+5161-f,1447834163332,2,colorOnly,big_green_bracelet,target,1,2,big_purple_bracelet,distractor,2,1,small_purple_bracelet,distractor,3,3

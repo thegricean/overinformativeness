@@ -1,0 +1,2 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+0307-6,1447833773976,1,filler,rubberduck,target,3,2,camera,distractor,1,1,garbagecan,distractor,2,3

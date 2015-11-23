@@ -1,0 +1,4 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+2400-7,1447835733417,1,filler,baseball,target,1,1,chick,distractor,3,2,motorcycle,distractor,2,3
+2400-7,1447835744621,2,filler,snowflake,target,2,3,sheep,distractor,3,2,raspberry,distractor,1,1
+2400-7,1447835754980,3,filler,violin,distractor,2,1,penguin,target,3,2,eggplant,distractor,1,3

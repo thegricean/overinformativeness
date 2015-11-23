@@ -1,0 +1,3 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+3248-4,1447828870075,1,colorAndSize,big_brown_belt,distractor,1,3,small_black_belt,target,2,2,big_brown_belt,distractor,3,1
+3248-4,1447828905110,2,filler,tire,distractor,1,3,garlic,distractor,2,2,football,target,3,1
