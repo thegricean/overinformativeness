@@ -1,2 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-1112-1,1447653453740,1,colorAndSize,big_purple_flower,distractor,2,3,small_red_flower,target,1,2,big_purple_flower,distractor,3,1

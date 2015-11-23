@@ -1,3 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-6005-e,1447694529733,1,filler,dresser,distractor,1,3,firehydrant,distractor,3,1,horse,target,2,2
-6005-e,1447694530249,2,colorAndSize,big_blue_butterfly,distractor,3,3,small_purple_butterfly,target,1,1,big_blue_butterfly,distractor,2,2

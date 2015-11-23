@@ -1,5 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-2833-8,1447697852829,1,filler,polarbear,distractor,2,3,gloves,target,1,2,crocodile,distractor,3,1
-2833-8,1447697853356,2,filler,teddybear,distractor,2,3,tophat,distractor,3,1,trumpet,target,1,2
-2833-8,1447697854026,3,colorOnly,big_black_turtle,distractor,2,3,big_brown_turtle,target,3,1,small_black_turtle,distractor,1,2
-2833-8,1447697854642,4,filler,iguana,distractor,3,3,horse,target,2,2,tomato,distractor,1,1

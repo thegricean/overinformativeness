@@ -1,4 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-3002-c,1447652899477,1,filler,strawberry,distractor,3,3,snake,distractor,1,2,artichoke,target,2,1
-3002-c,1447652900270,2,colorAndSize,small_blue_rug,distractor,2,3,big_purple_rug,target,1,1,small_blue_rug,distractor,3,2
-3002-c,1447652900650,3,filler,coconut,distractor,2,3,carrot,target,1,1,bulldozer,distractor,3,2

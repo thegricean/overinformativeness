@@ -1,2 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-0608-9,1447831601291,1,sizeOnly,small_orange_coathanger,distractor,2,2,small_purple_coathanger,distractor,3,3,big_purple_coathanger,target,1,1

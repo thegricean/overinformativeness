@@ -1,6 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-9935-f,1447697402760,1,filler,tophat,distractor,1,3,snake,target,3,2,tooth,distractor,2,1
-9935-f,1447697403238,2,filler,egg,distractor,2,3,snowflake,distractor,3,1,crocodile,target,1,2
-9935-f,1447697403430,3,filler,pumpkin,target,1,3,lion,distractor,3,1,tophat,distractor,2,2
-9935-f,1447697403617,4,filler,basketball,target,2,3,raspberry,distractor,1,1,lion,distractor,3,2
-9935-f,1447697403816,5,filler,horse,distractor,1,3,artichoke,distractor,2,2,egg,target,3,1

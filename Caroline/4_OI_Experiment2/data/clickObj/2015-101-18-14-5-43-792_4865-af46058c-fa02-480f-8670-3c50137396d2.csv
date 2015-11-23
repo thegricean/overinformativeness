@@ -1,8 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-4865-a,1447884353013,1,filler,football,target,3,1,tomato,distractor,2,2,sheep,distractor,1,3
-4865-a,1447884362017,2,sizeOnly,small_yellow_napkin,target,2,2,big_yellow_napkin,distractor,1,1,big_orange_napkin,distractor,3,3
-4865-a,1447884371991,3,filler,lemon,target,1,1,crocodile,distractor,2,3,dresser,distractor,3,2
-4865-a,1447884382921,4,colorAndSize,small_green_chair,target,1,1,big_red_chair,distractor,3,2,big_red_chair,distractor,2,3
-4865-a,1447884391903,5,filler,fireextinguisher,target,3,3,raspberry,distractor,2,2,eggplant,distractor,1,1
-4865-a,1447884401443,6,filler,television,target,3,1,mailbox,distractor,1,2,sheep,distractor,2,3
-4865-a,1447884411417,7,sizeOnly,big_brown_turtle,target,3,2,small_brown_turtle,distractor,2,1,small_black_turtle,distractor,1,3

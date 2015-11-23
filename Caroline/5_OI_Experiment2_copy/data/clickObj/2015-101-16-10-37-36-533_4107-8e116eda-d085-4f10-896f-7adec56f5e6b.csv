@@ -1,8 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-4107-8,1447699063465,1,sizeOnly,big_purple_stapler,target,2,3,small_purple_stapler,distractor,1,2,small_red_stapler,distractor,3,1
-4107-8,1447699079204,2,filler,binoculars,distractor,2,3,television,distractor,3,2,polarbear,target,1,1
-4107-8,1447699086660,3,colorOnly,big_black_comb,distractor,2,3,small_black_comb,distractor,1,1,big_blue_comb,target,3,2
-4107-8,1447699094386,4,colorOnly,big_green_folder,distractor,2,3,small_green_folder,distractor,1,1,big_blue_folder,target,3,2
-4107-8,1447699104503,5,colorOnly,small_purple_coathanger,distractor,1,3,small_orange_coathanger,target,3,2,big_purple_coathanger,distractor,2,1
-4107-8,1447699112767,6,filler,motorcycle,target,2,2,horse,distractor,1,3,fox,distractor,3,1
-4107-8,1447699121711,7,colorAndSize,big_green_jacket,distractor,2,1,small_brown_jacket,target,1,2,big_green_jacket,distractor,3,3

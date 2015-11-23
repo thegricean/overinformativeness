@@ -1,3 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-5298-0,1447882829005,1,filler,watermelon,target,2,2,penguin,distractor,1,1,tire,distractor,3,3
-5298-0,1447882839355,2,sizeOnly,big_green_bracelet,target,1,2,small_purple_bracelet,distractor,2,1,small_green_bracelet,distractor,3,3

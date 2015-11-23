@@ -1,2 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-9580-8,1447834269934,1,colorOnly,small_orange_billiardball,distractor,3,1,big_purple_billiardball,target,1,2,big_orange_billiardball,distractor,2,3

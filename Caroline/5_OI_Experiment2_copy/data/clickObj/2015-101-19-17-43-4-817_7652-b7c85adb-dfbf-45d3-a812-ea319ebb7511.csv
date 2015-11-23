@@ -1,2 +1,0 @@
-gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
-7652-b,1447983798317,1,distr22,saxophone,target,1,3,smokedetector,distractor,3,1,pencil,distractor,2,2
