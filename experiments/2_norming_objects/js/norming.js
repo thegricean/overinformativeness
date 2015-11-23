@@ -468,7 +468,7 @@ function init() {
 	"item": "train",
 	"objecttype": "vehicle"
 	}     
-  ]).slice(0,10);
+  ]).slice(0,45);
 
   function makeStim(i) {
     //get item
