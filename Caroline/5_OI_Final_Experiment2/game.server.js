@@ -63,8 +63,8 @@ printObject(others[0]); // this outputs [0]: id [1]: player
     // alert("others: " + others[0]);
     //if (client.role == listener)
     //var other = gc.get_others(client.userid);
-    others[0].player.instance.send("s.highlightObjSpeaker." + message_parts[1]);
-    target.instance.send("s.highlightObjListener." + message_parts[1]);
+    others[0].player.instance.send("s.highlightObjSpeaker." + message_parts[3]);
+    target.instance.send("s.highlightObjListener." + message_parts[3]);
     //_.map(, function(p) {p})
     //otherPlayer.send("s.highlightObj." + message_parts[1]) // others.instance.send?, others might be an array
     setTimeout(function() {
@@ -72,7 +72,7 @@ printObject(others[0]); // this outputs [0]: id [1]: player
         p.player.instance.emit( 'newRoundUpdate', {user: client.userid} );
       });
       gc.newRound() //$('#chatbox').val() != '')  
-    }, 1000);
+    }, 5000);
     
     break; 
   

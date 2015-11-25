@@ -140,7 +140,7 @@ client_onMessage = function(data) {
 
     case 'highlightObjSpeaker' :
       var highlightClickObjNameSpe = commanddata;
-      //alert("game.obj names" + game.objects[0].name + game.objects[1].name + game.objects[2].name);
+      //alert("highlightClickObjNameSpe.name" + highlightClickObjNameSpe.name);
       // look through game.objects, find the one with objectName, highlight it
       //alert("gameobjs[0].name: " + game.objects[0].name);
       var cliObjSpe;
