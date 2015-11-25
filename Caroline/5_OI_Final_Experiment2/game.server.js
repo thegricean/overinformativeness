@@ -112,47 +112,47 @@ var writeData = function(client, type, message_parts) {
       var clickedObjSpeakerLocs = message_parts[5];
       var clickedObjListenerLocs = message_parts[6];
       var clickedObjDomain = message_parts[7];
-      var clickedObjStatus = message_parts[8];
+      var clickedObjSuperdomain = message_parts[8];
 
       var alternative1Name = message_parts[9]; 
       var alternative1TargetStatus = message_parts[10];
       var alternative1SpeakerLocs = message_parts[11];
       var alternative1ListenerLocs = message_parts[12];
-      var alternative1Status = message_parts[13];
-      var alternative1Domain = message_parts[14];
+      var alternative1Domain = message_parts[13];
+      var alternative1Superdomain = message_parts[14];
 
       var alternative2Name = message_parts[15]; 
       var alternative2TargetStatus = message_parts[16];
       var alternative2SpeakerLocs = message_parts[17];
       var alternative2ListenerLocs = message_parts[18];
-      var alternative2Status = message_parts[19];
-      var alternative2Domain = message_parts[20];
+      var alternative2Domain = message_parts[19];
+      var alternative2Superdomain = message_parts[20];
 
       var alternative3Name = message_parts[21]; 
       var alternative3TargetStatus = message_parts[22];
       var alternative3SpeakerLocs = message_parts[23];
       var alternative3ListenerLocs = message_parts[24];
-      var alternative3Status = message_parts[25];
-      var alternative3Domain = message_parts[26];
+      var alternative3Domain = message_parts[25];
+      var alternative3Superdomain = message_parts[26];
 
       var alternative4Name = message_parts[27]; 
       var alternative4TargetStatus = message_parts[28];
       var alternative4SpeakerLocs = message_parts[29];
       var alternative4ListenerLocs = message_parts[30];
-      var alternative4Status = message_parts[31];
-      var alternative4Domain = message_parts[32];
+      var alternative4Domain = message_parts[31];
+      var alternative4Superdomain = message_parts[32];
       
       var line = (id + ',' + Date.now() + ',' + roundNum + ',' + trialType + ',' + clickedObjCondition 
         + "," + clickedObjName + "," + clickedObjTargetStatus + "," + clickedObjSpeakerLocs 
-        + "," + clickedObjListenerLocs + ',' + clickedObjDomain + ',' + clickedObjStatus 
+        + "," + clickedObjListenerLocs + ',' + clickedObjDomain + ',' + clickedObjSuperdomain 
         + "," + alternative1Name + "," + alternative1TargetStatus + "," + alternative1SpeakerLocs 
-        + "," + alternative1ListenerLocs + ',' + alternative1Domain + ',' + alternative1Status 
+        + "," + alternative1ListenerLocs + ',' + alternative1Domain + ',' + alternative1Superdomain 
         + "," + alternative2Name + "," + alternative2TargetStatus + "," + alternative2SpeakerLocs 
-        + "," + alternative2ListenerLocs + ',' + alternative2Domain + ',' + alternative2Status
+        + "," + alternative2ListenerLocs + ',' + alternative2Domain + ',' + alternative2Superdomain 
         + "," + alternative3Name + "," + alternative3TargetStatus + "," + alternative3SpeakerLocs 
-        + "," + alternative3ListenerLocs + ',' + alternative3Domain + ',' + alternative3Status 
+        + "," + alternative3ListenerLocs + ',' + alternative3Domain + ',' + alternative3Superdomain  
         + "," + alternative4Name + "," + alternative4TargetStatus + "," + alternative4SpeakerLocs 
-        + "," + alternative4ListenerLocs + ',' + alternative4Domain + ',' + alternative4Status + '\n');
+        + "," + alternative4ListenerLocs + ',' + alternative4Domain + ',' + alternative4Superdomain  + '\n');
       console.log("clickedObj: " + line);
       gc.clickObjStream.write(line, function (err) {if(err) throw err;});
       break;
@@ -215,7 +215,7 @@ game_server.findGame = function(player) {
         game.gamecore.messageStream = fs.createWriteStream(message_f, {'flags' : 'a'});
 
         var clickObj_f = "data/clickObj/" + name + ".csv"
-        fs.writeFile(clickObj_f, "gameid, time, roundNum, trialType, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, domainClickedObj, statusClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt1Domain, alt1Status, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs, alt2Domain, alt2Status, alt3Name, alt3TargetStatus, alt3SpLocs, alt3LisLocs, alt3Domain, alt3Status, alt4Name, alt4TargetStatus, alt4SpLocs, alt4LisLocs, alt4Domain, alt4Status\n", function (err) {if(err) throw err;});
+        fs.writeFile(clickObj_f, "gameid, time, roundNum, trialType, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, domainClickedObj, superdomainClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt1Domain, alt1superdomain, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs, alt2Domain, alt2superdomain, alt3Name, alt3TargetStatus, alt3SpLocs, alt3LisLocs, alt3Domain, alt3superdomain, alt4Name, alt4TargetStatus, alt4SpLocs, alt4LisLocs, alt4Domain, alt4superdomain\n", function (err) {if(err) throw err;});
         game.gamecore.clickObjStream = fs.createWriteStream(clickObj_f, {'flags' : 'a'});
 
         // var nonClickObj_f = "data/nonClickObj/" + name + ".csv"
