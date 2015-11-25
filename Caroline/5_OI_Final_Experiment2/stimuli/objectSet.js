@@ -105,7 +105,7 @@ var grapefruit = {
 	url: 'stimuli/grapefruit.jpg', name: "grapefruit", color: [], size: [], type: "subSuperTrial", targetStatus: "target", domain: "fruit", superdomain: "food", freqBNC: 129, width: 200, height: 200}
 
 var bed = {
-	url: 'stimuli/bed.JPG', name: "bed", color: [], size: [], type: "subSuperTrial", targetStatus: "target", domain: "furniture", superdomain: "object", freqBNC: 14695, width: 200, height: 200}
+	url: 'stimuli/bed.jpg', name: "bed", color: [], size: [], type: "subSuperTrial", targetStatus: "target", domain: "furniture", superdomain: "object", freqBNC: 14695, width: 200, height: 200}
 var lamp = {
 	url: 'stimuli/lamp.jpg', name: "lamp", color: [], size: [], type: "subSuperTrial", targetStatus: "target", domain: "furniture", superdomain: "object", freqBNC: 1245, width: 120, height: 200}
 var wardrobe = {
@@ -192,7 +192,7 @@ var armchair = {
 var couch = {
 	url: 'stimuli/couch.jpg', name: "couch", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", domain: "furniture", superdomain: "object", freqBNC: null, width: 262, height: 123}
 var chair2 = {
-	url: 'stimuli/chair2.JPG', name: "chair2", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", domain: "furniture", superdomain: "object", freqBNC: null, width: 200, height: 200}
+	url: 'stimuli/chair2.jpg', name: "chair2", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", domain: "furniture", superdomain: "object", freqBNC: null, width: 200, height: 200}
 var dresser = {
 	url: 'stimuli/dresser.jpg', name: "dresser", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", domain: "furniture", superdomain: "object", freqBNC: null, width: 204, height: 200}
 
