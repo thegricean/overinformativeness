@@ -1,16 +1,17 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/3_numdistractors_basiclevel/results")
+setwd("/Users/cocolab/overinformativeness/experiments/3_numdistractors_basiclevel/results")
+#setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/3_numdistractors_basiclevel/results")
 source("rscripts/helpers.r")
 
 #load("data/r.RData")
-d = read.table(file="data/result.csv",sep=",", header=T, quote="")
+d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
 head(d)
 nrow(d)
 d$speakerMessages
 summary(d)
 totalnrow = nrow(d)
-d$Half = as.factor(ifelse(d$roundNum < 55, "first","second"))
-d$Quarter = as.factor(ifelse(d$roundNum < 28, "first",ifelse(d$roundNum < 55,"second", ifelse(d$roundNum < 82, "third","fourth"))))
+d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
+d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
 
 # look at turker comments
 comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
@@ -57,7 +58,7 @@ head(agr)
 ggplot(agr, aes(x=Feature)) +
   geom_histogram() +
   facet_wrap(~condition)
-ggsave("graphs_round1/mentioned_features_by_condition.pdf",width=8,height=3.5)
+ggsave("graphs/mentioned_features_by_condition.pdf",width=8,height=3.5)
 
 targets$UtteranceType = as.factor(ifelse(targets$sizeMentioned & targets$colorMentioned, "size and color", ifelse(targets$sizeMentioned, "size", ifelse(targets$colorMentioned, "color","OTHER"))))
 targets = droplevels(targets[!is.na(targets$UtteranceType),])
@@ -80,7 +81,7 @@ ggplot(agr, aes(x=Utterance,y=Probability)) +
   geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~condition)
-ggsave("graphs_round1/mentioned_features_by_condition_other.pdf",width=10,height=3.5)
+ggsave("graphs/mentioned_features_by_condition_other.pdf",width=10,height=3.5)
 
 fillers = droplevels(subset(d, condition == "filler"))
 #fillers$AnyTypeMentioned = fillers$typeMentioned | fillers$otherFeatureMentioned
@@ -96,4 +97,4 @@ ggplot(targets, aes(x=UtteranceType,fill=condition)) +
   geom_histogram() +
   facet_wrap(~gameid) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs_round1/individual_variation.pdf",width=8,height=7)
+ggsave("graphs/individual_variation.pdf",width=8,height=7)
