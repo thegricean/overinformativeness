@@ -19,7 +19,6 @@ d[is.na(d$superclassattributeMentioned),]$superclassattributeMentioned = FALSE
 # look at turker comments
 comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
 unique(comments$comments)
-comments[comments$gameID %in% c("3276-c","0092-1"),]
 
 ggplot(comments, aes(ratePartner)) +
   geom_histogram()
@@ -33,10 +32,10 @@ ggplot(comments, aes(nativeEnglish)) +
 ggplot(comments, aes(totalLength)) +
   geom_histogram()
 
-# first figure out how often target was chosen and exclude trials where it wasn't
+# first figure out how often target was chosen -- exclude trials where it wasn't?
 table(d$condition,d$targetStatusClickedObj)
-prop.table(table(d$condition,d$targetStatusClickedObj),mar=c(1)) # it appears that in the size-only condition, there's twice as many distractor choices (13% vs 7%)
-chisq.test(table(d$condition,d$targetStatusClickedObj))
+# prop.table(table(d$condition,d$targetStatusClickedObj),mar=c(1)) # it appears that in the size-only condition, there's twice as many distractor choices (13% vs 7%)
+# chisq.test(table(d$condition,d$targetStatusClickedObj))
 
 # how many unique pairs?
 length(levels(d$gameid))
@@ -50,12 +49,17 @@ d[d$superclassattributeMentioned == TRUE,]
 table(d$condition,d$colorMentioned)
 table(d$condition,d$sizeMentioned)
 
+### ANALYZE ONLY TRIALS WHERE COLOR/SIZE/NUMDISTRACTORS WAS MANIPULATED
+# exclude pair where listener always seemed to click something completely different
+d = droplevels(d[d$trialType == "colorSizeTrial",])
+totalnrow = nrow(d)
+d = droplevels(d[d$gameid != "3276-c" & d$targetStatusClickedObj == "target",])
+d$typeMentioned = d$TypeMentioned
 
-d = droplevels(d[d$targetStatusClickedObj != "distractor",])
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
-targets = droplevels(subset(d, condition != "filler"))
-nrow(targets) # 319 cases
+targets = d
+nrow(targets) # 642 cases
 agr = targets %>%
   select(sizeMentioned,colorMentioned,typeMentioned,condition) %>%
   gather(Feature,Mentioned,-condition)
@@ -67,7 +71,7 @@ head(agr)
 ggplot(agr, aes(x=Feature)) +
   geom_histogram() +
   facet_wrap(~condition)
-ggsave("graphs_round1/mentioned_features_by_condition.pdf",width=8,height=3.5)
+ggsave("graphs_numdistractors/mentioned_features_by_condition.pdf",width=8,height=3.5)
 
 targets$UtteranceType = as.factor(ifelse(targets$sizeMentioned & targets$colorMentioned, "size and color", ifelse(targets$sizeMentioned, "size", ifelse(targets$colorMentioned, "color","OTHER"))))
 targets = droplevels(targets[!is.na(targets$UtteranceType),])
