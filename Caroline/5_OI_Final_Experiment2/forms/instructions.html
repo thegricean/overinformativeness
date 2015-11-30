@@ -77,7 +77,7 @@
 <p>
 
     Thus, the goal is for the
-    listener to identify the correct object based on what the speaker
+    listener to identify the correct object based on what the speaker has
     said. In order to communicate, you're given a cool chatbox
     where you can send messages back and forth to each other. Here's
     where the speaker can say which object is the target and the
@@ -136,9 +136,9 @@ Just hold tight. Another turker should join the game within the next few minutes
   The listener wants to click on the object that the speaker is
   telling them about.
       </br>
-      <input type="radio" name="mgoal" value="yes"> True
-      </br>
       <input type="radio" name="mgoal" value="no"> False
+      </br>
+      <input type="radio" name="mgoal" value="yes"> True
       </br>
     
 
@@ -159,11 +159,11 @@ Just hold tight. Another turker should join the game within the next few minutes
       </br>
 
   </br> 
-  There are a total of 108 rounds.
-      </br>
-      <input type="radio" name="comp" value="yes"> True
+  There are a total of 72 rounds.
       </br>
       <input type="radio" name="comp" value="no"> False
+      </br>
+      <input type="radio" name="comp" value="yes"> True
       </br>
 
   </br> 
@@ -215,7 +215,7 @@ Just hold tight. Another turker should join the game within the next few minutes
         var ans7 = $('input[name="completed"]:checked').val();
 
         if(ans1 == "yes" && ans2 == "yes" && ans3 == "yes" && 
-           ans4 == "yes" && ans5 == "yes" && ans6 == "yes" && ans7 ++ "yes") { 
+           ans4 == "yes" && ans5 == "yes" && ans6 == "yes" && ans7 == "yes") { 
            var workerId = urlParams.workerId;
            var assignmentId = urlParams.assignmentId;
            var hitId = urlParams.hitId;
