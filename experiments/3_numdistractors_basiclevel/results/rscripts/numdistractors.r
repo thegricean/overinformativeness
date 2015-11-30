@@ -1,9 +1,9 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/1_gatt_replication/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/3_numdistractors_basiclevel/results")
 source("rscripts/helpers.r")
 
 #load("data/r.RData")
-d = read.table(file="data/results_round1_modified.csv",sep=",", header=T, quote="")
+d = read.table(file="data/result.csv",sep=",", header=T, quote="")
 head(d)
 nrow(d)
 d$speakerMessages
@@ -13,8 +13,9 @@ d$Half = as.factor(ifelse(d$roundNum < 55, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 28, "first",ifelse(d$roundNum < 55,"second", ifelse(d$roundNum < 82, "third","fourth"))))
 
 # look at turker comments
-comments = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
+comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
 unique(comments$comments)
+comments[comments$gameID %in% c("3276-c","0092-1"),]
 
 ggplot(comments, aes(ratePartner)) +
   geom_histogram()
