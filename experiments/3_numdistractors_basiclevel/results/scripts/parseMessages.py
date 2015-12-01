@@ -2,9 +2,9 @@ import os, csv
 
 datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/5_OI_Final_Experiment2/data/"
 
-csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/5_OI_Final_Experiment2/data/message/") if (o.endswith('csv') & o.startswith('2015-101-30'))]
+csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/5_OI_Final_Experiment2/data/message/") if (o.endswith('csv') & o.startswith('2015-111-'))]
 
-csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/5_OI_Final_Experiment2/data/clickObj/") if (o.endswith('csv') & o.startswith('2015-101-30'))]
+csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/5_OI_Final_Experiment2/data/clickObj/") if (o.endswith('csv') & o.startswith('2015-111-'))]
 
 
 # helper function to get messages associated with a particular trial
@@ -133,7 +133,7 @@ headers.append('clickedColor')
 
 #print triallines[0].keys()
 
-w = csv.DictWriter(open("../data/results.csv", "wb"),fieldnames=headers,restval="NA",delimiter="\t")
+w = csv.DictWriter(open("../data/results_round2.csv", "wb"),fieldnames=headers,restval="NA",delimiter="\t")
 w.writeheader()
 w.writerows(finaltriallines)
 			
