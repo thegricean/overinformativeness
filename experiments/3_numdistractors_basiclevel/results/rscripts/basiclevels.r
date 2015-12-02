@@ -4,7 +4,10 @@ setwd("/Users/cocolab/overinformativeness/experiments/3_numdistractors_basicleve
 source("rscripts/helpers.r")
 
 #load("data/r.RData")
-d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
+d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
+d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
+d2$TypeMentioned = d2$typeMentioned
+d = merge(d1,d2,all=T)
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
 head(d)
@@ -21,9 +24,10 @@ d[is.na(d$superclassattributeMentioned),]$superclassattributeMentioned = FALSE
 d[is.na(d$utteranceContracted),]$utteranceContracted = FALSE
 
 # look at turker comments
-comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
+c1 = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
+c2 = read.table(file="data/overinf_round2.csv",sep=",", header=T, quote="")
+comments = rbind(c1,c2)
 unique(comments$comments)
-comments[comments$gameID %in% c("3276-c","0092-1"),]
 
 ggplot(comments, aes(ratePartner)) +
   geom_histogram()
@@ -40,10 +44,10 @@ ggplot(comments, aes(totalLength)) +
 # first figure out how often target was chosen and exclude trials where it wasn't
 table(d$condition,d$targetStatusClickedObj)
 prop.table(table(d$condition,d$targetStatusClickedObj),mar=c(1)) # it appears that in the size-only condition, there's twice as many distractor choices (13% vs 7%)
-chisq.test(table(d$condition,d$targetStatusClickedObj))
+#chisq.test(table(d$condition,d$targetStatusClickedObj))
 
 # how many unique pairs?
-length(levels(d$gameid))
+length(levels(d$gameid)) # 28
 
 # Only look at basiclevel conditions: distr12, distr22, distr23, distr33:
 

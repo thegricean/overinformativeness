@@ -2,22 +2,29 @@ theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/3_numdistractors_basiclevel/results")
 source("rscripts/helpers.r")
 
-#load("data/r.RData")
-d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
+d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
+d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
+d2$TypeMentioned = d2$typeMentioned
+d = merge(d1,d2,all=T)
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
 head(d)
 nrow(d)
-d$speakerMessages
+#d$speakerMessages
 summary(d)
 totalnrow = nrow(d)
 totalnrow
+d[is.na(d$TypeMentioned),]$TypeMentioned = FALSE
+d[is.na(d$otherFeatureMentioned),]$otherFeatureMentioned = FALSE
 d[is.na(d$superClassMentioned),]$superClassMentioned = FALSE
 d[is.na(d$superSuperClassMentioned),]$superSuperClassMentioned = FALSE
 d[is.na(d$superclassattributeMentioned),]$superclassattributeMentioned = FALSE
+d[is.na(d$utteranceContracted),]$utteranceContracted = FALSE
 
 # look at turker comments
-comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
+c1 = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
+c2 = read.table(file="data/overinf_round2.csv",sep=",", header=T, quote="")
+comments = rbind(c1,c2)
 unique(comments$comments)
 
 ggplot(comments, aes(ratePartner)) +
@@ -38,7 +45,7 @@ table(d$condition,d$targetStatusClickedObj)
 # chisq.test(table(d$condition,d$targetStatusClickedObj))
 
 # how many unique pairs?
-length(levels(d$gameid))
+length(levels(d$gameid)) # 28
 
 table(d$condition,d$TypeMentioned)
 table(d$condition,d$superClassMentioned)
@@ -180,7 +187,7 @@ contrasts(centered$redUtterance)
 contrasts(centered$SufficientProperty)
 
 pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame")])
-m = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1|gameid) + (1|Item), data=centered, family="binomial")
+m = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1+cRatioOfDiffToSame|gameid) + (1|Item), data=centered, family="binomial")
 summary(m)
 
 
