@@ -103,7 +103,7 @@ if('undefined' != typeof global) {
   //var objectList = _.shuffle(require('./stimuli/objectSet')); // import stimuli
   //Caroline adds fillerList and criticalObjList // Never mind! doesn't work, 
   //since we need to loop through all 108 objects at once :( INSTEAD:
-  var objectList = require('./stimuli/objectSet'); // import stimuli
+  var objectList = _.map(require('./stimuli/objectSet', _.clone)); // import stimuli
   //var criticalObjList = _.shuffle(require('./stimuli/objectSet')); // import critical stimuli
   //var fillerList = _.shuffle(require('./stimuli/objectSet')); // import fillers
   // test:
@@ -160,17 +160,17 @@ game_core.prototype.makeTrialList = function () {
   var local_this = this;
   //Make a list of targets and fillers so we can delete objects which have already been used
   //List of target objects for colorSize experiment:
-  var criticalObjsList = _.shuffle(_.filter(objectList, function(x){return x.type == "colorSizeTrial"}));
+  var criticalObjsList = _.map(_.shuffle(_.filter(objectList, function(x){return x.type == "colorSizeTrial"})), _.clone);
   //List of target objects for SubSuper experiment:
-  var criticalObjsListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "target")}));
+  var criticalObjsListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "target")})), _.clone);
   //List of distrClass1 objects for SubSuper experiment:
-  var distrClass1ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass1")}));
+  var distrClass1ListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass1")})), _.clone);
   //List of distrClass2 objects for SubSuper experiment:
-  var distrClass2ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass2")}));
+  var distrClass2ListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass2")})), _.clone);
   //List of distrClass3 objects for SubSuper experiment:
-  var distrClass3ListSubSuper = _.shuffle(_.clone(distrClass2ListSubSuper));
+  var distrClass3ListSubSuper = _.shuffle(distrClass2ListSubSuper);
   //Get black stimulus
-  var blackStimulus1 = (_.filter(objectList, function(x){return x.type == "blackStimulus"}))[0];
+  var blackStimulus1 = _.map(_.filter(objectList, function(x){return x.type == "blackStimulus"}), _.clone)[0];
   var blackStimulus2 = _.clone(blackStimulus1);
   //Make conditions:
   var conditionList = _.shuffle(["distr12", "distr12", "distr12", "distr12", "distr12", 
