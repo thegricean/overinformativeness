@@ -229,6 +229,7 @@ ggplot(agr, aes(x=condition,y=Probability)) +
 ggsave("graphs_basiclevel/all_proportion_mentioned_features_by_feature.pdf",width=10,height=10)
 
 # We want to include the domain:
+#!!!! I don't know if this makes sense, in incorrect trials the domain of the clicked obj is not the domain of the target
 
 # Since we're including incorrect trials, the domain value may be NA.
 # Exclude domain=NAs
@@ -281,31 +282,188 @@ ggplot(agr, aes(x=condition,y=Probability)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/all_proportion_mentioned_features_by_feature_by_domain.pdf",width=10,height=10)
 
-# let's look at the dog domain:
+# # let's look at the dog domain:
+# 
+# dogs = droplevels(subset(bd, domainClickedObj == "dog"))
+# head(dogs)
+# summary(dogs)
+# nrow(dogs)
+# 
+# agr = dogs %>%
+#   select(TypeMentioned,superClassMentioned,superSuperClassMentioned, superclassattributeMentioned, condition, nameClickedObj) %>%
+#   gather(Feature,Mentioned,-condition, -nameClickedObj)
+# agr$Feature = gsub("Mentioned","",as.character(agr$Feature))
+# agr = droplevels(subset(agr,Mentioned == "TRUE"))
+# head(agr)
+# 
+# # plot histogram of mentioned features by condition
+# ggplot(agr, aes(x=Feature)) +
+#   geom_histogram() +
+#   facet_wrap(~condition) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+# ggsave("graphs_basiclevel/dogs_frequency_mentioned_features_by_condition.pdf",width=8,height=10)
 
-dogs = droplevels(subset(bd, domainClickedObj == "dog"))
-head(dogs)
-summary(dogs)
-nrow(dogs)
+# Analysis of word length effect: (only for correct trials!)
 
-agr = dogs %>%
-  select(TypeMentioned,superClassMentioned,superSuperClassMentioned, superclassattributeMentioned, condition, nameClickedObj) %>%
-  gather(Feature,Mentioned,-condition, -nameClickedObj)
-agr$Feature = gsub("Mentioned","",as.character(agr$Feature))
-agr = droplevels(subset(agr,Mentioned == "TRUE"))
-head(agr)
+#Add new variable which encodes relative word length (shorter or longer) of type class to superclass
+bdCorrect$TypeLength = nchar(as.character(bdCorrect$nameClickedObj))
+head(bdCorrect$TypeLength)
+bdCorrect$SuperClassLength = nchar(as.character(bdCorrect$domainClickedObj))
+bdCorrect$TypeShorter = ifelse(bdCorrect$TypeLength < bdCorrect$SuperClassLength, "type_shorter","type_longer")
 
-# plot histogram of mentioned features by condition
-ggplot(agr, aes(x=Feature)) +
-  geom_histogram() +
-  facet_wrap(~condition) +
+# plot histogram with probabilities
+
+agr = bdCorrect %>%
+  select(TypeMentioned,superClassMentioned,superSuperClassMentioned, superclassattributeMentioned, domainClickedObj, condition, TypeShorter) %>%
+  gather(Utterance,Mentioned,-condition, -domainClickedObj, -TypeShorter) %>%
+  group_by(Utterance,condition, domainClickedObj, TypeShorter) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=TypeShorter)) +
+#ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~condition) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("graphs_basiclevel/dogs_frequency_mentioned_features_by_condition.pdf",width=8,height=10)
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_condition_by_domain_by_length.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=TypeShorter)) +
+#ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_domain_by_length.pdf",width=10,height=10)
+
+# same analysis with length bins: 
+
+#Add new variable which encodes absolute word length bins of clickedObj
+
+head(bdCorrect$TypeLength)
+
+# getAbsLengthLabel <- function(row) {
+#   if(row$TypeLength < 4) {
+#     return "type_length_<4";
+#   }
+# }
+# 
+# if (bdCorrect$TypeLength < 4) {
+#   bdCorrect$absLength = "type_length_<4"
+# # } else if (bdCorrect$TypeLength < 7 & bdCorrect$TypeLength > 3) {
+# #   bdCorrect$absLength = "type_length_4-6"
+# # } else if (bdCorrect$TypeLength < 10 & bdCorrect$TypeLength > 6) {
+# #   bdCorrect$absLength = "type_length_7-9"
+# } else {   #if (bdCorrect$Typelength > 9)
+#   bdCorrect$absLength = "type_length_>10"
+# }
 
 
 
-plot(agr$nameClickedObj, agr$Feature)
+# 4 bins
 
+bdCorrect$typeNumOfChar = ifelse(bdCorrect$TypeLength < 4, "01-03",
+                             ifelse((bdCorrect$TypeLength < 7 & bdCorrect$TypeLength > 3), "04-06", 
+                                    ifelse((bdCorrect$TypeLength < 10 & bdCorrect$TypeLength > 6), "07-09", "10+" )))
+
+head(bdCorrect$typeNumOfChar)
+head(bdCorrect)
+
+# plot histogram with probabilities
+
+agr = bdCorrect %>%
+  select(TypeMentioned,superClassMentioned,superSuperClassMentioned, superclassattributeMentioned, domainClickedObj, condition, typeNumOfChar) %>%
+  gather(Utterance,Mentioned,-condition, -domainClickedObj, -typeNumOfChar) %>%
+  group_by(Utterance,condition, domainClickedObj, typeNumOfChar) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=typeNumOfChar)) +
+  #ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~condition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_condition_by_domain_by_length_4bins.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=typeNumOfChar)) +
+  #ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_domain_by_length_4bins.pdf",width=10,height=10)
+
+
+# 6 bins:
+
+
+bdCorrect$typeNumOfChar6bins = ifelse(bdCorrect$TypeLength < 4, "01-03",
+                                 ifelse((bdCorrect$TypeLength < 6 & bdCorrect$TypeLength > 3), "04-05", 
+                                        ifelse((bdCorrect$TypeLength < 8 & bdCorrect$TypeLength > 5), "06-07", 
+                                               ifelse((bdCorrect$TypeLength < 10 & bdCorrect$TypeLength > 7), "08-09",  
+                                                      ifelse((bdCorrect$TypeLength < 12 & bdCorrect$TypeLength > 9), "10-11", "12+" )))))
+
+head(bdCorrect$typeNumOfChar6bins)
+head(bdCorrect)
+
+# plot histogram with probabilities
+
+agr = bdCorrect %>%
+  select(TypeMentioned,superClassMentioned,superSuperClassMentioned, superclassattributeMentioned, domainClickedObj, condition, typeNumOfChar6bins) %>%
+  gather(Utterance,Mentioned,-condition, -domainClickedObj, -typeNumOfChar6bins) %>%
+  group_by(Utterance,condition, domainClickedObj, typeNumOfChar6bins) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=typeNumOfChar6bins)) +
+  #ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~condition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_condition_by_domain_by_length_6bins.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=typeNumOfChar6bins)) +
+  #ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(domainClickedObj~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_domain_by_length_6bins.pdf",width=10,height=10)
+
+
+  
 # # facet_grid(domainClickedObj~Utterance)
 # 
 # 
