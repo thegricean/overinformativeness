@@ -106,7 +106,75 @@ Color typicality & More redundant use of color with decreasing color typicality 
 \subsection{Number of distractors}
 \label{sec:numdistmodel}
 
-\red{show the model's predictions for varying number of distractors. show how those predictions vary as a function of the type of distractors -- novel! report experiment! (to be done)}
+The extended noisy semantics model makes a number of novel predictions for the rate of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of a) the number of distractor items and b) the features of those distractor objects. It has been shown in the past that overmodification increases with the number of distractors that are present \cite{bla}. It has also been established that there is more overmodification in polychrome rather than monochrome displays \cite{bla -- see paula's paper} and in scenes in which objects differ along more feature dimensions \cite{koolen bla}. \red{or save the scene variation stuff for the next section?}
+
+The noisy semantics model's predictions are shown in \figref{fig:numdistractors}. \red{spell out the different conditions and why they're interesting -- why not just number of distractors, why TYPE as well?}
+
+\begin{figure}
+\label{fig:numdistractors}
+\end{figure}
+
+To test the model's predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
+
+\subsubsection{Method}
+
+\paragraph{Participants}
+
+We recruited 30 pairs of participants (60 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. Here and in all other experiments reported in this paper, participants’ IP address was limited to US addresses only and only participants with a past work approval rate of at least 95\% were accepted.
+
+\paragraph{Procedure}
+
+Participants were paired up via \red{is there something in robert's tools to cite?}. In each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, they had to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}
+
+On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects was highlighted with a green border. See \figref{fig:exampledisplay} for an example of the listener's and speaker's view on a particular trial.
+
+\begin{figure}
+\label{fig:exampledisplay}
+\red{insert example display}
+\end{figure}
+
+The speaker produced a referring expression to communicate the target to the listener by typing into a chatbox. After pressing Enter or clicking the `Send' button, the speaker's message was shown to the listener. The listener then clicked on the object they thought was the target, given the speaker's message.  Once the listener clicked an object, a red border appeared around that object in both the listener and the speaker's display for 1 second before advancing to the next trial.
+
+Both speakers and listeners could write in the chatbox. Listeners could only click on an object and advance to the next trial once the speaker had sent a message. 
+
+\paragraph{Materials}
+
+Participants proceeded through 72 trials. Of these, half were critical trials of interest and half were filler trials. On critical trials, we varied the feature that was sufficient to mention for uniquely establishing reference, the total number of objects in the array, and  the number of objects that shared the non-sufficient feature with the target. 
+
+Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:sizevscolor} for an example of a size-sufficient and color-sufficient item. 
+
+\begin{figure}
+\label{fig:sizevscolor}
+\red{insert example of size vs color sufficient condition}
+\end{figure}
+
+\begin{table}
+\label{tab:numdistractorconditions}
+
+The number of distractor objects in each array was either 2 (12 trials) or 4 (24 trials). Finally, we varied the number of distractors that shared the non-sufficient property with the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing, i.e.~it would not have been redundant to mention it. \red{CONTINUE HERE}
+
+\caption{Number of trials in each condition.}
+\centering
+	\begin{tabular}{c c c}
+	\toprule
+	Distractors & Feature-sharing distractors & Trials \\
+	\midrule
+	2 & 1 & 6\\
+	2 & 2 & 6\\
+	4 & 1 & 6\\
+	4 & 2 & 6\\
+	4 & 3 & 6\\
+	4 & 4 & 6\\			
+	\bottomrule
+	\end{tabular}
+\end{table}
+
+\red{briefly describe fillers}
+
+
+
+\subsubsection{Results}
+
 
 \subsection{Scene variation}
 \label{sec:scenevarmodel}
@@ -124,6 +192,28 @@ Color typicality & More redundant use of color with decreasing color typicality 
 
 
 \appendix
+
+\section{Validation of interactive web-based written production paradigm}
+\label{app:replication}
+
+\section{Pre-experiment quiz}
+\label{app:numdistractors}
+
+Before continuing to the main experiment, each participant had to correctly respond ``True'' or ``False'' to the following statements. Correct answers are given in parentheses after the statement.
+
+\begin{itemize}
+	\item The speaker can click on an object. (False)
+	\item The listener wants to click on the object that the speaker is
+  telling them about. (True)
+  \item  The target is the object which has the red circle around it. (False)
+  \item Only the speaker can send messages. (False)
+  \item There are a total of 72 rounds. (True)
+  \item The locations of the three objects are the same for the speaker and the listener. (False)
+\end{itemize}
+
+
+
+\red{report Gatt et al 2011 replication}
 
 \bibliographystyle{apacite}
 
