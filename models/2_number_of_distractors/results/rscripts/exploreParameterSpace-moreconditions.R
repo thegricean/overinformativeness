@@ -97,4 +97,3 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
 ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.pdf",width=12,height=3.5)
 ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.jpg",width=15,height=4)
 
-
