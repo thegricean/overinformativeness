@@ -103,7 +103,7 @@ if('undefined' != typeof global) {
   //var objectList = _.shuffle(require('./stimuli/objectSet')); // import stimuli
   //Caroline adds fillerList and criticalObjList // Never mind! doesn't work, 
   //since we need to loop through all 108 objects at once :( INSTEAD:
-  var objectList = require('./stimuli/objectSet'); // import stimuli
+  var objectList = _.map(require('./stimuli/objectSet', _.clone)); // import stimuli
   //var criticalObjList = _.shuffle(require('./stimuli/objectSet')); // import critical stimuli
   //var fillerList = _.shuffle(require('./stimuli/objectSet')); // import fillers
   // test:
@@ -160,17 +160,17 @@ game_core.prototype.makeTrialList = function () {
   var local_this = this;
   //Make a list of targets and fillers so we can delete objects which have already been used
   //List of target objects for colorSize experiment:
-  var criticalObjsList = _.shuffle(_.filter(objectList, function(x){return x.type == "colorSizeTrial"}));
+  var criticalObjsList = _.map(_.shuffle(_.filter(objectList, function(x){return x.type == "colorSizeTrial"})), _.clone);
   //List of target objects for SubSuper experiment:
-  var criticalObjsListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "target")}));
+  var criticalObjsListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "target")})), _.clone);
   //List of distrClass1 objects for SubSuper experiment:
-  var distrClass1ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass1")}));
+  var distrClass1ListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass1")})), _.clone);
   //List of distrClass2 objects for SubSuper experiment:
-  var distrClass2ListSubSuper = _.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass2")}));
+  var distrClass2ListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass2")})), _.clone);
   //List of distrClass3 objects for SubSuper experiment:
   var distrClass3ListSubSuper = _.shuffle(_.clone(distrClass2ListSubSuper));
   //Get black stimulus
-  var blackStimulus1 = (_.filter(objectList, function(x){return x.type == "blackStimulus"}))[0];
+  var blackStimulus1 = _.map(_.filter(objectList, function(x){return x.type == "blackStimulus"}), _.clone)[0];
   var blackStimulus2 = _.clone(blackStimulus1);
   //Make conditions:
   var conditionList = _.shuffle(["distr12", "distr12", "distr12", "distr12", "distr12", 
@@ -181,15 +181,18 @@ game_core.prototype.makeTrialList = function () {
     "distr23", "distr23", "distr23", "distr23", 
     "distr33", "distr33", "distr33", "distr33", "distr33", 
     "distr33", "distr33", "distr33", "distr33", 
-    "colorOnly4Distr1Same", "colorOnly4Distr1Same", "colorOnly4Distr2Same", "colorOnly4Distr2Same", 
-    "colorOnly4Distr3Same", "colorOnly4Distr3Same", "colorOnly4Distr4Same", "colorOnly4Distr4Same", 
-    "colorOnly2Distr1Same", "colorOnly2Distr1Same", "colorOnly2Distr2Same", "colorOnly2Distr2Same", 
-    "sizeOnly4Distr1Same", "sizeOnly4Distr1Same", "sizeOnly4Distr2Same", "sizeOnly4Distr2Same", 
-    "sizeOnly4Distr3Same", "sizeOnly4Distr3Same", "sizeOnly4Distr4Same", "sizeOnly4Distr4Same", 
-    "sizeOnly2Distr1Same", "sizeOnly2Distr1Same", "sizeOnly2Distr2Same", "sizeOnly2Distr2Same", 
-    "sizeOnly4Distr1Same", "sizeOnly4Distr1Same", "sizeOnly4Distr2Same", "sizeOnly4Distr2Same", 
-    "sizeOnly4Distr3Same", "sizeOnly4Distr3Same", "sizeOnly4Distr4Same", "sizeOnly4Distr4Same", 
-    "sizeOnly2Distr1Same", "sizeOnly2Distr1Same", "sizeOnly2Distr2Same", "sizeOnly2Distr2Same"
+
+    "colorOnly4Distr1Same", "colorOnly4Distr1Same", "colorOnly3Distr1Same", "colorOnly3Distr1Same", 
+    "colorOnly4Distr3Same", "colorOnly4Distr3Same", "colorOnly3Distr2Same", "colorOnly3Distr2Same", 
+    "colorOnly2Distr1Same", "colorOnly2Distr1Same", "colorOnly3Distr3Same", "colorOnly3Distr3Same", 
+
+    "sizeOnly4Distr1Same", "sizeOnly4Distr1Same", "sizeOnly3Distr1Same", "sizeOnly3Distr1Same", 
+    "sizeOnly4Distr3Same", "sizeOnly4Distr3Same", "sizeOnly3Distr2Same", "sizeOnly3Distr2Same", 
+    "sizeOnly2Distr1Same", "sizeOnly2Distr1Same", "sizeOnly3Distr3Same", "sizeOnly3Distr3Same", 
+
+    "sizeOnly4Distr1Same", "sizeOnly4Distr1Same", "sizeOnly3Distr1Same", "sizeOnly3Distr1Same", 
+    "sizeOnly4Distr3Same", "sizeOnly4Distr3Same", "sizeOnly3Distr2Same", "sizeOnly3Distr2Same", 
+    "sizeOnly2Distr1Same", "sizeOnly2Distr1Same", "sizeOnly3Distr3Same", "sizeOnly3Distr3Same"
    ])
   var trialList =_.map(conditionList, function(condition) { //creating a list?
     // SubSuper Experiment trials:
@@ -206,9 +209,9 @@ game_core.prototype.makeTrialList = function () {
         // Remove target from target list s.t. every target is only used once
         criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr12);
         // Specify distr1:
-        var distr1Distr12 = _.sample(_.filter(distrClass1ListSubSuper, function(x){ return x.domain == targetDistr12.domain; }));
-        // Remove distr1 from distrClass1 list s.t. every distr in Class1 is only used once
-        distrClass1ListSubSuper = _.without(distrClass1ListSubSuper, distr1Distr12);
+        var distr1Distr12 = _.sample(_.filter(distrClass1ListSubSuper, function(x){ return x.basiclevel == targetDistr12.basiclevel; }));
+        // Remove distr1 from distrClass1 list s.t. every distr in Class1 is only used once //not necessary since there's only one
+        //distrClass1ListSubSuper = _.without(distrClass1ListSubSuper, distr1Distr12);
         // Specify distr2:
         var distr2Distr12 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr12.superdomain; }));
         // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
@@ -239,13 +242,17 @@ game_core.prototype.makeTrialList = function () {
         // Remove target from target list s.t. every target is only used once
         criticalObjsListSubSuper = _.without(criticalObjsListSubSuper, targetDistr22);
         // Specify distr1:
+        //console.log("x: " + x[0]);
         var distr1Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }));
+        //console.log("distr1 distr22" + distr1Distr22.name)
         // Remove distr1 from distrClass2 list s.t. every distr in Class2 is only used once
         distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr22);
         // Specify distr2:
         var distr2Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }));
+        while (distr2Distr22.name == distr1Distr22.name){distr2Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }))};
+        //console.log("distr distr22" + distr2Distr22.name)
         // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
-        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr22);
+        //distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr22);
         // // Specify locations of 3 objects
         // targetDistr22.targetStatus = "target";
         // distr1Distr22.targetStatus = "distractor";
@@ -343,7 +350,7 @@ game_core.prototype.makeTrialList = function () {
       if (condition == "colorOnly2Distr1Same"){
         console.log("condition is colorOnly2Distr1Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -378,16 +385,18 @@ game_core.prototype.makeTrialList = function () {
         helper1 = _.shuffle([[4,1], [2,1], [3,1]]);
         helper2 = _.shuffle([[4,1], [2,1], [3,1]]);
         var speakerLocs = [[1,1], helper1[0], helper1[1], helper1[2], [5,1]];
-        var listenerLocs = [[1,1], helper2[0], helper2[1], helper2[2], [5,1]];      }
-      else if (condition == "colorOnly2Distr2Same"){
-        console.log("condition is colorOnly2Distr2Same");
+        var listenerLocs = [[1,1], helper2[0], helper2[1], helper2[2], [5,1]];      
+      }
+      else if (condition == "colorOnly3Distr1Same"){
+        console.log("condition is colorOnly3Distr1Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
         var distr1 = _.clone(targetCriticalObj);
         var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
         // Properties of target:
         var colorCriticalObj = _.sample(targetCriticalObj.color);
         var sizeCriticalObj = _.sample(targetCriticalObj.size);
@@ -396,33 +405,139 @@ game_core.prototype.makeTrialList = function () {
         var sizeDistr1 = sizeCriticalObj;
         // Properties of distractor 2:
         var colorDistr2 = colorDistr1;
-        var sizeDistr2 = sizeDistr1;
+        var sizeDistr2 = _.without(targetCriticalObj.size, sizeCriticalObj);
+        // Properties of distractor 3:
+        var colorDistr3 = colorDistr1;
+        var sizeDistr3 = sizeDistr2;
         // Target status
         targetCriticalObj.targetStatus = "target";
         distr1.targetStatus = "distractor";
         distr2.targetStatus = "distractor";
+        distr3.targetStatus = "distractor";
         // Specify full name of object:
         targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
         distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
         distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
         // Attach condition attribute to objects
         targetCriticalObj.condition = condition;
         distr1.condition = condition;
         distr2.condition = condition;
+        distr3.condition = condition;
         // Specify url of stimuli
         targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
         distr1.url = "stimuli/" + distr1.fullName + ".jpg";
         distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        var objectList = [blackStimulus1, targetCriticalObj, distr1, distr2, blackStimulus2];
-        helper1 = _.shuffle([[4,1], [2,1], [3,1]]);
-        helper2 = _.shuffle([[4,1], [2,1], [3,1]]);
-        var speakerLocs = [[1,1], helper1[0], helper1[1], helper1[2], [5,1]];
-        var listenerLocs = [[1,1], helper2[0], helper2[1], helper2[2], [5,1]];
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
+      }
+      else if (condition == "colorOnly3Distr2Same"){
+        console.log("condition is colorOnly3Distr2Same");
+        var targetCriticalObj = _.sample(criticalObjsList);
+        //console.log("targetCriticalObj: ", targetCriticalObj)
+        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
+        // console.log("after", criticalObjsList)
+        //Initialize distractors, which are the same object as the target object in critical trials:
+        var distr1 = _.clone(targetCriticalObj);
+        var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
+        // Properties of target:
+        var colorCriticalObj = _.sample(targetCriticalObj.color);
+        var sizeCriticalObj = _.sample(targetCriticalObj.size);
+        // Properties of distractor 1:
+        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
+        var sizeDistr1 = sizeCriticalObj;
+        // Properties of distractor 2:
+        var colorDistr2 = colorDistr1;
+        var sizeDistr2 = sizeCriticalObj;
+        // Properties of distractor 3:
+        var colorDistr3 = colorDistr1;
+        var sizeDistr3 = _.without(targetCriticalObj.size, sizeCriticalObj);
+        // Target status
+        targetCriticalObj.targetStatus = "target";
+        distr1.targetStatus = "distractor";
+        distr2.targetStatus = "distractor";
+        distr3.targetStatus = "distractor";
+        // Specify full name of object:
+        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
+        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
+        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
+        // Attach condition attribute to objects
+        targetCriticalObj.condition = condition;
+        distr1.condition = condition;
+        distr2.condition = condition;
+        distr3.condition = condition;
+        // Specify url of stimuli
+        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
+        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
+        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
+      }
+      else if (condition == "colorOnly3Distr3Same"){
+        console.log("condition is colorOnly3Distr3Same");
+        var targetCriticalObj = _.sample(criticalObjsList);
+        //console.log("targetCriticalObj: ", targetCriticalObj)
+        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
+        // console.log("after", criticalObjsList)
+        //Initialize distractors, which are the same object as the target object in critical trials:
+        var distr1 = _.clone(targetCriticalObj);
+        var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
+        // Properties of target:
+        var colorCriticalObj = _.sample(targetCriticalObj.color);
+        var sizeCriticalObj = _.sample(targetCriticalObj.size);
+        // Properties of distractor 1:
+        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
+        var sizeDistr1 = sizeCriticalObj;
+        // Properties of distractor 2:
+        var colorDistr2 = colorDistr1;
+        var sizeDistr2 = sizeDistr1
+        // Properties of distractor 3:
+        var colorDistr3 = colorDistr1;
+        var sizeDistr3 = sizeDistr1;
+        // Target status
+        targetCriticalObj.targetStatus = "target";
+        distr1.targetStatus = "distractor";
+        distr2.targetStatus = "distractor";
+        distr3.targetStatus = "distractor";
+        // Specify full name of object:
+        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
+        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
+        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
+        // Attach condition attribute to objects
+        targetCriticalObj.condition = condition;
+        distr1.condition = condition;
+        distr2.condition = condition;
+        distr3.condition = condition;
+        // Specify url of stimuli
+        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
+        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
+        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
       }
       else if (condition == "colorOnly4Distr1Same"){
         console.log("condition is colorOnly4Distr1Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -474,65 +589,10 @@ game_core.prototype.makeTrialList = function () {
         var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
         var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
       }
-      else if (condition == "colorOnly4Distr2Same"){
-        console.log("condition is colorOnly4Distr2Same");
-        var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
-        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
-        // console.log("after", criticalObjsList)
-        //Initialize distractors, which are the same object as the target object in critical trials:
-        var distr1 = _.clone(targetCriticalObj);
-        var distr2 = _.clone(targetCriticalObj);
-        var distr3 = _.clone(targetCriticalObj);
-        var distr4 = _.clone(targetCriticalObj);
-        // Properties of target:
-        var colorCriticalObj = _.sample(targetCriticalObj.color);
-        var sizeCriticalObj = _.sample(targetCriticalObj.size);
-        // Properties of distractor 1:
-        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
-        var sizeDistr1 = sizeCriticalObj;
-        // Properties of distractor 2:
-        var colorDistr2 = colorDistr1;
-        var sizeDistr2 = _.without(targetCriticalObj.size, sizeCriticalObj);
-        // Properties of distractor 3:
-        var colorDistr3 = colorDistr1;
-        var sizeDistr3 = sizeCriticalObj;
-        // Properties of distractor 4:
-        var colorDistr4 = colorDistr1;
-        var sizeDistr4 = sizeDistr2;
-        // Target status
-        targetCriticalObj.targetStatus = "target";
-        distr1.targetStatus = "distractor";
-        distr2.targetStatus = "distractor";
-        distr3.targetStatus = "distractor";
-        distr4.targetStatus = "distractor";
-        // Specify full name of object:
-        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
-        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
-        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
-        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
-        distr4.fullName = sizeDistr4 +  "_" + colorDistr4 +  "_" +  distr4.name ;
-        // Attach condition attribute to objects
-        targetCriticalObj.condition = condition;
-        distr1.condition = condition;
-        distr2.condition = condition;
-        distr3.condition = condition;
-        distr4.condition = condition;
-        // Specify url of stimuli
-        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
-        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
-        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
-        distr4.url = "stimuli/" + distr4.fullName + ".jpg";
-        var objectList = [targetCriticalObj, distr1, distr2, distr3, distr4];
-        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
-        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-      }
       else if (condition == "colorOnly4Distr3Same"){
         console.log("condition is colorOnly4Distr3Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -555,61 +615,6 @@ game_core.prototype.makeTrialList = function () {
         // Properties of distractor 4:
         var colorDistr4 = colorDistr1;
         var sizeDistr4 = sizeCriticalObj;
-        // Target status
-        targetCriticalObj.targetStatus = "target";
-        distr1.targetStatus = "distractor";
-        distr2.targetStatus = "distractor";
-        distr3.targetStatus = "distractor";
-        distr4.targetStatus = "distractor";
-        // Specify full name of object:
-        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
-        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
-        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
-        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
-        distr4.fullName = sizeDistr4 +  "_" + colorDistr4 +  "_" +  distr4.name ;
-        // Attach condition attribute to objects
-        targetCriticalObj.condition = condition;
-        distr1.condition = condition;
-        distr2.condition = condition;
-        distr3.condition = condition;
-        distr4.condition = condition;
-        // Specify url of stimuli
-        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
-        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
-        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
-        distr4.url = "stimuli/" + distr4.fullName + ".jpg";
-        var objectList = [targetCriticalObj, distr1, distr2, distr3, distr4];
-        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
-        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-      }
-      else if (condition == "colorOnly4Distr4Same"){
-        console.log("condition is colorOnly4Distr4Same");
-        var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
-        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
-        // console.log("after", criticalObjsList)
-        //Initialize distractors, which are the same object as the target object in critical trials:
-        var distr1 = _.clone(targetCriticalObj);
-        var distr2 = _.clone(targetCriticalObj);
-        var distr3 = _.clone(targetCriticalObj);
-        var distr4 = _.clone(targetCriticalObj);
-        // Properties of target:
-        var colorCriticalObj = _.sample(targetCriticalObj.color);
-        var sizeCriticalObj = _.sample(targetCriticalObj.size);
-        // Properties of distractor 1:
-        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
-        var sizeDistr1 = sizeCriticalObj;
-        // Properties of distractor 2:
-        var colorDistr2 = colorDistr1;
-        var sizeDistr2 = sizeCriticalObj;
-        // Properties of distractor 3:
-        var colorDistr3 = colorDistr1;
-        var sizeDistr3 = sizeCriticalObj;
-        // Properties of distractor 4:
-        var colorDistr4 = colorDistr1;
-        var sizeDistr4 = sizeDistr2;
         // Target status
         targetCriticalObj.targetStatus = "target";
         distr1.targetStatus = "distractor";
@@ -679,50 +684,157 @@ game_core.prototype.makeTrialList = function () {
         var speakerLocs = [[1,1], helper1[0], helper1[1], helper1[2], [5,1]];
         var listenerLocs = [[1,1], helper2[0], helper2[1], helper2[2], [5,1]];
       }
-      else if (condition == "sizeOnly2Distr2Same"){
-        console.log("condition is sizeOnly2Distr2Same");
+      else if (condition == "sizeOnly3Distr1Same"){
+        console.log("condition is sizeOnly3Distr1Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        // console.log("before", criticalObjsList)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
         var distr1 = _.clone(targetCriticalObj);
         var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
         // Properties of target:
         var colorCriticalObj = _.sample(targetCriticalObj.color);
         var sizeCriticalObj = _.sample(targetCriticalObj.size);
         // Properties of distractor 1:
-        var colorDistr1 = colorCriticalObj;
         var sizeDistr1 = _.without(targetCriticalObj.size, sizeCriticalObj);
+        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
         // Properties of distractor 2:
-        var colorDistr2 = colorCriticalObj;
         var sizeDistr2 = sizeDistr1;
+        var colorDistr2 = colorDistr1;
+        // Properties of distractor 3:
+        var sizeDistr3 = sizeDistr1;
+        var colorDistr3 = colorCriticalObj;
         // Target status
         targetCriticalObj.targetStatus = "target";
         distr1.targetStatus = "distractor";
         distr2.targetStatus = "distractor";
-        //Specify full name of object:
+        distr3.targetStatus = "distractor";
+        // Specify full name of object:
         targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
         distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
         distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
         // Attach condition attribute to objects
         targetCriticalObj.condition = condition;
         distr1.condition = condition;
         distr2.condition = condition;
+        distr3.condition = condition;
         // Specify url of stimuli
         targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
         distr1.url = "stimuli/" + distr1.fullName + ".jpg";
         distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        var objectList = [blackStimulus1, targetCriticalObj, distr1, distr2, blackStimulus2];
-        helper1 = _.shuffle([[4,1], [2,1], [3,1]]);
-        helper2 = _.shuffle([[4,1], [2,1], [3,1]]);
-        var speakerLocs = [[1,1], helper1[0], helper1[1], helper1[2], [5,1]];
-        var listenerLocs = [[1,1], helper2[0], helper2[1], helper2[2], [5,1]];
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
+      }
+      else if (condition == "sizeOnly3Distr2Same"){
+        console.log("condition is sizeOnly3Distr2Same");
+        var targetCriticalObj = _.sample(criticalObjsList);
+        //console.log("targetCriticalObj: ", targetCriticalObj)
+        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
+        // console.log("after", criticalObjsList)
+        //Initialize distractors, which are the same object as the target object in critical trials:
+        var distr1 = _.clone(targetCriticalObj);
+        var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
+        // Properties of target:
+        var colorCriticalObj = _.sample(targetCriticalObj.color);
+        var sizeCriticalObj = _.sample(targetCriticalObj.size);
+        // Properties of distractor 1:
+        var sizeDistr1 = _.without(targetCriticalObj.size, sizeCriticalObj);
+        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
+        // Properties of distractor 2:
+        var sizeDistr2 = sizeDistr1;
+        var colorDistr2 = colorCriticalObj;
+        // Properties of distractor 3:
+        var sizeDistr3 = sizeDistr1;
+        var colorDistr3 = colorCriticalObj;
+        // Target status
+        targetCriticalObj.targetStatus = "target";
+        distr1.targetStatus = "distractor";
+        distr2.targetStatus = "distractor";
+        distr3.targetStatus = "distractor";
+        // Specify full name of object:
+        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
+        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
+        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
+        // Attach condition attribute to objects
+        targetCriticalObj.condition = condition;
+        distr1.condition = condition;
+        distr2.condition = condition;
+        distr3.condition = condition;
+        // Specify url of stimuli
+        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
+        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
+        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
+      }
+      else if (condition == "sizeOnly3Distr3Same"){
+        console.log("condition is sizeOnly3Distr3Same");
+        var targetCriticalObj = _.sample(criticalObjsList);
+        //console.log("targetCriticalObj: ", targetCriticalObj)
+        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
+        // console.log("after", criticalObjsList)
+        //Initialize distractors, which are the same object as the target object in critical trials:
+        var distr1 = _.clone(targetCriticalObj);
+        var distr2 = _.clone(targetCriticalObj);
+        var distr3 = _.clone(targetCriticalObj);
+        // Properties of target:
+        var colorCriticalObj = _.sample(targetCriticalObj.color);
+        var sizeCriticalObj = _.sample(targetCriticalObj.size);
+        // Properties of distractor 1:
+        var sizeDistr1 = _.without(targetCriticalObj.size, sizeCriticalObj);
+        var colorDistr1 = colorCriticalObj;
+        // Properties of distractor 2:
+        var sizeDistr2 = sizeDistr1;
+        var colorDistr2 = colorCriticalObj;
+        // Properties of distractor 3:
+        var sizeDistr3 = sizeDistr1;
+        var colorDistr3 = colorCriticalObj;
+        // Target status
+        targetCriticalObj.targetStatus = "target";
+        distr1.targetStatus = "distractor";
+        distr2.targetStatus = "distractor";
+        distr3.targetStatus = "distractor";
+        // Specify full name of object:
+        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
+        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
+        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
+        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
+        // Attach condition attribute to objects
+        targetCriticalObj.condition = condition;
+        distr1.condition = condition;
+        distr2.condition = condition;
+        distr3.condition = condition;
+        // Specify url of stimuli
+        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
+        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
+        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
+        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
+        var objectList = [targetCriticalObj, distr1, distr2, distr3, blackStimulus1];
+        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
+        helper1 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        helper2 = _.shuffle([[4,1], [2,1], [3,1], [1,1]]);
+        var speakerLocs = [helper1[0], helper1[1], helper1[2], helper1[3], [5,1]];
+        var listenerLocs = [helper2[0], helper2[1], helper2[2], helper2[3], [5,1]];
       }
       else if (condition == "sizeOnly4Distr1Same"){
         console.log("condition is sizeOnly4Distr1Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -774,65 +886,10 @@ game_core.prototype.makeTrialList = function () {
         var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
         var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
       }
-      else if (condition == "sizeOnly4Distr2Same"){
-        console.log("condition is sizeOnly4Distr2Same");
-        var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
-        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
-        // console.log("after", criticalObjsList)
-        //Initialize distractors, which are the same object as the target object in critical trials:
-        var distr1 = _.clone(targetCriticalObj);
-        var distr2 = _.clone(targetCriticalObj);
-        var distr3 = _.clone(targetCriticalObj);
-        var distr4 = _.clone(targetCriticalObj);
-        // Properties of target:
-        var colorCriticalObj = _.sample(targetCriticalObj.color);
-        var sizeCriticalObj = _.sample(targetCriticalObj.size);
-        // Properties of distractor 1:
-        var colorDistr1 = _.without(targetCriticalObj.color, colorCriticalObj);
-        var sizeDistr1 = _.without(targetCriticalObj.size, sizeCriticalObj);
-        // Properties of distractor 2:
-        var colorDistr2 = colorCriticalObj;
-        var sizeDistr2 = sizeDistr1
-        // Properties of distractor 3:
-        var colorDistr3 = colorCriticalObj;
-        var sizeDistr3 = sizeDistr1;
-        // Properties of distractor 4:
-        var colorDistr4 = colorDistr1;
-        var sizeDistr4 = sizeDistr1;
-        // Target status
-        targetCriticalObj.targetStatus = "target";
-        distr1.targetStatus = "distractor";
-        distr2.targetStatus = "distractor";
-        distr3.targetStatus = "distractor";
-        distr4.targetStatus = "distractor";
-        // Specify full name of object:
-        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
-        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
-        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
-        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
-        distr4.fullName = sizeDistr4 +  "_" + colorDistr4 +  "_" +  distr4.name ;
-        // Attach condition attribute to objects
-        targetCriticalObj.condition = condition;
-        distr1.condition = condition;
-        distr2.condition = condition;
-        distr3.condition = condition;
-        distr4.condition = condition;
-        // Specify url of stimuli
-        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
-        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
-        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
-        distr4.url = "stimuli/" + distr4.fullName + ".jpg";
-        var objectList = [targetCriticalObj, distr1, distr2, distr3, distr4];
-        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
-        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-      }
-      else if (condition == "sizeOnly4Distr3Same"){
+      else {  //(condition == "sizeOnly4Distr3Same")
         console.log("condition is sizeOnly4Distr3Same");
         var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
+        //console.log("targetCriticalObj: ", targetCriticalObj)
         criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
         // console.log("after", criticalObjsList)
         //Initialize distractors, which are the same object as the target object in critical trials:
@@ -854,61 +911,6 @@ game_core.prototype.makeTrialList = function () {
         var sizeDistr3 = sizeDistr1;
         // Properties of distractor 4:
         var colorDistr4 = colorCriticalObj;
-        var sizeDistr4 = sizeDistr1;
-        // Target status
-        targetCriticalObj.targetStatus = "target";
-        distr1.targetStatus = "distractor";
-        distr2.targetStatus = "distractor";
-        distr3.targetStatus = "distractor";
-        distr4.targetStatus = "distractor";
-        // Specify full name of object:
-        targetCriticalObj.fullName = sizeCriticalObj +  "_" + colorCriticalObj +  "_" +  targetCriticalObj.name ;
-        distr1.fullName = sizeDistr1 +  "_" + colorDistr1 +  "_" +  distr1.name ;
-        distr2.fullName = sizeDistr2 +  "_" + colorDistr2 +  "_" +  distr2.name ;
-        distr3.fullName = sizeDistr3 +  "_" + colorDistr3 +  "_" +  distr3.name ;
-        distr4.fullName = sizeDistr4 +  "_" + colorDistr4 +  "_" +  distr4.name ;
-        // Attach condition attribute to objects
-        targetCriticalObj.condition = condition;
-        distr1.condition = condition;
-        distr2.condition = condition;
-        distr3.condition = condition;
-        distr4.condition = condition;
-        // Specify url of stimuli
-        targetCriticalObj.url = "stimuli/" + targetCriticalObj.fullName + ".jpg";
-        distr1.url = "stimuli/" + distr1.fullName + ".jpg";
-        distr2.url = "stimuli/" + distr2.fullName + ".jpg";
-        distr3.url = "stimuli/" + distr3.fullName + ".jpg";
-        distr4.url = "stimuli/" + distr4.fullName + ".jpg";
-        var objectList = [targetCriticalObj, distr1, distr2, distr3, distr4];
-        //console.log("filler objectlist [0].speakerCoords " + objectList[0].speakerCoords);
-        var speakerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-        var listenerLocs = _.shuffle([[1,1], [2,1], [3,1], [4,1], [5,1]]);
-      }
-      else {  //if (sizeOnly4Distr4Same)
-        console.log("condition is sizeOnly4Distr4Same");
-        var targetCriticalObj = _.sample(criticalObjsList);
-        console.log("targetCriticalObj: ", targetCriticalObj)
-        criticalObjsList = _.without(criticalObjsList, targetCriticalObj); // modify criticalObjsList s.t. target item which was already used gets deleted
-        // console.log("after", criticalObjsList)
-        //Initialize distractors, which are the same object as the target object in critical trials:
-        var distr1 = _.clone(targetCriticalObj);
-        var distr2 = _.clone(targetCriticalObj);
-        var distr3 = _.clone(targetCriticalObj);
-        var distr4 = _.clone(targetCriticalObj);
-        // Properties of target:
-        var colorCriticalObj = _.sample(targetCriticalObj.color);
-        var sizeCriticalObj = _.sample(targetCriticalObj.size);
-        // Properties of distractor 1:
-        var colorDistr1 = colorCriticalObj
-        var sizeDistr1 = _.without(targetCriticalObj.size, sizeCriticalObj);
-        // Properties of distractor 2:
-        var colorDistr2 = colorCriticalObj;
-        var sizeDistr2 = sizeDistr1
-        // Properties of distractor 3:
-        var colorDistr3 = colorDistr1;
-        var sizeDistr3 = sizeDistr1;
-        // Properties of distractor 4:
-        var colorDistr4 = colorDistr1;
         var sizeDistr4 = sizeDistr1;
         // Target status
         targetCriticalObj.targetStatus = "target";
@@ -1068,5 +1070,5 @@ game_core.prototype.server_send_update = function(){
 // (4.22208334636).fixed(n) will return fixed point value to n places, default n = 3
 // Number.prototype.fixed = function(n) { n = n || 3; return parseFloat(this.toFixed(n)); };
 
-console.log(this.object);
+//console.log(this.object);
 

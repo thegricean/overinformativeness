@@ -459,15 +459,15 @@ function mouseClickListener(evt) {
         console.log("alt1Name: " + alternative1.fullName);
         console.log("alt2Name: " + alternative2.fullName);
         game.socket.send("clickedObj." + obj.type + "." + obj.condition + "." + obj.fullName + "." + obj.targetStatus 
-          + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX  + "." + obj.domain + "." + obj.superdomain
+          + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX  + "." + obj.basiclevel + "." + obj.superdomain
           + "." + alternative1.fullName + "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX 
-          + "." + alternative1.listenerCoords.gridX + "." + alternative1.domain + "." + alternative1.superdomain 
+          + "." + alternative1.listenerCoords.gridX + "." + alternative1.basiclevel + "." + alternative1.superdomain 
           + "." + alternative2.fullName + "." + alternative2.targetStatus + "." + alternative2.speakerCoords.gridX 
-          + "." + alternative2.listenerCoords.gridX + "." + alternative2.domain + "." + alternative2.superdomain 
+          + "." + alternative2.listenerCoords.gridX + "." + alternative2.basiclevel + "." + alternative2.superdomain 
           + "." + alternative3.fullName + "." + alternative3.targetStatus + "." + alternative3.speakerCoords.gridX 
-          + "." + alternative3.listenerCoords.gridX + "." + alternative3.domain + "." + alternative3.superdomain 
+          + "." + alternative3.listenerCoords.gridX + "." + alternative3.basiclevel + "." + alternative3.superdomain 
           + "." + alternative4.fullName + "." + alternative4.targetStatus + "." + alternative4.speakerCoords.gridX 
-          + "." + alternative4.listenerCoords.gridX + "." + alternative4.domain + "." + alternative4.superdomain );
+          + "." + alternative4.listenerCoords.gridX + "." + alternative4.basiclevel + "." + alternative4.superdomain );
 
         //highlight the object that was clicked:
         var upperLeftXListener = obj.listenerCoords.gridPixelX;
