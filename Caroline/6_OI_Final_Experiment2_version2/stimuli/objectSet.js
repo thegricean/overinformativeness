@@ -301,7 +301,6 @@ var objectList = [
 	bison, chick, elephant, kitten, lobster, sheep, snake, squirrel, bed, lamp, bookcase, wardrobe,
 
 	blackStimulus
-
 ]
 
 module.exports = objectList;

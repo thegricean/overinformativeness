@@ -168,7 +168,9 @@ game_core.prototype.makeTrialList = function () {
   //List of distrClass2 objects for SubSuper experiment:
   var distrClass2ListSubSuper = _.map(_.shuffle(_.filter(objectList, function(x){return (x.type == "subSuperTrial" && x.targetStatus == "distrClass2")})), _.clone);
   //List of distrClass3 objects for SubSuper experiment:
-  var distrClass3ListSubSuper = _.shuffle(_.clone(distrClass2ListSubSuper));
+  //console.log("distrclass2List: " + distrClass2ListSubSuper[1]);
+  var distrClass3ListSubSuper = _.map(_.shuffle(distrClass2ListSubSuper), _.clone);
+  //console.log("distrclass3List: " + distrClass3ListSubSuper[1]);
   //Get black stimulus
   var blackStimulus1 = _.map(_.filter(objectList, function(x){return x.type == "blackStimulus"}), _.clone)[0];
   var blackStimulus2 = _.clone(blackStimulus1);
@@ -214,12 +216,9 @@ game_core.prototype.makeTrialList = function () {
         //distrClass1ListSubSuper = _.without(distrClass1ListSubSuper, distr1Distr12);
         // Specify distr2:
         var distr2Distr12 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr12.superdomain; }));
-        // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
-        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr12);
-        // // Specify locations of 3 objects
-        // targetDistr12.targetStatus = "target";
-        // distr1Distr12.targetStatus = "distractor";
-        // distr2Distr12.targetStatus = "distractor";
+        // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once 
+        //replacement not necessary and experiment won't work with this because not enough stimuli when domains randomly assigned to conditions
+        //distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr12);
         // Specify full name of object:
         targetDistr12.fullName = targetDistr12.name ;
         distr1Distr12.fullName = distr1Distr12.name;
@@ -246,13 +245,15 @@ game_core.prototype.makeTrialList = function () {
         var distr1Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }));
         //console.log("distr1 distr22" + distr1Distr22.name)
         // Remove distr1 from distrClass2 list s.t. every distr in Class2 is only used once
-        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr22);
+        //distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr22);
         // Specify distr2:
         var distr2Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }));
         while (distr2Distr22.name == distr1Distr22.name){distr2Distr22 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr22.superdomain; }))};
         //console.log("distr distr22" + distr2Distr22.name)
         // Remove distr2 from distrClass2 list s.t. every distr in Class2 is only used once
+        //console.log("distr22 test: " + distr2Distr22);
         //distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr2Distr22);
+
         // // Specify locations of 3 objects
         // targetDistr22.targetStatus = "target";
         // distr1Distr22.targetStatus = "distractor";
@@ -280,7 +281,7 @@ game_core.prototype.makeTrialList = function () {
         // Specify distr1:
         var distr1Distr23 = _.sample(_.filter(distrClass2ListSubSuper, function(x){ return x.superdomain == targetDistr23.superdomain; }));
         // Remove distr1 from distrClass2 list s.t. every distr in Class2 is only used once
-        distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr23);
+        //distrClass2ListSubSuper = _.without(distrClass2ListSubSuper, distr1Distr23);
         // Specify distr2:
         var distr2Distr23 = _.sample(distrClass3ListSubSuper);
         while (distr2Distr23.name == distr1Distr23.name){distr2Distr23 = _.sample(distrClass3ListSubSuper)};
