@@ -1,11 +1,13 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/3_numdistractors_basiclevel/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 source("rscripts/helpers.r")
 
-d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
-d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
-d2$TypeMentioned = d2$typeMentioned
+#d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
+#d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
+#d2$TypeMentioned = d2$typeMentioned
 d = merge(d1,d2,all=T)
+d = read.table(file="data/results.csv",sep=",", header=T,
+
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
 head(d)
