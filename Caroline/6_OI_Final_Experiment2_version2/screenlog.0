@@ -1,0 +1,2518 @@
+overinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ node app.js 
+info  - socket.io started
+	 :: Express :: Listening on port 8888
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/instructions.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/objectBoard.png
+	 :: Express :: file requested: forms/images/speakerListenerBoard.png
+	 :: Express :: file requested: forms/images/chatBox.png
+	 :: Express :: file requested: forms/images/waitScreen.png
+	 :: Express :: file requested: forms/validate-form.js
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: forms/pass.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 1471-85a3cfa6-6e1e-40bf-a947-73ed198c425e connected
+looking for a game. We have : 0
+condition is sizeOnly3Distr2Same
+condition is sizeOnly3Distr3Same
+condition is sizeOnly3Distr1Same
+condition is distr12
+condition is distr33
+condition is distr33
+condition is distr33
+condition is distr22
+condition is distr12
+condition is sizeOnly3Distr3Same
+condition is distr23
+condition is sizeOnly3Distr2Same
+condition is sizeOnly3Distr2Same
+condition is sizeOnly4Distr1Same
+condition is colorOnly4Distr1Same
+condition is distr33
+condition is distr33
+condition is distr12
+condition is sizeOnly3Distr3Same
+condition is distr33
+condition is distr33
+condition is colorOnly3Distr2Same
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is colorOnly2Distr1Same
+condition is colorOnly4Distr3Same
+condition is distr23
+condition is distr33
+condition is sizeOnly4Distr3Same
+condition is colorOnly3Distr1Same
+condition is sizeOnly3Distr1Same
+condition is sizeOnly4Distr3Same
+condition is distr22
+condition is distr33
+condition is colorOnly2Distr1Same
+condition is distr12
+condition is sizeOnly2Distr1Same
+condition is distr12
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is distr22
+condition is distr22
+condition is distr22
+
+/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.core.js:252
+        while (distr2Distr22.name == distr1Distr22.name){distr2Distr22 = _.sam
+                            ^
+TypeError: Cannot read property 'name' of undefined
+    at /var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.core.js:252:29
+    at Function._.map._.collect (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/node_modules/underscore/underscore.js:124:24)
+    at game_core.makeTrialList (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.core.js:197:20)
+    at new game_core (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.core.js:62:27)
+    at Object.game_server.createGame (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.server.js:272:21)
+    at Object.game_server.findGame (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/game.server.js:247:10)
+    at initialize (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/app.js:94:15)
+    at Namespace.valid_id (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/app.js:77:7)
+    at Namespace.emit (events.js:95:17)
+    at Namespace.emit (/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/node_modules/socket.io/lib/namespace.js:205:10)
+overinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ node app.js [C[C[C[C[C[C[C[C[Ccd 6_OI_Final_Experiment2_version2/[C[C[C[C[C[C[C[C[Cls[Kcd /var/www/html/[C[C[C[C[C[C[C[C[Csudo cp -r  6_OI_Final_Experiment2_version2 /var//www/html/[C[C[C[C[C[C[C[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd Caroline/[C[C[C[C[C[C[C[C[Cls[Kgit pullcd overinformativeness/[C[C[C[C[C[C[C[C[C[C[C[Klscd /var/www/html/[C[C[C[C[C[C[C[C[Cexit[K[KMoverinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ exit[K[K[K[K^C
+overinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ exit
+exit
+overinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ ls
+app.js  drawing.js      game.core.js    index.html  [0m[01;34mnode_modules[0m  [01;34mstimuli[0m
+[01;34mdata[0m    [01;34mforms[0m           game.server.js  [01;34mlib[0m         package.json  utils.js
+[01;34mdist[0m    game.client.js  index.css       [01;34mmmturkey[0m    screenlog.0
+overinf@rxdh:/var/www/html/overinformativeness/Caroline/6_OI_Final_Experiment2_veersion2$ node app.js 
+info  - socket.io started
+	 :: Express :: Listening on port 8888
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d connected
+looking for a game. We have : 0
+condition is sizeOnly3Distr3Same
+condition is sizeOnly4Distr3Same
+condition is distr22
+condition is sizeOnly4Distr3Same
+condition is distr33
+condition is sizeOnly2Distr1Same
+condition is distr12
+condition is sizeOnly4Distr1Same
+condition is distr12
+condition is sizeOnly3Distr1Same
+condition is sizeOnly4Distr3Same
+condition is colorOnly4Distr1Same
+condition is colorOnly4Distr3Same
+condition is distr22
+condition is sizeOnly3Distr3Same
+condition is distr12
+condition is distr22
+condition is sizeOnly2Distr1Same
+condition is distr23
+condition is distr22
+condition is distr23
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is distr33
+condition is sizeOnly3Distr3Same
+condition is sizeOnly2Distr1Same
+condition is distr33
+condition is distr22
+condition is sizeOnly3Distr2Same
+condition is distr23
+condition is sizeOnly2Distr1Same
+condition is distr22
+condition is sizeOnly4Distr1Same
+condition is distr12
+condition is sizeOnly3Distr1Same
+condition is sizeOnly3Distr1Same
+condition is colorOnly3Distr2Same
+condition is distr33
+condition is colorOnly4Distr1Same
+condition is colorOnly2Distr1Same
+condition is distr33
+condition is distr33
+condition is distr23
+condition is colorOnly3Distr2Same
+condition is distr33
+condition is distr12
+condition is colorOnly3Distr3Same
+condition is distr23
+condition is distr22
+condition is distr22
+condition is distr33
+condition is distr23
+condition is colorOnly3Distr3Same
+condition is sizeOnly4Distr3Same
+condition is distr33
+condition is colorOnly2Distr1Same
+condition is sizeOnly3Distr1Same
+condition is sizeOnly4Distr1Same
+condition is distr12
+condition is colorOnly3Distr1Same
+condition is sizeOnly3Distr3Same
+condition is distr23
+condition is distr22
+condition is sizeOnly3Distr2Same
+condition is colorOnly3Distr1Same
+condition is distr12
+condition is distr23
+condition is distr12
+condition is distr12
+condition is sizeOnly3Distr2Same
+condition is colorOnly4Distr3Same
+condition is sizeOnly3Distr2Same
+player 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d created a game with id 8859-81e5923f-3fbf-4eb9-a914-0c6bea510b2e
+received message: h.hidden
+received messageparts: h,hidden
+others: 
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 7561-f6b85de7-6fd8-49c4-90cf-d48a7bdef55a connected
+looking for a game. We have : 1
+now on round 1
+	 :: Express :: file requested: stimuli/small_red_chair.jpg
+	 :: Express :: file requested: stimuli/big_red_chair.jpg
+	 :: Express :: file requested: stimuli/blackStimulus.jpg
+	 :: Express :: file requested: stimuli/small_red_chair.jpg
+	 :: Express :: file requested: stimuli/big_red_chair.jpg
+	 :: Express :: file requested: stimuli/blackStimulus.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.asd
+received messageparts: chatMessage,asd
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+message:8859-8,1449252663893,1,listener,"asd"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr3Same.big_red_chair.distractor.2.3.NA.NA.small_red_chair.target.1.2.NA.NA.big_red_chair.distractor.3.4.NA.NA.blackStimulus.NA.5.5.NA.NA.big_red_chair.distractor.4.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr3Same,big_red_chair,distractor,2,3,NA,NA,small_red_chair,target,1,2,NA,NA,big_red_chair,distractor,3,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_chair,distractor,4,1,NA,NA
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+clickedObj: 8859-8,1449252665604,1,colorSizeTrial,sizeOnly3Distr3Same,big_red_chair,distractor,2,3,NA,NA,small_red_chair,target,1,2,NA,NA,big_red_chair,distractor,3,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_chair,distractor,4,1,NA,NA
+
+now on round 2
+	 :: Express :: file requested: stimuli/small_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_white_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/small_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_white_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_pink_weddingcake.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.dafs
+received messageparts: chatMessage,dafs
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+message:8859-8,1449252667776,2,listener,"dafs"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.big_pink_weddingcake.distractor.1.3.NA.NA.big_pink_weddingcake.distractor.5.2.NA.NA.big_white_weddingcake.distractor.2.4.NA.NA.big_pink_weddingcake.distractor.4.1.NA.NA.small_pink_weddingcake.target.3.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,big_pink_weddingcake,distractor,1,3,NA,NA,big_pink_weddingcake,distractor,5,2,NA,NA,big_white_weddingcake,distractor,2,4,NA,NA,big_pink_weddingcake,distractor,4,1,NA,NA,small_pink_weddingcake,target,3,5,NA,NA
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+clickedObj: 8859-8,1449252669152,2,colorSizeTrial,sizeOnly4Distr3Same,big_pink_weddingcake,distractor,1,3,NA,NA,big_pink_weddingcake,distractor,5,2,NA,NA,big_white_weddingcake,distractor,2,4,NA,NA,big_pink_weddingcake,distractor,4,1,NA,NA,small_pink_weddingcake,target,3,5,NA,NA
+
+now on round 3
+	 :: Express :: file requested: stimuli/poloShirt.jpg
+	 :: Express :: file requested: stimuli/dress.jpg
+	 :: Express :: file requested: stimuli/socks.jpg
+	 :: Express :: file requested: stimuli/poloShirt.jpg
+	 :: Express :: file requested: stimuli/dress.jpg
+	 :: Express :: file requested: stimuli/socks.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.fas
+received messageparts: chatMessage,fas
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+message:8859-8,1449252671661,3,listener,"fas"
+
+received message: clickedObj.subSuperTrial.distr22.poloShirt.target.4.4.shirt.clothing.dress.distrClass2.3.3.NA.clothing.socks.distrClass2.2.2.NA.clothing.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,poloShirt,target,4,4,shirt,clothing,dress,distrClass2,3,3,NA,clothing,socks,distrClass2,2,2,NA,clothing,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+clickedObj: 8859-8,1449252673855,3,subSuperTrial,distr22,poloShirt,target,4,4,shirt,clothing,dress,distrClass2,3,3,NA,clothing,socks,distrClass2,2,2,NA,clothing,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 4
+	 :: Express :: file requested: stimuli/small_blue_binder.jpg
+	 :: Express :: file requested: stimuli/big_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_blue_binder.jpg
+	 :: Express :: file requested: stimuli/small_blue_binder.jpg
+	 :: Express :: file requested: stimuli/big_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_blue_binder.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.asdf
+received messageparts: chatMessage,asdf
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+message:8859-8,1449252676116,4,listener,"asdf"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.big_blue_binder.distractor.2.2.NA.NA.big_green_binder.distractor.1.4.NA.NA.big_blue_binder.distractor.3.5.NA.NA.big_blue_binder.distractor.5.3.NA.NA.small_blue_binder.target.4.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,big_blue_binder,distractor,2,2,NA,NA,big_green_binder,distractor,1,4,NA,NA,big_blue_binder,distractor,3,5,NA,NA,big_blue_binder,distractor,5,3,NA,NA,small_blue_binder,target,4,1,NA,NA
+others: id: 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d
+player: [object Object]
+
+clickedObj: 8859-8,1449252677742,4,colorSizeTrial,sizeOnly4Distr3Same,big_blue_binder,distractor,2,2,NA,NA,big_green_binder,distractor,1,4,NA,NA,big_blue_binder,distractor,3,5,NA,NA,big_blue_binder,distractor,5,3,NA,NA,small_blue_binder,target,4,1,NA,NA
+
+now on round 5
+	 :: Express :: file requested: stimuli/skittles.jpg
+	 :: Express :: file requested: stimuli/lobster.jpg
+	 :: Express :: file requested: stimuli/firetruck.jpg
+	 :: Express :: file requested: stimuli/skittles.jpg
+	 :: Express :: file requested: stimuli/lobster.jpg
+	 :: Express :: file requested: stimuli/firetruck.jpg
+	 socket.io:: client id 7561-f6b85de7-6fd8-49c4-90cf-d48a7bdef55a disconnected from game id 8859-81e5923f-3fbf-4eb9-a914-0c6bea510b2e
+game removed. there are now 0 games
+received message: h.visible
+received messageparts: h,visible
+others: id: 7561-f6b85de7-6fd8-49c4-90cf-d48a7bdef55a
+player: [object Object]
+
+	 socket.io:: client id 9256-882bcf1e-3563-496a-8ef1-10faadc77a0d disconnected from game id 8859-81e5923f-3fbf-4eb9-a914-0c6bea510b2e
+that game was not found!
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 5353-47ca9941-5914-4c0d-ad7c-e7ea0c97a527 connected
+looking for a game. We have : 0
+condition is distr22
+condition is sizeOnly4Distr3Same
+condition is distr22
+condition is sizeOnly3Distr3Same
+condition is sizeOnly3Distr3Same
+condition is distr23
+condition is colorOnly4Distr3Same
+condition is colorOnly3Distr3Same
+condition is colorOnly2Distr1Same
+condition is sizeOnly3Distr1Same
+condition is sizeOnly3Distr1Same
+condition is distr33
+condition is distr22
+condition is distr22
+condition is distr22
+condition is colorOnly3Distr1Same
+condition is distr22
+condition is distr23
+condition is sizeOnly3Distr2Same
+condition is distr33
+condition is distr22
+condition is distr12
+condition is distr33
+condition is distr12
+condition is colorOnly4Distr1Same
+condition is distr33
+condition is colorOnly3Distr2Same
+condition is distr23
+condition is colorOnly3Distr3Same
+condition is colorOnly3Distr1Same
+condition is distr23
+condition is sizeOnly3Distr2Same
+condition is distr33
+condition is distr12
+condition is distr12
+condition is distr12
+condition is distr23
+condition is sizeOnly3Distr1Same
+condition is distr12
+condition is colorOnly3Distr2Same
+condition is distr23
+condition is sizeOnly3Distr2Same
+condition is sizeOnly3Distr2Same
+condition is sizeOnly2Distr1Same
+condition is distr33
+condition is distr12
+condition is sizeOnly2Distr1Same
+condition is colorOnly2Distr1Same
+condition is sizeOnly2Distr1Same
+condition is distr22
+condition is sizeOnly4Distr1Same
+condition is distr22
+condition is colorOnly4Distr3Same
+condition is sizeOnly3Distr3Same
+condition is sizeOnly4Distr1Same
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is sizeOnly2Distr1Same
+condition is distr33
+condition is distr33
+condition is sizeOnly3Distr3Same
+condition is distr23
+condition is sizeOnly4Distr3Same
+condition is colorOnly4Distr1Same
+condition is sizeOnly3Distr1Same
+condition is distr12
+condition is sizeOnly4Distr3Same
+condition is sizeOnly4Distr3Same
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is distr12
+condition is distr33
+player 5353-47ca9941-5914-4c0d-ad7c-e7ea0c97a527 created a game with id 9015-c5646b67-1acb-4d2f-a16f-f4e57065087f
+	 socket.io:: client id 5353-47ca9941-5914-4c0d-ad7c-e7ea0c97a527 disconnected from game id 9015-c5646b67-1acb-4d2f-a16f-f4e57065087f
+game removed. there are now 0 games
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/consent.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/cocologo.png
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: assets/js/docs.min.js
+Error: ENOENT, stat './assets/js/docs.min.js'
+	 :: Express :: file requested: forms/instructions.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: forms/images/objectBoard.png
+	 :: Express :: file requested: forms/images/speakerListenerBoard.png
+	 :: Express :: file requested: forms/images/chatBox.png
+	 :: Express :: file requested: forms/images/waitScreen.png
+	 :: Express :: file requested: forms/validate-form.js
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: forms/pass.html
+	 :: Express :: file requested: dist/css/bootstrap.min.css
+	 :: Express :: file requested: dist/css/bootstrap-theme.min.css
+	 :: Express :: file requested: forms/theme.css
+Error: ENOENT, stat './forms/theme.css'
+	 :: Express :: file requested: dist/js/bootstrap.min.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44 connected
+looking for a game. We have : 0
+condition is distr12
+condition is colorOnly4Distr1Same
+condition is distr12
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is distr33
+condition is distr22
+condition is distr33
+condition is distr33
+condition is sizeOnly4Distr3Same
+condition is sizeOnly4Distr3Same
+condition is sizeOnly3Distr2Same
+condition is sizeOnly3Distr2Same
+condition is colorOnly3Distr1Same
+condition is sizeOnly4Distr3Same
+condition is distr22
+condition is distr12
+condition is sizeOnly3Distr3Same
+condition is sizeOnly3Distr1Same
+condition is distr33
+condition is distr33
+condition is colorOnly4Distr3Same
+condition is distr22
+condition is distr23
+condition is distr33
+condition is distr22
+condition is colorOnly2Distr1Same
+condition is sizeOnly3Distr1Same
+condition is sizeOnly4Distr3Same
+condition is distr12
+condition is distr33
+condition is sizeOnly3Distr2Same
+condition is colorOnly4Distr3Same
+condition is colorOnly3Distr3Same
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is sizeOnly3Distr3Same
+condition is sizeOnly2Distr1Same
+condition is colorOnly3Distr3Same
+condition is distr22
+condition is sizeOnly2Distr1Same
+condition is sizeOnly3Distr1Same
+condition is sizeOnly3Distr3Same
+condition is distr12
+condition is sizeOnly3Distr3Same
+condition is distr22
+condition is distr23
+condition is distr12
+condition is distr33
+condition is distr23
+condition is distr23
+condition is sizeOnly4Distr1Same
+condition is sizeOnly2Distr1Same
+condition is distr22
+condition is sizeOnly3Distr1Same
+condition is distr23
+condition is distr12
+condition is distr22
+condition is distr33
+condition is colorOnly3Distr2Same
+condition is distr12
+condition is colorOnly4Distr1Same
+condition is colorOnly3Distr2Same
+condition is distr23
+condition is sizeOnly4Distr1Same
+condition is distr23
+condition is colorOnly2Distr1Same
+condition is sizeOnly3Distr2Same
+condition is distr12
+condition is distr22
+condition is colorOnly3Distr1Same
+condition is sizeOnly2Distr1Same
+player 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44 created a game with id 7991-15b3ff7d-bfc9-4112-9aaf-d23106ddc0c1
+	 :: Express :: file requested: index.html
+	 :: Express :: file requested: index.css
+	 :: Express :: file requested: lib/keyboard.js
+	 :: Express :: file requested: lib/sprintf.min.js
+	 :: Express :: file requested: game.core.js
+	 :: Express :: file requested: mmturkey/mmturkey.js
+	 :: Express :: file requested: game.client.js
+	 :: Express :: file requested: drawing.js
+user connecting...
+	 socket.io:: player 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1 connected
+looking for a game. We have : 1
+now on round 1
+	 :: Express :: file requested: stimuli/blackStimulus.jpg
+	 :: Express :: file requested: stimuli/poloShirt.jpg
+	 :: Express :: file requested: stimuli/campShirt.jpg
+	 :: Express :: file requested: stimuli/gloves.jpg
+	 :: Express :: file requested: favicon.ico
+Error: ENOENT, stat './favicon.ico'
+	 :: Express :: file requested: stimuli/blackStimulus.jpg
+	 :: Express :: file requested: stimuli/poloShirt.jpg
+	 :: Express :: file requested: stimuli/campShirt.jpg
+	 :: Express :: file requested: stimuli/gloves.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.blue shirt
+received messageparts: chatMessage,blue shirt
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252884514,1,speaker,"blue shirt"
+
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.haha
+received messageparts: chatMessage,haha
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+message:7991-1,1449252887909,1,listener,"haha"
+
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.which one
+received messageparts: chatMessage,which one
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+message:7991-1,1449252895153,1,listener,"which one"
+
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.polo
+received messageparts: chatMessage,polo
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252898530,1,speaker,"polo"
+
+received message: clickedObj.subSuperTrial.distr12.poloShirt.target.2.3.shirt.clothing.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.gloves.distrClass2.4.2.NA.clothing.campShirt.distrClass1.3.4.shirt.clothing
+received messageparts: clickedObj,subSuperTrial,distr12,poloShirt,target,2,3,shirt,clothing,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,gloves,distrClass2,4,2,NA,clothing,campShirt,distrClass1,3,4,shirt,clothing
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252900492,1,subSuperTrial,distr12,poloShirt,target,2,3,shirt,clothing,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,gloves,distrClass2,4,2,NA,clothing,campShirt,distrClass1,3,4,shirt,clothing
+
+now on round 2
+	 :: Express :: file requested: stimuli/big_red_toothbrush.jpg
+	 :: Express :: file requested: stimuli/big_blue_toothbrush.jpg
+	 :: Express :: file requested: stimuli/big_red_toothbrush.jpg
+	 :: Express :: file requested: stimuli/small_blue_toothbrush.jpg
+	 :: Express :: file requested: stimuli/big_blue_toothbrush.jpg
+	 :: Express :: file requested: stimuli/small_blue_toothbrush.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.red
+received messageparts: chatMessage,red
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252903834,2,speaker,"red"
+
+received message: clickedObj.colorSizeTrial.colorOnly4Distr1Same.big_red_toothbrush.target.4.5.NA.NA.small_blue_toothbrush.distractor.1.3.NA.NA.big_blue_toothbrush.distractor.5.2.NA.NA.small_blue_toothbrush.distractor.3.4.NA.NA.small_blue_toothbrush.distractor.2.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly4Distr1Same,big_red_toothbrush,target,4,5,NA,NA,small_blue_toothbrush,distractor,1,3,NA,NA,big_blue_toothbrush,distractor,5,2,NA,NA,small_blue_toothbrush,distractor,3,4,NA,NA,small_blue_toothbrush,distractor,2,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252909591,2,colorSizeTrial,colorOnly4Distr1Same,big_red_toothbrush,target,4,5,NA,NA,small_blue_toothbrush,distractor,1,3,NA,NA,big_blue_toothbrush,distractor,5,2,NA,NA,small_blue_toothbrush,distractor,3,4,NA,NA,small_blue_toothbrush,distractor,2,1,NA,NA
+
+now on round 3
+	 :: Express :: file requested: stimuli/minivan.jpg
+	 :: Express :: file requested: stimuli/minivan.jpg
+	 :: Express :: file requested: stimuli/sedan.jpg
+	 :: Express :: file requested: stimuli/sedan.jpg
+	 :: Express :: file requested: stimuli/train.jpg
+	 :: Express :: file requested: stimuli/train.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.van
+received messageparts: chatMessage,van
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252913371,3,speaker,"van"
+
+received message: clickedObj.subSuperTrial.distr12.minivan.target.2.4.car.vehicle.train.distrClass2.3.2.NA.vehicle.blackStimulus.NA.5.5.NA.NA.sedan.distrClass1.4.3.car.vehicle.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr12,minivan,target,2,4,car,vehicle,train,distrClass2,3,2,NA,vehicle,blackStimulus,NA,5,5,NA,NA,sedan,distrClass1,4,3,car,vehicle,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252914799,3,subSuperTrial,distr12,minivan,target,2,4,car,vehicle,train,distrClass2,3,2,NA,vehicle,blackStimulus,NA,5,5,NA,NA,sedan,distrClass1,4,3,car,vehicle,blackStimulus,NA,1,1,NA,NA
+
+now on round 4
+	 :: Express :: file requested: stimuli/small_brown_turtle.jpg
+	 :: Express :: file requested: stimuli/big_black_turtle.jpg
+	 :: Express :: file requested: stimuli/big_brown_turtle.jpg
+	 :: Express :: file requested: stimuli/small_brown_turtle.jpg
+	 :: Express :: file requested: stimuli/big_black_turtle.jpg
+	 :: Express :: file requested: stimuli/big_brown_turtle.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.little turtle
+received messageparts: chatMessage,little turtle
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252919433,4,speaker,"little turtle"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr1Same.small_brown_turtle.target.2.5.NA.NA.big_black_turtle.distractor.3.3.NA.NA.big_black_turtle.distractor.5.1.NA.NA.big_black_turtle.distractor.1.2.NA.NA.big_brown_turtle.distractor.4.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr1Same,small_brown_turtle,target,2,5,NA,NA,big_black_turtle,distractor,3,3,NA,NA,big_black_turtle,distractor,5,1,NA,NA,big_black_turtle,distractor,1,2,NA,NA,big_brown_turtle,distractor,4,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252920913,4,colorSizeTrial,sizeOnly4Distr1Same,small_brown_turtle,target,2,5,NA,NA,big_black_turtle,distractor,3,3,NA,NA,big_black_turtle,distractor,5,1,NA,NA,big_black_turtle,distractor,1,2,NA,NA,big_brown_turtle,distractor,4,4,NA,NA
+
+now on round 5
+	 :: Express :: file requested: stimuli/tulip.jpg
+	 :: Express :: file requested: stimuli/tulip.jpg
+	 :: Express :: file requested: stimuli/grasses.jpg
+	 :: Express :: file requested: stimuli/popcorn.jpg
+	 :: Express :: file requested: stimuli/grasses.jpg
+	 :: Express :: file requested: stimuli/popcorn.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.rose
+received messageparts: chatMessage,rose
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252923720,5,speaker,"rose"
+
+received message: clickedObj.subSuperTrial.distr23.tulip.target.3.3.flower.plant.grasses.distrClass2.2.2.NA.plant.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.popcorn.distrClass3.4.4.NA.snack
+received messageparts: clickedObj,subSuperTrial,distr23,tulip,target,3,3,flower,plant,grasses,distrClass2,2,2,NA,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,popcorn,distrClass3,4,4,NA,snack
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252926992,5,subSuperTrial,distr23,tulip,target,3,3,flower,plant,grasses,distrClass2,2,2,NA,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,popcorn,distrClass3,4,4,NA,snack
+
+now on round 6
+	 :: Express :: file requested: stimuli/daisy.jpg
+	 :: Express :: file requested: stimuli/lion.jpg
+	 :: Express :: file requested: stimuli/motorcycle.jpg
+	 :: Express :: file requested: stimuli/daisy.jpg
+	 :: Express :: file requested: stimuli/lion.jpg
+	 :: Express :: file requested: stimuli/motorcycle.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.daisy
+received messageparts: chatMessage,daisy
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252929956,6,speaker,"daisy"
+
+received message: clickedObj.subSuperTrial.distr33.daisy.target.4.3.flower.plant.lion.distrClass3.2.4.NA.animal.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.motorcycle.distrClass3.3.2.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr33,daisy,target,4,3,flower,plant,lion,distrClass3,2,4,NA,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,motorcycle,distrClass3,3,2,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252931719,6,subSuperTrial,distr33,daisy,target,4,3,flower,plant,lion,distrClass3,2,4,NA,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,motorcycle,distrClass3,3,2,NA,vehicle
+
+now on round 7
+	 :: Express :: file requested: stimuli/rose.jpg
+	 :: Express :: file requested: stimuli/ivy.jpg
+	 :: Express :: file requested: stimuli/rose.jpg
+	 :: Express :: file requested: stimuli/ivy.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.rose
+received messageparts: chatMessage,rose
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252934296,7,speaker,"rose"
+
+received message: clickedObj.subSuperTrial.distr22.rose.target.4.3.flower.plant.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.grasses.distrClass2.2.4.NA.plant.ivy.distrClass2.3.2.NA.plant
+received messageparts: clickedObj,subSuperTrial,distr22,rose,target,4,3,flower,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,grasses,distrClass2,2,4,NA,plant,ivy,distrClass2,3,2,NA,plant
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252935604,7,subSuperTrial,distr22,rose,target,4,3,flower,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,grasses,distrClass2,2,4,NA,plant,ivy,distrClass2,3,2,NA,plant
+
+now on round 8
+	 :: Express :: file requested: stimuli/suv.jpg
+	 :: Express :: file requested: stimuli/squirrel.jpg
+	 :: Express :: file requested: stimuli/suv.jpg
+	 :: Express :: file requested: stimuli/crocodile.jpg
+	 :: Express :: file requested: stimuli/squirrel.jpg
+	 :: Express :: file requested: stimuli/crocodile.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.suv
+received messageparts: chatMessage,suv
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252938646,8,speaker,"suv"
+
+received message: clickedObj.subSuperTrial.distr33.suv.target.2.2.car.vehicle.squirrel.distrClass3.4.3.NA.animal.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.crocodile.distrClass3.3.4.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr33,suv,target,2,2,car,vehicle,squirrel,distrClass3,4,3,NA,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,crocodile,distrClass3,3,4,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252940081,8,subSuperTrial,distr33,suv,target,2,2,car,vehicle,squirrel,distrClass3,4,3,NA,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,crocodile,distrClass3,3,4,NA,animal
+
+now on round 9
+	 :: Express :: file requested: stimuli/tShirt.jpg
+	 :: Express :: file requested: stimuli/ambulance.jpg
+	 :: Express :: file requested: stimuli/tShirt.jpg
+	 :: Express :: file requested: stimuli/ambulance.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.shirt
+received messageparts: chatMessage,shirt
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252943070,9,speaker,"shirt"
+
+received message: clickedObj.subSuperTrial.distr33.tShirt.target.2.3.shirt.clothing.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.squirrel.distrClass3.3.4.NA.animal.ambulance.distrClass3.4.2.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr33,tShirt,target,2,3,shirt,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,squirrel,distrClass3,3,4,NA,animal,ambulance,distrClass3,4,2,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252944375,9,subSuperTrial,distr33,tShirt,target,2,3,shirt,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,squirrel,distrClass3,3,4,NA,animal,ambulance,distrClass3,4,2,NA,vehicle
+
+now on round 10
+	 :: Express :: file requested: stimuli/big_black_avocado.jpg
+	 :: Express :: file requested: stimuli/big_black_avocado.jpg
+	 :: Express :: file requested: stimuli/small_green_avocado.jpg
+	 :: Express :: file requested: stimuli/small_black_avocado.jpg
+	 :: Express :: file requested: stimuli/small_green_avocado.jpg
+	 :: Express :: file requested: stimuli/small_black_avocado.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big
+received messageparts: chatMessage,big
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252947436,10,speaker,"big"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.big_black_avocado.target.4.3.NA.NA.small_black_avocado.distractor.2.2.NA.NA.small_black_avocado.distractor.1.4.NA.NA.small_green_avocado.distractor.5.1.NA.NA.small_black_avocado.distractor.3.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,big_black_avocado,target,4,3,NA,NA,small_black_avocado,distractor,2,2,NA,NA,small_black_avocado,distractor,1,4,NA,NA,small_green_avocado,distractor,5,1,NA,NA,small_black_avocado,distractor,3,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252948106,10,colorSizeTrial,sizeOnly4Distr3Same,big_black_avocado,target,4,3,NA,NA,small_black_avocado,distractor,2,2,NA,NA,small_black_avocado,distractor,1,4,NA,NA,small_green_avocado,distractor,5,1,NA,NA,small_black_avocado,distractor,3,5,NA,NA
+
+now on round 11
+	 :: Express :: file requested: stimuli/small_pink_golfball.jpg
+	 :: Express :: file requested: stimuli/big_blue_golfball.jpg
+	 :: Express :: file requested: stimuli/small_pink_golfball.jpg
+	 :: Express :: file requested: stimuli/big_blue_golfball.jpg
+	 :: Express :: file requested: stimuli/big_pink_golfball.jpg
+	 :: Express :: file requested: stimuli/big_pink_golfball.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252950850,11,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.small_pink_golfball.target.4.2.NA.NA.big_blue_golfball.distractor.2.4.NA.NA.big_pink_golfball.distractor.1.3.NA.NA.big_pink_golfball.distractor.3.1.NA.NA.big_pink_golfball.distractor.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,small_pink_golfball,target,4,2,NA,NA,big_blue_golfball,distractor,2,4,NA,NA,big_pink_golfball,distractor,1,3,NA,NA,big_pink_golfball,distractor,3,1,NA,NA,big_pink_golfball,distractor,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252952085,11,colorSizeTrial,sizeOnly4Distr3Same,small_pink_golfball,target,4,2,NA,NA,big_blue_golfball,distractor,2,4,NA,NA,big_pink_golfball,distractor,1,3,NA,NA,big_pink_golfball,distractor,3,1,NA,NA,big_pink_golfball,distractor,5,5,NA,NA
+
+now on round 12
+	 :: Express :: file requested: stimuli/small_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/small_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_white_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_white_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_pink_weddingcake.jpg
+	 :: Express :: file requested: stimuli/big_pink_weddingcake.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252955438,12,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr2Same.small_pink_weddingcake.target.1.1.NA.NA.big_pink_weddingcake.distractor.4.2.NA.NA.blackStimulus.NA.5.5.NA.NA.big_white_weddingcake.distractor.3.3.NA.NA.big_pink_weddingcake.distractor.2.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr2Same,small_pink_weddingcake,target,1,1,NA,NA,big_pink_weddingcake,distractor,4,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_weddingcake,distractor,3,3,NA,NA,big_pink_weddingcake,distractor,2,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252956813,12,colorSizeTrial,sizeOnly3Distr2Same,small_pink_weddingcake,target,1,1,NA,NA,big_pink_weddingcake,distractor,4,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_weddingcake,distractor,3,3,NA,NA,big_pink_weddingcake,distractor,2,4,NA,NA
+
+now on round 13
+	 :: Express :: file requested: stimuli/small_red_chair.jpg
+	 :: Express :: file requested: stimuli/small_red_chair.jpg
+	 :: Express :: file requested: stimuli/big_red_chair.jpg
+	 :: Express :: file requested: stimuli/big_green_chair.jpg
+	 :: Express :: file requested: stimuli/big_green_chair.jpg
+	 :: Express :: file requested: stimuli/big_red_chair.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252959606,13,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr2Same.small_red_chair.target.3.3.NA.NA.big_red_chair.distractor.2.4.NA.NA.blackStimulus.NA.5.5.NA.NA.big_green_chair.distractor.4.2.NA.NA.big_red_chair.distractor.1.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr2Same,small_red_chair,target,3,3,NA,NA,big_red_chair,distractor,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_chair,distractor,4,2,NA,NA,big_red_chair,distractor,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252960671,13,colorSizeTrial,sizeOnly3Distr2Same,small_red_chair,target,3,3,NA,NA,big_red_chair,distractor,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_chair,distractor,4,2,NA,NA,big_red_chair,distractor,1,1,NA,NA
+
+now on round 14
+	 :: Express :: file requested: stimuli/big_orange_napkin.jpg
+	 :: Express :: file requested: stimuli/big_orange_napkin.jpg
+	 :: Express :: file requested: stimuli/big_yellow_napkin.jpg
+	 :: Express :: file requested: stimuli/small_yellow_napkin.jpg
+	 :: Express :: file requested: stimuli/big_yellow_napkin.jpg
+	 :: Express :: file requested: stimuli/small_yellow_napkin.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.orange
+received messageparts: chatMessage,orange
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252964724,14,speaker,"orange"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr1Same.big_orange_napkin.target.3.2.NA.NA.blackStimulus.NA.5.5.NA.NA.small_yellow_napkin.distractor.4.3.NA.NA.big_yellow_napkin.distractor.1.1.NA.NA.small_yellow_napkin.distractor.2.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr1Same,big_orange_napkin,target,3,2,NA,NA,blackStimulus,NA,5,5,NA,NA,small_yellow_napkin,distractor,4,3,NA,NA,big_yellow_napkin,distractor,1,1,NA,NA,small_yellow_napkin,distractor,2,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252966780,14,colorSizeTrial,colorOnly3Distr1Same,big_orange_napkin,target,3,2,NA,NA,blackStimulus,NA,5,5,NA,NA,small_yellow_napkin,distractor,4,3,NA,NA,big_yellow_napkin,distractor,1,1,NA,NA,small_yellow_napkin,distractor,2,4,NA,NA
+
+now on round 15
+	 :: Express :: file requested: stimuli/big_purple_butterfly.jpg
+	 :: Express :: file requested: stimuli/small_blue_butterfly.jpg
+	 :: Express :: file requested: stimuli/big_purple_butterfly.jpg
+	 :: Express :: file requested: stimuli/small_purple_butterfly.jpg
+	 :: Express :: file requested: stimuli/small_blue_butterfly.jpg
+	 :: Express :: file requested: stimuli/small_purple_butterfly.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big butterfly
+received messageparts: chatMessage,big butterfly
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252970805,15,speaker,"big butterfly"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.small_blue_butterfly.distractor.2.5.NA.NA.big_purple_butterfly.target.4.2.NA.NA.small_purple_butterfly.distractor.5.3.NA.NA.small_purple_butterfly.distractor.3.1.NA.NA.small_purple_butterfly.distractor.1.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,small_blue_butterfly,distractor,2,5,NA,NA,big_purple_butterfly,target,4,2,NA,NA,small_purple_butterfly,distractor,5,3,NA,NA,small_purple_butterfly,distractor,3,1,NA,NA,small_purple_butterfly,distractor,1,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252971797,15,colorSizeTrial,sizeOnly4Distr3Same,small_blue_butterfly,distractor,2,5,NA,NA,big_purple_butterfly,target,4,2,NA,NA,small_purple_butterfly,distractor,5,3,NA,NA,small_purple_butterfly,distractor,3,1,NA,NA,small_purple_butterfly,distractor,1,4,NA,NA
+
+now on round 16
+	 :: Express :: file requested: stimuli/bedsideTable.jpg
+	 :: Express :: file requested: stimuli/bedsideTable.jpg
+	 :: Express :: file requested: stimuli/wardrobe.jpg
+	 :: Express :: file requested: stimuli/lamp.jpg
+	 :: Express :: file requested: stimuli/wardrobe.jpg
+	 :: Express :: file requested: stimuli/lamp.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.dresser
+received messageparts: chatMessage,dresser
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252975313,16,speaker,"dresser"
+
+received message: clickedObj.subSuperTrial.distr22.bedsideTable.target.3.4.table.furniture.lamp.distrClass2.4.3.NA.furniture.blackStimulus.NA.1.1.NA.NA.wardrobe.distrClass2.2.2.NA.furniture.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,bedsideTable,target,3,4,table,furniture,lamp,distrClass2,4,3,NA,furniture,blackStimulus,NA,1,1,NA,NA,wardrobe,distrClass2,2,2,NA,furniture,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252978897,16,subSuperTrial,distr22,bedsideTable,target,3,4,table,furniture,lamp,distrClass2,4,3,NA,furniture,blackStimulus,NA,1,1,NA,NA,wardrobe,distrClass2,2,2,NA,furniture,blackStimulus,NA,5,5,NA,NA
+
+now on round 17
+	 :: Express :: file requested: stimuli/skittles.jpg
+	 :: Express :: file requested: stimuli/skittles.jpg
+	 :: Express :: file requested: stimuli/candyCorn.jpg
+	 :: Express :: file requested: stimuli/candyCorn.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.skittles
+received messageparts: chatMessage,skittles
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252982585,17,speaker,"skittles"
+
+received message: clickedObj.subSuperTrial.distr12.skittles.target.4.3.candy.snack.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.candyCorn.distrClass1.3.2.candy.snack.popcorn.distrClass2.2.4.NA.snack
+received messageparts: clickedObj,subSuperTrial,distr12,skittles,target,4,3,candy,snack,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,candyCorn,distrClass1,3,2,candy,snack,popcorn,distrClass2,2,4,NA,snack
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252986318,17,subSuperTrial,distr12,skittles,target,4,3,candy,snack,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,candyCorn,distrClass1,3,2,candy,snack,popcorn,distrClass2,2,4,NA,snack
+
+now on round 18
+	 :: Express :: file requested: stimuli/big_blue_book.jpg
+	 :: Express :: file requested: stimuli/small_blue_book.jpg
+	 :: Express :: file requested: stimuli/big_blue_book.jpg
+	 :: Express :: file requested: stimuli/small_blue_book.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.ig book
+received messageparts: chatMessage,ig book
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449252991415,18,speaker,"ig book"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr3Same.big_blue_book.target.4.4.NA.NA.small_blue_book.distractor.3.2.NA.NA.small_blue_book.distractor.1.3.NA.NA.small_blue_book.distractor.2.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr3Same,big_blue_book,target,4,4,NA,NA,small_blue_book,distractor,3,2,NA,NA,small_blue_book,distractor,1,3,NA,NA,small_blue_book,distractor,2,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449252994437,18,colorSizeTrial,sizeOnly3Distr3Same,big_blue_book,target,4,4,NA,NA,small_blue_book,distractor,3,2,NA,NA,small_blue_book,distractor,1,3,NA,NA,small_blue_book,distractor,2,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 19
+	 :: Express :: file requested: stimuli/small_red_pepper.jpg
+	 :: Express :: file requested: stimuli/big_green_pepper.jpg
+	 :: Express :: file requested: stimuli/small_red_pepper.jpg
+	 :: Express :: file requested: stimuli/big_red_pepper.jpg
+	 :: Express :: file requested: stimuli/big_green_pepper.jpg
+	 :: Express :: file requested: stimuli/big_red_pepper.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small red chili
+received messageparts: chatMessage,small red chili
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253000271,19,speaker,"small red chili"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr1Same.small_red_pepper.target.2.1.NA.NA.big_red_pepper.distractor.4.3.NA.NA.big_green_pepper.distractor.1.2.NA.NA.blackStimulus.NA.5.5.NA.NA.big_green_pepper.distractor.3.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr1Same,small_red_pepper,target,2,1,NA,NA,big_red_pepper,distractor,4,3,NA,NA,big_green_pepper,distractor,1,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_pepper,distractor,3,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253000884,19,colorSizeTrial,sizeOnly3Distr1Same,small_red_pepper,target,2,1,NA,NA,big_red_pepper,distractor,4,3,NA,NA,big_green_pepper,distractor,1,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_pepper,distractor,3,4,NA,NA
+
+now on round 20
+	 :: Express :: file requested: stimuli/dressShirt.jpg
+	 :: Express :: file requested: stimuli/firetruck.jpg
+	 :: Express :: file requested: stimuli/rosemary.jpg
+	 :: Express :: file requested: stimuli/dressShirt.jpg
+	 :: Express :: file requested: stimuli/firetruck.jpg
+	 :: Express :: file requested: stimuli/rosemary.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.shirt
+received messageparts: chatMessage,shirt
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253003872,20,speaker,"shirt"
+
+received message: clickedObj.subSuperTrial.distr33.dressShirt.target.4.2.shirt.clothing.rosemary.distrClass3.3.4.NA.plant.firetruck.distrClass3.2.3.NA.vehicle.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr33,dressShirt,target,4,2,shirt,clothing,rosemary,distrClass3,3,4,NA,plant,firetruck,distrClass3,2,3,NA,vehicle,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253005115,20,subSuperTrial,distr33,dressShirt,target,4,2,shirt,clothing,rosemary,distrClass3,3,4,NA,plant,firetruck,distrClass3,2,3,NA,vehicle,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA
+
+now on round 21
+	 :: Express :: file requested: stimuli/motorcycle.jpg
+	 :: Express :: file requested: stimuli/clownFish.jpg
+	 :: Express :: file requested: stimuli/ambulance.jpg
+	 :: Express :: file requested: stimuli/clownFish.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.fish
+received messageparts: chatMessage,fish
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253007994,21,speaker,"fish"
+
+received message: clickedObj.subSuperTrial.distr33.clownFish.target.3.4.fish.animal.blackStimulus.NA.5.5.NA.NA.ambulance.distrClass3.2.2.NA.vehicle.blackStimulus.NA.1.1.NA.NA.motorcycle.distrClass3.4.3.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr33,clownFish,target,3,4,fish,animal,blackStimulus,NA,5,5,NA,NA,ambulance,distrClass3,2,2,NA,vehicle,blackStimulus,NA,1,1,NA,NA,motorcycle,distrClass3,4,3,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253009212,21,subSuperTrial,distr33,clownFish,target,3,4,fish,animal,blackStimulus,NA,5,5,NA,NA,ambulance,distrClass3,2,2,NA,vehicle,blackStimulus,NA,1,1,NA,NA,motorcycle,distrClass3,4,3,NA,vehicle
+
+now on round 22
+	 :: Express :: file requested: stimuli/big_red_candle.jpg
+	 :: Express :: file requested: stimuli/big_red_candle.jpg
+	 :: Express :: file requested: stimuli/big_blue_candle.jpg
+	 :: Express :: file requested: stimuli/small_blue_candle.jpg
+	 :: Express :: file requested: stimuli/big_blue_candle.jpg
+	 :: Express :: file requested: stimuli/small_blue_candle.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.red
+received messageparts: chatMessage,red
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253011998,22,speaker,"red"
+
+received message: clickedObj.colorSizeTrial.colorOnly4Distr3Same.big_red_candle.target.3.2.NA.NA.small_blue_candle.distractor.1.3.NA.NA.big_blue_candle.distractor.5.4.NA.NA.big_blue_candle.distractor.2.1.NA.NA.big_blue_candle.distractor.4.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly4Distr3Same,big_red_candle,target,3,2,NA,NA,small_blue_candle,distractor,1,3,NA,NA,big_blue_candle,distractor,5,4,NA,NA,big_blue_candle,distractor,2,1,NA,NA,big_blue_candle,distractor,4,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253013514,22,colorSizeTrial,colorOnly4Distr3Same,big_red_candle,target,3,2,NA,NA,small_blue_candle,distractor,1,3,NA,NA,big_blue_candle,distractor,5,4,NA,NA,big_blue_candle,distractor,2,1,NA,NA,big_blue_candle,distractor,4,5,NA,NA
+
+now on round 23
+	 :: Express :: file requested: stimuli/pug.jpg
+	 :: Express :: file requested: stimuli/snake.jpg
+	 :: Express :: file requested: stimuli/pug.jpg
+	 :: Express :: file requested: stimuli/chick.jpg
+	 :: Express :: file requested: stimuli/snake.jpg
+	 :: Express :: file requested: stimuli/chick.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.pug
+received messageparts: chatMessage,pug
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253016349,23,speaker,"pug"
+
+received message: clickedObj.subSuperTrial.distr22.pug.target.4.4.dog.animal.blackStimulus.NA.1.1.NA.NA.snake.distrClass2.3.2.NA.animal.chick.distrClass2.2.3.NA.animal.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,pug,target,4,4,dog,animal,blackStimulus,NA,1,1,NA,NA,snake,distrClass2,3,2,NA,animal,chick,distrClass2,2,3,NA,animal,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253017683,23,subSuperTrial,distr22,pug,target,4,4,dog,animal,blackStimulus,NA,1,1,NA,NA,snake,distrClass2,3,2,NA,animal,chick,distrClass2,2,3,NA,animal,blackStimulus,NA,5,5,NA,NA
+
+now on round 24
+	 :: Express :: file requested: stimuli/dalmatian.jpg
+	 :: Express :: file requested: stimuli/dalmatian.jpg
+	 :: Express :: file requested: stimuli/rhino.jpg
+	 :: Express :: file requested: stimuli/rhino.jpg
+	 :: Express :: file requested: stimuli/pretzels.jpg
+	 :: Express :: file requested: stimuli/pretzels.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.dalmatian
+received messageparts: chatMessage,dalmatian
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253020983,24,speaker,"dalmatian"
+
+received message: clickedObj.subSuperTrial.distr23.dalmatian.target.3.3.dog.animal.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.pretzels.distrClass3.2.4.NA.snack.rhino.distrClass2.4.2.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr23,dalmatian,target,3,3,dog,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,pretzels,distrClass3,2,4,NA,snack,rhino,distrClass2,4,2,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253022202,24,subSuperTrial,distr23,dalmatian,target,3,3,dog,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,pretzels,distrClass3,2,4,NA,snack,rhino,distrClass2,4,2,NA,animal
+
+now on round 25
+	 :: Express :: file requested: stimuli/gloves.jpg
+	 :: Express :: file requested: stimuli/pandaBear.jpg
+	 :: Express :: file requested: stimuli/bed.jpg
+	 :: Express :: file requested: stimuli/pandaBear.jpg
+	 :: Express :: file requested: stimuli/bed.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.panda
+received messageparts: chatMessage,panda
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253025063,25,speaker,"panda"
+
+received message: clickedObj.subSuperTrial.distr33.pandaBear.target.3.2.bear.animal.gloves.distrClass3.2.3.NA.clothing.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.bed.distrClass3.4.4.NA.furniture
+received messageparts: clickedObj,subSuperTrial,distr33,pandaBear,target,3,2,bear,animal,gloves,distrClass3,2,3,NA,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,bed,distrClass3,4,4,NA,furniture
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253026990,25,subSuperTrial,distr33,pandaBear,target,3,2,bear,animal,gloves,distrClass3,2,3,NA,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,bed,distrClass3,4,4,NA,furniture
+
+now on round 26
+	 :: Express :: file requested: stimuli/parrot.jpg
+	 :: Express :: file requested: stimuli/lobster.jpg
+	 :: Express :: file requested: stimuli/parrot.jpg
+	 :: Express :: file requested: stimuli/lobster.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.parrot
+received messageparts: chatMessage,parrot
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253030161,26,speaker,"parrot"
+
+received message: clickedObj.subSuperTrial.distr22.parrot.target.3.2.bird.animal.rhino.distrClass2.4.4.NA.animal.blackStimulus.NA.5.5.NA.NA.lobster.distrClass2.2.3.NA.animal.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,parrot,target,3,2,bird,animal,rhino,distrClass2,4,4,NA,animal,blackStimulus,NA,5,5,NA,NA,lobster,distrClass2,2,3,NA,animal,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253031531,26,subSuperTrial,distr22,parrot,target,3,2,bird,animal,rhino,distrClass2,4,4,NA,animal,blackStimulus,NA,5,5,NA,NA,lobster,distrClass2,2,3,NA,animal,blackStimulus,NA,1,1,NA,NA
+
+now on round 27
+	 :: Express :: file requested: stimuli/small_purple_rug.jpg
+	 :: Express :: file requested: stimuli/small_purple_rug.jpg
+	 :: Express :: file requested: stimuli/small_blue_rug.jpg
+	 :: Express :: file requested: stimuli/big_blue_rug.jpg
+	 :: Express :: file requested: stimuli/small_blue_rug.jpg
+	 :: Express :: file requested: stimuli/big_blue_rug.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.purple rug
+received messageparts: chatMessage,purple rug
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253036007,27,speaker,"purple rug"
+
+received message: clickedObj.colorSizeTrial.colorOnly2Distr1Same.small_purple_rug.target.4.4.NA.NA.small_blue_rug.distractor.3.3.NA.NA.big_blue_rug.distractor.2.2.NA.NA.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly2Distr1Same,small_purple_rug,target,4,4,NA,NA,small_blue_rug,distractor,3,3,NA,NA,big_blue_rug,distractor,2,2,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253037543,27,colorSizeTrial,colorOnly2Distr1Same,small_purple_rug,target,4,4,NA,NA,small_blue_rug,distractor,3,3,NA,NA,big_blue_rug,distractor,2,2,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 28
+	 :: Express :: file requested: stimuli/small_purple_rock.jpg
+	 :: Express :: file requested: stimuli/small_purple_rock.jpg
+	 :: Express :: file requested: stimuli/big_green_rock.jpg
+	 :: Express :: file requested: stimuli/big_purple_rock.jpg
+	 :: Express :: file requested: stimuli/big_green_rock.jpg
+	 :: Express :: file requested: stimuli/big_purple_rock.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small purple
+received messageparts: chatMessage,small purple
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253042663,28,speaker,"small purple"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr1Same.small_purple_rock.target.2.3.NA.NA.big_green_rock.distractor.4.4.NA.NA.blackStimulus.NA.5.5.NA.NA.big_green_rock.distractor.1.1.NA.NA.big_purple_rock.distractor.3.2.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr1Same,small_purple_rock,target,2,3,NA,NA,big_green_rock,distractor,4,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_rock,distractor,1,1,NA,NA,big_purple_rock,distractor,3,2,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253044529,28,colorSizeTrial,sizeOnly3Distr1Same,small_purple_rock,target,2,3,NA,NA,big_green_rock,distractor,4,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_rock,distractor,1,1,NA,NA,big_purple_rock,distractor,3,2,NA,NA
+
+now on round 29
+	 :: Express :: file requested: stimuli/small_blue_guitar.jpg
+	 :: Express :: file requested: stimuli/small_blue_guitar.jpg
+	 :: Express :: file requested: stimuli/big_green_guitar.jpg
+	 :: Express :: file requested: stimuli/big_blue_guitar.jpg
+	 :: Express :: file requested: stimuli/big_green_guitar.jpg
+	 :: Express :: file requested: stimuli/big_blue_guitar.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small blue
+received messageparts: chatMessage,small blue
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253048626,29,speaker,"small blue"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr3Same.small_blue_guitar.target.5.2.NA.NA.big_blue_guitar.distractor.1.5.NA.NA.big_blue_guitar.distractor.3.1.NA.NA.big_blue_guitar.distractor.4.3.NA.NA.big_green_guitar.distractor.2.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr3Same,small_blue_guitar,target,5,2,NA,NA,big_blue_guitar,distractor,1,5,NA,NA,big_blue_guitar,distractor,3,1,NA,NA,big_blue_guitar,distractor,4,3,NA,NA,big_green_guitar,distractor,2,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253050730,29,colorSizeTrial,sizeOnly4Distr3Same,small_blue_guitar,target,5,2,NA,NA,big_blue_guitar,distractor,1,5,NA,NA,big_blue_guitar,distractor,3,1,NA,NA,big_blue_guitar,distractor,4,3,NA,NA,big_green_guitar,distractor,2,4,NA,NA
+
+now on round 30
+	 :: Express :: file requested: stimuli/goldFish.jpg
+	 :: Express :: file requested: stimuli/goldFish.jpg
+	 :: Express :: file requested: stimuli/discusFish.jpg
+	 :: Express :: file requested: stimuli/discusFish.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.goldfish
+received messageparts: chatMessage,goldfish
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253056415,30,speaker,"goldfish"
+
+received message: clickedObj.subSuperTrial.distr12.goldFish.target.2.3.fish.animal.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.discusFish.distrClass1.3.2.fish.animal.rhino.distrClass2.4.4.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr12,goldFish,target,2,3,fish,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,discusFish,distrClass1,3,2,fish,animal,rhino,distrClass2,4,4,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253058686,30,subSuperTrial,distr12,goldFish,target,2,3,fish,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,discusFish,distrClass1,3,2,fish,animal,rhino,distrClass2,4,4,NA,animal
+
+now on round 31
+	 :: Express :: file requested: stimuli/wardrobe.jpg
+	 :: Express :: file requested: stimuli/polarBear.jpg
+	 :: Express :: file requested: stimuli/polarBear.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.polar bear
+received messageparts: chatMessage,polar bear
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253072624,31,speaker,"polar bear"
+
+received message: clickedObj.subSuperTrial.distr33.polarBear.target.2.2.bear.animal.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.wardrobe.distrClass3.4.3.NA.furniture.motorcycle.distrClass3.3.4.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr33,polarBear,target,2,2,bear,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,wardrobe,distrClass3,4,3,NA,furniture,motorcycle,distrClass3,3,4,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253075369,31,subSuperTrial,distr33,polarBear,target,2,2,bear,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,wardrobe,distrClass3,4,3,NA,furniture,motorcycle,distrClass3,3,4,NA,vehicle
+
+now on round 32
+	 :: Express :: file requested: stimuli/big_blue_comb.jpg
+	 :: Express :: file requested: stimuli/big_blue_comb.jpg
+	 :: Express :: file requested: stimuli/small_black_comb.jpg
+	 :: Express :: file requested: stimuli/small_blue_comb.jpg
+	 :: Express :: file requested: stimuli/small_black_comb.jpg
+	 :: Express :: file requested: stimuli/small_blue_comb.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big blue comb
+received messageparts: chatMessage,big blue comb
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253080490,32,speaker,"big blue comb"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr2Same.big_blue_comb.target.2.4.NA.NA.blackStimulus.NA.5.5.NA.NA.small_blue_comb.distractor.3.2.NA.NA.small_black_comb.distractor.4.1.NA.NA.small_blue_comb.distractor.1.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr2Same,big_blue_comb,target,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,small_blue_comb,distractor,3,2,NA,NA,small_black_comb,distractor,4,1,NA,NA,small_blue_comb,distractor,1,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253082506,32,colorSizeTrial,sizeOnly3Distr2Same,big_blue_comb,target,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,small_blue_comb,distractor,3,2,NA,NA,small_black_comb,distractor,4,1,NA,NA,small_blue_comb,distractor,1,3,NA,NA
+
+now on round 33
+	 :: Express :: file requested: stimuli/small_pink_bucket.jpg
+	 :: Express :: file requested: stimuli/small_red_bucket.jpg
+	 :: Express :: file requested: stimuli/small_pink_bucket.jpg
+	 :: Express :: file requested: stimuli/big_red_bucket.jpg
+	 :: Express :: file requested: stimuli/small_red_bucket.jpg
+	 :: Express :: file requested: stimuli/big_red_bucket.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.pink
+received messageparts: chatMessage,pink
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253086194,33,speaker,"pink"
+
+received message: clickedObj.colorSizeTrial.colorOnly4Distr3Same.small_pink_bucket.target.4.2.NA.NA.big_red_bucket.distractor.2.1.NA.NA.small_red_bucket.distractor.3.5.NA.NA.small_red_bucket.distractor.5.4.NA.NA.small_red_bucket.distractor.1.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly4Distr3Same,small_pink_bucket,target,4,2,NA,NA,big_red_bucket,distractor,2,1,NA,NA,small_red_bucket,distractor,3,5,NA,NA,small_red_bucket,distractor,5,4,NA,NA,small_red_bucket,distractor,1,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253087727,33,colorSizeTrial,colorOnly4Distr3Same,small_pink_bucket,target,4,2,NA,NA,big_red_bucket,distractor,2,1,NA,NA,small_red_bucket,distractor,3,5,NA,NA,small_red_bucket,distractor,5,4,NA,NA,small_red_bucket,distractor,1,3,NA,NA
+
+now on round 34
+	 :: Express :: file requested: stimuli/big_pink_framee.jpg
+	 :: Express :: file requested: stimuli/big_pink_framee.jpg
+	 :: Express :: file requested: stimuli/big_green_framee.jpg
+	 :: Express :: file requested: stimuli/big_green_framee.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.pink
+received messageparts: chatMessage,pink
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253094005,34,speaker,"pink"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr3Same.big_pink_framee.target.2.4.NA.NA.big_green_framee.distractor.1.1.NA.NA.big_green_framee.distractor.4.3.NA.NA.blackStimulus.NA.5.5.NA.NA.big_green_framee.distractor.3.2.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr3Same,big_pink_framee,target,2,4,NA,NA,big_green_framee,distractor,1,1,NA,NA,big_green_framee,distractor,4,3,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_framee,distractor,3,2,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253094745,34,colorSizeTrial,colorOnly3Distr3Same,big_pink_framee,target,2,4,NA,NA,big_green_framee,distractor,1,1,NA,NA,big_green_framee,distractor,4,3,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_framee,distractor,3,2,NA,NA
+
+now on round 35
+	 :: Express :: file requested: stimuli/big_blue_tack.jpg
+	 :: Express :: file requested: stimuli/big_blue_tack.jpg
+	 :: Express :: file requested: stimuli/small_red_tack.jpg
+	 :: Express :: file requested: stimuli/small_blue_tack.jpg
+	 :: Express :: file requested: stimuli/small_red_tack.jpg
+	 :: Express :: file requested: stimuli/small_blue_tack.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big blue
+received messageparts: chatMessage,big blue
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253098011,35,speaker,"big blue"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr1Same.big_blue_tack.target.1.2.NA.NA.small_blue_tack.distractor.4.4.NA.NA.small_red_tack.distractor.5.3.NA.NA.small_red_tack.distractor.3.1.NA.NA.small_red_tack.distractor.2.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr1Same,big_blue_tack,target,1,2,NA,NA,small_blue_tack,distractor,4,4,NA,NA,small_red_tack,distractor,5,3,NA,NA,small_red_tack,distractor,3,1,NA,NA,small_red_tack,distractor,2,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253099362,35,colorSizeTrial,sizeOnly4Distr1Same,big_blue_tack,target,1,2,NA,NA,small_blue_tack,distractor,4,4,NA,NA,small_red_tack,distractor,5,3,NA,NA,small_red_tack,distractor,3,1,NA,NA,small_red_tack,distractor,2,5,NA,NA
+
+now on round 36
+	 :: Express :: file requested: stimuli/blackBear.jpg
+	 :: Express :: file requested: stimuli/crocodile.jpg
+	 :: Express :: file requested: stimuli/blackBear.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.bear
+received messageparts: chatMessage,bear
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253101843,36,speaker,"bear"
+
+received message: clickedObj.subSuperTrial.distr23.blackBear.target.2.3.bear.animal.crocodile.distrClass2.3.4.NA.animal.blackStimulus.NA.5.5.NA.NA.motorcycle.distrClass3.4.2.NA.vehicle.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr23,blackBear,target,2,3,bear,animal,crocodile,distrClass2,3,4,NA,animal,blackStimulus,NA,5,5,NA,NA,motorcycle,distrClass3,4,2,NA,vehicle,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253103014,36,subSuperTrial,distr23,blackBear,target,2,3,bear,animal,crocodile,distrClass2,3,4,NA,animal,blackStimulus,NA,5,5,NA,NA,motorcycle,distrClass3,4,2,NA,vehicle,blackStimulus,NA,1,1,NA,NA
+
+now on round 37
+	 :: Express :: file requested: stimuli/small_red_yarn.jpg
+	 :: Express :: file requested: stimuli/big_red_yarn.jpg
+	 :: Express :: file requested: stimuli/small_red_yarn.jpg
+	 :: Express :: file requested: stimuli/big_red_yarn.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253105802,37,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr3Same.small_red_yarn.target.1.3.NA.NA.big_red_yarn.distractor.2.2.NA.NA.big_red_yarn.distractor.4.1.NA.NA.blackStimulus.NA.5.5.NA.NA.big_red_yarn.distractor.3.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr3Same,small_red_yarn,target,1,3,NA,NA,big_red_yarn,distractor,2,2,NA,NA,big_red_yarn,distractor,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_yarn,distractor,3,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253106983,37,colorSizeTrial,sizeOnly3Distr3Same,small_red_yarn,target,1,3,NA,NA,big_red_yarn,distractor,2,2,NA,NA,big_red_yarn,distractor,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_yarn,distractor,3,4,NA,NA
+
+now on round 38
+	 :: Express :: file requested: stimuli/big_yellow_shoe.jpg
+	 :: Express :: file requested: stimuli/small_yellow_shoe.jpg
+	 :: Express :: file requested: stimuli/big_yellow_shoe.jpg
+	 :: Express :: file requested: stimuli/small_white_shoe.jpg
+	 :: Express :: file requested: stimuli/small_yellow_shoe.jpg
+	 :: Express :: file requested: stimuli/small_white_shoe.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.ig yellow
+received messageparts: chatMessage,ig yellow
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253111222,38,speaker,"ig yellow"
+
+received message: clickedObj.colorSizeTrial.sizeOnly2Distr1Same.big_yellow_shoe.target.4.3.NA.NA.small_yellow_shoe.distractor.3.4.NA.NA.small_white_shoe.distractor.2.2.NA.NA.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly2Distr1Same,big_yellow_shoe,target,4,3,NA,NA,small_yellow_shoe,distractor,3,4,NA,NA,small_white_shoe,distractor,2,2,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253112969,38,colorSizeTrial,sizeOnly2Distr1Same,big_yellow_shoe,target,4,3,NA,NA,small_yellow_shoe,distractor,3,4,NA,NA,small_white_shoe,distractor,2,2,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 39
+	 :: Express :: file requested: stimuli/big_orange_billiardball.jpg
+	 :: Express :: file requested: stimuli/big_purple_billiardball.jpg
+	 :: Express :: file requested: stimuli/big_orange_billiardball.jpg
+	 :: Express :: file requested: stimuli/big_purple_billiardball.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.red
+received messageparts: chatMessage,red
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253115627,39,speaker,"red"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr3Same.big_orange_billiardball.target.2.3.NA.NA.big_purple_billiardball.distractor.4.1.NA.NA.blackStimulus.NA.5.5.NA.NA.big_purple_billiardball.distractor.3.4.NA.NA.big_purple_billiardball.distractor.1.2.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr3Same,big_orange_billiardball,target,2,3,NA,NA,big_purple_billiardball,distractor,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_purple_billiardball,distractor,3,4,NA,NA,big_purple_billiardball,distractor,1,2,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253116250,39,colorSizeTrial,colorOnly3Distr3Same,big_orange_billiardball,target,2,3,NA,NA,big_purple_billiardball,distractor,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_purple_billiardball,distractor,3,4,NA,NA,big_purple_billiardball,distractor,1,2,NA,NA
+
+now on round 40
+	 :: Express :: file requested: stimuli/hawaiiShirt.jpg
+	 :: Express :: file requested: stimuli/dress.jpg
+	 :: Express :: file requested: stimuli/hawaiiShirt.jpg
+	 :: Express :: file requested: stimuli/dress.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.shirt
+received messageparts: chatMessage,shirt
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253119234,40,speaker,"shirt"
+
+received message: clickedObj.subSuperTrial.distr22.hawaiiShirt.target.4.4.shirt.clothing.gloves.distrClass2.3.2.NA.clothing.dress.distrClass2.2.3.NA.clothing.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,hawaiiShirt,target,4,4,shirt,clothing,gloves,distrClass2,3,2,NA,clothing,dress,distrClass2,2,3,NA,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253120553,40,subSuperTrial,distr22,hawaiiShirt,target,4,4,shirt,clothing,gloves,distrClass2,3,2,NA,clothing,dress,distrClass2,2,3,NA,clothing,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA
+
+now on round 41
+	 :: Express :: file requested: stimuli/small_red_bike.jpg
+	 :: Express :: file requested: stimuli/small_red_bike.jpg
+	 :: Express :: file requested: stimuli/big_red_bike.jpg
+	 :: Express :: file requested: stimuli/big_purple_bike.jpg
+	 :: Express :: file requested: stimuli/big_red_bike.jpg
+	 :: Express :: file requested: stimuli/big_purple_bike.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253123580,41,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly2Distr1Same.small_red_bike.target.4.3.NA.NA.blackStimulus.NA.5.5.NA.NA.big_red_bike.distractor.2.2.NA.NA.big_purple_bike.distractor.3.4.NA.NA.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly2Distr1Same,small_red_bike,target,4,3,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_bike,distractor,2,2,NA,NA,big_purple_bike,distractor,3,4,NA,NA,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253125722,41,colorSizeTrial,sizeOnly2Distr1Same,small_red_bike,target,4,3,NA,NA,blackStimulus,NA,5,5,NA,NA,big_red_bike,distractor,2,2,NA,NA,big_purple_bike,distractor,3,4,NA,NA,blackStimulus,NA,1,1,NA,NA
+
+now on round 42
+	 :: Express :: file requested: stimuli/big_purple_ornament.jpg
+	 :: Express :: file requested: stimuli/small_blue_ornament.jpg
+	 :: Express :: file requested: stimuli/big_purple_ornament.jpg
+	 :: Express :: file requested: stimuli/small_blue_ornament.jpg
+	 :: Express :: file requested: stimuli/small_purple_ornament.jpg
+	 :: Express :: file requested: stimuli/small_purple_ornament.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big
+received messageparts: chatMessage,big
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253128849,42,speaker,"big"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr1Same.big_purple_ornament.target.3.4.NA.NA.small_purple_ornament.distractor.1.2.NA.NA.small_blue_ornament.distractor.2.1.NA.NA.blackStimulus.NA.5.5.NA.NA.small_blue_ornament.distractor.4.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr1Same,big_purple_ornament,target,3,4,NA,NA,small_purple_ornament,distractor,1,2,NA,NA,small_blue_ornament,distractor,2,1,NA,NA,blackStimulus,NA,5,5,NA,NA,small_blue_ornament,distractor,4,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253130149,42,colorSizeTrial,sizeOnly3Distr1Same,big_purple_ornament,target,3,4,NA,NA,small_purple_ornament,distractor,1,2,NA,NA,small_blue_ornament,distractor,2,1,NA,NA,blackStimulus,NA,5,5,NA,NA,small_blue_ornament,distractor,4,3,NA,NA
+
+now on round 43
+	 :: Express :: file requested: stimuli/big_pink_hairdryer.jpg
+	 :: Express :: file requested: stimuli/small_pink_hairdryer.jpg
+	 :: Express :: file requested: stimuli/big_pink_hairdryer.jpg
+	 :: Express :: file requested: stimuli/small_pink_hairdryer.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big
+received messageparts: chatMessage,big
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253132938,43,speaker,"big"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr3Same.big_pink_hairdryer.target.1.4.NA.NA.blackStimulus.NA.5.5.NA.NA.small_pink_hairdryer.distractor.4.3.NA.NA.small_pink_hairdryer.distractor.3.2.NA.NA.small_pink_hairdryer.distractor.2.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr3Same,big_pink_hairdryer,target,1,4,NA,NA,blackStimulus,NA,5,5,NA,NA,small_pink_hairdryer,distractor,4,3,NA,NA,small_pink_hairdryer,distractor,3,2,NA,NA,small_pink_hairdryer,distractor,2,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253133355,43,colorSizeTrial,sizeOnly3Distr3Same,big_pink_hairdryer,target,1,4,NA,NA,blackStimulus,NA,5,5,NA,NA,small_pink_hairdryer,distractor,4,3,NA,NA,small_pink_hairdryer,distractor,3,2,NA,NA,small_pink_hairdryer,distractor,2,1,NA,NA
+
+now on round 44
+	 :: Express :: file requested: stimuli/hummingBird.jpg
+	 :: Express :: file requested: stimuli/sparrow.jpg
+	 :: Express :: file requested: stimuli/hummingBird.jpg
+	 :: Express :: file requested: stimuli/sparrow.jpg
+	 :: Express :: file requested: stimuli/sheep.jpg
+	 :: Express :: file requested: stimuli/sheep.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.hummingbird
+received messageparts: chatMessage,hummingbird
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253137978,44,speaker,"hummingbird"
+
+received message: clickedObj.subSuperTrial.distr12.hummingBird.target.3.3.bird.animal.sheep.distrClass2.4.4.NA.animal.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.sparrow.distrClass1.2.2.bird.animal
+received messageparts: clickedObj,subSuperTrial,distr12,hummingBird,target,3,3,bird,animal,sheep,distrClass2,4,4,NA,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,sparrow,distrClass1,2,2,bird,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253139300,44,subSuperTrial,distr12,hummingBird,target,3,3,bird,animal,sheep,distrClass2,4,4,NA,animal,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,sparrow,distrClass1,2,2,bird,animal
+
+now on round 45
+	 :: Express :: file requested: stimuli/small_white_teacup.jpg
+	 :: Express :: file requested: stimuli/big_white_teacup.jpg
+	 :: Express :: file requested: stimuli/small_white_teacup.jpg
+	 :: Express :: file requested: stimuli/big_white_teacup.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253142066,45,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr3Same.small_white_teacup.target.3.1.NA.NA.blackStimulus.NA.5.5.NA.NA.big_white_teacup.distractor.4.2.NA.NA.big_white_teacup.distractor.1.3.NA.NA.big_white_teacup.distractor.2.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr3Same,small_white_teacup,target,3,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_teacup,distractor,4,2,NA,NA,big_white_teacup,distractor,1,3,NA,NA,big_white_teacup,distractor,2,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253142734,45,colorSizeTrial,sizeOnly3Distr3Same,small_white_teacup,target,3,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_teacup,distractor,4,2,NA,NA,big_white_teacup,distractor,1,3,NA,NA,big_white_teacup,distractor,2,4,NA,NA
+
+now on round 46
+	 :: Express :: file requested: stimuli/germanShepherd.jpg
+	 :: Express :: file requested: stimuli/squirrel.jpg
+	 :: Express :: file requested: stimuli/germanShepherd.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.dog
+received messageparts: chatMessage,dog
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253146376,46,speaker,"dog"
+
+received message: clickedObj.subSuperTrial.distr22.germanShepherd.target.3.2.dog.animal.snake.distrClass2.2.4.NA.animal.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.squirrel.distrClass2.4.3.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr22,germanShepherd,target,3,2,dog,animal,snake,distrClass2,2,4,NA,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,squirrel,distrClass2,4,3,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253147614,46,subSuperTrial,distr22,germanShepherd,target,3,2,dog,animal,snake,distrClass2,2,4,NA,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,squirrel,distrClass2,4,3,NA,animal
+
+now on round 47
+	 :: Express :: file requested: stimuli/sunflower.jpg
+	 :: Express :: file requested: stimuli/lion.jpg
+	 :: Express :: file requested: stimuli/sunflower.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.flower
+received messageparts: chatMessage,flower
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253151065,47,speaker,"flower"
+
+received message: clickedObj.subSuperTrial.distr23.sunflower.target.4.4.flower.plant.blackStimulus.NA.5.5.NA.NA.lion.distrClass3.2.3.NA.animal.blackStimulus.NA.1.1.NA.NA.rosemary.distrClass2.3.2.NA.plant
+received messageparts: clickedObj,subSuperTrial,distr23,sunflower,target,4,4,flower,plant,blackStimulus,NA,5,5,NA,NA,lion,distrClass3,2,3,NA,animal,blackStimulus,NA,1,1,NA,NA,rosemary,distrClass2,3,2,NA,plant
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253152513,47,subSuperTrial,distr23,sunflower,target,4,4,flower,plant,blackStimulus,NA,5,5,NA,NA,lion,distrClass3,2,3,NA,animal,blackStimulus,NA,1,1,NA,NA,rosemary,distrClass2,3,2,NA,plant
+
+now on round 48
+	 :: Express :: file requested: stimuli/gummyBears.jpg
+	 :: Express :: file requested: stimuli/gummyBears.jpg
+	 :: Express :: file requested: stimuli/candyCorn.jpg
+	 :: Express :: file requested: stimuli/chips.jpg
+	 :: Express :: file requested: stimuli/chips.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.gummy bears
+received messageparts: chatMessage,gummy bears
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253156296,48,speaker,"gummy bears"
+
+received message: clickedObj.subSuperTrial.distr12.gummyBears.target.3.4.candy.snack.blackStimulus.NA.1.1.NA.NA.candyCorn.distrClass1.2.3.candy.snack.chips.distrClass2.4.2.NA.snack.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr12,gummyBears,target,3,4,candy,snack,blackStimulus,NA,1,1,NA,NA,candyCorn,distrClass1,2,3,candy,snack,chips,distrClass2,4,2,NA,snack,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253157521,48,subSuperTrial,distr12,gummyBears,target,3,4,candy,snack,blackStimulus,NA,1,1,NA,NA,candyCorn,distrClass1,2,3,candy,snack,chips,distrClass2,4,2,NA,snack,blackStimulus,NA,5,5,NA,NA
+
+now on round 49
+	 :: Express :: file requested: stimuli/jellyBeans.jpg
+	 :: Express :: file requested: stimuli/kitten.jpg
+	 :: Express :: file requested: stimuli/cow.jpg
+	 :: Express :: file requested: stimuli/jellyBeans.jpg
+	 :: Express :: file requested: stimuli/kitten.jpg
+	 :: Express :: file requested: stimuli/cow.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.jelly beans
+received messageparts: chatMessage,jelly beans
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253161673,49,speaker,"jelly beans"
+
+received message: clickedObj.subSuperTrial.distr33.jellyBeans.target.3.4.candy.snack.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.kitten.distrClass3.2.2.NA.animal.cow.distrClass3.4.3.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr33,jellyBeans,target,3,4,candy,snack,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,kitten,distrClass3,2,2,NA,animal,cow,distrClass3,4,3,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253162943,49,subSuperTrial,distr33,jellyBeans,target,3,4,candy,snack,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,kitten,distrClass3,2,2,NA,animal,cow,distrClass3,4,3,NA,animal
+
+now on round 50
+	 :: Express :: file requested: stimuli/catfish.jpg
+	 :: Express :: file requested: stimuli/catfish.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.catfish
+received messageparts: chatMessage,catfish
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253166835,50,speaker,"catfish"
+
+received message: clickedObj.subSuperTrial.distr23.catfish.target.3.3.fish.animal.pretzels.distrClass3.2.2.NA.snack.blackStimulus.NA.1.1.NA.NA.lobster.distrClass2.4.4.NA.animal.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr23,catfish,target,3,3,fish,animal,pretzels,distrClass3,2,2,NA,snack,blackStimulus,NA,1,1,NA,NA,lobster,distrClass2,4,4,NA,animal,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253167929,50,subSuperTrial,distr23,catfish,target,3,3,fish,animal,pretzels,distrClass3,2,2,NA,snack,blackStimulus,NA,1,1,NA,NA,lobster,distrClass2,4,4,NA,animal,blackStimulus,NA,5,5,NA,NA
+
+now on round 51
+	 :: Express :: file requested: stimuli/grizzlyBear.jpg
+	 :: Express :: file requested: stimuli/rabbit.jpg
+	 :: Express :: file requested: stimuli/grizzlyBear.jpg
+	 :: Express :: file requested: stimuli/socks.jpg
+	 :: Express :: file requested: stimuli/rabbit.jpg
+	 :: Express :: file requested: stimuli/socks.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.bear
+received messageparts: chatMessage,bear
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253170392,51,speaker,"bear"
+
+received message: clickedObj.subSuperTrial.distr23.grizzlyBear.target.3.3.bear.animal.blackStimulus.NA.1.1.NA.NA.rabbit.distrClass2.4.4.NA.animal.socks.distrClass3.2.2.NA.clothing.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr23,grizzlyBear,target,3,3,bear,animal,blackStimulus,NA,1,1,NA,NA,rabbit,distrClass2,4,4,NA,animal,socks,distrClass3,2,2,NA,clothing,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253172372,51,subSuperTrial,distr23,grizzlyBear,target,3,3,bear,animal,blackStimulus,NA,1,1,NA,NA,rabbit,distrClass2,4,4,NA,animal,socks,distrClass3,2,2,NA,clothing,blackStimulus,NA,5,5,NA,NA
+
+now on round 52
+	 :: Express :: file requested: stimuli/small_pink_balloon.jpg
+	 :: Express :: file requested: stimuli/small_pink_balloon.jpg
+	 :: Express :: file requested: stimuli/big_yellow_balloon.jpg
+	 :: Express :: file requested: stimuli/big_yellow_balloon.jpg
+	 :: Express :: file requested: stimuli/big_pink_balloon.jpg
+	 :: Express :: file requested: stimuli/big_pink_balloon.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253175369,52,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr1Same.small_pink_balloon.target.1.1.NA.NA.big_yellow_balloon.distractor.3.2.NA.NA.big_pink_balloon.distractor.2.5.NA.NA.big_yellow_balloon.distractor.4.4.NA.NA.big_yellow_balloon.distractor.5.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr1Same,small_pink_balloon,target,1,1,NA,NA,big_yellow_balloon,distractor,3,2,NA,NA,big_pink_balloon,distractor,2,5,NA,NA,big_yellow_balloon,distractor,4,4,NA,NA,big_yellow_balloon,distractor,5,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253178090,52,colorSizeTrial,sizeOnly4Distr1Same,small_pink_balloon,target,1,1,NA,NA,big_yellow_balloon,distractor,3,2,NA,NA,big_pink_balloon,distractor,2,5,NA,NA,big_yellow_balloon,distractor,4,4,NA,NA,big_yellow_balloon,distractor,5,3,NA,NA
+
+now on round 53
+	 :: Express :: file requested: stimuli/small_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_blue_binder.jpg
+	 :: Express :: file requested: stimuli/small_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_green_binder.jpg
+	 :: Express :: file requested: stimuli/big_blue_binder.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253180481,53,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly2Distr1Same.small_green_binder.target.2.2.NA.NA.blackStimulus.NA.5.5.NA.NA.big_green_binder.distractor.3.4.NA.NA.big_blue_binder.distractor.4.3.NA.NA.blackStimulus.NA.1.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly2Distr1Same,small_green_binder,target,2,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_binder,distractor,3,4,NA,NA,big_blue_binder,distractor,4,3,NA,NA,blackStimulus,NA,1,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253182738,53,colorSizeTrial,sizeOnly2Distr1Same,small_green_binder,target,2,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_green_binder,distractor,3,4,NA,NA,big_blue_binder,distractor,4,3,NA,NA,blackStimulus,NA,1,1,NA,NA
+
+now on round 54
+	 :: Express :: file requested: stimuli/convertible.jpg
+	 :: Express :: file requested: stimuli/convertible.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.convertible
+received messageparts: chatMessage,convertible
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253189382,54,speaker,"convertible"
+
+received message: clickedObj.subSuperTrial.distr22.convertible.target.4.4.car.vehicle.motorcycle.distrClass2.3.3.NA.vehicle.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.firetruck.distrClass2.2.2.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr22,convertible,target,4,4,car,vehicle,motorcycle,distrClass2,3,3,NA,vehicle,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,firetruck,distrClass2,2,2,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253190729,54,subSuperTrial,distr22,convertible,target,4,4,car,vehicle,motorcycle,distrClass2,3,3,NA,vehicle,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,firetruck,distrClass2,2,2,NA,vehicle
+
+now on round 55
+	 :: Express :: file requested: stimuli/small_white_phone.jpg
+	 :: Express :: file requested: stimuli/big_pink_phone.jpg
+	 :: Express :: file requested: stimuli/big_white_phone.jpg
+	 :: Express :: file requested: stimuli/small_white_phone.jpg
+	 :: Express :: file requested: stimuli/big_pink_phone.jpg
+	 :: Express :: file requested: stimuli/big_white_phone.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253193974,55,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr1Same.small_white_phone.target.4.4.NA.NA.big_pink_phone.distractor.1.2.NA.NA.blackStimulus.NA.5.5.NA.NA.big_white_phone.distractor.3.3.NA.NA.big_pink_phone.distractor.2.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr1Same,small_white_phone,target,4,4,NA,NA,big_pink_phone,distractor,1,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_phone,distractor,3,3,NA,NA,big_pink_phone,distractor,2,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253195298,55,colorSizeTrial,sizeOnly3Distr1Same,small_white_phone,target,4,4,NA,NA,big_pink_phone,distractor,1,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_white_phone,distractor,3,3,NA,NA,big_pink_phone,distractor,2,1,NA,NA
+
+now on round 56
+	 :: Express :: file requested: stimuli/eagle.jpg
+	 :: Express :: file requested: stimuli/kitten.jpg
+	 :: Express :: file requested: stimuli/bookcase.jpg
+	 :: Express :: file requested: stimuli/eagle.jpg
+	 :: Express :: file requested: stimuli/bookcase.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.eagle
+received messageparts: chatMessage,eagle
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253198398,56,speaker,"eagle"
+
+received message: clickedObj.subSuperTrial.distr23.eagle.target.4.4.bird.animal.kitten.distrClass2.3.3.NA.animal.blackStimulus.NA.1.1.NA.NA.bookcase.distrClass3.2.2.NA.furniture.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr23,eagle,target,4,4,bird,animal,kitten,distrClass2,3,3,NA,animal,blackStimulus,NA,1,1,NA,NA,bookcase,distrClass3,2,2,NA,furniture,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253199752,56,subSuperTrial,distr23,eagle,target,4,4,bird,animal,kitten,distrClass2,3,3,NA,animal,blackStimulus,NA,1,1,NA,NA,bookcase,distrClass3,2,2,NA,furniture,blackStimulus,NA,5,5,NA,NA
+
+now on round 57
+	 :: Express :: file requested: stimuli/sportsCar.jpg
+	 :: Express :: file requested: stimuli/sedan.jpg
+	 :: Express :: file requested: stimuli/sportsCar.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.sports
+received messageparts: chatMessage,sports
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253204259,57,speaker,"sports"
+
+received message: clickedObj.subSuperTrial.distr12.sportsCar.target.2.2.car.vehicle.blackStimulus.NA.5.5.NA.NA.sedan.distrClass1.3.3.car.vehicle.blackStimulus.NA.1.1.NA.NA.firetruck.distrClass2.4.4.NA.vehicle
+received messageparts: clickedObj,subSuperTrial,distr12,sportsCar,target,2,2,car,vehicle,blackStimulus,NA,5,5,NA,NA,sedan,distrClass1,3,3,car,vehicle,blackStimulus,NA,1,1,NA,NA,firetruck,distrClass2,4,4,NA,vehicle
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253207056,57,subSuperTrial,distr12,sportsCar,target,2,2,car,vehicle,blackStimulus,NA,5,5,NA,NA,sedan,distrClass1,3,3,car,vehicle,blackStimulus,NA,1,1,NA,NA,firetruck,distrClass2,4,4,NA,vehicle
+
+now on round 58
+	 :: Express :: file requested: stimuli/crocodile.jpg
+	 :: Express :: file requested: stimuli/husky.jpg
+	 :: Express :: file requested: stimuli/iguana.jpg
+	 :: Express :: file requested: stimuli/husky.jpg
+	 :: Express :: file requested: stimuli/iguana.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.dog
+received messageparts: chatMessage,dog
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253210692,58,speaker,"dog"
+
+received message: clickedObj.subSuperTrial.distr22.husky.target.2.3.dog.animal.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.iguana.distrClass2.4.4.NA.animal.crocodile.distrClass2.3.2.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr22,husky,target,2,3,dog,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,iguana,distrClass2,4,4,NA,animal,crocodile,distrClass2,3,2,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253231695,58,subSuperTrial,distr22,husky,target,2,3,dog,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,iguana,distrClass2,4,4,NA,animal,crocodile,distrClass2,3,2,NA,animal
+
+now on round 59
+	 :: Express :: file requested: stimuli/rhino.jpg
+	 :: Express :: file requested: stimuli/diningTable.jpg
+	 :: Express :: file requested: stimuli/diningTable.jpg
+	 :: Express :: file requested: stimuli/ivy.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.table
+received messageparts: chatMessage,table
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253238448,59,speaker,"table"
+
+received message: clickedObj.subSuperTrial.distr33.diningTable.target.4.3.table.furniture.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.rhino.distrClass3.2.4.NA.animal.ivy.distrClass3.3.2.NA.plant
+received messageparts: clickedObj,subSuperTrial,distr33,diningTable,target,4,3,table,furniture,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,rhino,distrClass3,2,4,NA,animal,ivy,distrClass3,3,2,NA,plant
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253243372,59,subSuperTrial,distr33,diningTable,target,4,3,table,furniture,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,rhino,distrClass3,2,4,NA,animal,ivy,distrClass3,3,2,NA,plant
+
+now on round 60
+	 :: Express :: file requested: stimuli/big_orange_cap.jpg
+	 :: Express :: file requested: stimuli/big_blue_cap.jpg
+	 :: Express :: file requested: stimuli/small_blue_cap.jpg
+	 :: Express :: file requested: stimuli/big_orange_cap.jpg
+	 :: Express :: file requested: stimuli/big_blue_cap.jpg
+	 :: Express :: file requested: stimuli/small_blue_cap.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.orange
+received messageparts: chatMessage,orange
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253246479,60,speaker,"orange"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr2Same.big_orange_cap.target.4.1.NA.NA.blackStimulus.NA.5.5.NA.NA.big_blue_cap.distractor.3.3.NA.NA.small_blue_cap.distractor.2.2.NA.NA.big_blue_cap.distractor.1.4.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr2Same,big_orange_cap,target,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_blue_cap,distractor,3,3,NA,NA,small_blue_cap,distractor,2,2,NA,NA,big_blue_cap,distractor,1,4,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253248400,60,colorSizeTrial,colorOnly3Distr2Same,big_orange_cap,target,4,1,NA,NA,blackStimulus,NA,5,5,NA,NA,big_blue_cap,distractor,3,3,NA,NA,small_blue_cap,distractor,2,2,NA,NA,big_blue_cap,distractor,1,4,NA,NA
+
+now on round 61
+	 :: Express :: file requested: stimuli/chick.jpg
+	 :: Express :: file requested: stimuli/pigeon.jpg
+	 :: Express :: file requested: stimuli/sparrow.jpg
+	 :: Express :: file requested: stimuli/pigeon.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.pigeon
+received messageparts: chatMessage,pigeon
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253251563,61,speaker,"pigeon"
+
+received message: clickedObj.subSuperTrial.distr12.pigeon.target.2.2.bird.animal.blackStimulus.NA.5.5.NA.NA.blackStimulus.NA.1.1.NA.NA.sparrow.distrClass1.4.4.bird.animal.chick.distrClass2.3.3.NA.animal
+received messageparts: clickedObj,subSuperTrial,distr12,pigeon,target,2,2,bird,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,sparrow,distrClass1,4,4,bird,animal,chick,distrClass2,3,3,NA,animal
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253271905,61,subSuperTrial,distr12,pigeon,target,2,2,bird,animal,blackStimulus,NA,5,5,NA,NA,blackStimulus,NA,1,1,NA,NA,sparrow,distrClass1,4,4,bird,animal,chick,distrClass2,3,3,NA,animal
+
+now on round 62
+	 :: Express :: file requested: stimuli/big_green_jacket.jpg
+	 :: Express :: file requested: stimuli/big_brown_jacket.jpg
+	 :: Express :: file requested: stimuli/big_green_jacket.jpg
+	 :: Express :: file requested: stimuli/small_brown_jacket.jpg
+	 :: Express :: file requested: stimuli/big_brown_jacket.jpg
+	 :: Express :: file requested: stimuli/small_brown_jacket.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.green
+received messageparts: chatMessage,green
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253275189,62,speaker,"green"
+
+received message: clickedObj.colorSizeTrial.colorOnly4Distr1Same.big_green_jacket.target.4.5.NA.NA.small_brown_jacket.distractor.2.4.NA.NA.small_brown_jacket.distractor.1.1.NA.NA.big_brown_jacket.distractor.5.3.NA.NA.small_brown_jacket.distractor.3.2.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly4Distr1Same,big_green_jacket,target,4,5,NA,NA,small_brown_jacket,distractor,2,4,NA,NA,small_brown_jacket,distractor,1,1,NA,NA,big_brown_jacket,distractor,5,3,NA,NA,small_brown_jacket,distractor,3,2,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253277198,62,colorSizeTrial,colorOnly4Distr1Same,big_green_jacket,target,4,5,NA,NA,small_brown_jacket,distractor,2,4,NA,NA,small_brown_jacket,distractor,1,1,NA,NA,big_brown_jacket,distractor,5,3,NA,NA,small_brown_jacket,distractor,3,2,NA,NA
+
+now on round 63
+	 :: Express :: file requested: stimuli/big_red_flower.jpg
+	 :: Express :: file requested: stimuli/big_purple_flower.jpg
+	 :: Express :: file requested: stimuli/big_red_flower.jpg
+	 :: Express :: file requested: stimuli/small_purple_flower.jpg
+	 :: Express :: file requested: stimuli/big_purple_flower.jpg
+	 :: Express :: file requested: stimuli/small_purple_flower.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.red
+received messageparts: chatMessage,red
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253280365,63,speaker,"red"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr2Same.big_red_flower.target.1.3.NA.NA.small_purple_flower.distractor.2.4.NA.NA.big_purple_flower.distractor.3.2.NA.NA.blackStimulus.NA.5.5.NA.NA.big_purple_flower.distractor.4.1.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr2Same,big_red_flower,target,1,3,NA,NA,small_purple_flower,distractor,2,4,NA,NA,big_purple_flower,distractor,3,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_purple_flower,distractor,4,1,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253281622,63,colorSizeTrial,colorOnly3Distr2Same,big_red_flower,target,1,3,NA,NA,small_purple_flower,distractor,2,4,NA,NA,big_purple_flower,distractor,3,2,NA,NA,blackStimulus,NA,5,5,NA,NA,big_purple_flower,distractor,4,1,NA,NA
+
+now on round 64
+	 :: Express :: file requested: stimuli/swordFish.jpg
+	 :: Express :: file requested: stimuli/bathrobe.jpg
+	 :: Express :: file requested: stimuli/swordFish.jpg
+	 :: Express :: file requested: stimuli/bathrobe.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.fish
+received messageparts: chatMessage,fish
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253286026,64,speaker,"fish"
+
+received message: clickedObj.subSuperTrial.distr23.swordFish.target.3.2.fish.animal.blackStimulus.NA.1.1.NA.NA.chick.distrClass2.2.3.NA.animal.bathrobe.distrClass3.4.4.NA.clothing.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr23,swordFish,target,3,2,fish,animal,blackStimulus,NA,1,1,NA,NA,chick,distrClass2,2,3,NA,animal,bathrobe,distrClass3,4,4,NA,clothing,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253287703,64,subSuperTrial,distr23,swordFish,target,3,2,fish,animal,blackStimulus,NA,1,1,NA,NA,chick,distrClass2,2,3,NA,animal,bathrobe,distrClass3,4,4,NA,clothing,blackStimulus,NA,5,5,NA,NA
+
+now on round 65
+	 :: Express :: file requested: stimuli/small_orange_cushion.jpg
+	 :: Express :: file requested: stimuli/small_orange_cushion.jpg
+	 :: Express :: file requested: stimuli/big_blue_cushion.jpg
+	 :: Express :: file requested: stimuli/big_orange_cushion.jpg
+	 :: Express :: file requested: stimuli/big_blue_cushion.jpg
+	 :: Express :: file requested: stimuli/big_orange_cushion.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253290624,65,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly4Distr1Same.small_orange_cushion.target.5.2.NA.NA.big_blue_cushion.distractor.1.1.NA.NA.big_blue_cushion.distractor.3.4.NA.NA.big_blue_cushion.distractor.2.5.NA.NA.big_orange_cushion.distractor.4.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly4Distr1Same,small_orange_cushion,target,5,2,NA,NA,big_blue_cushion,distractor,1,1,NA,NA,big_blue_cushion,distractor,3,4,NA,NA,big_blue_cushion,distractor,2,5,NA,NA,big_orange_cushion,distractor,4,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253291577,65,colorSizeTrial,sizeOnly4Distr1Same,small_orange_cushion,target,5,2,NA,NA,big_blue_cushion,distractor,1,1,NA,NA,big_blue_cushion,distractor,3,4,NA,NA,big_blue_cushion,distractor,2,5,NA,NA,big_orange_cushion,distractor,4,3,NA,NA
+
+now on round 66
+	 :: Express :: file requested: stimuli/coffeeTable.jpg
+	 :: Express :: file requested: stimuli/lamp.jpg
+	 :: Express :: file requested: stimuli/rosemary.jpg
+	 :: Express :: file requested: stimuli/coffeeTable.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.table
+received messageparts: chatMessage,table
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253295214,66,speaker,"table"
+
+received message: clickedObj.subSuperTrial.distr23.coffeeTable.target.2.4.table.furniture.rosemary.distrClass3.4.3.NA.plant.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA.lamp.distrClass2.3.2.NA.furniture
+received messageparts: clickedObj,subSuperTrial,distr23,coffeeTable,target,2,4,table,furniture,rosemary,distrClass3,4,3,NA,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,lamp,distrClass2,3,2,NA,furniture
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253296510,66,subSuperTrial,distr23,coffeeTable,target,2,4,table,furniture,rosemary,distrClass3,4,3,NA,plant,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA,lamp,distrClass2,3,2,NA,furniture
+
+now on round 67
+	 :: Express :: file requested: stimuli/big_purple_stapler.jpg
+	 :: Express :: file requested: stimuli/big_red_stapler.jpg
+	 :: Express :: file requested: stimuli/big_purple_stapler.jpg
+	 :: Express :: file requested: stimuli/small_red_stapler.jpg
+	 :: Express :: file requested: stimuli/big_red_stapler.jpg
+	 :: Express :: file requested: stimuli/small_red_stapler.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.purple
+received messageparts: chatMessage,purple
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253300286,67,speaker,"purple"
+
+received message: clickedObj.colorSizeTrial.colorOnly2Distr1Same.big_purple_stapler.target.2.2.NA.NA.small_red_stapler.distractor.4.3.NA.NA.big_red_stapler.distractor.3.4.NA.NA.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly2Distr1Same,big_purple_stapler,target,2,2,NA,NA,small_red_stapler,distractor,4,3,NA,NA,big_red_stapler,distractor,3,4,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253301593,67,colorSizeTrial,colorOnly2Distr1Same,big_purple_stapler,target,2,2,NA,NA,small_red_stapler,distractor,4,3,NA,NA,big_red_stapler,distractor,3,4,NA,NA,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 68
+	 :: Express :: file requested: stimuli/small_green_bracelet.jpg
+	 :: Express :: file requested: stimuli/big_purple_bracelet.jpg
+	 :: Express :: file requested: stimuli/big_green_bracelet.jpg
+	 :: Express :: file requested: stimuli/small_green_bracelet.jpg
+	 :: Express :: file requested: stimuli/big_purple_bracelet.jpg
+	 :: Express :: file requested: stimuli/big_green_bracelet.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small
+received messageparts: chatMessage,small
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253304430,68,speaker,"small"
+
+received message: clickedObj.colorSizeTrial.sizeOnly3Distr2Same.small_green_bracelet.target.1.2.NA.NA.big_purple_bracelet.distractor.3.1.NA.NA.big_green_bracelet.distractor.2.3.NA.NA.big_green_bracelet.distractor.4.4.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly3Distr2Same,small_green_bracelet,target,1,2,NA,NA,big_purple_bracelet,distractor,3,1,NA,NA,big_green_bracelet,distractor,2,3,NA,NA,big_green_bracelet,distractor,4,4,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253305404,68,colorSizeTrial,sizeOnly3Distr2Same,small_green_bracelet,target,1,2,NA,NA,big_purple_bracelet,distractor,3,1,NA,NA,big_green_bracelet,distractor,2,3,NA,NA,big_green_bracelet,distractor,4,4,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 69
+	 :: Express :: file requested: stimuli/picnicTable.jpg
+	 :: Express :: file requested: stimuli/picnicTable.jpg
+	 :: Express :: file requested: stimuli/sideTable.jpg
+	 :: Express :: file requested: stimuli/sideTable.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.picnic table
+received messageparts: chatMessage,picnic table
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253310598,69,speaker,"picnic table"
+
+received message: clickedObj.subSuperTrial.distr12.picnicTable.target.2.4.table.furniture.blackStimulus.NA.1.1.NA.NA.sideTable.distrClass1.4.3.table.furniture.blackStimulus.NA.5.5.NA.NA.lamp.distrClass2.3.2.NA.furniture
+received messageparts: clickedObj,subSuperTrial,distr12,picnicTable,target,2,4,table,furniture,blackStimulus,NA,1,1,NA,NA,sideTable,distrClass1,4,3,table,furniture,blackStimulus,NA,5,5,NA,NA,lamp,distrClass2,3,2,NA,furniture
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253311818,69,subSuperTrial,distr12,picnicTable,target,2,4,table,furniture,blackStimulus,NA,1,1,NA,NA,sideTable,distrClass1,4,3,table,furniture,blackStimulus,NA,5,5,NA,NA,lamp,distrClass2,3,2,NA,furniture
+
+now on round 70
+	 :: Express :: file requested: stimuli/mnMs.jpg
+	 :: Express :: file requested: stimuli/mnMs.jpg
+	 :: Express :: file requested: stimuli/chips.jpg
+	 :: Express :: file requested: stimuli/pretzels.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.mnms
+received messageparts: chatMessage,mnms
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253315150,70,speaker,"mnms"
+
+received message: clickedObj.subSuperTrial.distr22.mnMs.target.3.4.candy.snack.chips.distrClass2.4.3.NA.snack.pretzels.distrClass2.2.2.NA.snack.blackStimulus.NA.1.1.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,subSuperTrial,distr22,mnMs,target,3,4,candy,snack,chips,distrClass2,4,3,NA,snack,pretzels,distrClass2,2,2,NA,snack,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253315906,70,subSuperTrial,distr22,mnMs,target,3,4,candy,snack,chips,distrClass2,4,3,NA,snack,pretzels,distrClass2,2,2,NA,snack,blackStimulus,NA,1,1,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+now on round 71
+	 :: Express :: file requested: stimuli/small_black_belt.jpg
+	 :: Express :: file requested: stimuli/small_brown_belt.jpg
+	 :: Express :: file requested: stimuli/big_brown_belt.jpg
+	 :: Express :: file requested: stimuli/small_black_belt.jpg
+	 :: Express :: file requested: stimuli/small_brown_belt.jpg
+	 :: Express :: file requested: stimuli/big_brown_belt.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.small black belt
+received messageparts: chatMessage,small black belt
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253321518,71,speaker,"small black belt"
+
+received message: clickedObj.colorSizeTrial.colorOnly3Distr1Same.small_black_belt.target.4.1.NA.NA.small_brown_belt.distractor.2.4.NA.NA.blackStimulus.NA.5.5.NA.NA.big_brown_belt.distractor.3.2.NA.NA.big_brown_belt.distractor.1.3.NA.NA
+received messageparts: clickedObj,colorSizeTrial,colorOnly3Distr1Same,small_black_belt,target,4,1,NA,NA,small_brown_belt,distractor,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_brown_belt,distractor,3,2,NA,NA,big_brown_belt,distractor,1,3,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253322961,71,colorSizeTrial,colorOnly3Distr1Same,small_black_belt,target,4,1,NA,NA,small_brown_belt,distractor,2,4,NA,NA,blackStimulus,NA,5,5,NA,NA,big_brown_belt,distractor,3,2,NA,NA,big_brown_belt,distractor,1,3,NA,NA
+
+now on round 72
+	 :: Express :: file requested: stimuli/big_orange_coathanger.jpg
+	 :: Express :: file requested: stimuli/small_orange_coathanger.jpg
+	 :: Express :: file requested: stimuli/big_orange_coathanger.jpg
+	 :: Express :: file requested: stimuli/small_purple_coathanger.jpg
+	 :: Express :: file requested: stimuli/small_orange_coathanger.jpg
+	 :: Express :: file requested: stimuli/small_purple_coathanger.jpg
+received message: playerTyping.true
+received messageparts: playerTyping,true
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+player is typing? true
+received message: chatMessage.big ornage
+received messageparts: chatMessage,big ornage
+others: id: 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1
+player: [object Object]
+
+message:7991-1,1449253327276,72,speaker,"big ornage"
+
+received message: clickedObj.colorSizeTrial.sizeOnly2Distr1Same.big_orange_coathanger.target.4.4.NA.NA.small_orange_coathanger.distractor.3.2.NA.NA.blackStimulus.NA.1.1.NA.NA.small_purple_coathanger.distractor.2.3.NA.NA.blackStimulus.NA.5.5.NA.NA
+received messageparts: clickedObj,colorSizeTrial,sizeOnly2Distr1Same,big_orange_coathanger,target,4,4,NA,NA,small_orange_coathanger,distractor,3,2,NA,NA,blackStimulus,NA,1,1,NA,NA,small_purple_coathanger,distractor,2,3,NA,NA,blackStimulus,NA,5,5,NA,NA
+others: id: 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44
+player: [object Object]
+
+clickedObj: 7991-1,1449253328856,72,colorSizeTrial,sizeOnly2Distr1Same,big_orange_coathanger,target,4,4,NA,NA,small_orange_coathanger,distractor,3,2,NA,NA,blackStimulus,NA,1,1,NA,NA,small_purple_coathanger,distractor,2,3,NA,NA,blackStimulus,NA,5,5,NA,NA
+
+	 socket.io:: client id 3818-10bd561f-3ed5-4cc1-addd-467e23f53d44 disconnected from game id 7991-15b3ff7d-bfc9-4112-9aaf-d23106ddc0c1
+game removed. there are now 0 games
+	 socket.io:: client id 9046-d869a5c8-7ec0-4ea1-a9f2-0d05cfd82eb1 disconnected from game id 7991-15b3ff7d-bfc9-4112-9aaf-d23106ddc0c1
+that game was not found!
