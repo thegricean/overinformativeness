@@ -96,67 +96,67 @@ var tulip = {
 	url: 'stimuli/tulip.jpg', name: "tulip", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "flower", superdomain: "plant", width: 104, height: 200}
 
 var grizzlyBear = {
-	url: 'stimuli/grizzlyBear.jpg', name: "grizzlyBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 260, height: 260}
+	url: 'stimuli/grizzlyBear.jpg', name: "grizzlyBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 300, height: 300}
 var blackBear = {
-	url: 'stimuli/blackBear.jpg', name: "blackBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 260, height: 207}
+	url: 'stimuli/blackBear.jpg', name: "blackBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 300, height: 239}
 var pandaBear = {
-	url: 'stimuli/pandaBear.jpg', name: "pandaBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 224, height: 260}
+	url: 'stimuli/pandaBear.jpg', name: "pandaBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 258, height: 300}
 var polarBear = {
-	url: 'stimuli/polarBear.jpg', name: "polarBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", width: 260, height: 262}
+	url: 'stimuli/polarBear.jpg', name: "polarBear", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bear", superdomain: "animal", , width: 260, height: 262}
 
 var convertible = {
-	url: 'stimuli/convertible.jpg', name: "convertible", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 260, height: 105}
+	url: 'stimuli/convertible.jpg', name: "convertible", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 300, height: 121}
 var suv = {
-	url: 'stimuli/suv.jpg', name: "suv", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 260, height: 152}
+	url: 'stimuli/suv.jpg', name: "suv", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 300, height: 175}
 var minivan = {
-	url: 'stimuli/minivan.jpg', name: "minivan", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 260, height: 146}
+	url: 'stimuli/minivan.jpg', name: "minivan", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 298, height: 167}
 var sportsCar = {
-	url: 'stimuli/sportsCar.jpg', name: "sportsCar", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 260, height: 139}
+	url: 'stimuli/sportsCar.jpg', name: "sportsCar", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "car", superdomain: "vehicle", width: 299, height: 160}
 
 var gummyBears = {
-	url: 'stimuli/gummyBears.jpg', name: "gummyBears", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 260, height: 195}
+	url: 'stimuli/gummyBears.jpg', name: "gummyBears", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 300, height: 225}
 var skittles = {
-	url: 'stimuli/skittles.jpg', name: "skittles", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 260, height: 206}
+	url: 'stimuli/skittles.jpg', name: "skittles", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 300, height: 238}
 var jellyBeans = {
-	url: 'stimuli/jellyBeans.jpg', name: "jellyBeans", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 260, height: 236}
+	url: 'stimuli/jellyBeans.jpg', name: "jellyBeans", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 300, height: 272}
 var mnMs = {
-	url: 'stimuli/mnMs.jpg', name: "mnMs", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 260, height: 165}
+	url: 'stimuli/mnMs.jpg', name: "mnMs", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "candy", superdomain: "snack", width: 301, height: 191}
 
 var poloShirt = {
-	url: 'stimuli/poloShirt.jpg', name: "poloShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 232, height: 260}
+	url: 'stimuli/poloShirt.jpg', name: "poloShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 269, height: 302}
 var dressShirt = {
-	url: 'stimuli/dressShirt.jpg', name: "dressShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 208, height: 260}
+	url: 'stimuli/dressShirt.jpg', name: "dressShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 240, height: 300}
 var hawaiiShirt = {
-	url: 'stimuli/hawaiiShirt.jpg', name: "hawaiiShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 260, height: 260}
+	url: 'stimuli/hawaiiShirt.jpg', name: "hawaiiShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 300, height: 300}
 var tShirt = {
-	url: 'stimuli/tShirt.jpg', name: "tShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 229, height: 260}
+	url: 'stimuli/tShirt.jpg', name: "tShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "shirt", superdomain: "clothing", width: 264, height: 300}
 
 var eagle = {
-	url: 'stimuli/eagle.jpg', name: "eagle", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 176, height: 260}
+	url: 'stimuli/eagle.jpg', name: "eagle", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 202, height: 299}
 var hummingBird = {
-	url: 'stimuli/hummingBird.jpg', name: "hummingBird", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 260, height: 157}
+	url: 'stimuli/hummingBird.jpg', name: "hummingBird", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 301, height: 182}
 var parrot = {
-	url: 'stimuli/parrot.jpg', name: "parrot", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 260, height: 159}
+	url: 'stimuli/parrot.jpg', name: "parrot", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 298, height: 182}
 var pigeon = {
-	url: 'stimuli/pigeon.jpg', name: "pigeon", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 259, height: 260}
+	url: 'stimuli/pigeon.jpg', name: "pigeon", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "bird", superdomain: "animal", width: 299, height: 300}
 
 var clownFish = {
-	url: 'stimuli/clownFish.jpg', name: "clownFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 260, height: 185}
+	url: 'stimuli/clownFish.jpg', name: "clownFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 302, height: 215}
 var swordFish = {
-	url: 'stimuli/swordFish.jpg', name: "swordFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 260, height: 217}
+	url: 'stimuli/swordFish.jpg', name: "swordFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 300, height: 250}
 var goldFish = {
-	url: 'stimuli/goldFish.jpg', name: "goldFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 260, height: 174}
+	url: 'stimuli/goldFish.jpg', name: "goldFish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 298, height: 199}
 var catfish = {
-	url: 'stimuli/catfish.jpg', name: "catfish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 260, height: 202}
+	url: 'stimuli/catfish.jpg', name: "catfish", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "fish", superdomain: "animal", width: 297, height: 231}
 
 var picnicTable = {
-	url: 'stimuli/picnicTable.jpg', name: "picnicTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 260, height: 138}
+	url: 'stimuli/picnicTable.jpg', name: "picnicTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 302, height: 160}
 var coffeeTable = {
-	url: 'stimuli/coffeeTable.jpg', name: "coffeeTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 260, height: 133}
+	url: 'stimuli/coffeeTable.jpg', name: "coffeeTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 300, height: 153}
 var diningTable = {
-	url: 'stimuli/diningTable.jpg', name: "diningTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 260, height: 129}
+	url: 'stimuli/diningTable.jpg', name: "diningTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 299, height: 148}
 var bedsideTable = {
-	url: 'stimuli/bedsideTable.jpg', name: "bedsideTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 260, height: 251}
+	url: 'stimuli/bedsideTable.jpg', name: "bedsideTable", color: [], size: [], type: "subSuperTrial", targetStatus: "target", basiclevel: "table", superdomain: "furniture", width: 299, height: 289}
 
 
 // distrClass1 objects in SubSuperClass manipulation trials (e.g. dog2)
@@ -166,113 +166,113 @@ var greyhound = {
 var lily = {
 	url: 'stimuli/lily.jpg', name: "lily", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "flower", superdomain: "plant", width: 196, height: 200}
 var koalaBear = {
-	url: 'stimuli/koalaBear.jpg', name: "koalaBear", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "bear", superdomain: "animal", width: 260, height: 191}
+	url: 'stimuli/koalaBear.jpg', name: "koalaBear", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "bear", superdomain: "animal", width: 302, height: 222}
 var sedan = {
-	url: 'stimuli/sedan.jpg', name: "sedan", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "car", superdomain: "vehicle", width: 260, height: 174}
+	url: 'stimuli/sedan.jpg', name: "sedan", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "car", superdomain: "vehicle", width: 301, height: 201}
 var candyCorn = {
-	url: 'stimuli/candyCorn.jpg', name: "candyCorn", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "candy", superdomain: "snack", width: 260, height: 226}
+	url: 'stimuli/candyCorn.jpg', name: "candyCorn", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "candy", superdomain: "snack", width: 298, height: 259}
 var campShirt = {
-	url: 'stimuli/campShirt.jpg', name: "campShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "shirt", superdomain: "clothing", width: 260, height: 260}
+	url: 'stimuli/campShirt.jpg', name: "campShirt", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "shirt", superdomain: "clothing", width: 300, height: 300}
 var sparrow = {
-	url: 'stimuli/sparrow.jpg', name: "sparrow", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "bird", superdomain: "animal", width: 260, height: 178}
+	url: 'stimuli/sparrow.jpg', name: "sparrow", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "bird", superdomain: "animal", width: 299, height: 205}
 var discusFish = {
-	url: 'stimuli/discusFish.jpg', name: "discusFish", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "fish", superdomain: "animal", width: 260, height: 251}
+	url: 'stimuli/discusFish.jpg', name: "discusFish", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "fish", superdomain: "animal", width: 301, height: 291}
 var sideTable = {
-	url: 'stimuli/sideTable.jpg', name: "sideTable", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "table", superdomain: "furniture", width: 205, height: 260}
+	url: 'stimuli/sideTable.jpg', name: "sideTable", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass1", basiclevel: "table", superdomain: "furniture", width: 237, height: 300}
 
 
 // distrClass2 objects in SubSuperClass manipulation trials (e.g. animal1)
 
 // superlevel furniture, basiclevel table
-var bed = {//
+var bed = {
 	url: 'stimuli/bed.jpg', name: "bed", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "furniture", width: 200, height: 200}
-var lamp = {//
+var lamp = {
 	url: 'stimuli/lamp.jpg', name: "lamp", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "furniture", width: 120, height: 200}
-var wardrobe = {//
+var wardrobe = {
 	url: 'stimuli/wardrobe.jpg', name: "wardrobe", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "furniture", width: 217, height: 200}
-var bookcase = {//
+var bookcase = {
 	url: 'stimuli/bookcase.jpg', name: "bookcase", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "furniture", width: 172, height: 200}
 
 // superlevel plants, basiclevel flower
-var rosemary = {//
+var rosemary = {
 	url: 'stimuli/rosemary.jpg', name: "rosemary", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "plant", basiclevel: "NA", width: 260, height: 171}
-var ivy = {//
+var ivy = {
 	url: 'stimuli/ivy.jpg', name: "ivy", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "plant", basiclevel: "NA", width: 260, height: 222}
-var pottedPlant = {//
+var pottedPlant = {
 	url: 'stimuli/pottedPlant.jpg', name: "pottedPlant", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "plant", basiclevel: "NA", width: 260, height: 260}
-var grasses = {//
+var grasses = {
 	url: 'stimuli/grasses.jpg', name: "grasses", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "plant", basiclevel: "NA", width: 262, height: 227}
 
 // superlevel animal, basiclevel bear
-var crocodile = {//
+var crocodile = {
 	url: 'stimuli/crocodile.jpg', name: "crocodile", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 55}
-var cow = {//
-	url: 'stimuli/cow.jpg', name: "cow", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 188}
-var rhino = {//
+var cow = {
+	url: 'stimuli/cow.jpg', name: "cow", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 300, height: 217}
+var rhino = {
 	url: 'stimuli/rhino.jpg', name: "rhino", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 145}
-var lion = {//
+var lion = {
 	url: 'stimuli/lion.jpg', name: "lion", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 124}
 
 // superlevel animal, basiclevel fish
-var lobster = {//
+var lobster = {
 	url: 'stimuli/lobster.jpg', name: "lobster", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 225}
-var sheep = {//
+var sheep = {
 	url: 'stimuli/sheep.jpg', name: "sheep", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 250, height: 261}
-var snake = {//
+var snake = {
 	url: 'stimuli/snake.jpg', name: "snake", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 249}
-var squirrel = {//
-	url: 'stimuli/squirrel.jpg', name: "squirrel", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 175}
+var squirrel = {
+	url: 'stimuli/squirrel.jpg', name: "squirrel", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 300, height: 202}
 
 // superlevel animal, basiclevel bird
-var rabbit = {//
-	url: 'stimuli/rabbit.jpg', name: "rabbit", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 231, height: 260}
-var horse = {//
+var rabbit = {
+	url: 'stimuli/rabbit.jpg', name: "rabbit", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 267, height: 300}
+var horse = {
 	url: 'stimuli/horse.jpg', name: "horse", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 161, height: 259}
-var iguana = {//
+var iguana = {
 	url: 'stimuli/iguana.jpg', name: "iguana", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 189, height: 259}
-var kitten = {//
+var kitten = {
 	url: 'stimuli/kitten.jpg', name: "kitten", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 171}
 
 // superlevel animal, basiclevel dog
-var pig = {//
-	url: 'stimuli/pig.jpg', name: "pig", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 210}
-var chick = {//
+var pig = {
+	url: 'stimuli/pig.jpg', name: "pig", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 300, height: 242}
+var chick = {
 	url: 'stimuli/chick.jpg', name: "chick", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 151, height: 262}
-var elephant = {//
+var elephant = {
 	url: 'stimuli/elephant.jpg', name: "elephant", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 175}
-var bison = {//
+var bison = {
 	url: 'stimuli/bison.jpg', name: "bison", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 237}
 
 
 // superlevel clothing, basiclevel shirt
-var dress = {//
+var dress = {
 	url: 'stimuli/dress.jpg', name: "dress", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "clothing", width: 106, height: 200}
-var socks = {//
+var socks = {
 	url: 'stimuli/socks.jpg', name: "socks", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "clothing", width: 170, height: 200}
-var gloves = {//
+var gloves = {
 	url: 'stimuli/gloves.jpg', name: "gloves", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "clothing", width: 263, height: 200}
-var bathrobe = {//
+var bathrobe = {
 	url: 'stimuli/bathrobe.jpg', name: "bathrobe", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "clothing", width: 120, height: 200}
 
 // superlevel snack, basiclevel candy
-var cookies = {//
+var cookies = {
 	url: 'stimuli/cookies.jpg', name: "cookies", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 261, height: 174}
-var chips = {//
-	url: 'stimuli/chips.jpg', name: "chips", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 260, height: 150}
-var pretzels = {//
-	url: 'stimuli/pretzels.jpg', name: "pretzels", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 260, height: 191}
-var popcorn = {//
-	url: 'stimuli/popcorn.jpg', name: "popcorn", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 260, height: 140}
+var chips = {
+	url: 'stimuli/chips.jpg', name: "chips", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 301, height: 174}
+var pretzels = {
+	url: 'stimuli/pretzels.jpg', name: "pretzels", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 300, height: 220}
+var popcorn = {
+	url: 'stimuli/popcorn.jpg', name: "popcorn", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "snack", basiclevel: "NA", width: 299, height: 161}
 
 
 // superlevel vehicle, basiclevel car
-var motorcycle = {//
+var motorcycle = {
 	url: 'stimuli/motorcycle.jpg', name: "motorcycle", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "vehicle", width: 260, height: 200}
-var train = {//
+var train = {
 	url: 'stimuli/train.jpg', name: "train", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "vehicle", width: 260, height: 176}
-var ambulance = {//
+var ambulance = {
 	url: 'stimuli/ambulance.jpg', name: "ambulance", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "vehicle", width: 260, height: 166}
-var firetruck = {//
+var firetruck = {
 	url: 'stimuli/firetruck.jpg', name: "firetruck", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", basiclevel: "NA", superdomain: "vehicle", width: 260, height: 200}
 
 
