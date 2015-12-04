@@ -236,8 +236,8 @@ var kitten = {//
 // superlevel animal, basiclevel dog
 var pig = {//
 	url: 'stimuli/pig.jpg', name: "pig", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 210}
-var chick = {//
-	url: 'stimuli/chick.jpg', name: "chick", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 151, height: 262}
+var hamster = {//
+	url: 'stimuli/hamster.jpg', name: "hamster", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 228, height: 260}
 var elephant = {//
 	url: 'stimuli/elephant.jpg', name: "elephant", color: [], size: [], type: "subSuperTrial", targetStatus: "distrClass2", superdomain: "animal", basiclevel: "NA", width: 260, height: 175}
 var bison = {//
@@ -298,7 +298,7 @@ var objectList = [
 	rabbit, pig, crocodile, horse, cow, iguana, rhino, lion,
 	train, motorcycle, firetruck, ambulance, chips, pretzels, popcorn, cookies,
 	dress, socks, bathrobe, gloves, grasses, rosemary, ivy, pottedPlant,
-	bison, chick, elephant, kitten, lobster, sheep, snake, squirrel, bed, lamp, bookcase, wardrobe,
+	bison, hamster, elephant, kitten, lobster, sheep, snake, squirrel, bed, lamp, bookcase, wardrobe,
 
 	blackStimulus
 ]
