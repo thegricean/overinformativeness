@@ -82,9 +82,9 @@ for k,m in enumerate(csv_messagenames):
 			triallines[i]['refExp']	= mess['speakermessages'][0]
 		except IndexError:
 			triallines[i]['refExp']	= "NA"
-		if triallines[i][' condition'] == "colorSizeTrial":
+		if triallines[i][' trialType'] == "colorSizeTrial":
 			size,color,typ = triallines[i][' nameClickedObj'].split("_")
-		else:
+		else:		
 			size = "NA"
 			color = "NA"
 			typ = triallines[i][' nameClickedObj']

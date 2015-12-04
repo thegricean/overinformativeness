@@ -144,6 +144,16 @@ ggplot(agr, aes(x=NumSameDistractors,y=Probability,color=as.factor(NumDistractor
   facet_grid(SufficientProperty~Utterance)
 ggsave("graphs_numdistractors/utterancetype_by_condition_same.pdf",width=9,height=4)
 
+agr = droplevels(agr[agr$Utterance != "Other",])
+ggplot(agr, aes(x=NumSameDistractors,y=Probability,color=as.factor(NumDistractors))) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  scale_x_continuous(name="Number of distractors with same 'other' feature value") +
+  scale_y_continuous(name="Proportion of utterance choice") +
+  scale_color_manual(name="Number of\ndistractors", values=c("gray60","black")) +
+  facet_grid(SufficientProperty~Utterance)
+ggsave("graphs_numdistractors/utterancetype_by_condition_same.pdf",width=9,height=4)
+
 # plot by ratio and numdistractors
 agr = targets %>%
   select(Color,Size,SizeAndColor,Other,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
