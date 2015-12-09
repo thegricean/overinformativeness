@@ -632,8 +632,6 @@ summary(bdCorrect$relFreqSuperdomain)
 
 # 2 bins
 
-# infrequent = smaller frequency that median frequency of 5.286e-06
-
 medianFreqType = 4.970e-07
 
 bdCorrect$freqMedian2bins = ifelse(bdCorrect$typeFreqToBasiclevelFreqRatio < medianFreqType | bdCorrect$typeFreqToBasiclevelFreqRatio == medianFreqType, "less_frequent", "more_frequent")
@@ -674,6 +672,42 @@ ggplot(agr, aes(x=condition,y=Probability,fill=freqMedian2bins)) +
   facet_grid(basiclevelClickedObj~Utterance) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_domain_by_frequency_2bins_median.pdf",width=10,height=10)
+
+
+#without domain:
+
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, superclassattributeMentioned, condition, freqMedian2bins) %>%
+  gather(Utterance,Mentioned,-condition, -freqMedian2bins) %>%
+  group_by(Utterance,condition, freqMedian2bins) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=freqMedian2bins)) +
+  #ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_condition_by_frequency_2bins_median.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=freqMedian2bins)) +
+  #ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_frequency_2bins_median.pdf",width=10,height=10)
+
+
 
 
 # 4 bins:
@@ -787,9 +821,9 @@ thirdQuFreqRatio = 0.0265000
 head(bdCorrect$relFreqType)
 summary(bdCorrect$relFreqType)
 
-bdCorrect$freqMedianRatio4bins = ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < firstQuFreqRatio, "smallest_ratio_Type/BL", 
-                                        ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < medianFreqRatio, "smaller_ratio_Type/BL",
-                                               ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < thirdQuFreqRatio,"bigger_ratio_Type/BL", "biggest_ratio_Type/BL")))
+bdCorrect$freqMedianRatio4bins = ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < firstQuFreqRatio, "01 smallest_ratio_Type/BL", 
+                                        ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < medianFreqRatio, "02 smaller_ratio_Type/BL",
+                                               ifelse(as.numeric(bdCorrect$typeFreqToBasiclevelFreqRatio) < thirdQuFreqRatio,"03 bigger_ratio_Type/BL", "04 biggest_ratio_Type/BL")))
 
 head(bdCorrect$freqMedianRatio4bins)
 summary(bdCorrect$freqMedianRatio4bins)
