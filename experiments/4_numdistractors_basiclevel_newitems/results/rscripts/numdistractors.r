@@ -6,7 +6,7 @@ source("rscripts/helpers.r")
 #d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
 #d2$TypeMentioned = d2$typeMentioned
 d = merge(d1,d2,all=T)
-d = read.table(file="data/results.csv",sep=",", header=T,
+d = read.table(file="data/results.csv",sep=",", header=T, quote="")
 
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))

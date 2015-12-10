@@ -1,6 +1,7 @@
 theme_set(theme_bw(18))
 
 setwd("/Users/cocolab/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
+#setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 source("rscripts/helpers.r")
 
 #load("data/r.RData")
@@ -27,7 +28,7 @@ d[is.na(d$utteranceContracted),]$utteranceContracted = FALSE
 
 # look at turker comments
 #<<<<<<< HEAD
-comments = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
+comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
 # =======
 # c1 = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
 # c2 = read.table(file="data/overinf_round2.csv",sep=",", header=T, quote="")
@@ -863,4 +864,81 @@ ggplot(agr, aes(x=condition,y=Probability,fill=freqMedianRatio4bins)) +
   facet_grid(basiclevelClickedObj~Utterance) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/proportion_mentioned_features_by_feature_by_domain_by_frequencyRatio_4bins_median.pdf",width=10,height=10)
+
+
+######## ANALYSIS
+bdCorrect$typeLength = nchar(as.character(bdCorrect$nameClickedObj))
+head(bdCorrect$typeLength)
+bdCorrect$BasicLevelLength = nchar(as.character(bdCorrect$basiclevelClickedObj))
+bdCorrect$SuperClassLength = nchar(as.character(bdCorrect$superdomainClickedObj))
+
+un = unique(bdCorrect[,c("nameClickedObj","basiclevelClickedObj","superdomainClickedObj","typeLength","BasicLevelLength","SuperClassLength")])
+nrow(un)
+ggplot(un, aes(x=typeLength)) +
+  geom_histogram()
+ggplot(un, aes(x=BasicLevelLength)) +
+  geom_histogram()
+ggplot(un, aes(x=SuperClassLength)) +
+  geom_histogram()
+
+gathered = un %>%
+  select(typeLength,BasicLevelLength,SuperClassLength) %>%
+  gather(Label,Length)
+gathered$Label = gsub("Length","",gathered$Label)
+head(gathered)
+ggplot(gathered, aes(x=Length,fill=Label)) +
+  #geom_histogram(position="dodge")
+  geom_density(alpha=.5)
+ggsave("graphs_basiclevel/length_histogram.pdf")
+
+gathered = un %>%
+  select(typeLength,BasicLevelLength,SuperClassLength,nameClickedObj) %>%
+  gather(Label,Length,-nameClickedObj)
+gathered$Label = gsub("Length","",gathered$Label)
+gathered$LabelType = factor(x=gathered$Label,levels=c("type","BasicLevel","SuperClass"))
+head(gathered)
+ggplot(gathered, aes(x=LabelType,y=Length,fill=LabelType)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~nameClickedObj) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave("graphs_basiclevel/by-item-lengths.pdf")
+
+
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","SuperClassLength")]))
+#contrasts(bdCorrect$condition) = cbind(c(1,0,0,0),c(0,0,1,0),c(0,0,0,1))
+contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
+m = glmer(typeMentioned ~ condition + ctypeLength + (1+ctypeLength|gameid) + (1+ctypeLength|basiclevelClickedObj), family="binomial",data=centered)
+summary(m)
+
+m = glmer(basiclevelMentioned ~ condition + ctypeLength + (1+ctypeLength|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+summary(m)
+
+centered$otherMentioned = centered$superClassMentioned & centered$superclassattributeMentioned
+m = glmer(otherMentioned ~ condition + ctypeLength + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+summary(m)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
