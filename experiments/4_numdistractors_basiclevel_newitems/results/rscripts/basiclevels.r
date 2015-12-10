@@ -901,7 +901,7 @@ ggplot(gathered, aes(x=LabelType,y=Length,fill=LabelType)) +
   geom_bar(stat="identity") +
   facet_wrap(~nameClickedObj) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs_basiclevel/by-item-lengths.pdf")
+ggsave("graphs_basiclevel/by-item-lengths.pdf",height=12,width=15)
 
 
 centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","SuperClassLength")]))
