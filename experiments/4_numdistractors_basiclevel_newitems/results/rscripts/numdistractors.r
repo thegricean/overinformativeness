@@ -5,8 +5,8 @@ source("rscripts/helpers.r")
 #d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
 #d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
 #d2$TypeMentioned = d2$typeMentioned
-d = merge(d1,d2,all=T)
-d = read.table(file="data/results.csv",sep=",", header=T, quote="")
+#d = merge(d1,d2,all=T)
+d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
 
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
@@ -16,17 +16,16 @@ nrow(d)
 summary(d)
 totalnrow = nrow(d)
 totalnrow
-d[is.na(d$TypeMentioned),]$TypeMentioned = FALSE
+d[is.na(d$typeMentioned),]$typeMentioned = FALSE
+d$TypeMentioned = d$typeMentioned
 d[is.na(d$otherFeatureMentioned),]$otherFeatureMentioned = FALSE
 d[is.na(d$superClassMentioned),]$superClassMentioned = FALSE
-d[is.na(d$superSuperClassMentioned),]$superSuperClassMentioned = FALSE
+d[is.na(d$basiclevelMentioned),]$basiclevelMentioned = FALSE
 d[is.na(d$superclassattributeMentioned),]$superclassattributeMentioned = FALSE
 d[is.na(d$utteranceContracted),]$utteranceContracted = FALSE
 
 # look at turker comments
-c1 = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
-c2 = read.table(file="data/overinf_round2.csv",sep=",", header=T, quote="")
-comments = rbind(c1,c2)
+comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
 unique(comments$comments)
 
 ggplot(comments, aes(ratePartner)) +
@@ -52,7 +51,7 @@ length(levels(d$gameid)) # 28
 table(d$condition,d$TypeMentioned)
 table(d$condition,d$superClassMentioned)
 table(d$condition,d$superSuperClassMentioned)
-table(d$condition,d$superclassattributeMentioned)
+table(d$condition,d$basiclevelMentioned)
 d[d$superclassattributeMentioned == TRUE,]
 
 table(d$condition,d$colorMentioned)
@@ -62,18 +61,17 @@ table(d$condition,d$sizeMentioned)
 # exclude pair where listener always seemed to click something completely different
 d = droplevels(d[d$trialType == "colorSizeTrial",])
 totalnrow = nrow(d)
-d$SufficientProperty = as.factor(ifelse(d$condition %in% c("sizeOnly2Distr2Same", "sizeOnly4Distr1Same", "sizeOnly4Distr4Same", "sizeOnly2Distr1Same", "sizeOnly4Distr3Same", "sizeOnly4Distr2Same"), "size", "color"))
-d$NumDistractors = ifelse(d$condition %in% c("sizeOnly2Distr2Same", "sizeOnly2Distr1Same","colorOnly2Distr2Same", "colorOnly2Distr1Same"), 2, 4)
-d$NumDiffDistractors = ifelse(d$condition %in% c("sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr4Same","colorOnly4Distr4Same"), 0, ifelse(d$condition %in% c("sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr3Same","colorOnly4Distr3Same"), 1, ifelse(d$condition %in% c("sizeOnly4Distr2Same","colorOnly4Distr2Same"),2,ifelse(d$condition %in% c("sizeOnly4Distr1Same","colorOnly4Distr1Same"),3, 4))))
-d$NumSameDistractors = ifelse(d$condition %in% c("sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr1Same","colorOnly4Distr1Same"), 1, ifelse(d$condition %in% c("sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr2Same","colorOnly4Distr2Same"), 2, ifelse(d$condition %in% c("sizeOnly4Distr3Same","colorOnly4Distr3Same"),3,ifelse(d$condition %in% c("sizeOnly4Distr4Same","colorOnly4Distr4Same"),4,NA))))
+d$SufficientProperty = as.factor(ifelse(d$condition %in% c("sizeOnly4Distr3Same", "sizeOnly2Distr1Same", "sizeOnly4Distr1Same", "sizeOnly3Distr3Same", "sizeOnly3Distr2Same", "sizeOnly3Distr1Same"), "size", "color"))
+d$NumDistractors = ifelse(d$condition %in% c("sizeOnly2Distr1Same","colorOnly2Distr1Same"), 2, ifelse(d$condition %in% c("sizeOnly4Distr1Same","sizeOnly4Distr3Same","colorOnly4Distr1Same","colorOnly4Distr3Same"),4,3))
+d$NumDiffDistractors = ifelse(d$condition %in% c("sizeOnly3Distr3Same","colorOnly3Distr3Same","sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr4Same","colorOnly4Distr4Same"), 0, ifelse(d$condition %in% c("sizeOnly3Distr2Same","colorOnly3Distr2Same","sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr3Same","colorOnly4Distr3Same"), 1, ifelse(d$condition %in% c("sizeOnly4Distr2Same","colorOnly4Distr2Same","sizeOnly3Distr1Same","colorOnly3Distr1Same"),2,ifelse(d$condition %in% c("sizeOnly4Distr1Same","colorOnly4Distr1Same"),3, 4))))
+d$NumSameDistractors = ifelse(d$condition %in% c("sizeOnly3Distr1Same","colorOnly3Distr1Same","sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr1Same","colorOnly4Distr1Same"), 1, ifelse(d$condition %in% c("sizeOnly3Distr2Same","colorOnly3Distr2Same","sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr2Same","colorOnly4Distr2Same"), 2, ifelse(d$condition %in% c("sizeOnly4Distr3Same","colorOnly4Distr3Same","sizeOnly3Distr3Same","colorOnly3Distr3Same"),3,ifelse(d$condition %in% c("sizeOnly4Distr4Same","colorOnly4Distr4Same"),4,NA))))
 
-d = droplevels(d[d$gameid != "3276-c" & d$targetStatusClickedObj == "target",])
 d$typeMentioned = d$TypeMentioned
 
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
 targets = d
-nrow(targets) # 642 cases
+nrow(targets) # 998 cases
 targets$UtteranceType = as.factor(ifelse(targets$sizeMentioned & targets$colorMentioned, "size and color", ifelse(targets$sizeMentioned, "size", ifelse(targets$colorMentioned, "color","OTHER"))))
 targets = droplevels(targets[!is.na(targets$UtteranceType),])
 targets[targets$UtteranceType == "OTHER",c("gameid","refExp","condition")]
@@ -180,7 +178,6 @@ ggsave("graphs_numdistractors/utterancetype_by_condition_ratioonly.pdf",width=9,
 ######### ANALYSIS ###########
 
 
-# CONTINUE HERE MAKE RATIO NON_INFINITE
 t = droplevels(subset(targets, redUtterance %in% c("minimal","redundant")))
 nrow(t)
 
