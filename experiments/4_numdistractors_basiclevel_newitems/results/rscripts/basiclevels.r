@@ -6,10 +6,6 @@ source("rscripts/helpers.r")
 
 #load("data/r.RData")
 d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
-# d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
-# d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
-# d2$typeMentioned = d2$typeMentioned
-# d = merge(d1,d2,all=T)
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
 head(d)
@@ -25,9 +21,6 @@ d[is.na(d$utteranceContracted),]$utteranceContracted = FALSE
 
 # look at turker comments
 comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
-# c1 = read.table(file="data/overinf_round1.csv",sep=",", header=T, quote="")
-# c2 = read.table(file="data/overinf_round2.csv",sep=",", header=T, quote="")
-# comments = rbind(c1,c2)
 unique(comments$comments)
 
 ggplot(comments, aes(ratePartner)) +
@@ -1323,30 +1316,23 @@ ggplot(agr, aes(x=condition,y=Probability,fill=freqMedianRatio4bins)) +
 ggsave("graphs_basiclevel/3_frequencyAnalysis/ratio_4bins_proportion_mentioned_features_by_feature_by_frequencyRatio_4bins_median.pdf",width=10,height=10)
 
 
+######## ANALYSIS OF LENGTH AND FREQUENCY 
 
-
-
-
-
-
-
-######## ANALYSIS
-bdCorrect$typeLength = nchar(as.character(bdCorrect$nameClickedObj))
-head(bdCorrect$typeLength)
+# length
+bdCorrect$TypeLength = nchar(as.character(bdCorrect$nameClickedObj))
 bdCorrect$BasicLevelLength = nchar(as.character(bdCorrect$basiclevelClickedObj))
-bdCorrect$basiclevelLength = nchar(as.character(bdCorrect$superdomainClickedObj))
+bdCorrect$SuperLength = nchar(as.character(bdCorrect$superdomainClickedObj))
+bdCorrect$logTypeLength = log(bdCorrect$TypeLength)
+bdCorrect$logBasicLevelLength = log(bdCorrect$BasicLevelLength)
+bdCorrect$logSuperLength = log(bdCorrect$SuperLength)
 
-un = unique(bdCorrect[,c("nameClickedObj","basiclevelClickedObj","superdomainClickedObj","typeLength","BasicLevelLength","basiclevelLength")])
+un = unique(bdCorrect[,c("nameClickedObj","basiclevelClickedObj","superdomainClickedObj","TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength")])
 nrow(un)
-ggplot(un, aes(x=typeLength)) +
-  geom_histogram()
-ggplot(un, aes(x=BasicLevelLength)) +
-  geom_histogram()
-ggplot(un, aes(x=basiclevelLength)) +
-  geom_histogram()
+head(un)
 
+# absolute lengths
 gathered = un %>%
-  select(typeLength,BasicLevelLength,basiclevelLength) %>%
+  select(TypeLength,BasicLevelLength,SuperLength) %>%
   gather(Label,Length)
 gathered$Label = gsub("Length","",gathered$Label)
 head(gathered)
@@ -1356,10 +1342,10 @@ ggplot(gathered, aes(x=Length,fill=Label)) +
 ggsave("graphs_basiclevel/length_histogram.pdf")
 
 gathered = un %>%
-  select(typeLength,BasicLevelLength,basiclevelLength,nameClickedObj) %>%
+  select(TypeLength,BasicLevelLength,SuperLength,nameClickedObj) %>%
   gather(Label,Length,-nameClickedObj)
 gathered$Label = gsub("Length","",gathered$Label)
-gathered$LabelType = factor(x=gathered$Label,levels=c("type","BasicLevel","SuperClass"))
+gathered$LabelType = factor(x=gathered$Label,levels=c("Type","BasicLevel","Super"))
 head(gathered)
 ggplot(gathered, aes(x=LabelType,y=Length,fill=LabelType)) +
   geom_bar(stat="identity") +
@@ -1367,19 +1353,123 @@ ggplot(gathered, aes(x=LabelType,y=Length,fill=LabelType)) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave("graphs_basiclevel/by-item-lengths.pdf",height=12,width=15)
 
+# log lengths
+gathered = un %>%
+  select(logTypeLength,logBasicLevelLength,logSuperLength) %>%
+  gather(Label,logLength)
+gathered$Label = gsub("Length","",gathered$Label)
+gathered$Label = gsub("log","",gathered$Label)
+head(gathered)
+ggplot(gathered, aes(x=logLength,fill=Label)) +
+  #geom_histogram(position="dodge")
+  geom_density(alpha=.5)
+ggsave("graphs_basiclevel/loglength_density.pdf")
 
-<<<<<<< HEAD
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","SuperClassLength","relFreqType")]))
-=======
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","basiclevelLength")]))
->>>>>>> 50fb59cf7c413039734c2930f9d2e6a8e47bb296
+gathered = un %>%
+  select(logTypeLength,logBasicLevelLength,logSuperLength,nameClickedObj) %>%
+  gather(Label,logLength,-nameClickedObj)
+gathered$Label = gsub("Length","",gathered$Label)
+gathered$Label = gsub("log","",gathered$Label)
+gathered$LabelType = factor(x=gathered$Label,levels=c("Type","BasicLevel","Super"))
+head(gathered)
+ggplot(gathered, aes(x=LabelType,y=logLength,fill=LabelType)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~nameClickedObj) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave("graphs_basiclevel/by-item-loglengths.pdf",height=12,width=15)
+
+
+# frequency
+bdCorrect$TypeFreq = bdCorrect$relFreqType
+bdCorrect$BasicLevelFreq = bdCorrect$relFreqBasiclevel
+bdCorrect$SuperFreq = bdCorrect$relFreqSuperdomain
+
+bdCorrect$logTypeFreq = log(bdCorrect$relFreqType)
+bdCorrect$logBasicLevelFreq = log(bdCorrect$relFreqBasiclevel)
+bdCorrect$logSuperFreq = log(bdCorrect$relFreqSuperdomain)
+
+un = unique(bdCorrect[,c("nameClickedObj","basiclevelClickedObj","superdomainClickedObj","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")])
+nrow(un)
+head(un)
+
+gathered = un %>%
+  select(TypeFreq,BasicLevelFreq,SuperFreq) %>%
+  gather(Label,Freq)
+gathered$Label = gsub("Freq","",gathered$Label)
+head(gathered)
+ggplot(gathered, aes(x=Freq,fill=Label)) +
+  #geom_histogram(position="dodge")
+  geom_density(alpha=.5) +
+  scale_x_continuous(limits=c(0,0.00008))
+ggsave("graphs_basiclevel/freq_density.pdf")
+
+gathered = un %>%
+  select(TypeFreq,BasicLevelFreq,SuperFreq,nameClickedObj) %>%
+  gather(Label,Freq,-nameClickedObj)
+gathered$Label = gsub("Freq","",gathered$Label)
+gathered$LabelType = factor(x=gathered$Label,levels=c("Type","BasicLevel","Super"))
+head(gathered)
+ggplot(gathered, aes(x=LabelType,y=Freq,fill=LabelType)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~nameClickedObj) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave("graphs_basiclevel/by-item-freqs.pdf",height=12,width=15)
+
+# log rel. freq instead of absolute rel. freq
+gathered = un %>%
+  select(logTypeFreq,logBasicLevelFreq,logSuperFreq) %>%
+  gather(Label,logFreq)
+#gathered$Label = gsub("logFreq","",gathered$Label)
+head(gathered)
+ggplot(gathered, aes(x=logFreq,fill=Label)) +
+  #geom_histogram(position="dodge")
+  geom_density(alpha=.5) 
+ggsave("graphs_basiclevel/logfreq_density.pdf")
+
+gathered = un %>%
+  select(logTypeFreq,logBasicLevelFreq,logSuperFreq,nameClickedObj) %>%
+  gather(Label,logFreq,-nameClickedObj)
+#gathered$Label = gsub("logFreq","",gathered$Label)
+#gathered$LabelType = factor(x=gathered$Label,levels=c("Type","BasicLevel","Super"))
+head(gathered)
+ggplot(gathered, aes(x=Label,y=logFreq,fill=Label)) +
+  geom_bar(stat="identity") +
+  facet_wrap(~nameClickedObj) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave("graphs_basiclevel/by-item-logfreqs.pdf",height=12,width=15)
+
+
+#### MIXED EFFECTS MODEL ANALYSIS
+
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")]))
+
 #contrasts(bdCorrect$condition) = cbind(c(1,0,0,0),c(0,0,1,0),c(0,0,0,1))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
-m = glmer(typeMentioned ~ condition + ctypeLength + crelFreqType + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+
+m = glmer(typeMentioned ~ condition * clogTypeLength * clogTypeFreq + (1 + clogTypeFreq|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
 summary(m)
 
-m = glmer(basiclevelMentioned ~ condition + ctypeLength + (1+ctypeLength|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+# collapse across non-12 conditions
+bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "distr12","type_forced","type_not_forced"))
+table(bdCorrect$redCondition)
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","redCondition")]))
+
+m = glmer(typeMentioned ~ credCondition * clogTypeLength * clogTypeFreq + (1  +  clogTypeFreq|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
 summary(m)
+
+# analyze only non-12 conditions
+non12 = droplevels(subset(bdCorrect, condition != "distr12"))
+centered = cbind(non12, myCenter(non12[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")]))
+
+m = glmer(typeMentioned ~ clogTypeLength * clogTypeFreq + (1 + clogTypeLength|gameid) + (1 + clogTypeLength|basiclevelClickedObj), family="binomial",data=centered)
+summary(m)
+
+m = glmer(typeMentioned ~ clogTypeLength * clogTypeFreq + (1 |gameid) + (1 + clogTypeFreq|basiclevelClickedObj), family="binomial",data=centered)
+summary(m)
+
+# for all random effects structures that allow the model to converge, the interaction between frequency and length is significant at (at most) <.01
+
+
 
 centered$otherMentioned = centered$superClassMentioned & centered$superclassattributeMentioned
 m = glmer(otherMentioned ~ condition + ctypeLength + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
