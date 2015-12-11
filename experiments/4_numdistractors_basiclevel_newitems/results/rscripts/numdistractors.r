@@ -2,10 +2,6 @@ theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 source("rscripts/helpers.r")
 
-#d1 = read.table(file="data/results_modified_round1.csv",sep=",", header=T, quote="")
-#d2 = read.table(file="data/results_modified_round2.csv",sep=",", header=T, quote="")
-#d2$TypeMentioned = d2$typeMentioned
-#d = merge(d1,d2,all=T)
 d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
 
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
@@ -66,9 +62,16 @@ d$NumDistractors = ifelse(d$condition %in% c("sizeOnly2Distr1Same","colorOnly2Di
 d$NumDiffDistractors = ifelse(d$condition %in% c("sizeOnly3Distr3Same","colorOnly3Distr3Same","sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr4Same","colorOnly4Distr4Same"), 0, ifelse(d$condition %in% c("sizeOnly3Distr2Same","colorOnly3Distr2Same","sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr3Same","colorOnly4Distr3Same"), 1, ifelse(d$condition %in% c("sizeOnly4Distr2Same","colorOnly4Distr2Same","sizeOnly3Distr1Same","colorOnly3Distr1Same"),2,ifelse(d$condition %in% c("sizeOnly4Distr1Same","colorOnly4Distr1Same"),3, 4))))
 d$NumSameDistractors = ifelse(d$condition %in% c("sizeOnly3Distr1Same","colorOnly3Distr1Same","sizeOnly2Distr1Same","colorOnly2Distr1Same","sizeOnly4Distr1Same","colorOnly4Distr1Same"), 1, ifelse(d$condition %in% c("sizeOnly3Distr2Same","colorOnly3Distr2Same","sizeOnly2Distr2Same","colorOnly2Distr2Same","sizeOnly4Distr2Same","colorOnly4Distr2Same"), 2, ifelse(d$condition %in% c("sizeOnly4Distr3Same","colorOnly4Distr3Same","sizeOnly3Distr3Same","colorOnly3Distr3Same"),3,ifelse(d$condition %in% c("sizeOnly4Distr4Same","colorOnly4Distr4Same"),4,NA))))
 
-d$typeMentioned = d$TypeMentioned
+d = droplevels(d[d$targetStatusClickedObj == "target",])
 
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
+
+d1=d
+load("../../3_numdistractors_basiclevel/results/data/d.RData") # load first round of data
+d2=d
+
+d = merge(d1,d2,all=T)
+summary(d)
 
 targets = d
 nrow(targets) # 998 cases

@@ -904,10 +904,10 @@ ggplot(gathered, aes(x=LabelType,y=Length,fill=LabelType)) +
 ggsave("graphs_basiclevel/by-item-lengths.pdf",height=12,width=15)
 
 
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","SuperClassLength")]))
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("typeLength","SuperClassLength","relFreqType")]))
 #contrasts(bdCorrect$condition) = cbind(c(1,0,0,0),c(0,0,1,0),c(0,0,0,1))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
-m = glmer(typeMentioned ~ condition + ctypeLength + (1+ctypeLength|gameid) + (1+ctypeLength|basiclevelClickedObj), family="binomial",data=centered)
+m = glmer(typeMentioned ~ condition + ctypeLength + crelFreqType + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
 summary(m)
 
 m = glmer(basiclevelMentioned ~ condition + ctypeLength + (1+ctypeLength|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
