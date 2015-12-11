@@ -6,10 +6,10 @@ function getRandomInt(min, max) {
 
 function make_slides(f) {
   var   slides = {};
-	preload(
-["images/bathrobe.png","images/belt.jpg"],
-{after: function() { console.log("everything's loaded now") }}
-)  
+// 	preload(
+// ["images/bathrobe.png","images/belt.jpg"],
+// {after: function() { console.log("everything's loaded now") }}
+// )  
 
   slides.i0 = slide({
      name : "i0",
@@ -29,79 +29,73 @@ function make_slides(f) {
     name : "objecttrial",
     present : exp.all_stims,
     start : function() {
-	  $(".err").hide();
+	$(".err").hide();
     },
       present_handle : function(stim) {
     	this.trial_start = Date.now();
-    	//
-    	var N = stim.N;    	
-        this.init_sliders(N);
-        exp.sliderPost = {};
-        $("#number_guess").html("?");
-	    $(".sliderbutton").show();   	
-	    //$("#objectlabel").val("");	
-	    this.stim = stim;
-	    console.log(this.stim);
-	    var contextsentence = "How typical is this for "+stim.objecttype+"?";
-	    var objimagehtml = '<img src="images/'+stim.objecttype+'/'+stim.item+'.jpg" style="height:190px;">';
-	    $("#contextsentence").html(contextsentence);
-	    $("#objectimage").html(objimagehtml);
-	    console.log(this);
+    	this.init_sliders();
+      exp.sliderPost = {};
+	//$("#objectlabel").val("");	
+	  this.stim = stim;
+	  console.log(this.stim);
+	var contextsentence = "How good of a description is this?";
+	var contextlabel = "\"" +stim.objecttype+ "\"";
+	var objimagehtml = '<img src="images/'+stim.objecttype+'/'+stim.item+'.jpg" style="height:190px;">';
 
-	    $(".N").html(N.toString() + " " + stim.item);
-	  },
-	  button : function() {
-  	  if (exp.sliderPost > -1 && exp.sliderPost < 16) {
-          $(".err").hide();
-          this.log_responses();
-          _stream.apply(this); //use exp.go() if and only if there is no "present" data.
-        } else {
-          $(".err").show();
-        }
-      },
-      init_sliders : function(N) {
-        utils.make_slider("#single_slider", function(event, ui) {
-          exp.sliderPost = Math.round(ui.value*N);
-          $("#number_guess").html(Math.round(ui.value*N));
-        });
-      },
-      log_responses : function() {
-          exp.data_trials.push({
-          	"objecttype" : stim.objecttype,
-	        "slide_number_in_experiment" : exp.phase,
-	        "item": stim.item,
-	        "rt" : Date.now() - _s.trial_start,
-  	        "response" : exp.sliderPost,
-            //"rt" : Date.now() - this.trial_start,
-          });
+	$("#contextsentence").html(contextsentence);
+	$("#contextlabel").html(contextlabel);
+	$("#objectimage").html(objimagehtml);
+	  console.log(this);
+	},
+	button : function() {
+	  if (exp.sliderPost > -1 && exp.sliderPost < 16) {
+        $(".err").hide();
+        this.log_responses();
+        _stream.apply(this); //use exp.go() if and only if there is no "present" data.
+      } else {
+        $(".err").show();
       }
-    });
-
-     //    $(".contbutton").click(function() {
-	    //     var ok_to_go_on = true;
-	    //     console.log($("#objectlabel").val());
-		   //  if ($("#objectlabel").val().length < 2) {
-		  	//    ok_to_go_on = false;
-		   //  }
-	    //     if (ok_to_go_on) {
-		   //     $(".contbutton").unbind("click");      	
-		   //     stim.objectlabel = $("#objectlabel").val();         	
-	    //        exp.data_trials.push({
-	    //           "objecttype" : stim.objecttype,
-	    //           "slide_number_in_experiment" : exp.phase,
-	    //           "item": stim.item,
-	    //           "rt" : Date.now() - _s.trial_start,
-		   //        "response" : stim.objectlabel
-	    //        });
-	    //        $(".err").hide();
-	    //        _stream.apply(_s); 
-	    //     } else {
-	    //        $(".err").show();
-	    //     }
-	 //    // });
+    },
+    init_sliders : function() {
+      utils.make_slider("#single_slider", function(event, ui) {
+        exp.sliderPost = Math.round(ui.value);
+        //$("#number_guess").html(Math.round(ui.value*N));
+      });
+    },
+    log_responses : function() {
+        exp.data_trials.push({
+          "objecttype" : this.stim.objecttype,
+          "slide_number_in_experiment" : exp.phase,
+          "item": this.stim.item,
+          "rt" : Date.now() - _s.trial_start,
+	      "response" : exp.sliderPost
+        });
+    }
+ //     $(".contbutton").click(function() {
+	//   var ok_to_go_on = true;
+	//   console.log($("#objectlabel").val());
+	//   if ($("#objectlabel").val().length < 2) {
+	//   	ok_to_go_on = false;
+	//   }
+ //      if (ok_to_go_on) {
+	// $(".contbutton").unbind("click");      	
+	// stim.objectlabel = $("#objectlabel").val();         	
+ //        exp.data_trials.push({
+     //      "objecttype" : stim.objecttype,
+     //      "slide_number_in_experiment" : exp.phase,
+     //      "item": stim.item,
+     //        "rt" : Date.now() - _s.trial_start,
+	    // "response" : stim.objectlabel
+ //        });
+ //          $(".err").hide();
+ //          _stream.apply(_s); 
+ //      } else {
+ //        $(".err").show();
+ //      }
+	// });
 	  
-  //     },
-  // });
+    //  },
+  });
 
   slides.subj_info =  slide({
     name : "subj_info",
@@ -144,63 +138,63 @@ function init() {
   var items = _.shuffle([
 	{
 	"item": "blackBear",
-	"objecttype": "a bear"
+	"objecttype": "bear"
 	},
 	{
 	"item": "grizzlyBear",
-	"objecttype": "a bear"
+	"objecttype": "bear"
 	},
 	{
 	"item": "koalaBear",
-	"objecttype": "a bear"
+	"objecttype": "bear"
 	},
 	{
 	"item": "pandaBear",
-	"objecttype": "a bear"
+	"objecttype": "bear"
 	},
 	{
 	"item": "polarBear",
-	"objecttype": "a bear"
+	"objecttype": "bear"
 	},
 	{
 	"item": "eagle",
-	"objecttype": "a bird"
+	"objecttype": "bird"
 	},
 	{
 	"item": "hummingBird",
-	"objecttype": "a bird"
+	"objecttype": "bird"
 	},
 	{
 	"item": "parrot",
-	"objecttype": "a bird"
+	"objecttype": "bird"
 	},
 	{
 	"item": "pigeon",
-	"objecttype": "a bird"
+	"objecttype": "bird"
 	},
 	{
 	"item": "sparrow",
-	"objecttype": "a bird"
+	"objecttype": "bird"
 	},
 	{
 	"item": "dalmatian",
-	"objecttype": "a dog"
+	"objecttype": "dog"
 	},
 	{
 	"item": "germanShepherd",
-	"objecttype": "a dog"
+	"objecttype": "dog"
 	},
 	{
 	"item": "greyhound",
-	"objecttype": "a dog"
+	"objecttype": "dog"
 	},
 	{
 	"item": "husky",
-	"objecttype": "a dog"
+	"objecttype": "dog"
 	},
 	{
 	"item": "pug",
-	"objecttype": "a dog"
+	"objecttype": "dog"
 	},
 	{
 	"item": "candyCorn",
@@ -224,103 +218,103 @@ function init() {
 	},
 	{
 	"item": "daisy",
-	"objecttype": "a flower"
+	"objecttype": "flower"
 	},
 	{
 	"item": "lily",
-	"objecttype": "a flower"
+	"objecttype": "flower"
 	},
 	{
 	"item": "rose",
-	"objecttype": "a flower"
+	"objecttype": "flower"
 	},
 	{
 	"item": "sunflower",
-	"objecttype": "a flower"
+	"objecttype": "flower"
 	},
 	{
 	"item": "tulip",
-	"objecttype": "a flower"
+	"objecttype": "flower"
 	},
 	{
 	"item": "convertible",
-	"objecttype": "a car"
+	"objecttype": "car"
 	},
 	{
 	"item": "minivan",
-	"objecttype": "a car"
+	"objecttype": "car"
 	},
 	{
 	"item": "sedan",
-	"objecttype": "a car"
+	"objecttype": "car"
 	},
 	{
 	"item": "sportsCar",
-	"objecttype": "a car"
+	"objecttype": "car"
 	},
 	{
 	"item": "suv",
-	"objecttype": "a car"
+	"objecttype": "car"
 	},
 	{
 	"item": "catfish",
-	"objecttype": "a fish"
+	"objecttype": "fish"
 	},
 	{
 	"item": "clownFish",
-	"objecttype": "a fish"
+	"objecttype": "fish"
 	},
 	{
 	"item": "discusFish",
-	"objecttype": "a fish"
+	"objecttype": "fish"
 	},
 	{
 	"item": "goldFish",
-	"objecttype": "a fish"
+	"objecttype": "fish"
 	},
 	{
 	"item": "swordFish",
-	"objecttype": "a fish"
+	"objecttype": "fish"
 	},
 	{
 	"item": "campShirt",
-	"objecttype": "a shirt"
+	"objecttype": "shirt"
 	},
 	{
 	"item": "dressShirt",
-	"objecttype": "a shirt"
+	"objecttype": "shirt"
 	},
 	{
 	"item": "hawaiiShirt",
-	"objecttype": "a shirt"
+	"objecttype": "shirt"
 	},
 	{
 	"item": "poloShirt",
-	"objecttype": "a shirt"
+	"objecttype": "shirt"
 	},
 	{
 	"item": "tShirt",
-	"objecttype": "a shirt"
+	"objecttype": "shirt"
 	},
 	{
 	"item": "bedsideTable",
-	"objecttype": "a table"
+	"objecttype": "table"
 	},
 	{
 	"item": "coffeeTable",
-	"objecttype": "a table"
+	"objecttype": "table"
 	},
 	{
 	"item": "diningTable",
-	"objecttype": "a table"
+	"objecttype": "table"
 	},
 	{
 	"item": "picnicTable",
-	"objecttype": "a table"
+	"objecttype": "table"
 	},
 	{
 	"item": "sideTable",
-	"objecttype": "a table"
+	"objecttype": "table"
 	},
 	
   ]).slice(0,45);
@@ -364,8 +358,6 @@ function init() {
   $(".nQs").html(exp.nQs);
 
   $('.slide').hide(); //hide everything
-
-  var Ns = [15];
 
   //make sure turkers have accepted HIT (or you're not in mturk)
   $("#start_button").click(function() {
