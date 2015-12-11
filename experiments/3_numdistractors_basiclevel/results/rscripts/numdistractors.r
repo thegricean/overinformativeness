@@ -70,6 +70,8 @@ d$typeMentioned = d$TypeMentioned
 
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
+save(d, file="data/d.RData")
+
 targets = d
 nrow(targets) # 642 cases
 targets$UtteranceType = as.factor(ifelse(targets$sizeMentioned & targets$colorMentioned, "size and color", ifelse(targets$sizeMentioned, "size", ifelse(targets$colorMentioned, "color","OTHER"))))
