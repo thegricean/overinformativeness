@@ -66,18 +66,25 @@
 
   <div class="slide" id="objecttrial">
   	<p id="contextsentence">{{}}</p>
+    <b><p id="contextlabel">{{}}</p></b>
 
     <div id="objectimage">
 {{}}
 	</div>
 
-     <br> 	
+    <table id="slider_table" class="slider_table">
+      <tr><td class="left"><h3>very bad</h3></td><td class="right" id="numObjects"><h3>very good</h3></td></tr>
+      <tr><td colspan="2"><div id="single_slider" class="slider"></div></td></tr>
+    </table>
+    <button onclick="_s.button()">Continue</button>
+    <div class="err">Please adjust the slider before continuing.</div>
+     <!-- <br> 	
 	      <textarea id="objectlabel" rows="2" cols="50"></textarea>    
-     <br> 
+     <br>  -->
      
-    <button class="contbutton">Next</button>
+    <!-- <button class="contbutton">Next</button>
 
-        <div class="err">Please say what kind of object you think this is. If you don't know, write "don't know".</div>
+        <div class="err">Please say what kind of object you think this is. If you don't know, write "don't know".</div> -->
 
   </div>
 

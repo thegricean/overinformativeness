@@ -6,10 +6,10 @@ function getRandomInt(min, max) {
 
 function make_slides(f) {
   var   slides = {};
-	preload(
-["images/bathrobe.png","images/belt.jpg"],
-{after: function() { console.log("everything's loaded now") }}
-)  
+// 	preload(
+// ["images/bathrobe.png","images/belt.jpg"],
+// {after: function() { console.log("everything's loaded now") }}
+// )  
 
   slides.i0 = slide({
      name : "i0",
@@ -33,8 +33,9 @@ function make_slides(f) {
     },
       present_handle : function(stim) {
     	this.trial_start = Date.now();
-	    $(".sliderbutton").show();    	
-	$("#objectlabel").val("");	
+    	this.init_sliders();
+      exp.sliderPost = {};
+	//$("#objectlabel").val("");	
 	  this.stim = stim;
 	  console.log(this.stim);
 	var contextsentence = "How typical is this for "+stim.objecttype+"?";
@@ -43,30 +44,55 @@ function make_slides(f) {
 	$("#contextsentence").html(contextsentence);
 	$("#objectimage").html(objimagehtml);
 	  console.log(this);
-     $(".contbutton").click(function() {
-	  var ok_to_go_on = true;
-	  console.log($("#objectlabel").val());
-	  if ($("#objectlabel").val().length < 2) {
-	  	ok_to_go_on = false;
-	  }
-      if (ok_to_go_on) {
-	$(".contbutton").unbind("click");      	
-	stim.objectlabel = $("#objectlabel").val();         	
-        exp.data_trials.push({
-          "objecttype" : stim.objecttype,
-          "slide_number_in_experiment" : exp.phase,
-          "item": stim.item,
-            "rt" : Date.now() - _s.trial_start,
-	    "response" : stim.objectlabel
-        });
-          $(".err").hide();
-          _stream.apply(_s); 
+	},
+	button : function() {
+	  if (exp.sliderPost > -1 && exp.sliderPost < 16) {
+        $(".err").hide();
+        this.log_responses();
+        _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       } else {
         $(".err").show();
       }
-	});
+    },
+    init_sliders : function() {
+      utils.make_slider("#single_slider", function(event, ui) {
+        exp.sliderPost = Math.round(ui.value);
+        //$("#number_guess").html(Math.round(ui.value*N));
+      });
+    },
+    log_responses : function() {
+        exp.data_trials.push({
+          "objecttype" : this.stim.objecttype,
+          "slide_number_in_experiment" : exp.phase,
+          "item": this.stim.item,
+          "rt" : Date.now() - _s.trial_start,
+	      "response" : exp.sliderPost
+        });
+    }
+ //     $(".contbutton").click(function() {
+	//   var ok_to_go_on = true;
+	//   console.log($("#objectlabel").val());
+	//   if ($("#objectlabel").val().length < 2) {
+	//   	ok_to_go_on = false;
+	//   }
+ //      if (ok_to_go_on) {
+	// $(".contbutton").unbind("click");      	
+	// stim.objectlabel = $("#objectlabel").val();         	
+ //        exp.data_trials.push({
+     //      "objecttype" : stim.objecttype,
+     //      "slide_number_in_experiment" : exp.phase,
+     //      "item": stim.item,
+     //        "rt" : Date.now() - _s.trial_start,
+	    // "response" : stim.objectlabel
+ //        });
+ //          $(".err").hide();
+ //          _stream.apply(_s); 
+ //      } else {
+ //        $(".err").show();
+ //      }
+	// });
 	  
-      },
+    //  },
   });
 
   slides.subj_info =  slide({
