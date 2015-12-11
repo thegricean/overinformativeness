@@ -1454,7 +1454,7 @@ bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "distr12","type
 table(bdCorrect$redCondition)
 centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","redCondition")]))
 
-m = glmer(typeMentioned ~ credCondition * clogTypeLength * clogTypeFreq + (1  +  clogTypeFreq|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+m = glmer(typeMentioned ~ credCondition * clogTypeLength * clogTypeFreq + (1+credCondition|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
 summary(m)
 
 # analyze only non-12 conditions
