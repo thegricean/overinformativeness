@@ -1468,13 +1468,67 @@ m = glmer(typeMentioned ~ clogTypeLength * clogTypeFreq + (1 |gameid) + (1 + clo
 summary(m)
 
 # for all random effects structures that allow the model to converge, the interaction between frequency and length is significant at (at most) <.01
+#bdCorrect$cutlogTypeLength = cut(bdCorrect$logTypeLength,breaks=quantile(bdCorrect$logTypeLength,probs=c(0,.5,1)))
+bdCorrect$binnedlogTypeLength = cut_number(bdCorrect$logTypeLength,2,labels=c("short","long"))
+bdCorrect$binnedlogTypeFreq = cut_number(bdCorrect$logTypeFreq,2,labels=c("low-frequency","high-frequency"))
+summary(bdCorrect)
 
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, superclassattributeMentioned, redCondition, binnedlogTypeLength, binnedlogTypeFreq) %>%
+  gather(Utterance,Mentioned,-redCondition, -binnedlogTypeLength, -binnedlogTypeFreq) %>%
+  group_by(Utterance,redCondition, binnedlogTypeLength, binnedlogTypeFreq) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
 
+ggplot(agr, aes(x=redCondition,y=Probability,fill=binnedlogTypeLength)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_grid(binnedlogTypeFreq~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/4_length-frequency-interaction/freq-length-interaction.pdf",height=10,width=15)
 
-centered$otherMentioned = centered$superClassMentioned & centered$superclassattributeMentioned
-m = glmer(otherMentioned ~ condition + ctypeLength + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
+agr = bdCorrect %>%
+  select(typeMentioned, redCondition, binnedlogTypeLength, binnedlogTypeFreq) %>%
+  group_by(redCondition, binnedlogTypeLength, binnedlogTypeFreq) %>%
+  summarise(Probability=mean(typeMentioned),ci.low=ci.low(typeMentioned),ci.high=ci.high(typeMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
 
+ggplot(agr, aes(x=binnedlogTypeFreq,y=Probability,fill=binnedlogTypeLength)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~redCondition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/4_length-frequency-interaction/freq-length-interaction-bycond.pdf",height=5,width=9)
+
+#bdCorrect$binnedlogTypeLength = cut_number(bdCorrect$logTypeLength,3,labels=c("short","mid","long"))
+#bdCorrect$binnedlogTypeFreq = cut_number(bdCorrect$logTypeFreq,3,labels=c("low-frequency","mid-frequency","high-frequency"))
+summary(bdCorrect[,c("binnedlogTypeLength","binnedlogTypeFreq")])
+table(bdCorrect$binnedlogTypeLength,bdCorrect$binnedlogTypeFreq)
+
+agr = bdCorrect %>%
+  select(typeMentioned, binnedlogTypeLength, binnedlogTypeFreq) %>%
+  group_by(binnedlogTypeLength, binnedlogTypeFreq) %>%
+  summarise(Probability=mean(typeMentioned),ci.low=ci.low(typeMentioned),ci.high=ci.high(typeMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=binnedlogTypeFreq,y=Probability,fill=binnedlogTypeLength)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  scale_y_continuous(name="Probability of type mention") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/4_length-frequency-interaction/freq-length-interaction-noconds.pdf",height=5,width=9)
 
 
 
