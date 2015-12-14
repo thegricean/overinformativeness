@@ -53,8 +53,8 @@ var speaker = cache(function(target, item) {
 });
 
 var item12 = ["dalmatian", "poodle", "couch"];
-var item13 = ["dalmatian", "poodle", "goldfish"];
-var item23 = ["dalmatian", "goldfish", "couch"];
+var item13 = ["dalmatian", "poodle", "whale"];
+var item23 = ["dalmatian", "whale", "couch"];
 var item33 = ["dalmatian", "iron skillet", "couch"];
 
 // literalListener("dog", item23).print();
