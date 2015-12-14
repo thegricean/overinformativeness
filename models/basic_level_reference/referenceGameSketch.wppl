@@ -1,0 +1,65 @@
+// run using:
+// webppl referenceGameSketch.wppl --require refModule/
+
+var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var labelFitness = function(label, object) {
+  var consistentObjs = tax[label];
+  return _.has(consistentObjs, object) ? 0 : -Infinity;
+};
+
+var meaning = function(label) {
+  return function(object) {
+    return labelFitness(label, object);
+  };
+};
+
+var makeObjectPrior = function(item) {
+  return Enumerate(function() {
+    return uniformDraw(item);
+  });
+};
+
+var getLabels = function(object) {
+  return refModule.getRelevantLabels(object, tax);
+};
+
+var literalListener = cache(function(label, item){
+  var objectPrior = makeObjectPrior(item);
+  return Enumerate(function(){
+    var object = sample(objectPrior);
+    var labelMeaning = meaning(label);
+    factor(labelMeaning(object));
+    return object;
+  });
+});                                         
+
+var speaker = cache(function(target, item) {
+  var labels = getLabels(target);
+  return Enumerate(function(){
+    var label = uniformDraw(labels);
+    var possibleOutcome = sample(literalListener(label, item));
+    condition(possibleOutcome === target);
+    return label;
+  });
+});
+
+var item12 = ["dalmatian", "poodle", "couch"];
+var item13 = ["dalmatian", "poodle", "goldfish"];
+var item23 = ["dalmatian", "goldfish", "couch"];
+var item33 = ["dalmatian", "iron skillet", "couch"];
+
+// literalListener("dog", item23).print();
+// literalListener("dog", item12).print();
+//literalListener("dog", item13).print();
+
+speaker("dalmatian", item23).print();
+speaker("dalmatian", item12).print();
