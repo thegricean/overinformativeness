@@ -1,1 +1,26 @@
-Norming study: item combinations5 subclasses x 9 domains = 45	x  3 [“Chihuahua”?/”dog”?/”animal”?] 	= 1354 otherAnimals x 9 domains = 36	x 3 [“Chihuahua”?/”dog”?/”animal”?] 	= 10820-32 artifacts x 9 domains:4 (animalDomains) x 20 = 80 		80 x 3 					= 2405 (nonAnimalDomains) x 32 = 160		160 x 3 				= 480135 + 108 + 240 + 480 								= 936
+Norming study: item combinations5 subclasses x 9 domains = 45	x  3 [“Chihuahua”?/”dog”?/”animal”?] 	= 135
+
+(SOWIESO)4 otherAnimals x 9 domains = 36	x 3 [“Chihuahua”?/”dog”?/”animal”?] 	= 10820-32 artifacts x 9 domains:4 (animalDomains) x 20 = 80 		80 x 3 					= 240
+                                                  !!! x 4 (targets per domain)  = 9605 (nonAnimalDomains) x 32 = 160		160 x 3 				= 480
+                                                  !!! x 4 (targets per domain)  = 1920135 + 108 + 960 + 1920								= 3123
+
+
+#####################################################################################
+# actual combis:
+
+4 subclasses (dog1s) x 9 domains = 36 		x3	108
+1 subclasses (dog2s) x 9 domains = 9 	x 2 (“dog?””animal”	= 18
+					x 4 (“pug”?”dalmatian”?”GerShe”?”husky”?,   = 36
+
+108 + 18 + 36 = 162
+
+
+
+1323 (everything else) (see experiments/4 …/ data/singleColumnLabels for list
+(unique labels extracted with R)
+
+
+
+= 1458
+
+
