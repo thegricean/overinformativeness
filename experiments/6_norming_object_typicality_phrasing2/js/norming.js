@@ -58,7 +58,7 @@ function make_slides(f) {
     },
     init_sliders : function() {
       utils.make_slider("#single_slider", function(event, ui) {
-        exp.sliderPost = Math.round(ui.value);
+        exp.sliderPost = ui.value;
         //$("#number_guess").html(Math.round(ui.value*N));
       });
     },
