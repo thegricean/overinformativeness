@@ -45,9 +45,381 @@ var dogInfo = {
   },
   targets : ["dalmatian", "pug", "germanShepherd", "husky"],
   conditions : {
-    item12 : ["greyhound", "dress"],
+    item12 : ["greyhound", "squirrel"],
     item22 : ["lobster", "chick"],
     item23 : ["lobster", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var birdInfo = {
+  tax : {
+    animal: {
+      eagle: null,
+      parrot: null,
+      pigeon: null,
+      hummingBird: null,
+      sparrow : null,
+      crocodile : null,
+      cow : null,
+      rhino : null,
+      lion : null,
+      lobster : null,
+      sheep : null,
+      snake : null,
+      squirrel : null,
+      rabbit : null,
+      horse : null,
+      iguana : null,
+      kitten : null,
+      pig : null,
+      chick : null,
+      elephant : null,
+      bison : null
+    },
+    bird: {
+      eagle: null,
+      parrot: null,
+      pigeon: null,
+      hummingBird: null,
+      sparrow : null
+    },
+    eagle: {
+      eagle: null
+    },
+    parrot : {
+      parrot : null
+    },
+    pigeon : {
+      pigeon : null
+    },
+    hummingBird : {
+      hummingBird : null
+    }
+  },
+  targets : ["eagle", "parrot", "pigeon", "hummingBird"],
+  conditions : {
+    item12 : ["sparrow", "squirrel"],
+    item22 : ["lobster", "chick"],
+    item23 : ["lobster", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var bearInfo = {
+  tax : {
+    animal: {
+      blackBear: null,
+      polarBear: null,
+      pandaBear: null,
+      grizzlyBear: null,
+      koalaBear : null,
+      crocodile : null,
+      cow : null,
+      rhino : null,
+      lion : null,
+      lobster : null,
+      sheep : null,
+      snake : null,
+      squirrel : null,
+      rabbit : null,
+      horse : null,
+      iguana : null,
+      kitten : null,
+      pig : null,
+      chick : null,
+      elephant : null,
+      bison : null
+    },
+    bear: {
+      blackBear: null,
+      polarBear: null,
+      pandaBear: null,
+      grizzlyBear: null,
+      koalaBear : null
+    },
+    blackBear: {
+      blackBear: null
+    },
+    polarBear : {
+      polarBear : null
+    },
+    pandaBear : {
+      pandaBear : null
+    },
+    grizzlyBear : {
+      grizzlyBear : null
+    }
+  },
+  targets : ["blackBear", "polarBear", "pandaBear", "grizzlyBear"],
+  conditions : {
+    item12 : ["koalaBear", "squirrel"],
+    item22 : ["lobster", "chick"],
+    item23 : ["lobster", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var fishInfo = {
+  tax : {
+    animal: {
+      clownFish: null,
+      goldFish: null,
+      swordFish: null,
+      catfish: null,
+      discusFish : null,
+      crocodile : null,
+      cow : null,
+      rhino : null,
+      lion : null,
+      lobster : null,
+      sheep : null,
+      snake : null,
+      squirrel : null,
+      rabbit : null,
+      horse : null,
+      iguana : null,
+      kitten : null,
+      pig : null,
+      chick : null,
+      elephant : null,
+      bison : null
+    },
+    fish: {
+      clownFish: null,
+      goldFish: null,
+      swordFish: null,
+      catfish: null,
+      discusFish : null
+    },
+    clownFish: {
+      clownFish: null
+    },
+    goldFish : {
+      goldFish : null
+    },
+    swordFish : {
+      swordFish : null
+    },
+    catfish : {
+      catfish : null
+    }
+  },
+  targets : ["clownFish", "goldFish", "swordFish", "catfish"],
+  conditions : {
+    item12 : ["discusFish", "squirrel"],
+    item22 : ["lobster", "chick"],
+    item23 : ["lobster", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var candyInfo = {
+  tax : {
+    snack: {
+      gummyBears: null,
+      jellyBeans: null,
+      skittles: null,
+      mnMs: null,
+      candyCorn : null,
+      cookies : null,
+      chips : null,
+      pretzels : null,
+      popcorn : null
+    },
+    candy: {
+      gummyBears: null,
+      jellyBeans: null,
+      skittles: null,
+      mnMs: null,
+      candyCorn : null
+    },
+    gummyBears: {
+      gummyBears: null
+    },
+    jellyBeans : {
+      jellyBeans : null
+    },
+    skittles : {
+      skittles : null
+    },
+    mnMs : {
+      mnMs : null
+    }
+  },
+  targets : ["gummyBears", "jellyBeans", "skittles", "mnMs"],
+  conditions : {
+    item12 : ["candyCorn", "cookies"],
+    item22 : ["chips", "pretzels"],
+    item23 : ["popcorn", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var carInfo = {
+  tax : {
+    vehicle: {
+      convertible: null,
+      minivan: null,
+      sportsCar: null,
+      suv: null,
+      sedan : null,
+      motorcycle : null,
+      train : null,
+      ambulance : null,
+      firetruck : null
+    },
+    car: {
+      convertible: null,
+      minivan: null,
+      sportsCar: null,
+      suv: null,
+      sedan : null
+    },
+    convertible: {
+      convertible: null
+    },
+    minivan : {
+      minivan : null
+    },
+    sportsCar : {
+      sportsCar : null
+    },
+    suv : {
+      suv : null
+    }
+  },
+  targets : ["convertible", "minivan", "sportsCar", "suv"],
+  conditions : {
+    item12 : ["sedan", "motorcycle"],
+    item22 : ["train", "ambulance"],
+    item23 : ["firetruck", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var tableInfo = {
+  tax : {
+    furniture: {
+      coffeeTable: null,
+      diningTable: null,
+      picnicTable: null,
+      bedsideTable: null,
+      sideTable : null,
+      bed : null,
+      lamp : null,
+      wardrobe : null,
+      bookcase : null
+    },
+    table: {
+      coffeeTable: null,
+      diningTable: null,
+      picnicTable: null,
+      bedsideTable: null,
+      sideTable : null
+    },
+    coffeeTable: {
+      coffeeTable: null
+    },
+    diningTable : {
+      diningTable : null
+    },
+    picnicTable : {
+      picnicTable : null
+    },
+    bedsideTable : {
+      bedsideTable : null
+    }
+  },
+  targets : ["coffeeTable", "diningTable", "picnicTable", "bedsideTable"],
+  conditions : {
+    item12 : ["sideTable", "bed"],
+    item22 : ["lamp", "wardrobe"],
+    item23 : ["bookcase", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
+
+var shirtInfo = {
+  tax : {
+    clothing: {
+      poloShirt: null,
+      dressShirt: null,
+      hawaiiShirt: null,
+      tShirt: null,
+      campShirt : null,
+      dress : null,
+      gloves : null,
+      bathrobe : null,
+      socks : null
+    },
+    shirt: {
+      poloShirt: null,
+      dressShirt: null,
+      hawaiiShirt: null,
+      tShirt: null,
+      campShirt : null
+    },
+    poloShirt: {
+      poloShirt: null
+    },
+    dressShirt : {
+      dressShirt : null
+    },
+    hawaiiShirt : {
+      hawaiiShirt : null
+    },
+    tShirt : {
+      tShirt : null
+    }
+  },
+  targets : ["poloShirt", "dressShirt", "hawaiiShirt", "tShirt"],
+  conditions : {
+    item12 : ["campShirt", "socks"],
+    item22 : ["dress", "bathrobe"],
+    item23 : ["socks", "baseball"],
+    item33 : ["basketball", "binoculars"]
+  }
+};
+
+var flowerInfo = {
+  tax : {
+    plant: {
+      rose: null,
+      tulip: null,
+      daisy: null,
+      sunflower: null,
+      lily : null,
+      ivy : null,
+      rosemary : null,
+      pottedPlant : null,
+      grasses : null
+    },
+    flower: {
+      rose: null,
+      tulip: null,
+      daisy: null,
+      sunflower: null,
+      lily : null
+    },
+    rose: {
+      rose: null
+    },
+    tulip : {
+      tulip : null
+    },
+    daisy : {
+      daisy : null
+    },
+    sunflower : {
+      sunflower : null
+    }
+  },
+  targets : ["rose", "tulip", "daisy", "sunflower"],
+  conditions : {
+    item12 : ["lily", "pottedPlant"],
+    item22 : ["grasses", "ivy"],
+    item23 : ["rosemary", "dress"],
     item33 : ["basketball", "dress"]
   }
 };
