@@ -1,0 +1,53 @@
+var dogInfo = {
+  tax : {
+    animal: {
+      dalmatian: null,
+      pug: null,
+      husky: null,
+      germanShepherd: null,
+      greyhound : null,
+      crocodile : null,
+      cow : null,
+      rhino : null,
+      lion : null,
+      lobster : null,
+      sheep : null,
+      snake : null,
+      squirrel : null,
+      rabbit : null,
+      horse : null,
+      iguana : null,
+      kitten : null,
+      pig : null,
+      chick : null,
+      elephant : null,
+      bison : null
+    },
+    dog: {
+      dalmatian: null,
+      pug : null,
+      husky : null,
+      germanShepherd : null,
+      greyhound : null
+    },
+    dalmatian: {
+      dalmatian: null
+    },
+    pug : {
+      pug : null
+    },
+    germanShepherd : {
+      germanShepherd : null
+    },
+    husky : {
+      husky : null
+    }
+  },
+  targets : ["dalmatian", "pug", "germanShepherd", "husky"],
+  conditions : {
+    item12 : ["greyhound", "dress"],
+    item22 : ["lobster", "chick"],
+    item23 : ["lobster", "dress"],
+    item33 : ["basketball", "dress"]
+  }
+};
