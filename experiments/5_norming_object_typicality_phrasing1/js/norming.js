@@ -38,8 +38,10 @@ function make_slides(f) {
 	//$("#objectlabel").val("");	
 	  this.stim = stim;
 	  console.log(this.stim);
-	var contextsentence = "How typical is this for "+stim.objecttype+"?";
-	var objimagehtml = '<img src="images/'+stim.objecttype+'/'+stim.item+'.jpg" style="height:190px;">';
+	var contextsentence = "How typical is this for "+stim.label+"?";
+	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
+	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
+	var objimagehtml = '<img src="images/'+stim.item+'.jpg" style="height:190px;">';
 
 	$("#contextsentence").html(contextsentence);
 	$("#objectimage").html(objimagehtml);
@@ -56,13 +58,13 @@ function make_slides(f) {
     },
     init_sliders : function() {
       utils.make_slider("#single_slider", function(event, ui) {
-        exp.sliderPost = Math.round(ui.value);
+        exp.sliderPost = ui.value;
         //$("#number_guess").html(Math.round(ui.value*N));
       });
     },
     log_responses : function() {
         exp.data_trials.push({
-          "objecttype" : this.stim.objecttype,
+          "label" : this.stim.label,
           "slide_number_in_experiment" : exp.phase,
           "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
@@ -79,7 +81,7 @@ function make_slides(f) {
 	// $(".contbutton").unbind("click");      	
 	// stim.objectlabel = $("#objectlabel").val();         	
  //        exp.data_trials.push({
-     //      "objecttype" : stim.objecttype,
+     //      "basiclevel" : stim.basiclevel,
      //      "slide_number_in_experiment" : exp.phase,
      //      "item": stim.item,
      //        "rt" : Date.now() - _s.trial_start,
@@ -134,198 +136,688 @@ function make_slides(f) {
 function init() {
 
   var items = _.shuffle([
+  	//dog1s typeLabel 36
 	{
 	"item": "blackBear",
-	"objecttype": "a bear"
+	"label": "a black bear"
 	},
 	{
 	"item": "grizzlyBear",
-	"objecttype": "a bear"
-	},
-	{
-	"item": "koalaBear",
-	"objecttype": "a bear"
+	"label": "a grizzly bear"
 	},
 	{
 	"item": "pandaBear",
-	"objecttype": "a bear"
+	"label": "a panda bear"
 	},
 	{
 	"item": "polarBear",
-	"objecttype": "a bear"
+	"label": "a polar bear"
 	},
 	{
 	"item": "eagle",
-	"objecttype": "a bird"
+	"label": "an eagle"
 	},
 	{
 	"item": "hummingBird",
-	"objecttype": "a bird"
+	"label": "a hummingbird"
 	},
 	{
 	"item": "parrot",
-	"objecttype": "a bird"
+	"label": "a parrot"
 	},
 	{
 	"item": "pigeon",
-	"objecttype": "a bird"
-	},
-	{
-	"item": "sparrow",
-	"objecttype": "a bird"
+	"label": "a pigeon"
 	},
 	{
 	"item": "dalmatian",
-	"objecttype": "a dog"
+	"label": "a Dalmatian"
 	},
 	{
 	"item": "germanShepherd",
-	"objecttype": "a dog"
-	},
-	{
-	"item": "greyhound",
-	"objecttype": "a dog"
+	"label": "a German Shepherd"
 	},
 	{
 	"item": "husky",
-	"objecttype": "a dog"
+	"label": "a Husky"
 	},
 	{
 	"item": "pug",
-	"objecttype": "a dog"
-	},
-	{
-	"item": "candyCorn",
-	"objecttype": "candy"
+	"label": "a Pug"
 	},
 	{
 	"item": "gummyBears",
-	"objecttype": "candy"
+	"label": "gummy bears"
 	},
 	{
 	"item": "jellyBeans",
-	"objecttype": "candy"
+	"label": "jelly beans"
 	},
 	{
 	"item": "mnMs",
-	"objecttype": "candy"
+	"label": "M&M's"
 	},
 	{
 	"item": "skittles",
-	"objecttype": "candy"
+	"label": "Skittles"
 	},
 	{
 	"item": "daisy",
-	"objecttype": "a flower"
-	},
-	{
-	"item": "lily",
-	"objecttype": "a flower"
+	"label": "a daisy"
 	},
 	{
 	"item": "rose",
-	"objecttype": "a flower"
+	"label": "a rose"
 	},
 	{
 	"item": "sunflower",
-	"objecttype": "a flower"
+	"label": "a sunflower"
 	},
 	{
 	"item": "tulip",
-	"objecttype": "a flower"
+	"label": "a tulip"
 	},
 	{
 	"item": "convertible",
-	"objecttype": "a car"
+	"label": "a convertible"
 	},
 	{
 	"item": "minivan",
-	"objecttype": "a car"
-	},
-	{
-	"item": "sedan",
-	"objecttype": "a car"
+	"label": "a minivan"
 	},
 	{
 	"item": "sportsCar",
-	"objecttype": "a car"
+	"label": "a sports car"
 	},
 	{
 	"item": "suv",
-	"objecttype": "a car"
+	"label": "a suv"
 	},
 	{
 	"item": "catfish",
-	"objecttype": "a fish"
+	"label": "a catfish"
 	},
 	{
 	"item": "clownFish",
-	"objecttype": "a fish"
-	},
-	{
-	"item": "discusFish",
-	"objecttype": "a fish"
+	"label": "a clownfish"
 	},
 	{
 	"item": "goldFish",
-	"objecttype": "a fish"
+	"label": "a goldfish"
 	},
 	{
 	"item": "swordFish",
-	"objecttype": "a fish"
-	},
-	{
-	"item": "campShirt",
-	"objecttype": "a shirt"
+	"label": "a swordfish"
 	},
 	{
 	"item": "dressShirt",
-	"objecttype": "a shirt"
+	"label": "a dress shirt"
 	},
 	{
 	"item": "hawaiiShirt",
-	"objecttype": "a shirt"
+	"label": "a Hawaii shirt"
 	},
 	{
 	"item": "poloShirt",
-	"objecttype": "a shirt"
+	"label": "a polo shirt"
 	},
 	{
 	"item": "tShirt",
-	"objecttype": "a shirt"
+	"label": "a T-Shirt"
 	},
 	{
 	"item": "bedsideTable",
-	"objecttype": "a table"
+	"label": "a bedside table"
 	},
 	{
 	"item": "coffeeTable",
-	"objecttype": "a table"
+	"label": "a coffee table"
 	},
 	{
 	"item": "diningTable",
-	"objecttype": "a table"
+	"label": "a dining table"
 	},
 	{
 	"item": "picnicTable",
-	"objecttype": "a table"
+	"label": "a picnic table"
+	},
+	//dog1s BasiclevelLabel 36
+	{
+	"item": "blackBear",
+	"label": "a bear"
+	},
+	{
+	"item": "grizzlyBear",
+	"label": "a bear"
+	},
+	{
+	"item": "pandaBear",
+	"label": "a bear"
+	},
+	{
+	"item": "polarBear",
+	"label": "a bear"
+	},
+	{
+	"item": "eagle",
+	"label": "a bird"
+	},
+	{
+	"item": "hummingBird",
+	"label": "a bird"
+	},
+	{
+	"item": "parrot",
+	"label": "a bird"
+	},
+	{
+	"item": "pigeon",
+	"label": "a bird"
+	},
+	{
+	"item": "dalmatian",
+	"label": "a dog"
+	},
+	{
+	"item": "germanShepherd",
+	"label": "a dog"
+	},
+	{
+	"item": "husky",
+	"label": "a dog"
+	},
+	{
+	"item": "pug",
+	"label": "a dog"
+	},
+	{
+	"item": "gummyBears",
+	"label": "candy"
+	},
+	{
+	"item": "jellyBeans",
+	"label": "candy"
+	},
+	{
+	"item": "mnMs",
+	"label": "candy"
+	},
+	{
+	"item": "skittles",
+	"label": "candy"
+	},
+	{
+	"item": "daisy",
+	"label": "a flower"
+	},
+	{
+	"item": "rose",
+	"label": "a flower",
+	},
+	{
+	"item": "sunflower",
+	"label": "a flower"
+	},
+	{
+	"item": "tulip",
+	"label": "a flower"
+	},
+	{
+	"item": "convertible",
+	"label": "a car"
+	},
+	{
+	"item": "minivan",
+	"label": "a car"
+	},
+	{
+	"item": "sportsCar",
+	"label": "a car"
+	},
+	{
+	"item": "suv",
+	"label": "a car"
+	},
+	{
+	"item": "catfish",
+	"label": "a fish"
+	},
+	{
+	"item": "clownFish",
+	"label": "a fish"
+	},
+	{
+	"item": "goldFish",
+	"label": "a fish"
+	},
+	{
+	"item": "swordFish",
+	"label": "a fish"
+	},
+	{
+	"item": "dressShirt",
+	"label": "a shirt"
+	},
+	{
+	"item": "hawaiiShirt",
+	"label": "a shirt"
+	},
+	{
+	"item": "poloShirt",
+	"label": "a shirt"
+	},
+	{
+	"item": "tShirt",
+	"label": "a shirt"
+	},
+	{
+	"item": "bedsideTable",
+	"label": "a table"
+	},
+	{
+	"item": "coffeeTable",
+	"label": "a table"
+	},
+	{
+	"item": "diningTable",
+	"label": "a table"
+	},
+	{
+	"item": "picnicTable",
+	"label": "a table"
+	},
+
+
+	//dog1s domainLabel 36
+	{
+	"item": "blackBear",
+	"label": "an animal"
+	},
+	{
+	"item": "grizzlyBear",
+	"label": "an animal"
+	},
+	{
+	"item": "pandaBear",
+	"label": "an animal"
+	},
+	{
+	"item": "polarBear",
+	"label": "an animal"
+	},
+	{
+	"item": "eagle",
+	"label": "an animal"
+	},
+	{
+	"item": "hummingBird",
+	"label": "an animal"
+	},
+	{
+	"item": "parrot",
+	"label": "an animal"
+	},
+	{
+	"item": "pigeon",
+	"label": "an animal"
+	},
+	{
+	"item": "dalmatian",
+	"label": "an animal"
+	},
+	{
+	"item": "germanShepherd",
+	"label": "an animal"
+	},
+	{
+	"item": "husky",
+	"label": "an animal"
+	},
+	{
+	"item": "pug",
+	"label": "an animal"
+	},
+	{
+	"item": "gummyBears",
+	"label": "a snack"
+	},
+	{
+	"item": "jellyBeans",
+	"label": "a snack"
+	},
+	{
+	"item": "mnMs",
+	"label": "a snack"
+	},
+	{
+	"item": "skittles",
+	"label": "a snack"
+	},
+	{
+	"item": "daisy",
+	"label": "a plant"
+	},
+	{
+	"item": "rose",
+	"label": "a plant"
+	},
+	{
+	"item": "sunflower",
+	"label": "a plant"
+	},
+	{
+	"item": "tulip",
+	"label": "a plant"
+	},
+	{
+	"item": "convertible",
+	"label": "a vehicle"
+	},
+	{
+	"item": "minivan",
+	"label": "a vehicle"
+	},
+	{
+	"item": "sportsCar",
+	"label": "a vehicle"
+	},
+	{
+	"item": "suv",
+	"label": "a vehicle"
+	},
+	{
+	"item": "catfish",
+	"label": "an animal"
+	},
+	{
+	"item": "clownFish",
+	"label": "an animal"
+	},
+	{
+	"item": "goldFish",
+	"label": "an animal"
+	},
+	{
+	"item": "swordFish",
+	"label": "an animal"
+	},
+	{
+	"item": "dressShirt",
+	"label": "clothing"
+	},
+	{
+	"item": "hawaiiShirt",
+	"label": "clothing"
+	},
+	{
+	"item": "poloShirt",
+	"label": "clothing"
+	},
+	{
+	"item": "tShirt",
+	"label": "clothing"
+	},
+	{
+	"item": "bedsideTable",
+	"label": "furniture"
+	},
+	{
+	"item": "coffeeTable",
+	"label": "furniture"
+	},
+	{
+	"item": "diningTable",
+	"label": "furniture"
+	},
+	{
+	"item": "picnicTable",
+	"label": "furniture"
+	},
+
+
+	//dog2s typeLabel 36
+	{
+	"item": "koalaBear",
+	"label": "a black bear"
+	},
+	{
+	"item": "koalaBear",
+	"label": "a grizzly bear"
+	},
+	{
+	"item": "koalaBear",
+	"label": "a panda bear"
+	},
+	{
+	"item": "koalaBear",
+	"label": "a polar bear"
+	},
+
+	{
+	"item": "sparrow",
+	"label": "an eagle"
+	},
+	{
+	"item": "sparrow",
+	"label": "a hummingbird"
+	},
+	{
+	"item": "sparrow",
+	"label": "a parrot"
+	},
+	{
+	"item": "sparrow",
+	"label": "a pigeon"
+	},
+
+	{
+	"item": "greyhound",
+	"label": "a Dalmatian"
+	},
+	{
+	"item": "greyhound",
+	"label": "a German Shepherd"
+	},
+	{
+	"item": "greyhound",
+	"label": "a Husky"
+	},
+	{
+	"item": "greyhound",
+	"label": "a Pug"
+	},
+
+	{
+	"item": "candyCorn",
+	"label": "gummy bears"
+	},
+	{
+	"item": "candyCorn",
+	"label": "jelly beans"
+	},
+	{
+	"item": "candyCorn",
+	"label": "M&M's"
+	},
+	{
+	"item": "candyCorn",
+	"label": "Skittles"
+	},
+
+	{
+	"item": "lily",
+	"label": "a daisy"
+	},
+	{
+	"item": "lily",
+	"label": "a rose"
+	},
+	{
+	"item": "lily",
+	"label": "a sunflower"
+	},
+	{
+	"item": "lily",
+	"label": "a tulip"
+	},
+
+	{
+	"item": "sedan",
+	"label": "a convertible"
+	},
+	{
+	"item": "sedan",
+	"label": "a minivan"
+	},
+	{
+	"item": "sedan",
+	"label": "a sports car"
+	},
+	{
+	"item": "sedan",
+	"label": "a suv"
+	},
+
+	{
+	"item": "discusFish",
+	"label": "a catfish"
+	},
+	{
+	"item": "discusFish",
+	"label": "a clownfish"
+	},
+	{
+	"item": "discusFish",
+	"label": "a goldfish"
+	},
+	{
+	"item": "discusFish",
+	"label": "a swordfish"
+	},
+
+	{
+	"item": "campShirt",
+	"label": "a dress shirt"
+	},
+	{
+	"item": "campShirt",
+	"label": "a Hawaii shirt"
+	},
+	{
+	"item": "campShirt",
+	"label": "a polo shirt"
+	},
+	{
+	"item": "campShirt",
+	"label": "a T-Shirt"
+	},
+
+	{
+	"item": "sideTable",
+	"label": "a bedside table"
 	},
 	{
 	"item": "sideTable",
-	"objecttype": "a table"
+	"label": "a coffee table"
 	},
-	
+	{
+	"item": "sideTable",
+	"label": "a dining table"
+	},
+	{
+	"item": "sideTable",
+	"label": "a picnic table"
+	},
+
+	//dog2s BLLabel 9
+	{
+	"item": "koalaBear",
+	"label": "a bear"
+	},
+	{
+	"item": "greyhound",
+	"label": "a dog"
+	},
+	{
+	"item": "candyCorn",
+	"label": "candy"
+	},
+	{
+	"item": "sideTable",
+	"label": "a table"
+	},
+	{
+	"item": "campShirt",
+	"label": "a shirt"
+	},
+	{
+	"item": "discusFish",
+	"label": "a fish"
+	},
+	{
+	"item": "sparrow",
+	"label": "a bird"
+	},
+	{
+	"item": "lily",
+	"label": "a flower"
+	},
+	{
+	"item": "sedan",
+	"label": "a car"
+	},
+
+	//dog2s DomainLabel 9
+	{
+	"item": "koalaBear",
+	"label": "an animal"
+	},
+	{
+	"item": "greyhound",
+	"label": "an animal"
+	},
+	{
+	"item": "candyCorn",
+	"label": "a snack"
+	},
+	{
+	"item": "sideTable",
+	"label": "furniture"
+	},
+	{
+	"item": "campShirt",
+	"label": "clothing"
+	},
+	{
+	"item": "discusFish",
+	"label": "an animal"
+	},
+	{
+	"item": "sparrow",
+	"label": "an animal"
+	},
+	{
+	"item": "lily",
+	"label": "a plant"
+	},
+	{
+	"item": "sedan",
+	"label": "a vehicle"
+	},
+
+	// 
+
   ]).slice(0,45);
 
   function makeStim(i) {
     //get item
     var item = items[i];
     var item_id = item.item;
-    var objtype = item.objecttype;
+    var label = item.label;
       
       return {
 	  "item": item_id,
-	  "objecttype":objtype,
+	  "label":label,
     }
   }
   exp.all_stims = [];

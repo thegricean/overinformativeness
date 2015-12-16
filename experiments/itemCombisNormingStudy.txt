@@ -1,1 +1,10 @@
-Norming study: item combinations5 subclasses x 9 domains = 45	x  3 [“Chihuahua”?/”dog”?/”animal”?] 	= 1354 otherAnimals x 9 domains = 36	x 3 [“Chihuahua”?/”dog”?/”animal”?] 	= 10820-32 artifacts x 9 domains:4 (animalDomains) x 20 = 80 		80 x 3 					= 2405 (nonAnimalDomains) x 32 = 160		160 x 3 				= 480135 + 108 + 240 + 480 								= 936
+Norming study: item combinations5 subclasses x 9 domains = 45	x  3 [“Chihuahua”?/”dog”?/”animal”?] 	= 1354 otherAnimals x 9 domains = 36	x 3 [“Chihuahua”?/”dog”?/”animal”?] 	= 10820-32 artifacts x 9 domains:4 (animalDomains) x 20 = 80 		80 x 3 					= 2405 (nonAnimalDomains) x 32 = 160		160 x 3 				= 480135 + 108 + 240 + 480 								= 936experiment:
+
+970 unique trials x 
+
+auf jeden Fall:
+
+5 subclasses x 9 domains = 45	x  3 [“Chihuahua”?/”dog”?/”animal”?] 	= 135
+
+weitere:
+
