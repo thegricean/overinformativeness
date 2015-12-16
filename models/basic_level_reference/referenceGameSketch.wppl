@@ -48,6 +48,8 @@ var tax = {
   }
 };
 
+var priorWeight = .01;
+
 var condition = function(x){
  factor(x ? 0 : -Infinity);
 };
@@ -73,8 +75,21 @@ var makeObjectPrior = function(item) {
   });
 };
 
-var getLabels = function(object) {
-  return refModule.getRelevantLabels(object, tax);
+var getLabelPrior = function(object) {
+  var labels = refModule.getRelevantLabels(object, tax);
+  console.log(object);
+  console.log(labels);
+  return Enumerate(function(){
+    var label = uniformDraw(labels);
+    // score for word length
+    var labelLength = label.length;
+    var labelFreq = Math.log(refModule.getWordFrequency(label));
+    console.log(label);
+    console.log("length = ", labelLength);
+    console.log("freq = ", labelFreq);
+    factor(priorWeight * (labelFreq-labelLength));
+    return label;
+  });
 };
 
 var literalListener = cache(function(label, item){
@@ -88,19 +103,40 @@ var literalListener = cache(function(label, item){
 });                                         
 
 var speaker = cache(function(target, item) {
-  var labels = getLabels(target);
+  var labels = getLabelPrior(target);
   return Enumerate(function(){
-    var label = uniformDraw(labels);
+    var label = sample(labels);
     var possibleOutcome = sample(literalListener(label, item));
     condition(possibleOutcome === target);
     return label;
   });
 });
 
-var item12 = ["dalmatian", "greyhound", "dress"];
-var item22 = ["dalmatian", "lobster", "chick"];
-var item23 = ["dalmatian", "lobster", "dress"];
-var item33 = ["dalmatian", "basketball", "dress"];
+var conditions = {
+  item12 : ["greyhound", "dress"],
+  item22 : ["lobster", "chick"],
+  item23 : ["lobster", "dress"],
+  item33 : ["basketball", "dress"]
+};
 
-speaker("dalmatian", item23).print();
-speaker("dalmatian", item12).print();
+var targets = ["dalmatian", "pug", "germanShepherd", "husky"];
+
+var filename = "modelOutput_dog.csv";
+refModule.writeCSV([["condition", "priorWeight", "label", "prob"]], filename);
+
+map(function(condition) {
+  map(function(target) {
+    console.log(condition);
+    var item = cons(target, conditions[condition]);
+    var speakerERP = speaker(target, item);
+    var transformedERP = Enumerate(function(){
+      var label = sample(speakerERP);
+      return (_.contains(targets, label) ? "type" :
+	      label === "dog" ? "basicLevel" :
+	      label === "animal" ? "superDomain" :
+	      "label not recognized");
+    });
+    transformedERP.print();
+    refModule.writeERP(transformedERP, [condition, priorWeight], filename, 4);
+  }, targets);
+}, _.keys(conditions));
