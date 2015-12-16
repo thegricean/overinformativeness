@@ -1,7 +1,52 @@
 // run using:
 // webppl referenceGameSketch.wppl --require refModule/
 
-var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
+//var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
+
+var tax = {
+  animal: {
+    dalmatian: null,
+    pug: null,
+    husky: null,
+    germanShepherd: null,
+    greyhound : null,
+    crocodile : null,
+    cow : null,
+    rhino : null,
+    lion : null,
+    lobster : null,
+    sheep : null,
+    snake : null,
+    squirrel : null,
+    rabbit : null,
+    horse : null,
+    iguana : null,
+    kitten : null,
+    pig : null,
+    chick : null,
+    elephant : null,
+    bison : null
+  },
+  dog: {
+    dalmatian: null,
+    pug : null,
+    husky : null,
+    germanShepherd : null,
+    greyhound : null
+  },
+  dalmatian: {
+    dalmatian: null
+  },
+  pug : {
+    pug : null
+  },
+  germanShepherd : {
+    germanShepherd : null
+  },
+  husky : {
+    husky : null
+  }
+};
 
 var condition = function(x){
  factor(x ? 0 : -Infinity);
@@ -52,14 +97,10 @@ var speaker = cache(function(target, item) {
   });
 });
 
-var item12 = ["dalmatian", "poodle", "couch"];
-var item13 = ["dalmatian", "poodle", "whale"];
-var item23 = ["dalmatian", "whale", "couch"];
-var item33 = ["dalmatian", "iron skillet", "couch"];
-
-// literalListener("dog", item23).print();
-// literalListener("dog", item12).print();
-//literalListener("dog", item13).print();
+var item12 = ["dalmatian", "greyhound", "dress"];
+var item22 = ["dalmatian", "lobster", "chick"];
+var item23 = ["dalmatian", "lobster", "dress"];
+var item33 = ["dalmatian", "basketball", "dress"];
 
 speaker("dalmatian", item23).print();
 speaker("dalmatian", item12).print();
