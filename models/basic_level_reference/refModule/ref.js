@@ -16,11 +16,45 @@ function appendCSV(jsonCSV, filename){
   fs.appendFileSync(filename, babyparse.unparse(jsonCSV) + '\n');
 }
 
+var writeERP = function(erp, labels, filename, fixed) {
+  var data = _.filter(erp.support().map(
+   function(v) {
+     var prob = Math.exp(erp.score([], v));
+     if (prob > 0.0){
+      if(v.slice(-1) === ".")
+        out = butLast(v);
+      else if (v.slice(-1) === "?")
+        out = butLast(v).split("Is")[1].toLowerCase();
+      else 
+        out = v
+      return labels.concat([out, String(prob.toFixed(fixed))]);
+
+    } else {
+      return [];
+    }
+  }
+  ), function(v) {return v.length > 0;});
+  appendCSV(data, filename);
+};
+
 var getRelevantLabels = function(object, tax) {
   var relevantLabels = _.keys(_.omit(tax, function(value, key, tax) {
     return !_.has(value, object);
   }));
   return relevantLabels;
+};
+
+var getWordFrequency = function(label) {
+  var locParse = function(filename) {
+    return babyparse.parse(fs.readFileSync(filename, 'utf8'),
+			   {header: true}).data;
+  };
+  var frequencyData = locParse("../../experiments/4_numdistractors_basiclevel_newitems/"
+			       + "results/data/frequencyChart.csv");
+  var relevantRow = _.filter(frequencyData, function(row) {
+    return row.noun === label;
+  });
+  return relevantRow[0].relFreq;
 };
 
 var buildTax = function(knowledge, labels, responses) {
@@ -69,5 +103,8 @@ var buildKnowledge = function(type, domain) {
 
 module.exports = {
   buildKnowledge : buildKnowledge,
+  getWordFrequency : getWordFrequency,
+  writeERP : writeERP,
+  writeCSV : writeCSV,
   getRelevantLabels : getRelevantLabels
 };
