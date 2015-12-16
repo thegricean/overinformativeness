@@ -3,50 +3,9 @@
 
 //var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
 
-var tax = {
-  animal: {
-    dalmatian: null,
-    pug: null,
-    husky: null,
-    germanShepherd: null,
-    greyhound : null,
-    crocodile : null,
-    cow : null,
-    rhino : null,
-    lion : null,
-    lobster : null,
-    sheep : null,
-    snake : null,
-    squirrel : null,
-    rabbit : null,
-    horse : null,
-    iguana : null,
-    kitten : null,
-    pig : null,
-    chick : null,
-    elephant : null,
-    bison : null
-  },
-  dog: {
-    dalmatian: null,
-    pug : null,
-    husky : null,
-    germanShepherd : null,
-    greyhound : null
-  },
-  dalmatian: {
-    dalmatian: null
-  },
-  pug : {
-    pug : null
-  },
-  germanShepherd : {
-    germanShepherd : null
-  },
-  husky : {
-    husky : null
-  }
-};
+var info = dogInfo;
+
+var tax = info.tax;
 
 var priorWeight = .01;
 
@@ -112,31 +71,22 @@ var speaker = cache(function(target, item) {
   });
 });
 
-var conditions = {
-  item12 : ["greyhound", "dress"],
-  item22 : ["lobster", "chick"],
-  item23 : ["lobster", "dress"],
-  item33 : ["basketball", "dress"]
-};
-
-var targets = ["dalmatian", "pug", "germanShepherd", "husky"];
-
 var filename = "modelOutput_dog.csv";
 refModule.writeCSV([["condition", "priorWeight", "label", "prob"]], filename);
 
 map(function(condition) {
   map(function(target) {
     console.log(condition);
-    var item = cons(target, conditions[condition]);
+    var item = cons(target, info.conditions[condition]);
     var speakerERP = speaker(target, item);
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
-      return (_.contains(targets, label) ? "type" :
+      return (_.contains(info.targets, label) ? "type" :
 	      label === "dog" ? "basicLevel" :
 	      label === "animal" ? "superDomain" :
 	      "label not recognized");
     });
     transformedERP.print();
     refModule.writeERP(transformedERP, [condition, priorWeight], filename, 4);
-  }, targets);
-}, _.keys(conditions));
+  }, info.targets);
+}, _.keys(info.conditions));
