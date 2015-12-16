@@ -1534,4 +1534,61 @@ ggsave("graphs_basiclevel/4_length-frequency-interaction/freq-length-interaction
 
 
 
+# Get unique combinations
+
+summary(bdCorrect)
+nrow(bdCorrect)
+
+# un = unique(bdCorrect[,c("basiclevelClickedObj","nameClickedObj","alt1Name","alt2Name","alt3Name","alt4Name")])
+# summary(un)
+# nrow(un)
+# 
+# # #Get rid of blackstimuli
+# # 
+# # un[un$alt1Name == "blackStimulus",]$alt1Name = as.character("z")
+# # un[un$alt2Name == "blackStimulus",]$alt2Name = NA
+# # un[un$alt3Name == "blackStimulus",]$alt3Name = NA
+# # un[un$alt4Name == "blackStimulus",]$alt4Name = NA
+# 
+# unNew = un[order(un$nameClickedObj, un$alt1Name, un$alt2Name, un$alt3Name, un$alt4Name) , ]
+# 
+# summary(unNew)
+# head(unNew)
+# nrow(unNew)
+# 
+# # unNew2 = unique(unNew[,c("basiclevelClickedObj","nameClickedObj","alt1Name","alt2Name","alt3Name","alt4Name")])
+# # nrow(unNew2)
+# # summary(unNew2)
+# # 
+# # x = setdiff(sort(unname(unlist(un[1,]))),c("blackStimulus"))
+# # summary(x)
+# # 
+# # summary(un)
+# # 
+# # agr = un %>%
+# #   gather(Position,Name,-basiclevelClickedObj) %>%
+# #   group_by(basiclevelClickedObj) %>%
+# #   summarise(UniqueItems=cat(setdiff(as.character(Name),c("blackStimulus")),sep="_"))
+# 
+# bedsidetable = droplevels(subset(unNew, unNew$nameClickedObj == "bedsideTable"))
+# head(bedsidetable)
+# 
+# #make list of alt1-alt4 and get unique names
+# #-> do this for 1 target per domain, for other 3 targets, only 
+# 
+# 
+
+# Try again to get 3 labels for each of
+
+
+labelTests = read.table(file="data/singleColumnLabels.csv",sep=";", header=T, quote="")
+head(labelTests)
+nrow(labelTests)
+
+labelTestsUnique = unique(labelTests)
+head(labelTestsUnique)
+nrow(labelTestsUnique) # 1323 unique rows!!! 
+
+
+
 
