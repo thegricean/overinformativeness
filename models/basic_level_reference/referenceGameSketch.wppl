@@ -3,11 +3,11 @@
 
 //var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
 
-var info = dogInfo;
+var info = tableInfo;
 
 var tax = info.tax;
 
-var priorWeight = .01;
+var priorWeight = .05;
 
 var condition = function(x){
  factor(x ? 0 : -Infinity);
@@ -71,8 +71,8 @@ var speaker = cache(function(target, item) {
   });
 });
 
-var filename = "modelOutput_dog.csv";
-refModule.writeCSV([["condition", "priorWeight", "label", "prob"]], filename);
+var filename = "modelOutput_table_0.05.csv";
+refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
 
 map(function(condition) {
   map(function(target) {
@@ -82,11 +82,11 @@ map(function(condition) {
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
       return (_.contains(info.targets, label) ? "type" :
-	      label === "dog" ? "basicLevel" :
-	      label === "animal" ? "superDomain" :
+	      label === "table" ? "basicLevel" :
+	      label === "furniture" ? "superDomain" :
 	      "label not recognized");
     });
     transformedERP.print();
-    refModule.writeERP(transformedERP, [condition, priorWeight], filename, 4);
+    refModule.writeERP(transformedERP, [condition, target, priorWeight], filename, 4);
   }, info.targets);
 }, _.keys(info.conditions));
