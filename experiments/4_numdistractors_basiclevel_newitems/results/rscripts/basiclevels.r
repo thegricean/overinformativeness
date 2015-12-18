@@ -1609,5 +1609,80 @@ head(labelTestsUnique)
 nrow(labelTestsUnique) # 1323 unique rows!!! 
 
 
+# write all unique object types and their basiclevels/superclasses
+targets = bdCorrect %>% 
+  select(nameClickedObj,basiclevelClickedObj,superdomainClickedObj) %>%
+  rename(sub=nameClickedObj,basic=basiclevelClickedObj,super=superdomainClickedObj) 
+targets$type = "target"
 
+alt1 = bdCorrect %>% 
+  select(alt1Name,alt1Basiclevel,alt1superdomain) %>%
+  rename(sub=alt1Name,basic=alt1Basiclevel,super=alt1superdomain)
+alt1$type = "dist"
 
+alt2 = bdCorrect %>% 
+  select(alt2Name,alt2Basiclevel,alt2superdomain) %>%
+  rename(sub=alt2Name,basic=alt2Basiclevel,super=alt2superdomain)
+alt2$type = "dist"
+
+alt3 = bdCorrect %>% 
+  select(alt3Name,alt3Basiclevel,alt3superdomain) %>%
+  rename(sub=alt3Name,basic=alt3Basiclevel,super=alt3superdomain)
+alt3$type = "dist"
+
+alt4 = bdCorrect %>% 
+  select(alt4Name,alt4Basiclevel,alt4superdomain) %>%
+  rename(sub=alt4Name,basic=alt4Basiclevel,super=alt4superdomain)
+alt4$type = "dist"
+
+combos = rbind(targets,alt1,alt2,alt3,alt4)
+nrow(combos)
+combos = unique(combos)
+combos$sub = tolower(combos$sub)
+nrow(combos)
+head(combos)
+row.names(combos) = combos$sub
+
+basicsuper = unique(combos[,c("basic","super")])
+basicsuper = basicsuper[!is.na(basicsuper$basic),]
+row.names(basicsuper) = basicsuper$basic
+nrow(basicsuper)
+basicsuper
+super = unique(combos[,c("super")])
+
+pairs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/item-combos.csv",sep=",",quote="")
+colnames(pairs) = c("Object","Label")
+pairs$Label = gsub("m&m's","mnms",pairs$Label)
+pairs$Label = gsub("t-shirt","tshirt",pairs$Label)
+pairs$Label = gsub("flower\"","flower",pairs$Label)
+pairs$ObjectBasic = combos[as.character(pairs$Object),]$basic
+pairs$ObjectSuper = combos[as.character(pairs$Object),]$super
+pairs$LabelBasic = combos[as.character(pairs$Label),]$basic
+pairs$LabelBasicAlt = basicsuper[as.character(pairs$Label),]$basic
+pairs[is.na(pairs$LabelBasic),]$LabelBasic = pairs[is.na(pairs$LabelBasic),]$LabelBasicAlt
+pairs$LabelSuper = combos[as.character(pairs$Label),]$super
+pairs[pairs$Label %in% super,]$LabelSuper = pairs[pairs$Label %in% super,]$Label
+pairs[pairs$Label %in% as.character(basicsuper$basic),]$LabelSuper = basicsuper[as.character(pairs[pairs$Label %in% as.character(basicsuper$basic),]$Label),]$super
+pairs$LabelBasicAlt = NULL
+pairs$LabelType = as.factor(ifelse(pairs$Label %in% as.character(combos$sub),"sub",ifelse(pairs$Label %in% as.character(combos$basic),"basic",ifelse(pairs$Label %in% as.character(combos$super),"super","missing"))))
+
+head(pairs)
+tail(pairs)
+nrow(pairs)
+pairs$Target = as.factor(ifelse(pairs$Object %in% as.character(combos[combos$type == "target",]$sub),"target","dist"))
+table(pairs$Target) # there are 108 targets (9 domains with 4 targets each, where each target needs to be normed for its sub, baisc, and super label = 9*4*3 = 108 cases)
+pairs[pairs$Target == "target" & pairs$ObjectBasic == "bear",]
+
+# there are also 1377 distractors to norm. can we cut down on this?
+head(pairs[pairs$Target == "dist",])
+tail(pairs[pairs$Target == "dist",])
+pairs[pairs$Target == "dist" & pairs$Object=="koalabear",]
+pairs[pairs$Target == "dist" & pairs$Object=="elephant",]
+pairs$Label = as.factor(pairs$Label)
+summary(pairs)
+
+pairs$SameSuper = as.factor(ifelse(pairs$ObjectSuper == pairs$LabelSuper,"same","different"))
+table(pairs$Target) # 108 targets that definitely need norming
+table(pairs[pairs$Target == "dist",]$SameSuper) # Of the distractors, 469 are cases with the same superclass
+table(pairs[pairs$Target == "dist",]$SameSuper,pairs[pairs$Target == "dist",]$LabelType) # Of the distractors with a different superclass, 168 are cases of superclass norms
+# So if we want to only get typicality norms for cases where object and label belong to the same superclass (eg pair the elephant only with other animal labels like “pug”/“dog”) or where the label is the superclass label from another class (eg “furniture"), we'll need to norm 108+469+168 = 745 cases
