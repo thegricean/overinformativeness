@@ -117,6 +117,25 @@ ggplot(agr, aes(x=condition,y=Probability)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/1_proportionMentionedFeatures/proportion_mentioned_features_by_feature.pdf",width=10,height=10)
 
+bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superMentioned, condition) %>%
+  gather(Utterance,Mentioned,-condition) %>%
+  group_by(Utterance,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+
+ggplot(agr, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~UtteranceType) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/1_proportionMentionedFeatures/proportion_mentioned_features.pdf",width=9,height=4)
+
+
 # We want to include the domain:
 
 #Get rid of domain == NA
