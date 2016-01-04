@@ -3,7 +3,7 @@
 
 //var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
 
-var info = tableInfo;
+var info = carInfo;
 
 var tax = info.tax;
 
@@ -19,11 +19,14 @@ var uniformDraw = function (xs) {
 
 var labelFitness = function(label, object) {
   var consistentObjs = tax[label];
-  return _.has(consistentObjs, object) ? 0 : -Infinity;
+  //console.log("tax[label][object]: " + tax[label][object]);
+  return _.has(consistentObjs, object) ? tax[label][object] : -Infinity;
 };
 
 var meaning = function(label) {
   return function(object) {
+    console.log("object in meaning() called in litlis: "+ object);
+    console.log("labelFitness: " + label + " " + object + ": " + labelFitness(label, object));
     return labelFitness(label, object);
   };
 };
@@ -47,6 +50,7 @@ var getLabelPrior = function(object) {
     console.log("length = ", labelLength);
     console.log("freq = ", labelFreq);
     factor(priorWeight * (labelFreq-labelLength));
+    //Without frequency: factor(priorWeight * (labelFreq));
     return label;
   });
 };
@@ -55,7 +59,9 @@ var literalListener = cache(function(label, item){
   var objectPrior = makeObjectPrior(item);
   return Enumerate(function(){
     var object = sample(objectPrior);
+    console.log("object in litlis: "+ object);
     var labelMeaning = meaning(label);
+    console.log("labelMeaning(" + label + ") : " + labelMeaning(label));
     factor(labelMeaning(object));
     return object;
   });
@@ -71,19 +77,20 @@ var speaker = cache(function(target, item) {
   });
 });
 
-var filename = "modelOutput_table_0.05.csv";
+var filename = "modelOutput_antiSuperBias_car_0.05.csv";
 refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
 
 map(function(condition) {
   map(function(target) {
     console.log(condition);
     var item = cons(target, info.conditions[condition]);
+    //console.log("item: " + item);
     var speakerERP = speaker(target, item);
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
       return (_.contains(info.targets, label) ? "type" :
-	      label === "table" ? "basicLevel" :
-	      label === "furniture" ? "superDomain" :
+	      label === "car" ? "basicLevel" :
+	      label === "vehicle" ? "superDomain" :
 	      "label not recognized");
     });
     transformedERP.print();
