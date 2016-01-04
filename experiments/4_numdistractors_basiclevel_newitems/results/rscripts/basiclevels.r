@@ -735,8 +735,9 @@ head(bdCorrect$typeBasiclevelLengthRatio)
 summary(bdCorrect$typeBasiclevelLengthRatio)
 
 lengthRatioMedian = 2
+lengthRatioMean = 1.9890
 
-# 2 bins analysis
+# 2 bins analysis MEDIAN
 
 bdCorrect$lengthRatio2bins = ifelse(bdCorrect$typeBasiclevelLengthRatio < lengthRatioMedian, "smaller_typeBLRatio", "bigger_typeBLRatio" )
 
@@ -942,6 +943,108 @@ ggplot(agr, aes(x=condition,y=Probability,fill=lengthRatio4bins)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_4bins_proportion_mentioned_features_by_feature_by_length_combinedSuperCategory.pdf",width=9,height=4)
 
+
+
+# MEAN length ratio ANALYSIS:
+
+# 2 bins analysis
+
+bdCorrect$lengthRatio2binsMean = ifelse(bdCorrect$typeBasiclevelLengthRatio < lengthRatioMean, "smaller_typeBLRatio", "bigger_typeBLRatio" )
+
+head(bdCorrect$lengthRatio2binsMean)
+
+# plot histogram with probabilities
+
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, superclassattributeMentioned, basiclevelClickedObj, condition, lengthRatio2binsMean) %>%
+  gather(Utterance,Mentioned,-condition, -basiclevelClickedObj, -lengthRatio2binsMean) %>%
+  group_by(Utterance,condition, basiclevelClickedObj, lengthRatio2binsMean) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=lengthRatio2binsMean)) +
+  #ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(basiclevelClickedObj~condition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_2bins_proportion_mentioned_features_by_condition_by_domain_by_length_2bins_Mean.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=lengthRatio2binsMean)) +
+  #ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(basiclevelClickedObj~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_2bins_proportion_mentioned_features_by_feature_by_domain_by_length_2bins_Mean.pdf",width=10,height=10)
+
+
+# ratio2bins without domain:
+
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, superclassattributeMentioned, condition, lengthRatio2binsMean) %>%
+  gather(Utterance,Mentioned,-condition, -lengthRatio2binsMean) %>%
+  group_by(Utterance,condition, lengthRatio2binsMean) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=Utterance,y=Probability,fill=lengthRatio2binsMean)) +
+  #ggplot(agr, aes(x=Utterance,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  # geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(~condition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_2bins_proportion_mentioned_features_by_condition_by_length_2bins_Mean.pdf",width=10,height=10)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=lengthRatio2binsMean)) +
+  #ggplot(agr, aes(x=condition,y=Probability)) +
+  #dodge = position_dodge(.9) +
+  geom_bar(stat="identity",position=dodge) +
+  #geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(~Utterance) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_2bins_proportion_mentioned_features_by_feature_by_length_2bins_Mean.pdf",width=10,height=10)
+
+# Combine superclassMentioned and superclassAttributeMentioned
+bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superMentioned, condition, lengthRatio2binsMean) %>%
+  gather(Utterance,Mentioned,-condition, -lengthRatio2binsMean) %>%
+  group_by(Utterance,condition, lengthRatio2binsMean) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+
+dodge = position_dodge(.9)
+
+ggplot(agr, aes(x=condition,y=Probability,fill=lengthRatio2binsMean)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  #facet_wrap(~UtteranceType) + 
+  facet_grid(~UtteranceType) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/2_lengthAnalysis/ratio_2bins_proportion_mentioned_features_by_feature_by_length_Mean_combinedSuperCategory.pdf",width=9,height=4)
 
 
 
