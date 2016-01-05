@@ -1,5 +1,5 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/results/")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results/")
 
 source("rscripts/helpers.r")
 r = read.table("parsed/results.txt",quote="", sep=",", header=T)
@@ -131,3 +131,16 @@ ggplot(toplot, aes(x=Utterance,y=Probability,fill=DataType)) +
   
 ggsave("graphs/model.vs.empirical.pdf",height=6)
 ggsave("graphs/model.vs.empirical.jpg")
+
+
+# plot for jhu talk
+toplot = droplevels(subset(t, object != "small red" & DataType == "model prediction"))
+toplot$RedundantProperty = ifelse(toplot$object == "big red","color redundant","size redundant")
+toplot$UtteranceType = ifelse(toplot$Utterance %in% c("big_red","small_yellow"), "redundant","minimal")
+toplot$Correct = ifelse((toplot$object == "big red" & toplot$Utterance %in% c("big_red","big") | toplot$object == "small yellow" & toplot$Utterance %in% c("small_yellow","yellow")), "correct","incorrect")
+
+ggplot(toplot[toplot$Correct == "correct" & toplot$UtteranceType == "redundant",], aes(x=RedundantProperty,y=Probability)) +
+  geom_bar(stat="identity",fill="gray60",color="black") +
+  ylab("Probability of redundancy") +
+  scale_x_discrete(breaks=c("color redundant","size redundant"),labels=c("color\nredundant","size\nredundant"),name="")
+ggsave("graphs/color_size_asymm.pdf",height=3.5,width=3)
