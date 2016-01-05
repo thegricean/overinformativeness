@@ -1,46 +1,49 @@
+// not sure in what number range typicality ratings should be. In the model the best label fitness is 0 and the worst is
+// -infinity, so I will stay in this range too 
+
 var dogInfo = {
   tax : {
     animal: {
-      dalmatian: null,
-      pug: null,
-      husky: null,
-      germanShepherd: null,
-      greyhound : null,
-      crocodile : null,
-      cow : null,
-      rhino : null,
-      lion : null,
-      lobster : null,
-      sheep : null,
-      snake : null,
-      squirrel : null,
-      rabbit : null,
-      horse : null,
-      iguana : null,
-      kitten : null,
-      pig : null,
-      chick : null,
-      elephant : null,
-      bison : null
+      dalmatian: -10000000000000,
+      pug: -10000000000000,
+      husky: -10000000000000,
+      germanShepherd: -10000000000000,
+      greyhound : -10000000000000,
+      crocodile : -10000000000000,
+      cow : -10000000000000,
+      rhino : -10000000000000,
+      lion : -10000000000000,
+      lobster : -10000000000000,
+      sheep : -10000000000000,
+      snake : -10000000000000,
+      squirrel : -10000000000000,
+      rabbit : -10000000000000,
+      horse : -10000000000000,
+      iguana : -10000000000000,
+      kitten : -10000000000000,
+      pig : -10000000000000,
+      chick : -10000000000000,
+      elephant : -10000000000000,
+      bison : -10000000000000
     },
     dog: {
-      dalmatian: null,
-      pug : null,
-      husky : null,
-      germanShepherd : null,
-      greyhound : null
+      dalmatian: 0,
+      pug : 0,
+      husky : 0,
+      germanShepherd : 0,
+      greyhound : 0
     },
     dalmatian: {
-      dalmatian: null
+      dalmatian: 0
     },
     pug : {
-      pug : null
+      pug : 0
     },
     germanShepherd : {
-      germanShepherd : null
+      germanShepherd : 0
     },
     husky : {
-      husky : null
+      husky : 0
     }
   },
   targets : ["dalmatian", "pug", "germanShepherd", "husky"],
@@ -55,46 +58,46 @@ var dogInfo = {
 var birdInfo = {
   tax : {
     animal: {
-      eagle: null,
-      parrot: null,
-      pigeon: null,
-      hummingBird: null,
-      sparrow : null,
-      crocodile : null,
-      cow : null,
-      rhino : null,
-      lion : null,
-      lobster : null,
-      sheep : null,
-      snake : null,
-      squirrel : null,
-      rabbit : null,
-      horse : null,
-      iguana : null,
-      kitten : null,
-      pig : null,
-      chick : null,
-      elephant : null,
-      bison : null
+      eagle: -10000000000000,
+      parrot: -10000000000000,
+      pigeon: -10000000000000,
+      hummingBird: -10000000000000,
+      sparrow : -10000000000000,
+      crocodile : -10000000000000,
+      cow : -10000000000000,
+      rhino : -10000000000000,
+      lion : -10000000000000,
+      lobster : -10000000000000,
+      sheep : -10000000000000,
+      snake : -10000000000000,
+      squirrel : -10000000000000,
+      rabbit : -10000000000000,
+      horse : -10000000000000,
+      iguana : -10000000000000,
+      kitten : -10000000000000,
+      pig : -10000000000000,
+      chick : -10000000000000,
+      elephant : -10000000000000,
+      bison : -10000000000000
     },
     bird: {
-      eagle: null,
-      parrot: null,
-      pigeon: null,
-      hummingBird: null,
-      sparrow : null
+      eagle: 0,
+      parrot: 0,
+      pigeon: 0,
+      hummingBird: 0,
+      sparrow : 0
     },
     eagle: {
-      eagle: null
+      eagle: 0
     },
     parrot : {
-      parrot : null
+      parrot : 0
     },
     pigeon : {
-      pigeon : null
+      pigeon : 0
     },
     hummingBird : {
-      hummingBird : null
+      hummingBird : 0
     }
   },
   targets : ["eagle", "parrot", "pigeon", "hummingBird"],
@@ -109,46 +112,46 @@ var birdInfo = {
 var bearInfo = {
   tax : {
     animal: {
-      blackBear: null,
-      polarBear: null,
-      pandaBear: null,
-      grizzlyBear: null,
-      koalaBear : null,
-      crocodile : null,
-      cow : null,
-      rhino : null,
-      lion : null,
-      lobster : null,
-      sheep : null,
-      snake : null,
-      squirrel : null,
-      rabbit : null,
-      horse : null,
-      iguana : null,
-      kitten : null,
-      pig : null,
-      chick : null,
-      elephant : null,
-      bison : null
+      blackBear: -10000000000000,
+      polarBear: -10000000000000,
+      pandaBear: -10000000000000,
+      grizzlyBear: -10000000000000,
+      koalaBear : -10000000000000,
+      crocodile : -10000000000000,
+      cow : -10000000000000,
+      rhino : -10000000000000,
+      lion : -10000000000000,
+      lobster : -10000000000000,
+      sheep : -10000000000000,
+      snake : -10000000000000,
+      squirrel : -10000000000000,
+      rabbit : -10000000000000,
+      horse : -10000000000000,
+      iguana : -10000000000000,
+      kitten : -10000000000000,
+      pig : -10000000000000,
+      chick : -10000000000000,
+      elephant : -10000000000000,
+      bison : -10000000000000
     },
     bear: {
-      blackBear: null,
-      polarBear: null,
-      pandaBear: null,
-      grizzlyBear: null,
-      koalaBear : null
+      blackBear: 0,
+      polarBear: 0,
+      pandaBear: 0,
+      grizzlyBear: 0,
+      koalaBear : 0
     },
     blackBear: {
-      blackBear: null
+      blackBear: 0
     },
     polarBear : {
-      polarBear : null
+      polarBear : 0
     },
     pandaBear : {
-      pandaBear : null
+      pandaBear : 0
     },
     grizzlyBear : {
-      grizzlyBear : null
+      grizzlyBear : 0
     }
   },
   targets : ["blackBear", "polarBear", "pandaBear", "grizzlyBear"],
@@ -163,46 +166,46 @@ var bearInfo = {
 var fishInfo = {
   tax : {
     animal: {
-      clownFish: null,
-      goldFish: null,
-      swordFish: null,
-      catfish: null,
-      discusFish : null,
-      crocodile : null,
-      cow : null,
-      rhino : null,
-      lion : null,
-      lobster : null,
-      sheep : null,
-      snake : null,
-      squirrel : null,
-      rabbit : null,
-      horse : null,
-      iguana : null,
-      kitten : null,
-      pig : null,
-      chick : null,
-      elephant : null,
-      bison : null
+      clownFish: -10000000000000,
+      goldFish: -10000000000000,
+      swordFish: -10000000000000,
+      catfish: -10000000000000,
+      discusFish : -10000000000000,
+      crocodile : -10000000000000,
+      cow : -10000000000000,
+      rhino : -10000000000000,
+      lion : -10000000000000,
+      lobster : -10000000000000,
+      sheep : -10000000000000,
+      snake : -10000000000000,
+      squirrel : -10000000000000,
+      rabbit : -10000000000000,
+      horse : -10000000000000,
+      iguana : -10000000000000,
+      kitten : -10000000000000,
+      pig : -10000000000000,
+      chick : -10000000000000,
+      elephant : -10000000000000,
+      bison : -10000000000000
     },
     fish: {
-      clownFish: null,
-      goldFish: null,
-      swordFish: null,
-      catfish: null,
-      discusFish : null
+      clownFish: 0,
+      goldFish: 0,
+      swordFish: 0,
+      catfish: 0,
+      discusFish : 0
     },
     clownFish: {
-      clownFish: null
+      clownFish: 0
     },
     goldFish : {
-      goldFish : null
+      goldFish : 0
     },
     swordFish : {
-      swordFish : null
+      swordFish : 0
     },
     catfish : {
-      catfish : null
+      catfish : 0
     }
   },
   targets : ["clownFish", "goldFish", "swordFish", "catfish"],
@@ -217,34 +220,34 @@ var fishInfo = {
 var candyInfo = {
   tax : {
     snack: {
-      gummyBears: null,
-      jellyBeans: null,
-      skittles: null,
-      mnMs: null,
-      candyCorn : null,
-      cookies : null,
-      chips : null,
-      pretzels : null,
-      popcorn : null
+      gummyBears: -10000000000000,
+      jellyBeans: -10000000000000,
+      skittles: -10000000000000,
+      mnMs: -10000000000000,
+      candyCorn : -10000000000000,
+      cookies : -10000000000000,
+      chips : -10000000000000,
+      pretzels : -10000000000000,
+      popcorn : -10000000000000
     },
     candy: {
-      gummyBears: null,
-      jellyBeans: null,
-      skittles: null,
-      mnMs: null,
-      candyCorn : null
+      gummyBears: 0,
+      jellyBeans: 0,
+      skittles: 0,
+      mnMs: 0,
+      candyCorn : 0
     },
     gummyBears: {
-      gummyBears: null
+      gummyBears: 0
     },
     jellyBeans : {
-      jellyBeans : null
+      jellyBeans : 0
     },
     skittles : {
-      skittles : null
+      skittles : 0
     },
     mnMs : {
-      mnMs : null
+      mnMs : 0
     }
   },
   targets : ["gummyBears", "jellyBeans", "skittles", "mnMs"],
@@ -259,34 +262,34 @@ var candyInfo = {
 var carInfo = {
   tax : {
     vehicle: {
-      convertible: null,
-      minivan: null,
-      sportsCar: null,
-      suv: null,
-      sedan : null,
-      motorcycle : null,
-      train : null,
-      ambulance : null,
-      firetruck : null
+      convertible: -10000000000000,
+      minivan: -10000000000000,
+      sportsCar: -10000000000000,
+      suv: -10000000000000,
+      sedan : -10000000000000,
+      motorcycle : -10000000000000,
+      train : -10000000000000,
+      ambulance : -10000000000000,
+      firetruck : -10000000000000
     },
     car: {
-      convertible: null,
-      minivan: null,
-      sportsCar: null,
-      suv: null,
-      sedan : null
+      convertible: 0,
+      minivan: 0,
+      sportsCar: 0,
+      suv: 0,
+      sedan : 0
     },
     convertible: {
-      convertible: null
+      convertible: 0
     },
     minivan : {
-      minivan : null
+      minivan : 0
     },
     sportsCar : {
-      sportsCar : null
+      sportsCar : 0
     },
     suv : {
-      suv : null
+      suv : 0
     }
   },
   targets : ["convertible", "minivan", "sportsCar", "suv"],
@@ -301,34 +304,34 @@ var carInfo = {
 var tableInfo = {
   tax : {
     furniture: {
-      coffeeTable: null,
-      diningTable: null,
-      picnicTable: null,
-      bedsideTable: null,
-      sideTable : null,
-      bed : null,
-      lamp : null,
-      wardrobe : null,
-      bookcase : null
+      coffeeTable: -10000000000000,
+      diningTable: -10000000000000,
+      picnicTable: -10000000000000,
+      bedsideTable: -10000000000000,
+      sideTable : -10000000000000,
+      bed : -10000000000000,
+      lamp : -10000000000000,
+      wardrobe : -10000000000000,
+      bookcase : -10000000000000
     },
     table: {
-      coffeeTable: null,
-      diningTable: null,
-      picnicTable: null,
-      bedsideTable: null,
-      sideTable : null
+      coffeeTable: 0,
+      diningTable: 0,
+      picnicTable: 0,
+      bedsideTable: 0,
+      sideTable : 0
     },
     coffeeTable: {
-      coffeeTable: null
+      coffeeTable: 0
     },
     diningTable : {
-      diningTable : null
+      diningTable : 0
     },
     picnicTable : {
-      picnicTable : null
+      picnicTable : 0
     },
     bedsideTable : {
-      bedsideTable : null
+      bedsideTable : 0
     }
   },
   targets : ["coffeeTable", "diningTable", "picnicTable", "bedsideTable"],
@@ -343,34 +346,34 @@ var tableInfo = {
 var shirtInfo = {
   tax : {
     clothing: {
-      poloShirt: null,
-      dressShirt: null,
-      hawaiiShirt: null,
-      tShirt: null,
-      campShirt : null,
-      dress : null,
-      gloves : null,
-      bathrobe : null,
-      socks : null
+      poloShirt: -10000000000000,
+      dressShirt: -10000000000000,
+      hawaiiShirt: -10000000000000,
+      tShirt: -10000000000000,
+      campShirt : -10000000000000,
+      dress : -10000000000000,
+      gloves : -10000000000000,
+      bathrobe : -10000000000000,
+      socks : -10000000000000
     },
     shirt: {
-      poloShirt: null,
-      dressShirt: null,
-      hawaiiShirt: null,
-      tShirt: null,
-      campShirt : null
+      poloShirt: 0,
+      dressShirt: 0,
+      hawaiiShirt: 0,
+      tShirt: 0,
+      campShirt : 0
     },
     poloShirt: {
-      poloShirt: null
+      poloShirt: 0
     },
     dressShirt : {
-      dressShirt : null
+      dressShirt : 0
     },
     hawaiiShirt : {
-      hawaiiShirt : null
+      hawaiiShirt : 0
     },
     tShirt : {
-      tShirt : null
+      tShirt : 0
     }
   },
   targets : ["poloShirt", "dressShirt", "hawaiiShirt", "tShirt"],
@@ -385,34 +388,34 @@ var shirtInfo = {
 var flowerInfo = {
   tax : {
     plant: {
-      rose: null,
-      tulip: null,
-      daisy: null,
-      sunflower: null,
-      lily : null,
-      ivy : null,
-      rosemary : null,
-      pottedPlant : null,
-      grasses : null
+      rose: -10000000000000,
+      tulip: -10000000000000,
+      daisy: -10000000000000,
+      sunflower: -10000000000000,
+      lily : -10000000000000,
+      ivy : -10000000000000,
+      rosemary : -10000000000000,
+      pottedPlant : -10000000000000,
+      grasses : -10000000000000
     },
     flower: {
-      rose: null,
-      tulip: null,
-      daisy: null,
-      sunflower: null,
-      lily : null
+      rose: 0,
+      tulip: 0,
+      daisy: 0,
+      sunflower: 0,
+      lily : 0
     },
     rose: {
-      rose: null
+      rose: 0
     },
     tulip : {
-      tulip : null
+      tulip : 0
     },
     daisy : {
-      daisy : null
+      daisy : 0
     },
     sunflower : {
-      sunflower : null
+      sunflower : 0
     }
   },
   targets : ["rose", "tulip", "daisy", "sunflower"],
