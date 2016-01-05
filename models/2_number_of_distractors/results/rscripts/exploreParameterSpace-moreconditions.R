@@ -9,7 +9,7 @@ r$sufficientproperty = as.factor(as.character(r$sufficientproperty))
 r$samesize = as.numeric(as.character(sapply(strsplit(as.character(r$context),"_"), "[", 2)))
 r$differentsize = as.numeric(as.character(sapply(strsplit(as.character(r$context),"_"), "[", 3)))
 r$samecolor = as.numeric(as.character(sapply(strsplit(as.character(r$context),"_"), "[", 4)))
-r$differentcolor = as.numeric(as.character(sapply(strsplit(as.character(r$context),"_"), "[", 4)))
+r$differentcolor = as.numeric(as.character(sapply(strsplit(as.character(r$context),"_"), "[", 5)))
 r$numdistractors = r$samesize + r$differentsize
 
 head(r)
@@ -97,3 +97,26 @@ ggplot(r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & 
 ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.pdf",width=12,height=3.5)
 ggsave("graphs/_moreconditions/cf.999_sf.8_ccss.1_spopt2.jpg",width=15,height=4)
 
+
+# plot for talk
+toplot = r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)  == 15),]
+toplot$RatioOfDiffToSame = toplot$differentcolor/toplot$samecolor
+toplot[toplot$sufficientproperty == "color",]$RatioOfDiffToSame = toplot[toplot$sufficientproperty == "color",]$differentsize/toplot[toplot$sufficientproperty == "color",]$samesize
+toplot$Distractors = as.factor(toplot$numdistractors)
+toplot$redundant = ifelse(toplot$Utterance %in% c("big_red","small_yellow","big_yellow","small_red"),1,0)
+toplot$correctproperty = ifelse(toplot$Utterance == "big_red" | toplot$sufficientproperty == "color" & toplot$Utterance == "red" | toplot$sufficientproperty == "size" & toplot$Utterance == "big", 1, 0)
+
+agr = toplot[toplot$correctproperty == 1 & toplot$redundant == 1,] %>%
+  #select(redundant,sufficientproperty,Distractors,RatioOfDiffToSame) %>%
+  #gather(Utterance,Mentioned,-sufficientproperty,-Distractors,-RatioOfDiffToSame) %>%
+  group_by(sufficientproperty,Distractors,RatioOfDiffToSame) %>%
+  summarise(Probability=Probability)
+agr = as.data.frame(agr)
+agr$redundantproperty = ifelse(agr$sufficientproperty == "color","size redundant","color redundant")
+
+ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
+  geom_point() +
+  ylab("Probability of redundancy") +
+  #geom_smooth(method="lm") +
+  facet_wrap(~redundantproperty)
+ggsave("graphs/utterancetype_by_condition_ratio_correctonly.pdf",width=7,height=3.2)

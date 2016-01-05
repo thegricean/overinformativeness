@@ -402,6 +402,19 @@ ggplot(agr, aes(x=Utterance,y=Probability,fill=typeNumOfChar2bins)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/2_lengthAnalysis/2bins_proportion_mentioned_features_by_condition_by_length_2bins.pdf",width=10,height=10)
 
+bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superMentioned, condition, typeNumOfChar2bins) %>%
+  gather(Utterance,Mentioned,-condition, -typeNumOfChar2bins) %>%
+  group_by(Utterance,condition, typeNumOfChar2bins) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+
+dodge = position_dodge(.9)
+
 ggplot(agr, aes(x=condition,y=Probability,fill=typeNumOfChar2bins)) +
   #ggplot(agr, aes(x=condition,y=Probability)) +
   #dodge = position_dodge(.9) +
@@ -409,9 +422,9 @@ ggplot(agr, aes(x=condition,y=Probability,fill=typeNumOfChar2bins)) +
   #geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_grid(~Utterance) +
+  facet_grid(~UtteranceType) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("graphs_basiclevel/2_lengthAnalysis/2bins_proportion_mentioned_features_by_feature_by_length_2bins.pdf",width=10,height=10)
+ggsave("graphs_basiclevel/2_lengthAnalysis/2bins_proportion_mentioned_features_by_feature_by_length_2bins.pdf",width=10,height=4)
 
 
 # 4 bins
@@ -1063,6 +1076,22 @@ ggplot(agr, aes(x=Utterance,y=Probability,fill=freqMedian2bins)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/3_frequencyAnalysis/2bins_proportion_mentioned_features_by_condition_by_frequency_2bins_median.pdf",width=10,height=10)
 
+# CONTINUE HERE
+bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superMentioned, condition, freqMedian2bins) %>%
+  gather(Utterance,Mentioned,-condition, -freqMedian2bins) %>%
+  group_by(Utterance,condition, freqMedian2bins) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+dodge = position_dodge(.9)
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+
+dodge = position_dodge(.9)
+
 ggplot(agr, aes(x=condition,y=Probability,fill=freqMedian2bins)) +
   #ggplot(agr, aes(x=condition,y=Probability)) +
   #dodge = position_dodge(.9) +
@@ -1070,10 +1099,9 @@ ggplot(agr, aes(x=condition,y=Probability,fill=freqMedian2bins)) +
   #geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_grid(~Utterance) +
+  facet_grid(~UtteranceType) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("graphs_basiclevel/3_frequencyAnalysis/2bins_proportion_mentioned_features_by_feature_by_frequency_2bins_median.pdf",width=10,height=10)
-
+ggsave("graphs_basiclevel/3_frequencyAnalysis/2bins_proportion_mentioned_features_by_feature_by_frequency_2bins_median.pdf",width=10,height=4)
 
 
 # 4 bins:
@@ -1335,7 +1363,7 @@ ggplot(agr, aes(x=condition,y=Probability,fill=freqMedianRatio4bins)) +
 ggsave("graphs_basiclevel/3_frequencyAnalysis/ratio_4bins_proportion_mentioned_features_by_feature_by_frequencyRatio_4bins_median.pdf",width=10,height=10)
 
 
-######## ANALYSIS OF LENGTH AND FREQUENCY 
+######## ANALYSIS OF LENGTH AND FREQUENCY -- JUDITH'S CODE
 
 # length
 bdCorrect$TypeLength = nchar(as.character(bdCorrect$nameClickedObj))
@@ -1458,7 +1486,7 @@ ggplot(gathered, aes(x=Label,y=logFreq,fill=Label)) +
 ggsave("graphs_basiclevel/by-item-logfreqs.pdf",height=12,width=15)
 
 
-#### MIXED EFFECTS MODEL ANALYSIS
+#### MIXED EFFECTS MODEL ANALYSIS FOR TYPE MENTION
 
 centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")]))
 
@@ -1682,7 +1710,9 @@ pairs$Label = as.factor(pairs$Label)
 summary(pairs)
 
 pairs$SameSuper = as.factor(ifelse(pairs$ObjectSuper == pairs$LabelSuper,"same","different"))
+pairs$SameBasic = as.factor(ifelse(pairs$ObjectBasic == pairs$LabelBasic,"same","different"))
 table(pairs$Target) # 108 targets that definitely need norming
 table(pairs[pairs$Target == "dist",]$SameSuper) # Of the distractors, 469 are cases with the same superclass
+table(pairs[pairs$Target == "dist",]$SameSuper,pairs[pairs$Target == "dist",]$SameBasic)
 table(pairs[pairs$Target == "dist",]$SameSuper,pairs[pairs$Target == "dist",]$LabelType) # Of the distractors with a different superclass, 168 are cases of superclass norms
 # So if we want to only get typicality norms for cases where object and label belong to the same superclass (eg pair the elephant only with other animal labels like “pug”/“dog”) or where the label is the superclass label from another class (eg “furniture"), we'll need to norm 108+469+168 = 745 cases

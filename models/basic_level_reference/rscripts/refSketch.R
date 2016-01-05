@@ -13,7 +13,7 @@ ggplot(d, aes(x=Utterance,y=prob,color=as.factor(priorWeight))) +
   facet_wrap(~condition)
 ggsave("graphs/priorWeight_0.05/uttprob-bycondition-byutterance_car.pdf",width=12)
 
-ggplot(d, aes(x=condition,y=prob,color=as.factor(priorWeight))) +
+ggplot(d, aes(x=condition,y=prob,color=target)) +
   geom_point() +
   facet_wrap(~Utterance)
 ggsave("graphs/priorWeight_0.05/uttprob-byutterance-bycondition_car.pdf",width=12)
