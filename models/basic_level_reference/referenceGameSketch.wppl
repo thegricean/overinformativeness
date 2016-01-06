@@ -5,8 +5,6 @@ var info = carInfo;
 
 var tax = info.tax;
 
-var priorWeight = .05;
-
 var condition = function(x){
  factor(x ? 0 : -Infinity);
 };
@@ -43,15 +41,16 @@ var literalListener = cache(function(label, item){
   });
 });                                         
 
-var speaker = cache(function(target, item) {
+var speaker = cache(function(target, item, alpha) {
   var labels = refModule.getRelevantLabels(target, tax);
   return Enumerate(function(){
     var label = uniformDraw(labels);
     var labelLength = label.length;
     var labelFreq = Math.log(refModule.getWordFrequency(label));
-    var labelWeight =  priorWeight * (labelFreq-labelLength);
     var possibleOutcome = sample(literalListener(label, item));
-    factor(possibleOutcome === target ? labelWeight : -Infinity);
+    factor(possibleOutcome === target ?
+	   alpha * (labelFreq - labelLength) :
+	   -Infinity);
     return label;
   });
 });
@@ -59,12 +58,14 @@ var speaker = cache(function(target, item) {
 // var filename = "modelOutput_antiSuperBias_car_0.05.csv";
 // refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
 
+var alpha = 0.05;
+
 map(function(condition) {
   map(function(target) {
     console.log(condition);
     var item = cons(target, info.conditions[condition]);
     //console.log("item: " + item);
-    var speakerERP = speaker(target, item);
+    var speakerERP = speaker(target, item, alpha);
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
       return (_.contains(info.targets, label) ? "type" :
