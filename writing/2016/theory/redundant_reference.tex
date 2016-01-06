@@ -9,6 +9,8 @@
 \usepackage{setspace}
 \usepackage{booktabs}
 \usepackage{lingmacros}
+\usepackage{caption}
+\usepackage{subcaption}
 
 %\newcommand{\url}[1]{$#1$}
 
@@ -114,67 +116,91 @@ The noisy semantics model's predictions are shown in \figref{fig:numdistractors}
 \label{fig:numdistractors}
 \end{figure}
 
-To test the model's predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
+To test the model's predictions, we conducted two interactive web-based written production studies within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we qualitatively replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
 
 \subsubsection{Method}
 
 \paragraph{Participants}
 
-We recruited 30 pairs of participants (60 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. Here and in all other experiments reported in this paper, participants’ IP address was limited to US addresses only and only participants with a past work approval rate of at least 95\% were accepted.
+We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. Here and in all other experiments reported in this paper, participants’ IP address was limited to US addresses only and only participants with a past work approval rate of at least 95\% were accepted. The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
 
 \paragraph{Procedure}
 
-Participants were paired up via \red{is there something in robert's tools to cite?}. In each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, they had to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}
+Participants were paired up via \red{is there something in robert's tools to cite?}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}
 
-On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects was highlighted with a green border. See \figref{fig:exampledisplay} for an example of the listener's and speaker's view on a particular trial.
+On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:exampledisplay} for an example of the listener's and speaker's view on a particular trial.
 
 \begin{figure}
 \label{fig:exampledisplay}
 \red{insert example display}
 \end{figure}
 
-The speaker produced a referring expression to communicate the target to the listener by typing into a chatbox. After pressing Enter or clicking the `Send' button, the speaker's message was shown to the listener. The listener then clicked on the object they thought was the target, given the speaker's message.  Once the listener clicked an object, a red border appeared around that object in both the listener and the speaker's display for 1 second before advancing to the next trial.
+The speaker produced a referring expression to communicate the target to the listener by typing in a chat window. After pressing Enter or clicking the `Send' button, the speaker's message was shown to the listener. The listener then clicked on the object they thought was the target, given the speaker's message.  Once the listener clicked an object, a red border appeared around that object in both the listener and the speaker's display for 1 second before advancing to the next trial.
 
-Both speakers and listeners could write in the chatbox. Listeners could only click on an object and advance to the next trial once the speaker had sent a message. 
+Both speakers and listeners could write in the chat window, allowing listeners to request clarification if necessary. Listeners could only click on an object and advance to the next trial once the speaker had sent a message. 
+
+\begin{figure}
+\begin{subfigure}{\textwidth}
+\includegraphics[width=\textwidth]{pics/speaker-perspective-small.png}
+\caption{Speakers' perspective}
+\label{fig:speakerpersp}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\includegraphics[width=\textwidth]{pics/listener-perspective-small.png}
+\caption{Listeners' perspective.}
+\label{fig:listenerpersp}
+\end{subfigure}
+\caption{Example displays from the  (a) speaker's and the  (b)  listener's perspective on a \emph{size-sufficient 4-2} trial.}
+\label{fig:speakerlistenerperspective}
+\end{figure}
 
 \paragraph{Materials}
 
 Participants proceeded through 72 trials. Of these, half were critical trials of interest and half were filler trials. On critical trials, we varied the feature that was sufficient to mention for uniquely establishing reference, the total number of objects in the array, and  the number of objects that shared the non-sufficient feature with the target. 
 
-Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:sizevscolor} for an example of a size-sufficient and color-sufficient item. 
+Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:speakerlistenerperspective} for an example of a size-sufficient trial from both the speaker's and the listener's perspective. 
 
-\begin{figure}
-\label{fig:sizevscolor}
-\red{insert example of size vs color sufficient condition}
-\end{figure}
+
+In Exp.~1, the number of distractor objects in each array was either 2 (12 trials) or 4 (24 trials). In Exp.~2, the number of distractor objects in each array was either 2, 3, or 4. Finally, we varied the number of distractors that shared the non-sufficient property with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. 
+
+In Exp.~1, each total number of distractors (2, 4) was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following six conditions: \emph{2-1, 2-2, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Exp.~2 was conducted in order to additionally collect data for the \emph{3-X} conditions. To this end, Exp.~2 included the \emph{3-1, 3-2}, and \emph{3-3} conditions, as well as three conditions repeated from Exp.~1, in order to ensure that results were comparable. The repeated conditions were \emph{2-1, 4-1}, and \emph{4-3}. An overview of the number of trials in each condition and experiment is provided in \tableref{tab:conditions}.
 
 \begin{table}
-\label{tab:numdistractorconditions}
-
-The number of distractor objects in each array was either 2 (12 trials) or 4 (24 trials). Finally, we varied the number of distractors that shared the non-sufficient property with the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing, i.e.~it would not have been redundant to mention it. \red{CONTINUE HERE}
-
 \caption{Number of trials in each condition.}
 \centering
-	\begin{tabular}{c c c}
+	\begin{tabular}{c c c c}
 	\toprule
-	Distractors & Feature-sharing distractors & Trials \\
+	Distractors & Feature-sharing distractors & Trials & Exp.\\
 	\midrule
-	2 & 1 & 6\\
-	2 & 2 & 6\\
-	4 & 1 & 6\\
-	4 & 2 & 6\\
-	4 & 3 & 6\\
-	4 & 4 & 6\\			
+	2 & 1 & 12 & 1 \& 2\\
+	2 & 2 & 6 & 1\\
+	\midrule
+	3 & 1 & 6 & 2\\
+	3 & 2 & 6 & 2\\
+	3 & 3 & 6 & 2\\
+	\midrule
+	4 & 1 & 12 & 1 \& 2\\
+	4 & 2 & 6 & 1\\
+	4 & 3 & 12 & 1 \& 2\\
+	4 & 4 & 6 & 1\\			
 	\bottomrule
 	\end{tabular}
+\label{tab:conditions}	
 \end{table}
 
-\red{briefly describe fillers}
+Fillers were target trials from a different experiment \cite{graf-underreview}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. For example, a filler trial could consist of a display with a dalmatian, a pug, and a squirrel.
 
 
 
 \subsubsection{Results}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{pics/model-empirical}
+\caption{Model predicted probability of redundancy (first column) alongside empirical proportions of redundant descriptions (second column) as a function of the ratio of the number of distractors that differ from the target along the non-sufficient dimension to the number of distractors that do not. Rows indicate the redundant feature. \red{Model params: fcolor .999, fsize .8, lambda 15, costs .1}}
+\label{fig:modelexpresults}
+\end{figure}
 
 \subsection{Scene variation}
 \label{sec:scenevarmodel}
@@ -195,6 +221,8 @@ The number of distractor objects in each array was either 2 (12 trials) or 4 (24
 
 \section{Validation of interactive web-based written production paradigm}
 \label{app:replication}
+
+\red{make sure to discuss why overall we have lower overspecification rates -- probably because of color typicality!! we had pretty typical colors in our stimuli}
 
 \section{Pre-experiment quiz}
 \label{app:numdistractors}
