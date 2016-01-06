@@ -61,7 +61,7 @@ var literalListener = cache(function(label, item){
     var object = sample(objectPrior);
     console.log("object in litlis: "+ object);
     var labelMeaning = meaning(label);
-    console.log("labelMeaning(" + label + ") : " + labelMeaning(label));
+//    console.log("labelMeaning(" + label + ") : " + labelMeaning(label));
     factor(labelMeaning(object));
     return object;
   });
@@ -89,8 +89,8 @@ map(function(condition) {
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
       return (_.contains(info.targets, label) ? "type" :
-	      label === "car" ? "basicLevel" :
-	      label === "vehicle" ? "superDomain" :
+	      label === info.basicLabel ? "basicLevel" :
+	      label === info.superLabel ? "superDomain" :
 	      "label not recognized");
     });
     transformedERP.print();
