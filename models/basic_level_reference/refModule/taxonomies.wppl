@@ -47,6 +47,8 @@ var dogInfo = {
     }
   },
   targets : ["dalmatian", "pug", "germanShepherd", "husky"],
+  basicLabel : "dog",
+  superLabel : "animal",
   conditions : {
     item12 : ["greyhound", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -101,6 +103,8 @@ var birdInfo = {
     }
   },
   targets : ["eagle", "parrot", "pigeon", "hummingBird"],
+  basicLabel : "bird",
+  superLabel : "animal",
   conditions : {
     item12 : ["sparrow", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -155,6 +159,8 @@ var bearInfo = {
     }
   },
   targets : ["blackBear", "polarBear", "pandaBear", "grizzlyBear"],
+  basicLabel : "bear",
+  superLabel : "animal",  
   conditions : {
     item12 : ["koalaBear", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -209,6 +215,8 @@ var fishInfo = {
     }
   },
   targets : ["clownFish", "goldFish", "swordFish", "catfish"],
+  basicLabel : "fish",
+  superLabel : "animal",    
   conditions : {
     item12 : ["discusFish", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -251,6 +259,8 @@ var candyInfo = {
     }
   },
   targets : ["gummyBears", "jellyBeans", "skittles", "mnMs"],
+  basicLabel : "candy",
+  superLabel : "snack",      
   conditions : {
     item12 : ["candyCorn", "cookies"],
     item22 : ["chips", "pretzels"],
@@ -293,6 +303,8 @@ var carInfo = {
     }
   },
   targets : ["convertible", "minivan", "sportsCar", "suv"],
+  basicLabel : "car",
+  superLabel : "vehicle",        
   conditions : {
     item12 : ["sedan", "motorcycle"],
     item22 : ["train", "ambulance"],
@@ -335,6 +347,8 @@ var tableInfo = {
     }
   },
   targets : ["coffeeTable", "diningTable", "picnicTable", "bedsideTable"],
+  basicLabel : "table",
+  superLabel : "furniture",          
   conditions : {
     item12 : ["sideTable", "bed"],
     item22 : ["lamp", "wardrobe"],
@@ -377,6 +391,8 @@ var shirtInfo = {
     }
   },
   targets : ["poloShirt", "dressShirt", "hawaiiShirt", "tShirt"],
+  basicLabel : "shirt",
+  superLabel : "clothing",        
   conditions : {
     item12 : ["campShirt", "socks"],
     item22 : ["dress", "bathrobe"],
@@ -419,6 +435,8 @@ var flowerInfo = {
     }
   },
   targets : ["rose", "tulip", "daisy", "sunflower"],
+  basicLabel : "flower",
+  superLabel : "plant",          
   conditions : {
     item12 : ["lily", "pottedPlant"],
     item22 : ["grasses", "ivy"],
