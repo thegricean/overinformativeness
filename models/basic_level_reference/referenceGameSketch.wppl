@@ -1,8 +1,6 @@
 // run using:
 // webppl referenceGameSketch.wppl --require refModule/
 
-//var tax = refModule.buildKnowledge("branching", "animals").unifTaxonomy;
-
 var info = carInfo;
 
 var tax = info.tax;
@@ -19,14 +17,12 @@ var uniformDraw = function (xs) {
 
 var labelFitness = function(label, object) {
   var consistentObjs = tax[label];
-  //console.log("tax[label][object]: " + tax[label][object]);
   return _.has(consistentObjs, object) ? tax[label][object] : -Infinity;
 };
 
+// The meaning of a label is a function that maps objects to fitness values
 var meaning = function(label) {
   return function(object) {
-    console.log("object in meaning() called in litlis: "+ object);
-    console.log("labelFitness: " + label + " " + object + ": " + labelFitness(label, object));
     return labelFitness(label, object);
   };
 };
@@ -37,48 +33,31 @@ var makeObjectPrior = function(item) {
   });
 };
 
-var getLabelPrior = function(object) {
-  var labels = refModule.getRelevantLabels(object, tax);
-  console.log(object);
-  console.log(labels);
-  return Enumerate(function(){
-    var label = uniformDraw(labels);
-    // score for word length
-    var labelLength = label.length;
-    var labelFreq = Math.log(refModule.getWordFrequency(label));
-    console.log(label);
-    console.log("length = ", labelLength);
-    console.log("freq = ", labelFreq);
-    factor(priorWeight * (labelFreq-labelLength));
-    //Without frequency: factor(priorWeight * (labelFreq));
-    return label;
-  });
-};
-
 var literalListener = cache(function(label, item){
   var objectPrior = makeObjectPrior(item);
   return Enumerate(function(){
     var object = sample(objectPrior);
-    console.log("object in litlis: "+ object);
     var labelMeaning = meaning(label);
-//    console.log("labelMeaning(" + label + ") : " + labelMeaning(label));
     factor(labelMeaning(object));
     return object;
   });
 });                                         
 
 var speaker = cache(function(target, item) {
-  var labels = getLabelPrior(target);
+  var labels = refModule.getRelevantLabels(target, tax);
   return Enumerate(function(){
-    var label = sample(labels);
+    var label = uniformDraw(labels);
+    var labelLength = label.length;
+    var labelFreq = Math.log(refModule.getWordFrequency(label));
+    var labelWeight =  priorWeight * (labelFreq-labelLength);
     var possibleOutcome = sample(literalListener(label, item));
-    condition(possibleOutcome === target);
+    factor(possibleOutcome === target ? labelWeight : -Infinity);
     return label;
   });
 });
 
-var filename = "modelOutput_antiSuperBias_car_0.05.csv";
-refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
+// var filename = "modelOutput_antiSuperBias_car_0.05.csv";
+// refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
 
 map(function(condition) {
   map(function(target) {
@@ -94,6 +73,6 @@ map(function(condition) {
 	      "label not recognized");
     });
     transformedERP.print();
-    refModule.writeERP(transformedERP, [condition, target, priorWeight], filename, 4);
+    //refModule.writeERP(transformedERP, [condition, target, priorWeight], filename, 4);
   }, info.targets);
 }, _.keys(info.conditions));
