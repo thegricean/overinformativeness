@@ -67,8 +67,10 @@ d = droplevels(d[d$targetStatusClickedObj == "target",])
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
 d1=d
+d1$Experiment = "2"
 load("../../3_numdistractors_basiclevel/results/data/d.RData") # load first round of data
 d2=d
+d2$Experiment = "1"
 
 d = merge(d1,d2,all=T)
 summary(d)
@@ -190,21 +192,81 @@ ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
   facet_wrap(~RedundantProperty)
 ggsave("graphs_numdistractors/utterancetype_by_condition_ratio_correctonly.pdf",width=7,height=3.2)
 
+## add model predictions
+load("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_number_of_distractors/results/parsed/r-moreconditions.RData")
+# you can play with the values in the next statment to get different model predictions
+toplot = r[r$object == "o1" & r$color_fidelity == .999 & r$size_fidelity == .8  & r$color_cost == .1 & r$size_cost == .1 & as.numeric(as.character(r$speaker.opt)  == 15),]
+toplot$RatioOfDiffToSame = toplot$differentcolor/toplot$samecolor
+toplot[toplot$sufficientproperty == "color",]$RatioOfDiffToSame = toplot[toplot$sufficientproperty == "color",]$differentsize/toplot[toplot$sufficientproperty == "color",]$samesize
+toplot$Distractors = as.factor(toplot$numdistractors)
+toplot$redundant = ifelse(toplot$Utterance %in% c("big_red","small_yellow","big_yellow","small_red"),1,0)
+toplot$correctproperty = ifelse(toplot$Utterance == "big_red" | toplot$sufficientproperty == "color" & toplot$Utterance == "red" | toplot$sufficientproperty == "size" & toplot$Utterance == "big", 1, 0)
+toplot$SufficientProperty = toplot$sufficientproperty
+toplot$DataType = "model"
+
+agr = toplot[toplot$correctproperty == 1 & toplot$redundant == 1,] %>%
+  #select(redundant,sufficientproperty,Distractors,RatioOfDiffToSame) %>%
+  #gather(Utterance,Mentioned,-sufficientproperty,-Distractors,-RatioOfDiffToSame) %>%
+  group_by(SufficientProperty,Distractors,RatioOfDiffToSame) %>%
+  summarise(Probability=Probability)
+agr = as.data.frame(agr)
+agr$RedundantProperty = ifelse(agr$SufficientProperty == "color","size redundant","color redundant")
+agr$Data = "model"
+magr = agr
+
+ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
+  geom_point() +
+  ylab("Probability of redundancy") +
+  #geom_smooth(method="lm") +
+  facet_wrap(~RedundantProperty)
+
+
 agr = targets[targets$CorrectProperty == 1,] %>%
-  select(redundant,SufficientProperty,NumDistractors,DiffMinusSame) %>%
-  gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-DiffMinusSame) %>%
-  group_by(Utterance,SufficientProperty,NumDistractors,DiffMinusSame) %>%
+  select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
+  gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-RatioOfDiffToSame) %>%
+  group_by(Utterance,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
 agr = as.data.frame(agr)
 agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
+agr$Distractors = as.factor(agr$NumDistractors)
+agr$RedundantProperty = ifelse(agr$SufficientProperty == "color","size redundant","color redundant")
+agr$Data = "empirical"
+eagr = agr
 
-ggplot(agr, aes(x=DiffMinusSame,y=Probability,color=as.factor(NumDistractors),group=1)) +
+agr = merge(magr,agr,all=T)
+
+ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
-  geom_smooth(method="lm") +
-  facet_wrap(~SufficientProperty)
-ggsave("graphs_numdistractors/utterancetype_by_condition_difference_correctonly.pdf",width=9,height=4)
+  facet_grid(Data~RedundantProperty)
+ggsave("graphs_numdistractors/model-empirical_correctonly.pdf",width=9,height=4)
+ggsave("pics/model-empirical.pdf",width=9,height=6)
+
+# plot by ratio and numdistractors and EXPERIMENT, only for 'correct' properties, to see whether there are differences in the 2-1, 4-1, and 4-3 conditions across experiments
+targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
+targets$minimal = ifelse(targets$SizeAndColor == 0, 1, 0)
+targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
+agr = targets[targets$CorrectProperty == 1,] %>%
+  select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame,Experiment) %>%
+  gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-RatioOfDiffToSame,-Experiment) %>%
+  group_by(Utterance,SufficientProperty,NumDistractors,RatioOfDiffToSame,Experiment) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+agr$Distractors = as.factor(agr$NumDistractors)
+agr$RedundantProperty = ifelse(agr$SufficientProperty == 'color',"size redundant","color redundant")
+ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,shape=Experiment,group=1)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  xlab("Ratio of different to same (other) feature values") +
+  ylab("Probability of redundancy") +
+  #  geom_smooth(method="lm") +
+  facet_wrap(~RedundantProperty)
+ggsave("graphs_numdistractors/utterancetype_by_condition_byexperiment_ratio_correctonly.pdf",width=7,height=3.2)
+
+
 
 centered=cbind(targets,myCenter(targets[,c("SufficientProperty","RatioOfDiffToSame","NumDistractors")]))
 m = glmer(redundant ~ cSufficientProperty * cRatioOfDiffToSame + cNumDistractors + (1+cSufficientProperty|gameid) + (1|clickedType), data=centered,family='binomial')
