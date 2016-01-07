@@ -31,10 +31,14 @@ var makeObjectPrior = function(item) {
   });
 };
 
-var constructLabelPrior = function(target, superBias) {
+var constructLabelPrior = function(target, superProb) {
   var labels = refModule.getRelevantLabels(target, tax);
   return Enumerate(function(){
-    var label = uniformDraw(labels);
+    var label = uniformDraw(labels);    
+    var prob = (label === info.superLabel ?
+		Math.log(superProb) :
+		Math.log(superProb/2));
+    factor(prob);
     return label;
   });
 };
@@ -55,8 +59,9 @@ var literalListener = cache(function(label, item){
   });
 });                                         
 
-var speaker = cache(function(target, item, alpha, superBias) {
-  var labelPrior = constructLabelPrior(target, superBias);
+var speaker = cache(function(target, item, alpha, superProb) {
+  var labelPrior = constructLabelPrior(target, superProb);
+  labelPrior.print();
   return Enumerate(function(){
     var label = sample(labelPrior);
     var labelCost = getLabelCost(label);
@@ -70,13 +75,14 @@ var speaker = cache(function(target, item, alpha, superBias) {
 // refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
 
 var alpha = 0.05;
+var superProb = 1/3; // between 0 and 1/3
 
 map(function(condition) {
   map(function(target) {
     console.log(condition);
     var item = cons(target, info.conditions[condition]);
     //console.log("item: " + item);
-    var speakerERP = speaker(target, item, alpha);
+    var speakerERP = speaker(target, item, alpha, superProb);
     var transformedERP = Enumerate(function(){
       var label = sample(speakerERP);
       return (_.contains(info.targets, label) ? "type" :
