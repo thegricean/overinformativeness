@@ -235,13 +235,16 @@ agr$Data = "empirical"
 eagr = agr
 
 agr = merge(magr,agr,all=T)
+agr$DType = factor(x=as.character(agr$Data),levels=c("model","empirical"))
 
 ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
-  facet_grid(Data~RedundantProperty)
+  facet_grid(RedundantProperty~DType) +
+  xlab("Ratio of distractors with different to same non-sufficient feature") +
+  ylab("Probability of redundancy")
 ggsave("graphs_numdistractors/model-empirical_correctonly.pdf",width=9,height=4)
-ggsave("pics/model-empirical.pdf",width=9,height=6)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/model-empirical.pdf",width=9,height=6)
 
 # plot by ratio and numdistractors and EXPERIMENT, only for 'correct' properties, to see whether there are differences in the 2-1, 4-1, and 4-3 conditions across experiments
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
