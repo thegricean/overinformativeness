@@ -31,26 +31,37 @@ var makeObjectPrior = function(item) {
   });
 };
 
+var constructLabelPrior = function(target, superBias) {
+  var labels = refModule.getRelevantLabels(target, tax);
+  return Enumerate(function(){
+    var label = uniformDraw(labels);
+    return label;
+  });
+};
+
+var getLabelCost = function(label) {
+  var labelLength = label.length;
+  var labelFreq = Math.log(refModule.getWordFrequency(label));
+  return labelFreq - labelLength;
+};
+
 var literalListener = cache(function(label, item){
   var objectPrior = makeObjectPrior(item);
+  var labelMeaning = meaning(label);
   return Enumerate(function(){
     var object = sample(objectPrior);
-    var labelMeaning = meaning(label);
     factor(labelMeaning(object));
     return object;
   });
 });                                         
 
-var speaker = cache(function(target, item, alpha) {
-  var labels = refModule.getRelevantLabels(target, tax);
+var speaker = cache(function(target, item, alpha, superBias) {
+  var labelPrior = constructLabelPrior(target, superBias);
   return Enumerate(function(){
-    var label = uniformDraw(labels);
-    var labelLength = label.length;
-    var labelFreq = Math.log(refModule.getWordFrequency(label));
-    var possibleOutcome = sample(literalListener(label, item));
-    factor(possibleOutcome === target ?
-	   alpha * (labelFreq - labelLength) :
-	   -Infinity);
+    var label = sample(labelPrior);
+    var labelCost = getLabelCost(label);
+    var possibleResponse = sample(literalListener(label, item));
+    factor(possibleResponse === target ? alpha * labelCost : -Infinity);
     return label;
   });
 });
