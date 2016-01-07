@@ -1,10 +1,6 @@
 // run using:
 // webppl referenceGameSketch.wppl --require refModule/
 
-var info = carInfo;
-
-var tax = info.tax;
-
 var condition = function(x){
  factor(x ? 0 : -Infinity);
 };
@@ -13,84 +9,103 @@ var uniformDraw = function (xs) {
   return xs[randomInteger(xs.length)];
 };
 
-var labelFitness = function(label, object) {
-  var consistentObjs = tax[label];
-  return _.has(consistentObjs, object) ? tax[label][object] : -Infinity;
-};
+var BasicLevelModel = function(domainInfo, alpha, superProb) {
+  var tax = domainInfo.tax;
 
-// The meaning of a label is a function that maps objects to fitness values
-var meaning = function(label) {
-  return function(object) {
-    return labelFitness(label, object);
+  var labelFitness = function(label, object) {
+    var consistentObjs = tax[label];
+    return _.has(consistentObjs, object) ? tax[label][object] : -Infinity;
   };
-};
 
-var makeObjectPrior = function(item) {
-  return Enumerate(function() {
-    return uniformDraw(item);
-  });
-};
+  // The meaning of a label is a function that maps objects to fitness values
+  var meaning = function(label) {
+    return function(object) {
+      return labelFitness(label, object);
+    };
+  };
 
-var constructLabelPrior = function(target, superProb) {
-  var labels = refModule.getRelevantLabels(target, tax);
-  return Enumerate(function(){
-    var label = uniformDraw(labels);    
-    var prob = (label === info.superLabel ?
-		Math.log(superProb) :
-		Math.log(superProb/2));
-    factor(prob);
-    return label;
-  });
-};
-
-var getLabelCost = function(label) {
-  var labelLength = label.length;
-  var labelFreq = Math.log(refModule.getWordFrequency(label));
-  return labelFreq - labelLength;
-};
-
-var literalListener = cache(function(label, item){
-  var objectPrior = makeObjectPrior(item);
-  var labelMeaning = meaning(label);
-  return Enumerate(function(){
-    var object = sample(objectPrior);
-    factor(labelMeaning(object));
-    return object;
-  });
-});                                         
-
-var speaker = cache(function(target, item, alpha, superProb) {
-  var labelPrior = constructLabelPrior(target, superProb);
-  labelPrior.print();
-  return Enumerate(function(){
-    var label = sample(labelPrior);
-    var labelCost = getLabelCost(label);
-    var possibleResponse = sample(literalListener(label, item));
-    factor(possibleResponse === target ? alpha * labelCost : -Infinity);
-    return label;
-  });
-});
-
-// var filename = "modelOutput_antiSuperBias_car_0.05.csv";
-// refModule.writeCSV([["condition", "target", "priorWeight", "label", "prob"]], filename);
-
-var alpha = 0.05;
-var superProb = 1/3; // between 0 and 1/3
-
-map(function(condition) {
-  map(function(target) {
-    console.log(condition);
-    var item = cons(target, info.conditions[condition]);
-    //console.log("item: " + item);
-    var speakerERP = speaker(target, item, alpha, superProb);
-    var transformedERP = Enumerate(function(){
-      var label = sample(speakerERP);
-      return (_.contains(info.targets, label) ? "type" :
-	      label === info.basicLabel ? "basicLevel" :
-	      label === info.superLabel ? "superDomain" :
-	      "label not recognized");
+  var makeObjectPrior = function(item) {
+    return Enumerate(function() {
+      return uniformDraw(item);
     });
-    transformedERP.print();
-    //refModule.writeERP(transformedERP, [condition, target, priorWeight], filename, 4);
-  }, info.targets);
-}, _.keys(info.conditions));
+  };
+
+  var constructLabelPrior = function(target) {
+    var labels = refModule.getRelevantLabels(target, tax);
+    return Enumerate(function(){
+      var label = uniformDraw(labels);
+      var prob = (label === domainInfo.superLabel ?
+		  Math.log(superProb) :
+		  Math.log((1 - superProb)/2));
+      factor(prob);
+      return label;
+    });
+  };
+
+  var getLabelCost = function(label) {
+    var labelLength = label.length;
+    var labelFreq = Math.log(refModule.getWordFrequency(label));
+    return labelFreq - labelLength;
+  };
+
+  var literalListener = cache(function(label, item){
+    var objectPrior = makeObjectPrior(item);
+    var labelMeaning = meaning(label);
+    return Enumerate(function(){
+      var object = sample(objectPrior);
+      factor(labelMeaning(object));
+      return object;
+    });
+  });                                         
+
+  var speaker = cache(function(target, item) {
+    var labelPrior = constructLabelPrior(target);
+    return Enumerate(function(){
+      var label = sample(labelPrior);
+      var labelCost = getLabelCost(label);
+      var possibleResponse = sample(literalListener(label, item));
+      factor(possibleResponse === target ? alpha * labelCost : -Infinity);
+      return label;
+    });
+  });
+
+  return speaker;
+};
+
+var filename = "superBiasModelExploration.csv";
+refModule.writeCSV([["domain", "condition", "target",
+		     "alpha", "superProb", "label", "modelProb"]],
+		   filename);
+
+var alphaRange = _.range(0.01, 1, .01); // between 0 and 1
+var superProbRange = _.range(0.01, 0.33, 0.01); // between 0 and 1/3
+
+map(function(domain) {
+  console.log("running domain... " + domain);
+  var domainInfo = globalInfo.info[domain];
+  map(function(condition) {
+    console.log("running condition..." + condition);
+    map(function(target) {
+      map(function(alpha) {
+	map(function(superProb) {
+//	  console.log([alpha, superProb]);
+	  var item = cons(target, domainInfo.conditions[condition]);
+	  var speakerModel = BasicLevelModel(domainInfo, alpha, superProb);
+	  var speakerERP = speakerModel(target, item);
+	  var transformedERP = Enumerate(function(){
+	    var label = sample(speakerERP);
+	    return (_.contains(domainInfo.targets, label) ? "type" :
+		    label === domainInfo.basicLabel ? "basicLevel" :
+		    label === domainInfo.superLabel ? "superDomain" :
+		    "label not recognized");
+	  });
+//	  transformedERP.print();
+	  refModule.writeERP(transformedERP,
+			     [domain, condition, target,
+			      alpha.toFixed(2), superProb.toFixed(2)],
+			     filename, 4);
+	}, superProbRange);
+      }, alphaRange);
+    }, domainInfo.targets);
+  }, _.keys(domainInfo.conditions));
+}, globalInfo.domains);
