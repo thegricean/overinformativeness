@@ -444,3 +444,19 @@ var flowerInfo = {
     item33 : ["basketball", "dress"]
   }
 };
+
+var globalInfo = {
+  domains : ['dog', 'bird', 'bear', 'fish', 'candy',
+	     'car', 'table', 'shirt', 'flower'],
+  info : {
+    dog : dogInfo,
+    bird : birdInfo,
+    bear : bearInfo,
+    fish : fishInfo,
+    candy : candyInfo,
+    car : carInfo,
+    table : tableInfo,
+    shirt : shirtInfo,
+    flower : flowerInfo
+  }
+};
