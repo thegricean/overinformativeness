@@ -44,17 +44,37 @@ var getRelevantLabels = function(object, tax) {
   return relevantLabels;
 };
 
-var getWordFrequency = function(label) {
+var getFrequencyData = function() {
   var locParse = function(filename) {
     return babyparse.parse(fs.readFileSync(filename, 'utf8'),
 			   {header: true}).data;
   };
   var frequencyData = locParse("../../experiments/4_numdistractors_basiclevel_newitems/"
 			       + "results/data/frequencyChart.csv");
-  var relevantRow = _.filter(frequencyData, function(row) {
-    return row.noun === label;
-  });
-  return relevantRow[0].relFreq;
+  return frequencyData;
+};
+
+var standardizeVal = function(frequencyData, row, attributeSelector) {
+  var maxObj = _.max(frequencyData, attributeSelector);
+  var minObj = _.min(frequencyData, attributeSelector);
+  var val = attributeSelector(row);
+  var maxVal = attributeSelector(maxObj);
+  var minVal = attributeSelector(minObj);
+  return (val - minVal)/(maxVal - minVal);
+};
+
+var getRelativeLogFrequency = function(label) {
+  var frequencyData = getFrequencyData();
+  var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
+  var selector = function(row) {return Math.log(row.relFreq);};
+  return standardizeVal(frequencyData, relevantRow, selector);
+};
+
+var getRelativeLength = function(label) {
+  var frequencyData = getFrequencyData();
+  var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
+  var selector = function(row) {return row.noun.length;};
+  return standardizeVal(frequencyData, relevantRow, selector);
 };
 
 var buildTax = function(knowledge, labels, responses) {
@@ -103,7 +123,8 @@ var buildKnowledge = function(type, domain) {
 
 module.exports = {
   buildKnowledge : buildKnowledge,
-  getWordFrequency : getWordFrequency,
+  getRelativeLength : getRelativeLength,  
+  getRelativeLogFrequency : getRelativeLogFrequency,
   writeERP : writeERP,
   writeCSV : writeCSV,
   getRelevantLabels : getRelevantLabels
