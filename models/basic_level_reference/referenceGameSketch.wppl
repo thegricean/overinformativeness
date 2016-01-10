@@ -78,7 +78,7 @@ refModule.writeCSV([["domain", "condition", "target", "alpha",
 		     "superProb", "freqWeight", "label", "modelProb"]],
 		   filename);
 
-var alphaRange = _.range(.5, 3, .5); // between 0 and 1
+var alphaRange = _.range(.5, 10, .5); // between 0 and 1
 var superProbRange = _.range(0.01, 0.33, 0.01); // between 0 and 1/3
 var freqWeightRange = _.range(0, 1, 0.1); // between 0 and 1/3
 
