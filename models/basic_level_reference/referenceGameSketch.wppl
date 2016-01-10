@@ -9,7 +9,7 @@ var uniformDraw = function (xs) {
   return xs[randomInteger(xs.length)];
 };
 
-var BasicLevelModel = function(domainInfo, alpha, superProb) {
+var BasicLevelModel = function(domainInfo, alpha, superProb, freqWeight) {
   var tax = domainInfo.tax;
 
   var labelFitness = function(label, object) {
@@ -42,11 +42,12 @@ var BasicLevelModel = function(domainInfo, alpha, superProb) {
     });
   };
 
-  var getLabelCost = function(label) {
-    var labelLength = label.length;
-    var labelFreq = Math.log(refModule.getWordFrequency(label));
-    return labelFreq - labelLength;
-  };
+  var getLabelCost = cache(function(label) {
+    var labelLength = refModule.getRelativeLength(label);
+    var labelFreq = refModule.getRelativeLogFrequency(label);    
+    return (freqWeight * labelFreq -
+	    (1 - freqWeight) * labelLength);
+  });
 
   var literalListener = cache(function(label, item){
     var objectPrior = makeObjectPrior(item);
@@ -72,13 +73,14 @@ var BasicLevelModel = function(domainInfo, alpha, superProb) {
   return speaker;
 };
 
-var filename = "superBiasModelExploration.csv";
-refModule.writeCSV([["domain", "condition", "target",
-		     "alpha", "superProb", "label", "modelProb"]],
+var filename = "normalizedFreqLength_Additive.csv";
+refModule.writeCSV([["domain", "condition", "target", "alpha",
+		     "superProb", "freqWeight", "label", "modelProb"]],
 		   filename);
 
-var alphaRange = _.range(0.01, 1, .01); // between 0 and 1
+var alphaRange = _.range(.5, 3, .5); // between 0 and 1
 var superProbRange = _.range(0.01, 0.33, 0.01); // between 0 and 1/3
+var freqWeightRange = _.range(0, 1, 0.1); // between 0 and 1/3
 
 map(function(domain) {
   console.log("running domain... " + domain);
@@ -88,22 +90,22 @@ map(function(domain) {
     map(function(target) {
       map(function(alpha) {
 	map(function(superProb) {
-//	  console.log([alpha, superProb]);
-	  var item = cons(target, domainInfo.conditions[condition]);
-	  var speakerModel = BasicLevelModel(domainInfo, alpha, superProb);
-	  var speakerERP = speakerModel(target, item);
-	  var transformedERP = Enumerate(function(){
-	    var label = sample(speakerERP);
-	    return (_.contains(domainInfo.targets, label) ? "type" :
-		    label === domainInfo.basicLabel ? "basicLevel" :
-		    label === domainInfo.superLabel ? "superDomain" :
-		    "label not recognized");
-	  });
-//	  transformedERP.print();
-	  refModule.writeERP(transformedERP,
-			     [domain, condition, target,
-			      alpha.toFixed(2), superProb.toFixed(2)],
-			     filename, 4);
+	  map(function(freqWeight) {
+	    var item = cons(target, domainInfo.conditions[condition]);
+	    var speakerModel = BasicLevelModel(domainInfo,alpha,superProb,freqWeight);
+	    var speakerERP = speakerModel(target, item);
+	    var transformedERP = Enumerate(function(){
+	      var label = sample(speakerERP);
+	      return (_.contains(domainInfo.targets, label) ? "type" :
+		      label === domainInfo.basicLabel ? "basicLevel" :
+		      label === domainInfo.superLabel ? "superDomain" :
+		      "label not recognized");
+	    });
+	    refModule.writeERP(transformedERP,
+			       [domain, condition, target,
+	    			alpha.toFixed(2), superProb.toFixed(2),
+				freqWeight.toFixed(2)], filename, 4);
+	  }, freqWeightRange);
 	}, superProbRange);
       }, alphaRange);
     }, domainInfo.targets);
