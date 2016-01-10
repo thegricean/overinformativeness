@@ -9,7 +9,8 @@ var uniformDraw = function (xs) {
   return xs[randomInteger(xs.length)];
 };
 
-var BasicLevelModel = function(domainInfo, alpha, superProb, freqWeight) {
+var BasicLevelModel = function(domainInfo, alpha, superProb,
+			       freqWeight, costFunction) {
   var tax = domainInfo.tax;
 
   var labelFitness = function(label, object) {
@@ -44,9 +45,10 @@ var BasicLevelModel = function(domainInfo, alpha, superProb, freqWeight) {
 
   var getLabelCost = cache(function(label) {
     var labelLength = refModule.getRelativeLength(label);
-    var labelFreq = refModule.getRelativeLogFrequency(label);    
-    return (freqWeight * labelFreq -
-	    (1 - freqWeight) * labelLength);
+    var labelFreq = refModule.getRelativeLogFrequency(label);
+    return (costFunction === "additive" ?
+	    (freqWeight * labelFreq - (1 - freqWeight) * labelLength) :
+	    labelFreq * (1 - labelLength));
   });
 
   var literalListener = cache(function(label, item){
@@ -73,14 +75,16 @@ var BasicLevelModel = function(domainInfo, alpha, superProb, freqWeight) {
   return speaker;
 };
 
-var filename = "normalizedFreqLength_Additive.csv";
+var costFunction = "multiplicative";
+var alphaRange = _.range(.5, 10, .5); 
+var superProbRange = _.range(0.01, 0.33, 0.01); 
+var freqWeightRange = (costFunction === "multiplicative" ?
+		       [.5] : _.range(0, 1, 0.1));
+
+var filename = "normalizedFreqLength_" + costFunction + ".csv";
 refModule.writeCSV([["domain", "condition", "target", "alpha",
 		     "superProb", "freqWeight", "label", "modelProb"]],
 		   filename);
-
-var alphaRange = _.range(.5, 10, .5); // between 0 and 1
-var superProbRange = _.range(0.01, 0.33, 0.01); // between 0 and 1/3
-var freqWeightRange = _.range(0, 1, 0.1); // between 0 and 1/3
 
 map(function(domain) {
   console.log("running domain... " + domain);
@@ -92,7 +96,8 @@ map(function(domain) {
 	map(function(superProb) {
 	  map(function(freqWeight) {
 	    var item = cons(target, domainInfo.conditions[condition]);
-	    var speakerModel = BasicLevelModel(domainInfo,alpha,superProb,freqWeight);
+	    var speakerModel = BasicLevelModel(domainInfo, alpha, superProb,
+					       freqWeight, costFunction);
 	    var speakerERP = speakerModel(target, item);
 	    var transformedERP = Enumerate(function(){
 	      var label = sample(speakerERP);
