@@ -44,7 +44,7 @@ agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifels
 
 agr_noattr_coll = agr
 nrow(agr_noattr_coll) # 108 datapoints when collapsing across individual targets
-agr_noattr_coll$condition = gsub("distr","item",as.character(agr_allattr_coll$condition))
+agr_noattr_coll$condition = gsub("distr","item",as.character(agr_noattr_coll$condition))
 
 ggplot(agr, aes(x=condition,y=Probability)) +
   geom_bar(stat="identity") +
@@ -152,6 +152,7 @@ table(d$superProb)
 d$EmpiricalProbNoAttr = agr_noattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
 d$EmpiricalProbAllAttr = agr_allattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
 
+# by-target correlations
 cors_noattr = d %>%
   group_by(alpha,superProb) %>%
   filter(!is.na(EmpiricalProbNoAttr)) %>%
@@ -164,6 +165,17 @@ ggplot(cors_noattr, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   geom_point() +
   ggtitle("Corr .73 maximized for alpha=.04, superProb=.15")
 ggsave("graphs/antisuper/correlations_noattr.pdf",height=7,width=10.5)
+
+# to figure out best parameters by domain:
+cors_noattr_bydomain = d %>%
+  group_by(alpha,superProb,domain) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+head(cors_noattr_bydomain)
+cors_noattr_bydomain = as.data.frame(cors_noattr_bydomain)
+cors_noattr_bydomain %>%
+  group_by(domain) %>%
+  summarise(bestcorr=max(Cor),bestalpha=alpha[Cor==max(Cor)],bestsuperProb=superProb[Cor==max(Cor)])
 
 cors_allattr = d %>%
   group_by(alpha,superProb) %>%
@@ -178,6 +190,50 @@ ggplot(cors_allattr, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   ggtitle("Corr .74 maximized for alpha=.04, superProb=.15")
 ggsave("graphs/antisuper/correlations_allattr.pdf",height=7,width=10.5)
 
+# to figure out best parameters by domain:
+cors_allattr_bydomain = d %>%
+  group_by(alpha,superProb,domain) %>%
+  filter(!is.na(EmpiricalProbAllAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbAllAttr))
+head(cors_allattr_bydomain)
+cors_allattr_bydomain = as.data.frame(cors_allattr_bydomain)
+cors_allattr_bydomain %>%
+  group_by(domain) %>%
+  summarise(bestcorr=max(Cor),bestalpha=alpha[Cor==max(Cor)],bestsuperProb=superProb[Cor==max(Cor)])
+
+# correlations collapsing across targets
+dsub = d %>%
+  group_by(alpha,superProb,condition,Utterance,domain) %>%
+  summarise(modelProb=mean(modelProb))
+dsub = as.data.frame(dsub)
+dsub$EmpiricalProbNoAttr = agr_noattr_coll[paste(dsub$condition,dsub$domain,dsub$Utterance),]$Probability
+dsub$EmpiricalProbAllAttr = agr_allattr_coll[paste(dsub$condition,dsub$domain,dsub$Utterance),]$Probability
+
+cors_noattr_coll = dsub %>%
+  group_by(alpha,superProb) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+cors_noattr_coll = as.data.frame(cors_noattr_coll)
+head(cors_noattr_coll)
+cors_noattr_coll[cors_noattr_coll$Cor == max(cors_noattr_coll$Cor),] # maximized correlation for alpha = .04 and superProb = .15 (.85)
+
+ggplot(cors_noattr_coll, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
+  geom_point() +
+  ggtitle("Corr .85 maximized for alpha=.04, superProb=.15 (collapsed)")
+ggsave("graphs/antisuper/correlations_noattr_collapsed.pdf",height=7,width=10.5)
+
+cors_allattr_coll = dsub %>%
+  group_by(alpha,superProb) %>%
+  filter(!is.na(EmpiricalProbAllAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbAllAttr))
+head(cors_allattr_coll)
+cors_allattr_coll = as.data.frame(cors_allattr_coll)
+cors_allattr_coll[cors_allattr_coll$Cor == max(cors_allattr_coll$Cor),] # maximized correlation for alpha = .05 and superProb = .13 (.86)
+
+ggplot(cors_allattr_coll, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
+  geom_point() +
+  ggtitle("Corr .74 maximized for alpha=.04, superProb=.15 (collapsed)")
+ggsave("graphs/antisuper/correlations_allattr_collapsed.pdf",height=7,width=10.5)
 
 # plot model predictions vs empirical scatterplot for best fitting params
 ggplot(d[d$alpha==.04 & d$superProb==.15,],aes(x=modelProb,y=EmpiricalProbAllAttr,shape=condition,color=Utterance)) +
