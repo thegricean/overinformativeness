@@ -76,7 +76,7 @@ var BasicLevelModel = function(domainInfo, alpha, superProb,
 };
 
 var costFunction = "multiplicative";
-var alphaRange = _.range(.5, 10, .5); 
+var alphaRange = _.range(.5, 1.5, .05); 
 var superProbRange = _.range(0.01, 0.33, 0.01); 
 var freqWeightRange = (costFunction === "multiplicative" ?
 		       [.5] : _.range(0, 1, 0.1));
