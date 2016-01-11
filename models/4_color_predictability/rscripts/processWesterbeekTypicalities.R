@@ -136,5 +136,7 @@ ggplot(exp1, aes(x=Typicality,y=RedundantProbability,color=logPriorProbabilityBi
   ylab("Probability of redundancy") +
   xlab("Color typicality")
 
-
-
+tmp = data.frame(a = c(0.013392857, 0.16964286, 0.29017857, 0.43303571, 0.0937500))
+tmp$b = exp(10*a)
+tmp$b = tmp$b/sum(tmp$b)
+plot(tmp$a,tmp$b)
