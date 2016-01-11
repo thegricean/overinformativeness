@@ -115,12 +115,12 @@ cors_noattr = d %>%
   summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
 cors_noattr = as.data.frame(cors_noattr)
 head(cors_noattr)
-cors_noattr[cors_noattr$Cor == max(cors_noattr$Cor),] # maximized correlation for alpha = 1 and superProb = .12 and freqWeight = .5 (.73)
+cors_noattr[cors_noattr$Cor == max(cors_noattr$Cor),] # maximized correlation for alpha = .8 and superProb = .15 and freqWeight = .5 (.73)
 
 ggplot(cors_noattr, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   geom_point() +
   facet_wrap(~freqWeight) +
-  ggtitle("Max r=.73 for alpha=1, superProb=.12, freqWeight=.5")
+  ggtitle("Max r=.73 for alpha=.8, superProb=.15, freqWeight=.5")
 ggsave("graphs/antisuper/correlations_noattr_multiplicative.pdf",height=8,width=10.5)
 
 # to figure out best parameters by domain:
@@ -140,12 +140,12 @@ cors_allattr = d %>%
   summarise(Cor = cor(modelProb,EmpiricalProbAllAttr))
 head(cors_allattr)
 cors_allattr = as.data.frame(cors_allattr)
-cors_allattr[cors_allattr$Cor == max(cors_allattr$Cor),] # maximized correlation for alpha = 1 and superProb = .12 and freqWeigth=.5 (.74)
+cors_allattr[cors_allattr$Cor == max(cors_allattr$Cor),] # maximized correlation for alpha = .8 and superProb = .15 and freqWeigth=.5 (.75)
 
 ggplot(cors_allattr, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   geom_point() +
   facet_wrap(~freqWeight) +
-  ggtitle("Max r=.74 for alpha=1, superProb=.12, freqWeight=.5")
+  ggtitle("Max r=.75 for alpha=.8, superProb=.15, freqWeight=.5")
 ggsave("graphs/antisuper/correlations_allattr_multiplicative.pdf",height=8,width=10.5)
 
 # to figure out best parameters by domain:
@@ -155,9 +155,11 @@ cors_allattr_bydomain = d %>%
   summarise(Cor = cor(modelProb,EmpiricalProbAllAttr))
 head(cors_allattr_bydomain)
 cors_allattr_bydomain = as.data.frame(cors_allattr_bydomain)
-cors_allattr_bydomain %>%
+bestbydomain_all = cors_allattr_bydomain %>%
   group_by(domain) %>%
   summarise(bestcorr=max(Cor),bestalpha=alpha[Cor==max(Cor)],bestsuperProb=superProb[Cor==max(Cor)],bestfreqWeight=freqWeight[Cor==max(Cor)])
+bestbydomain_all
+bestbydomain_all = as.data.frame(bestbydomain_all)
 
 # correlations collapsing across targets
 dsub = d %>%
@@ -173,12 +175,12 @@ cors_noattr_coll = dsub %>%
   summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
 cors_noattr_coll = as.data.frame(cors_noattr_coll)
 head(cors_noattr_coll)
-cors_noattr_coll[cors_noattr_coll$Cor == max(cors_noattr_coll$Cor),] # maximized correlation for alpha = 1 and superProb = .12 and freqWeight=0 (.84)
+cors_noattr_coll[cors_noattr_coll$Cor == max(cors_noattr_coll$Cor),] # maximized correlation for alpha = .75 and superProb = .16 and freqWeight=0 (.85)
 
 ggplot(cors_noattr_coll, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   geom_point() +
   facet_wrap(~freqWeight) +
-  ggtitle("Max r=.84 for alpha=1, superProb=.12, freqW=.5 (collapsed)")
+  ggtitle("Max r=.85 for alpha=.75, superProb=.16, freqW=.5 (collapsed)")
 ggsave("graphs/antisuper/correlations_noattr_collapsed_multiplicative.pdf",height=7,width=10.5)
 
 cors_allattr_coll = dsub %>%
@@ -187,16 +189,16 @@ cors_allattr_coll = dsub %>%
   summarise(Cor = cor(modelProb,EmpiricalProbAllAttr))
 head(cors_allattr_coll)
 cors_allattr_coll = as.data.frame(cors_allattr_coll)
-cors_allattr_coll[cors_allattr_coll$Cor == max(cors_allattr_coll$Cor),] # maximized correlation for alpha = 1 and superProb = .12 and freqWeight=.5 (.86)
+cors_allattr_coll[cors_allattr_coll$Cor == max(cors_allattr_coll$Cor),] # maximized correlation for alpha = .85 and superProb = .14 and freqWeight=.5 (.86)
 
 ggplot(cors_allattr_coll, aes(x=alpha,y=Cor,color=as.factor(superProb))) +
   geom_point() +
-  ggtitle("Max r=.86 for alpha=1, superProb=.12, freqW=.5 (collapsed)") +
+  ggtitle("Max r=.86 for alpha=.85, superProb=.14, freqW=.5 (collapsed)") +
   facet_wrap(~freqWeight)
 ggsave("graphs/antisuper/correlations_allattr_collapsed_multiplicative.pdf",height=8,width=10.5)
 
 # plot model predictions vs empirical scatterplot for best fitting params
-ggplot(d[d$alpha==1 & d$superProb==.12 & d$freqWeight==.5,],aes(x=modelProb,y=EmpiricalProbAllAttr,shape=condition,color=Utterance)) +
+ggplot(d[d$alpha==.8 & d$superProb==.15 & d$freqWeight==.5,],aes(x=modelProb,y=EmpiricalProbAllAttr,shape=condition,color=Utterance)) +
   geom_point() +
   xlim(c(0,1)) +
   ylim(c(0,1)) +
@@ -207,7 +209,7 @@ ggplot(d[d$alpha==1 & d$superProb==.12 & d$freqWeight==.5,],aes(x=modelProb,y=Em
 ggsave("graphs/antisuper/model_empirical_allattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 # plot model predictions vs empirical scatterplot for best fitting params
-ggplot(d[d$alpha==1 & d$superProb==.12 & d$freqWeight==.5,],aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
+ggplot(d[d$alpha==.8 & d$superProb==.15 & d$freqWeight==.5,],aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
   geom_point() +
   xlim(c(0,1)) +
   ylim(c(0,1)) +
@@ -218,7 +220,7 @@ ggplot(d[d$alpha==1 & d$superProb==.12 & d$freqWeight==.5,],aes(x=modelProb,y=Em
 ggsave("graphs/antisuper/model_empirical_noattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 # same plot, but collapsing across targets within domain (change values depending on best fitting params)
-coll = d[d$alpha==1 & d$superProb==.12 & d$freqWeight==.5,] %>%
+coll = d[d$alpha==.8 & d$superProb==.15 & d$freqWeight==.5,] %>%
 #coll = d[d$alpha==1 & d$superProb==.15 & d$freqWeight==.3,] %>%
   group_by(domain,condition,Utterance) %>%
   summarise(modelProb=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
@@ -257,7 +259,7 @@ ggplot(coll,aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utteranc
   facet_wrap(~domain)
 ggsave("graphs/antisuper/model_empirical_noattr_bydomain_collapsed_multiplicative.pdf",width=8.4,height=6)
 
-best_d_all = d[d$alpha == 1 & d$superProb == .12 & d$freqWeight==.5,] %>%
+best_d_all = d[d$alpha == .8 & d$superProb == .15 & d$freqWeight==.5,] %>%
   group_by(condition,Utterance) %>%
   summarise(Probability=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
 best_d_all = as.data.frame(best_d_all)
@@ -271,7 +273,7 @@ p = ggplot(best_d_all, aes(x=condition,y=Probability)) +
   facet_wrap(~Utterance)
 ggsave("graphs/antisuper/probs_best_all_multiplicative.pdf",width=10,height=3.5)
 
-best_d_no = d[d$alpha == 1 & d$superProb == .12 & d$freqWeight == .5,] %>%
+best_d_no = d[d$alpha == .8 & d$superProb == .15 & d$freqWeight == .5,] %>%
   group_by(condition,Utterance) %>%
   summarise(Probability=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
 best_d_no = as.data.frame(best_d_no)
