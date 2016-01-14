@@ -215,11 +215,12 @@ agr$Data = "model"
 magr = agr
 
 ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
-  geom_point() +
+  geom_point(size=4,alpha=.5) +
   ylab("Probability of redundancy") +
-  #geom_smooth(method="lm") +
+  xlab("Ratio of distractors with different to same insufficient feature value") +
+  ylim(c(0,1)) +
   facet_wrap(~RedundantProperty)
-
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/talks/2016/edinburgh/model-empirical.pdf",width=8,height=3.5)
 
 agr = targets[targets$CorrectProperty == 1,] %>%
   select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
@@ -238,13 +239,14 @@ agr = merge(magr,agr,all=T)
 agr$DType = factor(x=as.character(agr$Data),levels=c("model","empirical"))
 
 ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
-  geom_point() +
+  geom_point(size=4,alpha=.5) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
-  facet_grid(RedundantProperty~DType) +
-  xlab("Ratio of distractors with different to same non-sufficient feature") +
+  facet_grid(DType~RedundantProperty) +
+  xlab("Ratio of distractors with different to same insufficient feature") +
   ylab("Probability of redundancy")
 ggsave("graphs_numdistractors/model-empirical_correctonly.pdf",width=9,height=4)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/model-empirical.pdf",width=9,height=6)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/talks/2016/edinburgh/model-and-empirical.pdf",width=7.5,height=5)
 
 # plot by ratio and numdistractors and EXPERIMENT, only for 'correct' properties, to see whether there are differences in the 2-1, 4-1, and 4-3 conditions across experiments
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
