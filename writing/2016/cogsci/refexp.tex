@@ -29,6 +29,15 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{todonotes}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+
+\newcommand{\den}[2][]{
+\(
+\left\llbracket\;\text{#2}\;\right\rrbracket^{#1}
+\)
+}
+
 %\newcommand{\url}[1]{$#1$}
 
 
@@ -72,7 +81,7 @@ referential expressions, levels of reference, overinformativeness, basic levels,
 
 \section{\bf Introduction}
 
-\todo[inline]{rdh: can we begin by setting up the puzzle of basic-level reference, and \emph{then} set up connections with overinformativity, rational models, etc.? (e.g. ``There are many ways to refer to any given object. If you see a man walking a dalmatian down the street, you could tell your friend about it using ``dalmatian,'' ``dog,'' ``animal,'' or even ``living thing'' and all would be true. By the age of three, children are willing to accept multiple labels for the same object, at different levels of abstraction \cite{WaxmanHatch92_BasicLevelLabeling}. How do speakers manage this broad flexibility in the choice of referring expression? \emph{PRAGMATICS!}'')}
+\todo[inline]{rdh: can we begin by setting up the puzzle of basic-level reference, and \emph{then} set up connections with overinformativity, rational models, etc.? (e.g. ``There are many ways to refer to any given object. If you see a man walking a dalmatian down the street, you could tell your friend about it using ``dalmatian,'' ``dog,'' ``animal,'' or even ``living thing'' and all would be true. By the age of three, children are willing to accept multiple labels for the same object, at different levels of abstraction \cite{WaxmanHatch92_BasicLevelLabeling}. How do speakers manage this broad flexibility in the choice of referring expression?)}
 One of the main purposes of language is communication. In fact, some cognitive scientists have gone as far as proposing that language may simply be a special case of social cognition: Speakers choose an utterance approximately optimally such that a listener can infer the intended meaning by means of Bayesian inference \cite{frank2012}. According to this view, language is essentially about reasoning about other people's knowledge, states and intentions. An important assumption here is that the speaker is a rational agent, who selects an utterance based on its optimal expected utility. 
 
 Although approaches in this framework have been increasingly successful in predicting human behavior, past research in the area of referential expressions has demonstrated that speakers are not necessarily behaving in a rational manner when it comes to producing referential expressions. For instance when subjects tend to overly produce color modifiers to describe objects, even if color is not an attribute necessary for disambiguation (e.g. Pechmann, 1989; Sedivy, 2003). For example, when subjects are being shown a small red cup as a target object in the context of a big red cup and a big blue cup and asked to describe the target, a significant amount of subjects say ``small red cup'', when ``small cup'' would have been sufficient for disambiguation. Speakers are producing overinformative utterances and can thus be said to be irrational in their behavior (Gatt et al., 2012). 
@@ -154,13 +163,30 @@ Furthermore, there was an interaction between length and frequency, such that le
 \caption{Figure 5: Probability of using a sublevel term when its frequency is high opposed to low and the length short opposed to long, averaged over conditions \label{overflow}}
 \end{figure}
 
-\section{\bf Modelling the choice of referential expression in RSA}
+\section{\bf Modeling basic-level reference}
+
+To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic-level reference. As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be maximally informative with respect to an internal model of a literal listener. That listener updates their beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. We incorporate length and frequency as costs that affect the speaker's likelihood of using a label, and we account for typicality as part of a label's graded meaning: the label ``dog'' fits a dalmatian better than a grizzly bear, but it also fits a grizzly bear better than a tennis ball.
+
+Formally, we start by specifying a literal listener $L_0$ who hears a label $l$ in the context of some set of objects $\mathcal{O}$ and returns a response distribution over objects $o_i \in \mathcal{O}$ : 
+$$P_{L_0}(o_i | l) \propto \exp\{\alpha P(o_i)  U_{lex}(l; o_i)\}$$
+where $P(o_i)$ is taken to be a uniform prior over objects, $U_{lex}(l; o_i)$ is the lexical meaning of the label $l$ when applied to object $o_i$, and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}.
+
+Next, we specify a speaker $S_1$ who is attempting to refer to a particular object $o \in \mathcal{O}$ and returns a response distribution over possible labels $l_j \in \ell(o)$: 
+$$P_{S_1}(l_j | o) \propto \exp\{\alpha P_{L_0}(o | l_j)P(l_j) U_{cost}(l_j)\}$$
+where $P(l_j)$ is the prior likelihood of using label $l_j$, $U_{cost}(l_j)$ is the label cost function and the other terms are as defined above. 
+\todo[inline]{rdh: this exposition would be nicer if we incorporated cost into the label prior}
+
+Finally, we must define the the lexical meaning function $U_{lex}(l; o_i)$, the cost function $U_{cost}(l_j)$, and the label prior $P(l_j)$. 
+
+\todo[inline]{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
+
+We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
 
 \section{\bf Discussion and conclusion}
 
 \section{\bf Acknowledgments}
 
-This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.Mobility Award to JD.
+This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.Mobility Award to JD. RXDH was supported by the Stanford Graduate Fellowship and the National Science Foundation Graduate Research Fellowship under Grant No. DGE-114747.
 
 \small
 
