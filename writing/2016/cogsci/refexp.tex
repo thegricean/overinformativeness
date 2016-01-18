@@ -43,6 +43,8 @@
 
 \definecolor{Red}{RGB}{255,0,0}
 \newcommand{\red}[1]{\textcolor{Red}{#1}}
+\definecolor{Green}{RGB}{10,200,100}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
 
  \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
 
@@ -54,9 +56,8 @@
 \newcommand{\appref}[1]{Appendix \ref{#1}}
 \newcommand{\sectionref}[1]{Section \ref{#1}}
 
-\title{Animal, dog, or dalmatian? Contextual informativeness, utterance length and utterance frequency affect choice of referring expressions.}
-%\title{Wonky worlds: Listeners reconsider world knowledge when utterances are odd}
-%Non-sinking marbles are wonky: defeasible world knowledge in language interpretation}
+\title{Animal, dog, or dalmatian? Level of abstraction in nominal referring expressions}
+%Animal, dog, or dalmatian? Contextual informativeness, utterance length and utterance frequency affect choice of referring expressions.
 
  
 \author{{\large \bf Caroline Graf, Judith Degen, Robert Hawkins, Noah D.~Goodman} \\
@@ -101,25 +102,31 @@ The following experiment explores what effect context has on the choice of refer
 
 \section{\bf Methods}
 
+\ndg{i think we want procedure and design figure(s). the procedure fig should show a screen shot from speaker and listener points of view. the design fig should illustrate the dist12, etc notation used later with a concrete domain.}
+
 \subsection{\bf Participants}
 We recruited 56 participants over Amazon’s Mechanical Turk, who were all native speakers of English and who were reimbursed for their participation in the experiment. The subjects participated in pairs of two.
 
 \subsection{\bf Materials}
-Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four targets were chosen, which were subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which did not belong to the same basic level category, but to the same supercategory (e.g. ``elephant'' or ``squirrel''). 
+Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four target images were chosen, corresponding to four subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). 
 
 \subsection{\bf Design}
 Each trial consisted of a display of three pictures of objects, one of which was designated as the target object. There were four target objects for each of the eight domains, each of which would appear once for every pair, giving rise to a total of 36 trials per pair. There were four conditions which differed in the types of distractors which were shown: (a) {\bf distractor12}: one distractor of the same basic level and one distractor of the same superlevel were present (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) {\bf distractor22}: two distractors of the same superlevel were present, (c) {\bf distractor23}: one distractor of the same superlevel and one artifact were present and (d) {\bf distractor33}: two artifacts were present. The selection of distractors was random for each trial. Furthermore, the experiment contained 36 filler items, in which participants were also asked to produce referential expressions for objects, but here the three pictures illustrated the same stimulus which differed only in size and color. No filler items were reused in the target trials.
 
 \subsection{\bf Procedure}
-Pairs of participants were connected through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. Subjects participated in pairs and were either assigned the speaker or the listener role. Participants would keep their allotted roles for the entire experiment. They were informed that the order of the three pictures which they would both see will be different for the speaker and the listener. Only the speaker could identify the target object by a green square surrounding it. There was a chatbox in which speaker and listener could send messages to each other and communicate. The task was for the speaker to tell the listener which one of the objects is the target and for the listener in turn to select the right object based on this information provided by the speaker. 
+Pairs of participants were connected through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. Subjects participated in pairs, with one member of each pair assigned the speaker role and the other to the listener role. Participants kept their allotted roles for the entire experiment. 
+Each saw the same set of three images, however participants were informed that image placement would be (and in fact was) different for the speaker and the listener. The target object was identified by a green square surrounding it for the speaker (but not listener). There was a chatbox in which speaker and listener could send text messages to each other. The task was for the speaker to tell the listener which one of the objects is the target, and for the listener in turn to select the right object based on the information provided by the speaker. 
 
 \subsection{\bf Annotation}
-Responses were parsed automatically and subsequently checked manually to determine the level of reference used. Incorrect trials were excluded from the analysis, which led to the elimination of 1,1\% of trials. Moreover, one analysis was done which included only the literal mentioning of the sub-, basic- and superclass, whereas another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category). 
+Responses were parsed automatically and subsequently checked manually to determine the level of reference used. 
+\ndg{need to describe this parsing / coding in more detail.}
+Incorrect trials were excluded from the analysis, which led to the elimination of 1.1\% of trials. Two analyses were done: one analysis included only the literal mentioning of the sub-, basic- and superclass; another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category). 
 
 \section{\bf Results}
 
 \subsection{}
-As shown in Fig. 1, speakers are most  likely to refer to the target object with a subcategory label, if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less probable than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
+As shown in Fig. 1, speakers are most  likely to refer to the target object with a subcategory label, if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less common than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
+\ndg{add stats.}
 
 \begin{figure}[ht!]
 \centering
@@ -137,6 +144,7 @@ The overall effects were slightly different in the different domains (see Fig. 2
 \end{figure}
 
 \subsection{\bf Utterance length}
+\ndg{maybe we want to include length and frequency in a big mlm described above in the main results section. (ie main effects of distractor, frequency, and length on usage.) then have a final paragraph or subsection on item effects?}
 Another factor contributing to the selection of a level of reference is relative utterance length. As displayed in Fig. 3, speakers are more likely to use the subcategory term if it is relatively short compared to the basic level term (i.e. the ratio sub/basic is relatively small, see blue bars in sublevel column). For example, the length ratio of ``chihuahua''/''dog'' is bigger than that of ``pug''/''dog'', thus the data suggests that ``chihuahua'' is less frequently used than ``pug''. This effect was independent of whether the use of the subcategory was forced by a distractor of the same basic level in the context or not. Furthermore, if the subcategory term was relatively long compared to the basiclevel (i.e. the sub/basic ratio is relatively big, see red bars in basic level column), subjects are more likely to use the basic level referential expression. Statistical tests confirmed
 
 \begin{figure}[ht!]
@@ -147,6 +155,7 @@ Another factor contributing to the selection of a level of reference is relative
 
 \subsection{\bf Utterance frequency}
 Besides contextual informativeness and utterance length, the frequency of a specific label also plays a role in determining speakers choice in referential expression. Illustrated in Fig. 4, the data suggests that relatively frequent sublevel terms (i.e. those which have a relatively high frequency compared to the frequency of the basic level and thus also have a relatively big frequency ratio) are preferred over more infrequent ones. This is especially the case when the speaker is not forced to use the subcategory term, namely when there is no distractor present which is a member of the same basic level category as the target (conditions distr22, distr23 and distr33). The basic level terms on the other hand are used more often if the competing sublevel alternative is relatively infrequent (see blue bars in basic level column). ...
+\ndg{freq and length are colinear. show that both are needed.}
 
 \begin{figure}[ht!]
 \centering
