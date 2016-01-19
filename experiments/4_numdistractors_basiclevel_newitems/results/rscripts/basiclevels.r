@@ -1226,7 +1226,7 @@ ggplot(agr, aes(x=Utterance,y=Probability,fill=freqMedian2bins)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/3_frequencyAnalysis/2bins_proportion_mentioned_features_by_condition_by_frequency_2bins_median.pdf",width=10,height=10)
 
-# CONTINUE HERE
+
 bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
 agr = bdCorrect %>%
   select(typeMentioned,basiclevelMentioned,superMentioned, condition, freqMedian2bins) %>%
@@ -1735,33 +1735,6 @@ ggplot(gathered, aes(x=Label,y=logFreq,fill=Label)) +
 ggsave("graphs_basiclevel/by-item-logfreqs.pdf",height=12,width=15)
 
 
-#### MIXED EFFECTS MODEL ANALYSIS FOR TYPE MENTION
-
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")]))
-
-#contrasts(bdCorrect$condition) = cbind(c(1,0,0,0),c(0,0,1,0),c(0,0,0,1))
-contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
-
-m = glmer(typeMentioned ~ condition * clogTypeLength * clogTypeFreq + (1 + clogTypeFreq|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
-
-# collapse across non-12 conditions
-bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "distr12","type_forced","type_not_forced"))
-table(bdCorrect$redCondition)
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","redCondition")]))
-
-m = glmer(typeMentioned ~ credCondition * clogTypeLength * clogTypeFreq + (1+credCondition|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
-
-# analyze only non-12 conditions
-non12 = droplevels(subset(bdCorrect, condition != "distr12"))
-centered = cbind(non12, myCenter(non12[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq")]))
-
-m = glmer(typeMentioned ~ clogTypeLength * clogTypeFreq + (1 + clogTypeLength|gameid) + (1 + clogTypeLength|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
-
-m = glmer(typeMentioned ~ clogTypeLength * clogTypeFreq + (1 |gameid) + (1 + clogTypeFreq|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
 
 # for all random effects structures that allow the model to converge, the interaction between frequency and length is significant at (at most) <.01
 #bdCorrect$cutlogTypeLength = cut(bdCorrect$logTypeLength,breaks=quantile(bdCorrect$logTypeLength,probs=c(0,.5,1)))
@@ -1828,53 +1801,6 @@ ggsave("graphs_basiclevel/4_length-frequency-interaction/freq-length-interaction
 
 
 
-
-
-# Get unique combinations
-
-summary(bdCorrect)
-nrow(bdCorrect)
-
-# un = unique(bdCorrect[,c("basiclevelClickedObj","nameClickedObj","alt1Name","alt2Name","alt3Name","alt4Name")])
-# summary(un)
-# nrow(un)
-# 
-# # #Get rid of blackstimuli
-# # 
-# # un[un$alt1Name == "blackStimulus",]$alt1Name = as.character("z")
-# # un[un$alt2Name == "blackStimulus",]$alt2Name = NA
-# # un[un$alt3Name == "blackStimulus",]$alt3Name = NA
-# # un[un$alt4Name == "blackStimulus",]$alt4Name = NA
-# 
-# unNew = un[order(un$nameClickedObj, un$alt1Name, un$alt2Name, un$alt3Name, un$alt4Name) , ]
-# 
-# summary(unNew)
-# head(unNew)
-# nrow(unNew)
-# 
-# # unNew2 = unique(unNew[,c("basiclevelClickedObj","nameClickedObj","alt1Name","alt2Name","alt3Name","alt4Name")])
-# # nrow(unNew2)
-# # summary(unNew2)
-# # 
-# # x = setdiff(sort(unname(unlist(un[1,]))),c("blackStimulus"))
-# # summary(x)
-# # 
-# # summary(un)
-# # 
-# # agr = un %>%
-# #   gather(Position,Name,-basiclevelClickedObj) %>%
-# #   group_by(basiclevelClickedObj) %>%
-# #   summarise(UniqueItems=cat(setdiff(as.character(Name),c("blackStimulus")),sep="_"))
-# 
-# bedsidetable = droplevels(subset(unNew, unNew$nameClickedObj == "bedsideTable"))
-# head(bedsidetable)
-# 
-# #make list of alt1-alt4 and get unique names
-# #-> do this for 1 target per domain, for other 3 targets, only 
-# 
-# 
-
-# Try again to get 3 labels for each of
 
 
 labelTests = read.table(file="data/singleColumnLabels.csv",sep=";", header=T, quote="")

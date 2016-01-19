@@ -38,7 +38,7 @@ function make_slides(f) {
 	//$("#objectlabel").val("");	
 	  this.stim = stim;
 	  console.log(this.stim);
-	var contextsentence = "How typical is this for "+stim.label+"?";
+	var contextsentence = "How typical is this for <strong>"+stim.label+"</strong>?";
 	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
 	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
 	var objimagehtml = '<img src="images/'+stim.item+'.jpg" style="height:190px;">';
