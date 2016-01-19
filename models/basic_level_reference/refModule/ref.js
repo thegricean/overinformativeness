@@ -37,7 +37,7 @@ var writeERP = function(erp, labels, filename, fixed) {
   appendCSV(data, filename);
 };
 
-var getRelevantLabels = function(object, tax) {
+var getAllPossibleLabels = function(object, tax) {
   var relevantLabels = _.keys(_.omit(tax, function(value, key, tax) {
     return !_.has(value, object);
   }));
@@ -127,5 +127,5 @@ module.exports = {
   getRelativeLogFrequency : getRelativeLogFrequency,
   writeERP : writeERP,
   writeCSV : writeCSV,
-  getRelevantLabels : getRelevantLabels
+  getAllPossibleLabels : getAllPossibleLabels
 };

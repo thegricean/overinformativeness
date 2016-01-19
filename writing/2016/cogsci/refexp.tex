@@ -28,11 +28,23 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{url}
+\usepackage{todonotes}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+
+\newcommand{\den}[2][]{
+\(
+\left\llbracket\;\text{#2}\;\right\rrbracket^{#1}
+\)
+}
+
 %\newcommand{\url}[1]{$#1$}
 
 
 \definecolor{Red}{RGB}{255,0,0}
 \newcommand{\red}[1]{\textcolor{Red}{#1}}
+\definecolor{Green}{RGB}{10,200,100}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
 
  \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
 
@@ -44,9 +56,8 @@
 \newcommand{\appref}[1]{Appendix \ref{#1}}
 \newcommand{\sectionref}[1]{Section \ref{#1}}
 
-\title{Animal, dog, or dalmatian? Contextual informativeness, utterance length and utterance frequency affect choice of referring expressions.}
-%\title{Wonky worlds: Listeners reconsider world knowledge when utterances are odd}
-%Non-sinking marbles are wonky: defeasible world knowledge in language interpretation}
+\title{Animal, dog, or dalmatian? Level of abstraction in nominal referring expressions}
+%Animal, dog, or dalmatian? Contextual informativeness, utterance length and utterance frequency affect choice of referring expressions.
 
  
 \author{{\large \bf Caroline Graf, Judith Degen, Robert Hawkins, Noah D.~Goodman} \\
@@ -70,11 +81,18 @@ referential expressions, levels of reference, overinformativeness, basic levels,
 \end{abstract}
 
 \section{\bf Introduction}
-One of the main purposes of language is communication. In fact, some cognitive scientists have gone as far as proposing that language may simply be a special case of social cognition: Speakers choose an utterance approximately optimally such that a listener can infer the intended meaning by means of Bayesian inference (Frank and Goodman, 2012). According to this view, language is essentially about reasoning about other people's knowledge, states and intentions. An important assumption here is that the speaker is a rational agent, who selects an utterance based on its optimal expected utility. 
+
+\todo[inline]{rdh: can we begin by setting up the puzzle of basic-level reference, and \emph{then} set up connections with overinformativity, rational models, etc.? (e.g. ``There are many ways to refer to any given object. If you see a man walking a dalmatian down the street, you could tell your friend about it using ``dalmatian,'' ``dog,'' ``animal,'' or even ``living thing'' and all would be true. By the age of three, children are willing to accept multiple labels for the same object, at different levels of abstraction \cite{WaxmanHatch92_BasicLevelLabeling}. How do speakers manage this broad flexibility in the choice of referring expression?)}
+One of the main purposes of language is communication. In fact, some cognitive scientists have gone as far as proposing that language may simply be a special case of social cognition: Speakers choose an utterance approximately optimally such that a listener can infer the intended meaning by means of Bayesian inference \cite{frank2012}. According to this view, language is essentially about reasoning about other people's knowledge, states and intentions. An important assumption here is that the speaker is a rational agent, who selects an utterance based on its optimal expected utility. 
 
 Although approaches in this framework have been increasingly successful in predicting human behavior, past research in the area of referential expressions has demonstrated that speakers are not necessarily behaving in a rational manner when it comes to producing referential expressions. For instance when subjects tend to overly produce color modifiers to describe objects, even if color is not an attribute necessary for disambiguation (e.g. Pechmann, 1989; Sedivy, 2003). For example, when subjects are being shown a small red cup as a target object in the context of a big red cup and a big blue cup and asked to describe the target, a significant amount of subjects say ``small red cup'', when ``small cup'' would have been sufficient for disambiguation. Speakers are producing overinformative utterances and can thus be said to be irrational in their behavior (Gatt et al., 2012). 
 
-Furthermore, in terms of levels of reference it has been established that speakers have a strong preference for the basic level of reference when describing objects (Rosch, 1976). That is, when asked whether to call an object a ``dalmatian'', a ``dog'' or an ``animal'' out of context, speakers favor ``dog'' over the other two alternative levels of reference. Seen in the light of overinformativeness, one might argue that speakers act in an overinformative manner when describing an object in a more specific way than is necessary for disambiguation, for example when saying ``dog'' in the above scenario instead of calling the object an ``animal''. But under what circumstances do speakers actually use the basic level and when do they revert to the sub- or superlevel? Which other factors contribute to the choice of utterance and is there a way to manipulate the speaker's behavior? 
+\todo[inline]{rdh: I spruced up this paragraph about Rosch and the basic-level literature!}
+In a series of classic experiments on the structure of concepts, Eleanor Rosch and colleagues established that there is a maximally informative level of abstraction in category taxonomies. Dogs have a large number of features in common -- four legs, wagging tail, loyal companion -- which differentiate them from other animals, but there are fewer features that distinguish dalmatians from german shepherds. She called this level of abstraction (e.g. ``dog'') the \emph{basic level} \cite{RoschEtAl76_BasicLevel}. Among other consequences of this structure, participants in a free-response naming task were much more likely to use the basic-level than the superordinate level of subordinate level, even though they knew all three terms. Subsequent studies showed that the preferred level of reference depends on expertise \cite{TanakaTaylor91_BasicLevelAndExpertise} and context \cite{JohnHampsonGoldbert91_BasicLevelPersonality}.
+
+\todo[inline]{rdh: Wherever we end up putting the previous paragraph, it might be nice to follow it with a paragraph suggesting that we should also expect basic-level reference to be affected by communicative pressures}
+
+%Seen in the light of overinformativeness, one might argue that speakers act in an overinformative manner when describing an object in a more specific way than is necessary for disambiguation, for example when saying ``dog'' in the above scenario instead of calling the object an ``animal''. But under what circumstances do speakers actually use the basic level and when do they revert to the sub- or superlevel? Which other factors contribute to the choice of utterance and is there a way to manipulate the speaker's behavior? 
 
 Including more attributes than are necessary to identify a target object may at first seem to contradict the Maxim of Quantity by Grice (1975), namely to make one's contribution as informative than is required and not more, but what does it actually mean for an utterance to be more informative than *required*? Does it mean that this utterance mentions attributes redundantly irrespective of their utility? What if the so called ``redundant'' attributes (e.g. Arts, 2004; Arts, Maes, Jansen, \& Noordman, 2011) actually have an utility after all by influencing the processing of an utterance? Pechmann (1985) has argued that the excessive use of color adjectives in referential expressions does in fact contribute to the informativeness of the utterance, namely by excluding some (but not all) distractors. As a matter of fact, other studies have demonstrated that overspecified utterances give rise to shorter identification times compared to minimally specified expressions (Deutsch, 1976; Sonnenschein, 1982). Thus, ``overinformative'' behavior must not necessarily be irrational behavior. 
 
@@ -84,25 +102,31 @@ The following experiment explores what effect context has on the choice of refer
 
 \section{\bf Methods}
 
+\ndg{i think we want procedure and design figure(s). the procedure fig should show a screen shot from speaker and listener points of view. the design fig should illustrate the dist12, etc notation used later with a concrete domain.}
+
 \subsection{\bf Participants}
 We recruited 56 participants over Amazon’s Mechanical Turk, who were all native speakers of English and who were reimbursed for their participation in the experiment. The subjects participated in pairs of two.
 
 \subsection{\bf Materials}
-Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four targets were chosen, which were subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which did not belong to the same basic level category, but to the same supercategory (e.g. ``elephant'' or ``squirrel''). 
+Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four target images were chosen, corresponding to four subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). 
 
 \subsection{\bf Design}
 Each trial consisted of a display of three pictures of objects, one of which was designated as the target object. There were four target objects for each of the eight domains, each of which would appear once for every pair, giving rise to a total of 36 trials per pair. There were four conditions which differed in the types of distractors which were shown: (a) {\bf distractor12}: one distractor of the same basic level and one distractor of the same superlevel were present (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) {\bf distractor22}: two distractors of the same superlevel were present, (c) {\bf distractor23}: one distractor of the same superlevel and one artifact were present and (d) {\bf distractor33}: two artifacts were present. The selection of distractors was random for each trial. Furthermore, the experiment contained 36 filler items, in which participants were also asked to produce referential expressions for objects, but here the three pictures illustrated the same stimulus which differed only in size and color. No filler items were reused in the target trials.
 
 \subsection{\bf Procedure}
-The experiment was conducted online within a reference game setting. Subjects participated in pairs and were either assigned the speaker or the listener role. Participants would keep their allotted roles for the entire experiment. They were informed that the order of the three pictures which they would both see will be different for the speaker and the listener. Only the speaker could identify the target object by a green square surrounding it. There was a chatbox in which speaker and listener could send messages to each other and communicate. The task was for the speaker to tell the listener which one of the objects is the target and for the listener in turn to select the right object based on this information provided by the speaker. 
+Pairs of participants were connected through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. Subjects participated in pairs, with one member of each pair assigned the speaker role and the other to the listener role. Participants kept their allotted roles for the entire experiment. 
+Each saw the same set of three images, however participants were informed that image placement would be (and in fact was) different for the speaker and the listener. The target object was identified by a green square surrounding it for the speaker (but not listener). There was a chatbox in which speaker and listener could send text messages to each other. The task was for the speaker to tell the listener which one of the objects is the target, and for the listener in turn to select the right object based on the information provided by the speaker. 
 
 \subsection{\bf Annotation}
-Responses were parsed automatically and subsequently checked manually to determine the level of reference used. Incorrect trials were excluded from the analysis, which led to the elimination of 1,1\% of trials. Moreover, one analysis was done which included only the literal mentioning of the sub-, basic- and superclass, whereas another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category). 
+Responses were parsed automatically and subsequently checked manually to determine the level of reference used. 
+\ndg{need to describe this parsing / coding in more detail.}
+Incorrect trials were excluded from the analysis, which led to the elimination of 1.1\% of trials. Two analyses were done: one analysis included only the literal mentioning of the sub-, basic- and superclass; another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category). 
 
 \section{\bf Results}
 
 \subsection{}
-As shown in Fig. 1, speakers are most  likely to refer to the target object with a subcategory label, if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less probable than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
+As shown in Fig. 1, speakers are most  likely to refer to the target object with a subcategory label, if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less common than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
+\ndg{add stats.}
 
 \begin{figure}[ht!]
 \centering
@@ -120,6 +144,7 @@ The overall effects were slightly different in the different domains (see Fig. 2
 \end{figure}
 
 \subsection{\bf Utterance length}
+\ndg{maybe we want to include length and frequency in a big mlm described above in the main results section. (ie main effects of distractor, frequency, and length on usage.) then have a final paragraph or subsection on item effects?}
 Another factor contributing to the selection of a level of reference is relative utterance length. As displayed in Fig. 3, speakers are more likely to use the subcategory term if it is relatively short compared to the basic level term (i.e. the ratio sub/basic is relatively small, see blue bars in sublevel column). For example, the length ratio of ``chihuahua''/''dog'' is bigger than that of ``pug''/''dog'', thus the data suggests that ``chihuahua'' is less frequently used than ``pug''. This effect was independent of whether the use of the subcategory was forced by a distractor of the same basic level in the context or not. Furthermore, if the subcategory term was relatively long compared to the basiclevel (i.e. the sub/basic ratio is relatively big, see red bars in basic level column), subjects are more likely to use the basic level referential expression. Statistical tests confirmed
 
 \begin{figure}[ht!]
@@ -130,6 +155,7 @@ Another factor contributing to the selection of a level of reference is relative
 
 \subsection{\bf Utterance frequency}
 Besides contextual informativeness and utterance length, the frequency of a specific label also plays a role in determining speakers choice in referential expression. Illustrated in Fig. 4, the data suggests that relatively frequent sublevel terms (i.e. those which have a relatively high frequency compared to the frequency of the basic level and thus also have a relatively big frequency ratio) are preferred over more infrequent ones. This is especially the case when the speaker is not forced to use the subcategory term, namely when there is no distractor present which is a member of the same basic level category as the target (conditions distr22, distr23 and distr33). The basic level terms on the other hand are used more often if the competing sublevel alternative is relatively infrequent (see blue bars in basic level column). ...
+\ndg{freq and length are colinear. show that both are needed.}
 
 \begin{figure}[ht!]
 \centering
@@ -146,13 +172,32 @@ Furthermore, there was an interaction between length and frequency, such that le
 \caption{Figure 5: Probability of using a sublevel term when its frequency is high opposed to low and the length short opposed to long, averaged over conditions \label{overflow}}
 \end{figure}
 
-\section{\bf Modelling the choice of referential expression in RSA}
+\section{\bf Modeling level of reference}
+
+To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic-level reference. As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener, but also seeks to be parsimonious. The literal listener updates their beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. We incorporate length and frequency as costs that affect the speaker's likelihood of using a label, and we account for typicality as part of a label's graded meaning: the label ``dog'' fits a dalmatian better than a grizzly bear, but it also fits a grizzly bear better than a tennis ball.
+\ndg{how we write this section depends partly on how important confusability (ie typicality) is to our story and whether we have item-wise data to plug in.}
+
+Formally, we start by specifying a literal listener $L_0$ who hears a label $l$ in the context of some set of objects $\mathcal{O}$ and returns a response distribution over objects $o_i \in \mathcal{O}$ : 
+$$P_{L_0}(o_i | l) \propto \denote{l}(o_i)$$
+where $\denote{l}(o_i)$ is the lexical meaning of the label $l$ when applied to object $o_i$. We take this to be a real number indicating the degree of acceptability or typicality of object $o_i$ for category $l$. \ndg{adjust...}
+
+Next, we specify a speaker $S_1$ who is attempting to refer to a particular object $o \in \mathcal{O}$ and chooses among possible labels $l_j \in \ell(o)$: 
+$$P_{S_1}(l_j | o) \propto \exp\{\alpha \left( \ln P_{L_0}(o | l_j) + U_{cost}(l_j) \right) \}$$
+where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativity and cost?}
+
+Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
+\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
+We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
+
+
+\ndg{MODEL RESULTS AND ANALYSIS!!}
+
 
 \section{\bf Discussion and conclusion}
 
 \section{\bf Acknowledgments}
 
-This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.Mobility Award to JD.
+This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.Mobility Award to JD. RXDH was supported by the Stanford Graduate Fellowship and the National Science Foundation Graduate Research Fellowship under Grant No. DGE-114747.
 
 \small
 
