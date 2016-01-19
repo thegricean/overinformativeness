@@ -1,0 +1,27 @@
+P_{L_0}(o|u) \propto \delta_{[[u]](o)}\cdot P(o)
+
+[[u]] : O \rightarrow \{1, 0\}
+
+U = \{\textrm{big}, \textrm{small}, \textrm{green}, \textrm{black}\}
+
+U = \{\textrm{big}, \textrm{small}, \textrm{green}, \textrm{black}
+
+\textrm{big green}, \textrm{small green}, \textrm{small black}\}
+
+P_{S_1}(u|o) \propto e^{\lambda \cdot (\ln P_{L_0}(o|u) - C(u))}
+
+
+[[u]] = [[u_1]] \wedge [[u_2]]
+[[\textrm{big } \textrm{green}]] = [[\textrm{big}]] \wedge [[\textrm{green}]]
+
+C(u) = C(u_1) + C(u_2)
+
+P_{L_0}(o|u) \propto \delta_{[[u]](o)}\cdot \color{red}P_{\textrm{fid}}(u) \color{white}\cdot P(o)
+
+P^{\textrm{color}}_{\textrm{fid}} = P_{\textrm{fid}}(\textrm{green}) = P_{\textrm{fid}}(\textrm{black})
+P_{\textrm{fid}}(\textrm{big}) = P_{\textrm{fid}}(\textrm{small}) 
+
+P_{\textrm{fid}}(size)
+P_{\textrm{fid}}(color)
+
+P_{S_1}(u|o) \propto e^{\lambda \cdot (\ln P_{L_0}(o|u) - \color{red}C(u)\color{white})}
