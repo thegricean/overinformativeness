@@ -1,3 +1,0 @@
-normalizedFreqLength_Additive.csv filter=lfs diff=lfs merge=lfs -text
-
-normalizedFreqLength_Multiplicative.csv filter=lfs diff=lfs merge=lfs -text
