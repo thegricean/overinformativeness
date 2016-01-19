@@ -1,0 +1,320 @@
+; Created October 31 2015 by jdegen
+; Updated January 10 2016 by jdegen
+
+(define (power dist a) (list (first dist) 
+                             (map (lambda (x) (pow x a)) (second dist))))
+
+(define listener_n 1500) ;mh-query iterations in literal listener
+(define speaker_n 1000) ;mh-query iterations in pragmatic speaker
+;(define prior-exp 5)
+
+; Free word fidelity and speaker optimality parameters (none of which are used in this model):
+(define color_fidelity .999) ; 1 - noise probability (color -- higher means less noise -- unused in this model)
+(define size_fidelity .999) ; 1 - noise probability (size -- higher meanss less noise -- unused in this model) 
+(define type_fidelity .9999) ; 1 - noise probability (size -- higher meanss less noise -- unused in this model)
+;(define speaker-opt 18) ; standard speaker optimality parameter
+
+; Free word cost parameters (equal costs):
+(define color_cost .1) ; lower means less costly
+(define size_cost .1) ; lower means less costly
+(define type_cost .1) ; lower means less costly
+
+; A context is a labeled list of lists, where sub-lists represent objects with a color and a type feature. The following three contexts are taken directly from Westerbeek et al. 2014. The first object in each context represents the target object for that context, in descending order of color typicality (red tomato, yellow apple, blue pepper)
+(define contexts
+	(list
+  	(list 'typical
+        (list (list 'red 'tomato)
+              (list 'red 'pumpkin)
+              (list 'green 'lemon)
+              (list 'green 'cheese)
+              (list 'yellow 'corn)
+              (list 'yellow 'lettuce)
+              ))
+	  (list 'intermediate
+        (list (list 'yellow 'apple)
+              (list 'orange 'carrot)
+              (list 'red 'corn)
+              (list 'red 'banana)
+              (list 'yellow 'pineapple)
+              (list 'orange 'naranja)
+              )) 
+  	(list 'atypical
+        (list (list 'blue 'pepper)
+              (list 'green 'apple)
+              (list 'blue 'lemon)
+              (list 'yellow 'pineapple)
+              (list 'yellow 'banana)
+              (list 'green 'lettuce)
+              ))))
+
+
+; The literal listener infers a distribution over objects, given an utterance -- retrieves the color prior for a simple type utterance and perfectly retrieves that true feature combination if color is mentioned
+(define literal-listener
+  (mem   (lambda (utterance color_fidelity size_fidelity type_fidelity objects prior-exp)    
+           (mh-query listener_n 25
+                     ; split utterance into its parts   
+                     (define sub-utts (regexp-split utterance '_))
+
+                     ; color priors for the objects in the contexts, obtained by normalizing the color typicality values from Westerbeek et al 2015
+                     (define carrot-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.087248322 0.09395973 0.65771812 0.04026846 0.1208054))))
+
+                     (define pineapple-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.071005917 0.05917160 0.31952663 0.10650888 0.4437870))))
+
+                     (define naranja-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.072222222 0.10555556 0.50555556 0.05555556 0.2611111))))
+
+                     (define grapes-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (exp (* prior-exp p))) (list 0.078431373 0.47549020 0.08333333 0.08333333 0.2794118))))                                    
+
+                     (define tomato-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.013392857 0.16964286 0.29017857 0.43303571 0.0937500))))
+
+                     (define apple-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.016233766 0.19480519 0.29870130 0.30194805 0.1883117))))
+
+                     (define pepper-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.005649718 0.24858757 0.21468927 0.27401130 0.2570621))))
+
+                     (define pear-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.030487805 0.41463415 0.20121951 0.10975610 0.2439024))))                                     
+
+                     (define lettuce-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.017751479 0.54437870 0.02366864 0.01775148 0.3964497)))) 
+
+                     (define banana-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.106741573 0.20786517 0.14044944 0.03370787 0.5112360))))
+
+
+                     (define pumpkin-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.011627907 0.06976744 0.56976744 0.12209302 0.2267442))))
+
+                     (define lemon-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.038251366 0.02732240 0.38797814 0.02732240 0.5191257))))
+
+                     (define cheese-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.018072289 0.03012048 0.30722892 0.05421687 0.5903614))))
+
+                     (define corn-prior
+                       (multinomial '(blue green orange red yellow)
+                                    (map (lambda (p) (pow p prior-exp)) 
+                                    (list 0.053571429 0.11309524 0.22619048 0.02976190 0.5773810))))          
+
+                     ; helper function to get the right color prior depending on object type
+                     (define color-prior
+                       (lambda (obj-type)
+                         (case obj-type
+                               (('apple) apple-prior)
+                               (('carrot) carrot-prior) 
+                               (('pineapple) pineapple-prior)
+                               (('naranja) naranja-prior)
+                               (('pepper) pepper-prior) 
+                               (('lettuce) lettuce-prior)                                
+                               (('banana) banana-prior)
+                               (('tomato) tomato-prior) 
+                               (('pumpkin) pumpkin-prior)
+                               (('lemon) lemon-prior)
+                               (('cheese) cheese-prior) 
+                               (('broccoli) broccoli-prior)
+                               (('corn) corn-prior)                    
+                               )))
+
+                     ; color typicalities for the objects in the contexts; values taken from Westerbeek et al 2015 and rescaled to fit .6-1.00 fidelity range (lower bound of .6 rather than .5 to avoid completely random choices -- ie we do want the type to have some effect, even when its color is highly atypical)
+                     (define (type_fidelities obj_type)
+                       (case obj_type
+                             (('pepper) (list '(blue 0.608) '(yellow 0.964) '(green 0.952) '(orange 0.904) '(red 0.988)))
+                             (('apple) (list '(blue 0.62) '(yellow 0.832) '(green 0.84) '(orange 0.968) '(red 0.972)))
+                             (('banana) (list '(blue 0.676) '(yellow 0.964) '(green 0.748) '(orange 0.7) '(red 0.624)))
+                             (('carrot) (list '(blue 0.652) '(yellow 0.672) '(green 0.656) '(orange 0.992) '(red 0.624)))
+                             (('cheese) (list '(blue 0.612) '(yellow 0.992) '(green 0.62) '(orange 0.804) '(red 0.636)))
+                             (('corn) (list '(blue 0.636) '(yellow 0.988) '(green 0.676) '(orange 0.752) '(red 0.62)))
+                             (('grapes) (list '(blue 0.664) '(yellow 0.828) '(green 0.988) '(orange 0.668) '(red 0.668)))                             
+                             (('lemon) (list '(blue 0.628) '(yellow 0.98) '(green 0.62) '(orange 0.884) '(red 0.62)))
+                             (('lettuce) (list '(blue 0.612) '(yellow 0.868) '(green 0.968) '(orange 0.616) '(red 0.612)))
+                             (('naranja) (list '(blue 0.652) '(yellow 0.788) '(green 0.676) '(orange 0.964) '(red 0.64)))
+                             (('pear) (list '(blue 0.62) '(yellow 0.76) '(green 0.872) '(orange 0.732) '(red 0.672)))
+                             (('pineapple) (list '(blue 0.648) '(yellow 0.9) '(green 0.64) '(orange 0.816) '(red 0.672)))
+                             (('pumpkin) (list '(blue 0.608) '(yellow 0.756) '(green 0.648) '(orange 0.992) '(red 0.684)))
+                             (('tomato) (list '(blue 0.612) '(yellow 0.684) '(green 0.752) '(orange 0.86) '(red 0.988)))))
+
+
+                     ; helper function to get a type's fidelity (ie typicality score)
+                     (define (get-fidelity utt obj)
+                       (define colors 			
+                         (map (lambda (fid)
+                                (first fid))
+                              (type_fidelities utt)))
+
+                       (define fidelities 			
+                         (map (lambda (fid)
+                                (second fid))
+                              (type_fidelities utt)))
+
+                       (if (> (list-index colors (first obj)) -1)
+                           (list-ref fidelities (list-index colors (first obj)))
+                           .6))
+
+                     ; The basic lexicon that encodes noisy semantics for words (ie correctly returns true/false with probability determined by fidelity parameter)
+                     (define (lexicon utterance obj)
+                       (if (> (list-index obj utterance) -1)
+                           (flip (get-fidelity utterance obj))
+                           (flip (- 1 (get-fidelity utterance obj)))))
+
+                     ; The meaning function 
+                     ; - if the utterance is just a color, returns true (because we don't condition on the meaning of color, we use it to sample a candidate object)
+                     ; - else check that the type meaning is true of candidate object
+                     (define (meaning utterance obj)
+                       (if (lexical-item? utterance)
+                           (if (> (list-index '(red orange yellow green blue purple black brown pink white)
+                                              utterance) -1)
+                               true
+                               (lexicon utterance obj))
+                           (lexicon (second (regexp-split utterance '_)) obj)))
+
+                     ; Helper function for meaning: Checks whether an utterance is a lexical item (i.e. an utterance that is only one word long)
+                     (define (lexical-item? utterance)
+                       (= (length (regexp-split utterance '_)) 1))
+
+                     ; Helper function to get the object's color -- if the utterance is a color_noun utterance, it's just the first word; otherwise, take a sample from the object's color prior
+                     (define obj-color 
+                       (if (> (list-index 
+                               '(red orange yellow green blue)
+                               (first sub-utts)) -1)
+                           (first sub-utts)
+                           (color-prior (first sub-utts))))
+
+                     ; Then sample an object depending on the sampled color.
+
+                     ; Helper function: check whether an object has a color and return true if it does, false otherwise (not entirely categorical but instead tiny number when object doesn't have color, to not mess up the support in sample-compatible-object)
+                     (define (check-color obj color)
+                       (if (equal? (first obj) color)
+                           1
+                           0.00000001))
+
+
+                     ; Helper function that samples an object from only that set of objects in context that has the sampled color.
+                     (define sample-compatible-object
+                       (multinomial objects
+                                    (map (lambda (o) 
+                                           (check-color o obj-color)) 
+                                         objects)
+                                    ))
+
+                     ; Select candidate object (by sampling from the contextual objects compatible with the color expectation that the utterance generates)
+                     (define obj sample-compatible-object)
+
+                     obj
+
+                     (meaning utterance obj)))))
+
+
+; A pragmatic speaker that infers a distribution over utterances, given an object from a context (plus knowledge of word fidelities and costs, but those are all either not used or set to be equal to each other here)
+
+(define pragmatic-speaker 
+  (mem (lambda (obj color_fidelity size_fidelity type_fidelity color_cost size_cost type_cost context cost-param prior-exp)
+ ;        (mh-query speaker_n 1
+                   ; Helper function for utterances: concatenates an object's features to create a "_"-separated two-word utterance like "red_apple"
+                   (define (gen-utt obj)
+                     (list
+                      (second obj)
+                      (string-append (first obj) '_ (second obj))
+                      ))	
+
+                   ; Generates the set of alternatives for the object by taking all feature conjunctions as utterances as well as each individual feature (currently only implemented for two-feature objects)
+                   (define utterances
+                     (gen-utt obj))
+
+                   ; Generates a cost vector for the utterances, with a fixed cost for an extra word (free parameter defined at beginning of file). 
+                   (define (costs color_cost type_cost)
+                     (map (lambda (utt)
+                            (sum (map (lambda (word) 
+                                        (if (or (equal? word 'red) 
+                                                (equal? word 'orange)
+                                                (equal? word 'yellow)                                                                    
+                                                (equal? word 'green)
+                                                (equal? word 'blue))
+                                            color_cost 
+                                            type_cost)) 
+                                      (regexp-split utt '_))))
+                          utterances))
+
+
+                   ; This way of formulating the cost function makes it so that you're twice as likely to choose an utterance with just one word as opposed to two (given the total number of utterances is 12, as is the case in the contexts we're looking at) -- it's worth thinking about whether we should fit a parameter (what is currently set to 6)     
+			(enumeration-query
+                   (define utterance (multinomial utterances 
+                                                  (map (lambda (c) (exp (- (* cost-param c)))) (costs color_cost size_cost type_cost)))) 
+
+                   utterance
+
+                   (equal? obj
+                           (uniform-draw 
+                            (literal-listener utterance color_fidelity size_fidelity type_fidelity context prior-exp))))
+         )))
+
+
+(define run-speaker 
+  (lambda (color_fidelity size_fidelity type_fidelity color_cost size_cost type_cost speaker-opt context cost-param prior-exp)
+  	(define obj (first (second context)))
+    (define results (power 
+                     (pragmatic-speaker obj color_fidelity size_fidelity type_fidelity color_cost size_cost type_cost (second context) cost-param prior-exp) 
+                     speaker-opt))
+    (define utts (first results))
+    (define probs (second results))
+    (define context_label (first context))
+    (list (flatten (list 'object 'speaker-opt 'context 'cost-param 'prior-exp utts)) (flatten (list  obj speaker-opt context_label cost-param prior-exp (map (lambda (p) (/ p (sum probs))) probs))))
+    ))	
+
+(define speaker-opts (list 1 5 10 15))
+(define cost-params (list 1 2 3 5 7))
+(define prior-exps (list 1 2 3 5 7 9))
+
+(write-csv
+	(map (lambda (context)
+		(map (lambda (speaker-opt)       
+			(map (lambda (cost-param)       		
+				(map (lambda (prior-exp) 			
+					(run-speaker color_fidelity size_fidelity type_fidelity color_cost size_cost type_cost speaker-opt context cost-param prior-exp))
+				prior-exps))
+			cost-params))
+		speaker-opts))
+	contexts)
+	"/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/4_color_predictability/results/raw/results.txt")
+
+;(define utterances '(red tomato red_tomato yellow apple yellow_apple blue pepper blue_pepper))
+
+
+;(write-csv
+;	(map (lambda (context)
+;	       (map (lambda (utt)
+;				(literal-listener utt .999 .999 .999 (second context)))
+;	            utterances))
+;	     contexts)
+;	"/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/4_color_predictability/results/raw/listener_results.txt")
+
+
