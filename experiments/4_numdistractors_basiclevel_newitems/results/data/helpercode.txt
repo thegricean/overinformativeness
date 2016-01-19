@@ -1,0 +1,3823 @@
+
+{
+"item": "ambulance",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ambulance",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ambulance",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ambulance",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bookcase",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bookcase",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bookcase",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "bookcase",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chips",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chips",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chips",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chips",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "chips",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "dress",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "dress",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "dress",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "dress",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "dress",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "firetruck",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "firetruck",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "firetruck",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "firetruck",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "firetruck",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "iguana",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "iguana",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "iguana",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "iguana",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ivy",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ivy",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ivy",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ivy",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "ivy",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "motorcycle",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "motorcycle",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "motorcycle",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pig",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "popcorn",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "popcorn",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "popcorn",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "popcorn",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "popcorn",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pottedplant",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pottedplant",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pottedplant",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rosemary",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rosemary",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rosemary",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rosemary",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "rosemary",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "socks",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "socks",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "socks",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "socks",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "socks",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "train",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "train",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "train",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "train",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "train",
+"label": "furniture",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "animal",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "plant",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "vehicle",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "snack",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "clothing",
+"itemtype": "dist_super",
+"labeltype": "super"
+},
+{
+"item": "koalabear",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "koalabear",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "koalabear",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "koalabear",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sparrow",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sparrow",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sparrow",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sparrow",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "greyhound",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "greyhound",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "greyhound",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "greyhound",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "candycorn",
+"label": "gummybears",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "candycorn",
+"label": "jellybeans",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "candycorn",
+"label": "mnms",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "candycorn",
+"label": "skittles",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lily",
+"label": "daisy",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lily",
+"label": "rose",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lily",
+"label": "sunflower",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lily",
+"label": "tulip",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sedan",
+"label": "convertible",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sedan",
+"label": "minivan",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sedan",
+"label": "sportscar",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sedan",
+"label": "suv",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "discusfish",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "discusfish",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "discusfish",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "discusfish",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "campshirt",
+"label": "dressshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "campshirt",
+"label": "hawaiishirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "campshirt",
+"label": "poloshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "campshirt",
+"label": "tshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sidetable",
+"label": "bedsidetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sidetable",
+"label": "coffeetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sidetable",
+"label": "diningtable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sidetable",
+"label": "picnictable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "koalabear",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "greyhound",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "candycorn",
+"label": "candy",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sidetable",
+"label": "table",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "campshirt",
+"label": "shirt",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "discusfish",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sparrow",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lily",
+"label": "flower",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sedan",
+"label": "car",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "koalabear",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "greyhound",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "candycorn",
+"label": "snack",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "sidetable",
+"label": "furniture",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "campshirt",
+"label": "clothing",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "discusfish",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "sparrow",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "lily",
+"label": "plant",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "sedan",
+"label": "vehicle",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "ambulance",
+"label": "sportscar",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ambulance",
+"label": "convertible",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ambulance",
+"label": "suv",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ambulance",
+"label": "minivan",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ambulance",
+"label": "car",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "ambulance",
+"label": "vehicle",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "bathrobe",
+"label": "tshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bathrobe",
+"label": "dressshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bathrobe",
+"label": "hawaiishirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bathrobe",
+"label": "poloshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bathrobe",
+"label": "shirt",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bathrobe",
+"label": "clothing",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "coffeetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bed",
+"label": "picnictable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bed",
+"label": "diningtable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bed",
+"label": "table",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bed",
+"label": "furniture",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "bed",
+"label": "bedsidetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bison",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bison",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bison",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bison",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bison",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "bison",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bookcase",
+"label": "coffeetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bookcase",
+"label": "picnictable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bookcase",
+"label": "diningtable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bookcase",
+"label": "bedsidetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "bookcase",
+"label": "table",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "bookcase",
+"label": "furniture",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "chick",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "chick",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "chick",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "chick",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "chick",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chick",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chips",
+"label": "mnms",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chips",
+"label": "gummybears",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chips",
+"label": "skittles",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chips",
+"label": "jellybeans",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "chips",
+"label": "candy",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "chips",
+"label": "snack",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "cookies",
+"label": "skittles",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cookies",
+"label": "jellybeans",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cookies",
+"label": "mnms",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cookies",
+"label": "gummybears",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cookies",
+"label": "candy",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "cookies",
+"label": "snack",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "cow",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "cow",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "cow",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "cow",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "cow",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "cow",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "crocodile",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "crocodile",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "crocodile",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "crocodile",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "crocodile",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "dress",
+"label": "hawaiishirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "dress",
+"label": "poloshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "dress",
+"label": "tshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "dress",
+"label": "dressshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "dress",
+"label": "shirt",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "dress",
+"label": "clothing",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "elephant",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "elephant",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "elephant",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "elephant",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "elephant",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "elephant",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "firetruck",
+"label": "convertible",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "firetruck",
+"label": "sportscar",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "firetruck",
+"label": "suv",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "firetruck",
+"label": "minivan",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "firetruck",
+"label": "car",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "firetruck",
+"label": "vehicle",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "gloves",
+"label": "poloshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "gloves",
+"label": "hawaiishirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "gloves",
+"label": "tshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "gloves",
+"label": "dressshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "gloves",
+"label": "shirt",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "gloves",
+"label": "clothing",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "grasses",
+"label": "rose",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "grasses",
+"label": "sunflower",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "grasses",
+"label": "daisy",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "grasses",
+"label": "tulip",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "grasses",
+"label": "flower",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "grasses",
+"label": "plant",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "horse",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "horse",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "horse",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "horse",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "horse",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "horse",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "iguana",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "iguana",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "iguana",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "iguana",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "iguana",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "iguana",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ivy",
+"label": "sunflower",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ivy",
+"label": "tulip",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ivy",
+"label": "daisy",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ivy",
+"label": "rose",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "ivy",
+"label": "flower",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "ivy",
+"label": "plant",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "kitten",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "kitten",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "kitten",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "kitten",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "kitten",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "kitten",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lamp",
+"label": "bedsidetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lamp",
+"label": "picnictable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lamp",
+"label": "diningtable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lamp",
+"label": "table",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lamp",
+"label": "furniture",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "lamp",
+"label": "coffeetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lion",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lion",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lion",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "lion",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lion",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lobster",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lobster",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lobster",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lobster",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "lobster",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "lobster",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "lobster",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "motorcycle",
+"label": "sportscar",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "motorcycle",
+"label": "minivan",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "motorcycle",
+"label": "suv",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "motorcycle",
+"label": "convertible",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "motorcycle",
+"label": "car",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "motorcycle",
+"label": "vehicle",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "pig",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pig",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pig",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pig",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pig",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "pig",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pig",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "popcorn",
+"label": "gummybears",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "popcorn",
+"label": "jellybeans",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "popcorn",
+"label": "skittles",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "popcorn",
+"label": "mnms",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "popcorn",
+"label": "candy",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "popcorn",
+"label": "snack",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "pottedplant",
+"label": "rose",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pottedplant",
+"label": "tulip",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pottedplant",
+"label": "daisy",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pottedplant",
+"label": "sunflower",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pottedplant",
+"label": "flower",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pottedplant",
+"label": "plant",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "pretzels",
+"label": "mnms",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pretzels",
+"label": "skittles",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pretzels",
+"label": "gummybears",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pretzels",
+"label": "jellybeans",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "pretzels",
+"label": "candy",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "pretzels",
+"label": "snack",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rabbit",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rabbit",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rabbit",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rabbit",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "rabbit",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rabbit",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rhino",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rhino",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rhino",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rhino",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rhino",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "rhino",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rosemary",
+"label": "daisy",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rosemary",
+"label": "sunflower",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rosemary",
+"label": "rose",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rosemary",
+"label": "tulip",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "rosemary",
+"label": "flower",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "rosemary",
+"label": "plant",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "swordfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sheep",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sheep",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sheep",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "sheep",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "sheep",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "sheep",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "snake",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "snake",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "snake",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "snake",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "snake",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "snake",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "socks",
+"label": "tshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "socks",
+"label": "dressshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "socks",
+"label": "hawaiishirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "socks",
+"label": "poloshirt",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "socks",
+"label": "shirt",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "socks",
+"label": "clothing",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "pug",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "parrot",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "dalmatian",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "clownfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "goldfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "catfish",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "grizzlybear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "hummingbird",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "polarbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "husky",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "pigeon",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "germanshepherd",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "pandabear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "dog",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "squirrel",
+"label": "bird",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "squirrel",
+"label": "fish",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "squirrel",
+"label": "bear",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "squirrel",
+"label": "animal",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "squirrel",
+"label": "blackbear",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "squirrel",
+"label": "eagle",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "train",
+"label": "minivan",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "train",
+"label": "sportscar",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "train",
+"label": "convertible",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "train",
+"label": "suv",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "train",
+"label": "car",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "train",
+"label": "vehicle",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},
+{
+"item": "wardrobe",
+"label": "bedsidetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "wardrobe",
+"label": "picnictable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "wardrobe",
+"label": "coffeetable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "wardrobe",
+"label": "diningtable",
+"itemtype": "dist_samesuper",
+"labeltype": "sub"
+},
+{
+"item": "wardrobe",
+"label": "table",
+"itemtype": "dist_samesuper",
+"labeltype": "basic"
+},
+{
+"item": "wardrobe",
+"label": "furniture",
+"itemtype": "dist_samesuper",
+"labeltype": "super"
+},

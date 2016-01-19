@@ -1931,7 +1931,7 @@ pairs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformat
 colnames(pairs) = c("Object","Label")
 pairs$Label = gsub("m&m's","mnms",pairs$Label)
 pairs$Label = gsub("t-shirt","tshirt",pairs$Label)
-pairs$Label = gsub("flower"","flower",pairs$Label)
+pairs$Label = gsub("flower\"","flower",pairs$Label)
 pairs$ObjectBasic = combos[as.character(pairs$Object),]$basic
 pairs$ObjectSuper = combos[as.character(pairs$Object),]$super
 pairs$LabelBasic = combos[as.character(pairs$Label),]$basic
@@ -1965,3 +1965,10 @@ table(pairs[pairs$Target == "dist",]$SameSuper) # Of the distractors, 469 are ca
 table(pairs[pairs$Target == "dist",]$SameSuper,pairs[pairs$Target == "dist",]$SameBasic)
 table(pairs[pairs$Target == "dist",]$SameSuper,pairs[pairs$Target == "dist",]$LabelType) # Of the distractors with a different superclass, 168 are cases of superclass norms
 # So if we want to only get typicality norms for cases where object and label belong to the same superclass (eg pair the elephant only with other animal labels like “pug”/“dog”) or where the label is the superclass label from another class (eg “furniture"), we'll need to norm 108+469+168 = 745 cases
+
+norms = pairs[(pairs$Target == "target" | pairs$Target == "dist" & pairs$SameSuper == "same" | pairs$Target == "dist" & pairs$SameSuper == "different" & pairs$LabelType == "super"),]
+nrow(norms)
+head(norms)
+norms$ItemType = as.factor(ifelse(norms$Target == "target","target",ifelse(norms$SameSuper == "same","dist_samesuper","dist_super")))
+prop.table(table(norms$ItemType)) # we want to try to get 63% dist_samesuper, 22% dist_super, and 14% targets per subject
+write.table(norms[,c("Object","Label","ItemType","LabelType")],file="data/norms.txt",col.names=T,sep="\t",row.names=F,quote=F)
