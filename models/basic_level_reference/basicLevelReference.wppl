@@ -69,8 +69,8 @@ var BasicLevelModel = function(domainInfo, alpha, freqWeight, lengthWeight) {
 };
 
 var alphaRange = _.range(.5, 10, .5); 
-var lengthWeightRange = [1]; //_.range(.5, 10, .5); 
-var freqWeightRange = [1]; //_.range(.5, 10, .5); 
+var lengthWeightRange = _.range(.5, 10, .5); 
+var freqWeightRange = _.range(.5, 10, .5); 
 
 var filename = "normalizedFreqLength.csv";
 refModule.writeCSV([["domain", "condition", "target", "alpha",
