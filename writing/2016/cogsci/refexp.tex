@@ -31,6 +31,7 @@
 \usepackage{todonotes}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
+\usepackage{booktabs}
 
 \newcommand{\den}[2][]{
 \(
@@ -40,11 +41,12 @@
 
 %\newcommand{\url}[1]{$#1$}
 
-
+\definecolor{Blue}{RGB}{0,0,255}
 \definecolor{Red}{RGB}{255,0,0}
 \newcommand{\red}[1]{\textcolor{Red}{#1}}
 \definecolor{Green}{RGB}{10,200,100}
-\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}
+\newcommand{\jd}[1]{\textcolor{Blue}{[jd: #1]}}  
 
  \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
 
@@ -120,27 +122,53 @@ Each saw the same set of three images, however participants were informed that i
 \subsection{\bf Annotation}
 Responses were parsed automatically and subsequently checked manually to determine the level of reference used. 
 \ndg{need to describe this parsing / coding in more detail.}
-Incorrect trials were excluded from the analysis, which led to the elimination of 1.1\% of trials. Two analyses were done: one analysis included only the literal mentioning of the sub-, basic- and superclass; another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category). 
+Incorrect trials were excluded from the analysis, which led to the elimination of 1.1\% of trials. \red{Two analyses were done: one analysis included only the literal mentioning of the sub-, basic- and superclass; another analysis also included responses naming the main attribute of a class (e.g. ``can fly'' for ``bird'' was counted as mentioning the basic level category).}\jd{I think we want to focus on just the no-attributes analysis.} 
 
 \section{\bf Results}
 
 \subsection{}
-As shown in Fig. 1, speakers are most  likely to refer to the target object with a subcategory label, if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less common than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
+Proportions of sub, basic, and super level utterance choices in the different conditions are shown in \figref{fig:results1}. The sub level term is preferred where it is necessary for unambiguous referent identification. Where it is not necessary, there is a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials. 
+
+To test for the independent effects of informativeness, length, and frequency on sub level mention, we conducted a mixed effects logistic regression. Frequency was coded as the ratio of the sub to the basic level's log frequency. Length was coded as the ratio of the sub to the basic level's length in characters. That is, a higher frequency ratio indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level. Condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic sufficient}, and \emph{super sufficient}, where distr22 and distr23 were collapsed into \emph{basic sufficient}. Condition was Helmert-coded: two contrasts over the three condition levels were included in the model, comparing each level against the mean of the remaining levels (in order: \emph{sub necessary}, \emph{basic sufficient}, \emph{super sufficient}). This allowed us to determine whether the differences in type mention  for neighboring conditions suggested by \figref{fig:results1} were significant.\footnote{Adding terms that code the ratio of the sub vs super level frequency and length did not lead to an improvement of model fit.} The model included random by-speaker and by-domain intercepts. \figref{fig:domains} shows the by-domain variation in utterance choice.
+
+A model summary is shown in \tableref{tab:modelresults}. The log odds of mentioning the sub level term was greater in the \emph{sub necessary} condition than in either of the other two conditions, and greater in the \emph{basic sufficient} condition than in the \emph{super sufficient} condition, suggesting that the contextual informativeness of the sub level mention has a gradient effect on utterance choice. In addition, there was a main effect of length, such that as the length of the sub level term was greater compared to the basic level term, the sub level term was dispreferred. Finally, while there was no main effect of frequency, we observed a significant length by frequency interaction, such that the length effect was greater for cases where sub and basic level frequencies were more similar than when they were more dissimilar. This was the result of the fact that sub level terms were generally less frequent than basic level terms, so where they were more dissimilar, sub level terms were comparatively even less frequent than basic level terms. In this very low-frequency range, where the cost effect is already stacked against sub level mention, the further burden of increased length further reduces sub level mention.
+
+\begin{table}[!tbp]
+\caption{Mixed effects model summary.}
+\begin{center}
+\begin{tabular}{lrrl}
+\toprule
+\multicolumn{1}{l}{}&\multicolumn{1}{c}{Coef $\beta$}&\multicolumn{1}{c}{SE($\beta$)}&\multicolumn{1}{c}{$p$}\tabularnewline
+\midrule
+Intercept&$-0.48$&$0.39$&\textgreater0.22\tabularnewline
+Condition sub.vs.rest&$ 2.38$&$0.24$&\textbf{\textless.0001}\tabularnewline
+Condition basic.vs.super&$ 0.53$&$0.22$&\textbf{\textless.05}\tabularnewline
+Length&$-0.46$&$0.15$&\textbf{\textless.01}\tabularnewline
+Frequency&$ 0.83$&$0.66$&\textgreater0.21\tabularnewline
+Length:Frequency&$ 4.28$&$0.92$&\textbf{\textless.0001}\tabularnewline
+\bottomrule
+\end{tabular}\end{center}
+\label{tab:modelresults}
+\end{table}
+
+Speakers are most  likely to refer to the target object with a subcategory label if their choice of utterance is constrained by a distractor of the same basic level category as the target being present in the scene (i.e. condition distr12, e.g. target: ``dalmatian'', distractor 1: ``greyhound''). However, when there is no other object of the same basic level category present (as in conditions distr22, distr23 and distr33), subjects are far more likely to choose the basic level term. Interestingly, use of the subcategory term decreases further as there are less or no other distractors present which belong to the same supercategory (e.g. animal). That is, participants are less likely to say ``Dalmatian'' when there is another animal and an artifact in the display opposed to when there are two animals in the display, and even less likely to say ``Dalmatian'' when there are no animals in the display. Similarly, the use of the basic level expression steadily increases as the number distractors of the same supercategory decreases. Naming the object by its supercategory term is far less common than using either the sub- or basiclevel terms, but also increases as the constraints on the speakers utterance choice decrease. Statistical analyses confirmed a main effect of condition...
 \ndg{add stats.}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{graphs/proportion_mentioned_features}
-\caption{Figure 1: Histogram of probabilities of mentioning the sub-, basic- or superlevel category \label{overflow}}
+\caption{Proportion of utterance choice by condition. Error bars indicate bootstrapped 95\% confidence intervals.}
+\label{fig:results1}
 \end{figure}
 
 \subsection{\bf Domain-specific results}
-The overall effects were slightly different in the different domains (see Fig. 2). For instance, mentioning the subclass over the basic level term was preferred more in some domains (e.g. in the ``candy'' domain) than in others. Likewise, some domains had a greater preference for basic level terms (e.g. the ``shirt'' domain). Using the superclass term also ranged from hardly being observable (e.g. the ``flower'' domain) to being used more frequently (e.g. in the ``bird'' domain). Nevertheless, mentioning the sublevel category was always the most frequent choice of utterance in the case where a distractor of the same basic level was displayed. Furthermore, the sublevel term was always mentioned most frequently and the basic level least frequently in just this condition, compared to the other three conditions.
+The overall effects were slightly different in the different domains (see \figref{fig:domains}). For instance, mentioning the subclass over the basic level term was preferred more in some domains (e.g. in the ``candy'' domain) than in others. Likewise, some domains had a greater preference for basic level terms (e.g. the ``shirt'' domain). Using the superclass term also ranged from hardly being observable (e.g. the ``flower'' domain) to being used more frequently (e.g. in the ``bird'' domain). Nevertheless, mentioning the sublevel category was always the most frequent choice of utterance in the case where a distractor of the same basic level was displayed. Furthermore, the sublevel term was always mentioned most frequently and the basic level least frequently in just this condition, compared to the other three conditions.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{graphs/proportion_mentioned_features_by_domain}
-\caption{Figure 2: Domain-specific histogram of probabilities of referring to targets with sub-, basic- or superlevel term \label{overflow}}
+\caption{Proportion of utterance choice by domain and condition. Error bars indicate bootstrapped 95\% confidence intervals.\jd{update this figure}}
+\label{fig:domains}
 \end{figure}
 
 \subsection{\bf Utterance length}
@@ -149,9 +177,17 @@ Another factor contributing to the selection of a level of reference is relative
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
-\caption{Figure 3: Probability of using sub-, basic- and superlevel terms when the sublevel/basiclevel length ratio is bigger (red) or smaller (blue) than the mean  sublevel/basiclevel length ratio \label{overflow}}
+\includegraphics[width=.5\textwidth]{graphs/freq-length-interaction-bycond}
+\caption{Proportion of sub level mentions  }
+\label{fig:lengthfreqinteraction}
 \end{figure}
+
+
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
+%\caption{Figure 3: Probability of using sub-, basic- and superlevel terms when the sublevel/basiclevel length ratio is bigger (red) or smaller (blue) than the mean  sublevel/basiclevel length ratio \label{overflow}}
+%\end{figure}
 
 \subsection{\bf Utterance frequency}
 Besides contextual informativeness and utterance length, the frequency of a specific label also plays a role in determining speakers choice in referential expression. Illustrated in Fig. 4, the data suggests that relatively frequent sublevel terms (i.e. those which have a relatively high frequency compared to the frequency of the basic level and thus also have a relatively big frequency ratio) are preferred over more infrequent ones. This is especially the case when the speaker is not forced to use the subcategory term, namely when there is no distractor present which is a member of the same basic level category as the target (conditions distr22, distr23 and distr33). The basic level terms on the other hand are used more often if the competing sublevel alternative is relatively infrequent (see blue bars in basic level column). ...
