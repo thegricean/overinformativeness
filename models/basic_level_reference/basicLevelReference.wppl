@@ -57,7 +57,7 @@ var BasicLevelModel = function(domainInfo, alpha, freqWeight, lengthWeight) {
       factor(alpha * literalListenerERP.score([], target));
 
       var labelLength = refModule.getRelativeLength(label);
-      factor(lengthWeight * labelLength);
+      factor(- lengthWeight * labelLength);
 
       var labelFreq = refModule.getRelativeLogFrequency(label);
       factor(freqWeight * labelFreq);
