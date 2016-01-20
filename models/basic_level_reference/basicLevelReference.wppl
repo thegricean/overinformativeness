@@ -9,13 +9,28 @@ var uniformDraw = function (xs) {
   return xs[randomInteger(xs.length)];
 };
 
-var BasicLevelModel = function(domainInfo, alpha, freqWeight, lengthWeight) {
+var BasicLevelModel = function(domainInfo, params) {
   var tax = domainInfo.tax;
 
-  var labelFitness = function(label, object) {
+  var labelFitness = cache(function(label, object) {
+    var tax = domainInfo.tax;
+    var subLabels = domainInfo.targets;
+    var basicLabel = domainInfo.basicLabel;
+    var superLabel = domainInfo.superLabel;
+    // Use category typicality for items at the level of the given label
     var consistentObjs = tax[label];
-    return _.has(consistentObjs, object) ? tax[label][object] : -Infinity;
-  };
+    // Use small confusability parameter for items one level higher than given label
+    var confusableObjs = (_.contains(subLabels, label) ? tax[basicLabel] :
+			  label === basicLabel ? tax[superLabel] : []);
+    var confusibility = (_.contains(subLabels, label) ?
+			 params.basicLevelConfusability :
+			 params.superLevelConfusability);
+    var output = (_.has(consistentObjs, object) ? consistentObjs[object] :
+		  _.has(confusableObjs, object) ? confusibility :
+		  -Infinity);
+    return output;
+  });
+
 
   // The meaning of a label is a function that maps objects to fitness values
   var meaning = function(label) {
@@ -46,21 +61,20 @@ var BasicLevelModel = function(domainInfo, alpha, freqWeight, lengthWeight) {
       factor(labelMeaning(object));
       return object;
     });
-  });                                         
-
+  });
+  
   var speaker = cache(function(target, item) {
     var labelPrior = constructLabelPrior(target);
     return Enumerate(function(){
       var label = sample(labelPrior);
-
       var literalListenerERP = literalListener(label, item);
-      factor(alpha * literalListenerERP.score([], target));
+      factor(params.alpha * literalListenerERP.score([], target));
 
       var labelLength = refModule.getRelativeLength(label);
-      factor(- lengthWeight * labelLength);
+      factor(- params.lengthWeight * labelLength);
 
       var labelFreq = refModule.getRelativeLogFrequency(label);
-      factor(freqWeight * labelFreq);
+      factor(params.freqWeight * labelFreq);
       return label;
     });
   });
@@ -68,9 +82,31 @@ var BasicLevelModel = function(domainInfo, alpha, freqWeight, lengthWeight) {
   return speaker;
 };
 
-var alphaRange = _.range(.5, 10, .5); 
-var lengthWeightRange = _.range(.5, 10, .5); 
-var freqWeightRange = _.range(.5, 10, .5); 
+var runModel = function(target, cond, params, domainInfo) {
+  var item = cons(target, domainInfo.conditions[cond]);
+  var domain = domainInfo.basicLabel;
+  var speakerModel = BasicLevelModel(domainInfo, params);
+  var speakerERP = speakerModel(target, item);
+  var transformedERP = Enumerate(function(){
+    var label = sample(speakerERP);
+    return (_.contains(domainInfo.targets, label) ? "type" :
+	    label === domainInfo.basicLabel ? "basicLevel" :
+	    label === domainInfo.superLabel ? "superDomain" :
+	    "label not recognized");
+  });
+  var line = [domain, cond, target,
+	      params.alpha.toFixed(2), params.lengthWeight.toFixed(2),
+	      params.freqWeight.toFixed(2), params.basicLevelConfusability.toFixed(2),
+	      params.superLevelConfusability.toFixed(2)];
+  refModule.writeERP(transformedERP, line, filename, 4);
+};
+
+var increments = 2;
+var alphaRange = _.range(.5, 10, increments); 
+var lengthWeightRange = _.range(.5, 10, increments); 
+var freqWeightRange = _.range(.5, 10, increments); 
+var basicLevelConfusabilityRange = [-1000, -100, -1];
+var superLevelConfusabilityRange = [-1000, -100, -1];
 
 var filename = "normalizedFreqLength.csv";
 refModule.writeCSV([["domain", "condition", "target", "alpha",
@@ -80,27 +116,24 @@ refModule.writeCSV([["domain", "condition", "target", "alpha",
 map(function(domain) {
   console.log("running domain... " + domain);
   var domainInfo = globalInfo.info[domain];
-  map(function(condition) {
-    console.log("running condition..." + condition);
+  map(function(cond) {
+    console.log("running condition..." + cond);
     map(function(target) {
       map(function(alpha) {
 	map(function(lengthWeight) {
 	  map(function(freqWeight) {
-	    var item = cons(target, domainInfo.conditions[condition]);
-	    var speakerModel = BasicLevelModel(domainInfo, alpha, freqWeight,
-					       lengthWeight);
-	    var speakerERP = speakerModel(target, item);
-	    var transformedERP = Enumerate(function(){
-	      var label = sample(speakerERP);
-	      return (_.contains(domainInfo.targets, label) ? "type" :
-		      label === domainInfo.basicLabel ? "basicLevel" :
-		      label === domainInfo.superLabel ? "superDomain" :
-		      "label not recognized");
-	    });
-	    refModule.writeERP(transformedERP,
-			       [domain, condition, target,
-	    			alpha.toFixed(2), lengthWeight.toFixed(2),
-				freqWeight.toFixed(2)], filename, 4);
+	    map(function(basicLevelConfusability) {
+	      map(function(superLevelConfusability) {
+		var params = {
+		  alpha : alpha,
+		  freqWeight : freqWeight,
+		  lengthWeight : lengthWeight,
+		  basicLevelConfusability : basicLevelConfusability,
+		  superLevelConfusability : superLevelConfusability
+		};
+		runModel(target, cond, params, domainInfo);
+	      }, superLevelConfusabilityRange);
+	    }, basicLevelConfusabilityRange);
 	  }, freqWeightRange);
 	}, lengthWeightRange);
       }, alphaRange);
