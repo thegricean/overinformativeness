@@ -408,10 +408,12 @@ client_onjoingame = function(num_players, role) {
   // Update w/ role (can only move stuff if agent)
   $('#roleLabel').append(role + '.');
   if(role === "speaker") {
-    $('#instructs').append("Send messages to tell the listener which object is the target. Please do not refresh the page!")
+    $('#instructs').append("Send messages to tell the listener which object is the target.")
+  //  $('#instructs').append("Send messages to tell the listener which object is the target. Please do not refresh the page!")
     $("#submitbutton").remove();
   } else {
-    $('#instructs').append("Click on the target object which the speaker is telling you about. Please do not refresh the page!")
+    $('#instructs').append("Click on the target object which the speaker is telling you about.")
+    // $('#instructs').append("Click on the target object which the speaker is telling you about. Please do not refresh the page!")
     $("#submitbutton").remove();
   }
 
