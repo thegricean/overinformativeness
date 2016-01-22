@@ -51,7 +51,7 @@ var locParse = function(filename) {
 
 var getFrequencyData = function() {
   var frequencyData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
-			       + "/results/data/frequencyChart.csv");
+			       + "/results/data/frequencyChart_uniformLabels.csv");
   return frequencyData;
 };
 
