@@ -2,8 +2,15 @@ var _ = require('underscore');
 var babyparse = require('babyparse');
 var fs = require('fs');
 
-function typicality () {
-  var filename = ("../../../experiments/5_norming_object_typicality_phrasing1"
+var labelToObjName = function(label) {
+  var lowerCased = label.toLowerCase();
+  var noWhiteSpace = lowerCased.replace(/[^A-Z0-9]+/ig, "");
+  console.log(noWhiteSpace);
+  return noWhiteSpace == "mms" ? "mnms" : noWhiteSpace;
+};
+
+var typicality = function () {
+  var filename = ("../../experiments/5_norming_object_typicality_phrasing1"
 		  + "/results/data/itemtypicalities.csv");
   var parseResult = babyparse.parse(fs.readFileSync(filename, 'utf8'),
 				    {header: true, skipEmptyLines : true});
@@ -41,15 +48,20 @@ typicality.prototype.makeTree = function() {
   this.tree = {};
   var that = this;
   _.each(this.labels, function(label) {
-    that.tree[label] = {};
+    console.log("label: " + label);
+    var cleanedLabel = labelToObjName(label);
+    console.log("cleanedLabel: " + cleanedLabel);    
+    that.tree[cleanedLabel] = {};
     _.each(that.getPossibleReferents(label), function(object) {
-      that.tree[label][object] = that.getTypicality(label, object);
+      that.tree[cleanedLabel][object] = that.getTypicality(label, object);
     });
   });
 };
 
-var typicality = new typicality();
-typicality.clean();
-typicality.labels = typicality.getLabels();
-typicality.makeTree();
-module.exports = typicality.tree;
+var t = new typicality();
+t.clean();
+t.labels = t.getLabels();
+t.makeTree();
+module.exports = {
+  tax : t.tree
+};
