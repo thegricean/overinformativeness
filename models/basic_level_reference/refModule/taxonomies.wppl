@@ -1,7 +1,51 @@
 // not sure in what number range typicality ratings should be. In the model the best label fitness is 0 and the worst is
-// -infinity, so I will stay in this range too 
+// -infinity, so I will stay in this range too
 
 var dogInfo = {
+  tax : {
+    animal: {
+      dalmatian: 0,
+      pug: 0,
+      husky: 0,
+      germanshepherd: 0,
+      greyhound : 0,
+      crocodile : 0,
+      cow : 0,
+      rhino : 0,
+      lion : 0,
+      lobster : 0,
+      sheep : 0,
+      snake : 0,
+      squirrel : 0,
+      rabbit : 0,
+      horse : 0,
+      iguana : 0,
+      kitten : 0,
+      pig : 0,
+      chick : 0,
+      elephant : 0,
+      bison : 0
+    },
+    dog: {
+      dalmatian: 0,
+      pug : 0,
+      husky : 0,
+      germanshepherd : 0,
+      greyhound : 0
+    },
+    dalmatian: {
+      dalmatian: 0
+    },
+    pug : {
+      pug : 0
+    },
+    germanshepherd : {
+      germanshepherd : 0
+    },
+    husky : {
+      husky : 0
+    }
+  },
   targets : ["dalmatian", "pug", "germanshepherd", "husky"],
   basicLabel : "dog",
   superLabel : "animal",
@@ -14,6 +58,50 @@ var dogInfo = {
 };
 
 var birdInfo = {
+  tax : {
+    animal: {
+      eagle: 0,
+      parrot: 0,
+      pigeon: 0,
+      hummingbird: 0,
+      sparrow : 0,
+      crocodile : 0,
+      cow : 0,
+      rhino : 0,
+      lion : 0,
+      lobster : 0,
+      sheep : 0,
+      snake : 0,
+      squirrel : 0,
+      rabbit : 0,
+      horse : 0,
+      iguana : 0,
+      kitten : 0,
+      pig : 0,
+      chick : 0,
+      elephant : 0,
+      bison : 0
+    },
+    bird: {
+      eagle: 0,
+      parrot: 0,
+      pigeon: 0,
+      hummingbird: 0,
+      sparrow : 0
+    },
+    eagle: {
+      eagle: 0
+    },
+    parrot : {
+      parrot : 0
+    },
+    pigeon : {
+      pigeon : 0
+    },
+    hummingbird : {
+      hummingbird : 0
+    }
+  },
   targets : ["eagle", "parrot", "pigeon", "hummingbird"],
   basicLabel : "bird",
   superLabel : "animal",
@@ -26,9 +114,53 @@ var birdInfo = {
 };
 
 var bearInfo = {
+  tax : {
+    animal: {
+      blackbear: 0,
+      polarbear: 0,
+      pandabear: 0,
+      grizzlybear: 0,
+      koalabear : 0,
+      crocodile : 0,
+      cow : 0,
+      rhino : 0,
+      lion : 0,
+      lobster : 0,
+      sheep : 0,
+      snake : 0,
+      squirrel : 0,
+      rabbit : 0,
+      horse : 0,
+      iguana : 0,
+      kitten : 0,
+      pig : 0,
+      chick : 0,
+      elephant : 0,
+      bison : 0
+    },
+    bear: {
+      blackbear: 0,
+      polarbear: 0,
+      pandabear: 0,
+      grizzlybear: 0,
+      koalabear : 0
+    },
+    blackbear: {
+      blackbear: 0
+    },
+    polarbear : {
+      polarbear : 0
+    },
+    pandabear : {
+      pandabear : 0
+    },
+    grizzlybear : {
+      grizzlybear : 0
+    }
+  },
   targets : ["blackbear", "polarbear", "pandabear", "grizzlybear"],
   basicLabel : "bear",
-  superLabel : "animal",  
+  superLabel : "animal",
   conditions : {
     item12 : ["koalabear", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -38,9 +170,53 @@ var bearInfo = {
 };
 
 var fishInfo = {
+  tax : {
+    animal: {
+      clownfish: 0,
+      goldfish: 0,
+      swordfish: 0,
+      catfish: 0,
+      discusfish : 0,
+      crocodile : 0,
+      cow : 0,
+      rhino : 0,
+      lion : 0,
+      lobster : 0,
+      sheep : 0,
+      snake : 0,
+      squirrel : 0,
+      rabbit : 0,
+      horse : 0,
+      iguana : 0,
+      kitten : 0,
+      pig : 0,
+      chick : 0,
+      elephant : 0,
+      bison : 0
+    },
+    fish: {
+      clownfish: 0,
+      goldfish: 0,
+      swordfish: 0,
+      catfish: 0,
+      discusfish : 0
+    },
+    clownfish: {
+      clownfish: 0
+    },
+    goldfish : {
+      goldfish : 0
+    },
+    swordfish : {
+      swordfish : 0
+    },
+    catfish : {
+      catfish : 0
+    }
+  },
   targets : ["clownfish", "goldfish", "swordfish", "catfish"],
   basicLabel : "fish",
-  superLabel : "animal",    
+  superLabel : "animal",
   conditions : {
     item12 : ["discusfish", "squirrel"],
     item22 : ["lobster", "chick"],
@@ -50,9 +226,41 @@ var fishInfo = {
 };
 
 var candyInfo = {
+  tax : {
+    snack: {
+      gummybears: 0,
+      jellybeans: 0,
+      skittles: 0,
+      mnms: 0,
+      candycorn : 0,
+      cookies : 0,
+      chips : 0,
+      pretzels : 0,
+      popcorn : 0
+    },
+    candy: {
+      gummybears: 0,
+      jellybeans: 0,
+      skittles: 0,
+      mnms: 0,
+      candycorn : 0
+    },
+    gummybears: {
+      gummybears: 0
+    },
+    jellybeans : {
+      jellybeans : 0
+    },
+    skittles : {
+      skittles : 0
+    },
+    mnms : {
+      mnms : 0
+    }
+  },
   targets : ["gummybears", "jellybeans", "skittles", "mnms"],
   basicLabel : "candy",
-  superLabel : "snack",      
+  superLabel : "snack",
   conditions : {
     item12 : ["candycorn", "cookies"],
     item22 : ["chips", "pretzels"],
@@ -62,9 +270,41 @@ var candyInfo = {
 };
 
 var carInfo = {
+  tax : {
+    vehicle: {
+      convertible: 0,
+      minivan: 0,
+      sportsCar: 0,
+      suv: 0,
+      sedan : 0,
+      motorcycle : 0,
+      train : 0,
+      ambulance : 0,
+      firetruck : 0
+    },
+    car: {
+      convertible: 0,
+      minivan: 0,
+      sportscar: 0,
+      suv: 0,
+      sedan : 0
+    },
+    convertible: {
+      convertible: 0
+    },
+    minivan : {
+      minivan : 0
+    },
+    sportscar : {
+      sportscar : 0
+    },
+    suv : {
+      suv : 0
+    }
+  },
   targets : ["convertible", "minivan", "sportscar", "suv"],
   basicLabel : "car",
-  superLabel : "vehicle",        
+  superLabel : "vehicle",
   conditions : {
     item12 : ["sedan", "motorcycle"],
     item22 : ["train", "ambulance"],
@@ -74,9 +314,41 @@ var carInfo = {
 };
 
 var tableInfo = {
+  tax : {
+    furniture: {
+      coffeetable: 0,
+      diningtable: 0,
+      picnictable: 0,
+      bedsidetable: 0,
+      sidetable : 0,
+      bed : 0,
+      lamp : 0,
+      wardrobe : 0,
+      bookcase : 0
+    },
+    table: {
+      coffeetable: 0,
+      diningtable: 0,
+      picnictable: 0,
+      bedsidetable: 0,
+      sidetable : 0
+    },
+    coffeetable: {
+      coffeetable: 0
+    },
+    diningtable : {
+      diningtable : 0
+    },
+    picnictable : {
+      picnictable : 0
+    },
+    bedsidetable : {
+      bedsidetable : 0
+    }
+  },
   targets : ["coffeetable", "diningtable", "picnictable", "bedsidetable"],
   basicLabel : "table",
-  superLabel : "furniture",          
+  superLabel : "furniture",
   conditions : {
     item12 : ["sidetable", "bed"],
     item22 : ["lamp", "wardrobe"],
@@ -86,9 +358,41 @@ var tableInfo = {
 };
 
 var shirtInfo = {
+  tax : {
+    clothing: {
+      poloshirt: 0,
+      dressshirt: 0,
+      hawaiishirt: 0,
+      tshirt: 0,
+      campshirt : 0,
+      dress : 0,
+      gloves : 0,
+      bathrobe : 0,
+      socks : 0
+    },
+    shirt: {
+      poloshirt: 0,
+      dressshirt: 0,
+      hawaiishirt: 0,
+      tshirt: 0,
+      campshirt : 0
+    },
+    poloshirt: {
+      poloshirt: 0
+    },
+    dressshirt : {
+      dressshirt : 0
+    },
+    hawaiishirt : {
+      hawaiishirt : 0
+    },
+    tshirt : {
+      tshirt : 0
+    }
+  },
   targets : ["poloshirt", "dressshirt", "hawaiishirt", "tshirt"],
   basicLabel : "shirt",
-  superLabel : "clothing",        
+  superLabel : "clothing",
   conditions : {
     item12 : ["campshirt", "socks"],
     item22 : ["dress", "bathrobe"],
@@ -98,9 +402,41 @@ var shirtInfo = {
 };
 
 var flowerInfo = {
+  tax : {
+    plant: {
+      rose: 0,
+      tulip: 0,
+      daisy: 0,
+      sunflower: 0,
+      lily : 0,
+      ivy : 0,
+      rosemary : 0,
+      pottedplant : 0,
+      grasses : 0
+    },
+    flower: {
+      rose: 0,
+      tulip: 0,
+      daisy: 0,
+      sunflower: 0,
+      lily : 0
+    },
+    rose: {
+      rose: 0
+    },
+    tulip : {
+      tulip : 0
+    },
+    daisy : {
+      daisy : 0
+    },
+    sunflower : {
+      sunflower : 0
+    }
+  },
   targets : ["rose", "tulip", "daisy", "sunflower"],
   basicLabel : "flower",
-  superLabel : "plant",          
+  superLabel : "plant",
   conditions : {
     item12 : ["lily", "pottedplant"],
     item22 : ["grasses", "ivy"],

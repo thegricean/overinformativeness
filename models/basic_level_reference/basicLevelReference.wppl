@@ -10,19 +10,18 @@ var uniformDraw = function (xs) {
 };
 
 var BasicLevelModel = function(domainInfo, params) {
-  var tax = refModule.getTypicalityTax();
+  var tax = params.useTypicality ? refModule.getTypicalityTax() : domainInfo.tax;
   
   var labelFitness = cache(function(label, object) {
     return _.has(tax[label], object) ? tax[label][object] : -Infinity ;
   });
 
-
   // The meaning of a label is a function that maps objects to fitness values
-  var meaning = function(label) {
+  var meaning = cache(function(label) {
     return function(object) {
       return labelFitness(label, object);
     };
-  };
+  });
 
   var makeObjectPrior = function(item) {
     return Enumerate(function() {
@@ -56,10 +55,10 @@ var BasicLevelModel = function(domainInfo, params) {
       factor(params.alpha * literalListenerERP.score([], target));
 
       var labelLength = refModule.getRelativeLength(label);
-      factor(- params.lengthWeight * labelLength);
-
       var labelFreq = refModule.getRelativeLogFrequency(label);
+      factor(params.lengthWeight * (1 - labelLength));
       factor(params.freqWeight * labelFreq);
+      factor(params.interactionWeight * labelFreq * (1-labelLength));
       return label;
     });
   });
@@ -67,7 +66,7 @@ var BasicLevelModel = function(domainInfo, params) {
   return speaker;
 };
 
-var runModel = function(target, cond, params, domainInfo) {
+var runModel = function(target, cond, domainInfo, params) {
   var item = cons(target, domainInfo.conditions[cond]);
   var domain = domainInfo.basicLabel;
   var speakerModel = BasicLevelModel(domainInfo, params);
@@ -80,24 +79,25 @@ var runModel = function(target, cond, params, domainInfo) {
 	    "label not recognized");
   });
   
-  // var line = [domain, cond, target,
-  // 	      params.alpha.toFixed(2), params.lengthWeight.toFixed(2),
-  // 	      params.freqWeight.toFixed(2), params.basicLevelConfusability.toFixed(2),
-  // 	      params.superLevelConfusability.toFixed(2)];
-  // refModule.writeERP(transformedERP, line, filename, 4);
+  var line = [domain, cond, params.modelVersion, target,
+  	      params.alpha.toFixed(2), params.lengthWeight.toFixed(2),
+  	      params.freqWeight.toFixed(2), params.interactionWeight.toFixed(2)];
+  refModule.writeERP(transformedERP, line, filename, 4);
 };
 
-var increments = 2;
+var increments = 1;
 var alphaRange = _.range(.5, 10, increments); 
 var lengthWeightRange = _.range(.5, 10, increments); 
-var freqWeightRange = _.range(.5, 10, increments); 
+var freqWeightRange = _.range(.5, 10, increments);
+var interactionWeightRange = _.range(.5, 10, increments); 
+var modelVersions = ["inform", "inform+cost", "inform+cost+typicality"];
 
-var filename = "normalizedFreqLength.csv";
+var filename = "predictionsWithTypicalityTax.csv";
 
-
-// refModule.writeCSV([["domain", "condition", "target", "alpha",
-// 		     "lengthWeight", "freqWeight", "label", "modelProb"]],
-// 		   filename);
+refModule.writeCSV([["domain", "condition", "modelVersion", "target", "alpha",
+		     "lengthWeight", "freqWeight", "interactionWeight",
+		     "label", "modelProb"]],
+		   filename);
 
 map(function(domain) {
   console.log("running domain... " + domain);
@@ -106,16 +106,30 @@ map(function(domain) {
     console.log("running condition..." + cond);
     map(function(target) {
       map(function(alpha) {
-	map(function(lengthWeight) {
-	  map(function(freqWeight) {
-	    var params = {
-	      alpha : alpha,
-	      freqWeight : freqWeight,
-	      lengthWeight : lengthWeight
-	    };
-	    runModel(target, cond, params, domainInfo);
-	  }, freqWeightRange);
-	}, lengthWeightRange);
+	map(function(v) {
+	  var useCost = _.contains(v.split("+"), "cost") ? true : false;
+	  var useTyp = _.contains(v.split("+"), "typicality") ? true : false;
+	  var params = {alpha : alpha,
+			useTypicality : useTyp,
+			modelVersion : v};
+	  if(useCost) { // only iterate over cost params if they're relevant 
+	    map(function(lengthWeight) {
+	      map(function(freqWeight) {
+		map(function(interactionWeight) {
+		  runModel(target, cond, domainInfo, _.extend(params, {
+		    freqWeight : freqWeight,
+		    lengthWeight : lengthWeight,
+		    interactionWeight : interactionWeight}));
+		}, interactionWeightRange);
+	      }, freqWeightRange);
+	    }, lengthWeightRange);
+	  } else {
+	    runModel(target, cond, domainInfo, _.extend(params, {
+	      freqWeight : 0,
+	      lengthWeight : 0,
+	      interactionWeight : 0}));
+	  }
+	}, modelVersions);
       }, alphaRange);
     }, domainInfo.targets);
   }, _.keys(domainInfo.conditions));
