@@ -3,6 +3,171 @@ theme_set(theme_bw(18))
 setwd("/home/caroline/cocolab/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 source("rscripts/helpers.R")
 
+###Annotation check file###
+
+x = read.table(file="data/results.csv",sep=",", header=T, quote="")
+head(x)
+summary(x)
+totalnrow = nrow(x)
+
+y = droplevels(subset(x, condition == "distr12" | condition == "distr22" | condition == "distr23" | condition == "distr33"))
+
+head(y)
+nrow(y)
+totalnrow = nrow(y)
+
+#drop incorrect trials:
+
+results_annotation_check = droplevels(y[!is.na(y$targetStatusClickedObj) & y$targetStatusClickedObj != "distrClass1" & y$targetStatusClickedObj != "distrClass2",])
+head(results_annotation_check)
+nrow(results_annotation_check)
+print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(results_annotation_check))*100/totalnrow))
+
+
+write.csv(results_annotation_check, file = "results_annotation_check.csv")
+
+##########################################################################################
+
+z = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
+head(z)
+summary(z)
+
+q = droplevels(subset(z, condition == "distr12" | condition == "distr22" | condition == "distr23" | condition == "distr33"))
+
+head(q)
+nrow(q)
+totalnrow = nrow(q)
+
+#drop incorrect trials:
+
+results_annotation_check_results_modified = droplevels(q[!is.na(q$targetStatusClickedObj) & q$targetStatusClickedObj != "distrClass1" & q$targetStatusClickedObj != "distrClass2",])
+head(results_annotation_check_results_modified)
+nrow(results_annotation_check_results_modified)
+print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(results_annotation_check_results_modified))*100/totalnrow))
+
+
+write.csv(results_annotation_check_results_modified, file = "results_annotation_check_results_modified.csv")
+
+
+###No. of trials where both bl and type was said:
+
+both = droplevels(results_annotation_check_results_modified[!is.na(results_annotation_check_results_modified$basiclevelMentioned) & !is.na(results_annotation_check_results_modified$typeMentioned) & results_annotation_check_results_modified$basiclevelMentioned != F & results_annotation_check_results_modified$typeMentioned != F,])
+
+both = droplevels(subset(results_annotation_check_results_modified, (typeMentioned == T && basiclevelMentioned == T )))
+head(both)
+nrow(both)
+print(paste("percentage of trials where both sub and basic level term was said: ", (totalnrow -nrow(results_annotation_check_results_modified))*100/totalnrow))
+
+########################################################################################
+
+# only look at typeMentions
+
+z = read.table(file="data/results_annotation_check.csv",sep=",", header=T, quote="")
+head(z)
+summary(z)
+nrow(z)
+
+## both type and bl mentioned
+
+
+
+q = droplevels(subset(z, typeMentioned_after_manual_correction == T))
+
+head(q)
+nrow(q)
+totalnrow = nrow(q)
+
+write.csv(q, file = "results_annotation_Type_true.csv")
+
+# only look at supermentions
+
+supers = droplevels(subset(results_annotation_check_results_modified, superClassMentioned == T))
+
+head(supers)
+nrow(supers)
+
+write.csv(supers, file = "supers.csv")
+
+# only look at BLmentions
+
+bl = droplevels(subset(results_annotation_check_results_modified, basiclevelMentioned == T))
+
+head(bl)
+nrow(bl)
+
+write.csv(bl, file = "basiclevels.csv")
+
+candy = droplevels(subset(bl, refExp == "candy"))
+head(candy)
+nrow(candy)
+
+dog = droplevels(subset(bl, basiclevelClickedObj == "dog"))
+head(dog)
+nrow(dog)
+
+fish = droplevels(subset(bl, basiclevelClickedObj == "fish"))
+head(fish)
+nrow(fish)
+
+flower = droplevels(subset(bl, basiclevelClickedObj == "flower"))
+head(flower)
+nrow(flower)
+
+bear = droplevels(subset(bl, basiclevelClickedObj == "bear"))
+head(bear)
+nrow(bear)
+
+bird = droplevels(subset(bl, basiclevelClickedObj == "bird"))
+head(bird)
+nrow(bird)
+
+car = droplevels(subset(bl, basiclevelClickedObj == "car"))
+head(car)
+nrow(car)
+
+table = droplevels(subset(bl, basiclevelClickedObj == "table"))
+head(table)
+nrow(table)
+
+shirt = droplevels(subset(bl, basiclevelClickedObj == "shirt"))
+head(shirt)
+nrow(shirt)
+
+
+grizzly = droplevels(subset(bl, nameClickedObj == "grizzlyBear"))
+head(grizzly)
+nrow(grizzly)
+write.csv(grizzly, file = "grizzly.csv")
+
+
+
+
+# ###DOG
+# 
+# a = read.table(file="data/results_annotation_Type_true.csv",sep=",", header=T, quote="")
+# head(a)
+# summary(a)
+# nrow(a)
+# 
+# gershep = droplevels(subset(a, nameClickedObj == "germanShepherd"))
+# write.csv(gershep, file = "gershep.csv")
+
+###########################################################################################
+
+# get extra column where you say whether ANY level was mentioned (false for attribute/other mentions)
+
+results_annotation_check$basicLevelMentioned = ifelse(refexp == "dog", T,
+                                                      ifelse(refexp == "fish", T,
+                                                             ifelse(refexp == "bird", T,
+                                                                    ifelse(refexp == "bear", T,
+                                                                           ifelse(refexp == "candy", T,
+                                                                                  ifelse(refexp == "shirt", T,
+                                                                                         ifelse(refexp == "car", T,
+                                                                                                ifelse(refexp == "table", T,
+                                                                                                       ifelse(refexp == "flower", T, F)))))))))
+
+#########################################################
+
 #load("data/r.RData")
 d = read.table(file="data/results_modified.csv",sep=",", header=T, quote="")
 head(d)
@@ -1786,8 +1951,9 @@ agr = noAtt %>%
 agr = as.data.frame(agr)
 agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
 
-ggplot(agr, aes(x=Utterance,y=Probability)) +
+ggplot(agr, aes(x=UtteranceType,y=Probability)) +
   geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~condition) + 
@@ -1797,27 +1963,26 @@ ggsave("graphs_basiclevel/new_attribute_analysis/noAtt/1_proportionMentionedFeat
 ggplot(agr, aes(x=condition,y=Probability)) +
   geom_bar(stat="identity") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~Utterance) + 
+  facet_wrap(~UtteranceType) + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("graphs_basiclevel/new_attribute_analysis/noAtt/1_proportionMentionedFeatures/proportion_mentioned_features_by_feature.pdf",width=10,height=10)
 
-#noAtt$superMentioned = ifelse(noAtt$superClassMentioned | noAtt$superclassattributeMentioned, T, F)
-agr = noAtt %>%
-  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
-  gather(Utterance,Mentioned,-condition) %>%
-  group_by(Utterance,condition) %>%
-  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
-agr = as.data.frame(agr)
-agr$YMin = agr$Probability - agr$ci.low
-agr$YMax = agr$Probability + agr$ci.high
-agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
-
-ggplot(agr, aes(x=condition,y=Probability)) +
-  geom_bar(stat="identity") +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~UtteranceType) + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("graphs_basiclevel/new_attribute_analysis/noAtt/1_proportionMentionedFeatures/proportion_mentioned_features_by_feature_combinedSuperCategory.pdf",width=9,height=4)
+# agr = noAtt %>%
+#   select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
+#   gather(Utterance,Mentioned,-condition) %>%
+#   group_by(Utterance,condition) %>%
+#   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+# agr = as.data.frame(agr)
+# agr$YMin = agr$Probability - agr$ci.low
+# agr$YMax = agr$Probability + agr$ci.high
+# agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+# 
+# ggplot(agr, aes(x=condition,y=Probability)) +
+#   geom_bar(stat="identity") +
+#   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+#   facet_wrap(~UtteranceType) + 
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+# ggsave("graphs_basiclevel/new_attribute_analysis/noAtt/1_proportionMentionedFeatures/proportion_mentioned_features_by_feature_combinedSuperCategory.pdf",width=9,height=4)
 
 
 # We want to include the domain:
