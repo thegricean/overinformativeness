@@ -55,6 +55,12 @@ var getFrequencyData = function() {
   return frequencyData;
 };
 
+var getLengthData = function() {
+  var lengthData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
+			    + "/results/data/lengthChart_uniformLabels.csv");
+  return lengthData;
+};
+
 var standardizeVal = function(frequencyData, row, attributeSelector) {
   var maxObj = _.max(frequencyData, attributeSelector);
   var minObj = _.min(frequencyData, attributeSelector);
@@ -72,10 +78,10 @@ var getRelativeLogFrequency = function(label) {
 };
 
 var getRelativeLength = function(label) {
-  var frequencyData = getFrequencyData();
-  var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
-  var selector = function(row) {return row.noun.length;};
-  return standardizeVal(frequencyData, relevantRow, selector);
+  var lengthData = getLengthData();
+  var relevantRow = _.filter(lengthData, function(row) {return row.noun == label;})[0];
+  var selector = function(row) {return Number(row.average_length);};
+  return standardizeVal(lengthData, relevantRow, selector);
 };
 
 var getTypicalityTax = function() {
