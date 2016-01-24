@@ -85,14 +85,14 @@ var runModel = function(target, cond, domainInfo, params) {
   refModule.writeERP(transformedERP, line, filename, 4);
 };
 
-var increments = 1;
+var increments = 2;
 var alphaRange = _.range(.5, 10, increments); 
 var lengthWeightRange = _.range(.5, 10, increments); 
 var freqWeightRange = _.range(.5, 10, increments);
 var interactionWeightRange = _.range(.5, 10, increments); 
 var modelVersions = ["inform", "inform+cost", "inform+cost+typicality"];
 
-var filename = "predictionsWithTypicalityTax.csv";
+var filename = "predictionsWithEmpiricalLength.csv";
 
 refModule.writeCSV([["domain", "condition", "modelVersion", "target", "alpha",
 		     "lengthWeight", "freqWeight", "interactionWeight",
