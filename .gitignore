@@ -27,3 +27,4 @@ church_playground
 corpus_results/data/*
 Caroline/5_OI_Final_Experiment2/results_round1/
 Caroline/5_OI_Final_Experiment2/results_round2/
+*.gitattributes
