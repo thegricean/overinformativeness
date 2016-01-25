@@ -296,20 +296,25 @@ These results suggest that the choice of level of reference depends in a gradien
 
 \section{\bf Modeling level of reference}
 
-To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic-level reference. As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener, but also seeks to be parsimonious. The literal listener updates their beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. We incorporate length and frequency as costs that affect the speaker's likelihood of using a label, and we account for typicality as part of a label's graded meaning: the label ``dog'' fits a dalmatian better than a grizzly bear, but it also fits a grizzly bear better than a tennis ball.
-\ndg{how we write this section depends partly on how important confusability (ie typicality) is to our story and whether we have item-wise data to plug in.}
+%To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic-level reference. 
+We formulated a probabilistic model of reference level selection that integrates contextual informativity, utterance cost, and typicality.
+As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that labels have deterministic truth-conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the label ``dog'' fits a dalmatian better than a grizzly bear, but it also fits a grizzly bear better than a tennis ball.
+The speaker also seeks to be parsimonious: the speaker utility includes both informativiity and cost of the label, which we allow to include both length and frequency.
 
-Formally, we start by specifying a literal listener $L_0$ who hears a label $l$ in the context of some set of objects $\mathcal{O}$ and returns a response distribution over objects $o_i \in \mathcal{O}$ : 
-$$P_{L_0}(o_i | l) \propto \denote{l}(o_i)$$
-where $\denote{l}(o_i)$ is the lexical meaning of the label $l$ when applied to object $o_i$. We take this to be a real number indicating the degree of acceptability or typicality of object $o_i$ for category $l$. \ndg{adjust...}
+Formally, we start by specifying a literal listener $L_0$ who hears a label $l$ in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
+$$P_{L_0}(o | l) \propto \denote{l}(o).$$
+Here $\denote{l}(o)$ is the lexical meaning of the label $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability or typicality of object $o$ for category $l$, for which we use the empirical typicality norms elicited earlier. \ndg{fix up wrt norms refernce}
 
-Next, we specify a speaker $S_1$ who is attempting to refer to a particular object $o \in \mathcal{O}$ and chooses among possible labels $l_j \in \ell(o)$: 
-$$P_{S_1}(l_j | o) \propto \exp\{\alpha \left( \ln P_{L_0}(o | l_j) + U_{cost}(l_j) \right) \}$$
-where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativity and cost?}
+Next, we specify a speaker $S_1$ who is attempting to refer to a particular object $o \in \mathcal{O}$ and chooses among possible labels $l \in \ell(o)$: 
+$$P_{S_1}(l | o) \propto \exp\{\alpha \ln P_{L_0}(o | l) + \beta_1 \hat{c}_f  + \beta_2 \hat{c}_l \}$$
+Thus the speaker chooses labels in a way that is influenced by informativity of the label for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$), and the length cost ($\hat{c}_l$).
+Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. \ndg{are the length and freq defined in the previous section? interaction term?}
+The relative importance of these three factors is determined by three parameters that we will fit to the data.
+%where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativity and cost?}
 
-Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
-\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
-We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
+%Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
+%\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
+%We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
 
 
 \ndg{MODEL RESULTS AND ANALYSIS!!}
