@@ -15,4 +15,11 @@ writing/2016/cogsci/refexp.pdf
 *_invoice.csv
 *.Rhistory
 *.DS_Store*
+*catch_trials.csv
+*subject_information.csv
+*system.csv
+*trials.csv
+*allModelPreds.csv
+*normalizedFreqLength.csv
+*predictionsWithEmpiricalLength.csv
 corpus_results/data/*

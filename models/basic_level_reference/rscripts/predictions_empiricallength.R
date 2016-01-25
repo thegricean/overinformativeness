@@ -143,6 +143,20 @@ cors_noattr_dom
 #   ggtitle("Max r=.82 for alpha=7.5, lenWeight=0.5, freqWeight=2.5")
 # ggsave("graphs/antisuper/correlations_noattr_iflweight.pdf",height=8,width=10.5)
 
+# by-target correlations for the case where frequency and interaction weight are 0
+cors_noattr = d[d$freqWeight == 0 & d$interactionWeight == 0,] %>%
+  group_by(alpha,lengthWeight,modelVersion) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+cors_noattr = as.data.frame(cors_noattr)
+cors_noattr_dom = cors_noattr %>%
+  group_by(modelVersion) %>%
+  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1])
+cors_noattr_dom = as.data.frame(cors_noattr_dom)
+cors_noattr_dom
+
+
+
 # to figure out best parameters by domain:
 cors_noattr_bydomain = d %>%
   group_by(alpha,lengthWeight,freqWeight,domain,interactionWeight,modelVersion) %>%
@@ -283,3 +297,68 @@ p
 ggsave("graphs/paperplots/collapsed-pattern.pdf",width=7.5,height=7)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/collapsed-pattern.pdf",width=7.5,height=7)
 
+
+# look for examples for paper
+typs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/results/data/itemtypicalities.txt",header=T,quote="",sep="\t")
+head(typs)
+ttyps = droplevels(subset(typs, itemtype == "target"))
+row.names(ttyps) = paste(ttyps$labeltype, ttyps$item)
+d_noattr$TypeTyp = ttyps[paste("sub",as.character(d_noattr$nameClickedObj)),]$meanresponse
+d_noattr$BasicTyp = ttyps[paste("basic",as.character(d_noattr$nameClickedObj)),]$meanresponse
+d_noattr$SuperTyp = ttyps[paste("super",as.character(d_noattr$nameClickedObj)),]$meanresponse
+d_noattr$ratioTypeToBasicTypicality = d_noattr$TypeTyp/d_noattr$BasicTyp
+d_noattr$ratioTypeToSuperTypicality = d_noattr$TypeTyp/d_noattr$SuperTyp
+d_noattr$condition = gsub("distr","item",as.character(d_noattr$condition))
+d_noattr$target = d_noattr$nameClickedObj
+d_noattr$modelVersion = "empirical"
+
+best = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==8.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform+cost" & d$alpha==4.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),]
+head(best)
+best[best$modelVersion=="inform+cost+typicality" & best$modelProb > .8 & best$Utterance == "basic" & best$condition == "item33",]
+
+# great case: convertible
+best[best$Utterance == "basic" & best$condition == "item33" & best$target == "convertible",]
+d_noattr[ d_noattr$condition == "distr33" & d_noattr$nameClickedObj == "convertible",] # 6/7 basic mentions. typicality: type .94, basic .92, super .93. length: sub: 11, basic: 3, super: 7
+highinfo[highinfo$target == "convertible",]
+ggplot(highinfo[highinfo$target == "convertible",], aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1)) 
+
+# potential demonstration case: germansheperd
+best[best$Utterance == "basic" & best$condition == "item33" & best$target == "germanshepherd",] # .33, .65, .93
+d_noattr[ d_noattr$condition == "distr33" & d_noattr$nameClickedObj == "germanshepherd",] # 3/4 basic, 1/4 super. typicality: type .95, basic .93, super .96. length: sub: 14, basic: 3, super: 6
+ggplot(highinfo[highinfo$target == "germanshepherd",], aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1)) 
+
+# potential demonstration case: grizzlybear
+best[best$Utterance == "basic" & best$condition == "item33" & best$target == "grizzlybear",] # .33, .56, .87
+d_noattr[ d_noattr$condition == "distr33" & d_noattr$nameClickedObj == "grizzlybear",] # 7/7 basic. typicality: type .95, basic .97, super .86. length: sub: 14, basic: 3, super: 6
+ggplot(highinfo[highinfo$target == "grizzlybear",], aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1)) 
+
+# potential demonstration case: hummingbird
+best[best$Utterance == "basic" & best$condition == "item33" & best$target == "hummingbird",] # .33, .57, .87
+d_noattr[ d_noattr$condition == "distr33" & d_noattr$nameClickedObj == "hummingbird",] # 2/4 basic, 2/4 sub. typicality: type .93, basic .84, super .75. length: sub: 11, basic: 4, super: 6
+toplot = merge(d_noattr[d_noattr$target == "hummingbird",c("condition","target","modelVersion")],highinfo[highinfo$target == "hummingbird",],all=T)
+ggplot(highinfo[highinfo$target == "hummingbird",], aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1)) 
+
+
+highinfo = d[d$alpha==8.5 & (d$modelVersion == "inform" & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0 | d$modelVersion %in% c("inform+cost+typicality","inform+cost") & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5),]
+
+
+
+
+## QUALITATIVE CASES: WHY DOES ADDING TYPICALITY DECREASE SUB LEVEL USE IN ITEM12?
+best[best$modelVersion=="inform+cost+typicality" & best$modelProb > .6 & best$modelProb < .7 & best$Utterance == "sub" & best$condition == "item12",]
+
+# diningtable
+best[best$Utterance == "sub" & best$condition == "item12" & best$target == "diningtable",] # .81, .95, .61
+d_noattr[ d_noattr$condition == "item12" & d_noattr$target == "diningtable",] # 2/4 basic, 2/4 sub. typicality: type .93, basic .84, super .75. length: sub: 11, basic: 4, super: 6
