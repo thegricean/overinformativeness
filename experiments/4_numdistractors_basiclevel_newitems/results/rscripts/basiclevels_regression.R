@@ -8,6 +8,9 @@ source("rscripts/helpers.R")
 source("rscripts/createLaTeXTable.R")
 
 bdCorrect = read.csv(file="noAttr.csv",sep=",")
+bdCorrect$nameClickedObj = tolower(as.character(bdCorrect$nameClickedObj))
+# there are eight cases that are marked as both basic level and type mentioned. i'm going to interpret these as type mentions.
+bdCorrect[bdCorrect$basiclevelMentioned & bdCorrect$typeMentioned,]$basiclevelMentioned = F
 bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
 bdCorrect$typeLength = nchar(as.character(bdCorrect$nameClickedObj))
 bdCorrect$basiclevelLength = nchar(as.character(bdCorrect$basiclevelClickedObj))
@@ -173,12 +176,45 @@ bdCorrect$ratioTypeToSuperLength = bdCorrect$TypeLength/bdCorrect$SuperLength
 bdCorrect$ratioTypeToBasicFreq = bdCorrect$logTypeFreq - bdCorrect$logBasicLevelFreq
 bdCorrect$ratioTypeToSuperFreq = bdCorrect$logTypeFreq - bdCorrect$logSuperFreq
 
-  
+# add average empirical lengths
+lengths = read.csv("data/lengthChart_uniformLabels.csv")
+row.names(lengths) = lengths$noun
+lengths$totalLength = nchar(as.character(lengths$noun))
+ggplot(lengths, aes(x=totalLength,y=average_length)) +
+  geom_point() +
+  geom_abline(slope=1,xintercept=0) +
+  geom_text(aes(label=noun))
+ggsave("graphs_basiclevel/total-vs-average-item-length.pdf")
+bdCorrect$meanTypeLength = lengths[tolower(as.character(bdCorrect$nameClickedObj)),]$average_length
+bdCorrect$meanBasicLength =  lengths[as.character(bdCorrect$basiclevelClickedObj),]$average_length
+bdCorrect$meanSuperLength =  lengths[as.character(bdCorrect$superdomainClickedObj),]$average_length
+bdCorrect$ratioTypeToBasicMeanLength = bdCorrect$meanTypeLength/bdCorrect$meanBasicLength
+bdCorrect$ratioTypeToSuperMeanLength = bdCorrect$meanTypeLength/bdCorrect$meanSuperLength
+
+# add typicality values
+typs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/results/data/itemtypicalities.txt",header=T,quote="",sep="\t")
+head(typs)
+ttyps = droplevels(subset(typs, itemtype == "target"))
+row.names(ttyps) = paste(ttyps$labeltype, ttyps$item)
+bdCorrect$TypeTyp = ttyps[paste("sub",as.character(bdCorrect$nameClickedObj)),]$meanresponse
+bdCorrect$BasicTyp = ttyps[paste("basic",as.character(bdCorrect$nameClickedObj)),]$meanresponse
+bdCorrect$SuperTyp = ttyps[paste("super",as.character(bdCorrect$nameClickedObj)),]$meanresponse
+bdCorrect$ratioTypeToBasicTypicality = bdCorrect$TypeTyp/bdCorrect$BasicTyp
+bdCorrect$ratioTypeToSuperTypicality = bdCorrect$TypeTyp/bdCorrect$SuperTyp
+
+# find examples for paper
+t = ttyps[ttyps$labeltype != "super",]
+agr = t %>%
+  group_by(item) %>%
+  summarise(ratio=meanresponse[labeltype == "sub"]/meanresponse[labeltype == "basic"])
+agr[agr$ratio == max(agr$ratio),] # bedside table
+agr[agr$ratio == min(agr$ratio),] # daisy
+
 #### MIXED EFFECTS MODEL ANALYSIS FOR TYPE MENTION WITH DOMAIN-LEVEL RANDOM EFFECTS
 
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToBasicLength","ratioTypeToSuperLength","ratioTypeToSuperFreq")]))
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToBasicLength","ratioTypeToSuperLength","ratioTypeToSuperFreq","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength")]))
 
-pairscor.fnc(centered[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength")])
+#pairscor.fnc(centered[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength")])
 
 #contrasts(bdCorrect$condition) = cbind(c(1,0,0,0),c(0,0,1,0),c(0,0,0,1))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
@@ -198,31 +234,32 @@ table(bdCorrect$redCondition)
 
 # exclude frequency outliers? there are none if you do difference of logs
 #tmp = bdCorrect[bdCorrect$ratioTypeToBasicFreq > 2*sd(bdCorrect$ratioTypeToBasicFreq),]
+tmp = bdCorrect[bdCorrect$ratioTypeToBasicTypicality < mean(bdCorrect$ratioTypeToBasicTypicality) + 3*sd(bdCorrect$ratioTypeToBasicTypicality),]
 
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength")]))
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength","ratioTypeToBasicTypicality","ratioTypeToSuperTypicality")]))
 
 contrasts(centered$redCondition) = cbind("sub.vs.rest"=c(-1/3,2/3,-1/3),"basic.vs.super"=c(1/2,0,-1/2))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
 
-m = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
-summary(m)
+# m = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered)
+# summary(m)
+# 
+# m.1 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+cTypeLength|basiclevelClickedObj), family="binomial",data=centered)
+# summary(m.1)
+# 
+# anova(m,m.1) # adding by-item slopes for length doesn't do anything
+# 
+# m.2 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+clogTypeFreq|basiclevelClickedObj), family="binomial",data=centered)
+# summary(m.2)
+# 
+# anova(m,m.2)
+# 
+# m.3 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+clogTypeFreq+cTypeLength|basiclevelClickedObj), family="binomial",data=centered)
+# summary(m.3)
+# 
+# anova(m.2,m.3) # nope, useless
 
-m.1 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+cTypeLength|basiclevelClickedObj), family="binomial",data=centered)
-summary(m.1)
-
-anova(m,m.1) # adding by-item slopes for length doesn't do anything
-
-m.2 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+clogTypeFreq|basiclevelClickedObj), family="binomial",data=centered)
-summary(m.2)
-
-anova(m,m.2)
-
-m.3 = glmer(typeMentioned ~ redCondition * cTypeLength * clogTypeFreq + (1|gameid) + (1+clogTypeFreq+cTypeLength|basiclevelClickedObj), family="binomial",data=centered)
-summary(m.3)
-
-anova(m.2,m.3) # nope, useless
-
-# ratio of type to basic level freq
+# ratio of type to basic freq & length (pre-coded)
 m = glmer(typeMentioned ~ redCondition + cratioTypeToBasicLength + cratioTypeToBasicFreq + cratioTypeToBasicLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
 summary(m)
 createLatexTable(m,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Length:Frequency"))
@@ -240,7 +277,6 @@ anova(m,m.sup2) #nope
 m.allconds = glmer(typeMentioned ~ condition + cratioTypeToBasicLength + cratioTypeToBasicFreq + cratioTypeToBasicLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
 summary(m.allconds)
 # the BIC of this model is higher than that of simple m (886 vs 881) -- ie, adding the extra condition predictor isn't justified.
-
 
 m.1 = glmer(typeMentioned ~ redCondition + cratioTypeToBasicLength + cratioTypeToBasicFreq + cratioTypeToBasicLength:cratioTypeToBasicFreq + redCondition:cratioTypeToBasicLength + redCondition:cratioTypeToBasicFreq +  (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered) 
 summary(m.1)
@@ -270,6 +306,30 @@ summary(m.nosubj)
 anova(m.nosubj,m) # definitely by-subject variation
 
 
+# ratio of type to basic freq & length (empirical means)
+m.m = glmer(typeMentioned ~ redCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
+summary(m.m)
+
+m.m.nointer = glmer(typeMentioned ~ redCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
+summary(m.m.nointer)
+
+anova(m.m.nointer,m.m) # interaction important
+
+m.m.1 = glmer(typeMentioned ~ redCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq + redCondition:cratioTypeToBasicMeanLength + redCondition:cratioTypeToBasicFreq +  (1|gameid) + (1|basiclevelClickedObj), family="binomial",data=centered) 
+summary(m.m.1)
+
+anova(m.m,m.m.1) # nope
+
+# add typicality
+m.m.t = glmer(typeMentioned ~ redCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicTypicality + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
+summary(m.m.t)
+createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Typicality","Length:Frequency"))
+
+anova(m.m,m.m.t) # typicality very important!
+
+library(MuMIn)
+r.squaredGLMM(m.m)
+r.squaredGLMM(m.m.t)
 
 
 ### plots for cogsci paper
@@ -372,6 +432,35 @@ ggplot(agr, aes(x=binnedlogTypeFreq,y=Probability,fill=binnedTypeLength)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/freq-length-interaction.pdf",height=4.2,width=6)
 
+# switch x and y axis
+bdCorrect$binnedTypeLength = cut(bdCorrect$ratioTypeToBasicLength,c(0,mean(bdCorrect$ratioTypeToBasicLength),4.67),labels=c("short","long"))#,labels=c("short","mid","long"))
+bdCorrect$binnedlogTypeFreq = cut(bdCorrect$ratioTypeToBasicFreq,c(-12,mean(bdCorrect$ratioTypeToBasicFreq),0),labels=c("low","high"))
+summary(bdCorrect)
+table(bdCorrect$binnedTypeLength,bdCorrect$binnedlogTypeFreq)
+
+agr = bdCorrect %>%
+  select(typeMentioned, binnedTypeLength, binnedlogTypeFreq) %>%
+  group_by(binnedTypeLength, binnedlogTypeFreq) %>%
+  summarise(Probability=mean(typeMentioned),ci.low=ci.low(typeMentioned),ci.high=ci.high(typeMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
+
+library(wesanderson)
+
+ggplot(agr, aes(x=binnedTypeLength,y=Probability,fill=binnedlogTypeFreq)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  xlab("Length") +
+  scale_fill_manual(values=wes_palette("Darjeeling2"),name="Frequency") +
+  scale_y_continuous(name="Probability of sub level mention") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/freq-length-interaction.pdf",height=4.2,width=6)
+
+
+# main effect of length
 bdCorrect$binnedTypeLength = cut_number(bdCorrect$ratioTypeToBasicLength,2,labels=c("short","long"))#,labels=c("short","mid","long"))
 bdCorrect$binnedTypeLength = cut(bdCorrect$ratioTypeToBasicLength,2,labels=c("short","long"))#,labels=c("short","mid","long"))
 
@@ -399,4 +488,33 @@ ggplot(agr, aes(x=binnedTypeLength,y=Probability)) +
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/length-effect.pdf",height=4.2,width=6)
 
 
+# main effect of typicality
+bdCorrect$binnedTypeTypicality = cut_number(bdCorrect$ratioTypeToBasicTypicality,2,labels=c("less typical","more typical"))#,labels=c("short","mid","long"))
 
+
+agr = bdCorrect %>%
+  select(typeMentioned, binnedTypeTypicality,redCondition) %>%
+  group_by(binnedTypeTypicality,redCondition) %>%
+  summarise(Probability=mean(typeMentioned),ci.low=ci.low(typeMentioned),ci.high=ci.high(typeMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
+agr$Condition = factor(x=as.character(agr$redCondition),levels=c("sub_necessary","basic_sufficient","super_sufficient"))
+agr$Typicality = factor(x=as.character(agr$binnedTypeTypicality),levels=c("more typical","less typical"))
+library(wesanderson)
+
+ggplot(agr, aes(x=Typicality,y=Probability)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  xlab("Sub level typicality") +
+  scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
+  scale_y_continuous(name="Proportion of sub level mention") +
+  facet_wrap(~Condition) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/typicality-effect.pdf",height=4.2,width=6)
+
+
+pairscor.fnc(centered[,c("ratioTypeToBasicLength","ratioTypeToBasicFreq","ratioTypeToBasicTypicality")])
+bdCorrect[bdCorrect$ratioTypeToBasicTypicality > 1.5,]
