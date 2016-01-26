@@ -17,6 +17,24 @@ table(tmp[,c("typeMentioned","basiclevelMentioned","superClassMentioned")])
 tmp[tmp$basiclevelMentioned & tmp$typeMentioned,] # there are eight cases that are marked as both basic level and type mentioned. i'm going to interpret these as type mentions.
 tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 
+# first get completely collapsed dataset (ignoring items and domains)
+agr = tmp %>%
+  select(condition,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
+  gather(Utterance, Mentioned,-condition) %>%
+  group_by(Utterance,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+head(agr)
+agr$YMax = agr$Probability + agr$ci.high
+agr$YMin = agr$Probability - agr$ci.low
+agr$UtteranceType = factor(x=ifelse(agr$Utterance == "typeMentioned","sub",ifelse(agr$Utterance == "basiclevelMentioned","basic","super")),levels=c("sub","basic","super"))
+
+agr_noattr_coll_coll = agr
+nrow(agr_noattr_coll_coll) # 108 datapoints when collapsing across individual targets
+agr_noattr_coll_coll$condition = gsub("distr","item",as.character(agr_noattr_coll_coll$condition))
+
+
+# then get dataset collapsed across items but not domains
 agr = tmp %>%
   select(condition,basiclevelClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
   gather(Utterance, Mentioned,-condition,-basiclevelClickedObj) %>%
@@ -204,6 +222,31 @@ cors_noattr_dom_coll
 #   facet_wrap(~freqWeight) +
 #   ggtitle("Max r=.84 for alpha=8.5, lenW=2.5, freqW=.5 (collapsed)")
 # ggsave("graphs/antisuper/correlations_noattr_collapsed_iflweight.pdf",height=7,width=10.5)
+
+
+# correlations collapsing across targets and domains (for highest-level barplot)
+row.names(agr_noattr_coll_coll) = paste(agr_noattr_coll_coll$condition, agr_noattr_coll_coll$UtteranceType)
+
+dsub = d %>%
+  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion,condition,Utterance) %>%
+  summarise(modelProb=mean(modelProb))
+dsub = as.data.frame(dsub)
+dsub$EmpiricalProbNoAttr = agr_noattr_coll_coll[paste(dsub$condition,dsub$Utterance),]$Probability
+
+cors_noattr_coll_coll = dsub %>%
+  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+cors_noattr_coll_coll = as.data.frame(cors_noattr_coll_coll)
+head(cors_noattr_coll_coll)
+
+cors_noattr_dom_coll_coll = cors_noattr_coll_coll %>%
+  group_by(modelVersion) %>%
+  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
+cors_noattr_dom_coll_coll = as.data.frame(cors_noattr_dom_coll_coll)
+cors_noattr_dom_coll_coll
+cors_noattr_coll_coll[cors_noattr_coll_coll$alpha == 8.5 & cors_noattr_coll_coll$lengthWeight == 2.5 & cors_noattr_coll_coll$freqWeight == .5 & cors_noattr_coll_coll$interactionWeight == .5,]
+
 
 # plot model predictions vs empirical scatterplot for best fitting params
 toplot = droplevels(d[(d$modelVersion =="inform+cost+typicality" & d$alpha==8.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform+cost" & d$alpha==4.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),])
