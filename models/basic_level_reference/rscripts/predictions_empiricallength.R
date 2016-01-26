@@ -138,6 +138,18 @@ d$EmpiricalProbNoAttr = agr_noattr[paste(d$condition,d$domain,d$target,d$Utteran
 d$EmpiricalProbAllAttr = agr_allattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
 
 summary(d)
+# look at only cases with at least 4 data points per cell:
+items = as.data.frame(table(d_noattr$nameClickedObj,d_noattr$condition))
+items = droplevels(items[items$Freq > 3,])
+colnames(items) = c("target","condition","Freq")
+items$condition = gsub("distr","item",as.character(items$condition))
+row.names(items) = paste(items$target,items$condition)
+summary(items)
+head(items) # only 117 combinations left out of 144
+
+tmp = d
+d$combo = paste(d$target,d$condition)
+d = droplevels(d[d$combo %in% row.names(items),])
 
 # by-target correlations
 cors_noattr = d %>%
@@ -146,7 +158,7 @@ cors_noattr = d %>%
   summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
 cors_noattr = as.data.frame(cors_noattr)
 head(cors_noattr)
-cors_noattr[cors_noattr$Cor == max(cors_noattr$Cor),] # maximized correlation for alpha = 8 and lengthWeight = 1.5 and freqWeight = .6 and interactionWeight .9  (.82)
+cors_noattr[cors_noattr$Cor == max(cors_noattr$Cor),] # maximized correlation for alpha = 8 and lengthWeight = 1.5 and freqWeight = .6 and interactionWeight .9  -- correlation only goes up to .76
 
 # ggplot(cors_noattr, aes(x=alpha,y=Cor,color=as.factor(lengthWeight))) +
 #   geom_point() +
