@@ -15,4 +15,15 @@ writing/2016/cogsci/refexp.pdf
 *_invoice.csv
 *.Rhistory
 *.DS_Store*
+*catch_trials.csv
+*subject_information.csv
+*system.csv
+*trials.csv
+*mturk.csv
+models/basic_level_reference/allModelPreds.csv
+*normalizedFreqLength.csv
+church_playground
 corpus_results/data/*
+Caroline/5_OI_Final_Experiment2/results_round1/
+Caroline/5_OI_Final_Experiment2/results_round2/
+*.gitattributes
