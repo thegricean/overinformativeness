@@ -311,9 +311,9 @@ Parameters were fit to maximize the correlation of model predictions and by-targ
 	\toprule
 	Model & max $r$ & $\lambda$ & $\beta_f$ & $\beta_l$ & $\beta_{fl}$\\
 	\midrule
-	info & .6 &  & NA & NA & NA\\
-	info + cost  & .7 & & & & \\
-	info + cost + typicality  & .75 & & & & \\
+	info & .6 & 2.5 & NA & NA & NA\\
+	info + cost  & .7 & 4.5 & 2.5 & .5 & .5  \\
+	info + cost + typicality  & .75 & 8 & 0.6 & 1.5 & 0.9   \\
 	\bottomrule
 	\end{tabular}	
 \end{center}
@@ -323,6 +323,10 @@ Parameters were fit to maximize the correlation of model predictions and by-targ
 On the by-target level, the model achieves a correlation of $r = .75$ by rating informativeness relatively strongly ($\lambda$ = \red{fix}), the length cost term somewhat more weakly ($\beta_l =$\red{fix}), and the frequency and frequency-by-length interaction term yet more weakly ($\beta_f$ = \red{fix} and $\beta_{fl} =$ \red{fix}).
 
 In order to ascertain whether the cost and typicality terms were indeed contributing to the explanatory power of the model, we compared the model against simpler versions: one that included only an informativeness term (\tableref{fig:bestparams}, first row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row). Both cost and typicality add explanatory value to the model.
+
+Collapsing across targets: \red{.68}, \red{.81}, .86
+
+Collapsing across targets and domains: \red{.68}, \red{.89}, .99
 
 \jd{add the bit about collapsing across targets and then across domains}
 
