@@ -125,223 +125,65 @@ row.names(agr_noattr_coll) = paste(agr_noattr_coll$condition,agr_noattr_coll$bas
 #d = read.csv("normalizedFreqLength.csv")
 #d = read.csv("allModelPreds.csv")
 d = read.csv("predictionsWithEmpiricalLength.csv")
+#d1 = read.csv("predictionsWithEmpiricalLength_ict.csv")
+#d2 = read.csv("predictionsWithEmpiricalLength_ic.csv")
+#d = merge(d1,d2,all=T)
 nrow(d)
 head(d)
 summary(d)
 d$Utterance = factor(x=ifelse(d$label == "basicLevel","basic",ifelse(d$label == "superDomain","super","sub")),levels=c("sub","basic","super"))
-table(d$alpha)  
-table(d$lengthWeight)  
-table(d$freqWeight) 
-table(d$interactionWeight) 
+unique(d$alpha)  
+unique(d$lengthWeight)  
+unique(d$freqWeight) 
+unique(d$interactionWeight) 
 
 d$EmpiricalProbNoAttr = agr_noattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
-d$EmpiricalProbAllAttr = agr_allattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
+#d$EmpiricalProbAllAttr = agr_allattr[paste(d$condition,d$domain,d$target,d$Utterance),]$Probability
 
 summary(d)
 # look at only cases with at least 4 data points per cell:
-items = as.data.frame(table(d_noattr$nameClickedObj,d_noattr$condition))
-items = droplevels(items[items$Freq > 3,])
-colnames(items) = c("target","condition","Freq")
-items$condition = gsub("distr","item",as.character(items$condition))
-row.names(items) = paste(items$target,items$condition)
-summary(items)
-head(items) # only 117 combinations left out of 144
-
-tmp = d
-d$combo = paste(d$target,d$condition)
-d = droplevels(d[d$combo %in% row.names(items),])
+# items = as.data.frame(table(d_noattr$nameClickedObj,d_noattr$condition))
+# items = droplevels(items[items$Freq > 3,])
+# colnames(items) = c("target","condition","Freq")
+# items$condition = gsub("distr","item",as.character(items$condition))
+# row.names(items) = paste(items$target,items$condition)
+# summary(items)
+# head(items) # only 117 combinations left out of 144
+# 
+# tmp = d
+# d$combo = paste(d$target,d$condition)
+# d = droplevels(d[d$combo %in% row.names(items),])
 
 # by-target correlations
 cors_noattr = d %>%
   group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%
   filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
-cors_noattr = as.data.frame(cors_noattr)
-head(cors_noattr)
-cors_noattr[cors_noattr$Cor == max(cors_noattr$Cor),] # maximized correlation for alpha = 8 and lengthWeight = 1.5 and freqWeight = .6 and interactionWeight .9  -- correlation only goes up to .76
-
-# ggplot(cors_noattr, aes(x=alpha,y=Cor,color=as.factor(lengthWeight))) +
-#   geom_point() +
-#   facet_wrap(~freqWeight) +
-#   ggtitle("Max r=.82 for alpha=7.5, lenWeight=0.5, freqWeight=2.5")
-# ggsave("graphs/antisuper/correlations_noattr_iflweight.pdf",height=8,width=10.5)
-
-# to figure out best parameters by domain:
-cors_noattr_bydomain = d %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%
-  filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
-cors_noattr = as.data.frame(cors_noattr)
-cors_noattr_dom = cors_noattr %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr)) %>%
   group_by(modelVersion) %>%
   summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
-cors_noattr_dom = as.data.frame(cors_noattr_dom)
-cors_noattr_dom$Label = paste(round(cors_noattr_dom$bestcorr,2),cors_noattr_dom$bestalpha,cors_noattr_dom$bestlengthWeight,cors_noattr_dom$bestfreqWeight,cors_noattr_dom$bestinteractionWeight)
-cors_noattr_dom$condition = "item22"
-cors_noattr_dom$Probability = .8
-cors_noattr_dom
-
-# maxcorr: .58, .68, .75
-
-# ggplot(cors_noattr, aes(x=alpha,y=Cor,color=as.factor(lengthWeight))) +
-#   geom_point() +
-#   facet_grid(modelVersion~freqWeight) +
-#   ggtitle("Max r=.82 for alpha=7.5, lenWeight=0.5, freqWeight=2.5")
-# ggsave("graphs/antisuper/correlations_noattr_iflweight.pdf",height=8,width=10.5)
-
-# by-target correlations for the case where frequency and interaction weight are 0
-cors_noattr = d[d$freqWeight == 0 & d$interactionWeight == 0,] %>%
-  group_by(alpha,lengthWeight,modelVersion) %>%
-  filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
 cors_noattr = as.data.frame(cors_noattr)
-cors_noattr_dom = cors_noattr %>%
-  group_by(modelVersion) %>%
-  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1])
-cors_noattr_dom = as.data.frame(cors_noattr_dom)
-cors_noattr_dom
+cors_noattr # maximized correlation for alpha = 6.5 and lengthWeight = 0.6 and freqWeight = 0 and interactionWeight 1.6  -- correlation .76
 
-# to figure out best parameters by domain:
-cors_noattr_bydomain = d %>%
-  group_by(alpha,lengthWeight,freqWeight,domain,interactionWeight,modelVersion) %>%
-  filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
-head(cors_noattr_bydomain)
-cors_noattr_bydomain = as.data.frame(cors_noattr_bydomain)
-bydomain = cors_noattr_bydomain %>%
-  group_by(domain,modelVersion) %>%
-  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
-bydomain = as.data.frame(bydomain)
-bydomain
-
-# correlations collapsing across targets
-dsub = d %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,condition,Utterance,domain,modelVersion) %>%
-  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
-bydomain = as.data.frame(bydomain)
-toplot = bydomain %>%
-  gather(Parameter,Value,-modelVersion,-domain)
-head(toplot)
-ggplot(toplot, aes(x=domain,y=Value)) +
-  geom_bar(stat="identity") +
-  facet_grid(Parameter~modelVersion,scales="free") +
-  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
-
-
-# correlations collapsing across targets
-dsub = d %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion,condition,Utterance,domain) %>%
-  summarise(modelProb=mean(modelProb))
-dsub = as.data.frame(dsub)
-dsub$EmpiricalProbNoAttr = agr_noattr_coll[paste(dsub$condition,dsub$domain,dsub$Utterance),]$Probability
-dsub$EmpiricalProbAllAttr = agr_allattr_coll[paste(dsub$condition,dsub$domain,dsub$Utterance),]$Probability
-
-cors_noattr_coll = dsub %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%
-  filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
-cors_noattr_coll = as.data.frame(cors_noattr_coll)
-head(cors_noattr_coll)
-cors_noattr_coll[cors_noattr_coll$Cor == max(cors_noattr_coll$Cor),] # maximized correlation for alpha = 8.5, length 2.5, freq .5 (.84)
-
-# with the best params from before (need to adjust this once you get the better values for info and info+cost):
-
-
-# plot model predictions vs empirical scatterplot for best fitting params
-ggplot(d[d$alpha==8 & d$freqWeight==.6 & d$lengthWeight==1.5 & d$interactionWeight == .9,],aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
-  geom_point() +
+# scatterplot of model vs empirical for each model type with best params
+agr = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] 
+agr$Condition = agr$condition
+ggplot(agr, aes(x=modelProb,y=EmpiricalProbNoAttr,color=Condition,shape=Utterance)) +
+  geom_point(size=3) +
+  xlab("Model predicted utterance probability") +
+  ylab("Empirical proportion of utterance choice") +
+  #geom_abline(xintercept=0,slope=1,color="gray80") +
   facet_wrap(~modelVersion)
-
-cors_noattr_dom_coll = cors_noattr_coll %>%
-  group_by(modelVersion) %>%
-  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
-cors_noattr_dom_coll = as.data.frame(cors_noattr_dom_coll)
-cors_noattr_dom_coll
-# max corrs: .68, .81, .86
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot.pdf",width=15,height=4.7)
 
 
-# correlations collapsing across targets and domains (for highest-level barplot)
-row.names(agr_noattr_coll_coll) = paste(agr_noattr_coll_coll$condition, agr_noattr_coll_coll$UtteranceType)
-
-dsub = d %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion,condition,Utterance) %>%
-  summarise(modelProb=mean(modelProb))
-dsub = as.data.frame(dsub)
-dsub$EmpiricalProbNoAttr = agr_noattr_coll_coll[paste(dsub$condition,dsub$Utterance),]$Probability
-
-cors_noattr_coll_coll = dsub %>%
-  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%
-  filter(!is.na(EmpiricalProbNoAttr)) %>%
-  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
-cors_noattr_coll_coll = as.data.frame(cors_noattr_coll_coll)
-head(cors_noattr_coll_coll)
-
-cors_noattr_dom_coll_coll = cors_noattr_coll_coll %>%
-  group_by(modelVersion) %>%
-  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
-cors_noattr_dom_coll_coll = as.data.frame(cors_noattr_dom_coll_coll)
-cors_noattr_dom_coll_coll
-cors_noattr_coll_coll[cors_noattr_coll_coll$alpha == 8 & cors_noattr_coll_coll$lengthWeight == 1.5 & cors_noattr_coll_coll$freqWeight == .6 & cors_noattr_coll_coll$interactionWeight == .9,]
-
-
-# plot model predictions vs empirical scatterplot for best fitting params
-toplot = droplevels(d[(d$modelVersion =="inform+cost+typicality" & d$alpha==8.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform+cost" & d$alpha==4.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),])
-ggplot(toplot,aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
-  geom_point() +
-  xlim(c(0,1)) +
-  ylim(c(0,1)) +
-  ylab("Empirical proportion") +
-  xlab("Model predicted probability") +
-  geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") +
-  facet_wrap(~domain)
-ggsave("graphs/antisuper/model_empirical_allattr_bydomain_iflweight.pdf",width=8.4,height=6)
-
-# plot model predictions vs empirical scatterplot for best fitting params
-# ggplot(d[d$alpha==5.5 & d$freqWeight==1.5 & d$lengthWeight==.5,],aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
-#   geom_point() +
-#   facet_wrap(~modelVersion)
-#   #facet_wrap(modelVersion~domain)
-# ggsave("graphs/paperplots/full-scatterplot.pdf",width=12,height=4)
-
-
-# same plot, but collapsing across targets within domain (change values depending on best fitting params)
-coll = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==8 & d$freqWeight==.6 & d$lengthWeight==1.5 & d$interactionWeight==.9 | d$modelVersion =="inform+cost" & d$alpha==4.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
-  group_by(domain,condition,Utterance,modelVersion) %>%
-  summarise(modelProb=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
-coll = as.data.frame(coll)
-coll$XMin = coll$modelProb - coll$ci.low
-coll$XMax = coll$modelProb + coll$ci.high
-summary(coll)
-
-coll$EmpiricalProbNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$Probability
-coll$YMinNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$YMin
-coll$YMaxNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$YMax
-
-ggplot(coll,aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=YMinNoAttr,ymax=YMaxNoAttr)) +
-  xlim(c(0,1)) +
-  ylim(c(0,1)) +
-  ylab("Empirical proportion") +
-  xlab("Model predicted probability") +
-  geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") +
-  facet_wrap(~domain)
-ggsave("graphs/antisuper/model_empirical_noattr_bydomain_collapsed_iflweight.pdf",width=8.4,height=6)
-
-
-best_d_no = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==8 & d$freqWeight==.6 & d$lengthWeight==1.5 & d$interactionWeight==.9 | d$modelVersion =="inform+cost" & d$alpha==4.5 & d$freqWeight==.5 & d$lengthWeight==2.5 & d$interactionWeight==.5 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
+# make beautiful qualitative pattern plot
+best_d_no = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
   group_by(condition,Utterance,modelVersion) %>%
   summarise(Probability=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
 best_d_no = as.data.frame(best_d_no)
 best_d_no$YMin = best_d_no$Probability - best_d_no$ci.low
 best_d_no$YMax = best_d_no$Probability + best_d_no$ci.high
 dodge = position_dodge(.9)
-
-p = ggplot(best_d_no, aes(x=condition,y=Probability)) +
-  geom_bar(stat="identity",position=dodge) +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25)+
-  facet_wrap(~Utterance)
-ggsave("graphs/antisuper/probs_best_no_iflweight.pdf",width=10,height=3.5)
 
 agr = d_noattr %>%
   select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
@@ -358,24 +200,130 @@ agr$Utterance = factor(x=as.character(agr$Utt),levels=c("sub","basic","super"))
 agr$condition = gsub("distr","item",agr$condition)
 agr$modelVersion = "empirical"
 agr$Utt = NULL
-  
+
 best_d_no = rbind(best_d_no,agr)
 colors = scale_colour_brewer()#[1:3]
+best_d_no$Model = as.factor(ifelse(best_d_no$modelVersion == "inform","info",ifelse(best_d_no$modelVersion == "inform+cost","info+cost",ifelse(best_d_no$modelVersion == "inform+cost+typicality","info+cost+typ","empirical"))))
 
-p = ggplot(best_d_no, aes(x=condition,y=Probability,fill=modelVersion)) +
+p = ggplot(best_d_no, aes(x=condition,y=Probability,fill=Model)) +
   geom_bar(stat="identity",position=dodge,color="black") +
   geom_bar(stat="identity",position=dodge) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25)+
-  geom_text(data=cors_noattr_dom,aes(label=Label)) +
+#  geom_text(data=cors_noattr_dom,aes(label=Label)) +
   scale_fill_brewer(guide=F) +
-  facet_grid(modelVersion~Utterance) +
-  ggtitle("Parameter order: r, alpha, lengthW, freqW, interW") +
+  ylab("Utterance probability") +
+  xlab("Condition") +
+  facet_grid(Model~Utterance) +
+#  ggtitle("Parameter order: r, alpha, lengthW, freqW, interW") +
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1)) 
 p
-ggsave("graphs/paperplots/collapsed-pattern.pdf",width=7.5,height=7)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/collapsed-pattern.pdf",width=7.5,height=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/collapsed-pattern.pdf",width=6.5,height=7)
+
+# collapse across targets and domains compute correlation with best params fit to by-target data
+best_d_no_coll = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
+  group_by(modelVersion,Utterance,condition) %>%
+  summarise(modelProb=mean(modelProb))
+row.names(agr) = paste(agr$condition,agr$Utterance)
+best_d_no_coll$EmpiricalProbNoAttr = agr[paste(best_d_no_coll$condition,best_d_no_coll$Utterance),]$Probability
+best_d_no_coll %>%
+  group_by(modelVersion) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+# collapsing over targets and domains, cors are: .79, .92, .98  
+
+# collapse across targets and compute correlation with best params fit to by-target data
+
+agr = d_noattr %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition,basiclevelClickedObj) %>%
+  gather(Utt,Mentioned,-condition,-basiclevelClickedObj) %>%
+  group_by(Utt,condition,basiclevelClickedObj) %>%
+  summarise(Probability=mean(Mentioned))
+agr = as.data.frame(agr)
+agr$Utt = as.factor(ifelse(agr$Utt == "typeMentioned","sub",ifelse(agr$Utt == "basiclevelMentioned","basic","super")))
+agr$Utterance = factor(x=as.character(agr$Utt),levels=c("sub","basic","super"))
+agr$condition = gsub("distr","item",agr$condition)
+row.names(agr) = paste(agr$condition,agr$Utterance,agr$basiclevelClickedObj)
+
+best_d_no_coll = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
+  group_by(modelVersion,Utterance,condition,domain) %>%
+  summarise(modelProb=mean(modelProb))
+best_d_no_coll$EmpiricalProbNoAttr = agr[paste(best_d_no_coll$condition,best_d_no_coll$Utterance,best_d_no_coll$domain),]$Probability
+best_d_no_coll %>%
+  group_by(modelVersion) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+# collapsing over targets and domains, cors are: .7, .82, .86  
+
+# collapse across targets and compute best params (you don't actually use this anywhere in the paper)
+cors_noattr_coll = d %>%
+  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion,domain,Utterance) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(modelProb = mean(modelProb),EmpiricalProbNoAttr=mean(EmpiricalProbNoAttr)) %>%
+  group_by(alpha,lengthWeight,freqWeight,interactionWeight,modelVersion) %>%  
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr)) %>%
+  group_by(modelVersion) %>%
+  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
+cors_noattr_coll = as.data.frame(cors_noattr_coll)
+cors_noattr_coll 
 
 
+# by-target correlations for the case where frequency and interaction weight are 0: informativeness overall lower, correlations also slightly lower
+cors_noattr = d[d$freqWeight == 0 & d$interactionWeight == 0,] %>%
+  group_by(alpha,lengthWeight,modelVersion) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr)) %>%
+  filter(!is.na(Cor))
+cors_noattr = as.data.frame(cors_noattr)
+cors_noattr_dom = cors_noattr %>%
+  group_by(modelVersion) %>%
+  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1])
+cors_noattr_dom = as.data.frame(cors_noattr_dom)
+cors_noattr_dom 
+
+# to figure out best parameters by domain:
+cors_noattr_bydomain = d %>%
+  group_by(alpha,lengthWeight,freqWeight,domain,interactionWeight,modelVersion) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor = cor(modelProb,EmpiricalProbNoAttr))
+head(cors_noattr_bydomain)
+cors_noattr_bydomain = as.data.frame(cors_noattr_bydomain)
+bydomain = cors_noattr_bydomain %>%
+  group_by(domain,modelVersion) %>%
+  summarise(bestcorr=max(Cor)[1],bestalpha=alpha[Cor==max(Cor)][1],bestlengthWeight=lengthWeight[Cor==max(Cor)][1],bestfreqWeight=freqWeight[Cor==max(Cor)][1],bestinteractionWeight=interactionWeight[Cor==max(Cor)][1])
+bydomain = as.data.frame(bydomain)
+bydomain
+
+ggplot(bydomain, aes(x=domain,y=))
+
+
+
+# same plot, but collapsing across targets within domain (change values depending on best fitting params)
+coll = d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2.5 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),] %>%
+  group_by(domain,condition,Utterance,modelVersion) %>%
+  summarise(modelProb=mean(modelProb),ci.low=ci.low(modelProb),ci.high=ci.high(modelProb))
+coll = as.data.frame(coll)
+coll$XMin = coll$modelProb - coll$ci.low
+coll$XMax = coll$modelProb + coll$ci.high
+summary(coll)
+
+
+# this is calling the wrong dataset
+coll$EmpiricalProbNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$Probability
+coll$YMinNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$YMin
+coll$YMaxNoAttr = agr_noattr_coll[paste(coll$condition,coll$domain,coll$Utterance),]$YMax
+
+ggplot(coll,aes(x=modelProb,y=EmpiricalProbNoAttr,shape=condition,color=Utterance)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMinNoAttr,ymax=YMaxNoAttr)) +
+  xlim(c(0,1)) +
+  ylim(c(0,1)) +
+  ylab("Empirical proportion") +
+  xlab("Model predicted probability") +
+  geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") +
+  facet_wrap(~domain)
+ggsave("graphs/antisuper/model_empirical_noattr_bydomain_collapsed_iflweight.pdf",width=8.4,height=6)
+
+
+
+######## QUALITATIVE
 # look for examples for paper
 typs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/results/data/itemtypicalities.txt",header=T,quote="",sep="\t")
 head(typs)
