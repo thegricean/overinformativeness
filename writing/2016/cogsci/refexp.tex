@@ -147,22 +147,6 @@ We describe an RSA model of nominal reference that includes informativity, cost,
 
 %The contribution of this paper is two-fold. First, we report the results of an experiment in a reference game setting that investigated the independent effects of informativeness, cost (in terms of utterance length and frequency), and typicality on utterance choice: when do speakers choose to refer to one and the same object as ``dalmatian'', ``dog'', or ``animal''? Second, we report an RSA model of nominal reference that treats speakers as approximately optimally trading off informativeness, cost, and typicality considerations.
 
-\section{Typicality norms}
-
-Typicality estimates to be used for further analyses were obtained in a separate norming study. 
-
-\paragraph{\bf Participants, design and procedure}
-We recruited 240 participants over Amazon's Mechanical Turk.
-
-Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and labels: for each target (e.g., dalmatian), we collected norms for how typical it is when referred to at the sub (``dalmatian''), basic (``dog''), and super (``animal'') level. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., basketball in the dalmatian context) we collected norms for how typical it is when referred to with the superclass label (``animal'') and assume lowest typicality otherwise (when referred to as ``dalmatian" or ``dog"). Finally, for each distractor of the same superclass (\emph{distsamesuper}, e.g., kitten), we collected norms for how typical it is when referred to at the sub, basic, and superclass level. This resulted in the following distribution of norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
-
-On each trial, participants saw an object image (the same images as used in the main reference game experiment, see corresponding Methods section below) with the question ``How typical is this for X?'', where X was replaced with the label to be tested. They then adjusted a slider bar ranging from \emph{not at all typical} (coded as value 0) to \emph{very typical} (coded as 1). Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{dist-diffsuper}, and 28 \emph{dist-samesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings. 
-
-Typicality values were taken straight off the slider to be used for model analyses.
-
-%\ndg{i think the cleanest way to do this is to briefly describe the items and the typicality norming here....}
-
-%\jd{and make sure you say that you used the typicality values straight off the slider when you plug them into the model}
 
 \section{A nominal reference game}
 
@@ -173,13 +157,13 @@ This experiment investigates the effect of informativeness, cost, and typicality
 
 %\ndg{i think we want procedure and design figure(s). the procedure fig should show a screen shot from speaker and listener points of view. the design fig should illustrate the dist12, etc notation used later with a concrete domain.}
 
-\paragraph{\bf Participants}
+\paragraph{\bf Participants and materials}
 We recruited 56 participants over Mechanical Turk who were self-reported native speakers of English. Participants completed the experiment in pairs of two.
 
-\paragraph{\bf Materials}
+%\paragraph{\bf Materials}
 Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four target images were chosen, corresponding to four subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). 
 
-\paragraph{\bf Design}
+%\paragraph{\bf Design}
 Each trial consisted of a display of three pictures of objects, one of which was designated as the target object. There were four target objects for each of the eight domains, each of which would appear once for every pair, giving rise to a total of 36 trials per pair. As displayed in Fig. 1, there were four conditions which differed in the types of distractors which were shown: (a) \textbf{distractor12}: one distractor of the same basic level and one distractor of the same superlevel were present (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) \textbf{distractor22}: two distractors of the same superlevel were present, (c) \textbf{distractor23}: one distractor of the same superlevel and one artifact were present and (d) \textbf{distractor33}: two artifacts were present. The selection of distractors was random for each trial. Furthermore, the experiment contained 36 filler items, in which participants were also asked to produce referential expressions for objects, but here the three pictures illustrated the same stimulus which differed only in size and color. No filler items were reused in the target trials.
 
 \begin{figure}[ht!]
@@ -196,7 +180,7 @@ The setup for both the speaker and the listener is shown in Fig. 2. Each saw the
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{graphs/procedure}
-\caption{Screenshots from speaker' and listener' points of view, showing role names and short task descriptions, the chatbox used for communication and a display of three pictures of objects, one of which the speaker could identify as a target by a green box surrounding it.}
+\caption{Screenshots from speakers' and listeners' points of view, showing role names and short task descriptions, the chatbox used for communication and a display of three pictures of objects, one of which the speaker could identify as a target by a green box surrounding it.}
 \label{fig:procedure}
 \end{figure}
 
@@ -205,10 +189,23 @@ Trials on which the listener selected the wrong referent were excluded from the 
  
 Speakers' and listeners' messages were first parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 66.2\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the parsing algorithm due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as ``doggie'' for ``dog'',  or contractions such as ``gummi'',``gummies'' and ``bears'' for ``gummy bears'' were counted as containing a level of reference term. By this means another 13.8\% of trials were included in the analysis. A total of 10.0\% of correct trials were excluded, because the utterance consisted of an attribute of the superclass (``the living thing'' for ``animal''), of the basic level (``can fly'' for ``bird''), of the subcategory (``barks'' for ``dog'') or of the  particular instance (``the thing facing left'') was mentioned rather than a level of reference term. These kinds of attributes were also sometimes mentioned additionally to the level of reference term in the trials which were included in the analysis, that is, 4.0\% of sub level terms, 12.6\% of basic level terms, and 46.2\% of super level terms contained an additional modifier. By making use of attributes,  speakers could generate unambiguous referential expressions despite using a level of reference which would by itself be insufficient for disambiguation, e.g. by referring to a dalmatian as a ``spotted dog'' (in the context of another dog being present, for instance a pug which is not spotted). Furthermore, 0,5\% of trials mentioned two different levels of reference, in this case the more specific level of reference was counted as being mentioned in this trial. Additional processing also established the number of correct trials where a determiner (``the'' or ``a''/``an'') or an indefinite referent such as ``one'', ``thing'' or ``object'' was used, how many correct trials consisted of complete sentences and the number of correct trials where level of reference terms were contracted (namely 2.7\%, 0.9\%, 1.0\% and 5.3\% respectively). \jd{do we need the last bit of info, since we don't actually go on to do anything with it?}
 
+\paragraph{Typicality norms}
+
+In a separate study, typicality estimates to be used in the data analysis were obtained for each object as an instance of sub, basic, and super level terms. To this end, we recruited 240 participants over Amazon's Mechanical Turk.
+
+Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and labels: for each target (e.g., dalmatian), we collected norms for how typical it is when referred to at the sub (``dalmatian''), basic (``dog''), and super (``animal'') level. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball in the dalmatian context) we collected norms for how typical it is when referred to with the superclass label (``animal'') and assume lowest typicality otherwise (when referred to as ``dalmatian" or ``dog"). Finally, for each distractor of the same superclass (\emph{distsamesuper}, e.g., a kitten), we collected norms for how typical it is when referred to at the sub, basic, and superclass level of the target dalmatian. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
+
+On each trial, participants saw an object image (the same images as used in the main reference game experiment) with the question ``How typical is this for X?'', where X was replaced with the label to be tested. They then adjusted a slider bar ranging from \emph{not at all typical} (coded as value 0) to \emph{very typical} (coded as 1). Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings. 
+
+Untransformed slider values (all values between 0 and 1) were used as the typicality values in both the regression analyses and in  the RSA model reported below.
+
+%\ndg{i think the cleanest way to do this is to briefly describe the items and the typicality norming here....}
+
+%\jd{and make sure you say that you used the typicality values straight off the slider when you plug them into the model}
 
 \subsection{\bf Results}
 
-Proportions of sub, basic, and super level utterance choices in the different conditions are shown in \figref{fig:qualitativemodel} alongside model predictions. The sub level term was preferred where it was necessary for unambiguous referent identification, i.e., when a distractor of the same basic level category as the target was present in the scene (condition distr12, e.g., target: dalmatian, distractor: greyhound). Where it was not necessary (i.e., when there was no other object of the same basic level category present, as in conditions distr22, distr23 and distr33), there was a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials, especially where informativeness constraints on utterance choice were weakest (condition distr33). 
+Proportions of sub, basic, and super level utterance choices in the different conditions are shown in the top row of \figref{fig:qualitativemodel}. The sub level term was preferred where it was necessary for unambiguous referent identification, i.e., when a distractor of the same basic level category as the target was present in the scene (distr12, e.g., target: dalmatian, distractor: greyhound). Where it was not necessary (i.e., when there was no other object of the same basic level category present, as in conditions distr22, distr23 and distr33), there was a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials, especially where informativeness constraints on utterance choice were weakest (distr33). 
 %
 %\begin{figure}[ht!]
 %\centering
@@ -223,7 +220,7 @@ Condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic s
 
 
 
-A model summary is shown in \tableref{tab:modelresults}. The log odds of mentioning the sub level term was greater in the \emph{sub necessary} condition than in either of the other two conditions, and greater in the \emph{basic sufficient} condition than in the \emph{super sufficient} condition, suggesting that the contextual informativeness of the sub level mention has a gradient effect on utterance choice. There was also a main effect of typicality, such that the sub level term was preferred for objects that were more typical for the sub level compared to the basic level  description (see \figref{fig:typicalityeffect}). In addition, there was a main effect of length, such that as the length of the sub level term increased compared to the basic level term (``chihuahua''/``dog'' vs.~``pug''/``dog''), the sub level term was dispreferred (i.e., ``chihuahua'' is dispreferred compared to ``pug'', see \figref{fig:lengtheffect}). Finally, while there was no main effect of frequency, we observed a significant length by frequency interaction (visualized in \figref{fig:lengthfreqinteraction}), such that there was a frequency effect for the relatively shorter but not the relatively longer sub-level cases: for shorter sub level terms, relatively high-frequency sub level terms were more likely to be used than relatively low-frequency sub level terms. 
+A model summary is shown in \tableref{tab:modelresults}. The log odds of mentioning the sub level term was greater in the \emph{sub necessary} condition than in either of the other two conditions, and greater in the \emph{basic sufficient} condition than in the \emph{super sufficient} condition, suggesting that the contextual informativeness of the sub level mention has a gradient effect on utterance choice. There was also a main effect of typicality, such that the sub level term was preferred for objects that were more typical for the sub level compared to the basic level  description (see \figref{fig:lengthtypicality}). In addition, there was a main effect of length, such that as the length of the sub level term increased compared to the basic level term (``chihuahua''/``dog'' vs.~``pug''/``dog''), the sub level term was dispreferred (i.e., ``chihuahua'' is dispreferred compared to ``pug'', see \figref{fig:lengthtypicality}). Finally, while there was no main effect of frequency, we observed a significant length by frequency interaction, such that there was a frequency effect for the relatively shorter but not the relatively longer sub-level cases: for shorter sub level terms, relatively high-frequency sub level terms were more likely to be used than relatively low-frequency sub level terms. 
 
 
 
@@ -258,28 +255,29 @@ Length:Frequency&$-0.30$&$0.11$&\textbf{\textless.01}\tabularnewline
 \begin{figure}[ht!]
 \centering
 %\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
-\includegraphics[width=.5\textwidth]{graphs/typicality-effect}
-\caption{Probability of using sub, basic and super level terms when the target object was relatively more [1.06,1.91) or less (.88,1.06] typical for the sub compared to the basic level term .}
- \label{fig:typicalityeffect}
+%\includegraphics[width=.5\textwidth]{graphs/typicality-effect}
+\includegraphics[width=.5\textwidth]{graphs/length-typicality}
+\caption{Probability of using sub, basic and super level terms. Left: when the sub  length is relatively short (.67,2] or long [2,4.67) compared to the basic level term length. Right: when the target object was relatively more [1.06,1.91) or less (.88,1.06] typical for the sub compared to the basic level term.}
+ \label{fig:lengthtypicality}
 \end{figure}
 
 
-\begin{figure}[ht!]
-\centering
-%\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
-\includegraphics[width=.5\textwidth]{graphs/length-effect}
-\caption{Probability of using sub, basic and super level terms when the sub  length is relatively short (.67,2] or long [2,4.67) compared to the basic level term length.}
- \label{fig:lengtheffect}
-\end{figure}
+%\begin{figure}[ht!]
+%\centering
+%%\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
+%\includegraphics[width=.5\textwidth]{graphs/length-effect}
+%\caption{Probability of using sub, basic and super level terms when the sub  length is relatively short (.67,2] or long [2,4.67) compared to the basic level term length.}
+% \label{fig:lengtheffect}
+%\end{figure}
 
 
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=.5\textwidth]{graphs/freq-length-interaction}
-\caption{Proportion of sub level mentions  as a function of the sub level term's relative length and frequency compared to the basic level. Length bins reflect the sub/basic length ratio intervals (0, 1] (short), (1, 2] (mid), (2, 4.67] (long). Frequency bins reflect the sub/basic log frequency difference intervals (-11.2,-5.19] (low), (-5.19,-0.65] (high).}
-\label{fig:lengthfreqinteraction}
-\end{figure}
+%
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=.5\textwidth]{graphs/freq-length-interaction}
+%\caption{Proportion of sub level mentions  as a function of the sub level term's relative length and frequency compared to the basic level. Length bins reflect the sub/basic length ratio intervals (0, 1] (short), (1, 2] (mid), (2, 4.67] (long). Frequency bins reflect the sub/basic log frequency difference intervals (-11.2,-5.19] (low), (-5.19,-0.65] (high).}
+%\label{fig:lengthfreqinteraction}
+%\end{figure}
 
 
 Unsurprisingly, there was also significant by-participant and by-domain variation in the log odds of sub level mention. %\figref{fig:bigscatterplot} shows the by-domain variation in utterance choice. 
@@ -303,7 +301,7 @@ Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to obje
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible words $l \in \ell(o)$: 
 $$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l + \beta_{fl} \hat{c}_{fl} )$$
 Thus the speaker chooses words in a way that is influenced by informativity of the label for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$), the length cost ($\hat{c}_l$), and a multiplicative cost of length and frequency ($\hat{c}_{fl}$).
-Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level empirically as obtained in the previously reported experiment. For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. In addition, given the significant interaction between length and frequency observed in the regression analysis, we included a multiplicative cost term $\hat{c}_{fl}$, which was \jd{integrated how exactly?} \ndg{are the length and freq defined in the previous section? }
+Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level empirically as obtained in the previously reported experiment. For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. In addition, given the significant interaction between length and frequency observed in the regression analysis, we included a multiplicative cost term $\hat{c}_{fl}$ for length and frequency.
 The relative importance of these four factors is determined by four parameters that were fit to the data.
 %where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativity and cost?}
 
@@ -311,7 +309,7 @@ The relative importance of these four factors is determined by four parameters t
 %\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
 %We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
 
-Parameters were fit to maximize the correlation of model predictions and by-target empirical proportions of sub, basic, and super level term use by condition. A total of 432 data points were fit (four targets per domain for nine domains, and for each target, three utterance choices in four conditions). The best parameter values are listed in \tableref{tab:bestparams} (bottom row). 
+Parameters were fit to maximize the correlation between model predictions and by-target empirical proportions of sub, basic, and super level term use by condition. A total of 432 data points were fit (four targets per domain for nine domains, and for each target, three utterance choices in four conditions).  Best parameter values are listed in \tableref{tab:bestparams} (bottom row). 
 
 \begin{table}
 \caption{Correlations and best model parameters fit to empirical proportions of utterance choices for increasingly complex models (I: informativeness-only, IC: informativeness + cost, ICT: informativeness + cost + typicality).}
@@ -330,9 +328,9 @@ Parameters were fit to maximize the correlation of model predictions and by-targ
 \label{tab:bestparams}
 \end{table}
 
-On the by-target level, the model achieves a correlation of $r = .76$ by rating informativeness relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$), and the frequency-by-length interaction  cost terms more weakly ($\beta_f = 1.6$)  and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above. Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains) yields correlations of .86 and .98, respectively.
+On the by-target level, the model achieves a correlation of $r = .76$ by rating informativeness relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and the frequency-by-length interaction  cost terms more weakly ($\beta_f = 1.6$),  and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above. Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.
 
-In order to ascertain whether the cost and typicality terms were indeed contributing to the explanatory power of the model, we compared the model against simpler versions: one that included only an informativeness term (\tableref{tab:bestparams}, first row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row). Both cost and typicality add explanatory value to the model, as can be seen in the lower correlations of the simpler models \jd{we really need the Bayesian data analysis, this is awful}. \figref{fig:scatterplot} shows the by-target model predictions against empirical proportions for each model type with the best fit parameters. Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality. \jd{include a qualitative example?}
+In order to ascertain whether the cost and typicality terms were indeed contributing to the explanatory power of the model, we compared the model against simpler versions: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). Both cost and typicality add explanatory value to the model, as can be seen in the lower correlations of the simpler models \jd{we really need the Bayesian data analysis, this is awful}. \figref{fig:scatterplot} shows the by-target model predictions against empirical proportions for each model type with the best fit parameters.\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.} Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality. \jd{include a qualitative example?}
 
 \begin{figure*}[ht!]
 \centering
