@@ -1,9 +1,9 @@
 theme_set(theme_bw(18))
 
-setwd("/home/caroline/cocolab/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
+#setwd("/home/caroline/cocolab/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 
 #setwd("C:\\Users\\Caroline\\Desktop\\overinformativeness\\experiments\\4_numdistractors_basiclevel_newitems\\results")
-#setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
 source("rscripts/helpers.R")
 source("rscripts/createLaTeXTable.R")
 
@@ -190,6 +190,7 @@ bdCorrect$meanBasicLength =  lengths[as.character(bdCorrect$basiclevelClickedObj
 bdCorrect$meanSuperLength =  lengths[as.character(bdCorrect$superdomainClickedObj),]$average_length
 bdCorrect$ratioTypeToBasicMeanLength = bdCorrect$meanTypeLength/bdCorrect$meanBasicLength
 bdCorrect$ratioTypeToSuperMeanLength = bdCorrect$meanTypeLength/bdCorrect$meanSuperLength
+bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "distr12","sub_necessary",ifelse(bdCorrect$condition == "distr33","super_sufficient","basic_sufficient")))
 
 # add typicality values
 typs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/results/data/itemtypicalities.txt",header=T,quote="",sep="\t")
@@ -473,19 +474,20 @@ agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
 summary(agr)
 dodge = position_dodge(.9)
-agr$Condition = factor(x=as.character(agr$redCondition),levels=c("sub_necessary","basic_sufficient","super_sufficient"))
+agr$Condition = factor(x=gsub("_","\n",as.character(agr$redCondition)),levels=c("sub\nnecessary","basic\nsufficient","super\nsufficient"))
 
 library(wesanderson)
 
-ggplot(agr, aes(x=binnedTypeLength,y=Probability)) +
+pl = ggplot(agr, aes(x=binnedTypeLength,y=Probability)) +
   geom_bar(stat="identity",position=dodge,color="black") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
-  xlab("Sub level length") +
+  scale_x_discrete(name="Sub level length",breaks=c("short","long"),labels=c("short\n ","long\n ")) +
   scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
-  scale_y_continuous(name="Proportion of sub level mention") +
+  scale_y_continuous(name="Proportion of sub level mention",breaks=seq(0,1,.2)) +
   facet_wrap(~Condition) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/length-effect.pdf",height=4.2,width=6)
+  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=16),axis.text.y = element_text(size=12),plot.margin=unit(c(0,0,0,0), "cm"))
+  #theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+#ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/length-effect.pdf",height=4.2,width=6)
 
 
 # main effect of typicality
@@ -501,20 +503,29 @@ agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
 summary(agr)
 dodge = position_dodge(.9)
-agr$Condition = factor(x=as.character(agr$redCondition),levels=c("sub_necessary","basic_sufficient","super_sufficient"))
+agr$Condition = factor(x=gsub("_","\n",as.character(agr$redCondition)),levels=c("sub\nnecessary","basic\nsufficient","super\nsufficient"))
+#agr$Condition = factor(x=as.character(agr$redCondition),levels=c("sub_necessary","basic_sufficient","super_sufficient"))
 agr$Typicality = factor(x=as.character(agr$binnedTypeTypicality),levels=c("more typical","less typical"))
 library(wesanderson)
 
-ggplot(agr, aes(x=Typicality,y=Probability)) +
+pt = ggplot(agr, aes(x=Typicality,y=Probability)) +
   geom_bar(stat="identity",position=dodge,color="black") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
-  xlab("Sub level typicality") +
-  scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
-  scale_y_continuous(name="Proportion of sub level mention") +
+  scale_x_discrete(name="Sub level typicality",breaks=c("more typical","less typical"),labels=c("more\ntypical","less\ntypical")) +
+  #scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
+  scale_y_continuous(name="Proportion of sub level mention",breaks=seq(0,1,.2)) +
   facet_wrap(~Condition) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/typicality-effect.pdf",height=4.2,width=6)
+  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=16),axis.text.y = element_text(size=12),plot.margin=unit(c(0,0,0,0), "cm"))
+  #theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size=7))
+#ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/typicality-effect.pdf",height=4.2,width=6)
 
+# pairscor.fnc(centered[,c("ratioTypeToBasicLength","ratioTypeToBasicFreq","ratioTypeToBasicTypicality")])
+# bdCorrect[bdCorrect$ratioTypeToBasicTypicality > 1.5,]
 
-pairscor.fnc(centered[,c("ratioTypeToBasicLength","ratioTypeToBasicFreq","ratioTypeToBasicTypicality")])
-bdCorrect[bdCorrect$ratioTypeToBasicTypicality > 1.5,]
+library(gridExtra)
+pdf("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/length-typicality.pdf",height=4.5,width=8.7)
+grid.arrange(pl,pt,nrow=1, left = textGrob("Proportion of sub level mention", rot = 90, vjust = 1,gp = gpar(cex = 1.3)))
+dev.off()
+
+t = as.data.frame(table(bdCorrect$nameClickedObj,bdCorrect$condition))
+nrow(t[t$Freq < 4,])
