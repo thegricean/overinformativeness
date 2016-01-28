@@ -315,8 +315,6 @@ We formulated a probabilistic model of reference level selection that integrates
 As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that words have deterministic truth conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
 The speaker also seeks to be parsimonious: the speaker utility includes both informativity and word cost; cost includes both length and frequency.
 
-\ndg{somewhere make the point that typicality of the object, but also of the distractors, affect reference choice.}
-
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
 Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability or typicality of object $o$ for category $l$, for which we use the empirically elicited typicality norms described previously. %\ndg{fix up wrt norms refernce}
@@ -364,7 +362,8 @@ In order to ascertain whether the cost and typicality terms were indeed contribu
 Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality.
 \figref{fig:scatterplot} shows the by-target model predictions against empirical proportions for each model type with the best fit parameters.\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
-\ndg{model should take into account typicality of other objects. check?}
+\ndg{model should take into account typicality of other non-target objects. check?}
+
 \ndg{do BDA with weight term on typicality? use this for model selection.}
 
 
