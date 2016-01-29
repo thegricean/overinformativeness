@@ -125,6 +125,7 @@ row.names(agr_noattr_coll) = paste(agr_noattr_coll$condition,agr_noattr_coll$bas
 #d = read.csv("normalizedFreqLength.csv")
 #d = read.csv("allModelPreds.csv")
 d = read.csv("predictionsWithEmpiricalLength.csv")
+
 #d1 = read.csv("predictionsWithEmpiricalLength_ict.csv")
 #d2 = read.csv("predictionsWithEmpiricalLength_ic.csv")
 #d = merge(d1,d2,all=T)
@@ -149,6 +150,7 @@ summary(d)
 # row.names(items) = paste(items$target,items$condition)
 # summary(items)
 # head(items) # only 117 combinations left out of 144
+# items[items$target == "hummingbird",]
 # 
 # tmp = d
 # d$combo = paste(d$target,d$condition)
@@ -388,3 +390,52 @@ best[best$modelVersion=="inform+cost+typicality" & best$modelProb > .6 & best$mo
 # diningtable
 best[best$Utterance == "sub" & best$condition == "item12" & best$target == "diningtable",] # .81, .95, .61
 d_noattr[ d_noattr$condition == "item12" & d_noattr$target == "diningtable",] # 2/4 basic, 2/4 sub. typicality: type .93, basic .84, super .75. length: sub: 11, basic: 4, super: 6
+
+
+### EAGLE PREDICTIONS
+eagle = d[d$target == "eagle" & (d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),]
+head(eagle)
+ggplot(eagle, aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance)
+ggsave("graphs/eagle.pdf",width=7)
+ttyps[ttyps$item == "eagle",]
+
+### GET THE LEAST WELL PREDICTED ITEMS
+best =  d[(d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6),]
+nrow(best) # should be 432
+summary(best)
+worst = best %>%
+  group_by(target) %>%
+  filter(!is.na(EmpiricalProbNoAttr)) %>%
+  summarise(Cor=cor(modelProb,EmpiricalProbNoAttr))
+worst = as.data.frame(worst)
+worst = worst[order(worst[,c("Cor")]),]
+head(worst)
+tail(worst)
+
+#jellybeans PREDICTIONS
+jellybeans = d[d$target == "jellybeans" & (d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),]
+head(jellybeans)
+ggplot(jellybeans, aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance)
+ggsave("graphs/jellybeans.pdf",width=7)
+
+#HUMMINGBIRD PREDICTIONS
+hummingbird = d[d$target == "hummingbird" & (d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),]
+head(hummingbird)
+ggplot(hummingbird, aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance)
+ggsave("graphs/hummingbird.pdf",width=7)
+
+
+#BEDSIDETABLE PREDICTIONS
+bedsidetable = d[d$target == "bedsidetable" & (d$modelVersion =="inform+cost+typicality" & d$alpha==6.5 & d$freqWeight==0 & d$lengthWeight==.6 & d$interactionWeight==1.6 | d$modelVersion =="inform+cost" & d$alpha==3 & d$freqWeight==0 & d$lengthWeight==1.4 & d$interactionWeight==.8 | d$modelVersion =="inform" & d$alpha==2 & d$freqWeight==0 & d$lengthWeight==0 & d$interactionWeight==0),]
+head(bedsidetable)
+ggplot(bedsidetable, aes(x=condition,y=modelProb)) +
+  geom_bar(stat="identity") +
+  facet_grid(modelVersion~Utterance)
+ggsave("graphs/bedsidetable.pdf",width=7)
+
