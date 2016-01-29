@@ -16,9 +16,15 @@ head(y)
 nrow(y)
 totalnrow = nrow(y)
 
+#look only at incorrect trials:
+
+incorr = droplevels(subset(y, targetStatusClickedObj == "distrClass1" || targetStatusClickedObj == "distrClass2" || targetStatusClickedObj == "distrClass3"))
+head(incorr)
+nrow(incorr)
+
 #drop incorrect trials:
 
-results_annotation_check = droplevels(y[!is.na(y$targetStatusClickedObj) & y$targetStatusClickedObj != "distrClass1" & y$targetStatusClickedObj != "distrClass2",])
+results_annotation_check = droplevels(y[!is.na(y$targetStatusClickedObj) & y$targetStatusClickedObj != "distrClass1" & y$targetStatusClickedObj != "distrClass2" & y$targetStatusClickedObj != "distrClass3",])
 head(results_annotation_check)
 nrow(results_annotation_check)
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(results_annotation_check))*100/totalnrow))
@@ -58,6 +64,27 @@ head(both)
 nrow(both)
 print(paste("percentage of trials where both sub and basic level term was said: ", (totalnrow -nrow(results_annotation_check_results_modified))*100/totalnrow))
 
+
+# one, the, contractions
+
+y = read.table(file="data/results_annotation_check_results_modified.csv",sep=",", header=T, quote="")
+
+one = droplevels(subset(y, (oneMentioned == T)))
+head(one)
+nrow(one)
+
+the = droplevels(subset(y, (theMentioned == T)))
+head(the)
+nrow(the)
+
+contr = droplevels(subset(y, (utteranceContracted == T)))
+head(contr)
+nrow(contr)
+
+sentence = droplevels(subset(y, (fullSentence == T)))
+head(sentence)
+nrow(sentence)
+
 ########################################################################################
 
 # only look at typeMentions
@@ -96,6 +123,24 @@ head(bl)
 nrow(bl)
 
 write.csv(bl, file = "basiclevels.csv")
+
+x = read.table(file="data/length_calculations/basiclevels.csv",sep=",", header=T, quote="")
+head(x)
+nrow(x)
+
+blattribute = droplevels(subset(x, attributeUsed == T))
+head(blattribute)
+nrow(blattribute)
+
+
+
+blnoatt = droplevels(subset(x, (colorMentioned == F || is.na(colorMentioned)) && (otherFeatureMentioned == F || is.na(colorMentioned)) ))
+head(blattribute)
+nrow(blattribute)
+
+rose = droplevels(subset(bl, nameClickedObj == "rose"))
+head(rose)
+nrow(rose)
 
 candy = droplevels(subset(bl, refExp == "candy"))
 head(candy)
