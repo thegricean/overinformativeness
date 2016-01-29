@@ -1284,7 +1284,6 @@ var BasicLevelModel = function(domainInfo, params) {
       var labelFreq = refModule.getRelativeLogFrequency(label);
       factor(params.lengthWeight * (1 - labelLength));
       factor(params.freqWeight * labelFreq);
-      factor(params.interactionWeight * labelFreq * (1-labelLength));
       return label;
     });
   });
