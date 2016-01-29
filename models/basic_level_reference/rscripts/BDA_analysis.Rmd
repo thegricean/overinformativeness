@@ -77,13 +77,16 @@ cat("95% HPD interval = [", interactionWeightSubset$md_low, ",", interactionWeig
 typicality = params.samples %>% 
   filter(parameter == "useTypicality") %>%
   group_by(value) %>%
-  tally()
+  tally() %>%
+  mutate(prob = n / sum(n))
 
 typicality
 cat("lengthWeight = ", interactionWeightSubset$md) 
 cat("95% HPD interval = [", interactionWeightSubset$md_low, ",", interactionWeightSubset$md_hi, "]")
 
 ```
+
+# Plot parameter posteriors
 
 ```{r}
 #pdf(file="../writing/2015/journal-manuscript/figures/QuestionerParamPosteriors.pdf",
@@ -193,70 +196,4 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
   #facet_wrap(~ domain)
 ggsave("graphs/reparameterized/model_empirical_allattr_bydomain_multiplicative.pdf",width=8.4,height=6)
-
-
-acor = round(cor(apredictive.pp$MAP, apredictive.pp$empProb), 2)
-
-#pdf(file="../writing/2015/journal-manuscript/figures/AnswererPredictive.pdf",
-#         width = 6, height = 3)
-answer_plots = (ggplot(apredictive.pp, aes(x = MAP, y = empProb))
-  + theme(text = element_text(size = 20),
-          axis.text.x = element_text(angle=90, vjust=1))
-  + xlab("Model predicted probability")
-  + ylim(0,1)
-  + ylab("Empirical Probability")
-  + geom_errorbar(aes(ymax = upper_ci, ymin = lower_ci)) 
-  + geom_errorbarh(aes(xmax = credHigh, xmin = credLow))
-  + geom_point(aes(colour = domain, shape = type))
-  + geom_abline(intercept = 0, slope = 1, linetype = "dotted")
-  + scale_x_continuous(lim = c(0,1), breaks=c(0,.5,1))
-  + ggtitle("Answerer Posterior Predictive")
-  + geom_smooth(method = "lm")
-  + geom_text(aes(x=.75,y=.25,label=acor))
-  + theme_bw())
-answer_plots
-#dev.off()
-```
-
-```{r}
-qpredictive<-read.csv("guessingGame/Bayesian/data/BayesianQuestionerAnalysisPredictives_final.csv", sep = ",", row.names = NULL)
-qpredictive.samples <- qpredictive[rep(row.names(qpredictive), 
-                                       qpredictive$MCMCprob*samples), 1:5] %>%
-  mutate(goal = as.character(parameter), 
-         question = as.character(value),
-         type = as.character(item1),
-         domain = as.character(item2)) %>%
-  do(mutate(., goal = vectorizedMapGoal(type, goal))) %>%
-  do(mutate(., question = vectorizedMapQuestion(type, question))) %>%
-  mutate(goal = as.factor(goal), response = as.factor(question)) %>% 
-  select(type, domain, goal, response, prob)
-
-qpredictive.pp <- qpredictive.samples %>%
-  group_by(type, domain, goal, response) %>%
-  summarize(MAP = estimate_mode(prob),
-            credHigh = HPDhi(prob),
-            credLow = HPDlo(prob)) %>%
-  right_join(d_q, by = c("goal","type","domain","response")) 
-
-qcor <- round(cor(qpredictive.pp$MAP, qpredictive.pp$empProb), 2)
-
-pdf(file="../writing/2015/journal-manuscript/figures/QuestionerPredictive.pdf",
-        width = 6, height = 3)
-question_plots = (ggplot(qpredictive.pp, aes(x = MAP, y = empProb))
-  + theme(text = element_text(size = 20),
-          axis.text.x = element_text(angle=90, vjust=1))
-  + xlab("Model predicted probability")
-  + ylim(0,1)
-  + ylab("Empirical Probability")
-  + geom_errorbar(aes(ymax = upper_ci, ymin = lower_ci)) 
-  + geom_errorbarh(aes(xmax = credHigh, xmin = credLow))
-  + geom_point(aes(colour = domain, shape = type))
-  + geom_abline(intercept = 0, slope = 1, linetype = "dotted")
-  + scale_x_continuous(lim = c(0,1), breaks=c(0,.5,1))
-  + ggtitle("Questioner Posterior Predictive")
-  + geom_smooth(method = "lm")
-  + geom_text(aes(x=.75,y=.25,label=paste("r=",qcor)))
-  + theme_bw())
-question_plots
-dev.off()
 ```
