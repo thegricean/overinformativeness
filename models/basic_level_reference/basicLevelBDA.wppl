@@ -1,0 +1,58 @@
+// run using:
+// webppl basicLevelBDA.wppl --require ./refModule/
+
+var data = refModule.readCSV("../../experiments/4_numdistractors_basiclevel_newitems/"
+			     + "results/data/bdaInput.csv");
+var domains = globalInfo.domains;
+
+var modelAnalysis = function() {
+  // Sample params
+  var params = {
+    alpha : uniform(0,20),
+    lengthWeight : uniform(0,20),
+    freqWeight : uniform(0,20),
+    interactionWeight : uniform(0,20),
+    useTypicality : flip()
+  };
+  
+  // Run model and condition on data
+  var score = sum(map(function(domain) {
+    var domainInfo = globalInfo.info[domain];
+    var model = BasicLevelModel(domainInfo, params);
+    var runModel = model.runModel;
+    var speaker = model.speaker;
+    return sum(map(function(condition) {
+      return sum(map(function(item) {
+	// Get model predictions
+	var modelOutput = runModel(speaker, item, domainInfo);
+
+	// condition on data
+	var itemData = refModule.getSubset(data, {target:item[0],
+						  alt1:item[1],
+						  alt2:item[2]});
+	var score = sum(map(function(dataRow) {
+	  var localScore = modelOutput.score([], dataRow[5]);
+	  return localScore;
+	}, itemData));
+
+	// Store predictions
+	foreach(modelOutput.support([]), function(s){
+          query.add([condition, item[0], item[1], item[2], s],
+		    Math.exp(modelOutput.score([], s)));
+	});
+	return score;
+      }, domainInfo.conditions[condition]));
+    }, _.keys(domainInfo.conditions)));
+  }, domains));
+
+  console.log(score);
+  factor(score);
+
+  return {predictive: query.table, params : params};
+};
+
+var outputERP = MCMC(modelAnalysis, {samples: 1000, burn: 0, verbose: true});
+
+console.log('inference complete... printing');
+
+refModule.bayesianErpWriter(outputERP, "bdaOutput");
