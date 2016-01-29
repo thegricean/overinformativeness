@@ -56,8 +56,8 @@
 
 \newcommand{\subsubsubsection}[1]{{\em #1}}
 \newcommand{\eref}[1]{(\ref{#1})}
-\newcommand{\tableref}[1]{Table \ref{#1}}
-\newcommand{\figref}[1]{Figure \ref{#1}}
+\newcommand{\tableref}[1]{Tab.~\ref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
 \newcommand{\appref}[1]{Appendix \ref{#1}}
 \newcommand{\sectionref}[1]{Section \ref{#1}}
 
@@ -95,9 +95,9 @@ referential expressions, levels of reference, basic levels, experimental pragmat
 
 %Reference is ubiquitous in human communication. Unsurprisingly, a wealth of literature has been devoted to how speakers choose referring expressions from the many options available to them with the goal of distinguishing one object from its surroundings \red{cite cite cite deutsch pechmann sedivy gatt}. 
 Referring to objects is a core function of human language, and a wealth of research has explored how speakers choose referring expressions \cite{herrmann1976, Pechmann1989, VanDeemter2012}.
-However, most of this literature has focused on the addition of modifiers \cite<as in the choice between ``the dog'', ``the brown dog'', and ``the big brown dog'', e.g.,>{sedivy2003a, Koolen2011}. Here we investigate how speakers choose a simple nominal referring expression---what governs the choice of calling a particular object ``the dalmatian'', ``the dog'', or ``the animal''? 
+However, most of this literature has focused on the addition of modifiers \cite<as in the choice between ``the dog'', ``the brown dog'', and ``the big brown dog'', e.g.,>{sedivy2003a, Koolen2011}. Here we investigate how speakers choose a simple nominal referring expression---what governs the choice of calling a particular object ``the dalmatian'', ``the dog'', or ``the animal''? That is, what governs the choice of the taxonomic level at which an object is referred to?
 Noun choice can be seen as the most basic decision in forming a referring expression.
-Like modification, these choices differ in their specificity; unlike modification, the number of words used does not differ---\emph{some} noun must be chosen.
+Like modification, these choices differ in their specificity; unlike modification, the number of words used does not differ---in English, \emph{some} noun must be chosen.
 In this paper we provide experimental evidence from a coordination game regarding the flexible choice of nominal referring expressions and explain this data with a probabilistic model of pragmatics.
 
 %they differs in that
@@ -105,11 +105,11 @@ In this paper we provide experimental evidence from a coordination game regardin
 
 
 Previous evidence about the generation of referring expressions suggests that choice of reference level will depend on the interplay of several factors. 
-Grice's Maxim of Quantity \cite{grice1975} implies a pressure for speakers to be sufficiently informative.
-For instance, when the speaker is trying to distinguish a dalmatian from a German Shepherd she would be expected to avoid the insufficiently specific term ``dog'' \cite{brennan1996}.
-On the other hand, recent work in experimental pragmatics has shown that the choice of referring expression depends on cost relative to alternative utterances \cite{rohde2012, degenfrankejaeger2013}; sometimes, speakers are willing to produce a cheap ambiguous utterance rather than a costly (e.g.~long or difficult-to-retrieve) unambiguous one. 
+Grice's Maxim of Quantity \cite{grice1975} implies a pressure for speakers to be sufficiently \emph{informative}.
+For instance, a speaker who is trying to distinguish a dalmatian from a German Shepherd  would be expected to avoid the insufficiently specific term ``dog'' \cite{brennan1996}.
+On the other hand, recent work in experimental pragmatics has shown that the choice of referring expression depends on the \emph{cost} of utterance alternatives \cite{rohde2012, degenfrankejaeger2013}; sometimes, speakers are willing to produce a cheap ambiguous utterance rather than a costly (e.g.~long or difficult-to-retrieve) unambiguous one. 
 %That is, there is some evidence that speakers trade off an utterance's contextual informativeness and cost in systematic ways.
-Finally, classic work on the psychology of concepts suggests that \emph{typicality} of a referent within its category affects the choice of reference \cite{RoschEtAl76_BasicLevel}. In particular, speakers will generally choose to refer at the basic level, but may become more specific for atypical items.
+Finally, classic work on the psychology of concepts suggests that \emph{typicality} of a referent within its category affects the choice of reference \cite{RoschEtAl76_BasicLevel}. In particular, speakers will generally choose to refer at the basic level, but may become more specific for objects that are atypical for the basic level term.
 
 
 
@@ -135,7 +135,7 @@ Finally, classic work on the psychology of concepts suggests that \emph{typicali
 
 %A similar argument can be made for the the use of a level of reference less abstract than necessary for disambiguation and the dominance for the the basic level in the production of referential expressions. The basic level of reference, which Rosch et. al (1976) characterize as the level of abstraction at which the most basic category cuts are made, seems to have a special status in human categorization behavior: Basic level categoriy labels are not only the first labels used for categorization during perception of the environment, but also the labels which lead to fastest category verification. Basic levels also carry the most information and possess the highest category cue validity (compared with the sublevel ``dalmatian'' or superlevel ``animal''). Therefore it can be argued that being more specific than necessary has a positive effect on the processing of the utterance for the listener and thus ``overinformativeness'' contributes to the informativeness of the utterance.
 
-To evaluate the impact of these three factors---contextual informativity, utterance cost, and typicality---we constructed a two-player online game (Figure \ref{fig:procedure}). Participants saw a shared context of objects, of which one was indicated as the referent only to the speaker, who was asked to communicate this object to the listener. The listener then chose among the objects. Critically, the speaker and listener communicated by free use of a chat window, allowing us to gather relatively natural referring expressions. We manipulated the category of distractor objects and used items that varied in utterance complexity and object typicality. This allowed us to evaluate whether each factor influences the referring expressions generated by participants.%; however, it doesn't predict their quantitative interactions.
+To evaluate the impact of these three factors---contextual informativeness, utterance cost, and typicality---we constructed a two-player online game (\figref{fig:procedure}). Participants saw a shared context of objects, of which one was indicated as the referent only to the speaker, who was asked to communicate this object to the listener. The listener then chose among the objects. Critically, the speaker and listener communicated by free use of a chat window, allowing us to gather relatively natural referring expressions. We manipulated the category of distractor objects and used items that varied in utterance complexity and object typicality. This allowed us to evaluate whether each factor influences the referring expressions generated by participants.%; however, it doesn't predict their quantitative interactions.
 
 
 \begin{figure}[tb]
@@ -150,13 +150,13 @@ To evaluate the impact of these three factors---contextual informativity, uttera
 
 A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}. 
 A speaker in RSA is treated as an approximately optimal decision maker who chooses which utterance to use to communicate to a listener.
-The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativity of the utterance for a listener.
+The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativeness of the utterance for a listener.
 The listener is treated as a literal Bayesian interpreter who updates her beliefs given the truth of the utterance.
-These utterance truth values are usually treated as deterministic (an object either is a ``dog'' or it is not); here we relax this formulation in order to incorporate typicality effects. 
+These truth values are usually treated as deterministic (an object either is a ``dog'' or it is not); here we relax this formulation in order to incorporate typicality effects. 
 That is, we elicit typicality ratings in a separate experiment, and model the listener as updating her beliefs by weighting the possible referents according to how typical each is for the description used.
 %
 The RSA framework has been applied to many language interpretation tasks \cite{goodmanstuhlmueller2013,kao2014,Bergen2016}, but relatively rarely to production data \cite<but see>{franke2014, Orita2015}.
-We describe an RSA model of nominal reference that includes informativity, cost, and typicality effects, and evaluate the quantitative predictions against our production data.
+We describe an RSA model of nominal reference that includes informativeness, cost, and typicality effects, and evaluate the quantitative predictions against our production data.
 %\ndg{cite naomi's paper?}
 
 %which treats speakers as boundedly rational agents who try to soft-maximize the utility of producing a particular utterance. A speaker's utterance utility is defined as the utterance's informativeness, given the literal semantics of the utterance and its alternatives. \jd{add sth about shortcomings and foreshadow how we'll deal with it? eg typicality?}
@@ -168,8 +168,8 @@ We describe an RSA model of nominal reference that includes informativity, cost,
 
 \section{A nominal reference game}
 
-This experiment investigates the effect of informativeness (as well as cost and typicality) on the choice of referring expression by varying the visual context of a target object. The visual context consists of a set of two distractor objects. We vary the category level of the distractor objects (same basic level as the target, same superordinate level, different superordinate level) as well as the cost of the subordinate level term compared to the basic level term.
-In order to analyze the effect of cost we collect frequency data from a corpus and length data from participants' utterances; to incorporate typicality we norm the items with a separate group of participants.
+This experiment investigates the effect of informativeness,  cost, and typicality on the choice of nominal referring expression by varying the visual context of a target object. The visual context consists of a set of two distractor objects. We vary the category level of the distractor objects (same basic level as the target, same superordinate level, different superordinate level) as well as the cost of the subordinate level term compared to the basic level term.
+In order to analyze the effect of cost we collect corpus frequencies and length data from participants' utterances; to incorporate typicality we norm the items with a separate group of participants.
 
 
 % We take both an utterance's  length and its frequency to contribute to its overall cost. We also include the typicality norms collected in the previous experiment as predictors of utterance choice.
@@ -180,10 +180,10 @@ In order to analyze the effect of cost we collect frequency data from a corpus a
 %\ndg{i think we want procedure and design figure(s). the procedure fig should show a screen shot from speaker and listener points of view. the design fig should illustrate the dist12, etc notation used later with a concrete domain.}
 
 \paragraph{Participants and materials}
-We recruited 56 participants over Mechanical Turk who were self-reported native speakers of English. Participants completed the experiment in pairs of two.
+We recruited 56 self-reported native speakers of English over Mechanical Turk. Participants completed the experiment in pairs of two.
 
 %\paragraph{\bf Materials}
-Stimuli were selected from eight distinct domains. These domains represented basic level categories such as ``dog'', for each of which four target images were chosen, corresponding to four subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the targets (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). 
+Stimuli were selected from nine distinct domains. These domains represented basic level categories such as ``dog'', for each of which four target images were chosen, corresponding to four subcategories of this domain (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the target's (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). 
 
 %\paragraph{\bf Design}
 Each trial consisted of a display of three pictures of objects, one of which was designated as the target object. There were four target objects for each of the eight domains, each of which would appear once for every pair of participants, giving rise to a total of 36 trials per pair. As displayed in Fig. 1, there were four conditions which differed in the types of distractors which were shown: (a) \textbf{item12}: one distractor of the same basic level and one distractor of the same superlevel were present (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) \textbf{item22}: two distractors of the same superlevel were present, (c) \textbf{item23}: one distractor of the same superlevel and one artifact were present and (d) \textbf{item33}: two artifacts were present. The selection of distractor condition was random for each trial. Furthermore, the experiment contained 36 filler items, in which participants were also asked to produce referential expressions for objects, but here the three pictures illustrated the same stimulus which differed only in size and color. No filler items were reused in the target trials.
@@ -311,9 +311,9 @@ For instance, mentioning the subclass over the basic level term was preferred mo
 \section{\bf Modeling level of reference}
 
 %To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic-level reference. 
-We formulated a probabilistic model of reference level selection that integrates contextual informativity, utterance cost, and typicality.
+We formulated a probabilistic model of reference level selection that integrates contextual informativeness, utterance cost, and typicality.
 As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that words have deterministic truth conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
-The speaker also seeks to be parsimonious: the speaker utility includes both informativity and word cost; cost includes both length and frequency.
+The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both length and frequency.
 
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
@@ -321,12 +321,12 @@ Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to obje
 
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible words $l \in {\mathcal L}(o)$: 
 $$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l + \beta_{fl} \hat{c}_{fl} )$$
-Thus the speaker chooses words in a way that is influenced by informativity of the label for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$), the length cost ($\hat{c}_l$), and a multiplicative cost of length and frequency ($\hat{c}_{fl}$).
+Thus the speaker chooses words in a way that is influenced by informativeness of the label for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$), the length cost ($\hat{c}_l$), and a multiplicative cost of length and frequency ($\hat{c}_{fl}$).
 Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level (as used in the previous analysis). 
 %For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. 
 Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. In addition, given the significant interaction between length and frequency observed in the regression analysis, we included a multiplicative cost term $\hat{c}_{fl}$ for length and frequency.
 The relative importance of these four factors is determined by four parameters that were fit to the data.
-%where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativity and cost?}
+%where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativeness and cost?}
 
 %Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
 %\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
@@ -380,9 +380,9 @@ Interestingly, as model complexity increases, informativeness is given more weig
 %\ndg{things to say: we got naturalistic data of nominal reference. this was affected by cost (length), context, and typicality. these factors fit naturally into an RSA model. this predicts basic-level bias without building it in, and interactions between these factors. future work will need to explore: the item effects where perhaps visual salience plays a role (or something else?); the interaction of nominal and modifier choice; the role of typicality in RSA models. connect to rosch, the dutch guys, naomi's student.} 
 
 The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
-In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativity (as manipulated via distractor objects), and object typicality.
+In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
 
-The interplay of these factors is naturally modeled within the RSA framework, which treats speakers as choosing utterances by soft-maximizing utterance utility, which includes terms for informativity and cost. In previous formulations of RSA models, informativity was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns. 
+The interplay of these factors is naturally modeled within the RSA framework, which treats speakers as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns. 
 %We also incorporated a parsimony goal by including the effect of utterance cost.
 %showed that more complex cost functions can account for naturalistic data. In addition, 
  The resulting model both qualitatively and quantitatively provided a good fit to speakers' empirical utterance choices. 
