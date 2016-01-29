@@ -321,12 +321,11 @@ $$P_{L_0}(o | l) \propto \denote{l}(o).$$
 Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability or typicality of object $o$ for category $l$, for which we use the empirically elicited typicality norms described previously. %\ndg{fix up wrt norms refernce}
 
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$: 
-$$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l + \beta_{fl} \hat{c}_{fl} )$$
-Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$), the length cost ($\hat{c}_l$), and a multiplicative cost of length and frequency ($\hat{c}_{fl}$).
+$$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$).
 Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level (as used in the previous analysis). 
 %For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. 
-Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. In addition, given the significant interaction between length and frequency observed in the regression analysis, \red{we included a multiplicative cost term $\hat{c}_{fl}$ for length and frequency.
-The relative importance of these four factors is determined by four parameters that were fit to the data.}
+Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. \red{The relative importance of these three factors is determined by four parameters that were fit to the data.}
 %where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativeness and cost?}
 
 %Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
