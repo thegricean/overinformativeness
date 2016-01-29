@@ -1255,47 +1255,28 @@ var globalInfo = {
 };
 
 var BasicLevelModel = function(domainInfo, params) {
-  var tax = params.useTypicality ? refModule.getTypicalityTax() : domainInfo.tax;
+//  var tax = params.useTypicality ? refModule.getTypicalityTax() : domainInfo.tax;
+  var tax = refModule.getTypicalityTax();
   
-  var labelFitness = cache(function(label, object) {
-    return _.has(tax[label], object) ? tax[label][object] : -Infinity ;
-  });
-
-  // The meaning of a label is a function that maps objects to fitness values
-  var meaning = cache(function(label) {
-    return function(object) {
-      return labelFitness(label, object);
-    };
-  });
-
-  var makeObjectPrior = function(item) {
-    return Enumerate(function() {
-      return uniformDraw(item);
-    });
-  };
-
-  var constructLabelPrior = function(target) {
-    var labels = refModule.getAllPossibleLabels(target, tax);
-    return Enumerate(function(){
-      var label = uniformDraw(labels);
-      return label;
-    });
+  var labelFitness = function(label, object) {
+    var typfit = _.has(tax[label], object) ? tax[label][object] : 0;
+    var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;
+    var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+    return Math.log(weightedFit);
   };
 
   var literalListener = cache(function(label, item){
-    var objectPrior = makeObjectPrior(item);
-    var labelMeaning = meaning(label);
     return Enumerate(function(){
-      var object = sample(objectPrior);
-      factor(labelMeaning(object));
+      var object = uniformDraw(item);
+      factor(labelFitness(label,object));
       return object;
     });
   });
   
   var speaker = cache(function(target, item) {
-    var labelPrior = constructLabelPrior(target);
+    var possibleLabels = refModule.getAllPossibleLabels(target, tax);
     return Enumerate(function(){
-      var label = sample(labelPrior);
+      var label = uniformDraw(possibleLabels);
       var literalListenerERP = literalListener(label, item);
       factor(params.alpha * literalListenerERP.score([], target));
 

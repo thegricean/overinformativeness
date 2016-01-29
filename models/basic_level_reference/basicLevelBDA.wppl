@@ -12,7 +12,7 @@ var modelAnalysis = function() {
     lengthWeight : uniform(0,20),
     freqWeight : uniform(0,20),
     interactionWeight : uniform(0,20),
-    useTypicality : flip()
+    typWeight : uniform(0,1)
   };
   
   // Run model and condition on data
