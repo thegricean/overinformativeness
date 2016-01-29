@@ -1,0 +1,135 @@
+// run using:
+// webppl referenceGameSketch.wppl --require refModule/
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var BasicLevelModel = function(domainInfo, params) {
+  var tax = params.useTypicality ? refModule.getTypicalityTax() : domainInfo.tax;
+  
+  var labelFitness = cache(function(label, object) {
+    return _.has(tax[label], object) ? tax[label][object] : -Infinity ;
+  });
+
+  // The meaning of a label is a function that maps objects to fitness values
+  var meaning = cache(function(label) {
+    return function(object) {
+      return labelFitness(label, object);
+    };
+  });
+
+  var makeObjectPrior = function(item) {
+    return Enumerate(function() {
+      return uniformDraw(item);
+    });
+  };
+
+  var constructLabelPrior = function(target) {
+    var labels = refModule.getAllPossibleLabels(target, tax);
+    return Enumerate(function(){
+      var label = uniformDraw(labels);
+      return label;
+    });
+  };
+
+  var literalListener = cache(function(label, item){
+    var objectPrior = makeObjectPrior(item);
+    var labelMeaning = meaning(label);
+    return Enumerate(function(){
+      var object = sample(objectPrior);
+      factor(labelMeaning(object));
+      return object;
+    });
+  });
+  
+  var speaker = cache(function(target, item) {
+    var labelPrior = constructLabelPrior(target);
+    return Enumerate(function(){
+      var label = sample(labelPrior);
+      var literalListenerERP = literalListener(label, item);
+      factor(params.alpha * literalListenerERP.score([], target));
+
+      var labelLength = refModule.getRelativeLength(label);
+      var labelFreq = refModule.getRelativeLogFrequency(label);
+      factor(params.lengthWeight * (1 - labelLength));
+      factor(params.freqWeight * labelFreq);
+      factor(params.interactionWeight * labelFreq * (1-labelLength));
+      return label;
+    });
+  });
+
+  return speaker;
+};
+
+var runModel = function(target, cond, domainInfo, params) {
+  var item = cons(target, domainInfo.conditions[cond]);
+  var domain = domainInfo.basicLabel;
+  var speakerModel = BasicLevelModel(domainInfo, params);
+  var speakerERP = speakerModel(target, item);
+  var transformedERP = Enumerate(function(){
+    var label = sample(speakerERP);
+    return (_.contains(domainInfo.targets, label) ? "type" :
+	    label === domainInfo.basicLabel ? "basicLevel" :
+	    label === domainInfo.superLabel ? "superDomain" :
+	    "label not recognized");
+  });
+  
+  var line = [domain, cond, params.modelVersion, target,
+  	      params.alpha.toFixed(2), params.lengthWeight.toFixed(2),
+  	      params.freqWeight.toFixed(2), params.interactionWeight.toFixed(2)];
+  refModule.writeERP(transformedERP, line, filename, 4);
+};
+
+var alphaRange = _.range(8, 20, 1); 
+var lengthWeightRange = _.range(1, 5, 0.5); 
+var freqWeightRange = _.range(0, 1, 0.1);
+var interactionWeightRange = _.range(0, 1, 0.1); 
+var modelVersions = ["inform", "inform+cost", "inform+cost+typicality"];
+
+var filename = "predictionsWithEmpiricalLength.csv";
+
+refModule.writeCSV([["domain", "condition", "modelVersion", "target", "alpha",
+		     "lengthWeight", "freqWeight", "interactionWeight",
+		     "label", "modelProb"]],
+		   filename);
+
+map(function(domain) {
+  console.log("running domain... " + domain);
+  var domainInfo = globalInfo.info[domain];
+  map(function(cond) {
+    console.log("running condition..." + cond);
+    map(function(target) {
+      map(function(alpha) {
+	map(function(v) {
+	  var useCost = _.contains(v.split("+"), "cost") ? true : false;
+	  var useTyp = _.contains(v.split("+"), "typicality") ? true : false;
+	  var params = {alpha : alpha,
+			useTypicality : useTyp,
+			modelVersion : v};
+	  if(useCost) { // only iterate over cost params if they're relevant 
+	    map(function(lengthWeight) {
+	      map(function(freqWeight) {
+		map(function(interactionWeight) {
+		  runModel(target, cond, domainInfo, _.extend(params, {
+		    freqWeight : freqWeight,
+		    lengthWeight : lengthWeight,
+		    interactionWeight : interactionWeight}));
+		}, interactionWeightRange);
+	      }, freqWeightRange);
+	    }, lengthWeightRange);
+	  } else {
+	    runModel(target, cond, domainInfo, _.extend(params, {
+	      freqWeight : 0,
+	      lengthWeight : 0,
+	      interactionWeight : 0}));
+	  }
+	}, modelVersions);
+      }, alphaRange);
+    }, domainInfo.targets);
+  }, _.keys(domainInfo.conditions));
+}, globalInfo.domains);
