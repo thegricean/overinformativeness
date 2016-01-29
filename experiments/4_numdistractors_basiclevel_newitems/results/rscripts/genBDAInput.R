@@ -6,7 +6,7 @@ tmp = d_noattr %>%
   mutate(targetName = tolower(nameClickedObj),
          alt1Name = tolower(alt1Name),
          alt2Name = tolower(alt2Name)) %>%
-  mutate(refLevel = ifelse(typeMentioned, "type",
+  mutate(refLevel = ifelse(typeMentioned, "sub",
                            ifelse(basiclevelMentioned, "basic",
                                   ifelse(superClassMentioned, "super", "other")))) %>%
   select(gameid, roundNum, targetName, alt1Name, alt2Name, refLevel)
