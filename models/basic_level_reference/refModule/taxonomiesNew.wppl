@@ -46,7 +46,7 @@ var dogInfo = {
   basicLabel : "dog",
   superLabel : "animal",
   conditions : {
-    item12 : {
+    item12 : [
       ["dalmatian", "greyhound", "horse"], 
       ["dalmatian", "greyhound", "squirrel"], 
       ["germanshepherd", "crocodile", "greyhound"], 
@@ -67,9 +67,9 @@ var dogInfo = {
       ["pug", "greyhound", "rabbit"], 
       ["pug", "greyhound", "sheep"], 
       ["pug", "greyhound", "squirrel"]
-    },
+    ],
 
-    item22 : {
+    item22 : [
       ["dalmatian", "bison", "rhino"], 
       ["dalmatian", "cow", "pig"], 
       ["dalmatian", "cow", "snake"], 
@@ -93,9 +93,9 @@ var dogInfo = {
       ["pug", "iguana", "sheep"], 
       ["pug", "lion", "snake"], 
       ["pug", "pig", "rabbit"]
-    },
+    ],
 
-    item23 : {
+    item23 : [
       ["dalmatian", "chick", "dress"], 
       ["dalmatian", "cow", "ivy"], 
       ["dalmatian", "lion", "train"], 
@@ -112,9 +112,9 @@ var dogInfo = {
       ["pug", "iguana", "pottedPlant"], 
       ["pug", "ivy", "sheep"], 
       ["pug", "pig", "pottedPlant"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [
       ["dalmatian", "ambulance", "gloves"], 
       ["dalmatian", "bed", "cookies"], 
       ["dalmatian", "chips", "rosemary"], 
@@ -141,7 +141,7 @@ var dogInfo = {
       ["pug", "grasses", "pretzels"], 
       ["pug", "pottedPlant", "train"], 
       ["pug", "pretzels", "wardrobe"]
-    }
+    ]
   }
 };
 
@@ -193,7 +193,7 @@ var birdInfo = {
   basicLabel : "bird",
   superLabel : "animal",
   conditions : {
-    item12 : {
+    item12 : [
       ["eagle", "bison", "sparrow"], 
       ["eagle", "cow", "sparrow"], 
       ["eagle", "elephant", "sparrow"], 
@@ -213,9 +213,9 @@ var birdInfo = {
       ["pigeon", "kitten", "sparrow"], 
       ["pigeon", "rabbit", "sparrow"], 
       ["pigeon", "sheep", "sparrow"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["eagle", "bison", "squirrel"], 
       ["eagle", "elephant", "pig"], 
       ["eagle", "elephant", "sheep"], 
@@ -238,9 +238,9 @@ var birdInfo = {
       ["pigeon", "lobster", "rabbit"], 
       ["pigeon", "pig", "rhino"], 
       ["pigeon", "rhino", "sheep"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["eagle", "bathrobe", "pig"], 
       ["eagle", "cookies", "snake"], 
       ["eagle", "lamp", "rhino"], 
@@ -264,9 +264,9 @@ var birdInfo = {
       ["pigeon", "kitten", "train"], 
       ["pigeon", "lobster", "rosemary"], 
       ["pigeon", "pig", "rosemary"]
-    }, 
+    ], 
 
-    item33 : {
+    item33 : [
       ["eagle", "bathrobe", "lamp"], 
       ["eagle", "chips", "firetruck"], 
       ["eagle", "dress", "popcorn"], 
@@ -287,7 +287,7 @@ var birdInfo = {
       ["pigeon", "grasses", "rosemary"], 
       ["pigeon", "popcorn", "popcorn"], 
       ["pigeon", "rosemary", "socks"]
-    }
+    ]
   }
 };
 
@@ -339,7 +339,7 @@ var bearInfo = {
   basicLabel : "bear",
   superLabel : "animal",
   conditions : {
-    item12 : {
+    item12 : [
       ["blackbear", "bison", "koalaBear"], 
       ["blackbear", "cow", "koalaBear"], 
       ["blackbear", "koalaBear", "lobster"], 
@@ -356,9 +356,9 @@ var bearInfo = {
       ["polarbear", "cow", "koalaBear"], 
       ["polarbear", "elephant", "koalaBear"], 
       ["polarbear", "koalaBear", "pig"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["blackbear", "chick", "kitten"], 
       ["blackbear", "cow", "rabbit"], 
       ["blackbear", "elephant", "sheep"], 
@@ -380,9 +380,9 @@ var bearInfo = {
       ["polarbear", "chick", "squirrel"], 
       ["polarbear", "crocodile", "kitten"], 
       ["polarbear", "elephant", "rhino"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["blackbear", "bed", "cow"], 
       ["blackbear", "gloves", "iguana"], 
       ["blackbear", "rabbit", "train"], 
@@ -406,9 +406,9 @@ var bearInfo = {
       ["polarbear", "cow", "ivy"], 
       ["polarbear", "horse", "lamp"], 
       ["polarbear", "snake", "train"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [
       ["blackbear", "ambulance", "chips"], 
       ["blackbear", "bathrobe", "popcorn"], 
       ["blackbear", "bathrobe", "socks"], 
@@ -434,7 +434,7 @@ var bearInfo = {
       ["polarbear", "chips", "grasses"], 
       ["polarbear", "cookies", "rosemary"], 
       ["polarbear", "firetruck", "wardrobe"]
-    }
+    ]
   }
 };
 
@@ -486,7 +486,7 @@ var fishInfo = {
   basicLabel : "fish",
   superLabel : "animal",
   conditions : {
-    item12 : {
+    item12 : [
       ["catfish", "cow", "discusFish"], 
       ["catfish", "discusFish", "iguana"], 
       ["catfish", "discusFish", "pig"], 
@@ -507,9 +507,9 @@ var fishInfo = {
       ["swordfish", "discusFish", "iguana"], 
       ["swordfish", "discusFish", "rhino"], 
       ["swordfish", "discusFish", "sheep"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["catfish", "bison", "chick"], 
       ["catfish", "bison", "elephant"], 
       ["catfish", "chick", "elephant"], 
@@ -533,9 +533,9 @@ var fishInfo = {
       ["swordfish", "elephant", "lion"], 
       ["swordfish", "elephant", "pig"], 
       ["swordfish", "lobster", "pig"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["catfish", "lamp", "pig"], 
       ["catfish", "lobster", "pretzels"], 
       ["clownfish", "bed", "crocodile"], 
@@ -552,9 +552,9 @@ var fishInfo = {
       ["swordfish", "kitten", "socks"], 
       ["swordfish", "lamp", "lion"], 
       ["swordfish", "lion", "train"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [
       ["catfish", "ambulance", "bed"], 
       ["catfish", "bathrobe", "wardrobe"], 
       ["catfish", "cookies", "rosemary"], 
@@ -579,7 +579,7 @@ var fishInfo = {
       ["swordfish", "cookies", "motorcycle"], 
       ["swordfish", "firetruck", "train"], 
       ["swordfish", "gloves", "train"]
-    }
+    ]
   }
 };
 
@@ -619,7 +619,7 @@ var candyInfo = {
   basicLabel : "candy",
   superLabel : "snack",
   conditions : {
-    item12 : {
+    item12 : [
       ["gummybears", "candyCorn", "chips"], 
       ["gummybears", "candyCorn", "cookies"], 
       ["gummybears", "candyCorn", "popcorn"], 
@@ -633,9 +633,9 @@ var candyInfo = {
       ["skittles", "candyCorn", "cookies"], 
       ["skittles", "candyCorn", "popcorn"], 
       ["skittles", "candyCorn", "pretzels"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["gummybears", "chips", "cookies"], 
       ["gummybears", "chips", "pretzels"], 
       ["gummybears", "cookies", "pretzels"], 
@@ -651,9 +651,9 @@ var candyInfo = {
       ["skittles", "chips", "pretzels"], 
       ["skittles", "cookies", "pretzels"], 
       ["skittles", "popcorn", "pretzels"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["gummybears", "ambulance", "pretzels"], 
       ["gummybears", "chips", "rhino"], 
       ["gummybears", "cookies", "rabbit"], 
@@ -679,9 +679,9 @@ var candyInfo = {
       ["skittles", "ivy", "pretzels"], 
       ["skittles", "popcorn", "squirrel"], 
       ["skittles", "popcorn", "train"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [
       ["gummybears", "ambulance", "cow"], 
       ["gummybears", "chick", "firetruck"], 
       ["gummybears", "cow", "rabbit"], 
@@ -704,7 +704,7 @@ var candyInfo = {
       ["skittles", "firetruck", "squirrel"], 
       ["skittles", "gloves", "lobster"], 
       ["skittles", "rhino", "rosemary"]
-    }
+    ]
   }
 };
 
@@ -744,7 +744,7 @@ var carInfo = {
   basicLabel : "car",
   superLabel : "vehicle",
   conditions : {
-    item12 : {
+    item12 : [
       ["convertible", "ambulance", "sedan"], 
       ["convertible", "firetruck", "sedan"], 
       ["convertible", "motorcycle", "sedan"], 
@@ -760,9 +760,9 @@ var carInfo = {
       ["suv", "firetruck", "sedan"], 
       ["suv", "motorcycle", "sedan"], 
       ["suv", "sedan", "train"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["convertible", "ambulance", "train"], 
       ["convertible", "firetruck", "motorcycle"], 
       ["minivan", "ambulance", "train"], 
@@ -775,9 +775,9 @@ var carInfo = {
       ["sportscar", "firetruck", "motorcycle"], 
       ["suv", "ambulance", "firetruck"], 
       ["suv", "ambulance", "train"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["convertible", "bathrobe", "firetruck"], 
       ["convertible", "bathrobe", "train"], 
       ["convertible", "bison", "firetruck"], 
@@ -802,9 +802,9 @@ var carInfo = {
       ["suv", "bison", "train"], 
       ["suv", "elephant", "firetruck"], 
       ["suv", "squirrel", "train"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [
       ["convertible", "chick", "pottedPlant"], 
       ["convertible", "crocodile", "rosemary"], 
       ["convertible", "dress", "popcorn"], 
@@ -832,7 +832,7 @@ var carInfo = {
       ["suv", "elephant", "lobster"], 
       ["suv", "ivy", "sheep"], 
       ["suv", "lion", "socks"]
-    }
+    ]
   }
 };
 
@@ -872,7 +872,7 @@ var tableInfo = {
   basicLabel : "table",
   superLabel : "furniture",
   conditions : {
-    item12 : {
+    item12 : [
       ["bedsidetable", "sideTable", "wardrobe"], 
       ["coffeetable", "bed", "sideTable"], 
       ["coffeetable", "bookcase", "sideTable"], 
@@ -882,9 +882,9 @@ var tableInfo = {
       ["picnictable", "bed", "sideTable"], 
       ["picnictable", "bookcase", "sideTable"], 
       ["picnictable", "sideTable", "wardrobe"]
-    },
+    ],
 
-    item22 : {
+    item22 : [
       ["bedsidetable", "bed", "lamp"], 
       ["bedsidetable", "bed", "wardrobe"], 
       ["coffeetable", "bed", "bookcase"], 
@@ -898,9 +898,9 @@ var tableInfo = {
       ["picnictable", "bed", "wardrobe"], 
       ["picnictable", "bookcase", "wardrobe"], 
       ["picnictable", "lamp", "wardrobe"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["bedsidetable", "ambulance", "bed"], 
       ["bedsidetable", "bed", "dress"], 
       ["bedsidetable", "bed", "horse"], 
@@ -924,9 +924,9 @@ var tableInfo = {
       ["picnictable", "cookies", "lamp"], 
       ["picnictable", "crocodile", "wardrobe"], 
       ["picnictable", "ivy", "wardrobe"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [ 
       ["bedsidetable", "cookies", "horse"], 
       ["bedsidetable", "crocodile", "elephant"], 
       ["bedsidetable", "rabbit", "sheep"], 
@@ -950,7 +950,7 @@ var tableInfo = {
       ["picnictable", "firetruck", "rabbit"], 
       ["picnictable", "grasses", "pottedPlant"], 
       ["picnictable", "motorcycle", "rosemary"]
-    }
+    ]
   }
 };
 
@@ -990,7 +990,7 @@ var shirtInfo = {
   basicLabel : "shirt",
   superLabel : "clothing",
   conditions : {
-    item12 : {
+    item12 : [
       ["hawaiishirt", "campShirt", "dress"], 
       ["hawaiishirt", "campShirt", "gloves"], 
       ["hawaiishirt", "campShirt", "socks"], 
@@ -999,9 +999,9 @@ var shirtInfo = {
       ["tshirt", "bathrobe", "campShirt"], 
       ["tshirt", "campShirt", "dress"], 
       ["tshirt", "campShirt", "socks"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["dressshirt", "dress", "gloves"], 
       ["dressshirt", "dress", "socks"], 
       ["dressshirt", "gloves", "socks"], 
@@ -1019,9 +1019,9 @@ var shirtInfo = {
       ["tshirt", "dress", "gloves"], 
       ["tshirt", "dress", "socks"], 
       ["tshirt", "gloves", "socks"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["dressshirt", "ambulance", "bathrobe"], 
       ["dressshirt", "bathrobe", "cow"], 
       ["dressshirt", "bathrobe", "horse"], 
@@ -1053,9 +1053,9 @@ var shirtInfo = {
       ["tshirt", "dress", "train"], 
       ["tshirt", "gloves", "rabbit"], 
       ["tshirt", "lamp", "socks"]
-    },
+    ],
 
-    item33 : { 
+    item33 : [ 
       ["dressshirt", "chick", "cookies"], 
       ["dressshirt", "chips", "elephant"], 
       ["dressshirt", "cookies", "rhino"], 
@@ -1076,7 +1076,7 @@ var shirtInfo = {
       ["poloshirt", "pig", "pretzels"],  
       ["tshirt", "ambulance", "pig"], 
       ["tshirt", "grasses", "train"]
-    }
+    ]
   }
 };
 
@@ -1116,7 +1116,7 @@ var flowerInfo = {
   basicLabel : "flower",
   superLabel : "plant",
   conditions : {
-    item12 : {
+    item12 : [
       ["daisy", "grasses", "lily"], 
       ["daisy", "ivy", "lily"], 
       ["daisy", "lily", "pottedPlant"], 
@@ -1131,9 +1131,9 @@ var flowerInfo = {
       ["tulip", "grasses", "lily"], 
       ["tulip", "lily", "pottedPlant"], 
       ["tulip", "lily", "rosemary"]
-    }, 
+    ], 
 
-    item22 : {
+    item22 : [
       ["daisy", "grasses", "ivy"], 
       ["daisy", "grasses", "rosemary"], 
       ["daisy", "ivy", "pottedPlant"], 
@@ -1147,9 +1147,9 @@ var flowerInfo = {
       ["tulip", "grasses", "rosemary"], 
       ["tulip", "ivy", "rosemary"], 
       ["tulip", "pottedPlant", "rosemary"]
-    }, 
+    ], 
 
-    item23 : {
+    item23 : [
       ["daisy", "grasses", "snake"], 
       ["daisy", "horse", "rosemary"], 
       ["rose", "bathrobe", "rosemary"], 
@@ -1171,9 +1171,9 @@ var flowerInfo = {
       ["tulip", "ivy", "rabbit"], 
       ["tulip", "kitten", "rosemary"], 
       ["tulip", "lamp", "rosemary"]
-    }, 
+    ], 
 
-    item33 : {
+    item33 : [
       ["daisy", "bison", "popcorn"], 
       ["daisy", "bison", "squirrel"], 
       ["rose", "bathrobe", "cookies"], 
@@ -1193,7 +1193,7 @@ var flowerInfo = {
       ["tulip", "bison", "cookies"], 
       ["tulip", "cow", "crocodile"], 
       ["tulip", "rabbit", "train"]
-    }
+    ]
   }
 };
 
