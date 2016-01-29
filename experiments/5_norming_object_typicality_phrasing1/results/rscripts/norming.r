@@ -100,3 +100,6 @@ ggplot(agr, aes(x=item,y=meanresponse,color=itemtype)) +
 ggsave("graphs/typicality_bylabel.pdf",width=30,height=23)
 
 write.table(agr[,c("itemtype","labeltype","item","label","meanresponse","YMin","YMax")],file="data/itemtypicalities.txt",sep="\t",row.names=F,col.names=T,quote=F)
+
+
+# CONTINUE HERE: FIRST Z-SCORE WITHIN SUBJECTS?

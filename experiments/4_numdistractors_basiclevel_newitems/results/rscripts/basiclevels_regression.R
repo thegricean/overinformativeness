@@ -9,6 +9,7 @@ source("rscripts/createLaTeXTable.R")
 
 bdCorrect = read.csv(file="noAttr.csv",sep=",")
 bdCorrect$nameClickedObj = tolower(as.character(bdCorrect$nameClickedObj))
+bdCorrect[bdCorrect$nameClickedObj == "hummingbird" & (bdCorrect$alt1Name == "chick" | bdCorrect$alt2Name == "chick"),]$condition = "distr12"
 # there are eight cases that are marked as both basic level and type mentioned. i'm going to interpret these as type mentions.
 bdCorrect[bdCorrect$basiclevelMentioned & bdCorrect$typeMentioned,]$basiclevelMentioned = F
 bdCorrect$superMentioned = ifelse(bdCorrect$superClassMentioned | bdCorrect$superclassattributeMentioned, T, F)
@@ -50,41 +51,41 @@ bdCorrect$lengthRatio2binsMean = ifelse(bdCorrect$typeBasiclevelLengthRatio < le
 
 frequencies = read.table(file="data/frequencyChart.csv",sep=",", header=T, quote="")
 
-bdCorrect$relFreqType = ifelse(bdCorrect$nameClickedObj == "bedsideTable", (subset(frequencies, noun == "bedsideTable"))$relFreq, 
-                               ifelse(bdCorrect$nameClickedObj == "blackBear", (subset(frequencies, noun == "blackBear"))$relFreq, 
+bdCorrect$relFreqType = ifelse(bdCorrect$nameClickedObj == "bedsidetable", (subset(frequencies, noun == "bedsideTable"))$relFreq, 
+                               ifelse(bdCorrect$nameClickedObj == "blackbear", (subset(frequencies, noun == "blackBear"))$relFreq, 
                                       ifelse(bdCorrect$nameClickedObj == "catfish", (subset(frequencies, noun == "catfish"))$relFreq, 
-                                             ifelse(bdCorrect$nameClickedObj == "clownFish", (subset(frequencies, noun == "clownFish"))$relFreq, 
-                                                    ifelse(bdCorrect$nameClickedObj == "coffeeTable", (subset(frequencies, noun == "coffeeTable"))$relFreq, 
+                                             ifelse(bdCorrect$nameClickedObj == "clownfish", (subset(frequencies, noun == "clownFish"))$relFreq, 
+                                                    ifelse(bdCorrect$nameClickedObj == "coffeetable", (subset(frequencies, noun == "coffeeTable"))$relFreq, 
                                                            ifelse(bdCorrect$nameClickedObj == "convertible", (subset(frequencies, noun == "convertible"))$relFreq, 
                                                                   ifelse(bdCorrect$nameClickedObj == "daisy", (subset(frequencies, noun == "daisy"))$relFreq, 
                                                                          ifelse(bdCorrect$nameClickedObj == "dalmatian", (subset(frequencies, noun == "dalmatian"))$relFreq, 
-                                                                                ifelse(bdCorrect$nameClickedObj == "diningTable", (subset(frequencies, noun == "diningTable"))$relFreq, 
-                                                                                       ifelse(bdCorrect$nameClickedObj == "dressShirt", (subset(frequencies, noun == "dressShirt"))$relFreq, 
+                                                                                ifelse(bdCorrect$nameClickedObj == "diningtable", (subset(frequencies, noun == "diningTable"))$relFreq, 
+                                                                                       ifelse(bdCorrect$nameClickedObj == "dressshirt", (subset(frequencies, noun == "dressShirt"))$relFreq, 
                                                                                               ifelse(bdCorrect$nameClickedObj == "eagle", (subset(frequencies, noun == "eagle"))$relFreq, 
-                                                                                                     ifelse(bdCorrect$nameClickedObj == "germanShepherd", (subset(frequencies, noun == "germanShepherd"))$relFreq, 
-                                                                                                            ifelse(bdCorrect$nameClickedObj == "goldFish", (subset(frequencies, noun == "goldFish"))$relFreq, 
-                                                                                                                   ifelse(bdCorrect$nameClickedObj == "grizzlyBear", (subset(frequencies, noun == "grizzlyBear"))$relFreq, 
-                                                                                                                          ifelse(bdCorrect$nameClickedObj == "gummyBears", (subset(frequencies, noun == "gummyBears"))$relFreq, 
-                                                                                                                                 ifelse(bdCorrect$nameClickedObj == "hawaiiShirt", (subset(frequencies, noun == "hawaiiShirt"))$relFreq, 
-                                                                                                                                        ifelse(bdCorrect$nameClickedObj == "hummingBird", (subset(frequencies, noun == "hummingBird"))$relFreq, 
+                                                                                                     ifelse(bdCorrect$nameClickedObj == "germanshepherd", (subset(frequencies, noun == "germanShepherd"))$relFreq, 
+                                                                                                            ifelse(bdCorrect$nameClickedObj == "goldfish", (subset(frequencies, noun == "goldFish"))$relFreq, 
+                                                                                                                   ifelse(bdCorrect$nameClickedObj == "grizzlybear", (subset(frequencies, noun == "grizzlyBear"))$relFreq, 
+                                                                                                                          ifelse(bdCorrect$nameClickedObj == "gummybears", (subset(frequencies, noun == "gummyBears"))$relFreq, 
+                                                                                                                                 ifelse(bdCorrect$nameClickedObj == "hawaiishirt", (subset(frequencies, noun == "hawaiiShirt"))$relFreq, 
+                                                                                                                                        ifelse(bdCorrect$nameClickedObj == "hummingbird", (subset(frequencies, noun == "hummingBird"))$relFreq, 
                                                                                                                                                ifelse(bdCorrect$nameClickedObj == "husky", (subset(frequencies, noun == "husky"))$relFreq, 
-                                                                                                                                                      ifelse(bdCorrect$nameClickedObj == "jellyBeans", (subset(frequencies, noun == "jellyBeans"))$relFreq, 
-                                                                                                                                                             ifelse(bdCorrect$nameClickedObj == "mnMs", (subset(frequencies, noun == "mnMs"))$relFreq, 
+                                                                                                                                                      ifelse(bdCorrect$nameClickedObj == "jellybeans", (subset(frequencies, noun == "jellyBeans"))$relFreq, 
+                                                                                                                                                             ifelse(bdCorrect$nameClickedObj == "mnms", (subset(frequencies, noun == "mnMs"))$relFreq, 
                                                                                                                                                                     ifelse(bdCorrect$nameClickedObj == "minivan", (subset(frequencies, noun == "minivan"))$relFreq, 
-                                                                                                                                                                           ifelse(bdCorrect$nameClickedObj == "pandaBear", (subset(frequencies, noun == "pandaBear"))$relFreq, 
+                                                                                                                                                                           ifelse(bdCorrect$nameClickedObj == "pandabear", (subset(frequencies, noun == "pandaBear"))$relFreq, 
                                                                                                                                                                                   ifelse(bdCorrect$nameClickedObj == "parrot", (subset(frequencies, noun == "parrot"))$relFreq, 
-                                                                                                                                                                                         ifelse(bdCorrect$nameClickedObj == "picnicTable", (subset(frequencies, noun == "picnicTable"))$relFreq, 
+                                                                                                                                                                                         ifelse(bdCorrect$nameClickedObj == "picnictable", (subset(frequencies, noun == "picnicTable"))$relFreq, 
                                                                                                                                                                                                 ifelse(bdCorrect$nameClickedObj == "pigeon", (subset(frequencies, noun == "pigeon"))$relFreq, 
-                                                                                                                                                                                                       ifelse(bdCorrect$nameClickedObj == "polarBear", (subset(frequencies, noun == "polarBear"))$relFreq, 
-                                                                                                                                                                                                              ifelse(bdCorrect$nameClickedObj == "poloShirt", (subset(frequencies, noun == "poloShirt"))$relFreq, 
+                                                                                                                                                                                                       ifelse(bdCorrect$nameClickedObj == "polarbear", (subset(frequencies, noun == "polarBear"))$relFreq, 
+                                                                                                                                                                                                              ifelse(bdCorrect$nameClickedObj == "poloshirt", (subset(frequencies, noun == "poloShirt"))$relFreq, 
                                                                                                                                                                                                                      ifelse(bdCorrect$nameClickedObj == "pug", (subset(frequencies, noun == "pug"))$relFreq, 
                                                                                                                                                                                                                             ifelse(bdCorrect$nameClickedObj == "rose", (subset(frequencies, noun == "rose"))$relFreq, 
                                                                                                                                                                                                                                    ifelse(bdCorrect$nameClickedObj == "skittles", (subset(frequencies, noun == "skittles"))$relFreq, 
-                                                                                                                                                                                                                                          ifelse(bdCorrect$nameClickedObj == "sportsCar", (subset(frequencies, noun == "sportsCar"))$relFreq, 
+                                                                                                                                                                                                                                          ifelse(bdCorrect$nameClickedObj == "sportscar", (subset(frequencies, noun == "sportsCar"))$relFreq, 
                                                                                                                                                                                                                                                  ifelse(bdCorrect$nameClickedObj == "sunflower", (subset(frequencies, noun == "sunflower"))$relFreq, 
                                                                                                                                                                                                                                                         ifelse(bdCorrect$nameClickedObj == "suv", (subset(frequencies, noun == "suv"))$relFreq, 
-                                                                                                                                                                                                                                                               ifelse(bdCorrect$nameClickedObj == "swordFish", (subset(frequencies, noun == "swordFish"))$relFreq, 
-                                                                                                                                                                                                                                                                      ifelse(bdCorrect$nameClickedObj == "tShirt", (subset(frequencies, noun == "tShirt"))$relFreq, 
+                                                                                                                                                                                                                                                               ifelse(bdCorrect$nameClickedObj == "swordfish", (subset(frequencies, noun == "swordFish"))$relFreq, 
+                                                                                                                                                                                                                                                                      ifelse(bdCorrect$nameClickedObj == "tshirt", (subset(frequencies, noun == "tShirt"))$relFreq, 
                                                                                                                                                                                                                                                                              ifelse(bdCorrect$nameClickedObj == "tulip", (subset(frequencies, noun == "tulip"))$relFreq, "NA"))))))))))))))))))))))))))))))))))))
 # length of basiclevels:
 
@@ -332,6 +333,17 @@ library(MuMIn)
 r.squaredGLMM(m.m)
 r.squaredGLMM(m.m.t)
 
+m.m.t.norandom = glm(typeMentioned ~ redCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicTypicality + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq, family="binomial",data=centered) 
+summary(m.m.t.norandom)
+
+empirical = centered %>%
+  select(typeMentioned)
+empirical$Fitted = fitted(m.m.t.norandom)
+empirical$Prediction = ifelse(empirical$Fitted >= .5, T, F)
+empirical$FittedM = fitted(m.m.t)
+empirical$PredictionM = ifelse(empirical$FittedM >= .5, T, F)
+cor(empirical$typeMentioned,empirical$Prediction)
+cor(empirical$typeMentioned,empirical$PredictionM)
 
 ### plots for cogsci paper
 
@@ -529,3 +541,98 @@ dev.off()
 
 t = as.data.frame(table(bdCorrect$nameClickedObj,bdCorrect$condition))
 nrow(t[t$Freq < 4,])
+
+eagle = bdCorrect[bdCorrect$nameClickedObj == "eagle",]
+nrow(eagle)
+agre = eagle %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
+  gather(Utt,Mentioned,-condition) %>%
+  group_by(Utt,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agre = as.data.frame(agre)
+agre$YMin = agre$Probability - agre$ci.low
+agre$YMax = agre$Probability + agre$ci.high
+summary(agre)
+dodge = position_dodge(.9)
+agre$Utt = as.factor(ifelse(agre$Utt == "typeMentioned","sub",ifelse(agre$Utt == "basiclevelMentioned","basic","super")))
+agre$Utterance = factor(x=as.character(agre$Utt),levels=c("sub","basic","super"))
+
+ggplot(agre, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  facet_wrap(~Utterance)
+ggsave("graphs/eagle-empirical.pdf",width=7)  
+
+hummingbird = bdCorrect[bdCorrect$nameClickedObj == "hummingbird",]
+nrow(hummingbird)
+agre = hummingbird %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
+  gather(Utt,Mentioned,-condition) %>%
+  group_by(Utt,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agre = as.data.frame(agre)
+agre$YMin = agre$Probability - agre$ci.low
+agre$YMax = agre$Probability + agre$ci.high
+summary(agre)
+dodge = position_dodge(.9)
+agre$Utt = as.factor(ifelse(agre$Utt == "typeMentioned","sub",ifelse(agre$Utt == "basiclevelMentioned","basic","super")))
+agre$Utterance = factor(x=as.character(agre$Utt),levels=c("sub","basic","super"))
+
+ggplot(agre, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  facet_wrap(~Utterance)
+ggsave("graphs/hummingbird-empirical.pdf",width=7,height=3.5) 
+
+
+jellybeans = bdCorrect[bdCorrect$nameClickedObj == "jellybeans",]
+nrow(jellybeans)
+agre = jellybeans %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
+  gather(Utt,Mentioned,-condition) %>%
+  group_by(Utt,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agre = as.data.frame(agre)
+agre$YMin = agre$Probability - agre$ci.low
+agre$YMax = agre$Probability + agre$ci.high
+summary(agre)
+dodge = position_dodge(.9)
+agre$Utt = as.factor(ifelse(agre$Utt == "typeMentioned","sub",ifelse(agre$Utt == "basiclevelMentioned","basic","super")))
+agre$Utterance = factor(x=as.character(agre$Utt),levels=c("sub","basic","super"))
+
+ggplot(agre, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  facet_wrap(~Utterance)
+ggsave("graphs/jellybeans-empirical.pdf",width=7,height=3.5) 
+
+bedsidetable = bdCorrect[bdCorrect$nameClickedObj == "bedsidetable",]
+nrow(bedsidetable)
+agre = bedsidetable %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, condition) %>%
+  gather(Utt,Mentioned,-condition) %>%
+  group_by(Utt,condition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agre = as.data.frame(agre)
+agre$YMin = agre$Probability - agre$ci.low
+agre$YMax = agre$Probability + agre$ci.high
+summary(agre)
+dodge = position_dodge(.9)
+agre$Utt = as.factor(ifelse(agre$Utt == "typeMentioned","sub",ifelse(agre$Utt == "basiclevelMentioned","basic","super")))
+agre$Utterance = factor(x=as.character(agre$Utt),levels=c("sub","basic","super"))
+
+ggplot(agre, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  facet_wrap(~Utterance)
+ggsave("graphs/bedsidetable-empirical.pdf",width=7,height=3.5) 
+
+eagle[,c("alt1Name","alt2Name")]
+hummingbird[,c("alt1Name","alt2Name","condition")]#,"typeMentioned")]
+jellybeans[,c("alt1Name","alt2Name","condition")]#,"typeMentioned")]
+bedsidetable[,c("alt1Name","alt2Name","condition")]#,"typeMentioned")]
+
+# get unique combinations of distractors
+bdCorrect$DistractorCombo = as.factor(ifelse(as.character(bdCorrect$alt1Name) < as.character(bdCorrect$alt2Name), paste(bdCorrect$alt1Name, bdCorrect$alt2Name), paste(bdCorrect$alt2Name, bdCorrect$alt1Name)))
+
+write.csv(unique(bdCorrect[,c("nameClickedObj","condition","DistractorCombo")]),file="unique_conditions.csv",row.names=F,quote=F)
