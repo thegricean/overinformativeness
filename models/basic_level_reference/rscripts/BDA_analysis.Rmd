@@ -1,0 +1,199 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+To analyze the output of a webppl program for bayesian data analysis
+
+```{r}
+setwd("/Users/rxdh/Repos/overinformativeness/models/basic_level_reference/")
+library(ggplot2)
+library(dplyr)
+library(coda)
+library(purrr)
+estimate_mode <- function(s) {
+  d <- density(s)
+  return(d$x[which.max(d$y)])
+}
+HPDhi<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","upper"])
+}
+HPDlo<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","lower"])
+}
+options("scipen"=10) 
+```
+
+### Load in model results
+
+```{r}
+params<-read.csv("bdaOutputParams.csv", sep = ",", row.names = NULL)
+samples = 1000
+str(params)
+params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
+
+alphaSubset = params.samples %>% 
+  filter(parameter == "alpha") %>%
+  mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("alpha = ", alphaSubset$md) 
+cat("95% HPD interval = [", alphaSubset$md_low, ",", alphaSubset$md_hi, "]")
+
+freqWeightSubset = params.samples %>% 
+  filter(parameter == "freqWeight") %>%
+  mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("freqWeight = ", freqWeightSubset$md) 
+cat("95% HPD interval = [", freqWeightSubset$md_low, ",", freqWeightSubset$md_hi, "]")
+
+lengthWeightSubset = params.samples %>% 
+  filter(parameter == "lengthWeight") %>%
+  mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("lengthWeight = ", lengthWeightSubset$md) 
+cat("95% HPD interval = [", lengthWeightSubset$md_low, ",", lengthWeightSubset$md_hi, "]")
+
+interactionWeightSubset = params.samples %>% 
+  filter(parameter == "interactionWeight") %>%
+  mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("lengthWeight = ", interactionWeightSubset$md) 
+cat("95% HPD interval = [", interactionWeightSubset$md_low, ",", interactionWeightSubset$md_hi, "]")
+
+typicality = params.samples %>% 
+  filter(parameter == "useTypicality") %>%
+  group_by(value) %>%
+  tally() %>%
+  mutate(prob = n / sum(n))
+
+typicality
+cat("lengthWeight = ", interactionWeightSubset$md) 
+cat("95% HPD interval = [", interactionWeightSubset$md_low, ",", interactionWeightSubset$md_hi, "]")
+
+```
+
+# Plot parameter posteriors
+
+```{r}
+#pdf(file="../writing/2015/journal-manuscript/figures/QuestionerParamPosteriors.pdf",
+     #width = 6, height = 3)
+numericSubset = params.samples %>% 
+  filter(parameter %in% c("alpha", "freqWeight", "lengthWeight", "interactionWeight")) %>%
+  mutate(value = as.numeric(levels(value))[value])
+
+ggplot(numericSubset, aes(x=value)) +
+    geom_histogram(data=subset(numericSubset, parameter == "alpha"), 
+                   binwidth = 1, colour="black", fill="white")+
+    geom_histogram(data=subset(numericSubset, parameter == "freqWeight"),
+                   binwidth = .25, colour="black", fill="white")+
+    geom_histogram(data=subset(numericSubset, parameter == "lengthWeight"),
+                 binwidth = .5, colour="black", fill="white")+
+    geom_histogram(data=subset(numericSubset, parameter == "interactionWeight"),
+                 binwidth = .1, colour="black", fill="white")+
+    geom_density(aes(y=1*..count..), data =subset(numericSubset, parameter == "alpha"), adjust = 3.5,
+                 alpha=.2, fill="#FF6666")+
+    geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "freqWeight"), adjust = 3.5,
+                 alpha=.2, fill="#FF6666")+
+    geom_density(aes(y=.5*..count..),data=subset(numericSubset, parameter == "lengthWeight"),adjust = 3.5,
+                 alpha=.2, fill="#FF6666")+
+    geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "interactionWeight"),adjust=2,
+                alpha=.2, fill="#FF6666")+  
+    ggtitle("Questioner Parameter Posteriors (1000 iterations)") +
+    facet_grid(~ parameter, scales = "free_x") +
+    theme_bw()
+
+
+ggplot(params.samples %>% filter(parameter == "useTypicality"), aes(x = value)) +
+  geom_histogram() +
+  ggtitle("useFrequency Posterior (1000 iterations)") +
+  theme_bw()
+#dev.off()
+```
+
+### Predictives
+
+# Import emp data
+
+```{r}
+source("rscripts/helpers.R")
+d_allattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/allAttr.csv")
+
+tmp = d_allattr %>%
+  select(speakerMessages,condition,nameClickedObj,basiclevelClickedObj,
+         superdomainClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned,
+         typeAttributeMentioned,basiclevelAttributeMentioned,superclassattributeMentioned)
+
+# some cases are marked as having type and attribute mentions at different levels of the hierarchy. i'll interpret all mentions as type mentions of the highest compatible category
+tmp$superMentioned = tmp$superClassMentioned | tmp$superclassattributeMentioned
+tmp$basicMentioned = ifelse(!(tmp$superClassMentioned | tmp$superclassattributeMentioned) & (tmp$basiclevelMentioned | tmp$basiclevelAttributeMentioned),T,F)
+tmp$subMentioned = !(tmp$superMentioned | tmp$basicMentioned)
+
+agr = tmp %>%
+  select(nameClickedObj,condition,basiclevelClickedObj,subMentioned,basicMentioned,superMentioned) %>%
+  gather(Utterance, Mentioned,-condition,-basiclevelClickedObj,-nameClickedObj) %>%
+  group_by(Utterance,condition,basiclevelClickedObj,nameClickedObj) %>%
+  summarise(Probability=mean(Mentioned),
+            cilow=ci.low(Mentioned),
+            cihigh=ci.high(Mentioned)) %>%
+  ungroup() %>%
+  mutate(refLevel = factor(x = ifelse(agr$Utterance == "subMentioned","sub",
+                                      ifelse(agr$Utterance == "basicMentioned","basic","super")),
+                           levels=c("sub","basic","super"))) %>%
+  mutate(target = nameClickedObj) %>%
+  mutate(YMax = Probability + cihigh) %>%
+  mutate(YMin = Probability - cilow) %>%
+  select(condition, target, refLevel, Probability, YMax, YMin)
+agr = as.data.frame(agr)
+head(agr)
+
+agr_allattr = agr
+nrow(agr_allattr) # 432 datapoints
+agr_allattr$condition = gsub("distr","item",as.character(agr_allattr$condition))
+
+### ANALYZE RESIDUALS
+row.names(agr_allattr) = paste(agr_allattr$condition,agr_allattr$basiclevelClickedObj,agr_allattr$nameClickedObj,agr_allattr$UtteranceType)
+row.names(agr_allattr_coll) = paste(agr_allattr_coll$condition,agr_allattr_coll$basiclevelClickedObj,agr_allattr_coll$UtteranceType)
+row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$basiclevelClickedObj,agr_noattr$nameClickedObj,agr_noattr$UtteranceType)
+row.names(agr_noattr_coll) = paste(agr_noattr_coll$condition,agr_noattr_coll$basiclevelClickedObj,agr_noattr_coll$UtteranceType)
+```
+
+# combine with model fits
+
+```{r}
+predictive<-read.csv("./bdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive.samples <- predictive[rep(row.names(predictive), 
+                                       predictive$MCMCprob*samples), 1:6] %>%
+  mutate(refLevel = value) %>%
+  group_by(refLevel, target, condition) %>%
+  summarize(MAP = estimate_mode(prob),
+            credHigh = HPDhi(prob),
+            credLow = HPDlo(prob)) %>%
+  inner_join(agr_allattr, by = c("refLevel", "target", "condition"))
+View(predictive.samples)
+
+ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLevel)) +
+  geom_point() +
+  xlim(c(0,1)) +
+  ylim(c(0,1)) +
+#  geom_errorbar(aes(ymax = YMax, ymin = YMin))+
+#  geom_errorbarh(aes(xmax = credHigh, xmin = credLow)) +
+  ylab("Empirical proportion") +
+  xlab("Model predicted probability") +
+  geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
+  #facet_wrap(~ domain)
+ggsave("graphs/reparameterized/model_empirical_allattr_bydomain_multiplicative.pdf",width=8.4,height=6)
+```

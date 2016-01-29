@@ -36,11 +36,55 @@ var writeERP = function(erp, labels, filename, fixed) {
   appendCSV(data, filename);
 };
 
+var supportWriter = function(s, p, handle) {
+  var sLst = _.pairs(s);
+  var l = sLst.length;
+
+  for (var i = 0; i < l; i++) {
+    fs.writeSync(handle, sLst[i].join(',')+','+p+'\n');
+  }
+};
+
+// Note this is highly specific to a single type of erp
+var bayesianErpWriter = function(erp, filePrefix) {
+  var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
+  fs.writeSync(predictiveFile, ["parameter", "condition", "target",
+				"alt1", "alt2", "value", "prob", "MCMCprob"] + '\n');
+
+  var paramFile = fs.openSync(filePrefix + "Params.csv", 'w');
+  fs.writeSync(paramFile, ["parameter", "value", "MCMCprob"] + '\n');
+
+  var supp = erp.support([]);
+  supp.forEach(function(s) {
+    supportWriter(s.predictive, Math.exp(erp.score([], s)), predictiveFile);
+    supportWriter(s.params, Math.exp(erp.score([], s)), paramFile);
+  });
+  fs.closeSync(predictiveFile);
+  fs.closeSync(paramFile);
+  console.log('writing complete.');
+};
+
 var getAllPossibleLabels = function(object, tax) {
   var relevantLabels = _.keys(_.omit(tax, function(value, key, tax) {
     return !_.has(value, object);
   }));
   return relevantLabels;
+};
+
+var getSubset = function(data, options) {
+  var target = options.target,
+      alt1 = options.alt1,
+      alt2 = options.alt2;
+  var cond = function(row) {
+    var cond1 = (row[2] === target &&
+		 row[3] === alt1 &&
+		 row[4] === alt2);
+    var cond2 = (row[2] === target &&
+		 row[3] === alt2 &&
+		 row[4] === alt1);
+    return cond1 || cond2;
+  };
+  return _.filter(data, cond);
 };
 
 var locParse = function(filename) {
@@ -92,7 +136,10 @@ module.exports = {
   getTypicalityTax : getTypicalityTax,
   getRelativeLength : getRelativeLength,  
   getRelativeLogFrequency : getRelativeLogFrequency,
+  getSubset : getSubset,
+  bayesianErpWriter : bayesianErpWriter,
   writeERP : writeERP,
   writeCSV : writeCSV,
+  readCSV : readCSV,  
   getAllPossibleLabels : getAllPossibleLabels
 };

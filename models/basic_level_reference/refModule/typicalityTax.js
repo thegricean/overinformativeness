@@ -5,7 +5,6 @@ var fs = require('fs');
 var labelToObjName = function(label) {
   var lowerCased = label.toLowerCase();
   var noWhiteSpace = lowerCased.replace(/[^A-Z0-9]+/ig, "");
-  console.log(noWhiteSpace);
   return noWhiteSpace == "mms" ? "mnms" : noWhiteSpace;
 };
 
@@ -48,9 +47,7 @@ typicality.prototype.makeTree = function() {
   this.tree = {};
   var that = this;
   _.each(this.labels, function(label) {
-    console.log("label: " + label);
     var cleanedLabel = labelToObjName(label);
-    console.log("cleanedLabel: " + cleanedLabel);    
     that.tree[cleanedLabel] = {};
     _.each(that.getPossibleReferents(label), function(object) {
       that.tree[cleanedLabel][object] = that.getTypicality(label, object);
