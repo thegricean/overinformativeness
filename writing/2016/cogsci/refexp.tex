@@ -357,12 +357,11 @@ Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring i
 On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness \red{relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and the frequency-by-length interaction  cost terms more weakly ($\beta_f = 1.6$),  and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above} (for posteriors over parameters, see \figref{fig:paramposteriors}). \red{Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
 That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
 
-\begin{figure}
-paramposteriors
-%\includegraphics{graphs/bestparams.pdf}
+\begin{figure*}
+\includegraphics[width=\textwidth]{graphs/parameterposteriors.pdf}
 \caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$, and \red{typicality}.}
 \label{fig:paramposteriors}
-\end{figure}
+\end{figure*}
 
 
 \ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
@@ -379,12 +378,12 @@ Interestingly, as model complexity increases, informativeness is given more weig
 
 
 
-\begin{figure*}[ht!]
+\begin{figure}[ht!]
 \centering
-\includegraphics[width=\textwidth]{graphs/scatterplot}
+\includegraphics[width=.5\textwidth]{graphs/scatterplot}
 \caption{Model predicted utterance probabilities against empirical proportions for increasingly complex models.\jd{replace with posterior predictive}}
  \label{fig:scatterplot}
-\end{figure*}
+\end{figure}
 
 \section{\bf Discussion and conclusion}
 
@@ -393,7 +392,7 @@ Interestingly, as model complexity increases, informativeness is given more weig
 The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
 In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
 
-The interplay of these factors is naturally modeled within the RSA framework, which treats speakers as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns. \jd{mention connection to prototype theory?} 
+The interplay of these factors is naturally modeled within the RSA framework, which treats speakers as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns. \jd{mention connection to prototype theory? [caroline:] Maybe like this: This is in line with Rosch's prototype theory (1973), which proposes a graded form of categorization where the status of members of a category is determined by prototypicality to this category.} 
 %We also incorporated a parsimony goal by including the effect of utterance cost.
 %showed that more complex cost functions can account for naturalistic data. In addition, 
  The resulting model both qualitatively and quantitatively provided a good fit to speakers' empirical utterance choices. 
