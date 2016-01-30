@@ -318,7 +318,10 @@ The speaker also seeks to be parsimonious: the speaker utility includes both inf
 
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
-Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. We relate this to our empirically elicited typicality norms via an exponential relationship in order to preserve linearity of typicality differences on choice differences: $\denote{l}(o)=\gamma^{\text{typicality}(o,l)}$.
+Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. 
+We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=\gamma^{\text{typicality}(o,l)}$.
+This relationship is motivated by considering the effect of a small difference in typicality on choice probability: in our elicitation experiment a small difference in rating should mean the same thing at the top and bottom of the scale (it is visually equivalent on the slider that participants used).
+In order for a small difference in typicality rating to have a constant effect on relative choice probability (which is a ratio), the relationship must be exponential. 
 The parameter $\gamma$ controls the dynamic range of typicality---how good (bad) is it to choose an object which is very (a)typical of the label heard?
 
 
