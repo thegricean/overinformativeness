@@ -11,8 +11,7 @@ var modelAnalysis = function() {
     alpha : uniform(0,20),
     lengthWeight : uniform(0,5),
     freqWeight : uniform(0,5),
-    typWeight : uniform(0,1),
-    typScale : uniform(0,5)
+    typWeight : uniform(0,1)
   };
   
   // Run model and condition on data
