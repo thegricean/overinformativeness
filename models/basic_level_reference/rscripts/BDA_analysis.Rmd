@@ -45,8 +45,6 @@ paramHPDs = params.samples %>%
 # Plot parameter posteriors
 
 ```{r}
-#pdf(file="../writing/2015/journal-manuscript/figures/QuestionerParamPosteriors.pdf",
-     #width = 6, height = 3)
 ggplot(params.samples, aes(x=value)) +
     geom_histogram(data=subset(params.samples, parameter == "alpha"), 
                    binwidth = .5, colour="black", fill="white")+
@@ -54,8 +52,6 @@ ggplot(params.samples, aes(x=value)) +
                    binwidth = .3, colour="black", fill="white")+
     geom_histogram(data=subset(params.samples, parameter == "lengthWeight"),
                  binwidth = .25, colour="black", fill="white")+
-    geom_histogram(data=subset(params.samples, parameter == "interactionWeight"),
-                 binwidth = .1, colour="black", fill="white")+
     geom_histogram(data=subset(params.samples, parameter == "typWeight"),
                  binwidth = .1, colour="black", fill="white")+
     geom_histogram(data=subset(params.samples, parameter == "typScale"),
@@ -67,8 +63,6 @@ ggplot(params.samples, aes(x=value)) +
                  adjust = 3, alpha=.2, fill="#FF6666")+
     geom_density(aes(y=.25*..count..),data=subset(params.samples, parameter == "lengthWeight"),
                  adjust = 3.5, alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.1*..count..),data=subset(params.samples, parameter== "interactionWeight"),
-                 adjust=2, alpha=.2, fill="#FF6666")+  
     geom_density(aes(y=.1*..count..),data=subset(params.samples, parameter== "typWeight"),
                adjust=2, alpha=.2, fill="#FF6666")+  
     geom_density(aes(y=.1*..count..),data=subset(params.samples, parameter== "typScale"),
@@ -132,7 +126,6 @@ predictive.samples <- predictive[rep(row.names(predictive),
             credHigh = HPDhi(prob),
             credLow = HPDlo(prob)) %>%
   inner_join(agr_allattr, by = c("refLevel", "target", "condition"))
-#View(predictive.samples)
 
 ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLevel)) +
   geom_point() +
