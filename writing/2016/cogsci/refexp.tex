@@ -215,7 +215,7 @@ On 0.5\% of trials two different levels of reference were mentioned; in this cas
 
 In a separate study, typicality estimates to be used in the data analysis were obtained for each object as an instance of sub, basic, and super level terms. To this end, we recruited 240 participants through Mechanical Turk.
 
-Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and descriptions: for each target (e.g., dalmatian), we collected norms for how typical it is when referred to at the sub (``dalmatian''), basic (``dog''), and super (``animal'') level. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball in the dalmatian context) we collected norms for how typical it is when referred to with the superclass label (``animal'') and assume lowest typicality otherwise (when referred to as ``dalmatian" or ``dog"). Finally, for each distractor of the same superclass (\emph{distsamesuper}, e.g., a kitten), we collected norms for how typical it is when referred to at the sub, basic, and superclass level of the target dalmatian. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
+Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and descriptions: for each target (e.g., dalmatian), we collected norms for how typical it is when referred to at the sub (``dalmatian''), basic (``dog''), and super (``animal'') level. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball in the dalmatian context) we collected norms for how typical it is when referred to with the superclass label (``animal'') and assume lowest typicality otherwise (when referred to as ``dalmatian" or ``dog"). Finally, for each distractor of the same superclass (\emph{distsamesuper}, e.g., a kitten), we collected norms for how typical it is when referred to at the sub, basic, and superclass level of the target. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
 
 On each trial, participants saw an object image (the same images as used in the main reference game experiment) with the question ``How typical is this for X?'', where X was replaced with the description to be tested. They then adjusted a slider bar ranging from \emph{not at all typical} (coded as value 0) to \emph{very typical} (coded as 1). Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings. 
 
@@ -318,10 +318,13 @@ The speaker also seeks to be parsimonious: the speaker utility includes both inf
 
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
-Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability or typicality of object $o$ for category $l$, for which we use the empirically elicited typicality norms described previously. %\ndg{fix up wrt norms refernce}
+Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. We relate this to our empirically elicited typicality norms via an exponential relationship in order to preserve linearity of typicality differences on choice differences: $\denote{l}(o)=\gamma^{\text{typicality}(o,l)}$.
+The parameter $\gamma$ controls the dynamic range of typicality---how good (bad) is it to choose an object which is very (a)typical of the label heard?
+
 
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$: 
 $$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub-, basic-, and super-level.
 Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$).
 Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level (as used in the previous analysis). 
 %For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. 
@@ -334,7 +337,8 @@ Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring i
 
 \red{Parameters were fit to maximize the correlation between model predictions and by-target empirical proportions of sub, basic, and super level term use by condition. A total of 432 data points were fit (four targets per domain for nine domains, and for each target, three utterance choices in four conditions).  Best parameter values are listed in \tableref{tab:bestparams} (bottom row). } \jd{robert or noah, can you replace everything that is red here with some prose on how the BDA was done?}
 
-\ndg{is it possible to compute a corresponding correlation for the regression model to see whether the full bayesian model does better? this would have to leave out random effects--then we can compute predicted accuracy from best-fit regression.}
+%\ndg{is it possible to compute a corresponding correlation for the regression model to see whether the full bayesian model does better? this would have to leave out random effects--then we can compute predicted accuracy from best-fit regression.}
+
 %
 %\begin{table}
 %\caption{Correlations and best model parameters fit to empirical proportions of utterance choices for increasingly complex models (I: informativeness-only, IC: informativeness + cost, ICT: informativeness + cost + typicality).}
@@ -373,8 +377,6 @@ Interestingly, as model complexity increases, informativeness is given more weig
 \figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
 \ndg{model should take into account typicality of other non-target objects. check?}
-
-\ndg{do BDA with weight term on typicality? use this for model selection.}
 
 
 
