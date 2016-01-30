@@ -8,10 +8,11 @@ var domains = globalInfo.domains;
 var modelAnalysis = function() {
   // Sample params
   var params = {
-    alpha : sample(dirichletDriftERP, [1, 1])[0]*10,
-    lengthWeight : sample(dirichletDriftERP, [1, 1])[0]*10,
-    freqWeight : sample(dirichletDriftERP, [1, 1])[0]*10,
-    typWeight : sample(dirichletDriftERP, [1, 1])[0]
+    alpha : uniform(0,20),
+    lengthWeight : uniform(0,5),
+    freqWeight : uniform(0,5),
+    typWeight : uniform(0,1),
+    typScale : uniform(0,5)
   };
   
   // Run model and condition on data
@@ -50,8 +51,8 @@ var modelAnalysis = function() {
   return {predictive: query.table, params : params};
 };
 
-var outputERP = MCMC(modelAnalysis, {samples: 1000, burn: 100, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 1000, burn: 10, verbose: true});
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "DRIFTbdaOutput");
+refModule.bayesianErpWriter(outputERP, "WITHSCALINGbdaOutput");
