@@ -357,12 +357,11 @@ Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring i
 On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness \red{relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and the frequency-by-length interaction  cost terms more weakly ($\beta_f = 1.6$),  and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above} (for posteriors over parameters, see \figref{fig:paramposteriors}). \red{Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
 That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
 
-\begin{figure}
-paramposteriors
-%\includegraphics{graphs/bestparams.pdf}
+\begin{figure*}
+\includegraphics[width=\textwidth]{graphs/parameterposteriors.pdf}
 \caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$, and \red{typicality}.}
 \label{fig:paramposteriors}
-\end{figure}
+\end{figure*}
 
 
 \ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
@@ -379,12 +378,12 @@ Interestingly, as model complexity increases, informativeness is given more weig
 
 
 
-\begin{figure*}[ht!]
+\begin{figure}[ht!]
 \centering
-\includegraphics[width=\textwidth]{graphs/scatterplot}
+\includegraphics[width=.5\textwidth]{graphs/scatterplot}
 \caption{Model predicted utterance probabilities against empirical proportions for increasingly complex models.\jd{replace with posterior predictive}}
  \label{fig:scatterplot}
-\end{figure*}
+\end{figure}
 
 \section{\bf Discussion and conclusion}
 
