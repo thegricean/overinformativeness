@@ -1255,20 +1255,19 @@ var globalInfo = {
 };
 
 var BasicLevelModel = function(domainInfo, params) {
-//  var tax = params.useTypicality ? refModule.getTypicalityTax() : domainInfo.tax;
   var tax = refModule.getTypicalityTax();
   
   var labelFitness = function(label, object) {
     var typfit = _.has(tax[label], object) ? tax[label][object] : 0;
     var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;
     var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
-    return Math.log(weightedFit);
+    return weightedFit;
   };
 
   var literalListener = cache(function(label, item){
     return Enumerate(function(){
       var object = uniformDraw(item);
-      factor(labelFitness(label,object));
+      factor(Math.exp(params.typScale) * labelFitness(label,object));
       return object;
     });
   });
@@ -1282,7 +1281,7 @@ var BasicLevelModel = function(domainInfo, params) {
 
       var labelLength = refModule.getRelativeLength(label);
       var labelFreq = refModule.getRelativeLogFrequency(label);
-      factor(params.lengthWeight * (1 - labelLength));
+      factor(-params.lengthWeight * labelLength);
       factor(params.freqWeight * labelFreq);
       return label;
     });
@@ -1295,7 +1294,7 @@ var BasicLevelModel = function(domainInfo, params) {
       return (_.contains(domainInfo.subLabels, label) ? "sub" :
 	      label === domainInfo.basicLabel ? "basic" :
 	      label === domainInfo.superLabel ? "super" :
-	      "other");
+	      console.error("No label match"));
     });
   };
   
