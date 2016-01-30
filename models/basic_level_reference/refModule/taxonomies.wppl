@@ -1267,7 +1267,7 @@ var BasicLevelModel = function(domainInfo, params) {
   var literalListener = cache(function(label, item){
     return Enumerate(function(){
       var object = uniformDraw(item);
-      factor(Math.exp(params.typScale) * labelFitness(label,object));
+      factor(labelFitness(label,object));
       return object;
     });
   });
