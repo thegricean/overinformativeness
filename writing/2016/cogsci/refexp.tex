@@ -338,21 +338,22 @@ $$\begin{array}{lcl}
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{graphs/parameterposteriors.pdf}
-\caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$, and \red{typicality}.}
+\caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$}.
 \label{fig:paramposteriors}
 \end{figure*}
 
-Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness \red{relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above}. for posteriors over parameters, see \figref{fig:paramposteriors}). \red{Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
+Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. \red{On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above. Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
 That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
 
 \ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
 
-In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran a version of the model with an additional typicality weight parameter that interpolated between the empirical typicality values used above, and a binary taxonomy using fitness  %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
-The model without typicality performed significantly worse, as \red{can be seen in the lower correlations of the simpler models .
-Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality.}
+In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran a version with an additional typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values and an \emph{a priori} truth-conditional function returning one if the object was a member of the label category and zero otherwise. The posterior distribution of this parameter provides a simple model comparison: if $\beta_t = 0$ is excluded from the HPD, and the distribution skews high, then some influence of typicality is necessary to account for the data. We found a MAP estimate of \red{?, HPD $= [0,1]$}, strongly indicating that empirical typicality values are necessary.  Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis, but its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is captured by other aspects of the model. 
+%: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
+%The model without typicality performed significantly worse, as \red{can be seen in the lower correlations of the simpler models .
+% Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality.}
 
 
-\figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
+% \figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
 \ndg{model should take into account typicality of other non-target objects. check?}
 
