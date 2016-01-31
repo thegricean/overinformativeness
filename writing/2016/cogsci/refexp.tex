@@ -318,50 +318,21 @@ The speaker also seeks to be parsimonious: the speaker utility includes both inf
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
 Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. 
-We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=\gamma^{\text{typicality}(o,l)}$.
+We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=e^{\text{typicality}(o,l)}$.
 This relationship is motivated by considering the effect of a small difference in typicality on choice probability: in our elicitation experiment a small difference in rating should mean the same thing at the top and bottom of the scale (it is visually equivalent on the slider that participants used).
 In order for a small difference in typicality rating to have a constant effect on relative choice probability (which is a ratio), the relationship must be exponential. 
-The parameter $\gamma$ controls the dynamic range of typicality---how good (bad) is it to choose an object which is very (a)typical of the label heard?
-
 
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$: 
 $$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
 We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub-, basic-, and super-level.
-Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$).
-Length cost $\hat{c}_l$ is defined as the mean number of characters used to refer at that level (as used in the previous analysis). 
-%For example, the gummy bears were frequently referred to as ``gummies'', leading to a mean word length of 8.9. 
-Frequency cost $\hat{c}_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. \red{The relative importance of these three factors is determined by four parameters that were fit to the data.}
-%where $U_{cost}(l_j)$ is the label cost function and $\alpha$ is an optimality parameter\footnote{$\alpha = 1$ corresponds to a soft-max decision rule, and $\alpha \rightarrow \infty$ corresponds to a optimal hard-max decision rule.}. \ndg{is there a parameter for relative importance of informativeness and cost?}
+Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$), each weighted by a free parameter. Length cost $\hat{c}_l$ was defined as the mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. 
 
-%Finally, we must specify the the lexical meaning function $\denote{l}(o_i)$ and the cost function $U_{cost}(l_j)$. 
-%\red{rdh: we'll probably want to write down how we compute length and frequency earlier, since some results depend on them.}
-%We measure label cost as the linear combination of two components: length and frequency. Length cost $c_l$ is defined as the number of characters in the label, and frequency cost $c_f$ is estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. To trade these two measures off against one another, we compute normalized scores $\hat{c}_l \in [0,1]$ and $\hat{c}_f \in [0,1]$ by subtracting the minimum score of all labels used in the experiments and dividing by the range. We then define the label cost of $l_j$ to be $$U_{cost}(l_j) = w\hat{c}_f - (1-w)\hat{c}_l$$ where $w \in [0,1]$ is a parameter controlling the tradeoff between length and frequency.
-
-\red{Parameters were fit to maximize the correlation between model predictions and by-target empirical proportions of sub, basic, and super level term use by condition. A total of 432 data points were fit (four targets per domain for nine domains, and for each target, three utterance choices in four conditions).  Best parameter values are listed in \tableref{tab:bestparams} (bottom row). } \jd{robert or noah, can you replace everything that is red here with some prose on how the BDA was done?}
-
-%\ndg{is it possible to compute a corresponding correlation for the regression model to see whether the full bayesian model does better? this would have to leave out random effects--then we can compute predicted accuracy from best-fit regression.}
-
-%
-%\begin{table}
-%\caption{Correlations and best model parameters fit to empirical proportions of utterance choices for increasingly complex models (I: informativeness-only, IC: informativeness + cost, ICT: informativeness + cost + typicality).}
-%\begin{center}
-%	\begin{tabular}{p{.7cm} p{.6cm} p{.8cm} p{.9cm} c c c c}
-%	\toprule
-%	& \multicolumn{3}{c}{Corr.~with proportions by} & &  \\
-%	Model & target & domain & condition & $\lambda$ & $\beta_f$ & $\beta_l$ & $\beta_{fl}$\\
-%	\midrule
-%	I & .60 & .70 & .79 & 2.5 & NA & NA & NA\\
-%	IC  & .71 & .82 & .92 & 3.0 & 0 & 1.4 & 0.8  \\
-%	ICT  & .76 & .86 & .98 & 6.5 & 0 & 0.6 & 1.6   \\
-%	\bottomrule
-%	\end{tabular}	
-%\end{center}
-%\label{tab:bestparams}
-%\end{table}
-
-
-On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness \red{relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and the frequency-by-length interaction  cost terms more weakly ($\beta_f = 1.6$),  and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above} (for posteriors over parameters, see \figref{fig:paramposteriors}). \red{Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
-That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
+To determine the relative importance of various factors within our speaker model, we conducted a Bayesian data analysis. We implemented the model in webppl, a probabilistic programming language \cite{GoodmanStuhlmuller14_DIPPL}, and inferred posteriors for the three free parameters using Markov Chain Monte Carlo (MCMC), conditioning on the production data from the experiment reported above. More specifically, for every iteration of the chain, we generated the probability of a speaker using each level of reference (i.e .``sub'', ``basic'', or ``super'') for every \emph{context} that participants could encounter in the task, and then computed the likelihood of the actual expressions that participants used, given the model. We assumed uniform priors for each parameter:
+$$\begin{array}{lcl}
+\alpha & \sim & Unif(0,20) \\
+\beta_f & \sim & Unif(0,5) \\
+\beta_l & \sim & Unif(0,5)
+\end{array}$$ 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{graphs/parameterposteriors.pdf}
@@ -369,12 +340,15 @@ That is, when collapsing across items the model explains most of the variance in
 \label{fig:paramposteriors}
 \end{figure*}
 
+Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. On the most fine-grained, by-target, level the model achieves a correlation of $r = \red{.76}$ by rating informativeness \red{relatively strongly ($\lambda = 6.5$), the length  ($\beta_l = 0.6$) and and the frequency cost term not at all ($\beta_{fl} = 0$), mirroring the results of the regression analysis reported above}. for posteriors over parameters, see \figref{fig:paramposteriors}). \red{Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .86 and .98, respectively.}
+That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
 
 \ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
 
-In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we compared the model against a simpler version in which we set \red{typicality weight} to 0. %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
+In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran a version of the model with an additional typicality weight parameter that interpolated between the empirical typicality values used above, and a binary taxonomy using fitness  %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
 The model without typicality performed significantly worse, as \red{can be seen in the lower correlations of the simpler models .
 Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality.}
+
 
 \figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
