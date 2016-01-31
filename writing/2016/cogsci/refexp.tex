@@ -326,7 +326,7 @@ In order for a small difference in typicality rating to have a constant effect o
 
 Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$: 
 $$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
-We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub-, basic-, and super-level.
+We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub, basic, and super level.
 Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$), each weighted by a free parameter. Length cost $\hat{c}_l$ was defined as the mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. 
 
 To determine the relative importance of various factors within our speaker model, we conducted a Bayesian data analysis. We implemented the model in webppl, a probabilistic programming language \cite{GoodmanStuhlmuller14_DIPPL}, and inferred posteriors for the three free parameters using Markov Chain Monte Carlo (MCMC), conditioning on the production data from the experiment reported above. More specifically, for every iteration of the chain, we generated the probability of a speaker using each level of reference (i.e .``sub'', ``basic'', or ``super'') for every \emph{context} that participants could encounter in the task, and then computed the likelihood of the actual expressions that participants used, given the model. We assumed uniform priors for each parameter:
@@ -338,7 +338,7 @@ $$\begin{array}{lcl}
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{graphs/parameterposteriors.pdf}
-\caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$}.
+\caption{Posterior distribution over model parameters $\lambda$, $\beta_f$, $\beta_l$, and $\beta_t$}.
 \label{fig:paramposteriors}
 \end{figure*}
 
