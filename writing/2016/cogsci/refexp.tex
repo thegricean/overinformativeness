@@ -84,7 +84,7 @@
 
 Nominal reference is very flexible---the same object may be called \emph{a dalmatian}, \emph{a dog}, or \emph{an animal} when all are literally true.
 What accounts for the choices that speakers make in how they refer to objects?
-The addition of modifiers (e.g.~\emph{big dog}) has been extensively explored in the literature, but fewer studies have explored the choice of noun and its level of abstraction in particular.
+The addition of modifiers (e.g.~\emph{big dog}) has been extensively explored in the literature, but fewer studies have explored the choice of noun, incuding its level of abstraction.
 We collected freely produced referring expressions in a multi-player reference game experiment, where we manipulated the object's context.
 We find that utterance choice is affected by the contextual informativeness of a description, its length and frequency, and the typicality of the object for that description.
 Finally, we show how these factors naturally enter into a formal model of production within the Rational Speech-Acts framework, and that the resulting model predicts our quantitative production data.
@@ -100,7 +100,7 @@ Referring to objects is a core function of human language, and a wealth of resea
 However, most of this literature has focused on the addition of modifiers \cite<as in the choice between ``the dog'', ``the brown dog'', and ``the big brown dog'', e.g.,>{sedivy2003a, Koolen2011}. Here we investigate how speakers choose a simple nominal referring expression---what governs the choice of calling a particular object ``the dalmatian'', ``the dog'', or ``the animal'' when all are literally true? That is, what governs the choice of the taxonomic level at which an object is referred to?
 Noun choice can be seen as the most basic decision in forming a referring expression.
 Like modification, these choices differ in their specificity; unlike modification, the number of words used does not differ---in English, \emph{some} noun must be chosen.
-In this paper we provide experimental evidence from a coordination game regarding the flexible choice of nominal referring expressions and explain this data with a probabilistic model of pragmatics.
+In this paper we provide experimental evidence from a coordination game regarding the flexible choice of nominal referring expressions and explain this data with a probabilistic model of pragmatic production.
 
 %they differs in that
 %Given the taxonomic relations that hold between dalmatians, dogs, and animals, this choice shares with the choice between modified expressions that the three expressions differ in how much information about the intended referent is provided. Yet it differs in that the choice is not in adding additional adjectives, but in choosing between different nouns in the first place. The question is what governs this choice.
@@ -111,13 +111,12 @@ Grice's Maxim of Quantity \cite{grice1975} implies a pressure for speakers to be
 For instance, a speaker who is trying to distinguish a dalmatian from a German Shepherd  would be expected to avoid the insufficiently specific term ``dog'' \cite{brennan1996}.
 On the other hand, recent work in experimental pragmatics has shown that the choice of referring expression depends on the \emph{cost} of utterance alternatives \cite{rohde2012, degenfrankejaeger2013}; sometimes, speakers are willing to produce a cheap ambiguous utterance rather than a costly (e.g.~long or difficult-to-retrieve) unambiguous one. 
 %That is, there is some evidence that speakers trade off an utterance's contextual informativeness and cost in systematic ways.
-Finally, classic work on concepts has shown that objects within a category vary in \emph{typicality} \caroline{(cite Rosch's prototype theory from 1973?)}.
+Finally, classic work on concepts suggests that \emph{typicality} of a referent within its category affects the choice of reference \cite{RoschEtAl76_BasicLevel}. In particular, speakers will generally choose to refer at the \emph{basic level} (e.g. ``dog''), but may become more specific for objects that are atypical for the basic level term.
 
-%Finally, classic work on concepts suggests that \emph{typicality} of a referent within its category affects the choice of reference \cite{RoschEtAl76_BasicLevel}. In particular, speakers will generally choose to refer at the \emph{basic level} (e.g. ``dog''), but may become more specific for objects that are atypical for the basic level term.
-\todo[inline]{rdh: If we're going to touch on it at the end, I think we should say something here about how we're going to try to account for basic-level biases through these other factors, rather than building it in -- like ``how can we push around preferences for the basic level by manipulating context and cost?''}
-\caroline{I agree! I moved some things around and added a sentence on how we aimed to account for the bl bias by these factors }
+%\todo[inline]{rdh: If we're going to touch on it at the end, I think we should say something here about how we're going to try to account for basic-level biases through these other factors, rather than building it in -- like ``how can we push around preferences for the basic level by manipulating context and cost?''}
+%\caroline{I agree! I moved some things around and added a sentence on how we aimed to account for the bl bias by these factors }
+%Finally, classic work on concepts has shown that objects within a category vary in \emph{typicality} \caroline{(cite Rosch's prototype theory from 1973?)}.
 
-%It is clear that the choice of level of reference depends on a rich interplay between at least the factors discussed in the previous paragraphs: the contextual informativeness of referring at that level, the utterance's cost (in terms of length and frequency), and the typicality of the referent's properties. What is unknown is how these different factors trade off, and indeed, how a speaker who tries to maximize the communicative efficiency of their utterances, \emph{should} trade off these different factors. 
 
 %Speakers do not always use basic level terms to refer. 
 %
@@ -139,7 +138,11 @@ Finally, classic work on concepts has shown that objects within a category vary 
 
 %A similar argument can be made for the the use of a level of reference less abstract than necessary for disambiguation and the dominance for the the basic level in the production of referential expressions. The basic level of reference, which Rosch et. al (1976) characterize as the level of abstraction at which the most basic category cuts are made, seems to have a special status in human categorization behavior: Basic level categoriy labels are not only the first labels used for categorization during perception of the environment, but also the labels which lead to fastest category verification. Basic levels also carry the most information and possess the highest category cue validity (compared with the sublevel ``dalmatian'' or superlevel ``animal''). Therefore it can be argued that being more specific than necessary has a positive effect on the processing of the utterance for the listener and thus ``overinformativeness'' contributes to the informativeness of the utterance.
 
-Moreover, previous research examining the choice of level of reference in nominal expressions found there exists a privileged level of abstraction called the \emph{basic-level} towards which speakers tend to gravitate in free-response naming tasks \cite{RoschEtAl76_BasicLevel}. We aimed to find out to what extent this bias can be accounted for by the three above mentioned factors---contextual informativeness, utterance cost, and typicality. To evaluate the impact of these factors we constructed a two-player online game (\figref{fig:procedure}). Participants saw a shared context of objects, one of which was indicated as the referent only to the speaker. The speaker was asked to communicate this object to the listener, who then chose among the objects. Critically, the speaker and listener communicated by free use of a chat window, allowing us to gather relatively natural referring expressions. We manipulated the category of distractor objects and used items that varied in utterance complexity and object typicality. This allowed us to evaluate whether each factor influences the referring expressions generated by participants. We expect that speakers will (1) tend to avoid longer or less frequent terms, and (2) will pragmatically prefer more specific referring expressions when the target and distractor(s) belong to the same higher-level taxonomic category or when distractors are more typical members of that category level.
+
+
+%It is clear that the choice of level of reference depends on a rich interplay between at least the factors discussed in the previous paragraphs: the contextual informativeness of referring at that level, the utterance's cost (in terms of length and frequency), and the typicality of the referent's properties. What is unknown is how these different factors trade off, and indeed, how a speaker who tries to maximize the communicative efficiency of their utterances, \emph{should} trade off these different factors. 
+
+To evaluate the impact of these factors on nominal reference we constructed a two-player online game (\figref{fig:procedure}). Participants saw a shared context of objects, one of which was indicated as the referent only to the speaker. The speaker was asked to communicate this object to the listener, who then chose among the objects. Critically, the speaker and listener communicated by free use of a chat window, allowing us to gather relatively natural referring expressions. We manipulated the category of distractor objects and used items that varied in utterance complexity and object typicality. This allowed us to evaluate whether each factor influences the referring expressions generated by participants. We expect that speakers will (1) tend to avoid longer or less frequent terms, and (2) will pragmatically prefer more specific referring expressions when the target and distractor(s) belong to the same higher-level taxonomic category or when distractors are more typical members of that category level.
 
 \begin{figure}[tb]
 \centering
@@ -148,23 +151,24 @@ Moreover, previous research examining the choice of level of reference in nomina
 \label{fig:procedure}
 \end{figure}
 
-
 %the choice of level of reference depends on a rich interplay between at least the factors discussed in the previous paragraphs: the contextual informativeness of referring at that level, the utterance's cost (in terms of length and frequency), and the typicality of the referent's properties. What is unknown is how these different factors trade off, and indeed, how a speaker who tries to maximize the communicative efficiency of their utterances, \emph{should} trade off these different factors. 
 
-A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech-Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}. 
+A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech-Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}.
+The RSA framework has been applied to many language interpretation tasks \cite<e.g.>{goodmanstuhlmueller2013,kao2014}, but relatively rarely to production data \cite<but see>{franke2014, Orita2015}. 
+We describe an RSA model of nominal reference that includes informativeness, cost, and typicality effects.
 A speaker in RSA is treated as an approximately optimal decision maker who chooses which utterance to use to communicate to a listener.
 The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativeness of the utterance for a listener.
 The listener is treated as a literal Bayesian interpreter who updates her beliefs given the truth of the utterance.
 These truth values are usually treated as deterministic (an object either is a ``dog'' or it is not); here we relax this formulation in order to incorporate typicality effects. 
 That is, we elicit typicality ratings in a separate experiment, and model the listener as updating her beliefs by weighting the possible referents according to how typical each is for the description used.
+We evaluate the quantitative predictions against our production data.
+The model also allows us evaluate the need for each extra component---typicality, length, frequency---and determine whether the empirical bias toward reference at the basic level \cite{RoschEtAl76_BasicLevel} can be accounted for without building it in as a separate factor.
+
 %
-The RSA framework has been applied to many language interpretation tasks \cite{goodmanstuhlmueller2013,kao2014,Bergen2016}, but relatively rarely to production data \cite<but see>{franke2014, Orita2015}.
-We describe an RSA model of nominal reference that includes informativeness, cost, and typicality effects, and evaluate the quantitative predictions against our production data.
-%\ndg{cite naomi's paper?}
+%\ndg{put somewhere}
+%Moreover, previous research examining the choice of level of reference in nominal expressions found there exists a privileged level of abstraction called the \emph{basic-level} towards which speakers tend to gravitate in free-response naming tasks \cite{RoschEtAl76_BasicLevel}. We aimed to find out to what extent this bias can be accounted for by the three above mentioned factors---contextual informativeness, utterance cost, and typicality. 
 
-%which treats speakers as boundedly rational agents who try to soft-maximize the utility of producing a particular utterance. A speaker's utterance utility is defined as the utterance's informativeness, given the literal semantics of the utterance and its alternatives. \jd{add sth about shortcomings and foreshadow how we'll deal with it? eg typicality?}
 
-%The contribution of this paper is two-fold. First, we report the results of an experiment in a reference game setting that investigated the independent effects of informativeness, cost (in terms of utterance length and frequency), and typicality on utterance choice: when do speakers choose to refer to one and the same object as ``dalmatian'', ``dog'', or ``animal''? Second, we report an RSA model of nominal reference that treats speakers as approximately optimally trading off informativeness, cost, and typicality considerations.
 
 \section{Experiment: nominal reference game}
 
@@ -198,7 +202,9 @@ We recruited 56 self-reported native speakers of English over Mechanical Turk. P
 Stimuli were selected from nine distinct domains, each corresponding to distinct basic level categories such as ``dog.'' For each domain, we selected four subcategories to form our target set (e.g. ``dalmatian'', ``pug'', ``German Shepherd'' and ``husky''). Each domain also contained an additional item which belonged to the same basic level category as the target (e.g. ``greyhound'') as well as items which belonged to the same supercategory but not the same basic level (e.g. ``elephant'' or ``squirrel''). These latter items were used as distractors.
 
 %\paragraph{\bf Design}
-Each trial consisted of a display of three images, one of which was designated as the target object. Every pair of participants saw every target exactly once, for a total of 36 trials per pair. These target items were randomly assigned distractor items which were selected from four different context conditions, corresponding to different communicative pressures (see Fig. \ref{fig:design}). We refer to these conditions with pairs of numerals specifying which levels of the taxonomy are present in the distractors: (a) \textbf{item12}: one distractor of the same basic level and one distractor of the same superlevel (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) \textbf{item22}: two distractors of the same superlevel, (c) \textbf{item23}: one distractor of the same superlevel and one unrelated item and (d) \textbf{item33}: two unrelated items. \todo[inline]{rdh: would be nice to use the TeX \emph{description} environment to format this if we have room} Each pair saw nine trials in each condition. 
+Each trial consisted of a display of three images, one of which was designated as the target object. Every pair of participants saw every target exactly once, for a total of 36 trials per pair. These target items were randomly assigned distractor items which were selected from four different context conditions, corresponding to different communicative pressures (see Fig. \ref{fig:design}). We refer to these conditions with pairs of numerals specifying which levels of the taxonomy are present in the distractors: (a) \textbf{item12}: one distractor of the same basic level and one distractor of the same superlevel (e.g. target: ``dalmatian'', distractor 1: ``greyhound'', distractor 2: ``squirrel''), (b) \textbf{item22}: two distractors of the same superlevel, (c) \textbf{item23}: one distractor of the same superlevel and one unrelated item and (d) \textbf{item33}: two unrelated items.
+
+% \todo[inline]{rdh: would be nice to use the TeX \emph{description} environment to format this if we have room} Each pair saw nine trials in each condition. 
 %\todo[inline]{rdh: maybe it should already be clear from this, but how did we assign contexts to the 36 items? Totally randomly (with this 9 trials/condition constraint)? Or did the four targets within a domain get a one-to-one mapping with the four conditions?} (caroline: Yes it was totally random, except for 9 trials/condition constraint and every one of the 36 targets used once.)
 
 Furthermore, the experiment contained 36 filler items, in which participants were asked to produce referential expressions for objects which differed only in size and color. Images from filler trials were not reused on target trials. Trial order was randomized. 
