@@ -344,12 +344,9 @@ $$\begin{array}{lcl}
 \end{array}$$ 
 
 
-Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. On the most fine-grained, by-target, level the model achieves a correlation of $r = .79$ by rating informativeness relatively strongly (MAP $\lambda = 10.8$, HPD $= [9.7, 12.8]$) and weighting length overall somewhat more strongly than frequency (MAP $\beta_l = 2.5$, HPD $= [1.9, 3.1]$, MAP $\beta_f = 1.3$, HPD $= [0.8, 1.8]$). 
+Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. On the most fine-grained, by-target, level the model achieves a correlation of $r = .79$ by rating informativeness relatively strongly (MAP $\lambda = 10.8$, HPD $= [9.7, 12.8]$) and weighting length overall somewhat more strongly than frequency (MAP $\beta_l = 2.5$, HPD $= [1.9, 3.1]$, MAP $\beta_f = 1.3$, HPD $= [0.8, 1.8]$). Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects (see Discussion).
 
-
-Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects.
-
-\ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
+%\ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
 
 In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran a version with an additional typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values and an \emph{a priori} truth-conditional function returning one if the object was a member of the label category and zero otherwise. The posterior distribution of this parameter provides a simple model comparison: if $\beta_t = 0$ is excluded from the HPD, and the distribution skews high, then some influence of typicality is necessary to account for the data. We found a MAP estimate of .94, HPD $= [0.88,1]$, strongly indicating that empirical typicality values are necessary.  Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis, but its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is captured by other aspects of the model. 
 %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
@@ -359,7 +356,7 @@ In order to ascertain whether typicality was indeed contributing to the explanat
 
 % \figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
-\ndg{model should take into account typicality of other non-target objects. check?}
+%\ndg{model should take into account typicality of other non-target objects. check?}
 
 
 
@@ -377,7 +374,8 @@ In order to ascertain whether typicality was indeed contributing to the explanat
 The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
 In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
 
-The interplay of these factors is naturally modeled within the RSA framework, which treats speakers as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns. \jd{mention connection to prototype theory? [caroline:] Maybe like this: This is in line with Rosch's prototype theory (1973), which proposes a graded form of categorization where the status of members of a category is determined by prototypicality to this category.} 
+The interplay of these factors is naturally modeled within the RSA framework, where speakers are treated as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns.%\jd{mention connection to prototype theory? [caroline:] Maybe like this: }
+\footnote{This captures aspects of prototype theory, which proposes a graded form of categorization whereby  category membership is determined by how prototypical an object is for a category.}
 %We also incorporated a parsimony goal by including the effect of utterance cost.
 %showed that more complex cost functions can account for naturalistic data. In addition, 
  The resulting model both qualitatively and quantitatively provided a good fit to speakers' empirical utterance choices. 
