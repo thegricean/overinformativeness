@@ -87,7 +87,7 @@ What accounts for the choices that speakers make in how they refer to objects?
 The addition of modifiers (e.g.~\emph{big dog}) has been extensively explored in the literature, but fewer studies have explored the choice of noun and its level of abstraction in particular.
 We collected freely produced referring expressions in a multi-player reference game experiment, where we manipulated the object's context.
 We find that utterance choice is affected by the contextual informativeness of a description, its length and frequency, and the typicality of the object for that description.
-Finally, we show how these factors naturally enter into a formal model of production within the Rational Speech Acts framework, and that the resulting model predicts our quantitative production data.
+Finally, we show how these factors naturally enter into a formal model of production within the Rational Speech-Acts framework, and that the resulting model predicts our quantitative production data.
 %\red{The choice of referring expressions is highly context dependent. Whether speakers choose to refer to an object as a ``dalmatian'', a ``dog'', or an ``animal'' is determined partly by the features of the other objects present in the scene, as well as features of the utterance alternatives. In the first step, an exploratory analysis within a reference game setting demonstrates that speakers' choice of referring expression is dependent on a rich interplay of expressions' degree of contextual informativeness, their relative length combined with their relative frequency, as well as on the degree to which the referent is typical of a specific expression. If a competitor object of the same category (e.g., dog) as the target object is present in the display, speakers choose a more specific subcategory (e.g., ``dalmatian'') to refer to the target object. In contrast, when the competitor objects do not share the same (super-) category as the target, speakers are less constrained in choosing an appropriate referring expression. In this event, shorter expressions are preferred over longer ones, even more so when frequency of the expression is high. Moreover, the better the referent fits to the meaning of a referential expression due to being more typical of it, the more this expression is preferred. In a second step, quantitative effects are analyzed by a production model couched in the Rational Speech Act framework, which predicts the pattern of results by modelling a speaker as balancing an utterance's contextual informativeness with its cost relative to its alternatives while taking into account soft semantics of the meanings of expressions due to typicality effects.}
 \textbf{Keywords:} 
 referential expressions, levels of reference, basic levels, experimental pragmatics, computational pragmatics
@@ -151,7 +151,7 @@ Moreover, previous research examining the choice of level of reference in nomina
 
 %the choice of level of reference depends on a rich interplay between at least the factors discussed in the previous paragraphs: the contextual informativeness of referring at that level, the utterance's cost (in terms of length and frequency), and the typicality of the referent's properties. What is unknown is how these different factors trade off, and indeed, how a speaker who tries to maximize the communicative efficiency of their utterances, \emph{should} trade off these different factors. 
 
-A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}. 
+A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech-Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}. 
 A speaker in RSA is treated as an approximately optimal decision maker who chooses which utterance to use to communicate to a listener.
 The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativeness of the utterance for a listener.
 The listener is treated as a literal Bayesian interpreter who updates her beliefs given the truth of the utterance.
@@ -213,15 +213,15 @@ To determine the level of reference for each trial, we followed the following pr
 On 0.5\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial. 
 %Additional processing also established the number of correct trials where a determiner (``the'' or ``a''/``an'') or an indefinite referent such as ``one'', ``thing'' or ``object'' was used, how many correct trials consisted of complete sentences and the number of correct trials where level of reference terms were contracted (namely 2.7\%, 0.9\%, 1.0\% and 5.3\% respectively). \jd{do we need the last bit of info, since we don't actually go on to do anything with it?}
 
-\todo[inline]{rdh: i don't think these numbers  add up to 100... 1.2 were incorrect and excluded, (66.2 + 13.8) were correct and included, 10\% of the total correct ones were excluded $= 91.2$ at most. Or maybe I'm counting wrong, in which case we should maybe find a less confusing way of expressing these probabilities?} \caroline{Sorry! very embarassing typo. Of all trials, 1.2\% were incorrect and thus excluded. Of the remaining *correct* trials, 66.2\% were labelled in the first automatic parse, then another 13.8\% were added manually, so 80.0\% of correct trials were labelled as mentioning a level of reference. The remaining 20.0\% of correct trials mentioned an attribute and were thus excluded (not 10.0\%!!) (resolved)}
+%\todo[inline]{rdh: i don't think these numbers  add up to 100... 1.2 were incorrect and excluded, (66.2 + 13.8) were correct and included, 10\% of the total correct ones were excluded $= 91.2$ at most. Or maybe I'm counting wrong, in which case we should maybe find a less confusing way of expressing these probabilities?} \caroline{Sorry! very embarassing typo. Of all trials, 1.2\% were incorrect and thus excluded. Of the remaining *correct* trials, 66.2\% were labelled in the first automatic parse, then another 13.8\% were added manually, so 80.0\% of correct trials were labelled as mentioning a level of reference. The remaining 20.0\% of correct trials mentioned an attribute and were thus excluded (not 10.0\%!!) (resolved)}
 
 \paragraph{Typicality norms}
 
-To examine the influence of typicality on speaker behavior, we obtained typicality estimates in a separate norming study. 240 participants were recruited through Mechanical Turk. On each trial, we presented participants with an image from the main experiment and asked them ``How typical is this for X?'', where X was a category label at the sub-, basic-, or super- level. They then adjusted a slider bar ranging from \emph{not at all typical} (coded as value 0) to \emph{very typical} (coded as 1). 
+To examine the influence of typicality on speaker behavior, we obtained typicality estimates in a separate norming study. 240 participants were recruited through Mechanical Turk. On each trial, we presented participants with an image from the main experiment and asked them ``How typical is this for X?'', where X was a category label at the sub-, basic-, or super- level. They then adjusted a slider bar ranging from \emph{not at all typical} to \emph{very typical}. 
 
 Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and descriptions: for each target (e.g., dalmatian), we collected typicality at all three levels (``dalmatian,'' ``dog,'' and ``animal''). For each distractor of the same superclass as the target (\emph{distsamesuper}, e.g., a kitten), we collected typicality at all three levels of the \emph{target}. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball) we only collected typicality at the super- level of the target (``animal'') and assumed lowest typicality at the other levels. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
 
-Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings.  Average untransformed slider values between 0 and 1 were used as the typicality values throughout our results. 
+Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings.  Raw slider values ranged from 0 (not typical) to 1 (very typical); average slider values were used as the typicality values throughout our results. 
 
 %\ndg{i think the cleanest way to do this is to briefly describe the items and the typicality norming here....}
 
@@ -236,7 +236,7 @@ Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distd
 
 \subsection{\bf Results}
 
-Proportions of sub, basic, and super level utterance choices in the different conditions are shown in the top row of \figref{fig:qualitativemodel}. The sub level term was preferred where it was necessary for unambiguous referent identification, i.e., when a distractor of the same basic level category as the target was present in the scene (item12, e.g. target: dalmatian, distractor: greyhound). Where it was not necessary (i.e., when there was no other object of the same basic level category present, as in conditions item22, item23 and item33), there was a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials, especially where informativeness constraints on utterance choice were weakest (item33). 
+Proportions of sub, basic, and super level utterance choices in the different context conditions are shown in the top row of \figref{fig:qualitativemodel}. The sub level term was preferred where it was necessary for unambiguous referent identification, i.e., when a distractor of the same basic level category as the target was present in the scene (item12, e.g. target: dalmatian, distractor: greyhound). Where it was not necessary (i.e., when there was no other object of the same basic level category present, as in conditions item22, item23 and item33), there was a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials, especially where informativeness constraints on utterance choice were weakest (item33). 
 %
 %\begin{figure}[ht!]
 %\centering
@@ -245,7 +245,8 @@ Proportions of sub, basic, and super level utterance choices in the different co
 %\label{fig:results1}
 %\end{figure}
 
-To test for the independent effects of informativeness, length, frequency, and typicality on sub level mention, we conducted a mixed effects logistic regression. Frequency was coded as the difference between the sub and the basic level's log frequency, as extracted from the Google Books Ngram English corpus ranging from 1960 to 2008. Length was coded as the ratio of the sub to the basic level's length.\footnote{We used the mean empirical lengths in characters of the utterances participants produced at the sub and basic level. For example, the minivan, when referred to at the subcategory level, was sometimes called ``minivan'' and sometimes ``van'' leading to a mean empirical length of 5.64. This is the value that was used, rather than 7, the length of ``minivan''. Using the lengths of the intended labels rather than the empirical means did not change the results qualitatively.} That is, a higher frequency difference indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level. Typicality was coded as the ratio of the target's sub to basic level label typicality. That is, the higher the ratio, the more typical the object was for the sub level label compared to the basic level; or in other words, a higher ratio indicated that the object was relatively atypical for the basic label compared to the sub label. For instance, the panda was relatively atypical for its basic level ``bear'' (mean rating 0.75) compared to the sub level term ``panda bear'' (mean rating 0.98), which resulted in a relatively \emph{high} typicality ratio.
+To test for the independent effects of informativeness, length, frequency, and typicality on sub-level mention, we conducted a mixed effects logistic regression. Frequency was coded as the difference between the sub and the basic level's log frequency, as extracted from the Google Books Ngram English corpus ranging from 1960 to 2008. Length was coded as the ratio of the sub to the basic level's length.\footnote{We used the mean empirical lengths in characters of the utterances participants produced. For example, the minivan, when referred to at the subcategory level, was sometimes called ``minivan'' and sometimes ``van'' leading to a mean empirical length of 5.64. This is the value that was used, rather than 7, the length of ``minivan''.} That is, a higher frequency difference indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level. Typicality was coded as the ratio of the target's sub to basic level label typicality. That is, the higher the ratio, the more typical the object was for the sub level label compared to the basic level; or in other words, a higher ratio indicated that the object was relatively atypical for the basic label compared to the sub label. For instance, the panda was relatively atypical for its basic level ``bear'' (mean rating 0.75) compared to the sub level term ``panda bear'' (mean rating 0.98), which resulted in a relatively \emph{high} typicality ratio.
+\ndg{could be shortened}
 
 Condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic sufficient}, and \emph{super sufficient}, where item22 and item23 were collapsed into \emph{basic sufficient}. Condition was Helmert-coded: two contrasts over the three condition levels were included in the model, comparing each level against the mean of the remaining levels (in order: \emph{sub necessary}, \emph{basic sufficient}, \emph{super sufficient}). This allowed us to determine whether the probability of type mention  for neighboring conditions were significantly different from each other, as suggested by \figref{fig:qualitativemodel}.\footnote{Adding terms that code the ratio of the sub vs super level frequency and length did not lead to an improvement of model fit.} The model included random by-speaker and by-domain intercepts. 
 
@@ -308,59 +309,61 @@ For instance, mentioning the subclass over the basic level term was preferred mo
 
 %To show that we can account for these context effects purely through communicative pressures, we formulated a simple probabilistic model of basic level reference. 
 We formulated a probabilistic model of reference level selection that integrates contextual informativeness, utterance cost, and typicality.
-As in earlier Rational Speech Act (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that words have deterministic truth conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
+As in earlier Rational Speech-Acts (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that words have deterministic truth conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
 The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both length and frequency.
 
 Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
 $$P_{L_0}(o | l) \propto \denote{l}(o).$$
 Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. 
-
-We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=\exp(\text{typicality}(o,l))$.
+We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=\exp(\text{typicality}(o,l))$.\footnote{Cases where typicality was not elicited were assumed to have typicality $0$.}
 This relationship is motivated by considering the effect of a small difference in typicality on choice probability: in our elicitation experiment a small difference in rating should mean the same thing at the top and bottom of the scale (it is visually equivalent on the slider that participants used).
 In order for a small difference in typicality rating to have a constant effect on relative choice probability (which is a ratio), the relationship must be exponential. 
 %The parameter $\gamma$ controls the dynamic range of typicality---how good (bad) is it to choose an object which is very (a)typical of the label heard?
 
-Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$: 
-$$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$.
 We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub, basic, and super level.
-Thus the speaker chooses nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency cost ($\hat{c}_f$) and the length cost ($\hat{c}_l$), each weighted by a free parameter. Length cost $\hat{c}_l$ was defined as the mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was estimated using the log probability of occurring in the Google Books corpus from 1960 to the present. 
+The speaker chooses among these nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency ($\hat{c}_f$) and the length  ($\hat{c}_l$), each weighted by a free parameter:
+$$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+Length cost $\hat{c}_l$ was defined as the empirical mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was the log frequency in the Google Books corpus from 1960 to the present. 
 
-To determine the relative importance of various factors within our speaker model, we conducted a Bayesian data analysis. We implemented the model in webppl, a probabilistic programming language \cite{GoodmanStuhlmuller14_DIPPL}, and inferred posteriors for the three free parameters using Markov Chain Monte Carlo (MCMC), conditioning on the production data from the experiment reported above. More specifically, for every iteration of the chain, we generated the probability of a speaker using each level of reference (i.e .``sub'', ``basic'', or ``super'') for every \emph{context} that participants could encounter in the task, and then computed the likelihood of the actual expressions that participants used. We assumed uniform priors for each parameter:
-$$\begin{array}{lcl}
-\alpha & \sim & Unif(0,20) \\
-\beta_f & \sim & Unif(0,5) \\
-\beta_l & \sim & Unif(0,5)
-\end{array}$$ 
+We performed Bayesian data analysis to generate model predictions, conditioning on the observed production data (coded into sub, basic, and super labels as described above) and integrating over the three free parameters.
+We assumed uniform priors for each parameter: $\lambda  \sim Unif(0,20)$, $\beta_f \sim Unif(0,5)$, $\beta_l \sim Unif(0,5)$.
+We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
+Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the three free parameters.
+% using Markov Chain Monte Carlo (MCMC), conditioning on the production data from the experiment reported above. More specifically, for every iteration of the chain, we generated the probability of a speaker using each level of reference (i.e .``sub'', ``basic'', or ``super'') for every \emph{context} that participants could encounter in the task, and then computed the likelihood of the actual expressions that participants used. 
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=.45\textwidth]{graphs/scatterplot}
+\caption{Empirical production data for each level of reference against model posterior predictive at the by-target level.}
+ \label{fig:scatterplot}
+\end{figure}
+
+Posterior predictions of the model at the target level (collapsing across distractors for each target, within each condition) are compared to empirical estimates in Fig. \ref{fig:scatterplot}. On the by-target level the model achieves a correlation of $r = .79$. Looking at results on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects (see Discussion).
+\ndg{to revise. mention super bias and item effects here.}
+
 
 \begin{figure}
 \includegraphics[width=.45\textwidth]{graphs/parameterposteriors.pdf}
-\caption{Posterior distribution over model parameters.% $\lambda$, $\beta_f$, $\beta_l$
-}
+\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP) $\lambda = 10.8$, 95\% highest density interval (HDI) $= [9.7, 12.8]$; MAP $\beta_l = 2.5$, HDI $= [1.9, 3.1]$; MAP $\beta_f = 1.3$, HDI $= [0.8, 1.8]$.}
 \label{fig:paramposteriors}
 \end{figure}
 
-Posteriors for these parameters are presented in Fig. \ref{fig:paramposteriors} and posterior predictives, compared to empirical estimates, are presented in Fig. \ref{fig:scatterplot}. On the most fine-grained, by-target, level the model achieves a correlation of $r = .79$ by rating informativeness relatively strongly (MAP $\lambda = 10.8$, HPD $= [9.7, 12.8]$) and weighting length overall somewhat more strongly than frequency (MAP $\beta_l = 2.5$, HPD $= [1.9, 3.1]$, MAP $\beta_f = 1.3$, HPD $= [0.8, 1.8]$). Correlating model predictions and empirical proportions on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. That is, when collapsing across items the model explains most of the variance in our data; this suggests that remaining deviations are due to unaccounted for domain or target effects (see Discussion).
-
-%\ndg{it would be good to indicate sources of unexplained variance. say that some domains work less well (candy) and speculate why?}
-
-In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran a version with an additional typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values and an \emph{a priori} truth-conditional function returning one if the object was a member of the label category and zero otherwise. The posterior distribution of this parameter provides a simple model comparison: if $\beta_t = 0$ is excluded from the HPD, and the distribution skews high, then some influence of typicality is necessary to account for the data. We found a MAP estimate of .94, HPD $= [0.88,1]$, strongly indicating that empirical typicality values are necessary.  Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis, but its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is captured by other aspects of the model. 
+Parameter posteriors are presented in Fig. \ref{fig:paramposteriors}. 
+Informativeness is weighted relatively strongly, while length is weighted somewhat more strongly than frequency.
+Because this model contains the simpler models without frequency, length, and informativity as nested sub-models, we can use parameter posteriors for Bayesian model selection.
+In this case the 95\% highest density intervals (HDIs) exclude zero for each of the three weight parameters, indicating that each term is justified.
+In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran an additional Bayesian data analysis with an added typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values (when $\beta_t {=} 1$) and deterministic (i.e. $0$ or $1$) \emph{a priori} values based on the true taxonomy (when $\beta_t {=} 0$).
+%truth-conditional function returning one if the object was a member of the label category and zero otherwise. 
+%The posterior distribution of this parameter allows for Bayesian model selection: if $\beta_t = 0$ is excluded from the HDI, and the distribution skews high, then some influence of typicality is necessary to account for the data. 
+We found a MAP estimate for $\beta_t$ of $.94$, HDI $= [0.88,1]$, strongly indicating that empirical typicality values are necessary.  
+Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis. Its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is already captured by other aspects of the model. 
 %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
 %The model without typicality performed significantly worse, as \red{can be seen in the lower correlations of the simpler models .
 % Interestingly, as model complexity increases, informativeness is given more weight (as can be seen in the increasing best $\lambda$ value), the extreme effects of which are balanced out by cost and typicality.}
 
 
-% \figref{fig:scatterplot} \jd{replace this plot with posterior predictive} shows the posterior predictive against empirical proportions.%\footnote{For 27 of the 432 utterance-target-domain-condition combinations, fewer than 4 data points contributed to the empirical proportion, which explains the ``bands'' of data at 0, .5, and 1.}  \jd{include a qualitative example?}
 
-%\ndg{model should take into account typicality of other non-target objects. check?}
-
-
-
-\begin{figure}[t!]
-\centering
-\includegraphics[width=.45\textwidth]{graphs/scatterplot}
-\caption{Empirical proportions against model posterior predictive.}
- \label{fig:scatterplot}
-\end{figure}
 
 \section{\bf Discussion and conclusion}
 
