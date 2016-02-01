@@ -1,10 +1,9 @@
-# TODO: make code for generating big gblue plot (ie comparing empirical, model, and model sans typicality, collapsing over everything except utterance and condition)
-
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/basic_level_reference/")
 library(ggplot2)
 library(dplyr)
 library(coda)
 library(purrr)
+library(gridExtra)
 estimate_mode <- function(s) {
   d <- density(s)
   return(d$x[which.max(d$y)])
@@ -19,12 +18,11 @@ HPDlo<- function(s){
 }
 options("scipen"=10) 
 
-### Load in model results
+### Load in model results (parameters)
 
-#params<-read.csv("DRIFTbdaOutputParams.csv", sep = ",", row.names = NULL)
-#params<-read.csv("DRIFTbdaOutputParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/NOTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
+#params<-read.csv("bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
+#params<-read.csv("bdaOutput/NOTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
+params<-read.csv("bdaOutput/FULLONTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
 samples = 10000
 str(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
@@ -79,15 +77,16 @@ numericSubset[numericSubset$parameter == "freqWeight",]$parameter = "beta_f"
 numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
 numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
 
-ggplot(numericSubset, aes(x=value)) +
+library(gridExtra)
+ggplot(numericSubset[numericSubset$parameter != "beta_t",], aes(x=value)) +
     geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
                    binwidth = .5, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_f"),
                    binwidth = .25, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
                  binwidth = .25, colour="black", fill="white")+
-    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
-                 binwidth = .05, colour="black", fill="white")+
+#    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
+ #                binwidth = .05, colour="black", fill="white")+
   #geom_histogram(data=subset(numericSubset, parameter == "typScale"),
    #              binwidth = .1, colour="black", fill="white")+  
     geom_density(aes(y=.5*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
@@ -96,22 +95,20 @@ ggplot(numericSubset, aes(x=value)) +
                  alpha=.2, fill="#FF6666")+
     geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
                  alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.05*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
-                alpha=.2, fill="#FF6666")+
+    #geom_density(aes(y=.05*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
+                #alpha=.2, fill="#FF6666")+
   #geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "typScale"),adjust=2,
    #            alpha=.2, fill="#FF6666")+  
     #ggtitle("Questioner Parameter Posteriors (1000 iterations)") +
     facet_grid(~ parameter, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors.pdf",height=2.5,width=10)
-
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors-notypicality.pdf",height=3,width=11)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors.pdf",height=1.5,width=5)
 
 
 ### Predictives
 
-# Import emp data
+# Import empirical data
 
 source("rscripts/helpers.R")
 #d_noattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
@@ -131,9 +128,9 @@ tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 
 # combine with model fits
 
-predictive<-read.csv("bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
-predictive.notyp<-read.csv("bdaOutput/NOTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
-predictive.typ<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+#predictive.inter<-read.csv("bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+#predictive.notyp<-read.csv("bdaOutput/NOTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 
 
 ## collapse across targets and domains
@@ -169,41 +166,42 @@ predictive.samples <- predictive[rep(row.names(predictive),
             YMax = mean(Prob) + ci.high(Prob),
             YMin = mean(Prob) - ci.low(Prob))
 predictive.samples = as.data.frame(predictive.samples)
-predictive.samples$ModelType = "info+cost+intertyp"
+predictive.samples$ModelType = "model"
 
-predictive.samples.notyp <- predictive.notyp[rep(row.names(predictive.notyp), 
-                                     predictive.notyp$MCMCprob*samples), 1:6] %>%
-  mutate(refLevel = value) %>%
-  group_by(refLevel, condition, target) %>%
-  summarize(Prob = estimate_mode(prob),
-            YMax = HPDhi(prob),
-            YMin = HPDlo(prob)) %>%
-  group_by(refLevel, condition) %>%
-  summarize(Probability = mean(Prob),
-            YMax = mean(Prob) + ci.high(Prob),
-            YMin = mean(Prob) - ci.low(Prob))
-predictive.samples.notyp = as.data.frame(predictive.samples.notyp)
-predictive.samples.notyp$ModelType = "info+cost"
+# predictive.samples.notyp <- predictive.notyp[rep(row.names(predictive.notyp), 
+#                                      predictive.notyp$MCMCprob*samples), 1:6] %>%
+#   mutate(refLevel = value) %>%
+#   group_by(refLevel, condition, target) %>%
+#   summarize(Prob = estimate_mode(prob),
+#             YMax = HPDhi(prob),
+#             YMin = HPDlo(prob)) %>%
+#   group_by(refLevel, condition) %>%
+#   summarize(Probability = mean(Prob),
+#             YMax = mean(Prob) + ci.high(Prob),
+#             YMin = mean(Prob) - ci.low(Prob))
+# predictive.samples.notyp = as.data.frame(predictive.samples.notyp)
+# predictive.samples.notyp$ModelType = "info+cost"
+# 
+# predictive.samples.typ <- predictive.typ[rep(row.names(predictive.typ), 
+#                                                  predictive.typ$MCMCprob*samples), 1:6] %>%
+#   mutate(refLevel = value) %>%
+#   group_by(refLevel, condition, target) %>%
+#   summarize(Prob = estimate_mode(prob),
+#             YMax = HPDhi(prob),
+#             YMin = HPDlo(prob)) %>%
+#   group_by(refLevel, condition) %>%
+#   summarize(Probability = mean(Prob),
+#             YMax = mean(Prob) + ci.high(Prob),
+#             YMin = mean(Prob) - ci.low(Prob))
+# predictive.samples.typ = as.data.frame(predictive.samples.typ)
+# predictive.samples.typ$ModelType = "info+cost+fulltyp"
 
-predictive.samples.typ <- predictive.typ[rep(row.names(predictive.typ), 
-                                                 predictive.typ$MCMCprob*samples), 1:6] %>%
-  mutate(refLevel = value) %>%
-  group_by(refLevel, condition, target) %>%
-  summarize(Prob = estimate_mode(prob),
-            YMax = HPDhi(prob),
-            YMin = HPDlo(prob)) %>%
-  group_by(refLevel, condition) %>%
-  summarize(Probability = mean(Prob),
-            YMax = mean(Prob) + ci.high(Prob),
-            YMin = mean(Prob) - ci.low(Prob))
-predictive.samples.typ = as.data.frame(predictive.samples.typ)
-predictive.samples.typ$ModelType = "info+cost+fulltyp"
-
+# include only empirical and final (full typicality) model in "blue" plot
 toplot = merge(agr_noattr, predictive.samples, all=T)
-toplot = merge(toplot, predictive.samples.notyp, all=T)
-toplot = merge(toplot, predictive.samples.typ, all=T)
+#toplot = merge(toplot, predictive.samples.notyp, all=T)
+#toplot = merge(toplot, predictive.samples.typ, all=T)
 
-colors = scale_colour_brewer()[1:4]
+colors = scale_colour_brewer()[1:2]
 
 ggplot(toplot, aes(x=condition,y=Probability,fill=ModelType)) +
   geom_bar(stat="identity",color="black") +
@@ -212,8 +210,8 @@ ggplot(toplot, aes(x=condition,y=Probability,fill=ModelType)) +
   ylab("Utterance probability") +
   xlab("Condition") +
   facet_grid(ModelType~refLevel) +
-  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/qualitativepattern.pdf",height=5,width=4.5)
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1),plot.margin=unit(c(0,0,0,0),"cm"))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/qualitativepattern.pdf",height=3.5,width=4.7)
 
 ### ANALYZE RESIDUALS
 row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$refLevel)
@@ -221,10 +219,14 @@ row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$refLevel)
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
+  group_by(refLevel, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob)) %>%
   group_by(refLevel, condition) %>%
-  summarize(MAP = estimate_mode(prob),
-            credHigh = HPDhi(prob),
-            credLow = HPDlo(prob)) %>%
+  summarize(MAP = mean(Prob),
+            credHigh = mean(Prob) + ci.high(Prob),
+            credLow = mean(Prob) - ci.low(Prob)) %>%
   inner_join(agr_noattr, by = c("refLevel", "condition"))
 View(predictive.samples)
 
@@ -275,10 +277,14 @@ predictive$domain = domains[as.character(predictive$target),]$basiclevelClickedO
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), c(seq(1,6),8)] %>%
   mutate(refLevel = value) %>%
-  group_by(refLevel, domain, condition) %>%
-  summarize(MAP = estimate_mode(prob),
-            credHigh = HPDhi(prob),
-            credLow = HPDlo(prob)) %>%
+  group_by(refLevel, condition, target, domain) %>%
+  summarize(Prob = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob)) %>%
+  group_by(refLevel, condition, domain) %>%
+  summarize(MAP = mean(Prob),
+            credHigh = mean(Prob) + ci.high(Prob),
+            credLow = mean(Prob) - ci.low(Prob)) %>%
   inner_join(agr_noattr, by = c("refLevel", "domain", "condition"))
 #View(predictive.samples)
 
@@ -294,11 +300,9 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") +
   facet_wrap(~ domain)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-bydomain.pdf",height=3.5,width=5)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-bydomain-notypicality.pdf",height=3.5,width=5)
-#ggsave("graphs/reparameterized/model_empirical_noattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 predictive.samples = as.data.frame(predictive.samples)
-cor(predictive.samples$MAP,predictive.samples$Probability) # r = .84 (.77 without typicality)
+cor(predictive.samples$MAP,predictive.samples$Probability) # r = .88 ( without typicality)
 
 
 # don't collapse across targets and domains
@@ -347,8 +351,6 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
   #facet_wrap(~ domain)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot.pdf",height=3.5,width=5)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-notypicality.pdf",height=3.5,width=5)
-#ggsave("graphs/reparameterized/model_empirical_noattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 predictive.samples = as.data.frame(predictive.samples)
 cor(predictive.samples$MAP,predictive.samples$Probability) # r = .79 (.7 without typicality)
