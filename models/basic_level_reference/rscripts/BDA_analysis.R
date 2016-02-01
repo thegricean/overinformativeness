@@ -160,30 +160,42 @@ agr_noattr$ModelType = "empirical"
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
-  group_by(refLevel, condition) %>%
-  summarize(Probability = estimate_mode(prob),
+  group_by(refLevel, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
-            YMin = HPDlo(prob))
+            YMin = HPDlo(prob)) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = mean(Prob),
+            YMax = mean(Prob) + ci.high(Prob),
+            YMin = mean(Prob) - ci.low(Prob))
 predictive.samples = as.data.frame(predictive.samples)
-predictive.samples$ModelType = "info+cost"
+predictive.samples$ModelType = "info+cost+intertyp"
 
 predictive.samples.notyp <- predictive.notyp[rep(row.names(predictive.notyp), 
                                      predictive.notyp$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
-  group_by(refLevel, condition) %>%
-  summarize(Probability = estimate_mode(prob),
+  group_by(refLevel, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
-            YMin = HPDlo(prob))
+            YMin = HPDlo(prob)) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = mean(Prob),
+            YMax = mean(Prob) + ci.high(Prob),
+            YMin = mean(Prob) - ci.low(Prob))
 predictive.samples.notyp = as.data.frame(predictive.samples.notyp)
-predictive.samples.notyp$ModelType = "info+cost+intertyp"
+predictive.samples.notyp$ModelType = "info+cost"
 
 predictive.samples.typ <- predictive.typ[rep(row.names(predictive.typ), 
                                                  predictive.typ$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
-  group_by(refLevel, condition) %>%
-  summarize(Probability = estimate_mode(prob),
+  group_by(refLevel, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
-            YMin = HPDlo(prob))
+            YMin = HPDlo(prob)) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = mean(Prob),
+            YMax = mean(Prob) + ci.high(Prob),
+            YMin = mean(Prob) - ci.low(Prob))
 predictive.samples.typ = as.data.frame(predictive.samples.typ)
 predictive.samples.typ$ModelType = "info+cost+fulltyp"
 
