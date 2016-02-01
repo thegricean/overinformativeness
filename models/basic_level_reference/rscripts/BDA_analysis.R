@@ -23,8 +23,9 @@ options("scipen"=10)
 
 #params<-read.csv("DRIFTbdaOutputParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("DRIFTbdaOutputParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/WITHSCALINGbdaOutputParams.csv", sep = ",", row.names = NULL)
-samples = 1000
+params<-read.csv("bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
+params<-read.csv("bdaOutput/NOTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
+samples = 10000
 str(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
 
@@ -68,18 +69,8 @@ typWeightSubset = params.samples %>%
 cat("typWeight = ", typWeightSubset$md) 
 cat("95% HPD interval = [", typWeightSubset$md_low, ",", typWeightSubset$md_hi, "]")
 
-typScaleSubset = params.samples %>% 
-  filter(parameter == "typScale") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("typScale = ", typScaleSubset$md) 
-cat("95% HPD interval = [", typScaleSubset$md_low, ",", typScaleSubset$md_hi, "]")
-
 numericSubset = params.samples %>% 
-  filter(parameter %in% c("alpha", "freqWeight", "lengthWeight", "typWeight","typScale")) #%>%
+  filter(parameter %in% c("alpha", "freqWeight", "lengthWeight", "typWeight")) #%>%
   #mutate(lambda=alpha,beta_f=freqWeight,beta_l=lengthWeight,beta_t=typWeight)
   #mutate(value = as.numeric(levels(value))[value])
 numericSubset$parameter = as.character(numericSubset$parameter)
@@ -90,29 +81,32 @@ numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
 
 ggplot(numericSubset, aes(x=value)) +
     geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
-                   binwidth = 1, colour="black", fill="white")+
+                   binwidth = .5, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_f"),
                    binwidth = .25, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
-                 binwidth = .5, colour="black", fill="white")+
+                 binwidth = .25, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
-                 binwidth = .1, colour="black", fill="white")+
+                 binwidth = .05, colour="black", fill="white")+
   #geom_histogram(data=subset(numericSubset, parameter == "typScale"),
    #              binwidth = .1, colour="black", fill="white")+  
-    geom_density(aes(y=1*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
+    geom_density(aes(y=.5*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
                  alpha=.2, fill="#FF6666")+
     geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_f"), adjust = 3.5,
                  alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.5*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
+    geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
                  alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
+    geom_density(aes(y=.05*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
                 alpha=.2, fill="#FF6666")+
   #geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "typScale"),adjust=2,
    #            alpha=.2, fill="#FF6666")+  
     #ggtitle("Questioner Parameter Posteriors (1000 iterations)") +
     facet_grid(~ parameter, scales = "free_x") +
-    theme_bw()
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors.pdf",height=3)
+    theme_bw() +
+  theme(plot.margin=unit(c(0,0,0,0),"cm"))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors.pdf",height=2.5,width=10)
+
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors-notypicality.pdf",height=3,width=11)
 
 
 ### Predictives
@@ -137,7 +131,9 @@ tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 
 # combine with model fits
 
-predictive<-read.csv("bdaOutput/WITHSCALINGbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv("bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive.notyp<-read.csv("bdaOutput/NOTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive.typ<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 
 
 ## collapse across targets and domains
@@ -159,6 +155,53 @@ head(agr)
 agr_noattr = agr
 nrow(agr_noattr) # 12 datapoints
 agr_noattr$condition = gsub("distr","item",as.character(agr_noattr$condition))
+agr_noattr$ModelType = "empirical"
+
+predictive.samples <- predictive[rep(row.names(predictive), 
+                                     predictive$MCMCprob*samples), 1:6] %>%
+  mutate(refLevel = value) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob))
+predictive.samples = as.data.frame(predictive.samples)
+predictive.samples$ModelType = "info+cost"
+
+predictive.samples.notyp <- predictive.notyp[rep(row.names(predictive.notyp), 
+                                     predictive.notyp$MCMCprob*samples), 1:6] %>%
+  mutate(refLevel = value) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob))
+predictive.samples.notyp = as.data.frame(predictive.samples.notyp)
+predictive.samples.notyp$ModelType = "info+cost+intertyp"
+
+predictive.samples.typ <- predictive.typ[rep(row.names(predictive.typ), 
+                                                 predictive.typ$MCMCprob*samples), 1:6] %>%
+  mutate(refLevel = value) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob))
+predictive.samples.typ = as.data.frame(predictive.samples.typ)
+predictive.samples.typ$ModelType = "info+cost+fulltyp"
+
+toplot = merge(agr_noattr, predictive.samples, all=T)
+toplot = merge(toplot, predictive.samples.notyp, all=T)
+toplot = merge(toplot, predictive.samples.typ, all=T)
+
+colors = scale_colour_brewer()[1:4]
+
+ggplot(toplot, aes(x=condition,y=Probability,fill=ModelType)) +
+  geom_bar(stat="identity",color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  scale_fill_brewer(guide=F) +
+  ylab("Utterance probability") +
+  xlab("Condition") +
+  facet_grid(ModelType~refLevel) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/qualitativepattern.pdf",height=5,width=4.5)
 
 ### ANALYZE RESIDUALS
 row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$refLevel)
@@ -183,7 +226,10 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   xlab("Model predicted probability") +
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
 #facet_wrap(~ domain)
-ggsave("graphs/reparameterized/model_empirical_noattr_multiplicative.pdf",width=8.4,height=6)
+ggsave("graphs/reparameterized/model_empirical_bycond.pdf",width=8.4,height=6)
+
+predictive.samples = as.data.frame(predictive.samples)
+cor(predictive.samples$MAP,predictive.samples$Probability) # r = .93 ( without typicality)
 
 # collapse across targets but not domains
 agr = tmp %>%
@@ -222,7 +268,7 @@ predictive.samples <- predictive[rep(row.names(predictive),
             credHigh = HPDhi(prob),
             credLow = HPDlo(prob)) %>%
   inner_join(agr_noattr, by = c("refLevel", "domain", "condition"))
-View(predictive.samples)
+#View(predictive.samples)
 
 ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLevel)) +
   #ggplot(predictive.samples, aes(x=MAP,y=Probability,color=domain,shape=refLevel)) +
@@ -236,10 +282,11 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") +
   facet_wrap(~ domain)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-bydomain.pdf",height=3.5,width=5)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-bydomain-notypicality.pdf",height=3.5,width=5)
 #ggsave("graphs/reparameterized/model_empirical_noattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 predictive.samples = as.data.frame(predictive.samples)
-cor(predictive.samples$MAP,predictive.samples$Probability) # r = .84
+cor(predictive.samples$MAP,predictive.samples$Probability) # r = .84 (.77 without typicality)
 
 
 # don't collapse across targets and domains
@@ -288,10 +335,11 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
   #facet_wrap(~ domain)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot.pdf",height=3.5,width=5)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/scatterplot-notypicality.pdf",height=3.5,width=5)
 #ggsave("graphs/reparameterized/model_empirical_noattr_bydomain_multiplicative.pdf",width=8.4,height=6)
 
 predictive.samples = as.data.frame(predictive.samples)
-cor(predictive.samples$MAP,predictive.samples$Probability) # r = .79
+cor(predictive.samples$MAP,predictive.samples$Probability) # r = .79 (.7 without typicality)
 
 
 # find particularly good and bad examples
@@ -319,23 +367,6 @@ ggplot(jellybeans, aes(x=condition,y=Probability,fill=ProbType)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
   facet_wrap(~UtteranceType)
 ggsave("graphs/jellybeans.pdf",height=3.5)
-
-#bedsidetable PREDICTIONS
-predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
-bedsidetable = predictive.samples[predictive.samples$target == "bedsidetable",] %>%
-  mutate(model=MAP) %>%
-  mutate(empirical=Probability) %>%
-  select(UtteranceType,condition,model,empirical,YMax,YMin) %>%
-  gather(ProbType,Probability,-UtteranceType,-condition,-YMax,-YMin)
-bedsidetable[bedsidetable$ProbType == "model",]$YMax = 0
-bedsidetable[bedsidetable$ProbType == "model",]$YMin = 0
-head(bedsidetable)
-dodge=position_dodge(.9)
-ggplot(bedsidetable, aes(x=condition,y=Probability,fill=ProbType)) +
-  geom_bar(stat="identity",position=dodge) +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
-  facet_wrap(~UtteranceType)
-ggsave("graphs/bedsidetable.pdf",height=3.5)
 
 #gummybears PREDICTIONS
 predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
@@ -371,6 +402,45 @@ ggplot(pandabear, aes(x=condition,y=Probability,fill=ProbType)) +
   facet_wrap(~UtteranceType)
 ggsave("graphs/pandabear.pdf",height=3.5)
 
+#polarbear PREDICTIONS
+predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
+polarbear = predictive.samples[predictive.samples$target == "polarbear",] %>%
+  mutate(model=MAP) %>%
+  mutate(empirical=Probability) %>%
+  select(UtteranceType,condition,model,empirical,YMax,YMin) %>%
+  gather(ProbType,Probability,-UtteranceType,-condition,-YMax,-YMin)
+polarbear[polarbear$ProbType == "model",]$YMax = 0
+polarbear[polarbear$ProbType == "model",]$YMin = 0
+head(polarbear)
+dodge=position_dodge(.9)
+ggplot(polarbear, aes(x=condition,y=Probability,fill=ProbType)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
+  facet_wrap(~UtteranceType)
+ggsave("graphs/polarbear.pdf",height=3.5)
+
+
+
+#bedsidetable PREDICTIONS
+predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
+bedsidetable = predictive.samples[predictive.samples$target == "bedsidetable",] %>%
+  mutate(model=MAP) %>%
+  mutate(empirical=Probability) %>%
+  select(UtteranceType,condition,model,empirical,YMax,YMin) %>%
+  gather(ProbType,Probability,-UtteranceType,-condition,-YMax,-YMin)
+bedsidetable[bedsidetable$ProbType == "model",]$YMax = 0
+bedsidetable[bedsidetable$ProbType == "model",]$YMin = 0
+head(bedsidetable)
+dodge=position_dodge(.9)
+ggplot(bedsidetable, aes(x=condition,y=Probability,fill=ProbType)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
+  facet_wrap(~UtteranceType)
+ggsave("graphs/bedsidetable.pdf",height=3.5)
+
+
+
+
 ## BEST CASES
 #germanshepherd PREDICTIONS
 predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
@@ -389,6 +459,44 @@ ggplot(germanshepherd, aes(x=condition,y=Probability,fill=ProbType)) +
   facet_wrap(~UtteranceType)
 ggsave("graphs/germanshepherd.pdf",height=3.5)
 
+#grizzlybear PREDICTIONS
+predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
+grizzlybear = predictive.samples[predictive.samples$target == "grizzlybear",] %>%
+  mutate(model=MAP) %>%
+  mutate(empirical=Probability) %>%
+  select(UtteranceType,condition,model,empirical,YMax,YMin) %>%
+  gather(ProbType,Probability,-UtteranceType,-condition,-YMax,-YMin)
+grizzlybear[grizzlybear$ProbType == "model",]$YMax = 0
+grizzlybear[grizzlybear$ProbType == "model",]$YMin = 0
+head(grizzlybear)
+dodge=position_dodge(.9)
+ggplot(grizzlybear, aes(x=condition,y=Probability,fill=ProbType)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
+  facet_wrap(~UtteranceType)
+ggsave("graphs/grizzlybear.pdf",height=3.5)
+
+
+#coffeetable PREDICTIONS
+predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
+coffeetable = predictive.samples[predictive.samples$target == "coffeetable",] %>%
+  mutate(model=MAP) %>%
+  mutate(empirical=Probability) %>%
+  select(UtteranceType,condition,model,empirical,YMax,YMin) %>%
+  gather(ProbType,Probability,-UtteranceType,-condition,-YMax,-YMin)
+coffeetable[coffeetable$ProbType == "model",]$YMax = 0
+coffeetable[coffeetable$ProbType == "model",]$YMin = 0
+head(coffeetable)
+dodge=position_dodge(.9)
+ggplot(coffeetable, aes(x=condition,y=Probability,fill=ProbType)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
+  facet_wrap(~UtteranceType)
+ggsave("graphs/coffeetable.pdf",height=3.5)
+
+
+
+
 #convertible PREDICTIONS
 predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
 convertible = predictive.samples[predictive.samples$target == "convertible",] %>%
@@ -405,6 +513,8 @@ ggplot(convertible, aes(x=condition,y=Probability,fill=ProbType)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),position=dodge,width=.25) +
   facet_wrap(~UtteranceType)
 ggsave("graphs/convertible.pdf",height=3.5)
+
+
 
 #tulip PREDICTIONS
 predictive.samples$UtteranceType = factor(x=as.character(predictive.samples$refLevel),levels=c("sub","basic","super"))
