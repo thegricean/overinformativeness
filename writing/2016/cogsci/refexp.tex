@@ -203,11 +203,11 @@ Each trial consisted of a display of three images, one of which was designated a
 
 Furthermore, the experiment contained 36 filler items, in which participants were asked to produce referential expressions for objects which differed only in size and color. Images from filler trials were not reused on target trials. Trial order was randomized. 
 
-\paragraph{\bf Procedure}
+\paragraph{Procedure}
 Pairs of participants were connected through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}, with one member of each pair assigned the speaker role and the other to the listener role. Participants kept their allotted roles for the entire experiment. 
 The setup for both the speaker and the listener is shown in \figref{fig:procedure}. Each saw the same set of three images, but positions were randomized to rule out trivial position-based references like ``the middle one.'' The target object was identified by a green square surrounding it for the speaker (but not listener). Players used a chatbox to send text messages to each other. The task was for the speaker to get the listener to select the target object. %, and for the listener to select the right object based on the information provided by the speaker. 
 
-\paragraph{\bf Annotation}
+\paragraph{Annotation}
 To determine the level of reference for each trial, we followed the following procedure. First, trials on which the listener selected the wrong referent were excluded, leading to the elimination of 1.2\% of trials. Then, speakers' and listeners' messages were parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 66.2\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, remaining utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the parsing algorithm due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as ``doggie'' for ``dog'',  or contractions such as ``gummi'',``gummies'' and ``bears'' for ``gummy bears'' were counted as containing a level of reference term. This caught another 13.8\% of trials. A total of 20.0\% of correct trials were excluded because the utterance consisted only of an \emph{attribute} of the superclass (``the living thing'' for ``animal''), of the basic level (``can fly'' for ``bird''), of the subcategory (``barks'' for ``dog'') or of the  particular instance (``the thing facing left'') rather than a category noun. These kinds of attributes were also sometimes mentioned in addition to the noun in the trials which were included in the analysis---4.0\% of sub level terms, 12.6\% of basic level terms, and 46.2\% of super level terms contained an additional modifier. 
 %By making use of attributes,  speakers could generate unambiguous referential expressions despite using a level of reference which would by itself be insufficient for disambiguation, e.g. by referring to a dalmatian as a ``spotted dog'' (in the context of another dog being present, for instance a pug which is not spotted). 
 On 0.5\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial. 
@@ -373,12 +373,12 @@ Finally, we ran a model including a parameter weighting the \emph{product} of fr
 
 The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
 In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
-
-The interplay of these factors is naturally modeled within the RSA framework, where speakers are treated as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns.%\jd{mention connection to prototype theory? [caroline:] Maybe like this: }
-\footnote{This captures aspects of prototype theory, which proposes a graded form of categorization whereby  category membership is determined by how prototypical an object is for a category.}
+%
+The interplay of these factors is naturally modeled within the RSA framework, where speakers are treated as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns.
+%\jd{mention connection to prototype theory? [caroline:] Maybe like this: }
 %We also incorporated a parsimony goal by including the effect of utterance cost.
-%showed that more complex cost functions can account for naturalistic data. In addition, 
- The resulting model both qualitatively and quantitatively provided a good fit to speakers' empirical utterance choices. 
+%showed that more complex cost functions can account for naturalistic data. In addition,  
+The resulting model provided a good fit to speakers' empirical utterance choices, both qualitatively and quantitatively. 
 
 
 
@@ -390,42 +390,43 @@ The interplay of these factors is naturally modeled within the RSA framework, wh
 %Our data also supports the existence of a basic level: If the context allowed it, participants were far more likely to use basic level terms than either sub or super level expressions. Interestingly however, our results as to what level constitutes a basic level are slightly different from Rosch et al.'s. That is, while categories like ``table'' and ``shirt'' were considered both by Rosch and by us as basic levels (with corresponding super levels ``furniture'' and ``clothing'' and sub levels such as ``coffee table'' and ``dress shirt''), we had a quite different conception of animal domains. In our experiment, ``fish'' was a basic level with ``animal'' as a super level and ``catfish'' as a sub level, whereas for Rosch ``fish'' was a super level with ``bass'' being the basic level and ``striped bass'' a sub level term. Perhaps the reason for this discrepancy is that basic levels are not rigid levels of categorization, but rather flexible as they also incorporate world knowledge. Many researchers agree that world knowledge plays an important part in human categorization behavior (e.g. Jolicoeur et al., 1984; Murphy and Medin, 1985) and a recent study by Orita et al. (2015) furthermore demonstrates that discourse affects the choice of referring expression. More evidence for the impact of world knowledge and discourse is provided by Tanaka and Taylor (1991), who showed that domain-specific ``expert'' knowledge can diminish the preference effect of the basic level to an extent that subordinate level terms are chosen as often as basic level terms to refer to objects. Considering that Rosch's experiments were conducted 40 years ago, it seems interesting to investigate whether changes in society or in the zeitgeist may have had an effect on the relevance of certain aspects of world knowledge, which causes a shift in what is regarded and used as a basic level of reference.
 
 
-There was, however, some item-wise variation that the model left unexplained. This may reflect improper calibration of our typicality or frequency measures, or it may reflect additional factors such as visual salience, which could for instance arise for objects characterized by high-contrast features \cite{Westerbeek2015}.
+The model predicts a well-documented preference for speakers  to refer to objects at the basic level when not constrained by contextual considerations  \cite{RoschEtAl76_BasicLevel}. In our model, this preference emerges naturally from cost considerations: basic-level labels tend to be shorter and more frequent than sub and super level terms. However, speakers did not always use the basic level term, even when unconstrained by context. In certain cases where object typicality was relatively high for the sub level term compared to the basic level term, that term was preferred (as was the case for ``panda bear''), suggesting an interesting interplay between typicality and level of description. 
+While our results show that a model can capture several basic-level phenomena through frequency, length, and typicality features, it leaves open the origin and causal role of these linguistic regularities.
+Future research will be needed to determine how linguistic regularities related to conceptual regularities and why.
 
-Importantly, the model predicts a well-documented preference for speakers  to refer to objects at the basic level when not constrained by contextual considerations  \cite{RoschEtAl76_BasicLevel}. In our model, this preference emerges naturally from cost considerations: basic-level labels tend to be shorter and more frequent than sub and super level terms. However, speakers did not always use the basic level term, even when unconstrained. In certain cases where object typicality was relatively high for the sub level term compared to the basic level term, that term was preferred (as was the case for e.g. ``panda bear''), suggesting an interesting interplay between typicality and level of abstraction. % \jd{give good qualitative example in results section that you can pick up again here?}
-Of course it is impossible to assert whether the notion of basic levels emerged from there being a level of abstraction having particularly beneficial cost and typicality features or whether the conceptual basic-level is primary, and efficient language structures evolved to mirror this preference.
+
+%Of course it is impossible to assert whether the notion of basic levels emerged from there being a level of abstraction having particularly beneficial cost and typicality features or whether the conceptual basic-level is primary, and efficient language structures evolved to mirror this preference.
 %Together, these observations suggest that language users need not learn or encode the basic level preference as an additional rule. Of course, it leaves open how the relevant cost and typicality features emerged in the first place: it is plausible that the conceptual basic-level is primary, and efficient language structures evolved to mirror this preference.
 
-\todo[inline]{rdh: this paragraph bothers me a bit: a theory evoking underlying conceptual structure is more parsimonious, and our results about cost in language seem kind of circular at that level of explanation... it needs more than a single paragraph in the discussion to do justice to the issues there... Tried to put in this last sentence to feel less conflicted about it, but maybe that just makes it worse?}
-\caroline{I think as long as we acknowledge the circularity, this is a nice point to make. But you're right that the phrasing should be more careful. Maybe like this? (see above)}
+%\todo[inline]{rdh: this paragraph bothers me a bit: a theory evoking underlying conceptual structure is more parsimonious, and our results about cost in language seem kind of circular at that level of explanation... it needs more than a single paragraph in the discussion to do justice to the issues there... Tried to put in this last sentence to feel less conflicted about it, but maybe that just makes it worse?}
+%\caroline{I think as long as we acknowledge the circularity, this is a nice point to make. But you're right that the phrasing should be more careful. Maybe like this? (see above)}
+%
+%\ndg{put somewhere? This captures aspects of prototype theory, which proposes a graded form of categorization whereby  category membership is determined by how prototypical an object is for a category.}
+%
+%\todo[inline]{rdh: need a better transition here}
 
-\todo[inline]{rdh: need a better transition here}
 %A possible reason for this may be the salience of the sub level construal of these objects. Salience has been found to be a factor contributing to utterance choice in other areas of referring expression production; for example, atypical features of objects are mentioned more often than typical features, which has been argued to be due to the greater salience of atypical features  \cite{westerbeek2015}. This is in line with our results that objects which are \emph{atypical} for the basic level are more likely to be referred to with the sub level term.
 
 %The argument might also explain the high sub level use in the candy domain, as all sub level items of candy feature high-contrast colors with a high visual saliency. In the case of ``eagle'', a form of ``cultural saliency'' may also be imaginable, since the eagle is a very prominent and salient part of world knowledge in American culture. 
 
 %Thus, many aspects of what constitutes basic levels should be investigated more. Especially the exploration of the saliency of features which may or may not be shared across category members is an interesting topic to be take up by future research.
 
-Furthermore, an interesting analogy can be drawn from the problem of selecting a level of reference in simple nominal referring expressions to the problem of selecting a set of features to include in modified referring expressions. In this domain, a much discussed phenomenon is that of overinformative modifier use \cite{Gatt2014}. Similarly, the preference for the basic level in the \emph{super sufficient} condition and the still substantial use of sub level terms in the \emph{basic sufficient} condition can be considered overinformative. However, using a non-deterministic semantics derived from typicality estimates predicts that speakers \emph{should} use these more specific descriptions because they add utility. The extent to which similar considerations may apply to modified referring expressions should be explored in future research.
+An interesting analogy can be drawn from choosing a noun to choosing a set of adjectives; that is, between selection of a level of reference in simple nominal referring expressions and selection of a set of features to include in modified referring expressions. 
+For the latter, a much discussed phenomenon is that of \emph{overinformative} modifier use \cite{Gatt2014}---for example, saying ``big blue'' when all objects in the context are blue. 
+The preference for the basic level in the \emph{super sufficient} condition and the still substantial use of sub level terms in the \emph{basic sufficient} condition can also be considered overinformative. However, we showed that a Rational Speech-Actcs model using non-deterministic semantics, derived from typicality estimates, predicts that speakers \emph{should} use these more specific descriptions. 
+The extent to which similar considerations may apply to modified referring expressions should be explored in future research.
+Future research should examine the interaction of these choices: circumstances under which speakers choose a modifier and how nominal and modifier choice interact.
+
+%There was, however, some item-wise variation that the model left unexplained. This may reflect improper calibration of our typicality or frequency measures, or it may reflect additional factors such as visual salience, which could for instance arise for objects characterized by high-contrast features \cite{Westerbeek2015}.
 
 %Concluding, this work delivers insights into the tradeoff between contextual constraints and features of utterance alternatives in speakers' choice of  reference level in nominal referring expressions produced in natural dialog. A basic level preference naturally emerges from the formalization of the choice speakers face.
 
-A number of directions remain for future work.
-For instance, a non-negligible minority of utterances in our experiment used adjectival modifiers instead of or in addition to a noun. 
-Future research should examine the circumstances under which speakers choose a modifier and how nominal and modifier choice interact.
-\ndg{other obvious directions?}
-\todo[inline]{rdh: should probably put future directions a bit earlier and end on a higher-level note}
-%
-%\begin{itemize}
-%	\item \jd{connection to dutch guys needs to be made clearly somewhere}
-%	\item \jd{more emphasis on the role of typicality in RSA models?}
-%\end{itemize}
+\ndg{fancy conclusion?}
 
 \section{\bf Acknowledgments}
-
+\small
 This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.~Mobility Award to JD. RXDH was supported by the Stanford Graduate Fellowship and the National Science Foundation Graduate Research Fellowship under Grant No. DGE-114747.
 
-\small
 
 
 \bibliographystyle{apacite}
