@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Overinformativeness analysis"
 output: html_document
 ---
 
@@ -7,6 +7,9 @@ To analyze the output of a webppl program for bayesian data analysis
 
 ```{r}
 setwd("/Users/rxdh/Repos/overinformativeness/models/basic_level_reference/")
+
+library(knitr)
+opts_knit$set(root.dir = '/Users/rxdh/Repos/overinformativeness/models/basic_level_reference/')
 library(ggplot2)
 library(tidyr)
 library(dplyr)
@@ -30,16 +33,18 @@ options("scipen"=10)
 ### Load in model results
 
 ```{r}
-params<-read.csv("./WITHSCALINGbdaOutputParams.csv", sep = ",", row.names = NULL)
-samples = 1000
+params<-read.csv("./bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
+samples = 10000
 str(params)
-params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
+params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2] 
+
 
 paramHPDs = params.samples %>% 
   group_by(parameter) %>%
   summarize(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
+print(paramHPDs)
 ```
 
 # Plot parameter posteriors
@@ -53,9 +58,7 @@ ggplot(params.samples, aes(x=value)) +
     geom_histogram(data=subset(params.samples, parameter == "lengthWeight"),
                  binwidth = .25, colour="black", fill="white")+
     geom_histogram(data=subset(params.samples, parameter == "typWeight"),
-                 binwidth = .1, colour="black", fill="white")+
-    geom_histogram(data=subset(params.samples, parameter == "typScale"),
-                 binwidth = .1, colour="black", fill="white")+
+                 binwidth = .025, colour="black", fill="white")+
 
     geom_density(aes(y=.5*..count..), data =subset(params.samples, parameter == "alpha"), 
                  adjust = 3, alpha=.2, fill="#FF6666")+
@@ -63,9 +66,7 @@ ggplot(params.samples, aes(x=value)) +
                  adjust = 3, alpha=.2, fill="#FF6666")+
     geom_density(aes(y=.25*..count..),data=subset(params.samples, parameter == "lengthWeight"),
                  adjust = 3.5, alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.1*..count..),data=subset(params.samples, parameter== "typWeight"),
-               adjust=2, alpha=.2, fill="#FF6666")+  
-    geom_density(aes(y=.1*..count..),data=subset(params.samples, parameter== "typScale"),
+    geom_density(aes(y=.025*..count..),data=subset(params.samples, parameter== "typWeight"),
                adjust=2, alpha=.2, fill="#FF6666")+  
 
     ggtitle("Reference Parameter Posteriors (1000 iterations)") +
@@ -79,7 +80,7 @@ ggplot(params.samples, aes(x=value)) +
 
 ```{r}
 source("rscripts/helpers.R")
-d_allattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/allAttr.csv")
+d_allattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
 
 tmp = d_allattr %>%
   select(speakerMessages,condition,nameClickedObj,basiclevelClickedObj,
@@ -114,10 +115,10 @@ nrow(agr_allattr) # 432 datapoints
 agr_allattr$condition = gsub("distr","item",as.character(agr_allattr$condition))
 ```
 
-# combine with model fits
+# combine with model fits, show by-target scatter
 
 ```{r}
-predictive<-read.csv("./WITHSCALINGbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv("./bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 predictive.samples <- predictive[rep(row.names(predictive), 
                                        predictive$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
@@ -140,4 +141,74 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
 
 cor(predictive.samples$MAP, predictive.samples$Probability)
 ggsave("graphs/reparameterized/model_empirical_allattr_bydomain_multiplicative.pdf",width=8.4,height=6)
+```
+
+
+# Analyze at level of condition
+
+```{r}
+require(grid)
+source("rscripts/helpers.R")
+d_noattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
+d_noattr$nameClickedObj = as.character(d_noattr$nameClickedObj)
+d_noattr$nameClickedObj = tolower(d_noattr$nameClickedObj)
+d_noattr$nameClickedObj = as.factor(as.character(d_noattr$nameClickedObj))
+
+tmp = d_noattr %>%
+  select(speakerMessages,condition,nameClickedObj,basiclevelClickedObj,
+         superdomainClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned,
+         typeAttributeMentioned,basiclevelAttributeMentioned,superclassattributeMentioned)
+
+# some cases are marked as having type and attribute mentions at different levels of the hierarchy. i'll interpret all mentions as type mentions of the lowest compatible category
+tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
+
+agr = tmp %>%
+  select(condition,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
+  gather(Utterance, Mentioned,-condition) %>%
+  group_by(Utterance,condition) %>%
+  summarise(Probability=mean(Mentioned),
+            cilow=ci.low(Mentioned),
+            cihigh=ci.high(Mentioned)) %>%
+  ungroup() %>%
+  mutate(refLevel = factor(x = ifelse(Utterance == "typeMentioned","sub",
+                                      ifelse(Utterance == "basiclevelMentioned","basic","super")), levels=c("sub","basic","super"))) %>%
+  mutate(YMax = Probability + cihigh) %>%
+  mutate(YMin = Probability - cilow) %>%
+  select(condition, refLevel, Probability, YMax, YMin)
+agr = as.data.frame(agr)
+head(agr)
+
+agr_noattr = agr
+nrow(agr_noattr) # 12 datapoints
+agr_noattr$condition = gsub("distr","item",as.character(agr_noattr$condition))
+agr_noattr$ModelType = "empirical"
+
+predictive.samples <- predictive[rep(row.names(predictive), 
+                                     predictive$MCMCprob*samples), 1:6] %>%
+  mutate(refLevel = value) %>%
+  group_by(refLevel, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob)) %>%
+  group_by(refLevel, condition) %>%
+  summarize(Probability = mean(Prob),
+            YMax = mean(Prob) + ci.high(Prob),
+            YMin = mean(Prob) - ci.low(Prob))
+predictive.samples = as.data.frame(predictive.samples)
+predictive.samples$ModelType = "model"
+
+toplot = merge(agr_noattr, predictive.samples, all=T)
+#toplot = merge(toplot, predictive.samples.notyp, all=T)
+#toplot = merge(toplot, predictive.samples.typ, all=T)
+
+colors = scale_colour_brewer()[1:2]
+
+ggplot(toplot, aes(x=condition,y=Probability,fill=ModelType)) +
+  geom_bar(stat="identity",color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  scale_fill_brewer(guide=F) +
+  ylab("Utterance probability") +
+  xlab("Condition") +
+  facet_grid(ModelType~refLevel) +
+  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1),plot.margin=unit(c(0,0,0,0),"cm"))
 ```
