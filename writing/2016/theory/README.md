@@ -1,4 +1,4 @@
-# Over `overinformativeness': rational redundant referring expressions
+# Over 'overinformativeness': rational redundant referring expressions
 
 ### Intro
 
