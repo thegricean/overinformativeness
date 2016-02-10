@@ -35,10 +35,10 @@
 \newcommand{\sectionref}[1]{Section \ref{#1}}
 
 
-\title{Rethinking overinformativeness: redundant use of modifiers in referring expressions}
+\title{Over overinformativeness: rational redundant referring expressions}
 
  
-\author{{\large \bf Judith Degen, Noah D.~Goodman} \\
+\author{{\large \bf Judith Degen, Caroline Graf, Robert X.D.~Hawkins, Noah D.~Goodman} \\
   \{jdegen,ngoodman\}@stanford.edu\\
   Department of Psychology, 450 Serra Mall \\
   Stanford, CA 94305 USA}
@@ -58,24 +58,41 @@ reference; referring expressions; informativeness; probabilistic pragmatics; exp
 \section{Introduction}
 \label{sec:intro}
 
-Referring is one of the most basic and prevalent uses of language, so we're probably pretty good at it. What does `being good at it' mean? Generally, trying to abide by Gricean maxims, including: be as informative as possible but not more informative than necessary. For the past 40 years, researchers have been noticing that speakers don't seem to abide by the second part of that in their production of referring expressions: they often include modifiers that aren't necessary for uniquely determining reference. This has posed a challenge for rational accounts of language use (including the Gricean one): what accounts for this extra expenditure of useless effort on the speaker's part? Is it just that speakers aren't economical after all? Or is there some utility in being redundant?
+Reference to objects is one of the most basic and prevalent uses of language. But how do speakers choose amongst the wealth of referring expressions they have at their disposal? How does a speaker choose whether to refer to an object as \emph{the animal}, \emph{the dog}, \emph{the dalmatian}, or \emph{the big mostly white dalmatian}? The context within which the object occurs  (other non-dogs, other dogs, other dalmatians) plays a large part in determining which features the speaker chooses to include in their utterance  -- speakers aim to be sufficiently informative to uniquely establish reference to the intended object. However, speakers' utterances often exhibit what has been claimed to be \emph{overinformativeness}: referring expressions are often more specific than necessary for establishing unique reference, and they are so in systematic ways. However, providing a unified theory for speakers' systematic patterns of overinformativeness has so far proved elusive.
 
-%\begin{itemize}
-	%\item 
-	\red{introduce the general issue: content selection, grice, the term `overinformativeness'}
-%\end{itemize}
+This paper is concerned with  modeling precisely this choice of referring expression (RE). We restrict ourselves to definite descriptions of the form \emph{the (ADJ}?\emph{)}+ \emph{NOUN}, that is, noun phrases that minimally contain the definite determiner \emph{the} followed by a head noun. In addition, any number of adjectives can occur between the determiner and the noun.\footnote{In contrast, we will \emph{not} provide a treatment of pronominal referring expressions, indefinite descriptions, names, or definite descriptions with post-nominal modification, though we offer some speculative remarks on how the approach outlined here can be applied to these cases. \jd{make sure you actually do this.}} A model of these REs will allow us to unify two domains in language production that have been typically treated as separate, and that have typically been treated as interesting for different reasons: the production of so-called overmodified referring expressions on the one hand, which a lot of literature in language production has been devoted to \cite{bla blabla}; and the production of simple nominal expressions, which has so far mostly received attention in the concepts and categorization literature \cite{bla bla}. In the following, we review some of the key phenomena and puzzles in each of these literatures which have for the most part been treated as unrelated. We then present a model of RE production within the Rational Speech Acts \cite{frank2012} framework, which treats speakers as boundedly rational agents that try to optimize the tradeoff between utterance cost and  informativeness. Our key innovation is to relax the assumption that semantic truth functions are deterministic. \jd{one sentence here that inspires intuition} It is this crucial innovation that allows us to provide a unified explanation for a great number of seemingly disparate phenomena from the modified and nominal RE literature.
 
-\subsection{Asymmetry in redundant use of color and size adjectives}
+\subsection{Production of referring expressions: a case against rational language use?}
+
+How should a cooperative speaker produce referring expressions? Grice, in his seminal work, provided some guidance by formulating his famous conversational maxims, intended as a guide to listeners' expectations about good speaker behavior \citeNP{grice1975}. His maxim of Quantity, consisting of two parts, requires of speakers to:
+
+\begin{enumerate}
+	\item \emph{Quantity-1:} Make your contribution as informative as s required (for the purposes of the exchange).
+	\item \emph{Quantity-2:} Do not make your contribution more informative than is required.
+\end{enumerate}
+
+That is, speakers should aim to produce neither under- nor overinformative utterances. While much support has been found for the former \cite{lots of people}, speakers seem remarkably happy to systematically violate Quantity-2. In modified referring expressions, they routinely produce modifiers that do not uniquely establish reference (e.g., \emph{the big blue thumbtack} instead of \emph{the big thumbtack} in contexts like \figref{fig:thumbtack} \cite{bla bla}). In simple nominal expressions, speakers routinely choose to refer to an object with a basic level term even when a superordinate level term would have been sufficient for establishing reference (e.g., \emph{the dog} instead of \emph{the animal} in contexts like \figref{subfig:dogartifacts} \cite{bla bla}).
+
+These observations have posed a challenge for rational accounts of language use (including the Gricean one): why this extra expenditure of useless effort? Why this seeming blindness to the level of informativeness requirement? Many have argued from these observations that speakers are in fact not economical \cite{bla}. Some have derived a built-in preference for referring at the basic level from considerations of \jd{bla} and \jd{bla} \cite{Rosch1976}. Others have argued for salience-driven effects on willingness to overmodify \cite{dutch guys}. In all cases, it is argued that informativeness cannot be the key factor in determining the content of speakers' referring expressions.
+
+Here we revisit this claim and show that systematically relaxing the requirement of a deterministic semantics for referring expressions also systematically changes the informativeness of utterances, in effect leading to a reconceptualization of what have been termed \emph{overinformative referring expressions} as \emph{rationally redundant referring expressions}. We begin by reviewing the phenomena of interest that a revised theory of definite referring expressions should be able to account for. 
+
+\subsection{Modified referring expressions}
+\label{sec:modified}
+
+\subsubsection{Asymmetry in redundant use of color and size adjectives}
 \label{sec:asymmetry}
 
-\subsection{Number of distractors}
-\label{sec:numdistractors}
-
-\subsection{Scene variation}
+\subsubsection{Scene variation}
 \label{sec:scenevariation}
 
-\subsection{Color typicality}
+\subsubsection{Color typicality}
 \label{sec:colortypicality}
+
+
+\subsection{Nominal referring expressions}
+\label{sec:nominal}
+
 
 \subsection{Summary}
 \label{sec:introsummary}
@@ -86,14 +103,16 @@ Referring is one of the most basic and prevalent uses of language, so we're prob
 Effect & Description & Reported by \\
 \midrule
 Color/size asymmetry & More redundant use of color adjectives than size adjectives &  \citeA{Pechmann1989, engelhardt2006a, gatt2011} \red{others}\\
-Number of distractors & More redundant use of color with increasing number of distractors & ?? \red{deutsch} \\
-Scene variation & More redundant use of color with increasing scene variation & \citeA{davies2009, koolen2013}\\
-Color typicality & More redundant use of color with decreasing color typicality & \citeA{sedivy2003a, Westerbeek2014}\\
+%Number of distractors & More redundant use of color with increasing number of distractors & ?? \red{deutsch} \\
+Scene variation & More redundant use of color adjectives with increasing scene variation & \citeA{davies2009, koolen2013}\\
+Color typicality & More redundant use of color adjectives with decreasing color typicality & \citeA{sedivy2003a, Westerbeek2015, rubiofernandez2016}\\
+\midrule
+Basic level preference & Preference for basic level term when superordinate level term sufficient & \citeA{Rosch1976} \red{others}\\
+\red{other??} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\red{insert table here}
 
 \section{Modeling speakers' choice of referring expression}
 \label{sec:models}
@@ -126,7 +145,7 @@ We recruited 60 pairs of participants (120 participants total) over Amazon's Mec
 
 \paragraph{Procedure}
 
-Participants were paired up via \red{is there something in robert's tools to cite?}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}
+Participants were paired up via \red{is there something in robert's tools to cite?}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}.
 
 On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:exampledisplay} for an example of the listener's and speaker's view on a particular trial.
 
@@ -215,7 +234,10 @@ Fillers were target trials from a different experiment \cite{graf-underreview}. 
 \section{General Discussion}
 \label{sec:gd}
 
-
+\begin{itemize}
+	\item talk about how the approach applies to other referring expressions like those mentioned in the intro (indefinite, post-nominal modification pronouns)
+	\item talk about how our approach fits in with incremental stories of overspecification?
+\end{itemize}
 
 \appendix
 
