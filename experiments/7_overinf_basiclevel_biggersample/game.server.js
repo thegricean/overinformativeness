@@ -34,8 +34,8 @@ var onMessage = function(client,message) {
     
   case 'clickedObj' :
     writeData(client, "clickedObj", message_parts);
-    others[0].player.instance.send("s.highlightObjSpeaker." + message_parts[3]);
-    target.instance.send("s.highlightObjListener." + message_parts[3]);
+    others[0].player.instance.send("s.feedback." + message_parts[3]);
+    target.instance.send("s.feedback." + message_parts[3]);
     setTimeout(function() {
       _.map(all, function(p){
         p.player.instance.emit( 'newRoundUpdate', {user: client.userid} );
