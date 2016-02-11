@@ -1,0 +1,12 @@
+gameid, time, roundNum, condition, nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs 
+5787-f,1455156191299,1,sizeOnly,big_red_candle,target,2,1,small_blue_candle,distractor,1,3,small_red_candle,distractor,3,2
+5787-f,1455156195957,2,sizeOnly,big_green_bracelet,target,2,3,small_green_bracelet,distractor,1,1,small_purple_bracelet,distractor,3,2
+5787-f,1455156199599,3,colorAndSize,big_orange_napkin,target,3,2,small_yellow_napkin,distractor,1,1,small_yellow_napkin,distractor,2,3
+5787-f,1455156203649,4,filler,garbagecan,target,2,1,snake,distractor,3,2,garlic,distractor,1,3
+5787-f,1455156207635,5,filler,schoolbus,distractor,2,2,bear,distractor,3,3,tennisball,target,1,1
+5787-f,1455156211571,6,filler,lime,distractor,3,1,raspberry,distractor,1,2,strawberry,target,2,3
+5787-f,1455156216462,7,colorOnly,big_brown_turtle,target,3,1,big_black_turtle,distractor,1,2,small_black_turtle,distractor,2,3
+5787-f,1455156220856,8,sizeOnly,small_red_toothbrush,target,3,1,big_red_toothbrush,distractor,1,2,big_blue_toothbrush,distractor,2,3
+5787-f,1455156225186,9,filler,teddybear,distractor,1,2,hotdog,distractor,2,1,polarbear,target,3,3
+5787-f,1455156228992,10,colorOnly,big_red_tack,distractor,2,2,small_blue_tack,target,1,1,small_red_tack,distractor,3,3
+5787-f,1455156232722,11,colorOnly,big_red_yarn,target,1,1,small_purple_yarn,distractor,2,2,big_purple_yarn,distractor,3,3
