@@ -36,7 +36,7 @@ var game_core = function(options){
   };
   
   //Dimensions of world in pixels and numberof cells to be divided into;
-  this.numHorizontalCells = 3;
+  this.numHorizontalCells = 5;
   this.numVerticalCells = 1;
   this.cellDimensions = {height : 300, width : 300}; // in pixels
   this.cellPadding = 0;
@@ -144,16 +144,17 @@ game_core.prototype.newRound = function() {
 };
 
 game_core.prototype.makeTrialList = function () {
-  var local_this = this;
-  var conditionList = getRandomizedConditions();
-  console.log(conditionList);
-  var trialList = [];
-  var previousTargets = [];
+  var conditionList = getRandomizedConditions(),
+      local_this = this,
+      trialList = [],
+      previousTargets = [];
+
+  // Had to switch to a for loop here to keep track of previousTargets
   for (var i = 0; i < conditionList.length; i++) {
     var condition = conditionList[i];
-    var objList = sampleObjects(condition, previousTargets); // Sample three objects 
-    previousTargets.push(objList[0].name); // Keep track of targets seen
-    var locs = sampleStimulusLocs(); // Sample locations for those objects
+    var objList = sampleObjects(condition, previousTargets);
+    previousTargets.push(objList[0].name);
+    var locs = sampleStimulusLocs(objList);
     trialList.push(_.map(_.zip(objList, locs.speaker, locs.listener), function(tuple) {
       var speakerGridCell = local_this.getPixelFromCell(tuple[1][0], tuple[1][1]); 
       var listenerGridCell = local_this.getPixelFromCell(tuple[2][0], tuple[2][1]);
@@ -161,22 +162,6 @@ game_core.prototype.makeTrialList = function () {
     }));
   };
   return(trialList);
-};
-
-//scores the number of incorrect tangram matches between listener and speaker
-//returns the correct score out of total tangrams
-game_core.prototype.game_score = function(game_objects) {
-   var correct = 0;
-   var incorrect = 0;
-   for(var i = game_objects.length; i--; i>=0) {
-      if(game_objects[i].listenerCoords.gridX == game_objects[i].speakerCoords.gridX) {
-        if(game_objects[i].listenerCoords.gridY == game_objects[i].speakerCoords.gridY) {
-          correct = correct + 1;
-        }
-      }
-      incorrect = incorrect + 1;
-  }
-  return correct;
 };
 
 game_core.prototype.server_send_update = function(){
@@ -211,7 +196,39 @@ game_core.prototype.server_send_update = function(){
 };
 
 var sampleObjects = function(condition, earlierTargets) {
-  var samplingInfo = {
+  var remainingTargets = getRemainingTargets(earlierTargets, condition.type);
+  var target = sampleTarget(condition, remainingTargets);
+  var distractors = sampleDistractors(condition, target);
+  
+  if(checkItem(condition,target,distractors)) {
+    return [target].concat(distractors);
+  } else { // Try again if something is wrong
+    return sampleObjects(condition, earlierTargets);
+  }
+};
+
+var sampleTarget = function(condition, remainingTargets) {
+  var target = _.sample(remainingTargets);
+  target.targetStatus = "target";
+
+  if (condition.type === "basic") {
+    target.condition = condition.type + condition.d1Level + condition.d2Level;
+    return target;
+  } else {
+    target.condition = condition.type + condition.numDistractors + condition.numSame;
+    var chosenSize = _.sample(target.size);
+    var chosenColor = _.sample(target.color);
+    return _.extend(target, {
+      chosenSize : chosenSize,
+      chosenColor : chosenColor,
+      fullName : chosenSize + "_" + chosenColor + "_" + target.name,
+      url : "stimuli/" + chosenSize + "_" + chosenColor + "_" + target.name + ".jpg"
+    });
+  }
+};
+
+var sampleDistractors = function(condition, target) {
+  var levels = {
     1 : {class: getObjectSubset("distrClass1"),
 	 selector: firstClassSelector},
     2 : {class: getObjectSubset("distrClass2"),
@@ -219,36 +236,59 @@ var sampleObjects = function(condition, earlierTargets) {
     3 : {class: getObjectSubset("distrClass2"),
 	 selector: thirdClassSelector}
   };
-  
-  var conditionParams = condition.slice(-2).split("");    
-  var firstDistrInfo = samplingInfo[conditionParams[0]];
-  var secondDistrInfo = samplingInfo[conditionParams[1]];
-  var remainingTargets = getRemainingTargets(earlierTargets);
-  
-  var target = _.sample(remainingTargets);
-  var firstDistractor = firstDistrInfo.selector(target, firstDistrInfo.class);
-  var secondDistractor = secondDistrInfo.selector(target, secondDistrInfo.class);
-  if(checkItem(condition,target,firstDistractor,secondDistractor)) {
-    // attach "condition" to each stimulus object
-    return _.map([target, firstDistractor, secondDistractor], function(x) {
-      return _.extend(x, {condition: condition});
+
+  if(condition.type === "basic") {
+    var distractorInfo = [levels[condition.d1Level], levels[condition.d2Level]];
+    return _.map(distractorInfo, function(d) {
+      return _.extend(d.selector(target, d.class), {
+	targetStatus : "distractor",
+	fullName : target.name
+      });
     });
-  } else { // Try again if something is wrong
-    return sampleObjects(condition, earlierTargets);
+  } else {
+    return _.map(_.range(condition.numDistractors), function(dNum) {
+      return _.extend(_.clone(target), {
+	targetStatus : "distractor",
+	fullName : getDistractorName(target, dNum, condition),
+	url : "stimuli/" + getDistractorName(target, dNum, condition) + ".jpg"
+      });
+    });
   }
 };
 
-var checkItem = function(condition, target, firstDistractor, secondDistractor) {
-  var diffName = firstDistractor.name != secondDistractor.name;
-  if(condition === "distr23") {
-    var diffSuper = firstDistractor.superdomain != secondDistractor.superdomain;
-    return diffName && diffSuper;
-  } else if (condition === "distr33") {
-    var diffTarget = (firstDistractor.superdomain != target.superdomain
-		      && secondDistractor.superdomain != target.superdomain);
-    return diffName && diffTarget;
+var getDistractorName = function (target, dNum, condition) {
+  // Create some that are the same as the target on the insufficient dimension
+  var sameColor = target.chosenColor,
+      sameSize = target.chosenSize,
+      diffColor = _.without(target.color, target.chosenColor),
+      diffSize = _.without(target.size, target.chosenSize);
+  if(dNum < condition.numSame) {
+    if(condition.type === "color") 
+      return sameSize + "_" + diffColor + "_" + target.name;
+    else if(condition.type === "size")
+      return diffSize + "_" + sameColor + "_" + target.name;
+    else
+      throw "unknown condition type";
   } else {
-    return diffName;
+    return diffSize + "_" + diffColor + "_" + target.name;
+  }
+};
+
+var checkItem = function(condition, target, distractors) {
+  var diffName = distractors[0].name != distractors[1].name;
+  if(condition.type === "basic") {
+    if(condition.d1Level === 2 && condition.d2Level === 3 ) {
+      var diffSuper = distractors[0].superdomain != distractors[1].superdomain;
+      return diffName && diffSuper;
+    } else if (condition.d1Level === 3 && condition.d2Level === 3) {
+      var diffTarget = (distractors[0].superdomain != target.superdomain
+			&& distractors[1].superdomain != target.superdomain);
+      return diffName && diffTarget;
+    } else {
+      return diffName;
+    }
+  } else {
+    return true;
   }
 };
 
@@ -272,10 +312,13 @@ var addCellInfoToObj = function(tuple, speakerGridCell, listenerGridCell) {
     gridPixelX: listenerGridCell.centerX - 150,
     gridPixelY: listenerGridCell.centerY - 150
   };
+  return object;
 };
 
-var getRemainingTargets = function(earlierTargets) {
-  var criticalObjs = getObjectSubset("target");
+var getRemainingTargets = function(earlierTargets, condition) {
+  var criticalObjs = (condition === "basic" ?
+		      getObjectSubset("target") :
+		      getObjectSubset("colorSizeTrial"));
   return _.filter(criticalObjs, function(x) {
     return !_.contains(earlierTargets, x.name );
   });
@@ -304,15 +347,20 @@ var getRandomizedConditions = function() {
   return _.shuffle(conds);
 };
 
-var sampleStimulusLocs = function() {
-  var listenerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
-  var speakerLocs = _.shuffle([[1,1], [2,1], [3,1]]);
-  return {listener : listenerLocs, speaker : speakerLocs};
+var sampleStimulusLocs = function(objList) {
+  var minX = objList.length === 3 ? 2 : 1;
+  var maxX = objList.length === 5 ? 5 : 4;
+  var locs = _.map(_.range(minX, maxX + 1), function(i) {return [i, 1]; });
+  return {listener : _.shuffle(locs), speaker : _.shuffle(locs)};
 };
 
 var getObjectSubset = function(targetStatus) {
   return _.map(_.shuffle(_.filter(objectList, function(x){
-    return x.targetStatus == targetStatus;
+    if(targetStatus === "colorSizeTrial") {
+      return x.type == "colorSizeTrial";
+    } else {
+      return x.targetStatus == targetStatus;
+    }
   })), _.clone);
 };
 
