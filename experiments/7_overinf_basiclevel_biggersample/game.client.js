@@ -139,104 +139,38 @@ var client_onMessage = function(data) {
       console.log("received end message...")
       break;
 
-    case 'highlightObjSpeaker' :
-      var highlightClickObjNameSpe = commanddata;
-      //alert("highlightClickObjNameSpe.name" + highlightClickObjNameSpe.name);
-      // look through game.objects, find the one with objectName, highlight it
-      //alert("gameobjs[0].name: " + game.objects[0].name);
-      var cliObjSpe;
-      if (game.objects[0].name == highlightClickObjNameSpe) {
-        cliObjSpe = game.objects[0];
-      } else if (game.objects[1].name == highlightClickObjNameSpe) {
-        cliObjSpe = game.objects[1];
-      } else if (game.objects[2].name == highlightClickObjNameSpe) {
-        cliObjSpe = game.objects[2];
-      } else {};
-      var upperLeftX = cliObjSpe.speakerCoords.gridPixelX;
-      //alert("reached highlight");
-      var upperLeftY = cliObjSpe.speakerCoords.gridPixelY;
-      //alert("reached highlight" + upperLeftY);
+    case 'feedback' :
+      var objToHighlight;
+      var upperLeftX;
+      var upperLeftY;
+      var strokeColor;
+      if (my_role === game.playerRoleNames.role1) {
+	var clickObjName = commanddata;
+	console.log("name: " + commanddata);
+	objToHighlight = _.filter(game.objects, function(x){
+	  return x.fullName == clickObjName;
+	})[0];
+	console.log(objToHighlight);
+	upperLeftX = objToHighlight.speakerCoords.gridPixelX;
+	upperLeftY = objToHighlight.speakerCoords.gridPixelY;
+	strokeColor = "black";      
+      } else {
+	objToHighlight = _.filter(game.objects, function(x){
+	  return x.targetStatus == "target";
+	})[0];
+	upperLeftX = objToHighlight.listenerCoords.gridPixelX;
+	upperLeftY = objToHighlight.listenerCoords.gridPixelY;
+	strokeColor = "black";	
+      }
+      console.log(objToHighlight);
       if (upperLeftX != null && upperLeftY != null) {
         game.ctx.beginPath();
-        game.ctx.lineWidth="30";
-        game.ctx.strokeStyle="red";
-        game.ctx.rect(upperLeftX, upperLeftY,300,300); 
+        game.ctx.lineWidth="10";
+        game.ctx.strokeStyle=strokeColor;
+        game.ctx.rect(upperLeftX+5, upperLeftY+5,290,290); 
         game.ctx.stroke();
       }
-
-      // for (i=0; i < game.objects.length; i++) {
-      //   var obj = game.objects[i];
-      //   var crit;
-      //   //alert("obj.name" + obj.name);
-      //   if (obj.name == highlightClickObjName){
-      //     crit = _.clone(obj)
-      //   }
-      //     var crit = 
-      //     var upperLeftX = crit.listenerCoords.gridPixelX;
-      //     //alert("reached highlight");
-      //     var upperLeftY = crit.listenerCoords.gridPixelY;
-      //     //alert("reached highlight" + upperLeftY);
-      //     if (upperLeftX != null && upperLeftY != null) {
-      //       game.ctx.beginPath();
-      //       game.ctx.lineWidth="30";
-      //       game.ctx.strokeStyle="red";
-      //       game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-      //       game.ctx.stroke();
-      //     }
-      //   }
-      //   else{}
-      //}
-      //   var highlightClickObj = _.filter(game.objects, function(x){ return x[i].name ==  highlightClickObjName })
-      //   //alert("highObj: " + highlightClickObj.name);
-      //   var upperLeftX = highlightClickObj.listenerCoords.gridPixelX;
-      //   //alert("reached highlight" + upperLeftX);
-      //   var upperLeftY = highlightClickObj.listenerCoords.gridPixelY;
-      //   if (upperLeftX != null && upperLeftY != null) {
-      //     game.ctx.beginPath();
-      //     game.ctx.lineWidth="30";
-      //     game.ctx.strokeStyle="red";
-      //     game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-      //     game.ctx.stroke();
-      //   }
-      // }
-      // for (var n = 0; n < highlightClickObj.length; n++){
-      //   var upperLeftX = highlightClickObj[n].speakerCoords.gridPixelX;
-      //   alert("reached highlight" + upperLeftX);
-      //   var upperLeftY = highlightClickObj[n].speakerCoords.gridPixelY;
-      //   if (upperLeftX != null && upperLeftY != null) {
-      //     game.ctx.beginPath();
-      //     game.ctx.lineWidth="30";
-      //     game.ctx.strokeStyle="red";
-      //     game.ctx.rect(upperLeftX, upperLeftY,300,300); 
-      //     game.ctx.stroke();
-      //   }
       break;
-
-    // case 'highlightObjListener' :
-    //   var highlightClickObjName = commanddata;
-    //   //alert("game.obj names" + game.objects[0].name + game.objects[1].name + game.objects[2].name);
-    //   // look through game.objects, find the one with objectName, highlight it
-    //   //alert("gameobjs[0].name: " + game.objects[0].name);
-    //   var cliObjLis;
-    //   if (game.objects[0].fullName == highlightClickObjName) {
-    //     cliObjLis = game.objects[0];
-    //   } else if (game.objects[1].fullName == highlightClickObjName) {
-    //     cliObjLis = game.objects[1];
-    //   } else if (game.objects[2].fullName == highlightClickObjName) {
-    //     cliObjLis = game.objects[2];
-    //   } else {};
-    //   var upperLeftXLis = cliObjLis.listenerCoords.gridPixelX;
-    //   //alert("reached highlight");
-    //   var upperLeftYLis = cliObjLis.listenerCoords.gridPixelY;
-    //   //alert("reached highlight" + upperLeftY);
-    //   if (upperLeftXLis != null && upperLeftYLis != null) {
-    //     game.ctx.beginPath();
-    //     game.ctx.lineWidth="30";
-    //     game.ctx.strokeStyle="red";
-    //     game.ctx.rect(upperLeftXLis, upperLeftYLis,300,300); 
-    //     game.ctx.stroke();
-    //   }
-    //   break;
 
     case 'alert' : // Not in database, so you can't play...
       alert('You did not enter an ID'); 
@@ -431,26 +365,34 @@ function mouseClickListener(evt) {
       var obj = game.objects[i];
       //var condition = game.trialList[0];
       if (hitTest(obj, mouseX, mouseY)) {
-        called = false;
+	        called = false;
         var alternative1 = _.sample(_.without(game.objects, obj));
         var alternative2 = _.sample(_.without(game.objects, obj, alternative1));
-        console.log("alt1Name: " + alternative1.name);
-        console.log("alt2Name: " + alternative2.name);
-        game.socket.send("clickedObj." + obj.condition + "." + obj.name + "." + obj.targetStatus 
+        var alternative3 = (_.sample(_.without(game.objects, obj, alternative1,
+					       alternative2))
+			    || {speakerCoords : {}, listenerCoords : {}});
+	var alternative4 = (_.sample(_.without(game.objects, obj, alternative1,
+					       alternative2, alternative3))
+			    || {speakerCoords : {}, listenerCoords : {}});
+        game.socket.send("clickedObj." + obj.type + "." + obj.condition + "." + obj.fullName + "." + obj.targetStatus 
           + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX  + "." + obj.basiclevel + "." + obj.superdomain
-          + "." + alternative1.name + "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX 
+          + "." + alternative1.fullName + "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX 
           + "." + alternative1.listenerCoords.gridX + "." + alternative1.basiclevel + "." + alternative1.superdomain 
-          + "." + alternative2.name + "." + alternative2.targetStatus + "." + alternative2.speakerCoords.gridX 
-          + "." + alternative2.listenerCoords.gridX + "." + alternative2.basiclevel + "." + alternative2.superdomain);
+          + "." + alternative2.fullName + "." + alternative2.targetStatus + "." + alternative2.speakerCoords.gridX 
+          + "." + alternative2.listenerCoords.gridX + "." + alternative2.basiclevel + "." + alternative2.superdomain 
+          + "." + alternative3.fullName + "." + alternative3.targetStatus + "." + alternative3.speakerCoords.gridX 
+          + "." + alternative3.listenerCoords.gridX + "." + alternative3.basiclevel + "." + alternative3.superdomain 
+          + "." + alternative4.fullName + "." + alternative4.targetStatus + "." + alternative4.speakerCoords.gridX 
+          + "." + alternative4.listenerCoords.gridX + "." + alternative4.basiclevel + "." + alternative4.superdomain );
 
         //highlight the object that was clicked:
         var upperLeftXListener = obj.listenerCoords.gridPixelX;
         var upperLeftYListener = obj.listenerCoords.gridPixelY;
         if (upperLeftXListener != null && upperLeftYListener != null) {
           game.ctx.beginPath();
-          game.ctx.lineWidth="30";
+          game.ctx.lineWidth="10";
           game.ctx.strokeStyle="red";
-          game.ctx.rect(upperLeftXListener, upperLeftYListener,300,300); 
+          game.ctx.rect(upperLeftXListener+5, upperLeftYListener+5,290,290); 
           game.ctx.stroke();
         }
       }
