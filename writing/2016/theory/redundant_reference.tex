@@ -8,6 +8,7 @@
 \usepackage{fullpage}
 \usepackage{setspace}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{lingmacros}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -64,14 +65,14 @@ This paper is concerned with  modeling precisely this choice of referring expres
 
 \subsection{Production of referring expressions: a case against rational language use?}
 
-How should a cooperative speaker produce referring expressions? Grice, in his seminal work, provided some guidance by formulating his famous conversational maxims, intended as a guide to listeners' expectations about good speaker behavior \citeNP{grice1975}. His maxim of Quantity, consisting of two parts, requires of speakers to:
+How should a cooperative speaker produce referring expressions? Grice, in his seminal work, provided some guidance by formulating his famous conversational maxims, intended as a guide to listeners' expectations about good speaker behavior \cite{grice1975}. His maxim of Quantity, consisting of two parts, requires of speakers to:
 
 \begin{enumerate}
 	\item \emph{Quantity-1:} Make your contribution as informative as s required (for the purposes of the exchange).
 	\item \emph{Quantity-2:} Do not make your contribution more informative than is required.
 \end{enumerate}
 
-That is, speakers should aim to produce neither under- nor overinformative utterances. While much support has been found for the former \cite{lots of people}, speakers seem remarkably happy to systematically violate Quantity-2. In modified referring expressions, they routinely produce modifiers that do not uniquely establish reference (e.g., \emph{the big blue thumbtack} instead of \emph{the big thumbtack} in contexts like \figref{fig:thumbtack} \cite{bla bla}). In simple nominal expressions, speakers routinely choose to refer to an object with a basic level term even when a superordinate level term would have been sufficient for establishing reference (e.g., \emph{the dog} instead of \emph{the animal} in contexts like \figref{subfig:dogartifacts} \cite{bla bla}).
+That is, speakers should aim to produce neither under- nor overinformative utterances. While much support has been found for the former \cite{lots of people}, speakers seem remarkably happy to systematically violate Quantity-2. In modified referring expressions, they routinely produce modifiers that do not uniquely establish reference (e.g., \emph{the small blue thumbtack} instead of \emph{the small thumbtack} in contexts like \figref{fig:sizesufficient} \cite{bla bla}). In simple nominal expressions, speakers routinely choose to refer to an object with a basic level term even when a superordinate level term would have been sufficient for establishing reference (e.g., \emph{the dog} instead of \emph{the animal} in contexts like \figref{subfig:dogartifacts} \cite{bla bla}).
 
 These observations have posed a challenge for rational accounts of language use (including the Gricean one): why this extra expenditure of useless effort? Why this seeming blindness to the level of informativeness requirement? Many have argued from these observations that speakers are in fact not economical \cite{bla}. Some have derived a built-in preference for referring at the basic level from considerations of \jd{bla} and \jd{bla} \cite{Rosch1976}. Others have argued for salience-driven effects on willingness to overmodify \cite{dutch guys}. In all cases, it is argued that informativeness cannot be the key factor in determining the content of speakers' referring expressions.
 
@@ -80,18 +81,57 @@ Here we revisit this claim and show that systematically relaxing the requirement
 \subsection{Modified referring expressions}
 \label{sec:modified}
 
+Most of the literature on overinformative referring expressions has been devoted to the use of overinformative modifiers in modified referring expressions. The prevalent observation is that speakers frequently do not include only the minimal modifiers required for establishing unique reference, but often also include redundant modifiers \cite{Pechmann1989, NadigSedivy2002, Maes2004, Engelhardt2006}. However, not all modifiers are created equal: there are systematic differences in the overmodification patterns observed for size adjectives (e.g., \emph{big, small}), color adjectives (e.g., \emph{blue, red}), material adjectives (e.g., \emph{plastic, wooden}), and many others. Here we review some of the intriguing patterns of overmodification that have plagued that literature, focusing for the most part on size and color.
+
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[width=\textwidth]{pics/size-sufficient.png}
+\caption{Size sufficient.}
+\label{fig:sizesufficient}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[width=\textwidth]{pics/color-sufficient.png}
+\caption{Color sufficient.}
+\label{fig:colorsufficient}
+\end{subfigure}
+\caption{Example contexts where size vs.~color is sufficient for unique reference. A green border marks the intended referent.}
+\label{fig:thumbtack}
+\end{figure}
 
 \subsubsection{Asymmetry in redundant use of color and size adjectives}
 \label{sec:asymmetry}
 
-Most of the literature on overinformative referring expressions has been devoted to the use of overinformative modifiers in modified referring expressions. For example, in \figref{fig:thumbtacksize} singling out the central object requires only mentioning its size (\emph{the big thumbtack}). But it is now well-documented that speakers routinely include redundant color adjectives, which do not uniquely single out the intended referent in these kinds of contexts (\emph{the big blue thumbtack}, \cite{pechmann gatt engelhardt rubio-fernandez}). However, the same is not true for size: in contexts like \figref{fig:thumbtackcolor}, where color is sufficient for unique reference (\emph{the blue thumbtack}), speakers do not overmodify with size. \tableref{tab:colorsizeasymmetry} shows proportions of color, size, and (overinformative) color-and-size mentions in conditions like those depicted in \figref{fig:thumbtack} across different experiments. In all cases there is a preference for overmodifying with color but not with size.\footnote{There is quite a bit of variation in the actual numbers. We will discuss this variation in the General Discussion. \jd{or already in the model section where we get the basic asymmetry}}
+ In \figref{fig:sizesufficient}, singling out the object with the green border requires only mentioning its size, as in \emph{the small thumbtack}. But it is now well-documented that speakers routinely include redundant color adjectives as in \emph{the small blue thumbtack}, which do not uniquely single out the intended referent in these kinds of contexts \cite{Pechmann1989,  gatt2011}. However, the same is not true for size: in contexts like \figref{fig:colorsufficient}, where color is sufficient for unique reference (\emph{the blue thumbtack}), speakers do not overmodify with size. \tableref{tab:colorsizeasymmetry} shows proportions of color, size, and (overinformative) color-and-size mentions in conditions like those depicted in \figref{fig:thumbtack} across different experiments. In all cases there is a preference for overmodifying with color but not with size.\footnote{There is quite a bit of variation in the actual numbers. We will discuss this variation in the General Discussion. \jd{or already in the model section where we get the basic asymmetry}}
+ 
+ \begin{table}
+ \caption{Proportions of color-only, size-only, and color-and-size mentions in color-sufficient vs size-sufficient conditions across experiments.\jd{keep filling in.}}
+ 	\begin{tabular}{l l l l l l l l}
+	\toprule
+	 & & \multicolumn{3}{c}{Color sufficient} & \multicolumn{3}{c}{Size sufficient} \\
+	Study & Language & Color & Size & Color-and-size & Color & Size & Color-and-size \\
+	\midrule
+	\citeA{Pechmann1989} & Dutch & 99 & 0 & 1 & 9 & 36 & 55 \\
+	\citeA{gatt2011} & English & 92 & 0 & 8 & 3 & 17 & 80\\
+ 	\citeA{gatt2011} & Dutch & 90 & 0 & 10 & 0 & 21 & 79 \\	
+ Our baseline study & English & 94 & 0 & 6 & 2 & 52 & 46 \\ 
+	\bottomrule
+	\end{tabular}
+	\label{tab:colorsizeasymmetry}
+ \end{table}
 
-Explanations for this asymmetry have varied from \jd{bla} to \jd{bla}. However, while these explanations may capture the asymmetry in and of itself, they do not capture the more subtle systematicity with which the preference to overmodify with color changes. We delve into these more subtle patterns in the next two sections.
+Explanations for this asymmetry have varied. \citeA{Pechmann1989} was the first to take the asymmetry as evidence for speakers following an incremental strategy of object naming: speakers initially start to articulate an adjective denoting a feature that listeners can quickly and easily recognize (i.e., color) before they have fully inspected the display and extracted the sufficient dimension. However, this would predict that speakers routinely should produce expressions like \emph{the blue small thumbtack}, which violate the preference for size adjectives to occur before color adjectives in English. While Pechmann did observe such violations in his dataset, most cases of overmodification did not constitute such violations, and he himself concludes that incrementality cannot (on its own) account for the asymmetry in speakers' propensity for overmodifying with color vs.~size.  
+
+Another explanation for the asymmetry is that speakers try to produce modifiers that denote features that are reasonably easy for the listener to perceive, so that, even when a feature is not fully distinguishing in context, it at least serves to restrict the number of objects that could plausibly be considered the target. Indeed, there has been some support for the idea that overmodification can be beneficial to listeners by facilitating target identification \cite{arts2011, rubiofernandez?}.
+
+There have been various attempts to capture the color-size asymmetry in computational natural language generation models. The earliest contenders for models of definite referring expressions like the Full Brevity algorithm \cite{Dale1989} or the Greedy algorithm \cite{Dale1989} focused only on discriminatory value -- that is, an utterance's informativeness -- in generating referring expressions, which resulted in an inability to capture the color-size asymmetry: the models only produced the minimally specified expressions. Subsequently, the Incremental algorithm \cite{DaleReiter1995} incorporated a preference order on features, with color ranked higher than size. The order is traversed and each encountered feature included in the expression if it serves to exclude at least one further distractor. This results in the production of overinformative color but not size adjectives -- however, the resulting asymmetry is much greater than that evident in human speakers, and is deterministic rather than exhibiting the probabilistic production patterns that human speakers exhibit. More recently, the PRO model \cite{GattEtAl2013} has sought to integrate the observation that speakers seem to have a preference for including color terms with the observation that a preference does not imply the deterministic inclusion of said color term. The model is specifically designed to capture the color-size asymmetry: in a first step, the uniquely distinguishing property (if there is one) is first selected deterministically.  In a second step, an additional property is added probabilistically, depending on both a salience parameter associated with the additional property and a parameter capturing speakers' eagerness to overmodify. If both properties are uniquely distinguishing, a property is selected probabilistically depending on its associated salience parameter. The second step proceeds as before.
+
+However, while the PRO model -- the most state-of-the-art computational model of human production of modified referring expressions -- can capture the color-size asymmetry in and of itself, it is neither flexible enough to be extended straightforwardly to other modifiers beyond color and size, nor can it straightforwardly be extended to capture the more subtle systematicity with which the preference to overmodify with color changes based on various features of context. We delve into these more subtle patterns in the next two sections before presenting our alternative model within the Rational Speech Acts framework.
 
 \subsubsection{Scene variation}
 \label{sec:scenevariation}
 
-Speakers' propensity to overmodify with color is highly dependent on features of the distractor objects in the context. In particular, as the variation present in the scene increases, so does the probability of overmodifying with color \cite{davieskatsos, koolen2013}. How exactly scene variation is quantified differs between papers \jd{give some examples}. One very clear demonstration of the scene variation effect was given by \citeA{koolen2013}, who quantified scene variation as the number of feature dimensions along which objects in a scene vary. Over the course of three experiments, they compared a low-variation condition in which objects never differed in color with a high-variation condition in which objects differed in type, color, orientation, and size. They consistently found higher rates of overmodification with color in the high-variation (28-27\%) than in the low-variation (4-10\%) conditions.
+Speakers' propensity to overmodify with color is highly dependent on features of the distractor objects in the context. In particular, as the variation present in the scene increases, so does the probability of overmodifying with color \cite{davieskatsos, Koolen2013}. How exactly scene variation is quantified differs between papers \jd{give some examples}. One very clear demonstration of the scene variation effect was given by \citeA{Koolen2013}, who quantified scene variation as the number of feature dimensions along which objects in a scene vary. Over the course of three experiments, they compared a low-variation condition in which objects never differed in color with a high-variation condition in which objects differed in type, color, orientation, and size. They consistently found higher rates of overmodification with color in the high-variation (28-27\%) than in the low-variation (4-10\%) conditions.
 
 They explain these results with reference to \jd{bla}.
 
@@ -116,17 +156,17 @@ Nevertheless, cost affects the choice of reference level: in particular, speaker
 \subsection{Summary}
 \label{sec:introsummary}
 
-In sum, the production of modified and simple nominal referring expressions is subject to a rich interplay of many factors, including an utterance's informativeness, its cost relative to alternative utterances, and the typicality of an object or its features. We are here especially interested in cases where speakers appear to be overinformative -- either by adding more modifiers or by referring at a more specific level than necessary for establishing unique reference. A summary of the effects we will focus on in the remainder of the paper is provided in \tableref{tab:effects}.
+In sum, the production of modified and simple nominal referring expressions is governed by a rich interplay of many factors, including an utterance's informativeness, its cost relative to alternative utterances, and the typicality of an object or its features. We are here especially interested in cases where speakers appear to be overinformative -- either by adding more modifiers or by referring at a more specific level than necessary for establishing unique reference. A summary of the effects we will focus on in the remainder of the paper is provided in \tableref{tab:effects}.
 
 \begin{table}
-\label{tab:effects}
+\caption{List of effects a theory of referring expression production should account for.}
 \begin{tabular}{l p{6cm} p{5.5cm} }
 \toprule
 Effect & Description & Reported by \\
 \midrule
 Color/size asymmetry & More redundant use of color adjectives than size adjectives &  \citeA{Pechmann1989, engelhardt2006a, gatt2011} \red{others}\\
 %Number of distractors & More redundant use of color with increasing number of distractors & ?? \red{deutsch} \\
-Scene variation & More redundant use of color adjectives with increasing scene variation & \citeA{davies2009, koolen2013}\\
+Scene variation & More redundant use of color adjectives with increasing scene variation & \citeA{davies2009, Koolen2013}\\
 Color typicality & More redundant use of color adjectives with decreasing color typicality & \citeA{sedivy2003a, Westerbeek2015, rubiofernandez2016}\\
 \midrule
 Basic level preference & Preference for basic level term when superordinate level term sufficient & \citeA{Rosch1976} \red{others}\\
@@ -134,14 +174,20 @@ Subordinate level mention & Unnecessary use of sub level term when basic or supe
 \red{other??} \\
 \bottomrule
 \end{tabular}
+\label{tab:effects}
 \end{table}
 
-To date, there is no theory to account for all of these different phenomena; and no model has attempted to unify overinformativeness in the domain of modified and unmodified referring expressions.
+To date, there is no theory to account for all of these different phenomena; and no model has attempted to unify overinformativeness in the domain of modified and unmodified referring expressions. We touched on some of the explanations that have been proposed for these phenomena. We also highlighted where computational models have been proposed for individual phenomena, and how they fall short in the grand scheme of things. \jd{make sure you actually review this literature in the preceding sections! ie pro/incremental algorithm/etc}. In the next section, we present the Rational Speech Acts modeling framework, within which we will provide precisely the kind of theory that can account for at least the phenomena listed here and holds promise for great expansion. 
 
 \section{Modeling speakers' choice of referring expression}
 \label{sec:models}
 
-\red{introduce the basic model and show why it doesn't get overinformative}
+\jd{discuss previous REG models?}
+
+\jd{Interesting snippet from Pechmann which we should probably quote: ``in information theory, a positive function is assigned to redundancy, since it can compensate for partial loss of information. Can overspecification in referential communication have the same function? We can rule out this possibility, because we regard those utterances as being `redundant' which include nondistinguishing features in addition to distinguishing ones. Yet nondistinguishing features cannot compensate for the loss of distinguishing information, since by definition nondistinguishing features do not distinguish the target referent from context. At best, they can reduce the domain of referential alternatives.'' $\rightarrow$ But that IS compensating!}
+
+
+\jd{introduce the basic model and show why it doesn't get overinformative}
 
 \subsection{Extending the basic model with noisy truth functions}
 \label{sec:noisytruthmodel}
