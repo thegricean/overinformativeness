@@ -189,8 +189,6 @@ game_core.prototype.server_send_update = function(){
     _.extend(state, {objects: this.objects});
   }
 
-  console.log(state.objects);
-  
   //Send the snapshot to the players
   this.state = state;
   _.map(local_game.get_active_players(), function(p){

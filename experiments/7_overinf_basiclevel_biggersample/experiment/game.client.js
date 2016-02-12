@@ -448,7 +448,6 @@ function dropdownTip(data){
 
 window.onbeforeunload = function(e) {
   e = e || window.event;
-  console.log(e);
   var msg = ("If you leave before completing the task, "
              + "you will not be able to submit the HIT.");
   if (!submitted) {
