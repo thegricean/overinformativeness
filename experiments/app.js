@@ -49,10 +49,11 @@ app.get( '/*' , function( req, res ) {
   var file = req.params[0]; 
   console.log('\t :: Express :: file requested: ' + file);    
   if(req.query.workerId && !valid_id(req.query.workerId)) {
-    res.redirect('https://rxdhawkins.net:8888/' + exp + 'experiment/forms/invalid.html');
+    res.redirect('https://rxdhawkins.net:8888/' + exp + 'forms/invalid.html');
   } else {
     if(req.query.workerId && req.query.workerId in global_player_set) {
-      res.redirect('https://rxdhawkins.net:8888' + exp + 'experiment/forms/duplicate.html');
+      console.log("duplicate!");
+      res.redirect('https://rxdhawkins.net:8888/' + exp + 'forms/duplicate.html');
     } else {
       res.sendfile("./" + file); // give them what they want
     }
