@@ -25,6 +25,7 @@ var visible;
 var incorrect;
 var dragging;
 var waiting;
+var submitted = false;
 
 //test: let's try a variable selecting, for when the listener selects an object
 // we don't need the dragging.
@@ -421,6 +422,7 @@ function dropdownTip(data){
 				   {'comments' : $('#comments').val(), 
 				    'role' : my_role,
 				    'totalLength' : Date.now() - game.startTime});
+    submitted = true;
     var urlParams;
     var match,
 	pl     = /\+/g,  // Regex for replacing addition symbol with a space
@@ -443,6 +445,19 @@ function dropdownTip(data){
     break;
   }
 }
+
+window.onbeforeunload = function(e) {
+  e = e || window.event;
+  console.log(e);
+  var msg = ("If you leave before completing the task, "
+             + "you will not be able to submit the HIT.");
+  if (!submitted) {
+    if(e) {
+      e.returnValue = msg;
+     }
+    return msg;
+  }
+};
 
 // // Automatically registers whether user has switched tabs...
 (function() {
