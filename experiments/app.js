@@ -48,12 +48,11 @@ app.get( '/*' , function( req, res ) {
   // this is the current file they have requested
   var file = req.params[0]; 
   console.log('\t :: Express :: file requested: ' + file);    
-  
-  if(req.query.id && !valid_id(req.query.id)) {
-    res.redirect('http://rxdhawkins.net:8888/forms/invalid.html');
+  if(req.query.workerId && !valid_id(req.query.workerId)) {
+    res.redirect('https://rxdhawkins.net:8888/' + exp + 'experiment/forms/invalid.html');
   } else {
-    if(req.query.id && req.query.id in global_player_set) {
-      res.redirect('http://rxdhawkins.net:8888/forms/duplicate.html');
+    if(req.query.workerId && req.query.workerId in global_player_set) {
+      res.redirect('https://rxdhawkins.net:8888' + exp + 'experiment/forms/duplicate.html');
     } else {
       res.sendfile("./" + file); // give them what they want
     }
@@ -68,11 +67,11 @@ io.on('connection', function (client) {
   var hs = client.handshake;    
   var query = require('url').parse(client.handshake.headers.referer, true).query;
   var id;
-  if( !(query.id && query.id in global_player_set) ) {
-    if(query.id) {
-      global_player_set[query.id] = true;
+  if( !(query.workerId && query.workerId in global_player_set) ) {
+    if(query.workerId) {
+      global_player_set[query.workerId] = true;
       // use id from query string if exists
-      id = query.id; 
+      id = query.workerId; 
     } else {
       // otherwise, create new one
       id = utils.UUID();
@@ -85,7 +84,9 @@ io.on('connection', function (client) {
 });
 
 var valid_id = function(id) {
-  return id.length == 41;
+  return (id.length == 12 || id.length == 13 ||
+	  id.length == 14 || id.length == 15 || 
+	  id.length == 41);
 };
 
 var initialize = function(query, client, id) {                        
