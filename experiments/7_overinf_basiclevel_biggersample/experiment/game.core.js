@@ -19,7 +19,7 @@ var has_require = typeof require !== 'undefined';
 if( typeof _ === 'undefined' ) {
   if( has_require ) {
     _ = require('underscore');
-    utils  = require('../sharedUtils/sharedUtils.js');
+    utils  = require('../../sharedUtils/sharedUtils.js');
   }
   else throw new ('mymodule requires underscore, see http://underscorejs.org');
 }
@@ -49,7 +49,7 @@ var game_core = function(options){
   this.roundNum = -1;
 
   // How many rounds do we want people to complete?
-  this.numRounds = 36;
+  this.numRounds = 36 * 2;
 
   // How many mistakes have the pair made on the current trial?
   this.attemptNum = 0;
@@ -189,6 +189,8 @@ game_core.prototype.server_send_update = function(){
     _.extend(state, {objects: this.objects});
   }
 
+  console.log(state.objects);
+  
   //Send the snapshot to the players
   this.state = state;
   _.map(local_game.get_active_players(), function(p){
@@ -213,6 +215,7 @@ var sampleTarget = function(condition, remainingTargets) {
 
   if (condition.type === "basic") {
     target.condition = condition.type + condition.d1Level + condition.d2Level;
+    target.fullName = target.name;
     return target;
   } else {
     target.condition = condition.type + condition.numDistractors + condition.numSame;
@@ -240,9 +243,11 @@ var sampleDistractors = function(condition, target) {
   if(condition.type === "basic") {
     var distractorInfo = [levels[condition.d1Level], levels[condition.d2Level]];
     return _.map(distractorInfo, function(d) {
-      return _.extend(d.selector(target, d.class), {
+      var distractor = d.selector(target, d.class);
+      return _.extend(distractor, {
 	targetStatus : "distractor",
-	fullName : target.name
+	fullName : distractor.name,
+	condition : condition.type + condition.d1Level + condition.d2Level
       });
     });
   } else {
@@ -250,7 +255,8 @@ var sampleDistractors = function(condition, target) {
       return _.extend(_.clone(target), {
 	targetStatus : "distractor",
 	fullName : getDistractorName(target, dNum, condition),
-	url : "stimuli/" + getDistractorName(target, dNum, condition) + ".jpg"
+	url : "stimuli/" + getDistractorName(target, dNum, condition) + ".jpg",
+	condition : condition.type + condition.numDistractors + condition.numSame	
       });
     });
   }
@@ -282,7 +288,8 @@ var checkItem = function(condition, target, distractors) {
       return diffName && diffSuper;
     } else if (condition.d1Level === 3 && condition.d2Level === 3) {
       var diffTarget = (distractors[0].superdomain != target.superdomain
-			&& distractors[1].superdomain != target.superdomain);
+			&& distractors[1].superdomain != target.superdomain)
+      		&& distractors[0].superdomain != distractors[1].superdomain;
       return diffName && diffTarget;
     } else {
       return diffName;
