@@ -288,7 +288,8 @@ var checkItem = function(condition, target, distractors) {
       return diffName && diffSuper;
     } else if (condition.d1Level === 3 && condition.d2Level === 3) {
       var diffTarget = (distractors[0].superdomain != target.superdomain
-			&& distractors[1].superdomain != target.superdomain);
+			&& distractors[1].superdomain != target.superdomain)
+      		&& distractors[0].superdomain != distractors[1].superdomain;
       return diffName && diffTarget;
     } else {
       return diffName;
