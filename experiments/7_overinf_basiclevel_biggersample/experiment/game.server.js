@@ -9,7 +9,7 @@
 */
     var
         fs    = require('fs'),
-        utils = require('../sharedUtils/sharedUtils.js');
+        utils = require('../../sharedUtils/sharedUtils.js');
 
 // This is the function where the server parses and acts on messages
 // sent from 'clients' aka the browsers of people playing the
@@ -75,37 +75,54 @@ var writeData = function(client, type, message_parts) {
   var id = gc.id.slice(0,6);
   switch(type) {
   case "clickedObj" :
-    var clickedObjCondition = message_parts[1];
-    var clickedObjName = message_parts[2];
-    var clickedObjTargetStatus = message_parts[3];
-    var clickedObjSpeakerLocs = message_parts[4];
-    var clickedObjListenerLocs = message_parts[5];
-    var clickedObjBasiclevel = message_parts[6];
-    var clickedObjSuperdomain = message_parts[7];
+          var trialType = message_parts[1];
+      var clickedObjCondition = message_parts[2];
+      var clickedObjName = message_parts[3];
+      var clickedObjTargetStatus = message_parts[4];
+      var clickedObjSpeakerLocs = message_parts[5];
+      var clickedObjListenerLocs = message_parts[6];
+      var clickedObjBasiclevel = message_parts[7];
+      var clickedObjSuperdomain = message_parts[8];
 
-      var alternative1Name = message_parts[8]; 
-      var alternative1TargetStatus = message_parts[9];
-      var alternative1SpeakerLocs = message_parts[10];
-      var alternative1ListenerLocs = message_parts[11];
-      var alternative1Basiclevel = message_parts[12];
-      var alternative1Superdomain = message_parts[13];
+      var alternative1Name = message_parts[9]; 
+      var alternative1TargetStatus = message_parts[10];
+      var alternative1SpeakerLocs = message_parts[11];
+      var alternative1ListenerLocs = message_parts[12];
+      var alternative1Basiclevel = message_parts[13];
+      var alternative1Superdomain = message_parts[14];
 
-      var alternative2Name = message_parts[14]; 
-      var alternative2TargetStatus = message_parts[15];
-      var alternative2SpeakerLocs = message_parts[16];
-      var alternative2ListenerLocs = message_parts[17];
-      var alternative2Basiclevel = message_parts[18];
-      var alternative2Superdomain = message_parts[19];
+      var alternative2Name = message_parts[15]; 
+      var alternative2TargetStatus = message_parts[16];
+      var alternative2SpeakerLocs = message_parts[17];
+      var alternative2ListenerLocs = message_parts[18];
+      var alternative2Basiclevel = message_parts[19];
+      var alternative2Superdomain = message_parts[20];
+
+      var alternative3Name = message_parts[21]; 
+      var alternative3TargetStatus = message_parts[22];
+      var alternative3SpeakerLocs = message_parts[23];
+      var alternative3ListenerLocs = message_parts[24];
+      var alternative3Basiclevel = message_parts[25];
+      var alternative3Superdomain = message_parts[26];
+
+      var alternative4Name = message_parts[27]; 
+      var alternative4TargetStatus = message_parts[28];
+      var alternative4SpeakerLocs = message_parts[29];
+      var alternative4ListenerLocs = message_parts[30];
+      var alternative4Basiclevel = message_parts[31];
+      var alternative4Superdomain = message_parts[32];
       
-      var line = (id + ',' + Date.now() + ',' + roundNum  + ',' + clickedObjCondition 
+      var line = (id + ',' + Date.now() + ',' + roundNum + ',' + trialType + ',' + clickedObjCondition 
         + "," + clickedObjName + "," + clickedObjTargetStatus + "," + clickedObjSpeakerLocs 
         + "," + clickedObjListenerLocs + ',' + clickedObjBasiclevel + ',' + clickedObjSuperdomain 
         + "," + alternative1Name + "," + alternative1TargetStatus + "," + alternative1SpeakerLocs 
         + "," + alternative1ListenerLocs + ',' + alternative1Basiclevel + ',' + alternative1Superdomain 
         + "," + alternative2Name + "," + alternative2TargetStatus + "," + alternative2SpeakerLocs 
-        + "," + alternative2ListenerLocs + ',' + alternative2Basiclevel + ',' + alternative2Superdomain  + '\n');
-    console.log("clickedObj: " + line);
-
+        + "," + alternative2ListenerLocs + ',' + alternative2Basiclevel + ',' + alternative2Superdomain 
+        + "," + alternative3Name + "," + alternative3TargetStatus + "," + alternative3SpeakerLocs 
+        + "," + alternative3ListenerLocs + ',' + alternative3Basiclevel + ',' + alternative3Superdomain  
+        + "," + alternative4Name + "," + alternative4TargetStatus + "," + alternative4SpeakerLocs 
+        + "," + alternative4ListenerLocs + ',' + alternative4Basiclevel + ',' + alternative4Superdomain  + '\n');
     break;
 
     // case "nonClickedObj" :
