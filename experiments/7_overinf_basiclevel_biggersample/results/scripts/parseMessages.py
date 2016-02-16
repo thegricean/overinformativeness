@@ -1,10 +1,18 @@
 import os, csv
 
+<<<<<<< HEAD
 datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/experiment/data/"
 
 csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/experiment/data/message/") if (o.endswith('csv') & o.startswith('2016-11'))]
 
 csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/experiment/data/clickedObj/") if (o.endswith('csv') & o.startswith('2016-11'))]
+=======
+datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/data/"
+
+csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/data/message/") if (o.endswith('csv') & o.startswith('2015-111-'))]
+
+csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/Caroline/6_OI_Final_Experiment2_version2/data/clickObj/") if (o.endswith('csv') & o.startswith('2015-111-'))]
+>>>>>>> e317e02081b3088e9160b391d825bc7c3e169a4e
 
 
 # helper function to get messages associated with a particular trial
@@ -62,7 +70,11 @@ for k,m in enumerate(csv_messagenames):
 	messagereader = csv.DictReader(open(datadir+"/message/"+m, 'rb'),delimiter=",",quotechar='\"')
 	messagelines.extend(list(messagereader))
 
+<<<<<<< HEAD
 	trialreader = csv.DictReader(open(datadir+"/clickedObj/"+m, 'rb'),delimiter=",",quotechar='\"')
+=======
+	trialreader = csv.DictReader(open(datadir+"/clickObj/"+m, 'rb'),delimiter=",",quotechar='\"')
+>>>>>>> e317e02081b3088e9160b391d825bc7c3e169a4e
 	triallines.extend(list(trialreader))
 	headers = trialreader.fieldnames		
 
@@ -79,6 +91,7 @@ for k,m in enumerate(csv_messagenames):
 		#print k
 		#print mess['speakermessages']
 		try:
+<<<<<<< HEAD
 			triallines[i][' refExp']	= mess['speakermessages'][0]
 		except IndexError:
 			triallines[i][' refExp']	= "NA"
@@ -88,6 +101,17 @@ for k,m in enumerate(csv_messagenames):
 			size = "NA"
 			color = "NA"
 			typ = triallines[i]['nameClickedObj']
+=======
+			triallines[i]['refExp']	= mess['speakermessages'][0]
+		except IndexError:
+			triallines[i]['refExp']	= "NA"
+		if triallines[i][' trialType'] == "colorSizeTrial":
+			size,color,typ = triallines[i][' nameClickedObj'].split("_")
+		else:		
+			size = "NA"
+			color = "NA"
+			typ = triallines[i][' nameClickedObj']
+>>>>>>> e317e02081b3088e9160b391d825bc7c3e169a4e
 		triallines[i]['clickedSize'] = size
 		triallines[i]['clickedColor'] = color
 		triallines[i]['clickedType'] = typ
@@ -119,7 +143,11 @@ headers.append('numLMessages')
 headers.append('speakerMessages')
 headers.append('listenerMessages')
 headers.append('messageTimeStamps')
+<<<<<<< HEAD
 headers.append(' refExp')
+=======
+headers.append('refExp')
+>>>>>>> e317e02081b3088e9160b391d825bc7c3e169a4e
 headers.append('sizeMentioned')
 headers.append('colorMentioned')
 headers.append('typeMentioned')
@@ -131,7 +159,11 @@ headers.append('clickedColor')
 
 #print headers
 
+<<<<<<< HEAD
 print triallines[0].keys()
+=======
+#print triallines[0].keys()
+>>>>>>> e317e02081b3088e9160b391d825bc7c3e169a4e
 
 w = csv.DictWriter(open("../data/results.csv", "wb"),fieldnames=headers,restval="NA",delimiter="\t")
 w.writeheader()
