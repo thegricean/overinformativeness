@@ -38,10 +38,14 @@ function make_slides(f) {
 	//$("#objectlabel").val("");	
 	  this.stim = stim;
 	  console.log(this.stim);
-	var contextsentence = "How typical is this <strong>"+stim.labeltype+"</strong> for <strong>"+stim.label+"</strong>?";
+    condition = ["size", "color"];
+    this.condition = stim.condition[Math.floor(Math.random() * 2)];
+    this.color = stim.color[Math.floor(Math.random() * 2)];
+    this.size = stim.size[Math.floor(Math.random() * 2)];
+	var contextsentence = "How typical is this <strong>"+this.condition+"</strong> for <strong>"+stim.label+"</strong>?";
 	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
 	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
-	var objimagehtml = '<img src="images/'+stim.size+'_'+stim.color+'_'+stim.item+'.jpg" style="height:190px;">';
+	var objimagehtml = '<img src="images/'+this.size+'_'+this.color+'_'+stim.item+'.jpg" style="height:190px;">';
 
 	$("#contextsentence").html(contextsentence);
 	$("#objectimage").html(objimagehtml);
@@ -68,7 +72,8 @@ function make_slides(f) {
           "slide_number_in_experiment" : exp.phase,
           "item": this.stim.item,
           "itemtype": this.stim.itemtype,
-          "labeltype": this.stim.labeltype,                    
+          "condition": this.stim.condition,
+          //"labeltype": this.stim.labeltype,                    
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost
         });
@@ -118,1161 +123,288 @@ function init() {
 "item": "avocado",
 "label": "an avocado",
 "itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "avocado",
-"label": "an avocado",
-"itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "avocado",
-"label": "an avocado",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "color"
-},
-{
-"item": "avocado",
-"label": "an avocado",
-"itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "color"
-},
-  {
-"item": "balloon",
-"label": "a balloon",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "black"],
+"condition": ["size", "color"]
 },
 {
 "item": "balloon",
 "label": "a balloon",
 "itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "size"
-},
-{
-"item": "balloon",
-"label": "a balloon",
-"itemtype": "target",
-"size": "big",
-"color": "yellow",
-"labeltype": "color"
-},
-{
-"item": "balloon",
-"label": "a balloon",
-"itemtype": "target",
-"size": "small",
-"color": "yellow",
-"labeltype": "color"
-},
-  {
-"item": "cap",
-"label": "a cap",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "yellow"],
+"condition": ["size", "color"]
 },
 {
 "item": "cap",
 "label": "a cap",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "cap",
-"label": "a cap",
-"itemtype": "target",
-"size": "big",
-"color": "orange",
-"labeltype": "color"
-},
-{
-"item": "cap",
-"label": "a cap",
-"itemtype": "target",
-"size": "small",
-"color": "orange",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "orange"],
+"condition": ["size", "color"]
 },
 {
 "item": "belt",
 "label": "a belt",
 "itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "bike",
-"label": "a bike",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["black", "brown"],
+"condition": ["size", "color"]
 },
 {
 "item": "bike",
 "label": "a bike",
 "itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "size"
-},
-{
-"item": "bike",
-"label": "a bike",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "bike",
-"label": "a bike",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "billiardball",
-"label": "a billiard ball",
-"itemtype": "target",
-"size": "big",
-"color": "orange",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["purple", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "billiardball",
 "label": "a billiard ball",
 "itemtype": "target",
-"size": "small",
-"color": "orange",
-"labeltype": "size"
-},
-{
-"item": "billiardball",
-"label": "a billiard ball",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "billiardball",
-"label": "a billiard ball",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "binder",
-"label": "a binder",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["orange", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "binder",
 "label": "a binder",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "binder",
-"label": "a binder",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "color"
-},
-{
-"item": "binder",
-"label": "a binder",
-"itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "color"
-},
-  {
-"item": "book",
-"label": "a book",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "green"],
+"condition": ["size", "color"]
 },
 {
 "item": "book",
 "label": "a book",
 "itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "book",
-"label": "a book",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "color"
-},
-{
-"item": "book",
-"label": "a book",
-"itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "color"
-},
-  {
-"item": "bracelet",
-"label": "a bracelet",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["black", "blue"],
+"condition": ["size", "color"]
 },
 {
 "item": "bracelet",
 "label": "a bracelet",
 "itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "size"
-},
-{
-"item": "bracelet",
-"label": "a bracelet",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "bracelet",
-"label": "a bracelet",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "bucket",
-"label": "a bucket",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "bucket",
 "label": "a bucket",
 "itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "size"
-},
-{
-"item": "bucket",
-"label": "a bucket",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
-},
-{
-"item": "bucket",
-"label": "a bucket",
-"itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "butterfly",
-"label": "a butterfly",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "butterfly",
 "label": "a butterfly",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "butterfly",
-"label": "a butterfly",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "butterfly",
-"label": "a butterfly",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "candle",
-"label": "a candle",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "candle",
 "label": "a candle",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "candle",
-"label": "a candle",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
-},
-{
-"item": "candle",
-"label": "a candle",
-"itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "chair",
-"label": "a chair",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "chair",
 "label": "a chair",
 "itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "size"
-},
-{
-"item": "chair",
-"label": "a chair",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
-},
-{
-"item": "chair",
-"label": "a chair",
-"itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "coathanger",
-"label": "a coat hanger",
-"itemtype": "target",
-"size": "big",
-"color": "orange",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "coathanger",
 "label": "a coat hanger",
 "itemtype": "target",
-"size": "small",
-"color": "orange",
-"labeltype": "size"
-},
-{
-"item": "coathanger",
-"label": "a coat hanger",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "coathanger",
-"label": "a coat hanger",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "comb",
-"label": "a comb",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["orange", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "comb",
 "label": "a comb",
 "itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "comb",
-"label": "a comb",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "color"
-},
-{
-"item": "comb",
-"label": "a comb",
-"itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "color"
-},
-  {
-"item": "cushion",
-"label": "a cushion",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["black", "blue"],
+"condition": ["size", "color"]
 },
 {
 "item": "cushion",
 "label": "a cushion",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "cushion",
-"label": "a cushion",
-"itemtype": "target",
-"size": "big",
-"color": "orange",
-"labeltype": "color"
-},
-{
-"item": "cushion",
-"label": "a cushion",
-"itemtype": "target",
-"size": "small",
-"color": "orange",
-"labeltype": "color"
-},
-  {
-"item": "guitar",
-"label": "a guitar",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "orange"],
+"condition": ["size", "color"]
 },
 {
 "item": "guitar",
 "label": "a guitar",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "guitar",
-"label": "a guitar",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "color"
-},
-{
-"item": "guitar",
-"label": "a guitar",
-"itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "color"
-},
-  {
-"item": "flower",
-"label": "a flower",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "green"],
+"condition": ["size", "color"]
 },
 {
 "item": "flower",
 "label": "a flower",
 "itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "size"
-},
-{
-"item": "flower",
-"label": "a flower",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
-},
-{
-"item": "flower",
-"label": "a flower",
-"itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "framee",
-"label": "a frame",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["purple", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "framee",
 "label": "a frame",
 "itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "size"
-},
-{
-"item": "framee",
-"label": "a frame",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "color"
-},
-{
-"item": "framee",
-"label": "a frame",
-"itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "color"
-},
-  {
-"item": "golfball",
-"label": "a golf ball",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "pink"],
+"condition": ["size", "color"]
 },
 {
 "item": "golfball",
 "label": "a golf ball",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "golfball",
-"label": "a golf ball",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "color"
-},
-{
-"item": "golfball",
-"label": "a golf ball",
-"itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "color"
-},
-  {
-"item": "hairdryer",
-"label": "a hair dryer",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "pink"],
+"condition": ["size", "color"]
 },
 {
 "item": "hairdryer",
 "label": "a hair dryer",
 "itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "size"
-},
-{
-"item": "hairdryer",
-"label": "a hair dryer",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "hairdryer",
-"label": "a hair dryer",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "jacket",
-"label": "a jacket",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "jacket",
 "label": "a jacket",
 "itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "size"
-},
-{
-"item": "jacket",
-"label": "a jacket",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "jacket",
-"label": "a jacket",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "napkin",
-"label": "a napkin",
-"itemtype": "target",
-"size": "big",
-"color": "orange",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["brown", "green"],
+"condition": ["size", "color"]
 },
 {
 "item": "napkin",
 "label": "a napkin",
 "itemtype": "target",
-"size": "small",
-"color": "orange",
-"labeltype": "size"
-},
-{
-"item": "napkin",
-"label": "a napkin",
-"itemtype": "target",
-"size": "big",
-"color": "yellow",
-"labeltype": "color"
-},
-{
-"item": "napkin",
-"label": "a napkin",
-"itemtype": "target",
-"size": "small",
-"color": "yellow",
-"labeltype": "color"
-},
-  {
-"item": "ornament",
-"label": "an ornament",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["orange", "yellow"],
+"condition": ["size", "color"]
 },
 {
 "item": "ornament",
 "label": "an ornament",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
-},
-{
-"item": "ornament",
-"label": "an ornament",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "ornament",
-"label": "an ornament",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
-"item": "pepper",
-"label": "a pepper",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "pepper",
 "label": "a pepper",
 "itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "size"
-},
-{
-"item": "pepper",
-"label": "a pepper",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
-},
-{
-"item": "pepper",
-"label": "a pepper",
-"itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "phone",
-"label": "a phone",
-"itemtype": "target",
-"size": "big",
-"color": "pink",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "red"],
+"condition": ["size", "color"]
 },
 {
 "item": "phone",
 "label": "a phone",
 "itemtype": "target",
-"size": "small",
-"color": "pink",
-"labeltype": "size"
-},
-{
-"item": "phone",
-"label": "a phone",
-"itemtype": "target",
-"size": "big",
-"color": "white",
-"labeltype": "color"
-},
-{
-"item": "phone",
-"label": "a phone",
-"itemtype": "target",
-"size": "small",
-"color": "white",
-"labeltype": "color"
-},
-  {
-"item": "rock",
-"label": "a rock",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "white"],
+"condition": ["size", "color"]
 },
 {
 "item": "rock",
 "label": "a rock",
 "itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "size"
-},
-{
-"item": "rock",
-"label": "a rock",
-"itemtype": "target",
-"size": "big",
-"color": "green",
-"labeltype": "color"
-},
-{
-"item": "rock",
-"label": "a rock",
-"itemtype": "target",
-"size": "small",
-"color": "green",
-"labeltype": "color"
-},
-  {
-"item": "rug",
-"label": "a rug",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["green", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "rug",
 "label": "a rug",
 "itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "size"
-},
-{
-"item": "rug",
-"label": "a rug",
-"itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "color"
-},
-{
-"item": "rug",
-"label": "a rug",
-"itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "color"
-},
-  {
-"item": "shoe",
-"label": "a shoe",
-"itemtype": "target",
-"size": "big",
-"color": "yellow",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "purple"],
+"condition": ["size", "color"]
 },
 {
 "item": "shoe",
 "label": "a shoe",
 "itemtype": "target",
-"size": "small",
-"color": "yellow",
-"labeltype": "size"
-},
-{
-"item": "shoe",
-"label": "a shoe",
-"itemtype": "target",
-"size": "big",
-"color": "white",
-"labeltype": "color"
-},
-{
-"item": "shoe",
-"label": "a shoe",
-"itemtype": "target",
-"size": "small",
-"color": "white",
-"labeltype": "color"
-},
-  {
-"item": "stapler",
-"label": "a stapler",
-"itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["white", "yellow"],
+"condition": ["size", "color"]
 },
 {
 "item": "stapler",
 "label": "a stapler",
 "itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["purple", "red"],
+"condition": ["size", "color"]
 },
-{
-"item": "stapler",
-"label": "a stapler",
-"itemtype": "target",
-"size": "big",
-"color": "purple",
-"labeltype": "color"
-},
-{
-"item": "stapler",
-"label": "a stapler",
-"itemtype": "target",
-"size": "small",
-"color": "purple",
-"labeltype": "color"
-},
-  {
 "item": "tack",
 "label": "a tack",
 "itemtype": "target",
-"size": "big",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["blue", "red"],
+"condition": ["size", "color"]
 },
 {
-"item": "tack",
-"label": "a tack",
+"item": "teacup",
+"label": "a teacup",
 "itemtype": "target",
-"size": "small",
-"color": "blue",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "white"],
+"condition": ["size", "color"]
 },
 {
-"item": "tack",
-"label": "a tack",
+"item": "toothbrush",
+"label": "a toothbrush",
 "itemtype": "target",
-"size": "big",
-"color": "red",
-"labeltype": "color"
+"size": ["big", "small"],
+"color": ["blue", "red"],
+"condition": ["size", "color"]
 },
 {
-"item": "tack",
-"label": "a tack",
+"item": "turtle",
+"label": "a turtle",
 "itemtype": "target",
-"size": "small",
-"color": "red",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["black", "brown"],
+"condition": ["size", "color"]
 },
 {
-"item": "belt",
-"label": "a belt",
+"item": "weddingcake",
+"label": "a wedding cake",
 "itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
+"size": ["big", "small"],
+"color": ["pink", "white"],
+"condition": ["size", "color"]
 },
 {
-"item": "belt",
-"label": "a belt",
+"item": "yarn",
+"label": "yarn",
 "itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-  {
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "black",
-"labeltype": "size"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "big",
-"color": "brown",
-"labeltype": "color"
-},
-{
-"item": "belt",
-"label": "a belt",
-"itemtype": "target",
-"size": "small",
-"color": "brown",
-"labeltype": "color"
-},
-
-
-{
-"item": "wardrobe",
-"label": "furniture",
-"itemtype": "dist_samesuper",
-"labeltype": "super"
+"size": ["big", "small"],
+"color": ["purple", "red"],
+"condition": ["size", "color"]
 }]).slice(0,28)		
 
   function makeTargetStim(i) {
@@ -1281,57 +413,21 @@ function init() {
     var item_id = item.item;
     var label = item.label;
     var itemtype = item.itemtype;
-    var labeltype = item.labeltype;
+    var condition = item.condition;
+    //var labeltype = item.labeltype;
       
       return {
 	  "item": item_id,
 	  "label": label,
 	  "itemtype": itemtype,
-	  "labeltype": labeltype
+    "condition": condition
+	  //"labeltype": labeltype
     }
-  }
-  
-  function makeDistSStim(i) {
-    //get item
-    var item = items_dists[i];
-    var item_id = item.item;
-    var label = item.label;
-    var itemtype = item.itemtype;
-    var labeltype = item.labeltype;
-      
-      return {
-	  "item": item_id,
-	  "label": label,
-	  "itemtype": itemtype,
-	  "labeltype": labeltype
-    }
-  }
-  
-  function makeDistSSStim(i) {
-    //get item
-    var item = items_distss[i];
-    var item_id = item.item;
-    var label = item.label;
-    var itemtype = item.itemtype;
-    var labeltype = item.labeltype;
-      
-      return {
-	  "item": item_id,
-	  "label": label,
-	  "itemtype": itemtype,
-	  "labeltype": labeltype
-    }
-  }    
+  }   
   
   exp.all_stims = [];
   for (var i=0; i<items_target.length; i++) {
     exp.all_stims.push(makeTargetStim(i));
-  }
-  for (var i=0; i<items_dists.length; i++) {
-    exp.all_stims.push(makeDistSStim(i));
-  }
-  for (var i=0; i<items_distss.length; i++) {
-    exp.all_stims.push(makeDistSSStim(i));
   }
   
   exp.all_stims = _.shuffle(exp.all_stims);
