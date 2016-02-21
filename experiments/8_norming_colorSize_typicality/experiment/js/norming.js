@@ -38,14 +38,14 @@ function make_slides(f) {
 	//$("#objectlabel").val("");	
 	  this.stim = stim;
 	  console.log(this.stim);
-    condition = ["size", "color"];
-    this.condition = stim.condition[Math.floor(Math.random() * 2)];
-    this.color = stim.color[Math.floor(Math.random() * 2)];
-    this.size = stim.size[Math.floor(Math.random() * 2)];
+
+    this.conditions = ["size", "color"];
+    this.condition = this.conditions[Math.floor(Math.random() * 2)];
+    this.colorChosen = stim.color[Math.floor(Math.random() * 2)];
+    this.sizeChosen = stim.size[Math.floor(Math.random() * 2)];
+
 	var contextsentence = "How typical is this <strong>"+this.condition+"</strong> for <strong>"+stim.label+"</strong>?";
-	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
-	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
-	var objimagehtml = '<img src="images/'+this.size+'_'+this.color+'_'+stim.item+'.jpg" style="height:190px;">';
+	var objimagehtml = '<img src="images/'+this.sizeChosen+'_'+this.colorChosen+'_'+stim.item+'.jpg" style="height:190px;">';
 
 	$("#contextsentence").html(contextsentence);
 	$("#objectimage").html(objimagehtml);
@@ -71,11 +71,11 @@ function make_slides(f) {
           "label" : this.stim.label,
           "slide_number_in_experiment" : exp.phase,
           "item": this.stim.item,
-          "itemtype": this.stim.itemtype,
-          "condition": this.stim.condition,
-          //"labeltype": this.stim.labeltype,                    
           "rt" : Date.now() - _s.trial_start,
-	      "response" : exp.sliderPost
+	      "response" : exp.sliderPost,
+	      "color": this.stim.colorChosen,
+	      "size": this.stim.sizeChosen,
+        "condition": this.stim.condition
         });
     }
   });
@@ -118,319 +118,251 @@ function make_slides(f) {
 /// init ///
 function init() {
 
-	var items_target = _.shuffle([
+  var items = _.shuffle([
+	
 	{
 "item": "avocado",
 "label": "an avocado",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "black"],
-"condition": ["size", "color"]
+"color": ["green", "black"]
 },
 {
 "item": "balloon",
 "label": "a balloon",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "yellow"],
-"condition": ["size", "color"]
+"color": ["pink", "yellow"]
 },
 {
 "item": "cap",
 "label": "a cap",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "orange"],
-"condition": ["size", "color"]
+"color": ["blue", "orange"]
 },
 {
 "item": "belt",
 "label": "a belt",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["black", "brown"],
-"condition": ["size", "color"]
+"color": ["black", "brown"]
 },
 {
 "item": "bike",
 "label": "a bike",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["purple", "red"],
-"condition": ["size", "color"]
+"color": ["purple", "red"]
 },
 {
 "item": "billiardball",
 "label": "a billiard ball",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["orange", "purple"],
-"condition": ["size", "color"]
+"color": ["orange", "purple"]
 },
 {
 "item": "binder",
 "label": "a binder",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "green"],
-"condition": ["size", "color"]
+"color": ["blue", "green"]
 },
 {
 "item": "book",
 "label": "a book",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["black", "blue"],
-"condition": ["size", "color"]
+"color": ["black", "blue"]
 },
 {
 "item": "bracelet",
 "label": "a bracelet",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "purple"],
-"condition": ["size", "color"]
+"color": ["green", "purple"]
 },
 {
 "item": "bucket",
 "label": "a bucket",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "red"],
-"condition": ["size", "color"]
+"color": ["pink", "red"]
 },
 {
 "item": "butterfly",
 "label": "a butterfly",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "purple"],
-"condition": ["size", "color"]
+"color": ["blue", "purple"]
 },
 {
 "item": "candle",
 "label": "a candle",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "red"],
-"condition": ["size", "color"]
+"color": ["blue", "red"]
 },
 {
 "item": "chair",
 "label": "a chair",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "red"],
-"condition": ["size", "color"]
+"color": ["green", "red"]
 },
 {
 "item": "coathanger",
 "label": "a coat hanger",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["orange", "purple"],
-"condition": ["size", "color"]
+"color": ["orange", "purple"]
 },
 {
 "item": "comb",
 "label": "a comb",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["black", "blue"],
-"condition": ["size", "color"]
+"color": ["black", "blue"]
 },
 {
 "item": "cushion",
 "label": "a cushion",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "orange"],
-"condition": ["size", "color"]
+"color": ["blue", "orange"]
 },
 {
 "item": "guitar",
 "label": "a guitar",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "green"],
-"condition": ["size", "color"]
+"color": ["blue", "green"]
 },
 {
 "item": "flower",
 "label": "a flower",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["purple", "red"],
-"condition": ["size", "color"]
+"color": ["purple", "red"]
 },
 {
 "item": "framee",
 "label": "a frame",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "pink"],
-"condition": ["size", "color"]
+"color": ["green", "pink"]
 },
 {
 "item": "golfball",
 "label": "a golf ball",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "pink"],
-"condition": ["size", "color"]
+"color": ["blue", "pink"]
 },
 {
 "item": "hairdryer",
 "label": "a hair dryer",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "purple"],
-"condition": ["size", "color"]
+"color": ["pink", "purple"]
 },
 {
 "item": "jacket",
 "label": "a jacket",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["brown", "green"],
-"condition": ["size", "color"]
+"color": ["brown", "green"]
 },
 {
 "item": "napkin",
 "label": "a napkin",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["orange", "yellow"],
-"condition": ["size", "color"]
+"color": ["orange", "yellow"]
 },
 {
 "item": "ornament",
 "label": "an ornament",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "purple"],
-"condition": ["size", "color"]
+"color": ["blue", "purple"]
 },
 {
 "item": "pepper",
 "label": "a pepper",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "red"],
-"condition": ["size", "color"]
+"color": ["green", "red"]
 },
 {
 "item": "phone",
 "label": "a phone",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "white"],
-"condition": ["size", "color"]
+"color": ["pink", "white"]
 },
 {
 "item": "rock",
 "label": "a rock",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["green", "purple"],
-"condition": ["size", "color"]
+"color": ["green", "purple"]
 },
 {
 "item": "rug",
 "label": "a rug",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "purple"],
-"condition": ["size", "color"]
+"color": ["blue", "purple"]
 },
 {
 "item": "shoe",
 "label": "a shoe",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["white", "yellow"],
-"condition": ["size", "color"]
+"color": ["white", "yellow"]
 },
 {
 "item": "stapler",
 "label": "a stapler",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["purple", "red"],
-"condition": ["size", "color"]
+"color": ["purple", "red"]
 },
+{
 "item": "tack",
 "label": "a tack",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "red"],
-"condition": ["size", "color"]
+"color": ["blue", "red"]
 },
 {
 "item": "teacup",
 "label": "a teacup",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "white"],
-"condition": ["size", "color"]
+"color": ["pink", "white"]
 },
 {
 "item": "toothbrush",
 "label": "a toothbrush",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["blue", "red"],
-"condition": ["size", "color"]
+"color": ["blue", "red"]
 },
 {
 "item": "turtle",
 "label": "a turtle",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["black", "brown"],
-"condition": ["size", "color"]
+"color": ["black", "brown"]
 },
 {
 "item": "weddingcake",
 "label": "a wedding cake",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["pink", "white"],
-"condition": ["size", "color"]
+"color": ["pink", "white"]
 },
 {
 "item": "yarn",
 "label": "yarn",
-"itemtype": "target",
 "size": ["big", "small"],
-"color": ["purple", "red"],
-"condition": ["size", "color"]
-}]).slice(0,28)		
+"color": ["purple", "red"]
+}
 
-  function makeTargetStim(i) {
+//{
+//"item": "wardrobe",
+//"label": "clothing"
+//}
+	
+  ]).slice(0,45);
+
+  function makeStim(i) {
     //get item
-    var item = items_target[i];
+    var item = items[i];
     var item_id = item.item;
     var label = item.label;
-    var itemtype = item.itemtype;
-    var condition = item.condition;
-    //var labeltype = item.labeltype;
+    var size = item.size;
+    var color = item.color;
       
       return {
 	  "item": item_id,
 	  "label": label,
-	  "itemtype": itemtype,
-    "condition": condition
-	  //"labeltype": labeltype
+	  "size": size,
+	  "color": color
     }
-  }   
-  
-  exp.all_stims = [];
-  for (var i=0; i<items_target.length; i++) {
-    exp.all_stims.push(makeTargetStim(i));
   }
-  
-  exp.all_stims = _.shuffle(exp.all_stims);
+  exp.all_stims = [];
+  for (var i=0; i<items.length; i++) {
+    exp.all_stims.push(makeStim(i));
+  }
 
   exp.trials = [];
   exp.catch_trials = [];
