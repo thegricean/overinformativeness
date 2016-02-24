@@ -227,9 +227,9 @@ ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability,color=Distractors,group=1)) +
   geom_point(size=4,alpha=.5) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   facet_grid(DType~RedundantProperty) +
-  xlab("Ratio of distractors with different to same insufficient feature") +
+  xlab("Scene variation") +
   ylab("Probability of redundancy")
-ggsave("graphs_numdistractors/model-empirical_correctonly.pdf",width=9,height=4)
+ggsave("graphs_numdistractors/model-empirical_correctonly.pdf",width=7.5,height=5)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/model-empirical.pdf",width=9,height=6)
 #ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/talks/2016/edinburgh/model-and-empirical.pdf",width=7.5,height=5)
 
