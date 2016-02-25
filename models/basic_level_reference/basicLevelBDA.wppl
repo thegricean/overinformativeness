@@ -1,8 +1,7 @@
 // run using:
 // webppl basicLevelBDA.wppl --require ./refModule/
 
-var data = refModule.readCSV("../../experiments/4_numdistractors_basiclevel_newitems/"
-			     + "results/data/bdaInput.csv");
+var data = refModule.readCSV("./bdaInput/bdaInputAll.csv");
 var domains = globalInfo.domains;
 
 var modelAnalysis = function() {
@@ -30,8 +29,8 @@ var modelAnalysis = function() {
 						  alt1:item[1],
 						  alt2:item[2]});
 	var score = sum(map(function(dataRow) {
-	  var localScore = modelOutput.score([], dataRow[5]);
-	  return localScore;
+	  var levelOfReference = dataRow[5];
+	  return modelOutput.score([], levelOfReference);
 	}, itemData));
 
 	// Store predictions
@@ -44,14 +43,13 @@ var modelAnalysis = function() {
     }, _.keys(domainInfo.conditions)));
   }, domains));
 
-  console.log(score);
   factor(score);
 
   return {predictive: query.table, params : params};
 };
 
-var outputERP = MCMC(modelAnalysis, {samples: 10000, burn: 100, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 5000, burn: 100, verbose: true});
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "FINALbdaOutput");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined");
