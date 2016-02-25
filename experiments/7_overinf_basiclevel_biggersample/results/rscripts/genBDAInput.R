@@ -1,5 +1,5 @@
-setwd("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results")
-d_noattr = read.csv("./noAttr.csv")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results")
+d_noattr = read.csv("data/basiclev_manModified_allAttr.csv")
 
 tmp = d_noattr %>%
   select(gameid, roundNum, condition, nameClickedObj, alt1Name, alt2Name, typeMentioned, basiclevelMentioned, superClassMentioned) %>%
