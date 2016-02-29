@@ -1,5 +1,5 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/5_norming_object_typicality_phrasing1/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/8_norming_colorSize_typicality/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T, quote="")
@@ -8,10 +8,8 @@ nrow(d)
 summary(d)
 totalnrow = nrow(d)
 d$Trial = d$slide_number_in_experiment - 1
-d$Half = as.factor(ifelse(d$Trial < 23, "first","second"))
-d$itemtype = as.character(d$itemtype)
-d[d$itemtype == "dist_super",]$itemtype = "dist_diffsuper"
-d$itemtype = as.factor(as.character(d$itemtype))
+d$Half = as.factor(ifelse(d$Trial < 19, "first","second"))
+length(unique(d$workerid))
 
 # look at turker comments
 unique(d$comments)
@@ -23,6 +21,7 @@ ggplot(d, aes(rt)) +
 ggplot(d, aes(log(rt))) +
   geom_histogram() 
 
+summary(d$Answer.time_in_minutes)
 ggplot(d, aes(Answer.time_in_minutes)) +
   geom_histogram()
 
@@ -44,62 +43,25 @@ ggplot(d, aes(language)) +
 ggplot(d, aes(enjoyment)) +
   geom_histogram()
 
-d$Combo = paste(d$item,d$label)
+d$Combo = paste(d$item,d$color)
 sort(table(d$Combo)) # how many of each? is it roughly evenly distributed?
 
 agr = d %>% 
-  group_by(itemtype,labeltype) %>%
+  group_by(item,color) %>%
   summarise(meanresponse = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
 agr = as.data.frame(agr)
-agr$Utterance = factor(x=as.character(agr$labeltype),levels=c("sub","basic","super"))
+agr$YMin = agr$meanresponse - agr$ci.low
+agr$YMax = agr$meanresponse + agr$ci.high
 
-ggplot(agr, aes(x=Utterance,y=meanresponse)) +
+ggplot(agr, aes(x=color,y=meanresponse)) +
   geom_point() +
-  geom_errorbar(aes(ymin=meanresponse-ci.low,ymax=meanresponse+ci.high),width=.25) +
-  facet_wrap(~itemtype)
-ggsave("graphs/collapsed.pdf")
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~item,scales="free_x")
+ggsave("graphs/typiclities.pdf",height=10)
+
+mutated = agr %>%
+  mutate(Item=item,Color=color,Typicality=meanresponse,CI.low=YMin,CI.high=YMax)
+
+write.table(mutated[,c("Item","Color","Typicality","CI.low","CI.high")],file="data/typicalities.txt",sep="\t",row.names=F,col.names=T,quote=F)
 
 
-agr = d %>% 
-  group_by(itemtype,labeltype,item) %>%
-  summarise(meanresponse = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
-agr = as.data.frame(agr)
-agr$YMin = agr$meanresponse-agr$ci.low
-agr$YMax = agr$meanresponse+agr$ci.high
-agr$Utterance = factor(x=as.character(agr$labeltype),levels=c("sub","basic","super"))
-
-ggplot(agr,aes(x=Utterance,y=meanresponse,color=itemtype)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=meanresponse-ci.low,ymax=meanresponse+ci.high),width=.25) +
-  facet_wrap(~item)
-ggsave("graphs/allitems.pdf",width=15,height=15)
-
-agr = d %>% 
-  group_by(itemtype,labeltype,item,label) %>%
-  summarise(meanresponse = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
-agr = as.data.frame(agr)
-agr$YMin = agr$meanresponse-agr$ci.low
-agr$YMax = agr$meanresponse+agr$ci.high
-agr$Utterance = factor(x=as.character(agr$labeltype),levels=c("sub","basic","super"))
-
-ggplot(agr,aes(x=Utterance,y=meanresponse,color=itemtype)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=meanresponse-ci.low,ymax=meanresponse+ci.high),width=.25) +
-  geom_text(aes(label=label),size=2,color='black') +
-  facet_wrap(~item)
-ggsave("graphs/allitems_annotated.pdf",width=15,height=15)
-
-tmp = agr
-agr = agr[order(agr[,c("Utterance")]),]
-agr$Label = factor(x=as.character(agr$label),levels=unique(as.character(agr$label)))
-ggplot(agr, aes(x=item,y=meanresponse,color=itemtype)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=meanresponse-ci.low,ymax=meanresponse+ci.high),width=.25) +
-  facet_wrap(~Label,scales="free_x") +
-  theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1,size=8))
-ggsave("graphs/typicality_bylabel.pdf",width=30,height=23)
-
-write.table(agr[,c("itemtype","labeltype","item","label","meanresponse","YMin","YMax")],file="data/itemtypicalities.txt",sep="\t",row.names=F,col.names=T,quote=F)
-
-
-# CONTINUE HERE: FIRST Z-SCORE WITHIN SUBJECTS?

@@ -40,12 +40,12 @@ function make_slides(f) {
 	  console.log(this.stim);
 
     this.conditions = ["size", "color"];
-    this.condition = this.conditions[Math.floor(Math.random() * 2)];
-    this.colorChosen = stim.color[Math.floor(Math.random() * 2)];
-    this.sizeChosen = stim.size[Math.floor(Math.random() * 2)];
+    this.condition = "color";//this.conditions[Math.floor(Math.random() * 2)];
+//    this.colorChosen = stim.color[Math.floor(Math.random() * 2)];
+//    this.sizeChosen = stim.size[Math.floor(Math.random() * 2)];
 
 	var contextsentence = "How typical is this <strong>"+this.condition+"</strong> for <strong>"+stim.label+"</strong>?";
-	var objimagehtml = '<img src="images/'+this.sizeChosen+'_'+this.colorChosen+'_'+stim.item+'.jpg" style="height:190px;">';
+	var objimagehtml = '<img src="images/'+stim.size+'_'+stim.color+'_'+stim.item+'.jpg" style="height:190px;">';
 
 	$("#contextsentence").html(contextsentence);
 	$("#objectimage").html(objimagehtml);
@@ -73,9 +73,9 @@ function make_slides(f) {
           "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost,
-	      "color": this.stim.colorChosen,
-	      "size": this.stim.sizeChosen,
-        "condition": this.stim.condition
+	      "color": this.stim.color,
+	      "size": this.stim.size,
+        "condition": this.condition
         });
     }
   });
@@ -342,15 +342,15 @@ function init() {
 //"label": "clothing"
 //}
 	
-  ]).slice(0,45);
+  ]).slice(0,36);
 
   function makeStim(i) {
     //get item
     var item = items[i];
     var item_id = item.item;
     var label = item.label;
-    var size = item.size;
-    var color = item.color;
+    var size = "big";
+    var color = _.shuffle(item.color)[0];
       
       return {
 	  "item": item_id,
@@ -364,6 +364,7 @@ function init() {
     exp.all_stims.push(makeStim(i));
   }
 
+	console.log(exp.all_stims);
   exp.trials = [];
   exp.catch_trials = [];
   exp.condition = {}; //can randomize between subject conditions here
