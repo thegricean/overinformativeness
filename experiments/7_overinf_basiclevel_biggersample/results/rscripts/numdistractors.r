@@ -52,8 +52,20 @@ d$NumDistractors = ifelse(d$condition %in% c("size21","size22","color21","color2
 d$NumDiffDistractors = ifelse(d$condition %in% c("size22","color22","size33","color33","size44","color44"), 0, ifelse(d$condition %in% c("size21","color21","size32","color32","size43","color43"), 1, ifelse(d$condition %in% c("size31","color31","size42","color42"),2,ifelse(d$condition %in% c("size41","color41"),3, 4))))
 d$NumSameDistractors = ifelse(d$condition %in% c("size21","size31","size41","color21","color31","color41"), 1, ifelse(d$condition %in% c("size22","size32","size42","color22","color32","color42"), 2, ifelse(d$condition %in% c("size33","color33","size43","color43"),3,ifelse(d$condition %in% c("size44","color44"),4,NA))))
 
-#d = droplevels(d[d$targetStatusClickedObj == "target",])
+# add typicality norms for color
+typicalities = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/8_norming_colorSize_typicality/results/data/typicalities.txt",header=T)
+head(typicalities)
+typicalities = typicalities %>%
+  group_by(Item) %>%
+  mutate(OtherTypicality = c(Typicality[2],Typicality[1])) 
+typicalities = as.data.frame(typicalities)
+row.names(typicalities) = paste(typicalities$Item,typicalities$Color)
+d$ColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$Typicality
+d$OtherColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$OtherTypicality
+d$TypicalityDiff = d$ColorTypicality-d$OtherColorTypicality  
+d$normTypicality = d$ColorTypicality/(d$ColorTypicality+d$OtherColorTypicality)
 
+#d = droplevels(d[d$targetStatusClickedObj == "target",])
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
 summary(d)
@@ -250,9 +262,88 @@ ggplot(agr, aes(x=RatioOfDiffToSame,y=Probability)) +
   facet_grid(SufficientProperty~Utterance)
 ggsave("graphs_numdistractors/utterancetype_by_condition_ratioonly.pdf",width=9,height=4)
 
+
+# plot by color typicality only "size sufficient" condition
+agr = targets %>%
+  filter(SufficientProperty == "size") %>%
+  select(Color,Size,SizeAndColor,Other,ColorTypicality) %>%
+  gather(Utterance,Mentioned,-ColorTypicality) %>%
+  group_by(Utterance,ColorTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+size = droplevels(agr[agr$Utterance == "SizeAndColor",])
+
+ggplot(size, aes(x=ColorTypicality,y=Probability)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  scale_x_continuous(limits=c(0,1),breaks=seq(0,1,by=.25))
+ggsave("graphs_numdistractors/utterancetype_bytypicality_sizesufficient.pdf",width=6,height=4)
+
+# plot by normalized color typicality only "size sufficient" condition
+agr = targets %>%
+  filter(SufficientProperty == "size") %>%
+  select(Color,Size,SizeAndColor,Other,normTypicality) %>%
+  gather(Utterance,Mentioned,-normTypicality) %>%
+  group_by(Utterance,normTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+size = droplevels(agr[agr$Utterance == "SizeAndColor",])
+
+ggplot(size, aes(x=normTypicality,y=Probability)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  scale_x_continuous(limits=c(0,1),breaks=seq(0,1,by=.25))
+ggsave("graphs_numdistractors/utterancetype_bynormtypicality_sizesufficient.pdf",width=6,height=4)
+
+# plot by color typicality diff only "size sufficient" condition
+agr = targets %>%
+  filter(SufficientProperty == "size") %>%
+  select(Color,Size,SizeAndColor,Other,TypicalityDiff) %>%
+  gather(Utterance,Mentioned,-TypicalityDiff) %>%
+  group_by(Utterance,TypicalityDiff) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+size = droplevels(agr[agr$Utterance == "SizeAndColor",])
+
+ggplot(size, aes(x=TypicalityDiff,y=Probability)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) #+
+  #scale_x_continuous(limits=c(0,1),breaks=seq(0,1,by=.25))
+ggsave("graphs_numdistractors/utterancetype_bytypicalitydiff_sizesufficient.pdf",width=6,height=4)
+
+
+# plot by color typicality only "size sufficient" condition by scene variation condition
+agr = targets %>%
+  select(Color,Size,SizeAndColor,Other,SufficientProperty,RatioOfDiffToSame,ColorTypicality) %>%
+  gather(Utterance,Mentioned,-SufficientProperty,-RatioOfDiffToSame,-ColorTypicality) %>%
+  group_by(Utterance,SufficientProperty,RatioOfDiffToSame,ColorTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+size = droplevels(agr[agr$SufficientProperty == "size" & agr$Utterance == "SizeAndColor",])
+
+ggplot(size, aes(x=ColorTypicality,y=Probability)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  facet_wrap(~RatioOfDiffToSame)
+ggsave("graphs_numdistractors/utterancetype_bytypicality_byvariation_sizesufficient.pdf",width=11,height=7)
+
+
+  
+
+
 ######### ANALYSIS ###########
-
-
 t = droplevels(subset(targets, redUtterance %in% c("minimal","redundant")))
 nrow(t)
 
@@ -283,28 +374,47 @@ m.intercepts = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1|
 summary(m.intercepts)
 
 
+# figure out effect of typicality (only on size-sufficient trials since we don't have size norms)
+size = droplevels(subset(t, SufficientProperty == "size"))
+
+centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")]))
+contrasts(centered$redUtterance)
+summary(centered)
+nrow(centered)
+
+pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")])
+
+m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m)
+
+m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.norm)
+
+m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiff + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.diff)
 
 
+# figure out effect of typicality on only those cases with at least some scene variation
+size = droplevels(subset(t, SufficientProperty == "size" & RatioOfDiffToSame > 0))
 
+centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")]))
+contrasts(centered$redUtterance)
+summary(centered)
+nrow(centered)
 
+pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")])
 
+m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m)
 
+m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.norm) # both scene variation and color typicality matter!
 
+m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiff + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.diff)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# write the cases of size overspecification
+t = subset(targets, redUtterance == "redundant" & SufficientProperty == "color")
+tred = t[,c("clickedType","clickedColor","clickedSize","RatioOfDiffToSame")]
+tred[order(tred[,c("clickedType")]),]
+write.csv(tred[order(tred[,c("clickedType")]),],file="data/size_overspecification.csv")
