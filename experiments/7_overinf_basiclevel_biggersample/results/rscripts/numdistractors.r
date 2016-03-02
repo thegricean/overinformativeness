@@ -52,7 +52,7 @@ d$NumDistractors = ifelse(d$condition %in% c("size21","size22","color21","color2
 d$NumDiffDistractors = ifelse(d$condition %in% c("size22","color22","size33","color33","size44","color44"), 0, ifelse(d$condition %in% c("size21","color21","size32","color32","size43","color43"), 1, ifelse(d$condition %in% c("size31","color31","size42","color42"),2,ifelse(d$condition %in% c("size41","color41"),3, 4))))
 d$NumSameDistractors = ifelse(d$condition %in% c("size21","size31","size41","color21","color31","color41"), 1, ifelse(d$condition %in% c("size22","size32","size42","color22","color32","color42"), 2, ifelse(d$condition %in% c("size33","color33","size43","color43"),3,ifelse(d$condition %in% c("size44","color44"),4,NA))))
 
-# add typicality norms for color
+# add typicality norms for color ("how typical is this color for a stapler?" wording)
 typicalities = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/8_norming_colorSize_typicality/results/data/typicalities.txt",header=T)
 head(typicalities)
 typicalities = typicalities %>%
@@ -64,6 +64,24 @@ d$ColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$Typicalit
 d$OtherColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$OtherTypicality
 d$TypicalityDiff = d$ColorTypicality-d$OtherColorTypicality  
 d$normTypicality = d$ColorTypicality/(d$ColorTypicality+d$OtherColorTypicality)
+
+# add typicality norms for color -- modified and unmodified ("how typical is this for a stapler?" vs "how typical is this for a red stapler?" wording)
+typs = read.table("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/9_norming_colordescription_typicality/results/data/typicalities.txt",header=T)
+head(typs)
+typs = typs %>%
+  group_by(Item) %>%
+  mutate(OtherTypicality = c(Typicality[3],Typicality[4],Typicality[1],Typicality[2])) 
+typs = as.data.frame(typs)
+row.names(typs) = paste(typs$Item,typs$Color,typs$Modification)
+d$ColorTypicalityModified = typs[paste(d$clickedType,d$clickedColor,"modified"),]$Typicality
+d$OtherColorTypicalityModified = typs[paste(d$clickedType,d$clickedColor,"modified"),]$OtherTypicality
+d$TypicalityDiffModified = d$ColorTypicalityModified-d$OtherColorTypicalityModified  
+d$normTypicalityModified = d$ColorTypicalityModified/(d$ColorTypicalityModified+d$OtherColorTypicalityModified)
+d$ColorTypicalityUnModified = typs[paste(d$clickedType,d$clickedColor,"unmodified"),]$Typicality
+d$OtherColorTypicalityUnModified = typs[paste(d$clickedType,d$clickedColor,"unmodified"),]$OtherTypicality
+d$TypicalityDiffUnModified = d$ColorTypicalityUnModified-d$OtherColorTypicalityUnModified  
+d$normTypicalityUnModified = d$ColorTypicalityUnModified/(d$ColorTypicalityUnModified+d$OtherColorTypicalityUnModified)
+
 
 #d = droplevels(d[d$targetStatusClickedObj == "target",])
 print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
@@ -377,13 +395,14 @@ summary(m.intercepts)
 # figure out effect of typicality (only on size-sufficient trials since we don't have size norms)
 size = droplevels(subset(t, SufficientProperty == "size"))
 
-centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")]))
+centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff","ColorTypicalityModified","normTypicalityModified","TypicalityDiffModified","ColorTypicalityUnModified","normTypicalityUnModified","TypicalityDiffUnModified")]))
 contrasts(centered$redUtterance)
 summary(centered)
 nrow(centered)
 
 pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")])
 
+# "pure typicality"
 m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
 summary(m)
 
@@ -393,6 +412,25 @@ summary(m.norm)
 m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiff + (1|gameid) + (1|Item), data=centered, family="binomial")
 summary(m.diff)
 
+# "unmodified" typicality gets slightly worse BIC
+m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicalityUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m)
+
+m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicalityUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.norm)
+
+m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiffUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.diff)
+
+# "modified" typicality gets slightly worse BIC
+m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicalityModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m)
+
+m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicalityModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.norm)
+
+m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiffModified + (1|gameid) + (1|Item), data=centered, family="binomial")
+summary(m.diff)
 
 # figure out effect of typicality on only those cases with at least some scene variation
 size = droplevels(subset(t, SufficientProperty == "size" & RatioOfDiffToSame > 0))
@@ -417,4 +455,4 @@ summary(m.diff)
 t = subset(targets, redUtterance == "redundant" & SufficientProperty == "color")
 tred = t[,c("clickedType","clickedColor","clickedSize","RatioOfDiffToSame")]
 tred[order(tred[,c("clickedType")]),]
-write.csv(tred[order(tred[,c("clickedType")]),],file="data/size_overspecification.csv")
+write.csv(tred[order(tred[,c("clickedType")]),],file="data/size_overspecification.csv",quote=F,row.names=F)
