@@ -187,6 +187,13 @@ head(agr)
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
 targets$minimal = ifelse(targets$SizeAndColor == 0, 1, 0)
 targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
+targets$BDAUtterance = as.character(targets$clickedSize)
+targets[targets$Color == 1,]$BDAUtterance = targets[targets$Color == 1,]$clickedColor
+targets[targets$SizeAndColor == 1,]$BDAUtterance = paste(targets[targets$SizeAndColor == 1,]$clickedSize,targets[targets$SizeAndColor == 1,]$clickedColor,sep="_")
+
+write.csv(targets,file="data/data_modifiers.csv",quote=F,row.names=F)
+write.csv(targets[,c("gameid","roundNum","condition","clickedSize","clickedColor","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
+write.csv(unique(targets[,c("clickedColor","clickedSize","condition")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
 agr = targets[targets$CorrectProperty == 1,] %>%
   select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
   gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-RatioOfDiffToSame) %>%
