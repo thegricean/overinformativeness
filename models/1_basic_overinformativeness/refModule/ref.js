@@ -77,8 +77,8 @@ var bayesianErpWriter = function(erp, filePrefix) {
 
 var getSubset = function(data, options) {
   var condition = options.condition,
-      color = options.clickedColor,
-      size = options.clickedSize;
+      color = options.color,
+      size = options.size;
   var cond = function(row) {
     return (row[2] === condition &&
 		 row[3] === size &&

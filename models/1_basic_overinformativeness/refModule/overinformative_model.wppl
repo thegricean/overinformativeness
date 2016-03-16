@@ -63,18 +63,18 @@ var getUtteranceLength = function(utt) {
 var OverinformativeModel = function(params, context) {
   
   var getTypicality = function(utt, object) {
-    var typicality = -Infinity;
+    var typicality = 0;
     var splitutt = utt.split("_");
 
     if (splitutt.length > 1) {
-      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? .99 : .001;
+      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(.99) : Math.log(.01);
       // return _.has(object,splitutt[0]) && _.has(object,splitutt[1]) ? .99 : .001;
     } else {
-      if (_.contains(["brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
-        return _.contains(object,utt) ? params.typicality_color : 1-params.typicality_color;        
+      if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+        return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
         // return _.has(object,utt) ? params.typicality.color : 1-params.typicality.color;
       } else {
-        return _.contains(object,utt) ? params.typicality_size : 1-params.typicality_size;
+        return _.contains(object,utt) ? Math.log(params.typicality_size) : Math.log(1-params.typicality_size);
         // return _.has(object,utt) ? params.typicality.size : 1-params.typicality.size;
       }
     }
@@ -84,15 +84,18 @@ var OverinformativeModel = function(params, context) {
       var splitutt = utt.split("_");
 
       var typfit = getTypicality(utt,object); //IMPLEMENT -- should return typicality if present, otherwise 0 (or very low)
-      var detfit = sum(map(function(s) {
+      var deterministicfit = sum(map(function(s) {
         _.contains(object,s) ? 1 : 0;
         // _.has(object,s) ? 1 : 0;
       }, splitutt));
-      detfit == splitutt.length ? 0 : -Infinity;
+      // console.log(deterministicfit);
+      var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
+      // console.log(detfit);
       // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
       var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
-      return weightedFit;
+      // return weightedFit;
       // return detfit;
+      return typfit; // return the typicality semantics regardless of typicality weight
     };
 
     var literalListener = cache(function(utt){
@@ -129,10 +132,24 @@ var OverinformativeModel = function(params, context) {
   	 //     //  console.error("No utt match"));
       });
     };
+
+    var runListener = function(listenerModel, utterance) { 
+      var listenerERP = listenerModel(utterance);
+      return Enumerate(function(){
+        var obj = sample(listenerERP);
+        return obj;
+    //     // (_.contains(domainInfo.subutts, utt) ? "sub" :
+     //     //  utt === domainInfo.basicutt ? "basic" :
+     //     //  utt === domainInfo.superutt ? "super" :
+     //     //  console.error("No utt match"));
+      });
+    };    
   
   return {
     runModel : runModel,
-    speaker : speaker
+    speaker : speaker, //,
+    listener: literalListener,
+    runListener : runListener
   };
 };
 

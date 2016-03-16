@@ -1,18 +1,20 @@
 // run using:
 // webppl basicLevelBDA.wppl --require ./refModule/
 
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
 console.log("Loading data complete...")
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
 console.log("Loading unique conditions complete...")
 
 var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
   var params = {
-    alpha : uniform(0,20),
+    alpha : uniform(0,10),
     lengthWeight : uniform(0,5),
-    typWeight : uniform(0,1),
+    typWeight : .5, //THIS DOES NOT GET USED
     typicality_color : uniform(0,1),
     typicality_size : uniform(0,1)
   };
@@ -23,8 +25,9 @@ var modelAnalysis = function() {
     var numDistractors = condition.substring(condition.length-2,condition.length-1);
     var numShared = condition.substring(condition.length-1,condition.length);
     var numDiff = numDistractors - numShared;
-    var othersize = size === "big" ? "small" : "big";
-    var othercolor = "other";    
+    // var othersize = size === "big" ? "small" : "big";
+    var othersize = "othersize";
+    var othercolor = "othercolor";    
     context.push([size,color]); //add the target to the context
 
     // console.log(sufficientdimension);
@@ -82,6 +85,7 @@ var modelAnalysis = function() {
     var itemData = refModule.getSubset(data, {condition:condition[2],
 						  color:condition[0],
 						  size:condition[1]});
+    // console.log(itemData);
 	  var score = sum(map(function(dataRow) {
      // console.log("Conditioning on data row..."+dataRow);
 	   var utterance = dataRow[5];
@@ -105,7 +109,7 @@ var modelAnalysis = function() {
 };
 
 // var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 10, verbose: true});
-var outputERP = MCMC(modelAnalysis, {samples: 3000, burn: 100, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 4000, burn: 2000, verbose: true});
 
 console.log('inference complete... printing');
 

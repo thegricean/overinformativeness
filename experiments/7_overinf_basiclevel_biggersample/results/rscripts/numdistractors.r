@@ -190,10 +190,22 @@ targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
 targets$BDAUtterance = as.character(targets$clickedSize)
 targets[targets$Color == 1,]$BDAUtterance = targets[targets$Color == 1,]$clickedColor
 targets[targets$SizeAndColor == 1,]$BDAUtterance = paste(targets[targets$SizeAndColor == 1,]$clickedSize,targets[targets$SizeAndColor == 1,]$clickedColor,sep="_")
+targets$redBDAUtterance = "size_color"
+targets[targets$Color == 1,]$redBDAUtterance = "color"
+targets[targets$Size == 1,]$redBDAUtterance = "size"
+targets$BDASize = "size"
+targets$BDAColor = "color"
 
 write.csv(targets,file="data/data_modifiers.csv",quote=F,row.names=F)
 write.csv(targets[,c("gameid","roundNum","condition","clickedSize","clickedColor","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("clickedColor","clickedSize","condition")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
+
+write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
+write.csv(unique(targets[,c("BDAColor","BDASize","condition")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
+
+# get reduced set of conditions and contexts
+
+
 agr = targets[targets$CorrectProperty == 1,] %>%
   select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
   gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-RatioOfDiffToSame) %>%
