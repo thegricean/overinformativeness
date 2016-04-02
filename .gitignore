@@ -21,7 +21,7 @@ writing/2016/cogsci/refexp.pdf
 *system.csv
 *trials.csv
 *mturk.csv
-*/mturk/
+*mturk/
 models/1_basic_overinformativeness/bdaOutput/*
 models/basic_level_reference/allModelPreds.csv
 *normalizedFreqLength.csv
