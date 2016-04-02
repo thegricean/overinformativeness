@@ -14,6 +14,6 @@ This table keeps track of the different parameters associated with informativene
 ## ToDo
 
 - [] find examples with large typicality diffs between unmodified NOUN and modified COLOR NOUN versions, and check whether model predicts that in those cases, color overmodification is greater
-- [] more generally, make plots (y: prob of overmodification, x: scene variation, facet: sufficient dimension) exploring effect (color aes) of **informativeness** (0-10), **cost** (0-5), **typicality** (0-1)
+- [x] more generally, make plots (y: prob of overmodification, x: scene variation, facet: sufficient dimension) exploring effect (color aes) of **informativeness** (0-10), **cost** (0-5), **typicality** (0-1)
 - [] add model results to table
 - [] write down version of model that interpolates between empirical typicality and fixed color typicality parameter and do whole exploration again (model 4 in table)
