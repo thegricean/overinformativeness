@@ -1,0 +1,73 @@
+// run using:
+// webppl runOverinformativenessModel-loadtypicalities.wppl --require ./refModule/
+var getTypicalities = function() {
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    // console.log(typicalityData);
+    var unique_objects = _.unique(map(function(row) {
+      return row[0];
+    },typicalityData));
+
+    var typicalities = [];
+    // console.log(unique_objects);
+    var consData = map(function(unique_obj) {
+      // console.log(unique_obj);
+      // var typ = function(row) {
+      //   return (row[0] === unique_obj);
+      // };
+      // console.log(typ(typicalityData[2]));
+      var matching_objs = refModule.getTypSubset(typicalityData,unique_obj);
+      // var matching_objs = _.filter(typicalityData,typ);
+      // console.log("an object");
+      // console.log(matching_objs);
+
+      // return matching_objs;
+
+    // return _.filter(typicalityData,typ);
+      var mo_array = map(function(matching_obj) {
+        // console.log("an object's unique utterance");
+        // console.log(matching_obj.slice(1,3));
+        
+          // return _.object([matching_obj[2]],[matching_obj[1]]);
+          return matching_obj.slice(1,3);
+      },matching_objs);
+      // console.log("a zipped array of typicalities and utterances");
+      // console.log(_.invert(_.object(mo_array)));
+      // console.log(unique_obj);
+      // console.log(_.object([unique_obj,_.invert(_.object(mo_array))]));
+      return [unique_obj,_.invert(_.object(mo_array))];
+    }, unique_objects);
+
+    // // return typicalities;
+    return _.object(consData);
+};
+
+var typicality_norms = getTypicalities();
+// console.log(typicality_norms);
+
+  var params = {
+    alpha : 6,
+    lengthWeight : 1,
+    typWeight : .5,
+    typicality_color : .99,
+    typicality_size : .85,
+    cost_color : 1,
+    cost_size : 1
+  };
+
+  var context = [
+  	["size","green","avocado"],
+  	["othersize","green","avocado"],
+  	// ["small","green"],
+    ["othersize","black","avocado"]
+  ];
+
+  var model = OverinformativeModel(params,context,typicality_norms);
+  var runModel = model.runModel;
+  var speaker = model.speaker;
+  var listener = model.listener;
+  var runListener = model.runListener;
+  // var modelOutput = runModel(speaker, ["big","green"]);
+  var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
+  var listenerOutput = runListener(listener, "black");
+  console.log(modelOutput);
+  console.log(listenerOutput);

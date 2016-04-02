@@ -1,0 +1,167 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var getUtterances = function(context) {
+  var utts = [];
+  
+  map(function(c) {
+    map(function(k) {
+        utts.push(k);
+    },c);
+    utts.push(c[0]+"_"+c[1]);
+  },context);
+  return _.unique(utts);
+};
+
+
+// var params = {
+//   alpha : 5,
+//   lengthWeight : 1,
+//   typWeight : 1,
+//   typicality: {color:.99,size:.8}
+// };
+
+// var contexts = [
+//                 [["big","green"],["small","green"],["small","black"]]
+//                 ];                                                   
+
+var OverinformativeModel = function(params, context) {
+  
+  var getUtteranceCost = function(utt) {
+  var splited = utt.split("_");
+  var cost = splited.length; 
+  if (cost == 2) {
+    return cost + params.cost_color + params.cost_size;
+  } else {
+    return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt) ? cost + params.cost_color : cost + params.cost_size;
+  }
+    // return cost;
+  };
+
+  var getTypicality = function(utt, object) {
+    var typicality = 0;
+    var splitutt = utt.split("_");
+
+    if (splitutt.length > 1) {
+      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(.99) : Math.log(.01);
+      // return _.has(object,splitutt[0]) && _.has(object,splitutt[1]) ? .99 : .001;
+    } else {
+      if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+        return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
+        // return _.has(object,utt) ? params.typicality.color : 1-params.typicality.color;
+      } else {
+        return _.contains(object,utt) ? Math.log(params.typicality_size) : Math.log(1-params.typicality_size);
+        // return _.has(object,utt) ? params.typicality.size : 1-params.typicality.size;
+      }
+    }
+  };
+
+  var uttFitness = function(utt, object) {
+      var splitutt = utt.split("_");
+
+      var typfit = getTypicality(utt,object); //IMPLEMENT -- should return typicality if present, otherwise 0 (or very low)
+      var deterministicfit = sum(map(function(s) {
+        _.contains(object,s) ? 1 : 0;
+        // _.has(object,s) ? 1 : 0;
+      }, splitutt));
+      // console.log(deterministicfit);
+      var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
+      // console.log(detfit);
+      // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+      var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+      // return weightedFit;
+      // return detfit;
+      return typfit; // return the typicality semantics regardless of typicality weight
+    };
+
+    var literalListener = cache(function(utt){
+      return Enumerate(function(){
+        var object = uniformDraw(context);
+        factor(uttFitness(utt,object)); // if this is commented out, returns a uniform over objects in context. when it's not commented out, returns dist that's peaked on the right object -- but why not the literal semantics?
+        return object;
+      });
+    });
+    
+    var speaker = cache(function(target) {
+      // var possibleutts = ["green","black","big","small","big_green","small_green","small_black"];
+      var possibleutts = getUtterances(context);//refModule.getAllPossibleUtts(target, tax);
+      // console.log(possibleutts);
+      return Enumerate(function(){
+        var utt = uniformDraw(possibleutts);
+        var literalListenerERP = literalListener(utt);
+        factor(params.alpha * literalListenerERP.score([], target)); // how strongly to weight informativeness
+
+        var uttCost = getUtteranceCost(utt); // replace with a by-word cost
+        factor(-params.lengthWeight * uttCost);
+        // var uttLength = getUtteranceLength(utt); // replace with a by-word cost
+        // factor(-params.lengthWeight * uttLength);
+        return utt;
+      });
+    });
+
+    var runModel = function(speakerModel, target) { 
+      var speakerERP = speakerModel(target);
+      return Enumerate(function(){
+        var utt = sample(speakerERP);
+        return utt;
+      });
+    };
+
+    var runListener = function(listenerModel, utterance) { 
+      var listenerERP = listenerModel(utterance);
+      return Enumerate(function(){
+        var obj = sample(listenerERP);
+        return obj;
+    //     // (_.contains(domainInfo.subutts, utt) ? "sub" :
+     //     //  utt === domainInfo.basicutt ? "basic" :
+     //     //  utt === domainInfo.superutt ? "super" :
+     //     //  console.error("No utt match"));
+      });
+    };    
+  
+  return {
+    runModel : runModel,
+    speaker : speaker, //,
+    listener: literalListener,
+    runListener : runListener
+  };
+};
+
+
+// map(function(context) {
+//   var model = OverinformativeModel(params,context);
+//   var runM = model.runModel;
+//   var sp = model.speaker;
+//   var modelOutput = runM(sp,["big","green"]);
+//   console.log(modelOutput.score([],"big"));
+// }, contexts);
+
