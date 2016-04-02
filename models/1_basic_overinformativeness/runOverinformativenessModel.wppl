@@ -3,10 +3,12 @@
 
   var params = {
     alpha : 6,
-    lengthWeight : 2,
+    lengthWeight : 1,
     typWeight : .5,
     typicality_color : .99,
-    typicality_size : .85
+    typicality_size : .85,
+    cost_color : 1,
+    cost_size : 1
   };
 
   var context = [

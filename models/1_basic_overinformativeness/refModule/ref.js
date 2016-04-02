@@ -79,19 +79,32 @@ var getSubset = function(data, options) {
   var condition = options.condition,
       color = options.color,
       size = options.size;
+      item = options.item;
   var cond = function(row) {
     return (row[2] === condition &&
 		 row[3] === size &&
-		 row[4] === color);
+		 row[4] === color &&
+     row[6] === item);
   };
   return _.filter(data, cond);
 };
 
-// var locParse = function(filename) {
-//   return babyparse.parse(fs.readFileSync(filename, 'utf8'),
-// 			 {header: true,
-// 			  skipEmptyLines : true}).data;
-// };
+var getTypSubset = function(data, obj_features) {
+  var cond = function(row) {
+    return row[0] === obj_features;
+  };
+  return _.filter(data, cond);
+};
+
+var locParse = function(filename) {
+  return babyparse.parse(fs.readFileSync(filename, 'utf8'),
+       {header: true,
+        skipEmptyLines : true}).data;
+};
+
+
+
+
 
 // var getFrequencyData = function() {
 //   var frequencyData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
@@ -137,5 +150,7 @@ module.exports = {
   bayesianErpWriter : bayesianErpWriter,
   writeERP : writeERP,
   writeCSV : writeCSV,
-  readCSV : readCSV  
+  readCSV : readCSV,
+  locParse : locParse,
+  getTypSubset : getTypSubset
 };

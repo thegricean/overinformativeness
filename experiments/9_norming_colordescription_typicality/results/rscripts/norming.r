@@ -81,4 +81,87 @@ ggplot(m, aes(x=Color,y=Typicality,color=Modification)) +
   facet_wrap(~Item,scales="free_x")
 ggsave("graphs/typicalities_full.pdf",height=10)
 
+library(scales)
+m$rescaledTypicality = rescale(m$Typicality,to=c(.5,1))
+m$Utterance = paste(m$Color,m$Item,sep="_")
+m[m$Modification != "modified",]$Utterance = as.character(m[m$Modification != "modified",]$Item)
+head(m)
+m$Object = paste(m$Color,m$Item,sep="_")
+
+# write the three different typicality measures to file so they can be used by model
+write.table(m[m$Modification == "modified",c("Item","Color","rescaledTypicality")],file="data/typicalities_modified.txt",sep="\t",row.names=F,col.names=T,quote=F)
+
+write.table(m[m$Modification == "unmodified",c("Item","Color","rescaledTypicality")],file="data/typicalities_unmodified.txt",sep="\t",row.names=F,col.names=T,quote=F)
+
+write.table(m[m$Modification == "puretypicality",c("Item","Color","rescaledTypicality")],file="data/typicalities_pure.txt",sep="\t",row.names=F,col.names=T,quote=F)
+
+
+# get final values for model, 
+
+write.csv(m[m$Modification != "puretypicality",c("Object","rescaledTypicality","Utterance")],file="data/typicalities.csv",row.names=F,quote=F)
+write.csv(m[m$Modification != "puretypicality",c("Object","Typicality","Utterance")],file="data/typicalities_raw.csv",row.names=F,quote=F)
+
+
+# figure out which cases have the greatest typicality difference between modified and unmodified versions
+diffs = m %>%
+  filter(Modification != "puretypicality") %>%
+  group_by(Item, Color) %>%
+  summarise(Diff=Typicality[1]-Typicality[2],TypicalityModified=Typicality[1],TypicalityUnmodified=Typicality[2])
+diffs = as.data.frame(diffs)
+row.names(diffs) = paste(diffs$Color,diffs$Item)
+# cases where modified version much more typical than unmodified version:
+head(diffs[order(diffs[,c("Diff")],decreasing=T),])
+maxdiffitems = as.character(diffs[order(diffs[,c("Diff")],decreasing=T),]$Item)[1:4]
+m[m$Item %in% maxdiffitems,]
+# cases where unmodified version more typical than modified version:
+tail(diffs[order(diffs[,c("Diff")],decreasing=T),])
+
+# plot empirical overmodification rates for max typicality diff cases
+emp = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results/data/data_bda_modifiers.csv",col.names=c("gameid","trial","condition","size","color","othercolor","item","utterance"))
+head(emp)
+
+emp$TypicalityDiff = diffs[paste(emp$color,emp$item),]$Diff
+emp$sufficientdimension = ifelse(substr(emp$condition,1,5) == "color","color","size")
+emp$condition = gsub("(color|size)","",as.character(emp$condition))
+emp$numdistractors = substr(emp$condition,1,1)
+emp$numsame = substr(emp$condition,2,2)
+emp$proportionsame = as.numeric(as.character(emp$numsame))/as.numeric(as.character(emp$numdistractors))
+head(emp)
+emp$redutterance = "color"
+emp[emp$utterance == "size",]$redutterance = "size"
+emp[grep("_",as.character(emp$utterance)),]$redutterance = "size_color"
+emp$uttcolor = ifelse(emp$redutterance == "color", 1, 0)
+emp$uttsize = ifelse(emp$redutterance == "size", 1, 0)
+emp$uttsizecolor = ifelse(emp$redutterance == "size_color", 1, 0)
+table(emp$uttcolor,emp$uttsize,emp$uttsizecolor)
+
+agr = emp %>%
+  filter(item %in% maxdiffitems) %>%
+  group_by(item,color,sufficientdimension,TypicalityDiff) %>%
+  summarise(probcolor=mean(uttcolor),ccilow=ci.low(uttcolor),ccihigh=ci.high(uttcolor),probsize=mean(uttsize),scilow=ci.low(uttsize),scihigh=ci.high(uttsize),probsc=mean(uttsizecolor),sccilow=ci.low(uttsizecolor),sccihigh=ci.high(uttsizecolor))
+agr = as.data.frame(agr)
+head(agr)
+low = agr %>%
+  select(item, color, TypicalityDiff, sufficientdimension, ccilow, scilow, sccilow) %>%
+  gather(utterance,cilow,-item,-color,-TypicalityDiff, -sufficientdimension)
+high = agr %>%
+  select(item, color, TypicalityDiff, sufficientdimension, ccihigh, scihigh, sccihigh) %>%
+  gather(utterance,cihigh,-item,-color,-TypicalityDiff, -sufficientdimension)
+sp = agr %>%
+  select(item, color, TypicalityDiff, sufficientdimension, probcolor, probsize, probsc) %>%
+  gather(utterance,probability,-item,-color,-TypicalityDiff, -sufficientdimension)
+sp$combo = paste(sp$color,sp$item)
+sp$utterance = gsub("prob","",as.character(sp$utterance))
+sp$ymin = sp$probability-low$cilow
+sp$ymax = sp$probability+high$cihigh
+head(sp)
+
+ggplot(sp,aes(x=TypicalityDiff,y=probability,color=item,group=item)) +
+  geom_point() +
+  #geom_smooth(method="lm") +
+  geom_line() +
+  #geom_errorbar(aes(ymin=ymin,ymax=ymax)) +
+  geom_text(aes(label=combo)) +
+  facet_grid(sufficientdimension~utterance)
+ggsave("graphs/maxtypicalitydiffcases.pdf",height=6,width=11)
 

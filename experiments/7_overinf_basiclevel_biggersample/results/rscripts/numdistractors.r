@@ -57,11 +57,12 @@ typicalities = read.table("/Users/titlis/cogsci/projects/stanford/projects/overi
 head(typicalities)
 typicalities = typicalities %>%
   group_by(Item) %>%
-  mutate(OtherTypicality = c(Typicality[2],Typicality[1])) 
+  mutate(OtherTypicality = c(Typicality[2],Typicality[1]),OtherColor = c(as.character(Color[2]),as.character(Color[1])))
 typicalities = as.data.frame(typicalities)
 row.names(typicalities) = paste(typicalities$Item,typicalities$Color)
 d$ColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$Typicality
 d$OtherColorTypicality = typicalities[paste(d$clickedType,d$clickedColor),]$OtherTypicality
+d$OtherColor = typicalities[paste(d$clickedType,d$clickedColor),]$OtherColor
 d$TypicalityDiff = d$ColorTypicality-d$OtherColorTypicality  
 d$normTypicality = d$ColorTypicality/(d$ColorTypicality+d$OtherColorTypicality)
 
@@ -187,14 +188,16 @@ head(agr)
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
 targets$minimal = ifelse(targets$SizeAndColor == 0, 1, 0)
 targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
-targets$BDAUtterance = as.character(targets$clickedSize)
-targets[targets$Color == 1,]$BDAUtterance = targets[targets$Color == 1,]$clickedColor
-targets[targets$SizeAndColor == 1,]$BDAUtterance = paste(targets[targets$SizeAndColor == 1,]$clickedSize,targets[targets$SizeAndColor == 1,]$clickedColor,sep="_")
+targets$BDAUtterance = "size"#as.character(targets$clickedSize)
+targets[targets$Color == 1,]$BDAUtterance = as.character(targets[targets$Color == 1,]$clickedColor)
+targets[targets$SizeAndColor == 1,]$BDAUtterance = paste("size",targets[targets$SizeAndColor == 1,]$clickedColor,sep="_")
+#targets[targets$SizeAndColor == 1,]$BDAUtterance = paste(targets[targets$SizeAndColor == 1,]$clickedSize,targets[targets$SizeAndColor == 1,]$clickedColor,sep="_")
 targets$redBDAUtterance = "size_color"
 targets[targets$Color == 1,]$redBDAUtterance = "color"
 targets[targets$Size == 1,]$redBDAUtterance = "size"
 targets$BDASize = "size"
 targets$BDAColor = "color"
+targets$BDAFullColor = targets$clickedColor
 
 write.csv(targets,file="data/data_modifiers.csv",quote=F,row.names=F)
 write.csv(targets[,c("gameid","roundNum","condition","clickedSize","clickedColor","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
@@ -202,6 +205,9 @@ write.csv(unique(targets[,c("clickedColor","clickedSize","condition")]),file="da
 
 write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("BDAColor","BDASize","condition")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
+
+write.csv(targets[,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
+write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
 
 # get reduced set of conditions and contexts
 
