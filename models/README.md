@@ -16,7 +16,13 @@ This table keeps track of the different parameters associated with informativene
 
 The difference between model 3a and 3b is that the typicality values used in 3a are the raw ones (between 0 and 1), in 3b they're rescaled to fit between .5 and 1. 3a captures the empirical typicality effect better than 3b, but in the correlation scatterplot, 3b looks slightly better. 
 
-![3a](/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-raw.pdf)
+![3a raw scatterplot](/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-raw.pdf)
+
+![3b rescaled scatterplot](/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities.pdf)
+
+![3a typicality effect for maximally different typicality items](/models/1_basic_overinformativeness/results_bda/graphs/maxtypicalitydiffcases-rawtyp-model.pdf)
+
+![3b typicality effect for maximally different typicality items](/models/1_basic_overinformativeness/results_bda/graphs/maxtypicalitydiffcases-rescaledtyp-model.pdf)
 
 ## ToDo
 
