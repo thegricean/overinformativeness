@@ -112,6 +112,7 @@ row.names(diffs) = paste(diffs$Color,diffs$Item)
 # cases where modified version much more typical than unmodified version:
 head(diffs[order(diffs[,c("Diff")],decreasing=T),])
 maxdiffitems = as.character(diffs[order(diffs[,c("Diff")],decreasing=T),]$Item)[1:4]
+write.csv(diffs[order(diffs[,c("Diff")],decreasing=T),],file="data/maxdiffitems.csv",row.names=F,quote=F)
 m[m$Item %in% maxdiffitems,]
 # cases where unmodified version more typical than modified version:
 tail(diffs[order(diffs[,c("Diff")],decreasing=T),])
@@ -164,4 +165,5 @@ ggplot(sp,aes(x=TypicalityDiff,y=probability,color=item,group=item)) +
   geom_text(aes(label=combo)) +
   facet_grid(sufficientdimension~utterance)
 ggsave("graphs/maxtypicalitydiffcases.pdf",height=6,width=11)
+
 

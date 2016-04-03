@@ -22,7 +22,8 @@ options("scipen"=10)
 ### Load in model results (parameters)
 #params<-read.csv("bdaOutput/bdaCombinedParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("bdaOutput/bdaCombined-costsParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/bdaCombined-costs-typicalitiesParams.csv", sep = ",", row.names = NULL)
+#params<-read.csv("bdaOutput/bdaCombined-costs-typicalitiesParams.csv", sep = ",", row.names = NULL)
+params<-read.csv("bdaOutput/bdaCombined-costs-typicalities-rawParams.csv", sep = ",", row.names = NULL)
 #samples = 100
 samples = 4000
 str(params)
@@ -147,7 +148,8 @@ ggplot(numericSubset, aes(x=value)) +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
 #ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors.pdf",height=2,width=7)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities.pdf",height=2,width=7)
+#ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities.pdf",height=2,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities-raw.pdf",height=2,width=7)
 
 
 
@@ -160,7 +162,8 @@ source("results_bda/rscripts/helpers.R")
 empirical = read.table("bdaInput/data_bda_modifiers.csv",sep=",",col.names=c("gameID","bla","condition","size","color","othercolor","item","utterance"))
 head(empirical)
 #predictive<-read.csv("bdaOutput/bdaCombined-costsPredictives.csv", sep = ",", row.names = NULL) 
-predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalitiesPredictives.csv", sep = ",", row.names = NULL) 
+#predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalitiesPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalities-rawPredictives.csv", sep = ",", row.names = NULL) 
 head(predictive)
 
 ## collapse across targets and domains
@@ -210,6 +213,7 @@ predictive.samples <- predictive[rep(row.names(predictive),
 predictive.samples = as.data.frame(predictive.samples)
 #predictive.samples$ModelType = "model"
 predictive.samples = droplevels(predictive.samples[predictive.samples$Utterance %in% c("color","size","size_color"),])
+head(predictive.samples)
 
 toplot = merge(agr, predictive.samples, by.x=c("condition","Utterance"),all.y=T) 
 toplot$SufficientDimension = ifelse(substr(toplot$condition,1,5) == "color","color","size")
@@ -221,11 +225,53 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
   geom_abline(intercept=0,slope=1,color="gray60") +
-  facet_wrap(~SufficientDimension)
+  facet_grid(SufficientDimension~Utterance)
 #ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs.pdf",height=3,width=7)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities.pdf",height=3,width=7)
+#ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities.pdf",height=3,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-raw.pdf",height=5,width=9)
 
-cor(toplot$ModelProbability,toplot$Probability) #r=.92
+cor(toplot$ModelProbability,toplot$Probability) #r=.92 -- .9 with raw
+
+# deal with item-wise typicality
+maxdiffcases = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/9_norming_colordescription_typicality/results/data/maxdiffitems.csv")
+row.names(maxdiffcases) = paste(maxdiffcases$Color,maxdiffcases$Item)
+predictive$TypicalityDiff = maxdiffcases[paste(predictive$color,predictive$item),]$Diff
+predictive$combo = paste(predictive$color,predictive$item)
+
+pr <- predictive[rep(row.names(predictive), 
+                                     predictive$MCMCprob*samples), 1:11] %>%
+  mutate(Utterance = utterance) %>%
+  group_by(Utterance, condition, combo, TypicalityDiff) %>%
+  summarize(Prob = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob)) %>%
+  group_by(Utterance, condition, combo, TypicalityDiff) %>%
+  summarize(ModelProbability = mean(Prob),
+            ModelYMax = mean(Prob) + ci.high(Prob),
+            ModelYMin = mean(Prob) - ci.low(Prob))
+pr = as.data.frame(pr)
+pr = droplevels(pr[pr$Utterance %in% c("color","size","size_color"),])
+head(pr)
+pr$SufficientDimension = ifelse(substr(pr$condition,1,5) == "color","color","size")
+pr$condition = gsub("(color|size)","",as.character(pr$condition))
+pr$NumDistractors = substr(pr$condition,1,1)
+pr$NumSame = substr(pr$condition,2,2)
+pr$ProportionSame = as.numeric(as.character(pr$NumSame))/as.numeric(as.character(pr$NumDistractors))
+pr$Color = sapply(strsplit(as.character(pr$combo)," "), "[", 1)
+pr$Item = sapply(strsplit(as.character(pr$combo)," "), "[", 2)
+maxitems = droplevels(pr[pr$Item %in% maxdiffcases$Item[1:4],]) %>%
+  group_by(combo,Item,SufficientDimension,Utterance,TypicalityDiff) %>%
+  summarise(ModelProbability=mean(ModelProbability))
+maxitems = as.data.frame(maxitems)
+
+ggplot(maxitems, aes(x=TypicalityDiff,y=ModelProbability, color=Item, group=Item)) +
+  geom_point() +
+  geom_line() +
+#   geom_text(aes(label=combo)) +
+  facet_grid(SufficientDimension~Utterance)
+#ggsave("results_bda/graphs/maxtypicalitydiffcases-rescaledtyp-model.pdf",height=6,width=11)
+ggsave("results_bda/graphs/maxtypicalitydiffcases-rawtyp-model.pdf",height=6,width=11)
+
 
 m = lm(ModelProbability~Probability,data=toplot)
 summary(m) # R2=.85
@@ -237,30 +283,30 @@ m = lm(ModelProbability~Probability,data=toplot[toplot$SufficientDimension == "s
 summary(m) # R2=.59
 
 # check golf ball
-golfball = droplevels(predictive[predictive$item == "golfball",])
-predictive.golfball <- golfball[rep(row.names(golfball), 
-                                    golfball$MCMCprob*samples), 1:9] %>%
-  #predictive.samples <- predictive[rep(row.names(predictive), 
-  #                                     predictive$MCMCprob*samples), 1:6] %>%
-  mutate(Utterance = utterance) %>%
-  group_by(Utterance, condition, color) %>%
-  summarize(Prob = estimate_mode(prob),
-            YMax = HPDhi(prob),
-            YMin = HPDlo(prob)) %>%
-  group_by(Utterance, condition, color) %>%
-  summarize(ModelProbability = mean(Prob),
-            ModelYMax = mean(Prob) + ci.high(Prob),
-            ModelYMin = mean(Prob) - ci.low(Prob))
-predictive.golfball = as.data.frame(predictive.golfball)
-#predictive.samples$ModelType = "model"
-predictive.golfball = droplevels(predictive.golfball[predictive.golfball$Utterance %in% c("color","size","size_color"),])
-
-predictive.golfball$SufficientDimension = ifelse(substr(predictive.golfball$condition,1,5) == "color","color","size")
-predictive.golfball$condition = gsub("(color|size)","",as.character(predictive.golfball$condition))
-predictive.golfball$NumDistractors = substr(predictive.golfball$condition,1,1)
-predictive.golfball$NumSame = substr(predictive.golfball$condition,2,2)
-predictive.golfball$ProportionSame = as.numeric(as.character(predictive.golfball$NumSame))/as.numeric(as.character(predictive.golfball$NumDistractors))
-
-ggplot(predictive.golfball, aes(x=ProportionSame,y=ModelProbability,color=color)) +
-  geom_point() +
-  facet_grid(Utterance~SufficientDimension)
+# golfball = droplevels(predictive[predictive$item == "golfball",])
+# predictive.golfball <- golfball[rep(row.names(golfball), 
+#                                     golfball$MCMCprob*samples), 1:9] %>%
+#   #predictive.samples <- predictive[rep(row.names(predictive), 
+#   #                                     predictive$MCMCprob*samples), 1:6] %>%
+#   mutate(Utterance = utterance) %>%
+#   group_by(Utterance, condition, color) %>%
+#   summarize(Prob = estimate_mode(prob),
+#             YMax = HPDhi(prob),
+#             YMin = HPDlo(prob)) %>%
+#   group_by(Utterance, condition, color) %>%
+#   summarize(ModelProbability = mean(Prob),
+#             ModelYMax = mean(Prob) + ci.high(Prob),
+#             ModelYMin = mean(Prob) - ci.low(Prob))
+# predictive.golfball = as.data.frame(predictive.golfball)
+# #predictive.samples$ModelType = "model"
+# predictive.golfball = droplevels(predictive.golfball[predictive.golfball$Utterance %in% c("color","size","size_color"),])
+# 
+# predictive.golfball$SufficientDimension = ifelse(substr(predictive.golfball$condition,1,5) == "color","color","size")
+# predictive.golfball$condition = gsub("(color|size)","",as.character(predictive.golfball$condition))
+# predictive.golfball$NumDistractors = substr(predictive.golfball$condition,1,1)
+# predictive.golfball$NumSame = substr(predictive.golfball$condition,2,2)
+# predictive.golfball$ProportionSame = as.numeric(as.character(predictive.golfball$NumSame))/as.numeric(as.character(predictive.golfball$NumDistractors))
+# 
+# ggplot(predictive.golfball, aes(x=ProportionSame,y=ModelProbability,color=color)) +
+#   geom_point() +
+#   facet_grid(Utterance~SufficientDimension)

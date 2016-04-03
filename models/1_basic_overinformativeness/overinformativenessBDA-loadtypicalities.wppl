@@ -3,8 +3,8 @@
 
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
 var getTypicalities = function() {
-    // var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
-    var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    // var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
     // console.log(typicalityData);
     var unique_objects = _.unique(map(function(row) {
       return row[0];
@@ -164,5 +164,6 @@ var outputERP = MCMC(modelAnalysis, {samples: 4000, burn: 1000, verbose: true});
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-raw");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-raw");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined");

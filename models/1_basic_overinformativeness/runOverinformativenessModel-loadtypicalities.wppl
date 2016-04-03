@@ -45,29 +45,45 @@ var typicality_norms = getTypicalities();
 // console.log(typicality_norms);
 
   var params = {
-    alpha : 6,
-    lengthWeight : 1,
+    alpha : 5,
+    lengthWeight : 3,
     typWeight : .5,
-    typicality_color : .99,
-    typicality_size : .85,
-    cost_color : 1,
+    typicality_color : .95,
+    typicality_size : .8,
+    cost_color : 1.1,
     cost_size : 1
   };
 
+  // var context = [
+  //   ["size","pink","golfball"],
+  //   ["othersize","pink","golfball"],
+  //   // ["small","green"],
+  //   ["othersize","blue","golfball"]
+  // ];
+
   var context = [
-  	["size","green","avocado"],
-  	["othersize","green","avocado"],
+  	["size","blue","golfball"],
+  	["othersize","blue","golfball"],
   	// ["small","green"],
-    ["othersize","black","avocado"]
+    ["othersize","pink","golfball"]
   ];
+
+  //   var context = [
+  //   ["size","green","avocado"],
+  //   ["othersize","green","avocado"],
+  //   // ["small","green"],
+  //   ["othersize","black","avocado"]
+  // ];
 
   var model = OverinformativeModel(params,context,typicality_norms);
   var runModel = model.runModel;
   var speaker = model.speaker;
   var listener = model.listener;
   var runListener = model.runListener;
-  // var modelOutput = runModel(speaker, ["big","green"]);
-  var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
-  var listenerOutput = runListener(listener, "black");
+  // var modelOutput = runModel(speaker, ["size","pink","golfball"]);
+  var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+  // var modelOutput = runModel(speaker, ["size","green","avocado"]);
+  // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
+  var listenerOutput = runListener(listener, "blue");
   console.log(modelOutput);
   console.log(listenerOutput);

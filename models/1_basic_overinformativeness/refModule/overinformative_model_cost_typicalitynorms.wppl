@@ -61,11 +61,11 @@ var OverinformativeModel = function(params, context, typicalities) {
   
   var getUtteranceCost = function(utt) {
   var splited = utt.split("_");
-  var cost = splited.length; 
-  if (cost == 2) {
-    return cost + params.cost_color + params.cost_size;
+  // var cost = splited.length; 
+  if (splited.length == 2) {
+    return params.cost_color + params.cost_size;
   } else {
-    return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt) ? cost + params.cost_color : cost + params.cost_size;
+    return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt) ? params.cost_color : params.cost_size;
   }
     // return cost;
   };
@@ -79,6 +79,7 @@ var OverinformativeModel = function(params, context, typicalities) {
     // console.log(utt);
     // console.log(object);
     // console.log(reduced_obj);
+    // console.log(typicalities[reduced_obj]);
     var subtyps = typicalities[reduced_obj];
     // console.log(subtyps);
     // console.log(subtyps[utt]);
@@ -91,33 +92,38 @@ var OverinformativeModel = function(params, context, typicalities) {
         Math.log(typicalities[reduced_obj][utt+"_"+object[2]]) : Math.log(1-params.typicality_color);                
         // return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
       } else {
-        return _.contains(object,utt) ? Math.log(params.typicality_size) : Math.log(1-params.typicality_size);
+        return _.contains(object,utt) ? Math.log(typicalities[reduced_obj][object[2]]) : Math.log(1-params.typicality_size);
       }
     }
   };
 
   var uttFitness = function(utt, object) {
       var splitutt = utt.split("_");
-
-      var typfit = getTypicality(utt,object); //IMPLEMENT -- should return typicality if present, otherwise 0 (or very low)
+      var typfit = getTypicality(utt,object); 
       // console.log(typfit);
-      var deterministicfit = sum(map(function(s) {
-        _.contains(object,s) ? 1 : 0;
+      // var deterministicfit = sum(map(function(s) {
+        // _.contains(object,s) ? 1 : 0;
         // _.has(object,s) ? 1 : 0;
-      }, splitutt));
+      // }, splitutt));
       // console.log(deterministicfit);
-      var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
+      // var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
       // console.log(detfit);
       // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
       // return weightedFit;
       // return detfit;
+      // console.log("utt:");
+      // console.log(utt);
+      // console.log("obj:");
+      // console.log(object);
+      // console.log("typfit:")
+      // console.log(typfit);
       return typfit; // return the typicality semantics regardless of typicality weight
     };
 
     var literalListener = cache(function(utt){
       return Enumerate(function(){
         var object = uniformDraw(context);
-        factor(uttFitness(utt,object)); // if this is commented out, returns a uniform over objects in context. when it's not commented out, returns dist that's peaked on the right object -- but why not the literal semantics?
+        factor(uttFitness(utt,object)); 
         return object;
       });
     });
