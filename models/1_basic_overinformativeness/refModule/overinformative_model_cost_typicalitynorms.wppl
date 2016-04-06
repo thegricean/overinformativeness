@@ -36,10 +36,12 @@ var getUtterances = function(context) {
   
   map(function(c) {
     map(function(k) {
-        utts.push(k);
+        utts.push(k+"_"+c[2]);
     },c.slice(0,2));
-    utts.push(c[0]+"_"+c[1]);
+    utts.push(c[0]+"_"+c[1]+"_"+c[2]);
+    utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
   },context);
+  // console.log(_.unique(utts));
   return _.unique(utts);
 };
 
@@ -57,20 +59,52 @@ var getUtterances = function(context) {
 //                 [["big","green"],["small","green"],["small","black"]]
 //                 ];                                                   
 
+
 var OverinformativeModel = function(params, context, typicalities) {
   
   var getUtteranceCost = function(utt) {
   var splited = utt.split("_");
   // var cost = splited.length; 
-  if (splited.length == 2) {
-    return params.cost_color + params.cost_size;
+  if (splited.length == 3) {
+    return params.cost_color + params.cost_size + 1;//params.cost_type;
   } else {
-    return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt) ? params.cost_color : params.cost_size;
+    if (splited.length == 2) {
+      return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited) ? 1 + params.cost_color : 1 + params.cost_size;
+    } else {
+      return 1;//params.cost_type;
+    }
   }
     // return cost;
   };
 
-  var getTypicality = function(utt, object) {
+  // var getTypicality = function(utt, object) {
+  //   var typicality = 0;
+  //   var splitutt = utt.split("_");
+  //   var reduced_obj = object[1]+"_"+object[2];
+
+  //   // console.log("utterance, object:");
+  //   // console.log(utt);
+  //   // console.log(object);
+  //   // console.log(reduced_obj);
+  //   // console.log(typicalities[reduced_obj]);
+  //   var subtyps = typicalities[reduced_obj];
+  //   // console.log(subtyps);
+  //   // console.log(subtyps[utt]);
+  //   if (splitutt.length > 1) {
+  //     return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(params.typNoise) : Math.log(1-params.typNoise);
+  //     // return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(.99) : Math.log(.01);
+  //   } else {
+  //     if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+  //       return _.contains(object,utt) ? 
+  //       Math.log(typicalities[reduced_obj][utt+"_"+object[2]]) : Math.log(1-params.typicality_color);                
+  //       // return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
+  //     } else {
+  //       return _.contains(object,utt) ? Math.log(typicalities[reduced_obj][object[2]]) : Math.log(1-params.typicality_size);
+  //     }
+  //   }
+  // };
+
+  var getMultiplicativeTypicality = function(utt, object) {
     var typicality = 0;
     var splitutt = utt.split("_");
     var reduced_obj = object[1]+"_"+object[2];
@@ -83,23 +117,51 @@ var OverinformativeModel = function(params, context, typicalities) {
     var subtyps = typicalities[reduced_obj];
     // console.log(subtyps);
     // console.log(subtyps[utt]);
-    if (splitutt.length > 1) {
-      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(.99) : Math.log(.01);
-      // return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(.99) : Math.log(.01);
+    if (splitutt.length > 2) { // if it's a three-word utterance, return size*color_type typicality
+      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) && _.contains(object,splitutt[2]) ? 
+        Math.log(params.typicality_size*typicalities[reduced_obj][splitutt[1]+"_"+splitutt[2]]) :
+        Math.log(1-params.typNoise);
     } else {
-      if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
-        return _.contains(object,utt) ? 
-        Math.log(typicalities[reduced_obj][utt+"_"+object[2]]) : Math.log(1-params.typicality_color);                
-        // return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
-      } else {
-        return _.contains(object,utt) ? Math.log(typicalities[reduced_obj][object[2]]) : Math.log(1-params.typicality_size);
-      }
+      if (splitutt.length > 1) { // if it's a two-word utterance, return color_type typicality if there's a color term, otherwise return size*type typicality
+        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+          return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
+            Math.log(typicalities[reduced_obj][utt]) :
+            Math.log(1-params.typicality_color);                          
+        } else {
+          return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
+            Math.log(params.typicality_size*typicalities[reduced_obj][splitutt[1]]) : 
+            Math.log(1-params.typicality_size);
+        }
+    } else { // if it's a one-word utterance return just type typicality
+      return _.contains(object,utt) ? 
+        Math.log(typicalities[reduced_obj][utt]) : 
+        Math.log(.5); //this is like saying typicality_type is .5 -- but for the basic case where all objects are of the same type, what this value is doesn't matter
+        // Math.log(1-params.typicality_type);
     }
-  };
+  }
+  };  
+
+  // var getFixedTypicality = function(utt, object) {
+  //   var typicality = 0;
+  //   var splitutt = utt.split("_");
+
+  //   if (splitutt.length > 1) {
+  //     return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(params.typNoise) : Math.log(1-params.typNoise);
+  //   } else {
+  //     if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+  //       return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
+  //     } else {
+  //       return _.contains(object,utt) ? Math.log(params.typicality_size) : Math.log(1-params.typicality_size);
+  //     }
+  //   }
+  // };
 
   var uttFitness = function(utt, object) {
       var splitutt = utt.split("_");
-      var typfit = getTypicality(utt,object); 
+      // var typfit = getTypicality(utt,object); 
+      var typfit = getMultiplicativeTypicality(utt,object); 
+      // console.log(utt+"...."+object+"...."+typfit);
+      // var fixedtypfit = getFixedTypicality(utt,object); 
       // console.log(typfit);
       // var deterministicfit = sum(map(function(s) {
         // _.contains(object,s) ? 1 : 0;
@@ -108,7 +170,7 @@ var OverinformativeModel = function(params, context, typicalities) {
       // console.log(deterministicfit);
       // var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
       // console.log(detfit);
-      // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+      // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*fixedtypfit;
       // return weightedFit;
       // return detfit;
       // console.log("utt:");
@@ -117,16 +179,20 @@ var OverinformativeModel = function(params, context, typicalities) {
       // console.log(object);
       // console.log("typfit:")
       // console.log(typfit);
-      return typfit; // return the typicality semantics regardless of typicality weight
+      // return weightedFit; // return mixture of fixed and empirical values
+      return typfit; // return semantics under empirical individual color typicality values
+      // return fixedtypfit; // return semantics under fixed color/size typicality values
     };
 
     var literalListener = cache(function(utt){
       return Enumerate(function(){
         var object = uniformDraw(context);
+        // console.log(utt);
         factor(uttFitness(utt,object)); 
         return object;
       });
-    });
+    // });
+    },100); //do this to limit cache size -- check activity monitor to see if used RAM increases at the same rate with and without limitation
     
     var speaker = cache(function(target) {
       // var possibleutts = ["green","black","big","small","big_green","small_green","small_black"];
@@ -134,6 +200,7 @@ var OverinformativeModel = function(params, context, typicalities) {
       // console.log(possibleutts);
       return Enumerate(function(){
         var utt = uniformDraw(possibleutts);
+        // console.log(utt);
         var literalListenerERP = literalListener(utt);
         factor(params.alpha * literalListenerERP.score([], target)); // how strongly to weight informativeness
 
@@ -149,6 +216,7 @@ var OverinformativeModel = function(params, context, typicalities) {
       // console.log("Tring to run speaker");
       var speakerERP = speakerModel(target);
       return Enumerate(function(){
+        // insert factor statement here?
         var utt = sample(speakerERP);
         return utt;
       });

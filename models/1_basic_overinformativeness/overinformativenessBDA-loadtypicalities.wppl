@@ -3,8 +3,8 @@
 
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
 var getTypicalities = function() {
-    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
-    // var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
+    // var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
     // console.log(typicalityData);
     var unique_objects = _.unique(map(function(row) {
       return row[0];
@@ -44,31 +44,8 @@ var getTypicalities = function() {
     return _.object(consData);
 };
 
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
-console.log("Loading data complete...")
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
-console.log("Loading unique conditions complete...")
-// console.log(conditions);
 
-var typicality_norms = getTypicalities();//refModule.readCSV("./bdaInput/typicalities.csv");
-console.log("Loading typicality norms complete...")
-// console.log(typicality_norms);
-
-var modelAnalysis = function() {
-  // console.log("Running next sample...");
-  // Sample params
-  var params = {
-    alpha : uniform(0,10),
-    lengthWeight : uniform(0,5),
-    typWeight : .5, //THIS DOES NOT GET USED
-    typicality_color : uniform(0,1),
-    typicality_size : uniform(0,1),
-    cost_color : uniform(0,2),
-    cost_size : uniform(0,2)
-  };
-  
-  var constructContext = function(condition,size,color,othercolor,item) {
+var constructContext = function(condition,size,color,othercolor,item) {
     var context = [];
     var sufficientdimension = condition.substring(0,condition.length-2);
     var numDistractors = condition.substring(condition.length-2,condition.length-1);
@@ -83,7 +60,6 @@ var modelAnalysis = function() {
     // console.log(numDistractors);
     // console.log(numShared);
     // console.log(numDiff);
-
     var buildUp = function(n,s,c,i) {      
       // console.log(context);
       // console.log(n);
@@ -96,9 +72,10 @@ var modelAnalysis = function() {
         context.push([s,c,i]);
         buildUp(n-1,s,c,i);
       }
-    };    
+    };   
+ 
 
-    if (sufficientdimension == "size") {
+  if (sufficientdimension == "size") {
       // console.log("at least getting in the right place");
       buildUp(numShared,othersize,color,item);
       // console.log("added shared features");
@@ -110,15 +87,56 @@ var modelAnalysis = function() {
     return context;
   };
 
+
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+console.log("Loading data complete...");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+console.log("Loading unique conditions complete...");
+// console.log(conditions);
+
+var typicality_norms = getTypicalities();//refModule.readCSV("./bdaInput/typicalities.csv");
+console.log("Loading typicality norms complete...");
+// console.log(typicality_norms);
+
+var contextArrays = map(function(condition) {
+  constructContext(condition[2],condition[1],condition[0],condition[3],condition[4]);
+},conditions);
+var contextKeys = map(function(condition) {
+  [condition[2],condition[1],condition[0],condition[3],condition[4]].join("_");
+},conditions);
+var contexts = _.object(_.zip(contextKeys,contextArrays));
+console.log("Constructing contexts complete...");
+// console.log(contexts);
+
+var modelAnalysis = function() {
+  // console.log("Running next sample...");
+  // Sample params
+  var params = {
+    alpha : uniform(2,8),
+    lengthWeight : uniform(0,5),
+    // typWeight : .5,//uniform(0,1), //this only gets used when you do the weighted typicality fit
+    typicality_color : uniform(0,1),
+    typicality_size : uniform(0,1),
+    // typicality_type : uniform(0,1),
+    cost_color : uniform(0,2),
+    cost_size : uniform(0,2),
+    // cost_type : uniform(0,2),
+    typNoise : uniform(0,1)
+  };
+  
+  
   // Run model and condition on data
   var score = sum(map(function(condition) {
     // console.log("Creating next context...");
     // console.log(condition[2]);
     // console.log(condition[1]);
     // console.log(condition[0]);
-    var context = constructContext(condition[2],condition[1],condition[0],condition[3],condition[4]);
+    var context = contexts[[condition[2],condition[1],condition[0],condition[3],condition[4]].join("_")];
     // console.log("condition... " +condition);
     // console.log("Context construction complete... "+context);
+    // console.log(context);
     var target = context[0];
     // console.log("Generating model...");
     var model = OverinformativeModel(params,context,typicality_norms);//domainInfo, params);
@@ -139,9 +157,11 @@ var modelAnalysis = function() {
     // console.log(itemData);
 	  var score = sum(map(function(dataRow) {
      // console.log("Conditioning on data row..."+dataRow);
-	   var utterance = dataRow[7];
+	   var utterance = dataRow[7]+"_"+condition[4];
 	   return modelOutput.score([], utterance);
 	  }, itemData));
+    // display(score)
+    // console.log(score);
 
 	    // Store predictions
 	  foreach(modelOutput.support([]), function(s){
@@ -154,16 +174,26 @@ var modelAnalysis = function() {
     // }, _.keys(domainInfo.conditions)));
   }, conditions));
 
+  // display(score)
+
   factor(score);
+
 
   return {predictive: query.table, params : params};
 };
 
-// var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 10, verbose: true});
-var outputERP = MCMC(modelAnalysis, {samples: 4000, burn: 1000, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 3000, burn: 1000, verbose: true});
+// var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
+// var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true, 
+                                     // kernel: { HMC: { steps: 5, stepSize: .1 }}});
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-test");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-multiplicative");
+
+outputERP
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-weighted");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-raw");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined");

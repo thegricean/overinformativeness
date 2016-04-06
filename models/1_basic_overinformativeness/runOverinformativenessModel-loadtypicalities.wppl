@@ -1,7 +1,7 @@
 // run using:
 // webppl runOverinformativenessModel-loadtypicalities.wppl --require ./refModule/
 var getTypicalities = function() {
-    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");
     // console.log(typicalityData);
     var unique_objects = _.unique(map(function(row) {
       return row[0];
@@ -46,12 +46,15 @@ var typicality_norms = getTypicalities();
 
   var params = {
     alpha : 5,
-    lengthWeight : 3,
-    typWeight : .5,
-    typicality_color : .95,
+    lengthWeight : .5,
+    // typWeight : .5,
+    typicality_color : .99,
     typicality_size : .8,
-    cost_color : 1.1,
-    cost_size : 1
+    // typicality_type : .85,
+    cost_color : 1,
+    cost_size : 1,
+    cost_type : 1,
+    typNoise : .9
   };
 
   // var context = [
@@ -84,6 +87,6 @@ var typicality_norms = getTypicalities();
   var modelOutput = runModel(speaker, ["size","blue","golfball"]);
   // var modelOutput = runModel(speaker, ["size","green","avocado"]);
   // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
-  var listenerOutput = runListener(listener, "blue");
+  var listenerOutput = runListener(listener, "blue_golfball");
   console.log(modelOutput);
   console.log(listenerOutput);
