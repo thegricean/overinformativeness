@@ -45,16 +45,19 @@ var typicality_norms = getTypicalities();
 // console.log(typicality_norms);
 
   var params = {
-    alpha : 5,
+    alpha : 3,
     lengthWeight : .5,
+    // typNoise : .999,
     // typWeight : .5,
-    typicality_color : .99,
+    typicality_color : .95,
     typicality_size : .8,
-    // typicality_type : .85,
+    // typicality_colortype : .999,
+    typicality_type : .5,
+    // typicality_sizetype : .999,
     cost_color : 1,
     cost_size : 1,
-    cost_type : 1,
-    typNoise : .9
+    // cost_type : 1,
+    speakeroptimality : 1
   };
 
   // var context = [
@@ -66,9 +69,18 @@ var typicality_norms = getTypicalities();
 
   var context = [
   	["size","blue","golfball"],
-  	["othersize","blue","golfball"],
-  	// ["small","green"],
-    ["othersize","pink","golfball"]
+    // ["size","blue","golfball"],
+    // ["size","blue","golfball"],
+    ["othersize","blue","golfball"],
+    ["othersize","blue","golfball"],
+    ["othersize","blue","golfball"],
+  	["othersize","blue","golfball"]
+    // ["othersize","pink","golfball"]
+    // ["othersize","pink","golfball"],
+    // ["othersize","pink","golfball"],    
+    // ["othersize","pink","golfball"]
+    // ["othersize","blue","golfball"],
+    // ["othersize","blue","golfball"]
   ];
 
   //   var context = [
@@ -83,10 +95,21 @@ var typicality_norms = getTypicalities();
   var speaker = model.speaker;
   var listener = model.listener;
   var runListener = model.runListener;
-  // var modelOutput = runModel(speaker, ["size","pink","golfball"]);
-  var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+  // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+  // var modelOutput = runModel(speaker, ["othersize","pink","golfball"]);
   // var modelOutput = runModel(speaker, ["size","green","avocado"]);
   // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
-  var listenerOutput = runListener(listener, "blue_golfball");
+  // var utts = ["golfball","size_golfball","blue_golfball","size_blue_golfball"];
+  // map(function(utt) {
+  //   var listenerOutput = runListener(listener, utt);
+  //   // console.log(listenerOutput);
+  //   refModule.writeERP(listenerOutput, [utt], "results_model/data/listener.csv",2);
+  // },utts);
+
+  // map(function(c) {
+    // var modelOutput = runModel(speaker, c);
+    // console.log(modelOutput);
+    // refModule.writeERP(modelOutput, [c], "results_model/data/speaker.csv",2);
+  // },context);
+  var modelOutput = runModel(speaker, ["size","blue","golfball"]);
   console.log(modelOutput);
-  console.log(listenerOutput);

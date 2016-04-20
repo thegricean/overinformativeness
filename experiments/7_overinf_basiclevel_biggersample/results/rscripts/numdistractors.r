@@ -198,13 +198,15 @@ targets[targets$Size == 1,]$redBDAUtterance = "size"
 targets$BDASize = "size"
 targets$BDAColor = "color"
 targets$BDAFullColor = targets$clickedColor
+targets$BDAOtherColor = "othercolor"
+targets$BDAItem = "item"
 
 write.csv(targets,file="data/data_modifiers.csv",quote=F,row.names=F)
 write.csv(targets[,c("gameid","roundNum","condition","clickedSize","clickedColor","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("clickedColor","clickedSize","condition")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
 
-write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
-write.csv(unique(targets[,c("BDAColor","BDASize","condition")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
+write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
+write.csv(unique(targets[,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
 
 write.csv(targets[,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)

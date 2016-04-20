@@ -89,10 +89,12 @@ var constructContext = function(condition,size,color,othercolor,item) {
 
 
 var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
 console.log("Loading data complete...");
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
 console.log("Loading unique conditions complete...");
 // console.log(conditions);
 
@@ -114,16 +116,16 @@ var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
   var params = {
-    alpha : uniform(2,8),
+    alpha : uniform(0,8),
     lengthWeight : uniform(0,5),
-    // typWeight : .5,//uniform(0,1), //this only gets used when you do the weighted typicality fit
-    typicality_color : uniform(0,1),
+    typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
     typicality_size : uniform(0,1),
-    // typicality_type : uniform(0,1),
+    typicality_type : .5,//uniform(0,1),
     cost_color : uniform(0,2),
     cost_size : uniform(0,2),
-    // cost_type : uniform(0,2),
-    typNoise : uniform(0,1)
+    cost_type : 1,//uniform(0,2),
+    speakeroptimality : uniform(0,8)
+    // typNoise : uniform(0,1)
   };
   
   
@@ -190,9 +192,12 @@ var outputERP = MCMC(modelAnalysis, {samples: 3000, burn: 1000, verbose: true});
 console.log('inference complete... printing');
 
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-test");
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-multiplicative");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-multiplicative");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-finegrainedconditions");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
 
-outputERP
+// outputERP
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-weighted");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bdaCombined-costs-typicalities-raw");

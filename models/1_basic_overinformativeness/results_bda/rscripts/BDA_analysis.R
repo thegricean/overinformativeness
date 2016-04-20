@@ -20,6 +20,7 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
+modelversion = "fixed-reducedconditions"
 #params<-read.csv("bdaOutput/bdaCombinedParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("bdaOutput/bdaCombined-costsParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("bdaOutput/bdaCombined-costs-typicalitiesParams.csv", sep = ",", row.names = NULL)
@@ -28,8 +29,14 @@ options("scipen"=10)
 # params<-read.csv("bdaOutput/bdaCombined-costs-typicalities-weightedParams.csv", sep = ",", row.names = NULL)
 # params<-read.csv("bdaOutput/bdaCombined-costs-noiseParams.csv", sep = ",", row.names = NULL)
 #samples = 100
-params<-read.csv("bdaOutput/bda-multiplicativeParams.csv", sep = ",", row.names = NULL)
-samples = 2000
+# params<-read.csv("bdaOutput/bda-testParams.csv", sep = ",", row.names = NULL)
+# params<-read.csv("bdaOutput/bda-fixed-finegrainedconditionsParams.csv", sep = ",", row.names = NULL)
+params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
+samples = 3000
+param_sample_test = params %>%
+  group_by(parameter) %>%
+  summarise(Sum=sum(MCMCprob))
+param_sample_test
 str(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
 
@@ -73,6 +80,16 @@ typColorSubset = params.samples %>%
 cat("typicality_color = ", typColorSubset$md) 
 cat("95% HPD interval = [", typColorSubset$md_low, ",", typColorSubset$md_hi, "]")
 
+typColorTypeSubset = params.samples %>% 
+  filter(parameter == "typicality_colortype") %>%
+  #mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("typicality_colortyp = ", typColorTypeSubset$md) 
+cat("95% HPD interval = [", typColorTypeSubset$md_low, ",", typColorTypeSubset$md_hi, "]")
+
 typSizeSubset = params.samples %>% 
   filter(parameter == "typicality_size") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
@@ -82,6 +99,26 @@ typSizeSubset = params.samples %>%
             md_low = round(HPDlo(value), 3))
 cat("typicality_size = ", typSizeSubset$md) 
 cat("95% HPD interval = [", typSizeSubset$md_low, ",", typSizeSubset$md_hi, "]")
+
+typSizeTypeSubset = params.samples %>% 
+  filter(parameter == "typicality_sizetype") %>%
+  #mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("typicality_sizetype = ", typSizeTypeSubset$md) 
+cat("95% HPD interval = [", typSizeTypeSubset$md_low, ",", typSizeTypeSubset$md_hi, "]")
+
+typTypeSubset = params.samples %>% 
+  filter(parameter == "typicality_type") %>%
+  #mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("typicality_type = ", typTypeSubset$md) 
+cat("95% HPD interval = [", typTypeSubset$md_low, ",", typTypeSubset$md_hi, "]")
 
 costColorSubset = params.samples %>% 
   filter(parameter == "cost_color") %>%
@@ -123,32 +160,45 @@ typNoiseSubset = params.samples %>%
 cat("typNoise = ", typNoiseSubset$md) 
 cat("95% HPD interval = [", typNoiseSubset$md_low, ",", typNoiseSubset$md_hi, "]")
 
+spOptSubset = params.samples %>% 
+  filter(parameter == "speakeroptimality") %>%
+  #mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarize(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("spOpt = ", spOptSubset$md) 
+cat("95% HPD interval = [", spOptSubset$md_low, ",", spOptSubset$md_hi, "]")
+
 numericSubset = params.samples %>% 
-#  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size")) #%>%
-  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","cost_color","cost_size","typWeight","typNoise")) #%>%
-  #mutate(lambda=alpha,beta_f=freqWeight,beta_l=lengthWeight,beta_t=typWeight)
-  #mutate(value = as.numeric(levels(value))[value])
+  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","typicality_type","cost_color","cost_size","cost_type","spOpt")) #%>%
 numericSubset$parameter = as.character(numericSubset$parameter)
-numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
+#numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
 numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
-numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
+# numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
 
 ggplot(numericSubset, aes(x=value)) +
-    geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
+    geom_histogram(data=subset(numericSubset, parameter == "alpha"), 
                    binwidth = .1, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
                  binwidth = .1, colour="black", fill="white")+
-   geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
-                binwidth = .05, colour="black", fill="white")+
+#    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
+#                 binwidth = .05, colour="black", fill="white")+
   geom_histogram(data=subset(numericSubset, parameter == "typicality_color"),
                  binwidth = .01, colour="black", fill="white")+  
   geom_histogram(data=subset(numericSubset, parameter == "typicality_size"),
+                 binwidth = .01, colour="black", fill="white")+ 
+  geom_histogram(data=subset(numericSubset, parameter == "typicality_type"),
                  binwidth = .01, colour="black", fill="white")+ 
   geom_histogram(data=subset(numericSubset, parameter == "cost_color"),
                  binwidth = .01, colour="black", fill="white")+  
   geom_histogram(data=subset(numericSubset, parameter == "cost_size"),
                  binwidth = .01, colour="black", fill="white")+   
-  geom_histogram(data=subset(numericSubset, parameter == "typNoise"),
+  geom_histogram(data=subset(numericSubset, parameter == "cost_type"),
+                 binwidth = .01, colour="black", fill="white")+
+#   geom_histogram(data=subset(numericSubset, parameter == "typNoise"),
+#                  binwidth = .01, colour="black", fill="white")+   
+  geom_histogram(data=subset(numericSubset, parameter == "spOpt"),
                  binwidth = .01, colour="black", fill="white")+     
   #geom_histogram(data=subset(numericSubset, parameter == "typScale"),
    #              binwidth = .1, colour="black", fill="white")+  
@@ -178,7 +228,9 @@ ggplot(numericSubset, aes(x=value)) +
 # ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities-raw.pdf",height=3,width=10)
 # ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities-raw-weighted.pdf",height=3,width=10)
 # ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-typicalities-weighted.pdf",height=2,width=7)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-noise.pdf",height=3,width=11)
+# ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-costs-noise.pdf",height=3,width=11)
+# ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-multiplicative.pdf",height=3,width=11)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=3,width=13)
 
 
 ### Predictives
@@ -194,7 +246,9 @@ head(empirical)
 # predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalities-rawPredictives.csv", sep = ",", row.names = NULL) 
 # predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalities-raw-weightedPredictives.csv", sep = ",", row.names = NULL) 
 # predictive<-read.csv("bdaOutput/bdaCombined-costs-typicalities-weightedPredictives.csv", sep = ",", row.names = NULL) 
-predictive<-read.csv("bdaOutput/bdaCombined-costs-noisePredictives.csv", sep = ",", row.names = NULL) 
+# predictive<-read.csv("bdaOutput/bdaCombined-costs-noisePredictives.csv", sep = ",", row.names = NULL) 
+# predictive<-read.csv("bdaOutput/bda-testPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv(paste("bdaOutput/bda-",modelversion,"Predictives.csv",sep=""), sep = ",", row.names = NULL) 
 head(predictive)
 
 ## collapse across targets and domains
@@ -230,9 +284,9 @@ agr$NumSame = substr(as.character(agr$condition), nchar(as.character(agr$conditi
 #agr$ModelType = "empirical"
 
 predictive$utterance = "other"
-predictive[predictive$value %in% c("size"),]$utterance = "size"
-predictive[as.character(predictive$value) == as.character(predictive$color),]$utterance = "color"
-predictive[as.character(predictive$value) == paste("size",predictive$color,sep="_"),]$utterance = "size_color"
+predictive[as.character(predictive$value) == paste("size",predictive$item,sep="_"),]$utterance = "size"
+predictive[as.character(predictive$value) == paste(predictive$color,predictive$item,sep="_"),]$utterance = "color"
+predictive[as.character(predictive$value) == paste("size",predictive$color,predictive$item,sep="_"),]$utterance = "size_color"
 #predictive[grep("_",as.character(predictive$value)),]$utterance = "size_color"
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), 1:9] %>%
@@ -268,10 +322,19 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 #ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-raw.pdf",height=5,width=9)
 # ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-raw-weighted.pdf",height=5,width=9)
 # ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-typicalities-weighted.pdf",height=5,width=9)
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-noise.pdf",height=5,width=9)
+# ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-costs-noise.pdf",height=5,width=9)
+# ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-multiplicative.pdf",height=5,width=9)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=5,width=9)
 
+ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumSame)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
+  ylab("Empirical proportion") +
+  geom_abline(intercept=0,slope=1,color="gray60")
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=3,width=5)
 
-cor(toplot$ModelProbability,toplot$Probability) #r=.92 -- .9 with raw, .9 with rescaled 
+cor(toplot$ModelProbability,toplot$Probability) #r=.98
 
 # plot scene variation effect, both model and empirical
 agr = empirical %>%
@@ -305,9 +368,13 @@ m$NumDistractors = as.factor(as.character(m$NumDistractors))
 
 ggplot(m, aes(x=SceneVariation,y=Probability,color=Data,group=Data,shape=NumDistractors)) +
   geom_point() +
-  #geom_line() +
+#  geom_smooth(method="lm") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   facet_grid(SufficientDimension~Utterance)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/scenevariation-",modelversion,".pdf",sep=""),height=5,width=9)
+
+
+
 
 
 
@@ -352,8 +419,18 @@ ggplot(maxitems, aes(x=TypicalityDiff,y=ModelProbability, color=Item, group=Item
 # ggsave("results_bda/graphs/maxtypicalitydiffcases-rawtyp-model.pdf",height=6,width=11)
 # ggsave("results_bda/graphs/maxtypicalitydiffcases-rawtyp-weighted-model.pdf",height=6,width=11)
 # ggsave("results_bda/graphs/maxtypicalitydiffcases-rescaledtyp-weighted-model.pdf",height=6,width=11)
-ggsave("results_bda/graphs/maxtypicalitydiffcases-noise-model.pdf",height=6,width=11)
+# ggsave("results_bda/graphs/maxtypicalitydiffcases-noise-model.pdf",height=6,width=11)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/maxtypicalitydiffcases-",modelversion,".pdf",sep=""),height=6,width=1)
 
+
+
+
+# test
+predictive$complete_item = paste(predictive$size,predictive$color,predictive$item)
+test = predictive  %>%
+  group_by(complete_item,value,condition) %>%
+  summarize(NumSamples=length(prob))
+head(test)
 
 m = lm(ModelProbability~Probability,data=toplot)
 summary(m) # R2=.85

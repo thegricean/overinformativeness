@@ -52,7 +52,7 @@ var supportWriter = function(s, p, handle) {
 // Note this is highly specific to a single type of erp
 var bayesianErpWriter = function(erp, filePrefix) {
   var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
-  fs.writeSync(predictiveFile, ["color", "size", "condition",
+  fs.writeSync(predictiveFile, ["color", "size","othercolor","item","condition",
 				"value", "prob", "MCMCprob"] + '\n');
 
   var paramFile = fs.openSync(filePrefix + "Params.csv", 'w');
@@ -67,13 +67,6 @@ var bayesianErpWriter = function(erp, filePrefix) {
   fs.closeSync(paramFile);
   console.log('writing complete.');
 };
-
-// var getAllPossibleUtts = function(object, tax) {
-//   var relevantLabels = _.keys(_.omit(tax, function(value, key, tax) {
-//     return !_.has(value, object);
-//   }));
-//   return relevantLabels;
-// };
 
 var getSubset = function(data, options) {
   var condition = options.condition,
@@ -102,48 +95,6 @@ var locParse = function(filename) {
         skipEmptyLines : true}).data;
 };
 
-
-
-
-
-// var getFrequencyData = function() {
-//   var frequencyData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
-// 			       + "/results/data/frequencyChart_uniformLabels.csv");
-//   return frequencyData;
-// };
-
-// var getLengthData = function() {
-//   var lengthData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
-// 			    + "/results/data/lengthChart_uniformLabels.csv");
-//   return lengthData;
-// };
-
-// var standardizeVal = function(frequencyData, row, attributeSelector) {
-//   var maxObj = _.max(frequencyData, attributeSelector);
-//   var minObj = _.min(frequencyData, attributeSelector);
-//   var val = attributeSelector(row);
-//   var maxVal = attributeSelector(maxObj);
-//   var minVal = attributeSelector(minObj);
-//   return (val - minVal)/(maxVal - minVal);
-// };
-
-// var getRelativeLogFrequency = function(label) {
-//   var frequencyData = getFrequencyData();
-//   var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
-//   var selector = function(row) {return Math.log(row.relFreq);};
-//   return standardizeVal(frequencyData, relevantRow, selector);
-// };
-
-// var getRelativeLength = function(label) {
-//   var lengthData = getLengthData();
-//   var relevantRow = _.filter(lengthData, function(row) {return row.noun == label;})[0];
-//   var selector = function(row) {return Number(row.average_length);};
-//   return standardizeVal(lengthData, relevantRow, selector);
-// };
-
-// var getTypicalityTax = function() {
-//   return tax.tax;
-// };
 
 module.exports = {
   getSubset : getSubset,
