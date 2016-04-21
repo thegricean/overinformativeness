@@ -39,7 +39,7 @@ var getUtterances = function(context) {
         utts.push(k+"_"+c[2]);
     },c.slice(0,2));
     utts.push(c[0]+"_"+c[1]+"_"+c[2]);
-     // utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
+     utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
   },context);
   // console.log(_.unique(utts));
   return _.unique(utts);
@@ -134,116 +134,6 @@ var OverinformativeModel = function(params, context, typicalities) {
   // }
   // };  
 
-    // console.log("utterance, object:");
-    // console.log(utt);
-    // console.log(object);
-    // console.log(reduced_obj);
-    // console.log(typicalities[reduced_obj]);
-    // console.log(subtyps);
-    // console.log(subtyps[utt]);
-
- // var getFixedTypicality = function(utt, object) {
- //    var typicality = 0;
- //    var splitutt = utt.split("_");
-
- //    if (splitutt.length > 2) {
- //      return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) && _.contains(object,splitutt[2]) ? 
- //        Math.log(params.typNoise) :
- //        Math.log(1-params.typNoise);
- //    } else {
- //      if (splitutt.length > 1) { 
- //        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splitutt[0])) {
- //          return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
- //            Math.log(params.typicality_colortype) :
- //            Math.log(1-params.typicality_colortype);                          
- //        } else {
- //          return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
- //            Math.log(params.typicality_sizetype) :
- //            Math.log(1-params.typicality_sizetype);
- //        }
- //    } else { // if it's a one-word utterance return just type typicality
- //      return _.contains(object,utt) ? 
- //        Math.log(params.typicality_type) : 
- //        Math.log(1-params.typicality_type);
- //    }
- //  }
- //  }; 
-  
-    // console.log("utterance, object:");
-    // console.log(utt);
-    // console.log(object);
-    // console.log(reduced_obj);
-    // console.log(typicalities[reduced_obj]);
-    // console.log(subtyps);
-    // console.log(subtyps[utt]);
-// var getMultiplicativeFixedTypicality = function(utt, object) {
-//     var typicality = 0;
-//     var splitutt = utt.split("_");
-
-//     if (splitutt.length > 2) {
-//       return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) && _.contains(object,splitutt[2]) ? 
-//         Math.log(params.typicality_size*params.typicality_color*params.typicality_type) :
-//         Math.log((1-params.typicality_size)*(1-params.typicality_color)*(1-params.typicality_type));
-//     } else {
-//       if (splitutt.length > 1) { 
-//         if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
-//           return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
-//             Math.log(params.typicality_color*params.typicality_type) :
-//             Math.log((1-params.typicality_color)*(1-params.typicality_type));                          
-//         } else {
-//           return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
-//             Math.log(params.typicality_size*params.typicality_type) :
-//             Math.log((1-params.typicality_size)*(1-params.typicality_type));
-//         }
-//     } else { // if it's a one-word utterance return just type typicality
-//       return _.contains(object,utt) ? 
-//         Math.log(params.typicality_type) : 
-//         Math.log(1-params.typicality_type);
-//     }
-//   }
-//   };
-
-
-
-    // if (_.contains(object,u)) {
-    //   switch(utterancetype) {
-    //     case "color" : 
-    //       prob = params.typicality_color;
-    //       break;
-    //     case "size" : 
-    //       prob = params.typicality_size;
-    //       break;
-    //     case "type" : 
-    //       prob = params.typicality_type;
-    //       break;          
-    //     default : console.log("unrecognized utterancetype: "+u);
-    //   }
-    // } else {
-    //   switch(utterancetype) {
-    //     case "color" : 
-    //       prob = 1-params.typicality_color;
-    //       break;
-    //     case "size" : 
-    //       prob = 1-params.typicality_size;
-    //       break;
-    //     case "type" : 
-    //       prob = 1-params.typicality_type;
-    //       break;          
-    //     default : console.log("unrecognized utterancetype: "+u);
-    //   }
-    // }
-    // switch(utterancetype) {
-    //     case "color":
-    //         prob = _.contains(object,u) ? params.typicality_color : 1 - params.typicality_color; 
-    //         break;
-    //     case "size":
-    //         prob = _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
-    //         break;
-    //     case "type":
-    //         prob = _.contains(object,u) ? params.typicality_type : 1 - params.typicality_type; 
-    //         break;
-    //     default : console.log("bad utterance type, no typicality assigned")
-    // }
 
  var checkFeature = function(utterancetype,object,u) {
   if (utterancetype === "color") {
@@ -260,6 +150,23 @@ var OverinformativeModel = function(params, context, typicalities) {
     }
   }
  };
+
+// CONTINUE HERE
+//   var checkFeatureEmpirical = function(utterancetype,object,u) {
+//   if (utterancetype === "color") {
+//     return _.contains(object,u) ? params.typicality_color : 1 - params.typicality_color; 
+//   } else {
+//     if (utterancetype === "size") {
+//       return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
+//     } else {
+//       if (utterancetype === "type") {
+//         return _.contains(object,u) ? params.typicality_type : 1 - params.typicality_type;     
+//       } else {
+//         return -555;
+//       }
+//     }
+//   }
+//  };
 
  var getMultiplicativeFixedTypicality = function(utt, object) {
     // var typicality;
