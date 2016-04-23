@@ -1,0 +1,51 @@
+// run using:
+// webppl runBasiclevelsModel.wppl --require ./refModule/
+
+// var typicality_norms = getTypicalities();
+// // console.log(typicality_norms);
+
+  var params = {
+    
+    alpha : uniform(0,20),
+    lengthWeight : uniform(0,5),
+    freqWeight : uniform(0,5),
+    typWeight : uniform(0,1)
+
+    // alpha : 5,
+    // lengthWeight : .5,
+    // typWeight : .5,
+    // typicality_color : .99,
+    // typicality_size : .8,
+    // typicality_type : .85,
+    // cost_color : 1,
+    // cost_size : 1,
+    // cost_type : 1,
+    // typNoise : .9
+  };
+
+  var context = [
+  	//["size","blue","golfball"],
+  	//["othersize","blue","golfball"],
+  	// // ["small","green"],
+    //["othersize","pink","golfball"]
+    []
+  ];
+
+
+  // var model = OverinformativeModel(params,context,typicality_norms);
+  var model = BasicLevelModel(domainInfo, params);
+  var runModel = model.runModel;
+  var speaker = model.speaker;
+  var modelOutput = runModel(speaker, ["size","blue","golfball"], domainInfo);      //runModel = function(speakerModel, item, domainInfo)
+
+  //var listener = model.listener;
+  //var runListener = model.runListener;
+  // // var modelOutput = runModel(speaker, ["size","pink","golfball"]);
+  // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+  // // var modelOutput = runModel(speaker, ["size","green","avocado"]);
+  // // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
+  // var listenerOutput = runListener(listener, "blue_golfball");
+  // console.log(modelOutput);
+  // console.log(listenerOutput);
+
+  refModule.writeCSV(modelOutput, modelOutput.csv);
