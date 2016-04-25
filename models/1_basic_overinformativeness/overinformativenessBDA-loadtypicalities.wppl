@@ -122,8 +122,8 @@ var modelAnalysis = function() {
     typicality_type : uniform(0,1),
     cost_color : uniform(0,2),
     cost_size : uniform(0,2),
-    cost_type : uniform(0,2)
-    // speakeroptimality : uniform(0,8)
+    cost_type : uniform(0,2),
+    speakeroptimality : uniform(0,8)
   };
   
   
@@ -199,13 +199,14 @@ console.log('inference complete... printing');
 // full conditions
 
 // fixed typicality
-// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeakeropt");
 
 // empirical typicality
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-nospeaker");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts-nospeaker");
 

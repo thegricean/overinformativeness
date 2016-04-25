@@ -27,12 +27,13 @@ options("scipen"=10)
 # modelversion = "empirical-fullconditions-fullutts"
 # modelversion = "empirical-fullconditions-fullutts-nospeaker"
 # modelversion = "fixed-reducedconditions-nospeaker"
-# modelversion = "fixed-reducedconditions-fullutts-nospeaker"
-modelversion = "fixed-fullconditions-nospeaker"
+modelversion = "fixed-reducedconditions-fullutts-nospeaker"
+# modelversion = "fixed-fullconditions-nospeaker"
+# modelversion = "empirical-fullconditions-nospeaker"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
-# samples = 3000
-samples = 2000
+samples = 3000
+# samples = 2000
 param_sample_test = params %>%
   group_by(parameter) %>%
   summarise(Sum=sum(MCMCprob))
@@ -274,7 +275,7 @@ summary(agre)
 agre$NumDistractors = substr(as.character(agre$condition), nchar(as.character(agre$condition)) - 1, nchar(as.character(agre$condition)) - 1)
 agre$NumSame = substr(as.character(agre$condition), nchar(as.character(agre$condition)), nchar(as.character(agre$condition)))
 
-# CONTINUE HERE MAKE A VERSION OF PREDICTIVE.SAMPLES WITH REDUCED CONDITIONS (IE ASSIGNING SAME PROBABILITY TO ALL COLORITEM CASES THAT FALL INTO A PARTICULAR CONDITION -- WHTAT'S THE CORRELATION? COMPARABLE TO EMPIRICAL TYPICALITIES?)
+
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), 1:10] %>%
   mutate(Utterance = utterance) %>%
@@ -290,10 +291,18 @@ predictive.samples = as.data.frame(predictive.samples)
 predictive.samples = droplevels(predictive.samples[predictive.samples$Utterance %in% c("color","size","size_color"),])
 head(predictive.samples)
 
-toplot = merge(agre, predictive.samples, by=c("condition","Utterance","ColorItem"),all.y=T) 
-toplot$SufficientDimension = ifelse(substr(toplot$condition,1,5) == "color","color","size")
-toplot$NumDistractors = as.factor(as.character(toplot$NumDistractors))
-toplot$NumSame = as.factor(as.character(toplot$NumSame))
+if(grep("reducedconditions",modelversion) == 1) {
+  row.names(predictive.samples) = paste(predictive.samples$Utterance,predictive.samples$condition)
+  toplot = agre
+  toplot$ModelProbability = predictive.samples[paste(toplot$Utterance,toplot$condition),]$ModelProbability
+  toplot$ModelYMax = predictive.samples[paste(toplot$Utterance,toplot$condition),]$ModelYMax  
+  toplot$ModelYMin = predictive.samples[paste(toplot$Utterance,toplot$condition),]$ModelYMin    
+} else {
+  toplot = merge(agre, predictive.samples, by=c("condition","Utterance","ColorItem"),all.y=T) 
+  toplot$SufficientDimension = ifelse(substr(toplot$condition,1,5) == "color","color","size")
+  toplot$NumDistractors = as.factor(as.character(toplot$NumDistractors))
+  toplot$NumSame = as.factor(as.character(toplot$NumSame))
+}
 
 ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumSame)) +
   geom_point() +
@@ -304,7 +313,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 #   facet_grid(SufficientDimension~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-byitem-",modelversion,".pdf",sep=""),height=3,width=5)
 
-cor(toplot$ModelProbability,toplot$Probability) # .82 with "TYPE" utt, .81 with "tYPe" and empirical typicalities but without speaker optimality param, .8 without "TYPE" or speaker optimality but empirical typicalities
+cor(toplot$ModelProbability,toplot$Probability) # .82 with "TYPE" utt, .81 with "tYPe" and empirical typicalities but without speaker optimality param, .8 without "TYPE" or speaker optimality but empirical typicalities; r=.83 with reduced conditions!! -- ie empirical typicality (unscaled) messes things up!!
 
 
 ## collapse across targets and domains
@@ -366,7 +375,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
   geom_abline(intercept=0,slope=1,color="gray60")
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=3,width=5)
 
-cor(toplot$ModelProbability,toplot$Probability) #r=.98 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"
+cor(toplot$ModelProbability,toplot$Probability) #r=.98 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"; r=.95 with empirical and no "TYPE" or speaker-opt
 
 # plot scene variation effect, both model and empirical
 agr = empirical %>%
