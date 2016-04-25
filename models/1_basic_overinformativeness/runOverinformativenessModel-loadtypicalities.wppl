@@ -42,21 +42,20 @@ var getTypicalities = function() {
 };
 
 var typicality_norms = getTypicalities();
-// console.log(typicality_norms);
+console.log(typicality_norms);
 
   var params = {
-    alpha : 3,
+    alpha : 5,
     lengthWeight : .5,
     // typNoise : .999,
     // typWeight : .5,
     typicality_color : .95,
     typicality_size : .8,
-    // typicality_colortype : .999,
-    typicality_type : .5,
+    typicality_type : .95,
     // typicality_sizetype : .999,
     cost_color : 1,
     cost_size : 1,
-    // cost_type : 1,
+    cost_type : 1,
     speakeroptimality : 1
   };
 
@@ -72,13 +71,13 @@ var typicality_norms = getTypicalities();
     // ["size","blue","golfball"],
     // ["size","blue","golfball"],
     ["othersize","blue","golfball"],
-    ["othersize","blue","golfball"],
-    ["othersize","blue","golfball"],
-  	["othersize","blue","golfball"]
+    // ["othersize","blue","golfball"],
+    // ["othersize","blue","golfball"],
+  	// ["othersize","blue","golfball"]
     // ["othersize","pink","golfball"]
-    // ["othersize","pink","golfball"],
-    // ["othersize","pink","golfball"],    
-    // ["othersize","pink","golfball"]
+    ["othersize","pink","golfball"],
+    ["othersize","pink","golfball"],    
+    ["othersize","pink","golfball"]
     // ["othersize","blue","golfball"],
     // ["othersize","blue","golfball"]
   ];
