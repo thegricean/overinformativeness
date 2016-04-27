@@ -39,7 +39,7 @@ var getUtterances = function(context) {
         utts.push(k+"_"+c[2]);
     },c.slice(0,2));
     utts.push(c[0]+"_"+c[1]+"_"+c[2]);
-     // utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
+     utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
   },context);
   // console.log(_.unique(utts));
   return _.unique(utts);
@@ -189,8 +189,8 @@ var OverinformativeModel = function(params, context, typicalities) {
 
   var uttFitness = function(utt, object) {
       var splitutt = utt.split("_");
-      // var typfit = getMultiplicativeFixedTypicality(utt,object); 
-      var typfit = getMultiplicativeEmpiricalTypicality(utt,object); 
+      var typfit = getMultiplicativeFixedTypicality(utt,object); 
+      // var typfit = getMultiplicativeEmpiricalTypicality(utt,object); 
       // console.log(utt+"...."+object+"...."+typfit);
       // var fixedtypfit = getFixedTypicality(utt,object); 
       // console.log(typfit);
@@ -246,7 +246,7 @@ var OverinformativeModel = function(params, context, typicalities) {
       var speakerERP = speakerModel(target);
       return Enumerate(function(){
         var utt = sample(speakerERP);
-        factor(params.speakeroptimality*speakerERP.score([],utt));
+        // factor(params.speakeroptimality*speakerERP.score([],utt));
         return utt;
       });
     };

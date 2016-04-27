@@ -114,16 +114,27 @@ console.log("Constructing contexts complete...");
 var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
-  var params = {
-    alpha : uniform(0,8),
-    lengthWeight : uniform(0,5),
-    typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
-    typicality_size : uniform(0,1),
-    typicality_type : uniform(0,1),
-    cost_color : uniform(0,2),
-    cost_size : uniform(0,2),
-    cost_type : uniform(0,2),
-    speakeroptimality : uniform(0,8)
+  // var params = {
+  //   alpha : uniform(3,5),
+  //   lengthWeight : uniform(0,2),
+  //   typicality_color : uniform(.8,1), // this doesn't matter when you use empirical typicalities
+  //   typicality_size : uniform(.7,1),
+  //   typicality_type : 1,
+  //   cost_color : uniform(0,2),
+  //   cost_size : uniform(0,2),
+  //   cost_type : 1
+  //   // speakeroptimality : uniform(3,5)
+  // };
+    var params = {
+    alpha : sample(dirichletDriftERP, [1,1])[0]*8,
+    lengthWeight : sample(dirichletDriftERP, [1,1])[0]*5,
+    typicality_color : sample(dirichletDriftERP, [1,1])[0], // this doesn't matter when you use empirical typicalities
+    typicality_size : sample(dirichletDriftERP, [1,1])[0],
+    typicality_type : 1,
+    cost_color : sample(dirichletDriftERP, [1,1])[0]*2,
+    cost_size : sample(dirichletDriftERP, [1,1])[0]*2,
+    cost_type : 1
+    // speakeroptimality : sample(dirichletDriftERP, [1,1])[0]*8
   };
   
   
@@ -154,10 +165,11 @@ var modelAnalysis = function() {
 						  color:condition[0],
 						  size:condition[1],
               item:condition[4]});
-    // console.log(itemData);
+    // console.log(itemData.length);
 	  var score = sum(map(function(dataRow) {
      // console.log("Conditioning on data row..."+dataRow);
 	   var utterance = dataRow[7]+"_"+condition[4];
+     // console.log(_.contains(modelOutput.support(),utterance));
 	   return modelOutput.score([], utterance);
 	  }, itemData));
     // display(score)
@@ -185,7 +197,7 @@ var modelAnalysis = function() {
 var outputERP = MCMC(modelAnalysis, {samples: 2000, burn: 1000, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, verbose: true, 
-                                     // kernel: { HMC: { steps: 5, stepSize: .2 }}});
+                                     // kernel: { HMC: { steps: 5, stepSize: .01 }}});
 
 console.log('inference complete... printing');
 
@@ -199,10 +211,10 @@ console.log('inference complete... printing');
 // full conditions
 
 // fixed typicality
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts");
-// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeakeropt");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeakeropt");
 
 // empirical typicality
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions");

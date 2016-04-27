@@ -21,19 +21,23 @@ options("scipen"=10)
 
 ### Load in model results (parameters)
 # modelversion = "fixed-reducedconditions"
-# modelversion = "fixed-fullconditions"
 # modelversion = "fixed-reducedconditions-fullutts"
-#modelversion = "fixed-fullconditions-fullutts"
-# modelversion = "empirical-fullconditions-fullutts"
-# modelversion = "empirical-fullconditions-fullutts-nospeaker"
 # modelversion = "fixed-reducedconditions-nospeaker"
-modelversion = "fixed-reducedconditions-fullutts-nospeaker"
+# modelversion = "fixed-reducedconditions-fullutts-nospeaker"
+
+# modelversion = "fixed-fullconditions"
+#modelversion = "fixed-fullconditions-fullutts"
 # modelversion = "fixed-fullconditions-nospeaker"
+modelversion = "fixed-fullconditions-fullutts-nospeakeropt"
+
+# modelversion = "empirical-fullconditions"
+# modelversion = "empirical-fullconditions-fullutts"
 # modelversion = "empirical-fullconditions-nospeaker"
+# modelversion = "empirical-fullconditions-fullutts-nospeaker"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
-samples = 3000
-# samples = 2000
+# samples = 3000
+samples = 2000
 param_sample_test = params %>%
   group_by(parameter) %>%
   summarise(Sum=sum(MCMCprob))
@@ -291,7 +295,7 @@ predictive.samples = as.data.frame(predictive.samples)
 predictive.samples = droplevels(predictive.samples[predictive.samples$Utterance %in% c("color","size","size_color"),])
 head(predictive.samples)
 
-if(grep("reducedconditions",modelversion) == 1) {
+if(length(grep("reducedconditions",modelversion)) > 0) {
   row.names(predictive.samples) = paste(predictive.samples$Utterance,predictive.samples$condition)
   toplot = agre
   toplot$ModelProbability = predictive.samples[paste(toplot$Utterance,toplot$condition),]$ModelProbability
@@ -313,7 +317,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 #   facet_grid(SufficientDimension~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-byitem-",modelversion,".pdf",sep=""),height=3,width=5)
 
-cor(toplot$ModelProbability,toplot$Probability) # .82 with "TYPE" utt, .81 with "tYPe" and empirical typicalities but without speaker optimality param, .8 without "TYPE" or speaker optimality but empirical typicalities; r=.83 with reduced conditions!! -- ie empirical typicality (unscaled) messes things up!!
+cor(toplot$ModelProbability,toplot$Probability) # .82 with "TYPE" utt, .81 with and without "tYPe" and empirical typicalities but without speaker optimality param, .8 without "TYPE" or speaker optimality but empirical typicalities; r=.83 with reduced conditions!! -- ie empirical typicality (unscaled) messes things up!!
 
 
 ## collapse across targets and domains
@@ -358,8 +362,9 @@ toplot = merge(agr, predictive.samples, by.x=c("condition","Utterance"),all.y=T)
 toplot$SufficientDimension = ifelse(substr(toplot$condition,1,5) == "color","color","size")
 toplot$NumDistractors = as.factor(as.character(toplot$NumDistractors))
 toplot$NumSame = as.factor(as.character(toplot$NumSame))
+toplot$NumDiff = as.factor(as.character(as.numeric(as.character(toplot$NumDistractors)) - as.numeric(as.character(toplot$NumSame))))
 
-ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumSame)) +
+ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumDiff)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
@@ -367,11 +372,13 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
   facet_grid(SufficientDimension~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=5,width=9)
 
-ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumSame)) +
+ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumDiff)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
   ylab("Empirical proportion") +
+  xlab("Model probability") +
+  guides(shape=guide_legend("Number of\ndifferent distractors"),color=guide_legend("Number of\ndistractors")) +
   geom_abline(intercept=0,slope=1,color="gray60")
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=3,width=5)
 
@@ -409,6 +416,9 @@ m$NumDistractors = as.factor(as.character(m$NumDistractors))
 
 ggplot(m, aes(x=SceneVariation,y=Probability,color=Data,group=Data,shape=NumDistractors)) +
   geom_point() +
+  ylab("Utterance probability") +
+  xlab("Scene variation") +
+  guides(shape = guide_legend("Number of\ndistractors")) +
 #  geom_smooth(method="lm") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   facet_grid(SufficientDimension~Utterance)
