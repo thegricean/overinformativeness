@@ -1,15 +1,20 @@
 // run using:
-// webppl runBasiclevelsModel.wppl --require ./refModule/
+// webppl runBasicLevelModel.wppl --require ./refModule/
 
 // var typicality_norms = getTypicalities();
 // // console.log(typicality_norms);
 
   var params = {
     
-    alpha : uniform(0,20),
-    lengthWeight : uniform(0,5),
-    freqWeight : uniform(0,5),
-    typWeight : uniform(0,1)
+    //alpha : uniform(0,20),
+    //lengthWeight : uniform(0,5),
+    //freqWeight : uniform(0,5),
+    //typWeight : uniform(0,1)
+
+    alpha : 10.8,
+    lengthWeight : 2.5,
+    freqWeight : 1.3,
+    typWeight : 0.94
 
     // alpha : 5,
     // lengthWeight : .5,
@@ -24,9 +29,9 @@
   };
 
   var context = [
-  	//["size","blue","golfball"],
-  	//["othersize","blue","golfball"],
-  	// // ["small","green"],
+    //["size","blue","golfball"],
+    //["othersize","blue","golfball"],
+    // // ["small","green"],
     //["othersize","pink","golfball"]
     []
   ];

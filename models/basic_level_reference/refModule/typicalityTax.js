@@ -14,6 +14,7 @@ var typicality = function () {
   var parseResult = babyparse.parse(fs.readFileSync(filename, 'utf8'),
 				    {header: true, skipEmptyLines : true});
   this.data = parseResult.data;
+  //console.log("this.data:", this.data);
 };
 
 typicality.prototype.clean = function() {
