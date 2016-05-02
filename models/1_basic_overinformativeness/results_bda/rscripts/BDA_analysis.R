@@ -24,11 +24,13 @@ options("scipen"=10)
 # modelversion = "fixed-reducedconditions-fullutts"
 # modelversion = "fixed-reducedconditions-nospeaker"
 # modelversion = "fixed-reducedconditions-fullutts-nospeaker"
+modelversion = "fixed-reducedconditions-fullutts-nospeaker-noother"
 
 # modelversion = "fixed-fullconditions"
 #modelversion = "fixed-fullconditions-fullutts"
 # modelversion = "fixed-fullconditions-nospeaker"
-modelversion = "fixed-fullconditions-fullutts-nospeakeropt"
+# modelversion = "fixed-fullconditions-fullutts-nospeakeropt"
+# modelversion = "fixed-fullconditions-fullutts-nospeaker-noother"
 
 # modelversion = "empirical-fullconditions"
 # modelversion = "empirical-fullconditions-fullutts"
@@ -236,7 +238,7 @@ ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativenes
 # Import empirical data
 source("results_bda/rscripts/helpers.R")
 #empirical = read.table("bdaInput/data_bda_modifiers_reduced.csv",sep=",",col.names=c("gameID","bla","condition","size","color","utterance"))
-empirical = read.table("bdaInput/data_bda_modifiers.csv",sep=",",col.names=c("gameID","bla","condition","size","color","othercolor","item","utterance"))
+empirical = read.table("bdaInput/data_bda_modifiers_noother.csv",sep=",",col.names=c("gameID","bla","condition","size","color","othercolor","item","utterance"))
 head(empirical)
 empirical$actualcolor = empirical$color
 empirical$color = ifelse(empirical$utterance %in% c("brown","red","black","blue","green","white","purple","pink","yellow","orange"),1,0)

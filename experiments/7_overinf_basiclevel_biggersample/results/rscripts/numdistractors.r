@@ -186,7 +186,7 @@ head(agr)
 
 # plot by ratio and numdistractors, only for 'correct' properties
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
-targets$minimal = ifelse(targets$SizeAndColor == 0, 1, 0)
+targets$minimal = ifelse(targets$SizeAndColor == 0 & targets$UtteranceType != "OTHER", 1, 0)
 targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
 targets$BDAUtterance = "size"#as.character(targets$clickedSize)
 targets[targets$Color == 1,]$BDAUtterance = as.character(targets[targets$Color == 1,]$clickedColor)
@@ -195,21 +195,28 @@ targets[targets$SizeAndColor == 1,]$BDAUtterance = paste("size",targets[targets$
 targets$redBDAUtterance = "size_color"
 targets[targets$Color == 1,]$redBDAUtterance = "color"
 targets[targets$Size == 1,]$redBDAUtterance = "size"
+targets[targets$Other == 1,]$redBDAUtterance = "other"
 targets$BDASize = "size"
 targets$BDAColor = "color"
 targets$BDAFullColor = targets$clickedColor
 targets$BDAOtherColor = "othercolor"
 targets$BDAItem = "item"
 
-write.csv(targets,file="data/data_modifiers.csv",quote=F,row.names=F)
-write.csv(targets[,c("gameid","roundNum","condition","clickedSize","clickedColor","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
-write.csv(unique(targets[,c("clickedColor","clickedSize","condition")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
 
+# full conditions
+write.csv(targets,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
+write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
+
+# reduced conditions
 write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
 
-write.csv(targets[,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
-write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
+## only condition on non-"other" cases!! 
+write.csv(targets[targets$redBDAUtterance != "other",c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced_noother.csv",quote=F,row.names=F)
+write.csv(unique(targets[targets$redBDAUtterance != "other",c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced_noother.csv",quote=F,row.names=F)
+
+write.csv(targets[targets$redBDAUtterance != "other",c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers_noother.csv",quote=F,row.names=F)
+write.csv(unique(targets[targets$redBDAUtterance != "other",c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers_noother.csv",quote=F,row.names=F)
 
 # get reduced set of conditions and contexts
 

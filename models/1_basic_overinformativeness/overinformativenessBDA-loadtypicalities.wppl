@@ -87,13 +87,20 @@ var constructContext = function(condition,size,color,othercolor,item) {
   };
 
 
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+// var data = refModule.readCSV("./bdaInput/data_test.csv");
+// var data = refModule.readCSV("./bdaInput/data_test_reduced.csv");
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv");
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
 console.log("Loading data complete...");
 
-
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_test.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_reduced_test.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
 console.log("Loading unique conditions complete...");
 // console.log(conditions);
 
@@ -115,27 +122,37 @@ var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
   // var params = {
-  //   alpha : uniform(3,5),
-  //   lengthWeight : uniform(0,2),
-  //   typicality_color : uniform(.8,1), // this doesn't matter when you use empirical typicalities
-  //   typicality_size : uniform(.7,1),
+  //   alpha : 4,
+  //   lengthWeight : 1,
+  //   typicality_color : .95,
+  //   typicality_size : .85,
   //   typicality_type : 1,
-  //   cost_color : uniform(0,2),
-  //   cost_size : uniform(0,2),
+  //   cost_color : 1,
+  //   cost_size : 1,
   //   cost_type : 1
-  //   // speakeroptimality : uniform(3,5)
   // };
-    var params = {
-    alpha : sample(dirichletDriftERP, [1,1])[0]*8,
-    lengthWeight : sample(dirichletDriftERP, [1,1])[0]*5,
-    typicality_color : sample(dirichletDriftERP, [1,1])[0], // this doesn't matter when you use empirical typicalities
-    typicality_size : sample(dirichletDriftERP, [1,1])[0],
+  var params = {
+    alpha : uniform(0,8),
+    lengthWeight : uniform(0,5),
+    typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
+    typicality_size : uniform(0,1),
     typicality_type : 1,
-    cost_color : sample(dirichletDriftERP, [1,1])[0]*2,
-    cost_size : sample(dirichletDriftERP, [1,1])[0]*2,
+    cost_color : uniform(0,2),
+    cost_size : uniform(0,2),
     cost_type : 1
-    // speakeroptimality : sample(dirichletDriftERP, [1,1])[0]*8
+    // speakeroptimality : uniform(3,5)
   };
+  //   var params = {
+  //   alpha : sample(dirichletDriftERP, [1,1])[0]*8,
+  //   lengthWeight : sample(dirichletDriftERP, [1,1])[0]*5,
+  //   typicality_color : sample(dirichletDriftERP, [1,1])[0], // this doesn't matter when you use empirical typicalities
+  //   typicality_size : sample(dirichletDriftERP, [1,1])[0],
+  //   typicality_type : 1,
+  //   cost_color : sample(dirichletDriftERP, [1,1])[0]*2,
+  //   cost_size : sample(dirichletDriftERP, [1,1])[0]*2,
+  //   cost_type : 1
+  //   // speakeroptimality : sample(dirichletDriftERP, [1,1])[0]*8
+  // };
   
   
   // Run model and condition on data
@@ -169,7 +186,10 @@ var modelAnalysis = function() {
 	  var score = sum(map(function(dataRow) {
      // console.log("Conditioning on data row..."+dataRow);
 	   var utterance = dataRow[7]+"_"+condition[4];
+     // console.log("utterance..."+utterance);
      // console.log(_.contains(modelOutput.support(),utterance));
+     // console.log(modelOutput.score([],utterance));
+     // console.log(utterance+","+modelOutput.score([],utterance)+","+condition[2]);
 	   return modelOutput.score([], utterance);
 	  }, itemData));
     // display(score)
@@ -186,18 +206,19 @@ var modelAnalysis = function() {
     // }, _.keys(domainInfo.conditions)));
   }, conditions));
 
-  // display(score)
+  // display(score);
+
 
   factor(score);
-
 
   return {predictive: query.table, params : params};
 };
 
+// var outputERP = MCMC(modelAnalysis, {samples: 1, burn: 1, verbose: true});
 var outputERP = MCMC(modelAnalysis, {samples: 2000, burn: 1000, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
-// var outputERP = MCMC(modelAnalysis, {samples: 10, verbose: true, 
-                                     // kernel: { HMC: { steps: 5, stepSize: .01 }}});
+// var outputERP = MCMC(modelAnalysis, {samples: 1, verbose: true, 
+//                                      kernel: { HMC: { steps: 1, stepSize: .01 }}});
 
 console.log('inference complete... printing');
 
@@ -207,14 +228,19 @@ console.log('inference complete... printing');
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-fullutts-nospeaker");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-fullutts-nospeaker-noother");
 
 // full conditions
+
+// test
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fullcondition-test");
 
 // fixed typicality
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts");
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeakeropt");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeakeropt");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-fullconditions-fullutts-nospeaker-noother");
 
 // empirical typicality
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions");

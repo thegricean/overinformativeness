@@ -247,17 +247,16 @@ To test the model's predictions, we conducted an interactive web-based written p
 
 \subsubsection{Method}
 
-\red{CONTINUE HERE!!!}
 
 \paragraph{Participants}
 
-We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses only and only participants with a past work approval rate of at least 95\% were accepted. %The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
+We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. An additional 38 trials that were contributed by 4 speakers who prematurely dropped out of the experiment and who could therefore not be compensated for their work, were also included. \jd{should we be excluding these? they look like normal trials.} Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses and only participants with a past work approval rate of at least 95\% were accepted. %The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
 
 \paragraph{Procedure}
 
-Participants were paired up via \red{is there something in robert's tools to cite?}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions \red{more info}. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}.
+Participants were paired up through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions that informed participants that one of them would be the Speaker and the other the Listener. They were further told that they would see some number of objects on each round and that the speaker's task is to communicate one of those objects, marked by a green border, to the listener. They were explicitly told that using locative modifiers would be useless because the order of objects on their partner's screen would be different than on their own screen. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}.
 
-On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:exampledisplay} for an example of the listener's and speaker's view on a particular trial.
+On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:speakerlistenerperspective} for an example of the listener's and speaker's view on a particular trial.
 
 \begin{figure}
 \label{fig:exampledisplay}
@@ -290,35 +289,10 @@ Participants proceeded through 72 trials. Of these, half were critical trials of
 
 Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:speakerlistenerperspective} for an example of a size-sufficient trial from both the speaker's and the listener's perspective. 
 
+We further varied the amount of variation the scene by varying the number of distractor objects in each array (2, 3, or  4) and the number of distractors that did shared the non-sufficient feature value with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. Each total number of distractors was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following nine conditions: \emph{2-1, 2-2, 3-1, 3-2, 3-3, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Each condition occurred twice with each sufficient dimension. Objects never differed in type within one array (e.g., all objects are thumbtacks in \figref{fig:speakerlistenerperspective} but always differed in type across trials. Each object type could occur in two different sizes and two different colors. We deliberately chose photo-realistic objects of intuitively fairly typical colors. The 36 different object types and the colors they could occur with are listed in \appref{app:itemtypes}. 
 
-In Exp.~1, the number of distractor objects in each array was either 2 (12 trials) or 4 (24 trials). In Exp.~2, the number of distractor objects in each array was either 2, 3, or 4. Finally, we varied the number of distractors that shared the non-sufficient property with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. 
 
-In Exp.~1, each total number of distractors (2, 4) was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following six conditions: \emph{2-1, 2-2, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Exp.~2 was conducted in order to additionally collect data for the \emph{3-X} conditions. To this end, Exp.~2 included the \emph{3-1, 3-2}, and \emph{3-3} conditions, as well as three conditions repeated from Exp.~1, in order to ensure that results were comparable. The repeated conditions were \emph{2-1, 4-1}, and \emph{4-3}. An overview of the number of trials in each condition and experiment is provided in \tableref{tab:conditions}.
-
-\begin{table}
-\caption{Number of trials in each condition.}
-\centering
-	\begin{tabular}{c c c c}
-	\toprule
-	Distractors & Feature-sharing distractors & Trials & Exp.\\
-	\midrule
-	2 & 1 & 12 & 1 \& 2\\
-	2 & 2 & 6 & 1\\
-	\midrule
-	3 & 1 & 6 & 2\\
-	3 & 2 & 6 & 2\\
-	3 & 3 & 6 & 2\\
-	\midrule
-	4 & 1 & 12 & 1 \& 2\\
-	4 & 2 & 6 & 1\\
-	4 & 3 & 12 & 1 \& 2\\
-	4 & 4 & 6 & 1\\			
-	\bottomrule
-	\end{tabular}
-\label{tab:conditions}	
-\end{table}
-
-Fillers were target trials from a different experiment \cite{graf-underreview}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. For example, a filler trial could consist of a display with a dalmatian, a pug, and a squirrel.
+\red{Fillers were target trials from a different experiment \cite{graf-underreview}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. For example, a filler trial could consist of a display with a dalmatian, a pug, and a squirrel.} \jd{update this, actually write up as its own section}
 
 
 
@@ -380,7 +354,37 @@ Before continuing to the main experiment, each participant had to correctly resp
 \end{itemize}
 
 
+\section{Item types}
+\label{app:itemtypes}
 
+The following table lists all 36 object types from Exp.~\red{XXX} and the colors they appeared in:
+
+\begin{tabular}{l l l l}
+\toprule
+Object & Colors & Object & Colors \\
+\midrule
+avocado & black, green & balloon & pink, yellow \\
+belt & black, brown & bike & purple, red\\
+billiard ball & orange, purple & binder & blue, green \\
+book & black, blue & bracelet & green, purple \\
+bucket & pink, red & butterfly & blue, purple\\
+candle & blue, red & cap & blue, orange \\
+chair & green, red & coat hanger & orange, purple \\
+comb & black, blue & cushion & blue, orange\\
+flower & purple, red & frame & green, pink \\
+golf ball & blue, pink & guitar & blue, green\\
+hair dryer & pink, purple & jacket & brown, green\\
+napkin & orange, yellow & ornament & blue, purple\\
+pepper & green, red & phone & pink, white\\
+rock & green, purple & rug & blue, purple \\
+shoe & white, yellow & stapler & purple, red\\
+thumb tack & blue, red & tea cup & pink, white \\
+toothbrush & blue, red & turtle & black, brown \\
+wedding cake & pink, white & yarn & purple, red\\
+\bottomrule
+\end{tabular}
+
+\section{Gatt replication}
 \red{report Gatt et al 2011 replication}
 
 \bibliographystyle{apacite}
