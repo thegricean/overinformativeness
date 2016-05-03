@@ -6,11 +6,6 @@
 
   var params = {
     
-    //alpha : uniform(0,20),
-    //lengthWeight : uniform(0,5),
-    //freqWeight : uniform(0,5),
-    //typWeight : uniform(0,1)
-
     alpha : 10.8,
     lengthWeight : 2.5,
     freqWeight : 1.3,
@@ -28,29 +23,35 @@
     // typNoise : .9
   };
 
-  var context = [
+  var item = [
+    ["dalmatian", "greyhound", "horse"], 
+    //["husky", "crocodile", "greyhound"], 
     //["size","blue","golfball"],
     //["othersize","blue","golfball"],
-    // // ["small","green"],
+    //["small","green"],
     //["othersize","pink","golfball"]
     []
   ];
 
+  var label = [
+  "dalmatian"
+  //"greyhound"
+  //"horse"
+  ];
+
+  var domainInfo = dogInfo
 
   // var model = OverinformativeModel(params,context,typicality_norms);
   var model = BasicLevelModel(domainInfo, params);
   var runModel = model.runModel;
   var speaker = model.speaker;
-  var modelOutput = runModel(speaker, ["size","blue","golfball"], domainInfo);      //runModel = function(speakerModel, item, domainInfo)
+  var runListener = model.runListener;
+  var listener = model.listener;
+  
+  var modelOutput = runModel(speaker, item, domainInfo);
+  //var listenerOutput = runListener(listener, label, item);
 
-  //var listener = model.listener;
-  //var runListener = model.runListener;
-  // // var modelOutput = runModel(speaker, ["size","pink","golfball"]);
-  // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
-  // // var modelOutput = runModel(speaker, ["size","green","avocado"]);
-  // // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
-  // var listenerOutput = runListener(listener, "blue_golfball");
-  // console.log(modelOutput);
+  console.log(modelOutput);
   // console.log(listenerOutput);
 
-  refModule.writeCSV(modelOutput, modelOutput.csv);
+  //refModule.writeCSV(modelOutput, modelOutput.csv);

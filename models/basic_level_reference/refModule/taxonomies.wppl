@@ -1256,16 +1256,13 @@ var globalInfo = {
 
 var BasicLevelModel = function(domainInfo, params) {
   var tax = refModule.getTypicalityTax();
-  console.log(tax);
-
+  //console.log(tax);
 
   var labelFitness = function(label, object) {
-    var typfit = _.has(tax[label], object) ? tax[label][object] : 0;    // schaut in geladene typicalities rein
-    //var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;        // deterministic semantics (commented out for now, so we can
-                                                                        // look at soft semantics effects)
-    //var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+    var typfit = _.has(tax[label], object) ? tax[label][object] : 0;
+    //var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;               // deterministic semantics (commented out for now, so we
+    //var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit; // can look at soft semantics effects)
     //return weightedFit;
-
     return (params.typWeight*typfit);
   };
 
@@ -1302,12 +1299,19 @@ var BasicLevelModel = function(domainInfo, params) {
         console.error("No label match"));
     });
   };
+
+  var runListener = function(listenerModel, label, item) { 
+      var listenerERP = listenerModel(label, item);
+      return Enumerate(function(){
+        var obj = sample(listenerERP);
+        return obj;
+      });
+  };
   
   return {
     runModel : runModel,
     speaker : speaker,
-
-    //run listener!! run model lässt nur sprecher laufen
-    //lege eine listener function an!!
+    listener: literalListener,
+    runListener : runListener
   };
 };
