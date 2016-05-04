@@ -2,8 +2,8 @@
 // webppl overinformativenessBDA-loadtypicalities.wppl --require ./refModule/
 
 var getTypicalities = function() {
-    // var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
-    var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    // var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
     // console.log(typicalityData);
     var unique_objects = _.unique(map(function(row) {
       return row[0];
@@ -90,17 +90,17 @@ var constructContext = function(condition,size,color,othercolor,item) {
 // var data = refModule.readCSV("./bdaInput/data_test.csv");
 // var data = refModule.readCSV("./bdaInput/data_test_reduced.csv");
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
-// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv");
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv");
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
 console.log("Loading data complete...");
 
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_test.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_reduced_test.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
 console.log("Loading unique conditions complete...");
 // console.log(conditions);
 
@@ -132,11 +132,12 @@ var modelAnalysis = function() {
   //   cost_type : 1
   // };
   var params = {
-    alpha : uniform(0,8),
+    alpha : uniform(4,10),
     lengthWeight : uniform(0,5),
     typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
     typicality_size : uniform(0,1),
     typicality_type : 1,
+    typWeight : uniform(0,1),
     cost_color : uniform(0,2),
     cost_size : uniform(0,2),
     cost_type : 1
@@ -215,7 +216,7 @@ var modelAnalysis = function() {
 };
 
 // var outputERP = MCMC(modelAnalysis, {samples: 1, burn: 1, verbose: true});
-var outputERP = MCMC(modelAnalysis, {samples: 2000, burn: 1000, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 2500, burn: 1000, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 1, verbose: true, 
 //                                      kernel: { HMC: { steps: 1, stepSize: .01 }}});
@@ -228,7 +229,7 @@ console.log('inference complete... printing');
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-fullutts-nospeaker");
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-fullutts-nospeaker-noother");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-fullutts-nospeaker-noother");
 
 // full conditions
 
@@ -247,5 +248,8 @@ refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-nospeaker");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts-nospeaker");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts-nospeaker-noother");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-fullutts-nospeaker-noother-scaledtyp");
 
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-interpolated-noother");
 

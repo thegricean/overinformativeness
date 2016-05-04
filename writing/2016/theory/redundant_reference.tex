@@ -216,6 +216,30 @@ Here we propose an extension to the production component of the Rational Speech 
 
 \jd{pragmatic speaker with non-deterministic semantics for noun choice}
 
+In order to model reference level selection, we extend RSA by simply relaxing the assumption of a deterministic semantics. As in the basic RSA model \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. This is the innovation: rather than assuming that words have deterministic truth conditions, we assign each word a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
+The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both a word's length and its frequency.
+
+Formally, we start by specifying a literal listener $L_0$ who hears a word $w$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
+$$P_{L_0}(o | w) \propto \denote{w}(o).$$
+Here $\denote{w}(o)$ is the lexical meaning of the word $w$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $w$. 
+
+We relate this to our empirically elicited typicality norms \jd{first introduce typicality norms!} via an exponential relationship: $\denote{w}(o)=\exp(\text{typicality}(o,w))$.\footnote{Cases where typicality was not elicited were assumed to have typicality $0$.}
+This relationship is motivated by considering the effect of a small difference in typicality on choice probability: in our elicitation experiment a small difference in rating should mean the same thing at the top and bottom of the scale (it is visually equivalent on the slider that participants used).
+In order for a small difference in typicality rating to have a constant effect on relative choice probability (which is a ratio), the relationship must be exponential. 
+
+Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible words $w \in {\mathcal W}(o)$.
+We take ${\mathcal W}(o)$ to be the three words for $o$ at the sub, basic, and super level.
+The speaker chooses among these nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | w)$), the frequency ($\hat{c}_f$) and the length  ($\hat{c}_l$), each weighted by a free parameter:
+$$P_{S_1}(w | o) \propto \exp(\lambda \ln P_{L_0}(o | w) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+Length cost $\hat{c}_l$ was defined as the empirical mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was the log frequency in the Google Books corpus from 1960 to the present. 
+
+\jd{put this last paragraph somewhere else?}
+We performed Bayesian data analysis to generate model predictions, conditioning on the observed production data (coded into sub, basic, and super level descriptions as described above) and integrating over the three free parameters.
+We assumed uniform priors for each parameter: $\lambda  \sim Unif(0,20)$, $\beta_f \sim Unif(0,5)$, $\beta_l \sim Unif(0,5)$.
+We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
+Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the three free parameters.
+
+\jd{insert qualitative plots and describe -- a) model predictions for the 4 different contexts if no cost diffs and no typicality; b) model predictions for the 4 different contexts when competitor is costlier/less costly but no typicality; c) model predictions for the 4 different contexts when competitor typicality is greater/lesser but no cost diffs; d) combine both or too complex? -- CAROLINE NEEDS TO FINISH MODEL EXPLORATION FOR US TO BE ABLE TO DO THIS}
 
 
 
@@ -224,6 +248,10 @@ Here we propose an extension to the production component of the Rational Speech 
 \label{sec:modifiedmodel}
 
 \red{show the model extension and the predictions it makes for the basic color/size asymmetry. report our replication of gatt?}
+
+In order to account for the production of modified referring expressions we must a) generalize the set of utterances that speakers can choose from; b) say something about the relative cost of unmodified vs.~modified referring expressions; and c) define the non-deterministic compositional semantics for modified referring expressions.
+
+\jd{continue here fill in}
 
 \subsection{Scene variation}
 \label{sec:numdistmodel}

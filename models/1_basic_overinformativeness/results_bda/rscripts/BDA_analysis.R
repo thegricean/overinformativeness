@@ -24,7 +24,7 @@ options("scipen"=10)
 # modelversion = "fixed-reducedconditions-fullutts"
 # modelversion = "fixed-reducedconditions-nospeaker"
 # modelversion = "fixed-reducedconditions-fullutts-nospeaker"
-modelversion = "fixed-reducedconditions-fullutts-nospeaker-noother"
+# modelversion = "fixed-reducedconditions-fullutts-nospeaker-noother"
 
 # modelversion = "fixed-fullconditions"
 #modelversion = "fixed-fullconditions-fullutts"
@@ -36,6 +36,8 @@ modelversion = "fixed-reducedconditions-fullutts-nospeaker-noother"
 # modelversion = "empirical-fullconditions-fullutts"
 # modelversion = "empirical-fullconditions-nospeaker"
 # modelversion = "empirical-fullconditions-fullutts-nospeaker"
+# modelversion = "empirical-fullconditions-fullutts-nospeaker-noother"
+modelversion = "empirical-fullconditions-fullutts-nospeaker-noother-scaledtyp"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 # samples = 3000
@@ -87,16 +89,6 @@ typColorSubset = params.samples %>%
 cat("typicality_color = ", typColorSubset$md) 
 cat("95% HPD interval = [", typColorSubset$md_low, ",", typColorSubset$md_hi, "]")
 
-typColorTypeSubset = params.samples %>% 
-  filter(parameter == "typicality_colortype") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("typicality_colortyp = ", typColorTypeSubset$md) 
-cat("95% HPD interval = [", typColorTypeSubset$md_low, ",", typColorTypeSubset$md_hi, "]")
-
 typSizeSubset = params.samples %>% 
   filter(parameter == "typicality_size") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
@@ -106,16 +98,6 @@ typSizeSubset = params.samples %>%
             md_low = round(HPDlo(value), 3))
 cat("typicality_size = ", typSizeSubset$md) 
 cat("95% HPD interval = [", typSizeSubset$md_low, ",", typSizeSubset$md_hi, "]")
-
-typSizeTypeSubset = params.samples %>% 
-  filter(parameter == "typicality_sizetype") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("typicality_sizetype = ", typSizeTypeSubset$md) 
-cat("95% HPD interval = [", typSizeTypeSubset$md_low, ",", typSizeTypeSubset$md_hi, "]")
 
 typTypeSubset = params.samples %>% 
   filter(parameter == "typicality_type") %>%
@@ -157,40 +139,20 @@ costTypeSubset = params.samples %>%
 cat("cost_type = ", costTypeSubset$md) 
 cat("95% HPD interval = [", costTypeSubset$md_low, ",", costTypeSubset$md_hi, "]")
 
-typNoiseSubset = params.samples %>% 
-  filter(parameter == "typNoise") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("typNoise = ", typNoiseSubset$md) 
-cat("95% HPD interval = [", typNoiseSubset$md_low, ",", typNoiseSubset$md_hi, "]")
-
-spOptSubset = params.samples %>% 
-  filter(parameter == "speakeroptimality") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("spOpt = ", spOptSubset$md) 
-cat("95% HPD interval = [", spOptSubset$md_low, ",", spOptSubset$md_hi, "]")
-
 numericSubset = params.samples %>% 
-  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","typicality_type","cost_color","cost_size","cost_type","speakeroptimality")) #%>%
+  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","typicality_type","cost_color","cost_size","cost_type","typWeight")) #%>%
 numericSubset$parameter = as.character(numericSubset$parameter)
 #numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
 numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
-# numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
+numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
 
 ggplot(numericSubset, aes(x=value)) +
     geom_histogram(data=subset(numericSubset, parameter == "alpha"), 
                    binwidth = .1, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
                  binwidth = .1, colour="black", fill="white")+
-#    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
-#                 binwidth = .05, colour="black", fill="white")+
+   geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
+                binwidth = .05, colour="black", fill="white")+
   geom_histogram(data=subset(numericSubset, parameter == "typicality_color"),
                  binwidth = .01, colour="black", fill="white")+  
   geom_histogram(data=subset(numericSubset, parameter == "typicality_size"),
@@ -203,30 +165,6 @@ ggplot(numericSubset, aes(x=value)) +
                  binwidth = .01, colour="black", fill="white")+   
   geom_histogram(data=subset(numericSubset, parameter == "cost_type"),
                  binwidth = .01, colour="black", fill="white")+
-#   geom_histogram(data=subset(numericSubset, parameter == "typNoise"),
-#                  binwidth = .01, colour="black", fill="white")+   
-  geom_histogram(data=subset(numericSubset, parameter == "speakeroptimality"),
-                 binwidth = .01, colour="black", fill="white")+     
-  #geom_histogram(data=subset(numericSubset, parameter == "typScale"),
-   #              binwidth = .1, colour="black", fill="white")+  
-#     geom_density(aes(y=.18*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
-#                  alpha=.2, fill="#FF6666")+
-#     geom_density(aes(y=.03*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
-#                  alpha=.2, fill="#FF6666")+
-# #    geom_density(aes(y=.01*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
-#  #               alpha=.2, fill="#FF6666")+
-#   geom_density(aes(y=.001*..count..),data=subset(numericSubset, parameter == "typicality_color"),adjust = 3.5,
-#                alpha=.2, fill="#FF6666")+  
-#   geom_density(aes(y=.03*..count..),data=subset(numericSubset, parameter == "typicality_size"),adjust = 3.5,
-#                alpha=.2, fill="#FF6666")+  
-#   geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "cost_color"),adjust = 3.5,
-#                alpha=.2, fill="#FF6666")+  
-#   geom_density(aes(y=.05*..count..),data=subset(numericSubset, parameter == "cost_size"),adjust = 3.5,
-#                alpha=.2, fill="#FF6666")+  
-  #  ylim(0,100) +
-  #geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "typScale"),adjust=2,
-   #            alpha=.2, fill="#FF6666")+  
-    #ggtitle("Questioner Parameter Posteriors (1000 iterations)") +
     facet_grid(~ parameter, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
@@ -427,6 +365,8 @@ ggplot(m, aes(x=SceneVariation,y=Probability,color=Data,group=Data,shape=NumDist
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/scenevariation-",modelversion,".pdf",sep=""),height=5,width=9)
 
 
+
+
 # deal with item-wise typicality
 maxdiffcases = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/9_norming_colordescription_typicality/results/data/maxdiffitems.csv")
 row.names(maxdiffcases) = paste(maxdiffcases$Color,maxdiffcases$Item)
@@ -464,7 +404,7 @@ ggplot(maxitems, aes(x=TypicalityDiff,y=ModelProbability, color=Item, group=Item
 #   geom_text(aes(label=combo)) +
   facet_grid(SufficientDimension~Utterance)
 
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/maxtypicalitydiffcases-",modelversion,".pdf",sep=""),height=6,width=1)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/maxtypicalitydiffcases-",modelversion,".pdf",sep=""),height=6,width=10)
 
 
 

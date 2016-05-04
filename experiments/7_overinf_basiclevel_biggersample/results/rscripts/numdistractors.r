@@ -202,6 +202,7 @@ targets$BDAFullColor = targets$clickedColor
 targets$BDAOtherColor = "othercolor"
 targets$BDAItem = "item"
 
+targets[targets$UtteranceType == "OTHER",]$refExp
 
 # full conditions
 write.csv(targets,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
