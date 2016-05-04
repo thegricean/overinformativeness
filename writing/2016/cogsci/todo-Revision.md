@@ -32,7 +32,7 @@
   Relatedly, the reported r-values seem to suggest the use of point
   estimates. Which ones?
 
-  --> **Robert** 
+  --> **Robert -- DONE** 
 
 - The paper says that it does Bayesian model comparison but I think what
   it does should better be called estimation. A nice recent paper that
@@ -51,6 +51,8 @@
   --> We do mention the connection to Rosch's results and to the basic level phenomenon. Should we make this connection more clear? Should we make more clear how our approach is different? 
 
   **Robert, Noah ** what do you think?
+
+  The only other empirical paper I know is Waxman & Hatch (1992), which is a devo paper showing that 4 year olds are more likely to produce superordinate references than 3 year olds... But this is in isolation (rather than incorporating pragmatics). There's also a social psych paper by John, Hampson, & Goldberg (1991) that look at personality-trait hierarchies... But that's a pretty different domain, too. Probably not worth citing these in the cogsci paper, but would be nice for the bigger paper.
 
   --> Judith will ask Herb if he has any more knowledge of the related lit
 
