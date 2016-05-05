@@ -246,7 +246,7 @@ For instance, the panda was relatively atypical for its basic level ``bear'' (me
 \centering
 %\includegraphics[width=.5\textwidth]{graphs/collapsed-pattern}
 \includegraphics[width=.5\textwidth]{graphs/qualitativepattern}
-\caption{Empirical utterance probabilities (top row) and model posterior predictive means (bottom row) by condition, collapsed across targets and domains. Error bars indicate bootstrapped 95\% confidence intervals.}
+\caption{Empirical utterance probabilities (top row) and model posterior predictive MAP estimates (bottom row) by condition, collapsed across targets and domains. Error bars indicate bootstrapped 95\% confidence intervals.}
 \label{fig:qualitativemodel}
 \end{figure}
 
@@ -340,11 +340,11 @@ Inference for the cognitive model was exact, while we used Markov Chain Monte Ca
 \begin{figure}[t!]
 \centering
 \includegraphics[width=.45\textwidth]{graphs/scatterplot}
-\caption{Empirical production data for each level of reference against model posterior predictive at the by-target level.}
+\caption{Mean empirical production data for each level of reference against the MAP of the model posterior predictive at the by-target level.}
  \label{fig:scatterplot}
 \end{figure}
 
-Posterior predictions of the model at the target level (collapsing across distractors for each target, within each condition) are compared to empirical data in Fig. \ref{fig:scatterplot}. On the by-target level the model achieves a correlation of $r = .79$. Looking at results on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. 
+Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives at the target level (collapsing across distractors for each target, within each condition) are compared to empirical data in Fig. \ref{fig:scatterplot}. On the by-target level the model achieves a correlation of $r = .79$. Looking at results on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. 
 The model does a good job of capturing the quantitative patterns in the data, especially considering the sparsity of our data at the by-target level.
 One clear flaw is that the model predicts greater use of the super level label than people exhibit.
 Further systematic deviation appears likely for specific items. 
