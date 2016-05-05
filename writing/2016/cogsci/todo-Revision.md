@@ -11,11 +11,11 @@
   that makes this paper feel incremental, rather than than the major leap
   one would normally expect of a prize-worthy paper.
 
-  --> **Judith** will add a sentence about this
+  --> **Judith** will add a sentence about this -- Judith says: I didn't really have anything inspired to say about this in the little space we have. Leave it as is?
 
 - I wondered whether factors Length and Frequency are correlated.
 
-  --> I assume they are, should we mention it? If yes, where? **Judith** 
+  --> I assume they are, should we mention it? If yes, where? **Judith -- DONE** 
 
 - Although the paper reports significance of the Helmert contrast
   basic.vs.super, it might be good to back this up by comparing the
@@ -25,7 +25,7 @@
   that were so, it would basically mean: subjects use basic categories
   unless the referential task forces them to be more specific.
 
-  --> **Judith**
+  --> **Judith -- DONE**
 
 - It was not clear to me how the model's posterior predictives in Fig 5
   are to be understood. Are these means or MAPs, or something else? -
