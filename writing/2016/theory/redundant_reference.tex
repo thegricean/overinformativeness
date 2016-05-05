@@ -256,7 +256,7 @@ In order to account for the production of modified referring expressions we must
 \subsection{Scene variation}
 \label{sec:numdistmodel}
 
-The extended noisy semantics model makes a number of novel predictions for the rate of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of scene variation. Previous research has established that there is more overmodification in polychrome rather than monochrome displays \cite{bla -- see paula's paper} and in scenes in which objects differ along more feature dimensions \cite{koolen bla}. We will quantify scene variation here as the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
+The extended noisy semantics model makes a number of novel predictions for the rate of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of scene variation. Previous research has established that there is more overmodification in polychrome rather than monochrome displays \cite{Davies2013, rubiofernandez2016} and in scenes in which objects differ along more feature dimensions \cite{Koolen2013}. We will quantify scene variation here as the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
 
 \begin{equation*}
 	\textrm{scenevar} = \frac{n_{\textrm{diff}}}{n_{\textrm{total}}}
@@ -328,14 +328,14 @@ We further varied the amount of variation the scene by varying the number of dis
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts}
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts-nospeaker-noother}
 \caption{Model posterior predictive XXX estimate of utterance probability (blue) alongside empirical utterance proportions  (red) as a function of scene variation. Rows indicate the sufficient dimension.}
 \label{fig:modelexpresults}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-fullutts}
+\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-fullutts-nospeaker-noother}
 \caption{Scatterplot of model posterior predictive XXX estimates against empirical proportions ($r=$.98).}
 \label{fig:modelexpresults}
 \end{figure}
@@ -355,10 +355,13 @@ We further varied the amount of variation the scene by varying the number of dis
 
 \begin{itemize}
 	\item talk about how the approach applies to other referring expressions like those mentioned in the intro (indefinite, post-nominal modification pronouns)
+	\item nature of numbers in non-deterministic semantics (we see that typicality effects fall out of treating the numbers in the semantics as typicality values for noun choice, and the same if we make up values for modifier choice -- but how do we get here compositionally? one would ideally model the structure in the prior (rich world knowledge), ie the statistical correlations between different dimensions (type -- banana, color -- blue/yellow, etc) and have the fidelity/noise values emerge from THAT compositionally!
 	\item talk about how our approach fits in with incremental stories of overspecification?
 	\item The work reported here clearly shows that overmodified referring expressions, contrary to some claims in the literature \cite{Engelhardt2011} \red{who say overmodification ipmairs comprehension}, contribute more utility than `minimally' specified referring expressions.
 \end{itemize}
-
+%
+\red{There's a parallel to be made between typicality effects on ``overmodification" and the literature on instrument mention. For example, \cite{brown1987} showed that atypical instruments are more likely to be mentioned than typical ones ("The man was stabbed with an ice pick", not "The man was stabbed with a knife"). Their account of the effect is that speakers do this for speaker-internal reasons. \cite{lockridge2002} replicated the original finding in a story retelling scenario, but also manipulated whether or not the addressees saw pictures of the actions. Without pictures, there were even more mentions of atypical objects, which they take as evidence that the typicality effect is an audience design effect. THIS IS COOL!!!!!}
+%
 \appendix
 
 \section{Validation of interactive web-based written production paradigm}

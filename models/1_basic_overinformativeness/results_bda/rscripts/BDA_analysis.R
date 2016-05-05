@@ -20,28 +20,15 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
-# modelversion = "fixed-reducedconditions"
-# modelversion = "fixed-reducedconditions-fullutts"
-# modelversion = "fixed-reducedconditions-nospeaker"
-# modelversion = "fixed-reducedconditions-fullutts-nospeaker"
-# modelversion = "fixed-reducedconditions-fullutts-nospeaker-noother"
-
+modelversion = "fixed-reducedconditions"
 # modelversion = "fixed-fullconditions"
-#modelversion = "fixed-fullconditions-fullutts"
-# modelversion = "fixed-fullconditions-nospeaker"
-# modelversion = "fixed-fullconditions-fullutts-nospeakeropt"
-# modelversion = "fixed-fullconditions-fullutts-nospeaker-noother"
-
 # modelversion = "empirical-fullconditions"
-# modelversion = "empirical-fullconditions-fullutts"
-# modelversion = "empirical-fullconditions-nospeaker"
-# modelversion = "empirical-fullconditions-fullutts-nospeaker"
-# modelversion = "empirical-fullconditions-fullutts-nospeaker-noother"
-modelversion = "empirical-fullconditions-fullutts-nospeaker-noother-scaledtyp"
+# modelversion = "empirical-fullconditions-scaledtyp"
+# modelversion = "interpolated"
+# modelversion = "interpolated-scaledtyp"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
-# samples = 3000
-samples = 2000
+samples = 10000
 param_sample_test = params %>%
   group_by(parameter) %>%
   summarise(Sum=sum(MCMCprob))
