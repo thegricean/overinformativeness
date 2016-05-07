@@ -29,37 +29,72 @@ Here, we show that introducing noisy truth functions into the semantics of refer
 
 	- why it can't capture overmodified REs 
 	
-	- why it can't capture basic level prefs (*introduce experiment here?*)
-	
 2. RSA with cost
 
 	- why it still can't capture overmodified REs
-	
-	- how it starts capturing basic level prefs	
 
 3. RSA with noisy truth functions
 	
-	- intuition for noisy truth functions (in terms of typicality? average global success probability of using a particular utterance?)
+	- intuition for noisy truth functions (defer discussion of what the fidelity parameters exactly mean and how they come about compositionally to the general discussion)
 
-### Modeling REs -- how noisy truth functions solve all our problems
+	- show that this gets qualitative result of overmodification under certain parameter settings in the first place (even assuming equal costs)
 
-1. noise parameters for color and size captures color-size asymmetry (eg as documented by Gatt)
+	- !! show that it predicts scene variation effects (introduce our notion of scene variation, but also show the qualitative effect under the Koolen definition?)
 
-	- replication of Gatt study but with overall lower overmodification rates
+	- !! bridge: to evaluate the model, we need human data
+
+### Experiment 1: modified referring expressions
+
+	- write down experiment
+
+	- BDA and results
+
+	- discussion:
+
+		1. when modifiers don't work perfectly, adding modmifiers adds utility (ie no "overinformativeness")
+
+		2. is this just about this very specific corner of the production literature? 
+
+### RSA for nominal choice
+
+	- analogous problem (but different costs)
+
+	- typicality effects! baked into semantics via empirical norms
+
+### Experiment 2: nominal choice
+
+	- write down experiment
+
+	- BDA and results	
+
+	- discussion:
+
+		1. we can get basic level preference by taking into account utterance cost (frequency & length, both with non-zero weight!)
+
+		2. it's not just all basic level unless forced to be more specific (3-level Helmert contrasts justified over binary condition variable)
+
+		3. typicality matters (non-zero weight) -- point to one particular example
+
+### RSA with empirical typicality for modified REs
+
+	- add typicality effects as in nominal choice model: made up noise terms (banana table) captures sedivy/westerbeek effect
+
+	- emprical elicitation of color typicalities for each color-noun combination: non-zero type weight in interpolation analysis suggests typicality is necessary even in our dataset that explicitly tried to minimize it (pull out golfball example)		
+
+### General discussion
+
+	- big open problem: compositionality for typicality effects
+
+	- SEE TEX FILE FOR ADDITIONAL DISCUSSION POINTS
+
+### Appendix
+
+#### Replication of Gatt et al 2011 
+
+	- results: overall lower overmodification rates
 	
-	- BDA, get posteriors over color and size fidelity & cost
+	- discussion: we used realistic, ie. more typical, colors, which are known to drive down overmodification
 
-2. noise parameters for color and size capture scene variation effects (eg as documented by Koolen)
 
-	- novel scene variation study based on Gatt replication
-	
-	- BDA --> would be cool of posteriors over color and size fidelity come out similar as in 1.
-	
-3. noise parameters for each color-noun combination captures color typicality effects (eg as documented by Westerbeek)
 
-	- open problem: compositionality
-
-4. how to get typicality effects compositionally
-		
-5. adding noise values (typicality norms) to nominal RE model improves model fit: especially where the super level term would be otherwise preferred both on informativeness and cost grounds, the basic level gets an extra boost *(because less confusable? we need to get more data. i still don't fully understand all this)* 
  
