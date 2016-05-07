@@ -358,12 +358,11 @@ On examination, candy items like ``gummy bears'' or ``jelly beans'' were particu
 
 Parameter posteriors are presented in Fig. \ref{fig:paramposteriors}. 
 Informativeness is weighted relatively strongly, while length is weighted somewhat more strongly than frequency.
-Because this model contains the simpler models without frequency, length, and informativity as nested sub-models, we can use parameter posteriors for Bayesian model selection.
-In this case the 95\% highest density intervals (HDIs) exclude zero for each of the three weight parameters, indicating that each term is justified.
+Note that the 95\% highest density intervals (HDIs) for all three weight parameters exclude zero, indicating that some contribution of each is useful in explaining the data.
 In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran an additional Bayesian data analysis with an added typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values (when $\beta_t {=} 1$) and deterministic (i.e. $0$ or $1$) \emph{a priori} values based on the true taxonomy (when $\beta_t {=} 0$).
 %truth-conditional function returning one if the object was a member of the label category and zero otherwise. 
 %The posterior distribution of this parameter allows for Bayesian model selection: if $\beta_t = 0$ is excluded from the HDI, and the distribution skews high, then some influence of typicality is necessary to account for the data. 
-We found a MAP estimate for $\beta_t$ of $.94$, HDI $= [0.88,1]$, strongly indicating that empirical typicality values are necessary.  
+We found a MAP estimate for $\beta_t$ of $.94$, HDI $= [0.88,1]$, strongly indicating that it is useful to incorporate empirical typicality values.
 Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis. Its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is already captured by other aspects of the model. 
 %: one that included only an informativeness term (\tableref{tab:bestparams}, first row and \figref{fig:qualitativemodel}, second row) and one that included informativeness and the cost terms but no typicality (\tableref{tab:bestparams}, second row and \figref{fig:qualitativemodel}, third row). 
 %The model without typicality performed significantly worse, as \red{can be seen in the lower correlations of the simpler models .
