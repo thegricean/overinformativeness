@@ -200,8 +200,7 @@ To date, there is no theory to account for all of these different phenomena; and
 \section{Modeling speakers' choice of referring expression}
 \label{sec:models}
 
-
-Here we propose an extension to the production component of the Rational Speech Acts \cite<RSA>{frank2012, goodmanstuhlmueller2013} modeling framework that provides a principled explanation for the phenomena reviewed in the previous section, and that holds promise for being generalizable to many further production phenomena related to overinformativeness, which we discuss in the General Discussion. \jd{make a list and make sure to discuss} We proceed by first presenting the general framework in \sectionref{sec:basicrsa}, and show why the most basic model cannot account for any of the phenomena outlined above, due to its strong focus on maximizing the informativeness of one-word expressions under a deterministic semantics. We then show in \sectionref{sec:basiclevelsmodel} how first relaxing the assumption of a deterministic semantics can account for speakers' preferences in the choice of simple nominal referring expressions. We then further extend the model by allowing multi-word utterances; \sectionref{sec:modifiedmodel} shows how this, in combination with the non-deterministic semantics, captures all of the phenomena related to overmodified referring expressions listed in \tableref{tab:effects} -- the color-size asymmetry, the scene variation effect, and the color typicality effect.
+Here we propose an extension to the production component of the Rational Speech Acts \cite<RSA>{frank2012, goodmanstuhlmueller2013} modeling framework. This extension provides a principled explanation for the phenomena reviewed in the previous section and  holds promise for being generalizable to many further production phenomena related to overinformativeness, which we discuss in the General Discussion. \jd{make a list and make sure to discuss} We proceed by first presenting the general framework in \sectionref{sec:basicrsa}, and show why the most basic model cannot account for any of the phenomena outlined above, due to its strong focus on maximizing the informativeness of one-word expressions under a deterministic semantics. In \sectionref{sec:modifiedmodel} we introduce the crucial innovation: relaxing the assumption of a deterministic semantics. We show that the model can qualitatively account both for speakers' asymmetric propensity to overmodify with color rather than with size and for speakers' propensity to overmodify more with increasing scene variation. In \sectionref{sec:exp1-scenevar} we report an interactive  reference game experiment which functions as a quantitative test of the model. In \sectionref{sec:reflevelmodel} we apply the model to the choice of simple nominal referring expressions and show that the qualitative preference for referring at the basic level emerges from the interaction of informativeness, utterance cost, and typicality. In \sectionref{sec:exp2-reflevel} we then report a second interactive reference game experiment that provides data for a quantitative test of the model. For both cases -- modified and unmodified referring expressions -- we find that a systematic softening of the semantic truth functions results in excellent quantitative fits to the data.
 
 
 \jd{Interesting snippet from Pechmann which we should probably quote: ``in information theory, a positive function is assigned to redundancy, since it can compensate for partial loss of information. Can overspecification in referential communication have the same function? We can rule out this possibility, because we regard those utterances as being `redundant' which include nondistinguishing features in addition to distinguishing ones. Yet nondistinguishing features cannot compensate for the loss of distinguishing information, since by definition nondistinguishing features do not distinguish the target referent from context. At best, they can reduce the domain of referential alternatives.'' $\rightarrow$ But that IS compensating!}
@@ -212,11 +211,127 @@ Here we propose an extension to the production component of the Rational Speech 
 \jd{introduce the basic model and show why it doesn't get overinformative}
 
 \subsection{RSA with non-deterministic semantics}
-\label{sec:basiclevelsmodel}
+\label{sec:modifiedmodel}
 
-\jd{pragmatic speaker with non-deterministic semantics for noun choice}
+In order to account for the production of modified referring expressions we must a) generalize the set of utterances that speakers can choose from; b) say something about the relative cost of unmodified vs.~modified referring expressions; and crucially: c) define the non-deterministic compositional semantics for modified referring expressions.
 
-In order to model reference level selection, we extend RSA by simply relaxing the assumption of a deterministic semantics. As in the basic RSA model \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. This is the innovation: rather than assuming that words have deterministic truth conditions, we assign each word a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
+As in the basic RSA model \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. 
+
+\jd{fill in model details; include a plot showing qualitative size-color asymmetry; include a plot showing scene variation effect in the Koolen sense; introduce our version of scene variation}
+
+\begin{figure}
+\label{fig:basicasymmetry}
+\end{figure}
+
+The extended noisy semantics model makes a number of novel predictions for the rate of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of scene variation. Previous research has established that there is more overmodification in polychrome rather than monochrome displays \cite{Davies2013, rubiofernandez2016} and in scenes in which objects differ along more feature dimensions \cite{Koolen2013}. We will quantify scene variation here as the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
+
+\begin{equation*}
+	\textrm{scenevar} = \frac{n_{\textrm{diff}}}{n_{\textrm{total}}}
+\end{equation*}
+
+To explain, let's turn again to \figref{subfig:sizesufficient}. Here, the target item is the small blue thumbtack and there are two distractor items: a big blue thumbtack and a big red thumbtack. Thus, for the purpose of establishing unique reference, size is the sufficient feature color the insufficient feature. There is one distractor that differs from the target in color (the big red thumbtack) and there are two distractors in total. That is, $\textrm{scenevar} = \frac{1}{2} = .5$. Scene variation is minimal when all distractors are of the same color as the target, in which case it is 0. Scene variation is maximal when all distractors except for one (in order for the feature to remain insufficient for establishing reference) are of a different color than the target. That is, scene variation may take on values between 0 and $\frac{n_{\textrm{total} - 1}}{n_{\textrm{total}}}$, i.e, approaching but never reaching 1.
+
+
+The noisy semantics model's predictions are shown in \figref{fig:numdistractors}. \jd{insert model predictions for one set of parameter values to show qualitative effect and explain why?}
+
+\begin{figure}
+\label{fig:numdistractors}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{\textwidth}
+\includegraphics[width=\textwidth]{pics/speaker-perspective-small.png}
+\caption{Speakers' perspective}
+\label{fig:speakerpersp}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\includegraphics[width=\textwidth]{pics/listener-perspective-small.png}
+\caption{Listeners' perspective.}
+\label{fig:listenerpersp}
+\end{subfigure}
+\caption{Example displays from the  (a) speaker's and the  (b)  listener's perspective on a \emph{size-sufficient 4-2} trial.}
+\label{fig:speakerlistenerperspective}
+\end{figure}
+
+\subsection{Experiment 1: scene variation in modified referring expressions}
+\label{sec:exp1-scenevar}
+
+To test the model's predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we qualitatively replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were asked to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
+
+\subsubsection{Method}
+
+
+\paragraph{Participants}
+
+We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. An additional 38 trials that were contributed by 4 speakers who prematurely dropped out of the experiment and who could therefore not be compensated for their work, were also included. \jd{should we be excluding these? they look like normal trials.} Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses and only participants with a past work approval rate of at least 95\% were accepted. %The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
+
+\paragraph{Procedure}
+
+Participants were paired up through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions that informed participants that one of them would be the Speaker and the other the Listener. They were further told that they would see some number of objects on each round and that the speaker's task is to communicate one of those objects, marked by a green border, to the listener. They were explicitly told that using locative modifiers would be useless because the order of objects on their partner's screen would be different than on their own screen. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}.
+
+On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:speakerlistenerperspective} for an example of the listener's and speaker's view on a particular trial.
+
+The speaker produced a referring expression to communicate the target to the listener by typing in a chat window. After pressing Enter or clicking the `Send' button, the speaker's message was shown to the listener. The listener then clicked on the object they thought was the target, given the speaker's message.  Once the listener clicked an object, a red border appeared around that object in both the listener and the speaker's display for 1 second before advancing to the next trial.
+
+Both speakers and listeners could write in the chat window, allowing listeners to request clarification if necessary. Listeners could only click on an object and advance to the next trial once the speaker had sent a message. 
+
+
+\paragraph{Materials}
+
+Participants proceeded through 72 trials. Of these, half were critical trials of interest and half were filler trials. On critical trials, we varied the feature that was sufficient to mention for uniquely establishing reference, the total number of objects in the array, and  the number of objects that shared the non-sufficient feature with the target. 
+
+Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:speakerlistenerperspective} for an example of a size-sufficient trial from both the speaker's and the listener's perspective. 
+
+We further varied the amount of variation the scene by varying the number of distractor objects in each array (2, 3, or  4) and the number of distractors that did shared the non-sufficient feature value with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. Each total number of distractors was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following nine conditions: \emph{2-1, 2-2, 3-1, 3-2, 3-3, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Each condition occurred twice with each sufficient dimension. Objects never differed in type within one array (e.g., all objects are thumbtacks in \figref{fig:speakerlistenerperspective} but always differed in type across trials. Each object type could occur in two different sizes and two different colors. We deliberately chose photo-realistic objects of intuitively fairly typical colors. The 36 different object types and the colors they could occur with are listed in \appref{app:itemtypes}. 
+
+
+Fillers were target trials from Exp.~2, a replication of \cite{graf2016}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. See \sectionref{sec:exp2-reflevel} for a description of these materials.
+
+
+\subsubsection{Results}
+
+\red{CONTINUE HERE BY GOING INTO:}
+
+\begin{itemize}
+	\item data cleanup (take caroline's description of basic levels cleanup as basis)
+	\item exclusion of trials/participants (including exclusion of 46 cases that were not direct color or size mentions (eg "different color"))
+	\item analysis -- predict overmodification from sufficient dimension and scene variation
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts-nospeaker-noother}
+\caption{Model posterior predictive XXX estimate of utterance probability (blue) alongside empirical utterance proportions  (red) as a function of scene variation. Rows indicate the sufficient dimension.}
+\label{fig:modelexpresults}
+\end{figure}
+
+
+\subsection{Model evaluation}
+
+\jd{talk about Bayesian data analysis, posteriors over parameters}
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
+\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP) $\lambda$ = \red{10.8}, 95\% highest density interval (HDI) = \red{[9.7,12.8]}; \red{MAP bla = 2.5, HDI = [1.9,3.1] etc}}
+\label{fig:posteriorparameters}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-fullutts-nospeaker-noother}
+\caption{Scatterplot of model posterior predictive XXX estimates against empirical proportions ($r=$.98).}
+\label{fig:modelexpresults}
+\end{figure}
+
+
+\subsection{Modeling speakers' choice of reference level}
+\label{sec:reflevelmodel}
+
+\jd{motivation, bridge: ref level selection as analogous to property selection -- both fall under what kees et al call "content selection"}
+
+This is the innovation: rather than assuming that words have deterministic truth conditions, we assign each word a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
 The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both a word's length and its frequency.
 
 Formally, we start by specifying a literal listener $L_0$ who hears a word $w$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
@@ -241,114 +356,14 @@ Inference for the cognitive model was exact, while we used Markov Chain Monte Ca
 
 \jd{insert qualitative plots and describe -- a) model predictions for the 4 different contexts if no cost diffs and no typicality; b) model predictions for the 4 different contexts when competitor is costlier/less costly but no typicality; c) model predictions for the 4 different contexts when competitor typicality is greater/lesser but no cost diffs; d) combine both or too complex? -- CAROLINE NEEDS TO FINISH MODEL EXPLORATION FOR US TO BE ABLE TO DO THIS}
 
+\subsection{Experiment 2: choice of reference level}
+\label{sec:exp2-reflevel}
 
 
+\section{Typicality effects}
+\label{sec:typicality}
 
-\subsection{Non-deterministic RSA with multi-word utterances}
-\label{sec:modifiedmodel}
-
-\red{show the model extension and the predictions it makes for the basic color/size asymmetry. report our replication of gatt?}
-
-In order to account for the production of modified referring expressions we must a) generalize the set of utterances that speakers can choose from; b) say something about the relative cost of unmodified vs.~modified referring expressions; and c) define the non-deterministic compositional semantics for modified referring expressions.
-
-\jd{continue here fill in}
-
-\subsection{Scene variation}
-\label{sec:numdistmodel}
-
-The extended noisy semantics model makes a number of novel predictions for the rate of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of scene variation. Previous research has established that there is more overmodification in polychrome rather than monochrome displays \cite{Davies2013, rubiofernandez2016} and in scenes in which objects differ along more feature dimensions \cite{Koolen2013}. We will quantify scene variation here as the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
-
-\begin{equation*}
-	\textrm{scenevar} = \frac{n_{\textrm{diff}}}{n_{\textrm{total}}}
-\end{equation*}
-
-To explain, let's turn again to \figref{subfig:sizesufficient}. Here, the target item is the small blue thumbtack and there are two distractor items: a big blue thumbtack and a big red thumbtack. Thus, for the purpose of establishing unique reference, size is the sufficient feature color the insufficient feature. There is one distractor that differs from the target in color (the big red thumbtack) and there are two distractors in total. That is, $\textrm{scenevar} = \frac{1}{2} = .5$. Scene variation is minimal when all distractors are of the same color as the target, in which case it is 0. Scene variation is maximal when all distractors except for one (in order for the feature to remain insufficient for establishing reference) are of a different color than the target. That is, scene variation may take on values between 0 and $\frac{n_{\textrm{total} - 1}}{n_{\textrm{total}}}$, i.e, approaching but never reaching 1.
-
-
-The noisy semantics model's predictions are shown in \figref{fig:numdistractors}. \jd{insert model predictions for one set of parameter values to show qualitative effect and explain why?}
-
-\begin{figure}
-\label{fig:numdistractors}
-\end{figure}
-
-To test the model's predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we qualitatively replicate the findings of \citeA{gatt2011} with a different set of stimuli.} \jd{already introduce general paradigm earlier in the noun choice part?} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were asked to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
-
-\subsubsection{Method}
-
-
-\paragraph{Participants}
-
-We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. An additional 38 trials that were contributed by 4 speakers who prematurely dropped out of the experiment and who could therefore not be compensated for their work, were also included. \jd{should we be excluding these? they look like normal trials.} Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses and only participants with a past work approval rate of at least 95\% were accepted. %The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
-
-\paragraph{Procedure}
-
-Participants were paired up through a real-time multi-player interface \cite{Hawkins15_RealTimeWebExperiments}. For each pair, one participant was assigned the speaker role and one the listener role. They  initially received written instructions that informed participants that one of them would be the Speaker and the other the Listener. They were further told that they would see some number of objects on each round and that the speaker's task is to communicate one of those objects, marked by a green border, to the listener. They were explicitly told that using locative modifiers would be useless because the order of objects on their partner's screen would be different than on their own screen. Before continuing to the experiment, participants were required to correctly answer a series of questions about the experimental procedure. These questions are listed in \appref{app:numdistractors}.
-
-On each trial participants saw an array of objects. The array contained the same objects for both speaker and listener, but the order of objects was randomized and was typically different for speaker and listener. In the speaker's display, one of the objects -- henceforth the \emph{target} -- was highlighted with a green border. See \figref{fig:speakerlistenerperspective} for an example of the listener's and speaker's view on a particular trial.
-
-\begin{figure}
-\label{fig:exampledisplay}
-\red{insert example display}
-\end{figure}
-
-The speaker produced a referring expression to communicate the target to the listener by typing in a chat window. After pressing Enter or clicking the `Send' button, the speaker's message was shown to the listener. The listener then clicked on the object they thought was the target, given the speaker's message.  Once the listener clicked an object, a red border appeared around that object in both the listener and the speaker's display for 1 second before advancing to the next trial.
-
-Both speakers and listeners could write in the chat window, allowing listeners to request clarification if necessary. Listeners could only click on an object and advance to the next trial once the speaker had sent a message. 
-
-\begin{figure}
-\begin{subfigure}{\textwidth}
-\includegraphics[width=\textwidth]{pics/speaker-perspective-small.png}
-\caption{Speakers' perspective}
-\label{fig:speakerpersp}
-\end{subfigure}
-
-\begin{subfigure}{\textwidth}
-\includegraphics[width=\textwidth]{pics/listener-perspective-small.png}
-\caption{Listeners' perspective.}
-\label{fig:listenerpersp}
-\end{subfigure}
-\caption{Example displays from the  (a) speaker's and the  (b)  listener's perspective on a \emph{size-sufficient 4-2} trial.}
-\label{fig:speakerlistenerperspective}
-\end{figure}
-
-\paragraph{Materials}
-
-Participants proceeded through 72 trials. Of these, half were critical trials of interest and half were filler trials. On critical trials, we varied the feature that was sufficient to mention for uniquely establishing reference, the total number of objects in the array, and  the number of objects that shared the non-sufficient feature with the target. 
-
-Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:speakerlistenerperspective} for an example of a size-sufficient trial from both the speaker's and the listener's perspective. 
-
-We further varied the amount of variation the scene by varying the number of distractor objects in each array (2, 3, or  4) and the number of distractors that did shared the non-sufficient feature value with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. Each total number of distractors was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following nine conditions: \emph{2-1, 2-2, 3-1, 3-2, 3-3, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Each condition occurred twice with each sufficient dimension. Objects never differed in type within one array (e.g., all objects are thumbtacks in \figref{fig:speakerlistenerperspective} but always differed in type across trials. Each object type could occur in two different sizes and two different colors. We deliberately chose photo-realistic objects of intuitively fairly typical colors. The 36 different object types and the colors they could occur with are listed in \appref{app:itemtypes}. 
-
-
-\red{Fillers were target trials from a different experiment \cite{graf-underreview}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. For example, a filler trial could consist of a display with a dalmatian, a pug, and a squirrel.} \jd{update this, actually write up as its own section}
-
-
-
-\subsubsection{Results}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts-nospeaker-noother}
-\caption{Model posterior predictive XXX estimate of utterance probability (blue) alongside empirical utterance proportions  (red) as a function of scene variation. Rows indicate the sufficient dimension.}
-\label{fig:modelexpresults}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-fullutts-nospeaker-noother}
-\caption{Scatterplot of model posterior predictive XXX estimates against empirical proportions ($r=$.98).}
-\label{fig:modelexpresults}
-\end{figure}
-
-\subsection{Scene variation}
-\label{sec:scenevarmodel}
-
-\red{show model predictions for koolen et al scenes -- qualitative effect}
-
-\subsection{Color typicality}
-\label{sec:colortypmodel}
-
-\red{set up model extension to get color typicality effect (or will you end up reporting this model from the start?)}
+\jd{extension of basic modifiers model to color typicality effects. Show qualitative result. Then discuss empirically elicited typicality norms for colro and simplay type expression in exp.~1 and show that typicality matters and that we find a typicality effect in our data empirically? Maybe already discuss the issue of compositionality here instead of in the GD.}
 
 \section{General Discussion}
 \label{sec:gd}
