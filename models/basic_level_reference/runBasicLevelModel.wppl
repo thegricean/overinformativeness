@@ -24,34 +24,35 @@
   };
 
   var item = [
-    ["dalmatian", "greyhound", "horse"], 
-    //["husky", "crocodile", "greyhound"], 
-    //["size","blue","golfball"],
-    //["othersize","blue","golfball"],
-    //["small","green"],
-    //["othersize","pink","golfball"]
-    []
+    //"dalmatian", "greyhound", "horse" 
+    //"dalmatian", "horse", "bison" 
+    "dalmatian","horse","bed"
+    //"dalmatian","bed","cookies"
   ];
 
   var label = [
   "dalmatian"
   //"greyhound"
   //"horse"
+  //"dog"
+  //"animal"
   ];
 
   var domainInfo = dogInfo
+  //console.log(domainInfo)
 
   // var model = OverinformativeModel(params,context,typicality_norms);
   var model = BasicLevelModel(domainInfo, params);
   var runModel = model.runModel;
+  console.log("item: ", item)
   var speaker = model.speaker;
   var runListener = model.runListener;
   var listener = model.listener;
   
   var modelOutput = runModel(speaker, item, domainInfo);
-  //var listenerOutput = runListener(listener, label, item);
+  var listenerOutput = runListener(listener, label, item);
 
-  console.log(modelOutput);
-  // console.log(listenerOutput);
+  console.log("modelOutput: ", modelOutput);
+  console.log("listenerOutput: ", listenerOutput);
 
   //refModule.writeCSV(modelOutput, modelOutput.csv);
