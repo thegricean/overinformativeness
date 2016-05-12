@@ -24,9 +24,9 @@
   };
 
   var item = [
-    //"dalmatian", "greyhound", "horse" 
+    "dalmatian", "greyhound", "horse" 
     //"dalmatian", "horse", "bison" 
-    "dalmatian","horse","bed"
+    //"dalmatian","horse","bed"
     //"dalmatian","bed","cookies"
   ];
 

@@ -1260,15 +1260,18 @@ var BasicLevelModel = function(domainInfo, params) {
 
   var labelFitness = function(label, object) {
     var typfit = _.has(tax[label], object) ? tax[label][object] : 0;
-    //var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;               // deterministic semantics (commented out for now, so we
-    //var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit; // can look at soft semantics effects)
+    var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;
+    var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
     //return weightedFit;
-    return (params.typWeight*typfit);
+    return (Math.log(weightedFit));
   };
 
   var literalListener = cache(function(label, item){
     return Enumerate(function(){
       var object = uniformDraw(item);
+      //console.log(object);
+      //console.log(label);
+      //console.log(labelFitness(label,object));
       factor(labelFitness(label,object));
       return object;
     });
