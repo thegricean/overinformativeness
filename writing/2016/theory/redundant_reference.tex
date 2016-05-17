@@ -288,26 +288,38 @@ We further varied the amount of variation the scene by varying the number of dis
 
 Fillers were target trials from Exp.~2, a replication of \cite{graf2016}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. See \sectionref{sec:exp2-reflevel} for a description of these materials.
 
+\subsubsection{Data pre-processing and exclusion}
+
+We collected 2138 referential expressions. \jd{Caroline, this number isn't 60*36, which would be 2160 -- is that because there are already some exclusions that went into data/colsizeCor\_manModified.csv? If so, what were they?} Because we did not restrict participants' utterances in any way, they produced many different kinds of expressions to refer to the target. Testing the model's predictions required, for each trial, either excluding it or classifying the produced utterance as an instance of a \emph{color}-only mention, a \emph{size}-only mention, or a \emph{color-and-size} mention. To this end we conducted the following semi-automatic data pre-processing. 
+
+In a first step, an R script automatically checked whether (what the experimenters deemed to be) the target's color or size was included in the utterance. In this way, \red{XXX \%} of cases were classified as containing a size or color term. However, this did not capture that sometimes, a participant produced a different color or size term than the one we had intended (e.g., \emph{pink} instead of \emph{purple} \red{XXX \%} or \emph{large} instead of \emph{big} \red{XXX \%}) or the expression contained a typo (e.g., \emph{pruple} instead of \emph{purple} \red{XXX \%}). In a second step, one of the authors (CG) therefore manually checked the automatic coding: utterances of an unintended color or size were coded as an instance of the intended color or size if they were similar enough in meaning and utterances with typos were corrected.   Most of the time, participants converged on a convention of mentioning simply the target's size and/or color, e.g., \emph{purple} or \emph{big blue}, without even using an article (e.g., \emph{the}) or mentioning the object's type (e.g., \emph{comb}). Articles were omitted in \red{XXX \%} of cases and object types were omitted in \red{XXX \%} of cases. We did not analyze this any further.
+
+Finally, there were 46 cases (2\%) in which the speaker made reference to the distinguishing dimension in an abstract way, e.g.~\emph{different color}, \emph{unique one}, \emph{ripest}, \emph{very girly}, or \emph{guitar closest to viewer}. While interesting as utterance choices,\footnote{Certain participants seemed to have deliberately used this as a strategy even though simply mentioning the distinguishing property would have been shorter in most cases. In all, only 12 participants produced these kinds of utterances: one 18 times, one 8 times, one 6 times, two 3 times, one 2 times, and the remaining six only once each.} these cases were excluded from the analysis. After the exclusion, 2092 cases classified as one of \emph{color}, \emph{size}, or \emph{color-and-size} entered into the analysis.
+
+\jd{Caroline, is there anything else we should mention here?}
 
 \subsubsection{Results}
 
-\red{CONTINUE HERE BY GOING INTO:}
+\jd{Hm, I ended up excluding another 13 cases where speakers mentioned the insufficient dimension -- of these, 6 are true cases of "wrongly" mentioning color instead of size. Another 3 are cases where color is sufficient but speakers say "smallest color","small different color","bigger off a shade", all of which seem nonsensical to me but were categorized as size mentions. The final four are interesting cases of color overmodification where instead of making reference to size, the speaker -- it's only one person -- is making reference to distance ("orange cap closest to  viewer", "brown belt farthest from viewer"). This leaves us with 2079 cases to analyze. Does this seem like the right thing to have done?}
 
-\begin{itemize}
-	\item data cleanup (take caroline's description of basic levels cleanup as basis)
-	\item exclusion of trials/participants (including exclusion of 46 cases that were not direct color or size mentions (eg "different color"))
-	\item analysis -- predict overmodification from sufficient dimension and scene variation
-\end{itemize}
+Proportions of redundant \emph{color-and-size} and minimal \emph{color} or \emph{size} utterances are shown in \figref{fig:exp1results} alongside model results (to be explained further in \sectionref{sec:modifiermodeleval}). There are three main questions of interest: first, do we replicate the color/size asymmetry in probability of redundant adjective use? Second, do we replicate the previously established effect of increased redundant color use with increasing scene variation? Third, is there an effect of scene variation on redundant size use and if so, is it smaller compared to that on color use, as is predicted under asymmetric color and size adjective fidelities?
+
+We addressed all of these questions in one fell swoop by conducting a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of sufficient property (color vs.~size), scene variation (proportion of distractors that does not share the insufficient property value with the target), and the interaction between the two. The model included the maximal random effects structure that allowed the model to converge: by-speaker and by-item random intercepts as well as by-speaker random slopes for scene variation. 
+
+We observed a main effect of sufficient property such that speakers were more likely to redundantly use color than size adjectives ($\beta = 3.61$, $SE = .23$, $p < .0001$), replicating the much-documented color-size asymmetry. We further observed a main effect of scene variation such that redundant adjective use increased with increasing scene variation ($\beta = 4.11$, $SE = .49$, $p < .0001$). Finally, we also observed a significant interaction between sufficient property and scene variation ($\beta = 3.03$, $SE = .81$, $p < .0002$). Simple effects analysis revealed that the interaction is driven by the scene variation effect being much smaller in the \emph{color-sufficient} condition ($\beta = 2.59$, $SE = .78$, $p < .0009$) than in the \emph{size-sufficient} condition ($\beta = 5.63$, $SE = .45$, $p < .0001$), as predicted under the assumption that size modifiers are noisier than color modifiers.
+
+
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts-nospeaker-noother}
-\caption{Model posterior predictive XXX estimate of utterance probability (blue) alongside empirical utterance proportions  (red) as a function of scene variation. Rows indicate the sufficient dimension.}
-\label{fig:modelexpresults}
+\caption{Empirical utterance proportions  (red)  alongside model posterior predictive XXX estimate of utterance probability (blue) alongside as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
+\label{fig:exp1results}
 \end{figure}
 
 
 \subsection{Model evaluation}
+\label{sec:modifiermodeleval}
 
 \jd{talk about Bayesian data analysis, posteriors over parameters}
 
