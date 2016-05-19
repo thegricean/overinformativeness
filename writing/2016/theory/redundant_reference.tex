@@ -312,8 +312,8 @@ We observed a main effect of sufficient property such that speakers were more li
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-fullutts-nospeaker-noother}
-\caption{Empirical utterance proportions  (red)  alongside model posterior predictive XXX estimate of utterance probability (blue) alongside as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
+\caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
 \label{fig:exp1results}
 \end{figure}
 
@@ -321,21 +321,30 @@ We observed a main effect of sufficient property such that speakers were more li
 \subsection{Model evaluation}
 \label{sec:modifiermodeleval}
 
-\jd{talk about Bayesian data analysis, posteriors over parameters}
+% Extra info: 10000 samples, burn 3000, uniform drift, acceptance rate .4
+
+We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{color}}$, size fidelity $f_{\textrm{size}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{color}} \sim \mathcal{U}(0,1)$, $f_{\textrm{size}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,5)$, $\lambda  \sim \mathcal{U}(0,12)$.
+We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
+Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the six free parameters.
+Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for each combination of utterance, sufficient dimension, number of distractors, and number of different distractors (collapsing across different items) are compared to empirical data in \figref{fig:modelexp1scatter}. At this level, the model achieves a correlation of $r = .98$. Looking at results additionally on the by-item level yields a correlation of $r = .85$. The model thus does a very good job of capturing the quantitative patterns in the data. This can also be seen in \figref{fig:exp1results}, where model predictions are plotted alongside the empirical proportions by condition. The only clear flaw is that the model predicts greater redundant adjective use than empirically observed when there is no scene variation at all. \jd{a sentence on why}.
 
 \begin{figure}
 \centering
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
-\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP) $\lambda$ = \red{10.8}, 95\% highest density interval (HDI) = \red{[9.7,12.8]}; \red{MAP bla = 2.5, HDI = [1.9,3.1] etc}}
-\label{fig:posteriorparameters}
+\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions}
+\caption{Scatterplot of point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives against empirical proportions ($r=$.99).}
+\label{fig:modelexp1scatter}
 \end{figure}
+Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
+
 
 \begin{figure}
 \centering
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-fullutts-nospeaker-noother}
-\caption{Scatterplot of model posterior predictive XXX estimates against empirical proportions ($r=$.98).}
-\label{fig:modelexpresults}
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
+\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.86, 95\% highest density interval (HDI) = [0.84,0.88]; MAP $f_{\textrm{color}}$ = 0.90, HDI = [0.85,0.93]; MAP $c_{\textrm{size}}$ = .91, HDI = [.75, 1.9]; MAP $c_{\textrm{color}}$ = 0.36, HDI = [0.31,0.85]; MAP $\beta_c$ = 2.2, HDI = [1.7,4.6]; MAP $\lambda$ = 10.5, HDI = [9.6,11.3]}
+\label{fig:modifierparamposteriors}
 \end{figure}
+
+
 
 
 \subsection{Modeling speakers' choice of reference level}
@@ -441,6 +450,20 @@ toothbrush & blue, red & turtle & black, brown \\
 wedding cake & pink, white & yarn & purple, red\\
 \bottomrule
 \end{tabular}
+
+\section{Analysis of cases with higher inferred size than color typicality}
+\label{app:fidelity-outliers}
+
+\figref{fig:fidelity-outliers-reducedconditions} visualizes all 10,000 samples' from the BDA run on the data from Exp.~1 with an eye towards understanding the cases in which inferred size fidelity was greater than color fidelity. In general, these cases were very unlikely, with a posterior probability of .048. Conditioning on these cases, the probability of a low cost weight was only .23 (only .01 probability overall). That is, where color fidelity was lower than size fidelity, the model tried to achieve the empirical color-size asymmetry by placing greater weight on cost differences, where size was always inferred to be costlier than color.
+
+\begin{figure}
+\centering
+\includegraphics[width=.7\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/fidelity-outliers-fixed-reducedconditions}
+\caption{Each sample's cost weight $\beta_c$ against difference between color and size fidelity ($f_{\textrm{color}} - f_{\textrm{size}}$). Green region includes cases with higher inferred size than color fidelity that have a cost weight greater than or equal to the median cost weight. Red region includes cases with higher inferred size than color fidelity that have a cost weight lower than the median cost weight. Dot size and color indicates parameter values' posterior probability.}
+\label{fig:fidelity-outliers-reducedconditions}
+\end{figure}
+
+
 
 \section{Gatt replication}
 \red{report Gatt et al 2011 replication}
