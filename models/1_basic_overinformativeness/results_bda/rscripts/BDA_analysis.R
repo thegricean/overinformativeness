@@ -86,15 +86,15 @@ typSizeSubset = params.samples %>%
 cat("typicality_size = ", typSizeSubset$md) 
 cat("95% HPD interval = [", typSizeSubset$md_low, ",", typSizeSubset$md_hi, "]")
 
-typTypeSubset = params.samples %>% 
-  filter(parameter == "typicality_type") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("typicality_type = ", typTypeSubset$md) 
-cat("95% HPD interval = [", typTypeSubset$md_low, ",", typTypeSubset$md_hi, "]")
+# typTypeSubset = params.samples %>% 
+#   filter(parameter == "typicality_type") %>%
+#   #mutate(value = as.numeric(levels(value))[value]) %>%
+#   group_by(parameter) %>%
+#   summarize(md = estimate_mode(value),
+#             md_hi = round(HPDhi(value), 3),
+#             md_low = round(HPDlo(value), 3))
+# cat("typicality_type = ", typTypeSubset$md) 
+# cat("95% HPD interval = [", typTypeSubset$md_low, ",", typTypeSubset$md_hi, "]")
 
 costColorSubset = params.samples %>% 
   filter(parameter == "cost_color") %>%
@@ -116,46 +116,134 @@ costSizeSubset = params.samples %>%
 cat("cost_size = ", costSizeSubset$md) 
 cat("95% HPD interval = [", costSizeSubset$md_low, ",", costSizeSubset$md_hi, "]")
 
-costTypeSubset = params.samples %>% 
-  filter(parameter == "cost_type") %>%
-  #mutate(value = as.numeric(levels(value))[value]) %>%
-  group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
-            md_hi = round(HPDhi(value), 3),
-            md_low = round(HPDlo(value), 3))
-cat("cost_type = ", costTypeSubset$md) 
-cat("95% HPD interval = [", costTypeSubset$md_low, ",", costTypeSubset$md_hi, "]")
+# costTypeSubset = params.samples %>% 
+#   filter(parameter == "cost_type") %>%
+#   #mutate(value = as.numeric(levels(value))[value]) %>%
+#   group_by(parameter) %>%
+#   summarize(md = estimate_mode(value),
+#             md_hi = round(HPDhi(value), 3),
+#             md_low = round(HPDlo(value), 3))
+# cat("cost_type = ", costTypeSubset$md) 
+# cat("95% HPD interval = [", costTypeSubset$md_low, ",", costTypeSubset$md_hi, "]")
 
 numericSubset = params.samples %>% 
-  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","typicality_type","cost_color","cost_size","cost_type","typWeight")) #%>%
+  filter(parameter %in% c("alpha", "lengthWeight", "typicality_color","typicality_size","cost_color","cost_size","typWeight")) #%>%
 numericSubset$parameter = as.character(numericSubset$parameter)
-#numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
-numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
+numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
+# numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
+numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_c"
 numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
+numericSubset[numericSubset$parameter == "typicality_color",]$parameter = "fidelity_color"
+numericSubset[numericSubset$parameter == "typicality_size",]$parameter = "fidelity_size"
+numericSubset[numericSubset$parameter == "cost_color",]$parameter = "cost_color"
+numericSubset[numericSubset$parameter == "cost_size",]$parameter = "cost_size"
+
+numericSubset$param = factor(x=numericSubset$parameter,levels=c("fidelity_size","fidelity_color","cost_size","cost_color","beta_c","lambda"))
+
+bw = 20
 
 ggplot(numericSubset, aes(x=value)) +
-    geom_histogram(data=subset(numericSubset, parameter == "alpha"), 
-                   binwidth = .1, colour="black", fill="white")+
-    geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
-                 binwidth = .1, colour="black", fill="white")+
-   geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
-                binwidth = .05, colour="black", fill="white")+
-  geom_histogram(data=subset(numericSubset, parameter == "typicality_color"),
-                 binwidth = .01, colour="black", fill="white")+  
-  geom_histogram(data=subset(numericSubset, parameter == "typicality_size"),
-                 binwidth = .01, colour="black", fill="white")+ 
-  geom_histogram(data=subset(numericSubset, parameter == "typicality_type"),
-                 binwidth = .01, colour="black", fill="white")+ 
+    geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
+                   binwidth = (range(numericSubset[numericSubset$parameter == "lambda",]$value)[2] - range(numericSubset[numericSubset$parameter == "lambda",]$value)[1])/bw, colour="black", fill="white")+
+    geom_histogram(data=subset(numericSubset, parameter == "beta_c"),
+                 binwidth = (range(numericSubset[numericSubset$parameter == "beta_c",]$value)[2] - range(numericSubset[numericSubset$parameter == "beta_c",]$value)[1])/bw, colour="black", fill="white")+
+#    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
+#                 binwidth = (range(numericSubset[numericSubset$parameter == "beta_t",]$value)[2] - range(numericSubset[numericSubset$parameter == "beta_t",]$value)[1])/20, colour="black", fill="white")+
+  geom_histogram(data=subset(numericSubset, parameter == "fidelity_color"),
+                 binwidth = (range(numericSubset[numericSubset$parameter == "fidelity_color",]$value)[2] - range(numericSubset[numericSubset$parameter == "fidelity_color",]$value)[1])/bw, colour="black", fill="white")+  
+  geom_histogram(data=subset(numericSubset, parameter == "fidelity_size"),
+                 binwidth = (range(numericSubset[numericSubset$parameter == "fidelity_size",]$value)[2] - range(numericSubset[numericSubset$parameter == "fidelity_size",]$value)[1])/bw, colour="black", fill="white")+ 
+#   geom_histogram(data=subset(numericSubset, parameter == "typicality_type"),
+#                  binwidth = .01, colour="black", fill="white")+ 
   geom_histogram(data=subset(numericSubset, parameter == "cost_color"),
-                 binwidth = .01, colour="black", fill="white")+  
+                 binwidth = (range(numericSubset[numericSubset$parameter == "cost_color",]$value)[2] - range(numericSubset[numericSubset$parameter == "cost_color",]$value)[1])/bw, colour="black", fill="white")+  
   geom_histogram(data=subset(numericSubset, parameter == "cost_size"),
-                 binwidth = .01, colour="black", fill="white")+   
-  geom_histogram(data=subset(numericSubset, parameter == "cost_type"),
-                 binwidth = .01, colour="black", fill="white")+
-    facet_grid(~ parameter, scales = "free_x") +
+                 binwidth = (range(numericSubset[numericSubset$parameter == "cost_size",]$value)[2] - range(numericSubset[numericSubset$parameter == "cost_size",]$value)[1])/bw, colour="black", fill="white")+   
+#   geom_histogram(data=subset(numericSubset, parameter == "cost_type"),
+#                  binwidth = .01, colour="black", fill="white")+
+    facet_grid(~ param, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=3,width=15)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=2,width=13)
+
+# look at joint distributions of typicality and size
+params$SampleNum = rep(seq(1,nrow(params)/8),each=8)
+spreadparams = params %>%
+  spread(parameter,value)
+spreadparams$TypColorMinusSize = spreadparams$typicality_color - spreadparams$typicality_size
+head(spreadparams)
+
+costs = spreadparams %>%
+  select(MCMCprob,SampleNum,cost_color,cost_size) %>%
+  gather(Cost,Value,-MCMCprob,-SampleNum)
+
+ggplot(costs, aes(x=Cost,y=Value,color=MCMCprob,group=SampleNum)) +
+  geom_line() +
+  ylab("Parameter value") 
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-cost-",modelversion,".pdf",sep=""),height=3,width=5)
+
+spreadparams$AlphaBin = cut_number(spreadparams$alpha,n=2)
+spreadparams = spreadparams %>%
+  group_by(AlphaBin) %>%
+  mutate(Median=median(TypColorMinusSize))
+spreadparams = as.data.frame(spreadparams)
+
+ggplot(spreadparams, aes(x=TypColorMinusSize))+ #,color=MCMCprob,group=SampleNum)) +
+  #geom_line() +
+#   ylab("Parameter value") +
+  geom_histogram() +
+#   geom_density() +
+ geom_vline(xintercept = 0,color="red") +
+#  geom_vline(xintercept = spreadparams$Median,color="blue") +
+  facet_wrap(~AlphaBin)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-typicality-alpha-",modelversion,".pdf",sep=""),height=5,width=8)
+
+spreadparams$LengthWeightBin = cut_number(spreadparams$lengthWeight,n=2)
+ggplot(spreadparams, aes(x=TypColorMinusSize)) +
+#   geom_line() +
+#   ylab("Parameter value") +
+  geom_histogram() +
+  geom_vline(xintercept = 0,color="red") +
+  facet_wrap(~LengthWeightBin)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-typicality-lengthweight-",modelversion,".pdf",sep=""),height=5,width=8)
+
+ggplot(spreadparams, aes(x=TypColorMinusSize)) +
+  geom_histogram() +
+  geom_vline(xintercept = 0,color="red") +
+  facet_grid(AlphaBin~LengthWeightBin)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-",modelversion,".pdf",sep=""),height=5,width=8)
+
+ubound = as.numeric(gsub("]","",strsplit(levels(spreadparams$LengthWeightBin)[1],",")[[1]][2]))
+
+ggplot(spreadparams, aes(x=TypColorMinusSize, y=lengthWeight))+
+  geom_rect(xmin=-Inf,xmax=0,ymin=ubound,ymax=Inf,fill="darkolivegreen3",alpha=.5) +
+  geom_rect(xmin=-Inf,xmax=0,ymin=-Inf,ymax=ubound,fill="darksalmon",alpha=.5) +
+  geom_point(aes(size=MCMCprob,color=MCMCprob)) +
+  geom_vline(xintercept=0) +
+  geom_segment(x = -Inf, y = ubound , xend = 0, yend = ubound) +
+  ylab("Cost weight") +
+  xlab("Fidelity difference between color and size") +
+  guides(color=guide_legend(title="MCMC\nprobability"), size=guide_legend(title="MCMC\nprobability")) +
+  scale_size(range = c(0, 5))
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/fidelity-outliers-",modelversion,".pdf",sep=""),height=6,width=9) 
+
+# To report in paper:
+print(paste("Proportion of the ",samples," samples with a color fidelity smaller than size fidelity:"))
+nrow(spreadparams[spreadparams$TypColorMinusSize < 0,])/samples
+
+print(paste("Probability of color fidelity smaller than size fidelity:"))
+sum(spreadparams[spreadparams$TypColorMinusSize < 0,]$MCMCprob)
+
+print(paste("Proportion of the ",samples," samples with a color fidelity smaller than size fidelity AND low cost weight:"))
+nrow(spreadparams[spreadparams$TypColorMinusSize < 0 & spreadparams$LengthWeightBin == levels(spreadparams$LengthWeightBin)[1],])/samples
+
+print(paste("Probability of color fidelity smaller than size fidelity AND low cost weight:"))
+sum(spreadparams[spreadparams$TypColorMinusSize < 0 & spreadparams$LengthWeightBin == levels(spreadparams$LengthWeightBin)[1],]$MCMCprob)
+
+print(paste("Probability of low cost weight, given that color fidelity is smaller than size fidelity:"))
+sum(spreadparams[spreadparams$TypColorMinusSize < 0 & spreadparams$LengthWeightBin == levels(spreadparams$LengthWeightBin)[1],]$MCMCprob)/sum(spreadparams[spreadparams$TypColorMinusSize < 0,]$MCMCprob)
+
+
 
 
 ### Predictives
@@ -300,16 +388,16 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=5,width=9)
 
 ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumDiff)) +
+  geom_abline(intercept=0,slope=1,color="gray60") +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
   ylab("Empirical proportion") +
   xlab("Model probability") +
-  guides(shape=guide_legend("Number of\ndifferent distractors"),color=guide_legend("Number of\ndistractors")) +
-  geom_abline(intercept=0,slope=1,color="gray60")
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=3,width=5)
+  guides(shape=guide_legend("Different\ndistractors"),color=guide_legend("Distractors")) 
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=4.5,width=6.5)
 
-cor(toplot$ModelProbability,toplot$Probability) #r=.98 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"; r=.95 with empirical and no "TYPE" or speaker-opt
+cor(toplot$ModelProbability,toplot$Probability) #r=.99 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"; r=.95 with empirical and no "TYPE" or speaker-opt
 
 # plot scene variation effect, both model and empirical
 agr = empirical %>%
