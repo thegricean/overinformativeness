@@ -1260,10 +1260,11 @@ var BasicLevelModel = function(domainInfo, params) {
 
   var labelFitness = function(label, object) {
     var typfit = _.has(tax[label], object) ? tax[label][object] : 0;
-    var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;
-    var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
-    //return weightedFit;
-    return (Math.log(weightedFit));
+    //var detfit = _.has(domainInfo.tax[label], object) ? 1 : 0;
+    //var weightedFit = params.typWeight*typfit + (1-params.typWeight)*detfit;
+    var weightedFit = params.typWeight*typfit;
+    return weightedFit;
+    //return (Math.log(weightedFit));
   };
 
   var literalListener = cache(function(label, item){
