@@ -139,59 +139,59 @@ var OverinformativeModel = function(params, context, typicalities) {
     return Math.log(typicality);
   };
 
- //  var checkFeatureEmpirical = function(utterancetype,object,u,reduced_obj) {
- //  if (utterancetype === "color") { // this part will actually return the typicality of the COLOR_TYPE combination, not just color alone
- //    // console.log("getting color typicality"); 
- //    // console.log(typicalities[reduced_obj][reduced_obj]);
- //    return _.contains(object,u) ? typicalities[reduced_obj][reduced_obj] : 1 - params.typicality_color; 
- //  } else {
- //    if (utterancetype === "size") {
- //      return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
- //    } else {
- //      if (utterancetype === "type") {
- //        return _.contains(object,u) ? typicalities[reduced_obj][u] : 1 - params.typicality_type;     
- //      } else {
- //        return -555;
- //      }
- //    }
- //  }
- // };
+  var checkFeatureEmpirical = function(utterancetype,object,u,reduced_obj) {
+  if (utterancetype === "color") { // this part will actually return the typicality of the COLOR_TYPE combination, not just color alone
+    // console.log("getting color typicality"); 
+    // console.log(typicalities[reduced_obj][reduced_obj]);
+    return _.contains(object,u) ? typicalities[reduced_obj][reduced_obj] : 1 - params.typicality_color; 
+  } else {
+    if (utterancetype === "size") {
+      return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
+    } else {
+      if (utterancetype === "type") {
+        return _.contains(object,u) ? typicalities[reduced_obj][u] : 1 - params.typicality_type;     
+      } else {
+        return -555;
+      }
+    }
+  }
+ };
 
- // var getMultiplicativeEmpiricalTypicality = function(utt, object) {
- //    var splitutt = utt.split("_");
- //    // next two lines: get rid of type when utterance contains a color, so you don't accidentally return product of color_type and type typicality
- //    if (splitutt.length == 2 && _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splitutt[0])) { splitutt.pop(); }
- //    if (splitutt.length == 3) { splitutt.pop(); } 
- //    var reduced_obj = [object[1],object[2]].join("_");
+ var getMultiplicativeEmpiricalTypicality = function(utt, object) {
+    var splitutt = utt.split("_");
+    // next two lines: get rid of type when utterance contains a color, so you don't accidentally return product of color_type and type typicality
+    if (splitutt.length == 2 && _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splitutt[0])) { splitutt.pop(); }
+    if (splitutt.length == 3) { splitutt.pop(); } 
+    var reduced_obj = [object[1],object[2]].join("_");
 
- //     var typicalities = map(function(u) {
- //        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], u)) {
- //          return checkFeatureEmpirical("color",object,u,reduced_obj);  
- //        } else {
- //          if (_.contains(["big","small","size","othersize"],u)) {
- //            return checkFeatureEmpirical("size",object,u,reduced_obj);
- //          } else {
- //            return checkFeatureEmpirical("type",object,u,reduced_obj);
- //          }
- //        }
- //    },splitutt);
+     var typicalities = map(function(u) {
+        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], u)) {
+          return checkFeatureEmpirical("color",object,u,reduced_obj);  
+        } else {
+          if (_.contains(["big","small","size","othersize"],u)) {
+            return checkFeatureEmpirical("size",object,u,reduced_obj);
+          } else {
+            return checkFeatureEmpirical("type",object,u,reduced_obj);
+          }
+        }
+    },splitutt);
 
  //     // console.log(object);
  //    // console.log(utt);
  //    // console.log(typicalities);
 
- //    var typicality = reduce(function(a,b) {return a*b;},1,typicalities); 
- //     // , function(a,b) {return a*b;}, 1);
- //    // console.log(typicality);
+    var typicality = reduce(function(a,b) {return a*b;},1,typicalities); 
+     // , function(a,b) {return a*b;}, 1);
+    // console.log(typicality);
 
- //    return Math.log(typicality);
- //  };
+    return Math.log(typicality);
+  };
 
   var uttFitness = function(utt, object) {
       var splitutt = utt.split("_");
-      var typfit = getMultiplicativeFixedTypicality(utt,object); 
+      // var typfit = getMultiplicativeFixedTypicality(utt,object); 
       // var fixedfit = getMultiplicativeFixedTypicality(utt,object); 
-      // var typfit = getMultiplicativeEmpiricalTypicality(utt,object); 
+      var typfit = getMultiplicativeEmpiricalTypicality(utt,object); 
       // console.log(utt+"...."+object+"...."+typfit);
       // var fixedtypfit = getFixedTypicality(utt,object); 
       // console.log(typfit);
