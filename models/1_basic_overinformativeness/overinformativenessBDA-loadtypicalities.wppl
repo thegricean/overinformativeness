@@ -92,17 +92,17 @@ var constructContext = function(condition,size,color,othercolor,item) {
 // var data = refModule.readCSV("./bdaInput/data_test.csv");
 // var data = refModule.readCSV("./bdaInput/data_test_reduced.csv");
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv"); // loads data with 46 "other utterance" cases excluded
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv"); // loads data with 46 "other utterance" cases excluded
 // var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
-// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
 console.log("Loading data complete...");
 
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_test.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_reduced_test.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv"); // loads unique conditions with 46 "other utterance" cases excluded
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv"); // loads unique conditions with 46 "other utterance" cases excluded
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
 console.log("Loading unique conditions complete...");
 // console.log(conditions);
 
@@ -123,17 +123,17 @@ console.log("Constructing contexts complete...");
 var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
-  var params = {
-    alpha : uniform(0,12),
-    lengthWeight : uniform(0,5),
-    typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
-    typicality_size : uniform(0,1),
-    typicality_type : 1,
-    // typWeight : uniform(0,1),
-    cost_color : uniform(0,2),
-    cost_size : uniform(0,2),
-    cost_type : 1
-  };
+  // var params = {
+  //   alpha : uniform(0,12),
+  //   lengthWeight : uniform(0,5),
+  //   typicality_color : uniform(0,1), // this doesn't matter when you use empirical typicalities
+  //   typicality_size : uniform(0,1),
+  //   typicality_type : 1,
+  //   // typWeight : uniform(0,1),
+  //   cost_color : uniform(0,2),
+  //   cost_size : uniform(0,2),
+  //   cost_type : 1
+  // };
   //   var params = {
   //   alpha : sample(dirichletDriftERP, [1,1])[0]*12,
   //   lengthWeight : sample(dirichletDriftERP, [1,1])[0]*6,
@@ -145,17 +145,17 @@ var modelAnalysis = function() {
   //   cost_type : 1
   // };
 
-  // var params = {
-  //   alpha : sample(uniformDriftERP, [0,20,12/20 ]),
-  //   lengthWeight : sample(uniformDriftERP, [0,10, 5/20]),
-  //   typicality_color : sample(uniformDriftERP, [0,1,1/20]),
-  //   typicality_size : sample(uniformDriftERP, [0,1,1/20]),
-  //   typicality_type : 1,
-  //   // typWeight : sample(uniformDriftERP, [0,1,1/20]),
-  //   cost_color : sample(uniformDriftERP, [0,2, 2/20]),
-  //   cost_size : sample(uniformDriftERP, [0,2, 2/20]),
-  //   cost_type : 1
-  // };  
+  var params = {
+    alpha : sample(uniformDriftERP, [0,20,12/20 ]),
+    lengthWeight : sample(uniformDriftERP, [0,10, 5/20]),
+    typicality_color : sample(uniformDriftERP, [0,1,1/20]),
+    typicality_size : sample(uniformDriftERP, [0,1,1/20]),
+    typicality_type : 1,
+    // typWeight : sample(uniformDriftERP, [0,1,1/20]),
+    cost_color : sample(uniformDriftERP, [0,2, 2/20]),
+    cost_size : sample(uniformDriftERP, [0,2, 2/20]),
+    cost_type : 1
+  };  
 
   // console.log(params);
 
@@ -213,14 +213,19 @@ var modelAnalysis = function() {
   factor(score)
   // factor(Math.max(score, -1000));
 
+  // console.log(query.table);
+  // console.log(params);
   return {predictive: query.table, params : params};
 };
 
 // var outputERP = MCMC(modelAnalysis, {samples: 1, burn: 1, verbose: true});
-// var outputERP = MCMC(modelAnalysis, {samples: 10000, burn: 3000, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 10000, burn: 3000, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
-var outputERP = MCMC(modelAnalysis, {samples: 500, verbose: true, burn: 100,
-                                     kernel: { HMC: { steps: 1, stepSize: .01 }}});
+// var outputERP = MCMC(modelAnalysis, {samples: 10000, verbose: true, burn: 3000,
+                                     // kernel: { HMC: { steps: 1, stepSize: .01 }}});
+// var outputERP = MCMC(modelAnalysis, {samples: 1, verbose: true,
+//                                      kernel: { HMC: { steps: 1, stepSize: .01 }}});
+// hmc only possible with very small number of samples (500), and then very few different values are considered
 
 console.log('inference complete... printing');
 
@@ -228,6 +233,7 @@ console.log('inference complete... printing');
 
 // reduced conditions -- 10'000 samples
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged");
 
 // full conditions
 // fixed typicality
@@ -235,7 +241,7 @@ console.log('inference complete... printing');
 
 // empirical typicality
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions");
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-scaledtyp");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-scaledtyp");
 
 // interpolation analysis (interploating between fixed and empirical typicality)
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-interpolated");

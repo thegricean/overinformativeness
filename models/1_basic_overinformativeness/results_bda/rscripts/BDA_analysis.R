@@ -20,15 +20,17 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
-modelversion = "fixed-reducedconditions"
+# modelversion = "fixed-reducedconditions"
 # modelversion = "fixed-fullconditions"
 # modelversion = "empirical-fullconditions"
 # modelversion = "empirical-fullconditions-scaledtyp"
 # modelversion = "interpolated"
 # modelversion = "interpolated-scaledtyp"
+modelversion = "hmc-test"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
-samples = 10000
+# samples = 10000 # reducedconditions
+samples = 500 # empirical-fullconditions
 param_sample_test = params %>%
   group_by(parameter) %>%
   summarise(Sum=sum(MCMCprob))
@@ -140,7 +142,7 @@ numericSubset[numericSubset$parameter == "cost_size",]$parameter = "cost_size"
 
 numericSubset$param = factor(x=numericSubset$parameter,levels=c("fidelity_size","fidelity_color","cost_size","cost_color","beta_c","lambda"))
 
-bw = 20
+bw = 10
 
 ggplot(numericSubset, aes(x=value)) +
     geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
@@ -389,13 +391,13 @@ ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativenes
 
 ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=NumDiff)) +
   geom_abline(intercept=0,slope=1,color="gray60") +
-  geom_point() +
+  geom_point(size=3) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
   ylab("Empirical proportion") +
   xlab("Model probability") +
   guides(shape=guide_legend("Different\ndistractors"),color=guide_legend("Distractors")) 
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=4.5,width=6.5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=5,width=7)
 
 cor(toplot$ModelProbability,toplot$Probability) #r=.99 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"; r=.95 with empirical and no "TYPE" or speaker-opt
 
