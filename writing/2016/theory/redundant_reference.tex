@@ -208,7 +208,58 @@ Here we propose an extension to the production component of the Rational Speech 
 \subsection{Basic RSA}
 \label{sec:basicrsa}
 
-\jd{introduce the basic model and show why it doesn't get overinformative}
+As has been pointed out by \citeA{GattEtAl2013}, the basic Rational Speech Acts model as formulated by \citeA{frank2012} cannot generate overinformative referring expressions for two reasons: first, it trivially cannot do so because it is limited to one-word utterances \cite<see also>{baumann2014}. But even when allowing two-word (or $n$-word) utterances, the speaker's utility will never allow for producing more redundant than minimal referring expressions as long as words contribute non-negative costs to the overall utterance cost. To see this, and as a basis for the innovations introduced in \sectionref{sec:modifiedmodel} and \sectionref{sec:reflevelmodel} it is useful to reiterate the basic form of the model.
+
+Intuitively, the production component of RSA aims to soft-maximize the utility of utterances, where utility is defined in terms of the contextual informativeness of an utterance, given each utterance's literal semantics. Formally, this is treated as a pragmatic speaker $S_1$ reasoning about a literal listener $L_0$, who can be described by the following formula:
+
+\begin{equation}
+P_{L_0}(o | u) \propto \denote{u}(o).
+\end{equation}
+
+The literal listener $L_0$ hears an utterance $u$ from the set of available one-word utterances $U$ in the context of a set of objects  $O$ and forms a distribution over the referenced object, $o \in O$. Here, $\denote{u}(o)$ is the deterministic lexical meaning of the utterance $u$ when applied to object $o$. That is, $P_{L_0}(o | u)$ returns a uniform distribution over all $o$ denoted by $u$. For example, in the context shown in \figref{fig:sizesufficient}, $U = \{\textrm{\emph{big}}, \textrm{\emph{small}}, \textrm{\emph{blue}}, \textrm{\emph{red}}\}$ and $O = \{o_{\textrm{big\_blue}}, o_{\textrm{big\_red}}, o_{\textrm{small\_blue}}\}$. The values of $P_{L_0}(o | u)$ for each $u$ are shown on the left in \tableref{tab:detliteral}.
+
+\begin{table}
+%\centering
+\caption{Literal listener distributions $P_{L_0}(o | u)$ for each utterance $u$ in the context depicted in \figref{fig:sizesufficient}, allowing only one-word utterances (left) or one- and two-word utterances (right).}
+\begin{tabular}{l r r r}
+\toprule
+& $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ \\
+\midrule
+\emph{big} & .5 & .5 & 0\\
+\emph{small} & 0 & 0 & 1\\
+\emph{blue} & .5 & 0 & .5\\
+\emph{red} & 0 & 1 & 0\\
+\bottomrule
+\end{tabular}
+\begin{tabular}{l r r r}
+\toprule
+& $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ \\
+\midrule
+\emph{big} & .5 & .5 & 0\\
+\emph{small} & 0 & 0 & 1\\
+\emph{blue} & .5 & 0 & .5\\
+\emph{red} & 0 & 1 & 0\\
+\emph{big blue} & 1 & 0 & 0\\
+\emph{big red} & 0 & 1 & 0\\
+\emph{small blue} & 0 & 0 & 1\\
+\bottomrule
+\end{tabular}
+\label{tab:detliteral}
+\end{table}
+
+The pragmatic speaker in turn produces an utterance proportional to the utility of that utterance, where utility is a function of both the utterance's \emph{informativeness}  with respect to the literal listener $\ln P_{L_0}(o | u)$ and the utterance's \emph{cost} $c(u)$:
+
+\begin{equation}
+P_{S_1}(u | o) \propto e^{\lambda \ln P_{L_0}(o | u) - \beta_c c(u)}
+\end{equation}
+
+Both the informativeness and the cost term receive a weight.\footnote{In fact, \citeA{frank2012} did not include a cost weight in their formulation and since they ultimately assumed equal costs for all utterances, they made no use of the cost function. Subsequent work has shown that taking into account utterance cost is necessary for modeling certain interpretation phenomena like cost-based quantity implicatures \cite{degenfrankejaeger2013} and M-implicature \cite{bergen2015}. The cost function will become important for our purposes in a little while.}   Informativeness is weighted by $\lambda$. To understand the effect of $\lambda$, assume that costs are equal and the cost function can thus be disregarded. As $\lambda$ approaches infinity, the speaker increasingly only chooses utterances that maximize utility; if $\lambda$ is 0, informativeness is disregarded and the speaker chooses randomly from the set of all available utterances; if $\lambda$ is 1, the speaker probability-matches. For our example in \tableref{tab:detliteral}, if the speaker wants to refer to $o_{\textrm{small\_blue}}$ she has two semantically possible utterances, \emph{small} and \emph{blue}, where \emph{small} is twice as informative as \emph{blue}. She will produce \emph{small} with the following probabilities as $\lambda$ varies: $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = \infty) = 1$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 1) = \frac{2}{3}$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 0) = \frac{1}{4}$. Similarly, if we ignore informativeness and focus only on costs, any asymmetry in costs will be exaggerated with increasing $\beta_c$, such that the speaker will choose the least costly utterance with higher and higher probability as $\beta_c$ increases.
+
+As noted above, this model cannot generate redundant referring expressions for multiple reasons. One of these is trivial: $U$ only contains one-word utterances. We can ameliorate this easily by allowing complex two-word utterances. We assume an intersective semantics for complex utterances $u_{\textrm{complex}}$ consisting of two sub-utterances $u_{\textrm{size}} \in \{\textrm{\emph{big}}, \textrm{\emph{small}}\}$ and $u_{\textrm{color}} \in \{\textrm{\emph{blue}}, \textrm{\emph{red}}\}$, such that $\denote{u_{\textrm{complex}}} = \denote{u_{\textrm{size}}} \wedge\denote{u_{\textrm{color}}}$. The resulting literal listener distributions are shown on the right in \figref{tab:detliteral}. 
+
+Does this now allow for generating redundant referring expressions? To answer this, let's turn again to the case where the speaker wants to communicate the small blue object. There are now two  utterances, \emph{small} and \emph{small blue}, which are both more informative than \emph{blue} and equally informative to each other, for referring to the small blue object. Because they are equally informative in context, what we need is for the complex utterance to be the \emph{cheaper} one in order to tilt the scales in its favor. While this achieves the desired effect mathematically, the cognitive plausibility of complex utterances being cheaper than simple utterances is highly dubious. But this is the only circumstance under which overinformative referring expressions will be produced with a greater probability than minimally specified referring expressions. Thus, unless we want to introduce a highly dubious assumption into the model, we must look elsewhere to account for overinformativeness. This is what we turn to next.
+
+CONTINUE HERE!!!
 
 \subsection{RSA with non-deterministic semantics}
 \label{sec:modifiedmodel}
@@ -326,7 +377,8 @@ We observed a main effect of sufficient property such that speakers were more li
 We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{color}}$, size fidelity $f_{\textrm{size}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{color}} \sim \mathcal{U}(0,1)$, $f_{\textrm{size}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,5)$, $\lambda  \sim \mathcal{U}(0,12)$.
 We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
 Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the six free parameters.
-Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for each combination of utterance, sufficient dimension, number of distractors, and number of different distractors (collapsing across different items) are compared to empirical data in \figref{fig:modelexp1scatter}. At this level, the model achieves a correlation of $r = .98$. Looking at results additionally on the by-item level yields a correlation of $r = .85$. The model thus does a very good job of capturing the quantitative patterns in the data. This can also be seen in \figref{fig:exp1results}, where model predictions are plotted alongside the empirical proportions by condition. The only clear flaw is that the model predicts greater redundant adjective use than empirically observed when there is no scene variation at all. \jd{a sentence on why}.
+
+Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for each combination of utterance, sufficient dimension, number of distractors, and number of different distractors (collapsing across different items) are compared to empirical data in \figref{fig:modelexp1scatter}. At this level, the model achieves a correlation of $r = .98$. Looking at results additionally on the by-item level yields a correlation of $r = .85$. The model thus does a very good job of capturing the quantitative patterns in the data. This can also be seen in \figref{fig:exp1results}, where model predictions are plotted alongside the empirical proportions by condition. The only clear flaw is that the model predicts greater redundant adjective use than empirically observed when there is no scene variation at all. \jd{a sentence on why}.
 
 \begin{figure}
 \centering
@@ -334,7 +386,8 @@ Inference for the cognitive model was exact, while we used Markov Chain Monte Ca
 \caption{Scatterplot of point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives against empirical proportions ($r=$.99).}
 \label{fig:modelexp1scatter}
 \end{figure}
-Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
+
+Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
 
 
 \begin{figure}
