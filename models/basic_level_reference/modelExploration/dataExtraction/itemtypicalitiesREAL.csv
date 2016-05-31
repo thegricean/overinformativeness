@@ -1,0 +1,746 @@
+itemtype,labeltype,item,label,meanresponse,YMin,YMax,itemtypeNew
+dist_samesuper,sub,ambulance,a convertible,0.056875,0.014984375,0.105015625,dist_samesuper
+dist_samesuper,sub,ambulance,a minivan,0.16,0.0777638889,0.2555555556,dist_samesuper
+dist_samesuper,sub,ambulance,a sports car,0.0742857143,0.035,0.1221428571,dist_samesuper
+dist_samesuper,sub,ambulance,an SUV,0.2005555556,0.0966527778,0.3161111111,dist_samesuper
+dist_samesuper,sub,bathrobe,a dress shirt,0.1985714286,0.1107142857,0.2842857143,dist_samesuper
+dist_samesuper,sub,bathrobe,a Hawaii shirt,0.1677777778,0.0255277778,0.3355555556,dist_samesuper
+dist_samesuper,sub,bathrobe,a polo shirt,0.0811764706,0.02,0.1582352941,dist_samesuper
+dist_samesuper,sub,bathrobe,a t-shirt,0.1133333333,0.0149583333,0.2966666667,dist_samesuper
+dist_samesuper,sub,bed,a bedside table,0.1192307692,0.04075,0.2230961538,dist_samesuper
+dist_samesuper,sub,bed,a coffee table,0.0826315789,0.0263157895,0.1658157895,dist_samesuper
+dist_samesuper,sub,bed,a dining table,0.0488888889,0.0144305556,0.0955555556,dist_samesuper
+dist_samesuper,sub,bed,a picnic table,0.035,0.012,0.0710125,dist_samesuper
+dist_samesuper,sub,bison,a black bear,0.0235714286,0.0071428571,0.0471428571,dist_samesuper
+dist_samesuper,sub,bison,a catfish,0.00375,0,0.0075,dist_samesuper
+dist_samesuper,sub,bison,a clownfish,0.0166666667,0.0061111111,0.0294444444,dist_samesuper
+dist_samesuper,sub,bison,a dalmatian,0.04375,0.015609375,0.076875,dist_samesuper
+dist_samesuper,sub,bison,a German Shepherd,0.0523529412,0.0229264706,0.0841323529,dist_samesuper
+dist_samesuper,sub,bison,a goldfish,0.0370588235,0.01175,0.0711911765,dist_samesuper
+dist_samesuper,sub,bison,a grizzly bear,0.0157142857,0.0064285714,0.0264285714,dist_samesuper
+dist_samesuper,sub,bison,a hummingbird,0.02,0.006875,0.038765625,dist_samesuper
+dist_samesuper,sub,bison,a panda bear,0.014375,0.00625,0.02375,dist_samesuper
+dist_samesuper,sub,bison,a parrot,0.0243478261,0.0065217391,0.0504347826,dist_samesuper
+dist_samesuper,sub,bison,a polar bear,0.010625,0.005,0.018125,dist_samesuper
+dist_samesuper,sub,bison,a pug,0.028,0.008,0.055,dist_samesuper
+dist_samesuper,sub,bison,a swordfish,0.02375,0.011875,0.0375,dist_samesuper
+dist_samesuper,sub,bison,an eagle,0.0270588235,0.01,0.05,dist_samesuper
+dist_samesuper,sub,bookcase,a bedside table,0.1033333333,0.0491666667,0.1708541667,dist_samesuper
+dist_samesuper,sub,bookcase,a coffee table,0.0769230769,0.0284615385,0.1469230769,dist_samesuper
+dist_samesuper,sub,bookcase,a dining table,0.02,0.0038888889,0.0394444444,dist_samesuper
+dist_samesuper,sub,bookcase,a picnic table,0.075625,0.019984375,0.153125,dist_samesuper
+dist_samesuper,sub,campshirt,a dress shirt,0.754375,0.64059375,0.861890625,dist_samebasic
+dist_samesuper,sub,campshirt,a Hawaii shirt,0.3757142857,0.2778571429,0.4714464286,dist_samebasic
+dist_samesuper,sub,campshirt,a polo shirt,0.57,0.3999833333,0.7507,dist_samebasic
+dist_samesuper,sub,campshirt,a t-shirt,0.5030769231,0.3315,0.6785,dist_samebasic
+dist_samesuper,sub,candycorn,gummybears,0.2411111111,0.0655277778,0.4589722222,dist_samebasic
+dist_samesuper,sub,candycorn,jellybeans,0.2706666667,0.1093333333,0.43735,dist_samebasic
+dist_samesuper,sub,candycorn,M&Ms,0.1383333333,0.0258333333,0.3000208333,dist_samebasic
+dist_samesuper,sub,candycorn,skittles,0.035,0.0078571429,0.0671428571,dist_samebasic
+dist_samesuper,sub,chick,a black bear,0.0814285714,0.015,0.1893035714,dist_samesuper
+dist_samesuper,sub,chick,a catfish,0.0164285714,0.0085714286,0.0257142857,dist_samesuper
+dist_samesuper,sub,chick,a dalmatian,0.0263636364,0.01,0.0481818182,dist_samesuper
+dist_samesuper,sub,chick,a German Shepherd,0.03,0.008125,0.062515625,dist_samesuper
+dist_samesuper,sub,chick,a goldfish,0.0185714286,0.0028571429,0.04,dist_samesuper
+dist_samesuper,sub,chick,a hummingbird,0.0629411765,0.0235147059,0.1094264706,dist_samebasic
+dist_samesuper,sub,chick,a husky,0.0161538462,0.0053846154,0.0284615385,dist_samesuper
+dist_samesuper,sub,chick,a panda bear,0.0333333333,0.0166666667,0.0516666667,dist_samesuper
+dist_samesuper,sub,chick,a parrot,0.1295238095,0.0671428571,0.2104761905,dist_samebasic
+dist_samesuper,sub,chick,a pigeon,0.0935294118,0.0417647059,0.1588529412,dist_samebasic
+dist_samesuper,sub,chick,a polar bear,0.0081818182,0.0008863636,0.0190909091,dist_samesuper
+dist_samesuper,sub,chick,a pug,0.0178947368,0.0089473684,0.0289473684,dist_samesuper
+dist_samesuper,sub,chick,a swordfish,0.033125,0.013125,0.057515625,dist_samesuper
+dist_samesuper,sub,chips,gummybears,0.0206666667,0.0053333333,0.04,dist_samesuper
+dist_samesuper,sub,chips,jellybeans,0.0278571429,0.0092857143,0.0521428571,dist_samesuper
+dist_samesuper,sub,chips,M&Ms,0.041875,0.014984375,0.0725,dist_samesuper
+dist_samesuper,sub,chips,skittles,0.0704347826,0.037826087,0.1065217391,dist_samesuper
+dist_samesuper,sub,cookies,gummybears,0.0563636364,0.0227272727,0.0954545455,dist_samesuper
+dist_samesuper,sub,cookies,jellybeans,0.02625,0.0125,0.044375,dist_samesuper
+dist_samesuper,sub,cookies,M&Ms,0.0628571429,0.0178392857,0.1143035714,dist_samesuper
+dist_samesuper,sub,cookies,skittles,0.015,0.0044444444,0.03,dist_samesuper
+dist_samesuper,sub,cow,a black bear,0.054,0.004,0.138,dist_samesuper
+dist_samesuper,sub,cow,a catfish,0.0084615385,0.0030769231,0.0146153846,dist_samesuper
+dist_samesuper,sub,cow,a clownfish,0.0715,0.015,0.1510125,dist_samesuper
+dist_samesuper,sub,cow,a dalmatian,0.0381818182,0.0109090909,0.0727272727,dist_samesuper
+dist_samesuper,sub,cow,a German Shepherd,0.0328571429,0.0057142857,0.0814285714,dist_samesuper
+dist_samesuper,sub,cow,a goldfish,0.014,0.0033333333,0.0286666667,dist_samesuper
+dist_samesuper,sub,cow,a grizzly bear,0.019,0.0085,0.0325,dist_samesuper
+dist_samesuper,sub,cow,a husky,0.0658333333,0.0175,0.13,dist_samesuper
+dist_samesuper,sub,cow,a panda bear,0.0435714286,0.0121428571,0.092875,dist_samesuper
+dist_samesuper,sub,cow,a parrot,0.0317647059,0.0123382353,0.0582352941,dist_samesuper
+dist_samesuper,sub,cow,a pigeon,0.0209090909,0.0090909091,0.0318181818,dist_samesuper
+dist_samesuper,sub,cow,a polar bear,0.0194117647,0.0052941176,0.0394117647,dist_samesuper
+dist_samesuper,sub,cow,a swordfish,0.0253846154,0.0146153846,0.0376923077,dist_samesuper
+dist_samesuper,sub,cow,an eagle,0.012,0.008,0.0165,dist_samesuper
+dist_samesuper,sub,crocodile,a clownfish,0.03,0.018,0.048,dist_samesuper
+dist_samesuper,sub,crocodile,a dalmatian,0.0164285714,0.0078571429,0.0264285714,dist_samesuper
+dist_samesuper,sub,crocodile,a German Shepherd,0.0114285714,0.0042857143,0.0192857143,dist_samesuper
+dist_samesuper,sub,crocodile,a grizzly bear,0.0514285714,0.0092857143,0.1136071429,dist_samesuper
+dist_samesuper,sub,crocodile,a hummingbird,0.0422222222,0.0088888889,0.0988888889,dist_samesuper
+dist_samesuper,sub,crocodile,a husky,0.0184210526,0.0068289474,0.0342105263,dist_samesuper
+dist_samesuper,sub,crocodile,a panda bear,0.0135294118,0.0076470588,0.0194117647,dist_samesuper
+dist_samesuper,sub,crocodile,a parrot,0.0307692308,0.0076923077,0.0592692308,dist_samesuper
+dist_samesuper,sub,crocodile,a pigeon,0.016,0.005975,0.028,dist_samesuper
+dist_samesuper,sub,crocodile,a polar bear,0.0204761905,0.010952381,0.0314285714,dist_samesuper
+dist_samesuper,sub,crocodile,a pug,0.0189473684,0.0094736842,0.0300131579,dist_samesuper
+dist_samesuper,sub,discusfish,a catfish,0.2354545455,0.10725,0.3918863636,dist_samebasic
+dist_samesuper,sub,discusfish,a clownfish,0.5294444444,0.3448194444,0.696125,dist_samebasic
+dist_samesuper,sub,discusfish,a goldfish,0.4482352941,0.3129117647,0.5794411765,dist_samebasic
+dist_samesuper,sub,discusfish,a swordfish,0.1069230769,0.0384615385,0.1884615385,dist_samebasic
+dist_samesuper,sub,dress,a dress shirt,0.172,0.0819875,0.275125,dist_samesuper
+dist_samesuper,sub,dress,a Hawaii shirt,0.12,0.0617647059,0.1882647059,dist_samesuper
+dist_samesuper,sub,dress,a polo shirt,0.0577777778,0.0283333333,0.0938888889,dist_samesuper
+dist_samesuper,sub,dress,a t-shirt,0.094375,0.0325,0.172546875,dist_samesuper
+dist_samesuper,sub,elephant,a black bear,0.0918181818,0.0063636364,0.2545454545,dist_samesuper
+dist_samesuper,sub,elephant,a catfish,0.0170588235,0.0094117647,0.0247058824,dist_samesuper
+dist_samesuper,sub,elephant,a clownfish,0.0633333333,0.0175,0.1141666667,dist_samesuper
+dist_samesuper,sub,elephant,a dalmatian,0.0269230769,0.0023076923,0.0584615385,dist_samesuper
+dist_samesuper,sub,elephant,a German Shepherd,0.0076470588,0.0029411765,0.0123529412,dist_samesuper
+dist_samesuper,sub,elephant,a grizzly bear,0.0818181818,0.0272727273,0.1636363636,dist_samesuper
+dist_samesuper,sub,elephant,a hummingbird,0.0207692308,0.0084615385,0.0377115385,dist_samesuper
+dist_samesuper,sub,elephant,a panda bear,0.0211764706,0.0047058824,0.0447058824,dist_samesuper
+dist_samesuper,sub,elephant,a parrot,0.0215384615,0.0076923077,0.0376923077,dist_samesuper
+dist_samesuper,sub,elephant,a pigeon,0.0246153846,0.0115384615,0.0415384615,dist_samesuper
+dist_samesuper,sub,elephant,a polar bear,0.0185714286,0.0085714286,0.0292857143,dist_samesuper
+dist_samesuper,sub,elephant,a swordfish,0.0314285714,0.0142857143,0.0550178571,dist_samesuper
+dist_samesuper,sub,elephant,an eagle,0.0255555556,0.0088888889,0.0511111111,dist_samesuper
+dist_samesuper,sub,firetruck,a convertible,0.0323076923,0.0115384615,0.0584807692,dist_samesuper
+dist_samesuper,sub,firetruck,a minivan,0.0916666667,0.0408333333,0.1550625,dist_samesuper
+dist_samesuper,sub,firetruck,a sports car,0.035,0.0099821429,0.07,dist_samesuper
+dist_samesuper,sub,firetruck,an SUV,0.0790909091,0.0272727273,0.1309318182,dist_samesuper
+dist_samesuper,sub,gloves,a dress shirt,0.036875,0.008734375,0.0725,dist_samesuper
+dist_samesuper,sub,gloves,a Hawaii shirt,0.0433333333,0.01,0.0925208333,dist_samesuper
+dist_samesuper,sub,gloves,a polo shirt,0.0264285714,0.0092857143,0.0493035714,dist_samesuper
+dist_samesuper,sub,gloves,a t-shirt,0.0183333333,0.0041666667,0.0375208333,dist_samesuper
+dist_samesuper,sub,grasses,a daisy,0.11,0.0483055556,0.1977916667,dist_samesuper
+dist_samesuper,sub,grasses,a rose,0.1063636364,0.0154545455,0.2463863636,dist_samesuper
+dist_samesuper,sub,grasses,a sunflower,0.1138461538,0.0430769231,0.2015384615,dist_samesuper
+dist_samesuper,sub,grasses,a tulip,0.1535294118,0.0482352941,0.2870882353,dist_samesuper
+dist_samesuper,sub,greyhound,a dalmatian,0.1836363636,0.0736136364,0.3109772727,dist_samebasic
+dist_samesuper,sub,greyhound,a German Shepherd,0.1953333333,0.08065,0.3346833333,dist_samebasic
+dist_samesuper,sub,greyhound,a husky,0.252,0.1133166667,0.4053833333,dist_samebasic
+dist_samesuper,sub,greyhound,a pug,0.11,0.019,0.224025,dist_samebasic
+dist_samesuper,sub,horse,a black bear,0.0457142857,0.0214285714,0.0743035714,dist_samesuper
+dist_samesuper,sub,horse,a catfish,0.0123076923,0.0038461538,0.0215384615,dist_samesuper
+dist_samesuper,sub,horse,a clownfish,0.0264285714,0.0128571429,0.045,dist_samesuper
+dist_samesuper,sub,horse,a dalmatian,0.0136363636,0.0045454545,0.0272727273,dist_samesuper
+dist_samesuper,sub,horse,a German Shepherd,0.0069230769,0.0023076923,0.0130769231,dist_samesuper
+dist_samesuper,sub,horse,a goldfish,0.02,0.0063636364,0.0372727273,dist_samesuper
+dist_samesuper,sub,horse,a grizzly bear,0.0055555556,0,0.0111111111,dist_samesuper
+dist_samesuper,sub,horse,a hummingbird,0.025,0.0108333333,0.0425208333,dist_samesuper
+dist_samesuper,sub,horse,a husky,0.0713333333,0.008,0.1780166667,dist_samesuper
+dist_samesuper,sub,horse,a panda bear,0.0284210526,0.0084078947,0.0547368421,dist_samesuper
+dist_samesuper,sub,horse,a polar bear,0.0345454545,0.0145454545,0.0563636364,dist_samesuper
+dist_samesuper,sub,horse,a swordfish,0.0230769231,0.01,0.0423076923,dist_samesuper
+dist_samesuper,sub,horse,an eagle,0.0184615385,0.0038461538,0.0423076923,dist_samesuper
+dist_samesuper,sub,iguana,a black bear,0.054,0.0125,0.1260875,dist_samesuper
+dist_samesuper,sub,iguana,a catfish,0.0154545455,0.0063636364,0.0263636364,dist_samesuper
+dist_samesuper,sub,iguana,a clownfish,0.07625,0.00625,0.20625,dist_samesuper
+dist_samesuper,sub,iguana,a German Shepherd,0.0576470588,0.0076470588,0.1417794118,dist_samesuper
+dist_samesuper,sub,iguana,a goldfish,0.0227777778,0.0105555556,0.0377777778,dist_samesuper
+dist_samesuper,sub,iguana,a grizzly bear,0.013125,0.004375,0.025,dist_samesuper
+dist_samesuper,sub,iguana,a husky,0.0482352941,0.0111764706,0.11,dist_samesuper
+dist_samesuper,sub,iguana,a panda bear,0.0283333333,0.0141666667,0.0458333333,dist_samesuper
+dist_samesuper,sub,iguana,a parrot,0.0376923077,0.0069230769,0.0946153846,dist_samesuper
+dist_samesuper,sub,iguana,a pigeon,0.0253846154,0.0076923077,0.0500192308,dist_samesuper
+dist_samesuper,sub,iguana,a pug,0.0153846154,0.0069230769,0.0261538462,dist_samesuper
+dist_samesuper,sub,iguana,a swordfish,0.0121428571,0.0035714286,0.0235892857,dist_samesuper
+dist_samesuper,sub,iguana,an eagle,0.0294444444,0.0066666667,0.065,dist_samesuper
+dist_samesuper,sub,ivy,a daisy,0.1441666667,0.0524791667,0.2658333333,dist_samesuper
+dist_samesuper,sub,ivy,a rose,0.16875,0.06625,0.27628125,dist_samesuper
+dist_samesuper,sub,ivy,a sunflower,0.0566666667,0.0138888889,0.1244583333,dist_samesuper
+dist_samesuper,sub,ivy,a tulip,0.1313333333,0.0626666667,0.2113333333,dist_samesuper
+dist_samesuper,sub,kitten,a black bear,0.0423809524,0.0066666667,0.1085714286,dist_samesuper
+dist_samesuper,sub,kitten,a catfish,0.0116666667,0.0033333333,0.0208333333,dist_samesuper
+dist_samesuper,sub,kitten,a clownfish,0.0191666667,0.0058333333,0.0391666667,dist_samesuper
+dist_samesuper,sub,kitten,a dalmatian,0.0753333333,0.034,0.1247,dist_samesuper
+dist_samesuper,sub,kitten,a German Shepherd,0.0142857143,0.0085714286,0.0207142857,dist_samesuper
+dist_samesuper,sub,kitten,a goldfish,0.0246153846,0.0069230769,0.0453846154,dist_samesuper
+dist_samesuper,sub,kitten,a grizzly bear,0.0386666667,0.0073333333,0.0926666667,dist_samesuper
+dist_samesuper,sub,kitten,a hummingbird,0.0214285714,0.0114285714,0.0335714286,dist_samesuper
+dist_samesuper,sub,kitten,a panda bear,0.0094117647,0.0017647059,0.0194117647,dist_samesuper
+dist_samesuper,sub,kitten,a parrot,0.0144444444,0.0044444444,0.0255555556,dist_samesuper
+dist_samesuper,sub,kitten,a pigeon,0.04,0.0063636364,0.1000227273,dist_samesuper
+dist_samesuper,sub,kitten,a polar bear,0.0225,0.01,0.03875,dist_samesuper
+dist_samesuper,sub,kitten,a pug,0.0441176471,0.0129411765,0.0917794118,dist_samesuper
+dist_samesuper,sub,kitten,a swordfish,0.0330769231,0.0084615385,0.0700192308,dist_samesuper
+dist_samesuper,sub,koalabear,a black bear,0.0836363636,0.0345227273,0.1381818182,dist_samebasic
+dist_samesuper,sub,koalabear,a grizzly bear,0.02375,0.01,0.04,dist_samebasic
+dist_samesuper,sub,koalabear,a panda bear,0.0822222222,0.0088888889,0.1833333333,dist_samebasic
+dist_samesuper,sub,koalabear,a polar bear,0.0925,0.02246875,0.17134375,dist_samebasic
+dist_samesuper,sub,lamp,a bedside table,0.1827272727,0.0581818182,0.34,dist_samesuper
+dist_samesuper,sub,lamp,a coffee table,0.056,0.0273166667,0.08735,dist_samesuper
+dist_samesuper,sub,lamp,a dining table,0.176875,0.06684375,0.3,dist_samesuper
+dist_samesuper,sub,lamp,a picnic table,0.0273684211,0.0152631579,0.0421184211,dist_samesuper
+dist_samesuper,sub,lily,a daisy,0.1776470588,0.0935,0.2700147059,dist_samebasic
+dist_samesuper,sub,lily,a rose,0.1195454545,0.078625,0.1654545455,dist_samebasic
+dist_samesuper,sub,lily,a sunflower,0.1118181818,0.0454318182,0.1864090909,dist_samebasic
+dist_samesuper,sub,lily,a tulip,0.4452631579,0.2726315789,0.6069078947,dist_samebasic
+dist_samesuper,sub,lion,a black bear,0.013125,0.006875,0.02,dist_samesuper
+dist_samesuper,sub,lion,a catfish,0.0107142857,0.0014285714,0.0221428571,dist_samesuper
+dist_samesuper,sub,lion,a clownfish,0.0217647059,0.0105735294,0.0352941176,dist_samesuper
+dist_samesuper,sub,lion,a dalmatian,0.052,0.0073333333,0.1306666667,dist_samesuper
+dist_samesuper,sub,lion,a German Shepherd,0.0292307692,0.0053846154,0.0730769231,dist_samesuper
+dist_samesuper,sub,lion,a goldfish,0.0090909091,0.0018181818,0.0190909091,dist_samesuper
+dist_samesuper,sub,lion,a grizzly bear,0.034,0.008,0.06935,dist_samesuper
+dist_samesuper,sub,lion,a hummingbird,0.0123076923,0.0053846154,0.02,dist_samesuper
+dist_samesuper,sub,lion,a parrot,0.0283333333,0.0091458333,0.0541666667,dist_samesuper
+dist_samesuper,sub,lion,a pigeon,0.009,0.003,0.015025,dist_samesuper
+dist_samesuper,sub,lion,a polar bear,0.02,0.003,0.039,dist_samesuper
+dist_samesuper,sub,lion,a pug,0.1033333333,0.0206666667,0.2133333333,dist_samesuper
+dist_samesuper,sub,lion,a swordfish,0.0175,0.0033333333,0.0341875,dist_samesuper
+dist_samesuper,sub,lion,an eagle,0.06625,0.021859375,0.1325,dist_samesuper
+dist_samesuper,sub,lobster,a black bear,0.0385714286,0.0157142857,0.0664285714,dist_samesuper
+dist_samesuper,sub,lobster,a catfish,0.0345454545,0,0.0845909091,dist_samesuper
+dist_samesuper,sub,lobster,a clownfish,0.0505,0.014,0.1085125,dist_samesuper
+dist_samesuper,sub,lobster,a dalmatian,0.010625,0.005,0.01625,dist_samesuper
+dist_samesuper,sub,lobster,a German Shepherd,0.0185714286,0.0064285714,0.0342857143,dist_samesuper
+dist_samesuper,sub,lobster,a goldfish,0.043,0.012,0.086,dist_samesuper
+dist_samesuper,sub,lobster,a grizzly bear,0.0118181818,0.0027272727,0.0236363636,dist_samesuper
+dist_samesuper,sub,lobster,a husky,0.044,0.009,0.109,dist_samesuper
+dist_samesuper,sub,lobster,a panda bear,0.0290909091,0.0090909091,0.0627272727,dist_samesuper
+dist_samesuper,sub,lobster,a parrot,0.0138888889,0.0061111111,0.0233333333,dist_samesuper
+dist_samesuper,sub,lobster,a pigeon,0.04,0.0157142857,0.0714285714,dist_samesuper
+dist_samesuper,sub,lobster,a pug,0.0307142857,0.0149821429,0.05,dist_samesuper
+dist_samesuper,sub,lobster,a swordfish,0.0175,0.005,0.0316666667,dist_samesuper
+dist_samesuper,sub,motorcycle,a convertible,0.1114814815,0.05,0.1829907407,dist_samesuper
+dist_samesuper,sub,motorcycle,a minivan,0.0328571429,0.0114285714,0.0642857143,dist_samesuper
+dist_samesuper,sub,motorcycle,a sports car,0.129,0.037875,0.239025,dist_samesuper
+dist_samesuper,sub,motorcycle,an SUV,0.03,0.006,0.056,dist_samesuper
+dist_samesuper,sub,pig,a black bear,0.05,0.0107142857,0.1185714286,dist_samesuper
+dist_samesuper,sub,pig,a catfish,0.0554166667,0.01375,0.1120833333,dist_samesuper
+dist_samesuper,sub,pig,a clownfish,0.0361111111,0.0077777778,0.0855555556,dist_samesuper
+dist_samesuper,sub,pig,a dalmatian,0.0518181818,0.0163636364,0.1054772727,dist_samesuper
+dist_samesuper,sub,pig,a German Shepherd,0.0233333333,0.0022222222,0.0577777778,dist_samesuper
+dist_samesuper,sub,pig,a goldfish,0.0384615385,0.0123076923,0.0715576923,dist_samesuper
+dist_samesuper,sub,pig,a hummingbird,0.0081818182,0.0018181818,0.0154772727,dist_samesuper
+dist_samesuper,sub,pig,a husky,0.0366666667,0.0053166667,0.0826666667,dist_samesuper
+dist_samesuper,sub,pig,a panda bear,0.011,0.005,0.018,dist_samesuper
+dist_samesuper,sub,pig,a parrot,0.02,0.006,0.037025,dist_samesuper
+dist_samesuper,sub,pig,a pigeon,0.0864705882,0.0170588235,0.2106176471,dist_samesuper
+dist_samesuper,sub,pig,a polar bear,0.015,0.005,0.025,dist_samesuper
+dist_samesuper,sub,pig,a pug,0.0429411765,0.0164705882,0.0747205882,dist_samesuper
+dist_samesuper,sub,pig,a swordfish,0.0366666667,0.0075,0.0791875,dist_samesuper
+dist_samesuper,sub,pig,an eagle,0.0183333333,0.0061111111,0.0372222222,dist_samesuper
+dist_samesuper,sub,popcorn,gummybears,0.064375,0.021859375,0.121265625,dist_samesuper
+dist_samesuper,sub,popcorn,jellybeans,0.0476923077,0.0099807692,0.1046153846,dist_samesuper
+dist_samesuper,sub,popcorn,M&Ms,0.0292857143,0.01,0.0535714286,dist_samesuper
+dist_samesuper,sub,popcorn,skittles,0.03,0.0077777778,0.0644444444,dist_samesuper
+dist_samesuper,sub,pottedplant,a daisy,0.1346153846,0.0391923077,0.2516923077,dist_samesuper
+dist_samesuper,sub,pottedplant,a rose,0.054375,0.017484375,0.1025,dist_samesuper
+dist_samesuper,sub,pottedplant,a sunflower,0.0811111111,0.0299722222,0.1367222222,dist_samesuper
+dist_samesuper,sub,pottedplant,a tulip,0.0966666667,0.0372222222,0.1677916667,dist_samesuper
+dist_samesuper,sub,pretzels,gummybears,0.0405,0.0165,0.0735,dist_samesuper
+dist_samesuper,sub,pretzels,jellybeans,0.01625,0.005625,0.03,dist_samesuper
+dist_samesuper,sub,pretzels,M&Ms,0.025,0.004,0.054,dist_samesuper
+dist_samesuper,sub,pretzels,skittles,0.0218181818,0.0054545455,0.0436363636,dist_samesuper
+dist_samesuper,sub,rabbit,a black bear,0.0155555556,0.0061111111,0.0261111111,dist_samesuper
+dist_samesuper,sub,rabbit,a catfish,0.0114285714,0.0052380952,0.0195238095,dist_samesuper
+dist_samesuper,sub,rabbit,a clownfish,0.0335,0.0125,0.0565,dist_samesuper
+dist_samesuper,sub,rabbit,a dalmatian,0.0846666667,0.016,0.1666833333,dist_samesuper
+dist_samesuper,sub,rabbit,a goldfish,0.0127777778,0.0044444444,0.0227777778,dist_samesuper
+dist_samesuper,sub,rabbit,a grizzly bear,0.0483333333,0.0191458333,0.0816875,dist_samesuper
+dist_samesuper,sub,rabbit,a hummingbird,0.012,0.0053333333,0.0186666667,dist_samesuper
+dist_samesuper,sub,rabbit,a husky,0.0247058824,0.0082352941,0.0464705882,dist_samesuper
+dist_samesuper,sub,rabbit,a panda bear,0.111,0.012,0.27305,dist_samesuper
+dist_samesuper,sub,rabbit,a parrot,0.0275,0.006875,0.053125,dist_samesuper
+dist_samesuper,sub,rabbit,a pigeon,0.0266666667,0.0146666667,0.0440166667,dist_samesuper
+dist_samesuper,sub,rabbit,a polar bear,0.0283333333,0.0144444444,0.0455555556,dist_samesuper
+dist_samesuper,sub,rabbit,a pug,0.0475,0.0066666667,0.1025208333,dist_samesuper
+dist_samesuper,sub,rabbit,an eagle,0.012,0.004,0.022,dist_samesuper
+dist_samesuper,sub,rhino,a clownfish,0.0192307692,0.0046153846,0.0353846154,dist_samesuper
+dist_samesuper,sub,rhino,a dalmatian,0.0291666667,0.0108125,0.0483333333,dist_samesuper
+dist_samesuper,sub,rhino,a German Shepherd,0.0558823529,0.0082352941,0.1411911765,dist_samesuper
+dist_samesuper,sub,rhino,a goldfish,0.0225,0.011875,0.03625,dist_samesuper
+dist_samesuper,sub,rhino,a hummingbird,0.0084210526,0.0052631579,0.0115789474,dist_samesuper
+dist_samesuper,sub,rhino,a panda bear,0.020625,0.0075,0.035625,dist_samesuper
+dist_samesuper,sub,rhino,a parrot,0.1,0.0072727273,0.2764545455,dist_samesuper
+dist_samesuper,sub,rhino,a pigeon,0.0676923077,0.0007692308,0.1923076923,dist_samesuper
+dist_samesuper,sub,rhino,a polar bear,0.0225,0.009359375,0.03875,dist_samesuper
+dist_samesuper,sub,rhino,a pug,0.0388888889,0.0055555556,0.0966666667,dist_samesuper
+dist_samesuper,sub,rhino,a swordfish,0.0161538462,0.0061346154,0.0284615385,dist_samesuper
+dist_samesuper,sub,rhino,an eagle,0.0213333333,0.0113166667,0.0333333333,dist_samesuper
+dist_samesuper,sub,rosemary,a daisy,0.1116666667,0.0371944444,0.2144722222,dist_samesuper
+dist_samesuper,sub,rosemary,a rose,0.056,0.013,0.113025,dist_samesuper
+dist_samesuper,sub,rosemary,a sunflower,0.0730769231,0.0284615385,0.1215576923,dist_samesuper
+dist_samesuper,sub,rosemary,a tulip,0.0614285714,0.0285714286,0.0985714286,dist_samesuper
+dist_samesuper,sub,sedan,a convertible,0.1158823529,0.0494117647,0.1888382353,dist_samebasic
+dist_samesuper,sub,sedan,a minivan,0.0727272727,0.0236363636,0.1391136364,dist_samebasic
+dist_samesuper,sub,sedan,a sports car,0.54125,0.428125,0.663796875,dist_samebasic
+dist_samesuper,sub,sedan,an SUV,0.1485714286,0.0385357143,0.3216785714,dist_samebasic
+dist_samesuper,sub,sheep,a black bear,0.0214285714,0.010952381,0.0338214286,dist_samesuper
+dist_samesuper,sub,sheep,a catfish,0.0083333333,0.0024791667,0.0166666667,dist_samesuper
+dist_samesuper,sub,sheep,a clownfish,0.0464285714,0.0078571429,0.1171428571,dist_samesuper
+dist_samesuper,sub,sheep,a dalmatian,0.04875,0.005,0.12875,dist_samesuper
+dist_samesuper,sub,sheep,a German Shepherd,0.0058333333,0,0.0175,dist_samesuper
+dist_samesuper,sub,sheep,a goldfish,0.0241176471,0.0111764706,0.0405882353,dist_samesuper
+dist_samesuper,sub,sheep,a grizzly bear,0.0566666667,0.0122222222,0.1222222222,dist_samesuper
+dist_samesuper,sub,sheep,a husky,0.01625,0.005625,0.028140625,dist_samesuper
+dist_samesuper,sub,sheep,a panda bear,0.0152631579,0.0089473684,0.0221052632,dist_samesuper
+dist_samesuper,sub,sheep,a parrot,0.049,0.018,0.09,dist_samesuper
+dist_samesuper,sub,sheep,a pigeon,0.024,0.003,0.06,dist_samesuper
+dist_samesuper,sub,sheep,a polar bear,0.0723076923,0.0161538462,0.1653846154,dist_samesuper
+dist_samesuper,sub,sheep,a pug,0.0136363636,0.0063636364,0.0218181818,dist_samesuper
+dist_samesuper,sub,sheep,a swordfish,0.0109090909,0.0027272727,0.0227272727,dist_samesuper
+dist_samesuper,sub,sheep,an eagle,0.0242307692,0.0123076923,0.0388461538,dist_samesuper
+dist_samesuper,sub,sidetable,a bedside table,0.7868421053,0.7126315789,0.8521052632,dist_samebasic
+dist_samesuper,sub,sidetable,a coffee table,0.6061111111,0.4649722222,0.7567083333,dist_samebasic
+dist_samesuper,sub,sidetable,a dining table,0.5563636364,0.4245227273,0.6672954545,dist_samebasic
+dist_samesuper,sub,sidetable,a picnic table,0.1573333333,0.0946333333,0.2426833333,dist_samebasic
+dist_samesuper,sub,snake,a catfish,0.0161538462,0.0092307692,0.0230769231,dist_samesuper
+dist_samesuper,sub,snake,a clownfish,0.0235294118,0.0105882353,0.0376470588,dist_samesuper
+dist_samesuper,sub,snake,a dalmatian,0.0711111111,0.0127777778,0.1600138889,dist_samesuper
+dist_samesuper,sub,snake,a goldfish,0.0173333333,0.01,0.0266833333,dist_samesuper
+dist_samesuper,sub,snake,a grizzly bear,0.0771428571,0.0071428571,0.2085714286,dist_samesuper
+dist_samesuper,sub,snake,a hummingbird,0.0207142857,0.0064285714,0.0414285714,dist_samesuper
+dist_samesuper,sub,snake,a husky,0.0516666667,0.0177777778,0.1055555556,dist_samesuper
+dist_samesuper,sub,snake,a panda bear,0.0275,0.0066666667,0.0600208333,dist_samesuper
+dist_samesuper,sub,snake,a parrot,0.0727272727,0.0227272727,0.1372727273,dist_samesuper
+dist_samesuper,sub,snake,a polar bear,0.0075,0.004,0.011,dist_samesuper
+dist_samesuper,sub,snake,a pug,0.0293333333,0.0133333333,0.04935,dist_samesuper
+dist_samesuper,sub,snake,an eagle,0.0153846154,0.0061346154,0.0276923077,dist_samesuper
+dist_samesuper,sub,socks,a dress shirt,0.1138461538,0.0292307692,0.2369423077,dist_samesuper
+dist_samesuper,sub,socks,a Hawaii shirt,0.03,0.01,0.0558541667,dist_samesuper
+dist_samesuper,sub,socks,a polo shirt,0.11875,0.039984375,0.21940625,dist_samesuper
+dist_samesuper,sub,socks,a t-shirt,0.0586666667,0.0086666667,0.126,dist_samesuper
+dist_samesuper,sub,sparrow,a hummingbird,0.424,0.220975,0.633025,dist_samebasic
+dist_samesuper,sub,sparrow,a parrot,0.21,0.0878571429,0.3335892857,dist_samebasic
+dist_samesuper,sub,sparrow,a pigeon,0.2468421053,0.1230921053,0.3837105263,dist_samebasic
+dist_samesuper,sub,sparrow,an eagle,0.084,0.041,0.1340375,dist_samebasic
+dist_samesuper,sub,squirrel,a black bear,0.0253333333,0.002,0.0673333333,dist_samesuper
+dist_samesuper,sub,squirrel,a catfish,0.0153333333,0.0073333333,0.0246666667,dist_samesuper
+dist_samesuper,sub,squirrel,a clownfish,0.012,0.003,0.022,dist_samesuper
+dist_samesuper,sub,squirrel,a dalmatian,0.038,0.0093333333,0.0906666667,dist_samesuper
+dist_samesuper,sub,squirrel,a German Shepherd,0.0353333333,0.012,0.074,dist_samesuper
+dist_samesuper,sub,squirrel,a goldfish,0.01625,0.005,0.03,dist_samesuper
+dist_samesuper,sub,squirrel,a grizzly bear,0.0364285714,0.0085714286,0.0893571429,dist_samesuper
+dist_samesuper,sub,squirrel,a hummingbird,0.0082352941,0.0035294118,0.0129411765,dist_samesuper
+dist_samesuper,sub,squirrel,a husky,0.0636842105,0.01,0.1663157895,dist_samesuper
+dist_samesuper,sub,squirrel,a panda bear,0.0176923077,0.0038461538,0.0384615385,dist_samesuper
+dist_samesuper,sub,squirrel,a parrot,0.0223529412,0.0129411765,0.0358823529,dist_samesuper
+dist_samesuper,sub,squirrel,a pigeon,0.0335294118,0.0041176471,0.0800294118,dist_samesuper
+dist_samesuper,sub,squirrel,a polar bear,0.0178571429,0.0014285714,0.0414285714,dist_samesuper
+dist_samesuper,sub,squirrel,a pug,0.0242857143,0.0106964286,0.04,dist_samesuper
+dist_samesuper,sub,squirrel,an eagle,0.0192307692,0.0069230769,0.0338461538,dist_samesuper
+dist_samesuper,sub,train,a convertible,0.0907692308,0.0153846154,0.1976923077,dist_samesuper
+dist_samesuper,sub,train,a minivan,0.095,0.0191666667,0.2008541667,dist_samesuper
+dist_samesuper,sub,train,a sports car,0.0783333333,0.0066666667,0.2050416667,dist_samesuper
+dist_samesuper,sub,train,an SUV,0.0582352941,0.0164705882,0.1141617647,dist_samesuper
+dist_samesuper,sub,wardrobe,a bedside table,0.26375,0.10125,0.415,dist_samesuper
+dist_samesuper,sub,wardrobe,a coffee table,0.0111111111,0.0044444444,0.0188888889,dist_samesuper
+dist_samesuper,sub,wardrobe,a dining table,0.0592307692,0.0215192308,0.1031153846,dist_samesuper
+dist_samesuper,sub,wardrobe,a picnic table,0.0338888889,0.0055555556,0.0783472222,dist_samesuper
+target,sub,bedsidetable,a bedside table,0.93125,0.890609375,0.966890625,target
+target,sub,blackbear,a black bear,0.957,0.922,0.984,target
+target,sub,catfish,a catfish,0.9327272727,0.8781704545,0.9768295455,target
+target,sub,clownfish,a clownfish,0.9227777778,0.8588888889,0.9722361111,target
+target,sub,coffeetable,a coffee table,0.924375,0.86625,0.975,target
+target,sub,convertible,a convertible,0.9405,0.8904875,0.9765125,target
+target,sub,daisy,a daisy,0.8529411765,0.7135294118,0.9558970588,target
+target,sub,dalmatian,a dalmatian,0.9486666667,0.9026333333,0.9806666667,target
+target,sub,diningtable,a dining table,0.82375,0.7211875,0.91125,target
+target,sub,dressshirt,a dress shirt,0.9391666667,0.9041458333,0.9725,target
+target,sub,eagle,an eagle,0.885,0.7090625,0.9825208333,target
+target,sub,germanshepherd,a German Shepherd,0.95,0.8736363636,0.9936363636,target
+target,sub,goldfish,a goldfish,0.9635714286,0.9271428571,0.9907142857,target
+target,sub,grizzlybear,a grizzly bear,0.9510526316,0.8968421053,0.9836973684,target
+target,sub,gummybears,gummybears,0.9853333333,0.9773333333,0.992,target
+target,sub,hawaiishirt,a Hawaii shirt,0.9327777778,0.8844444444,0.9711111111,target
+target,sub,hummingbird,a hummingbird,0.9341176471,0.8587941176,0.9841323529,target
+target,sub,husky,a husky,0.9321428571,0.8514285714,0.9814285714,target
+target,sub,jellybeans,jellybeans,0.9821428571,0.9678392857,0.9935892857,target
+target,sub,minivan,a minivan,0.9461538462,0.9038269231,0.9800192308,target
+target,sub,mnms,M&Ms,0.9233333333,0.8110972222,0.9883333333,target
+target,sub,pandabear,a panda bear,0.9785,0.9685,0.9865,target
+target,sub,parrot,a parrot,0.9553333333,0.9086333333,0.9833333333,target
+target,sub,picnictable,a picnic table,0.9872222222,0.9772222222,0.995,target
+target,sub,pigeon,a pigeon,0.9738888889,0.95275,0.9888888889,target
+target,sub,polarbear,a polar bear,0.97,0.9516666667,0.985,target
+target,sub,poloshirt,a polo shirt,0.8535714286,0.7014285714,0.9550178571,target
+target,sub,pug,a pug,0.9417647059,0.8823382353,0.9841176471,target
+target,sub,rose,a rose,0.9816666667,0.96,0.9983333333,target
+target,sub,skittles,skittles,0.9526315789,0.8963026316,0.9868421053,target
+target,sub,sportscar,a sports car,0.911875,0.8361875,0.96875,target
+target,sub,sunflower,a sunflower,0.9721052632,0.9573684211,0.9847368421,target
+target,sub,suv,an SUV,0.9192857143,0.8556964286,0.9743214286,target
+target,sub,swordfish,a swordfish,0.9638461538,0.9223076923,0.9923076923,target
+target,sub,tshirt,a t-shirt,0.9578571429,0.9299821429,0.9835714286,target
+target,sub,tulip,a tulip,0.8516666667,0.7633055556,0.92,target
+dist_samesuper,basic,ambulance,a car,0.3881818182,0.2399772727,0.5618863636,dist_samesuper
+dist_samesuper,basic,bathrobe,a shirt,0.1922222222,0.1055555556,0.3072777778,dist_samesuper
+dist_samesuper,basic,bed,a table,0.0542105263,0.0189473684,0.0984210526,dist_samesuper
+dist_samesuper,basic,bison,a bear,0.068,0.0235,0.1280125,dist_samesuper
+dist_samesuper,basic,bison,a bird,0.02,0.0046153846,0.0407884615,dist_samesuper
+dist_samesuper,basic,bison,a dog,0.0305263158,0.0089473684,0.0558026316,dist_samesuper
+dist_samesuper,basic,bison,a fish,0.015,0.0057142857,0.0264285714,dist_samesuper
+dist_samesuper,basic,bookcase,a table,0.0361904762,0.009047619,0.0771428571,dist_samesuper
+dist_samesuper,basic,campshirt,a shirt,0.9,0.8488235294,0.9464852941,dist_samebasic
+dist_samesuper,basic,candycorn,candy,0.8938461538,0.8053269231,0.9715384615,dist_samebasic
+dist_samesuper,basic,chick,a bear,0.026,0.008,0.0466666667,dist_samesuper
+dist_samesuper,basic,chick,a bird,0.8092307692,0.6953269231,0.9108269231,dist_samebasic
+dist_samesuper,basic,chick,a dog,0.0153333333,0.0046666667,0.0293333333,dist_samesuper
+dist_samesuper,basic,chick,a fish,0.0082352941,0.0029411765,0.0147058824,dist_samesuper
+dist_samesuper,basic,chips,candy,0.0322222222,0.0077777778,0.0588888889,dist_samesuper
+dist_samesuper,basic,cookies,candy,0.2573333333,0.1413166667,0.38735,dist_samesuper
+dist_samesuper,basic,cow,a bear,0.035,0.0091666667,0.0800208333,dist_samesuper
+dist_samesuper,basic,cow,a bird,0.0307692308,0.01,0.0607692308,dist_samesuper
+dist_samesuper,basic,cow,a dog,0.0525,0.023125,0.100625,dist_samesuper
+dist_samesuper,basic,cow,a fish,0.0192857143,0.0135535714,0.0242857143,dist_samesuper
+dist_samesuper,basic,crocodile,a bear,0.0314285714,0.0071428571,0.0671428571,dist_samesuper
+dist_samesuper,basic,crocodile,a bird,0.0346153846,0.0069038462,0.0769423077,dist_samesuper
+dist_samesuper,basic,crocodile,a dog,0.0427777778,0.0172222222,0.0733333333,dist_samesuper
+dist_samesuper,basic,crocodile,a fish,0.0875,0.03,0.16253125,dist_samesuper
+dist_samesuper,basic,discusfish,a fish,0.8493333333,0.7706,0.91735,dist_samebasic
+dist_samesuper,basic,dress,a shirt,0.1030769231,0.0315384615,0.1915769231,dist_samesuper
+dist_samesuper,basic,elephant,a bear,0.04,0.017826087,0.0700108696,dist_samesuper
+dist_samesuper,basic,elephant,a bird,0.016,0.006,0.029,dist_samesuper
+dist_samesuper,basic,elephant,a dog,0.0136363636,0.0036363636,0.0272727273,dist_samesuper
+dist_samesuper,basic,elephant,a fish,0.0285714286,0.0071428571,0.0614285714,dist_samesuper
+dist_samesuper,basic,firetruck,a car,0.245,0.1716388889,0.3189305556,dist_samesuper
+dist_samesuper,basic,gloves,a shirt,0.0453333333,0.0133166667,0.0873333333,dist_samesuper
+dist_samesuper,basic,grasses,a flower,0.274375,0.17121875,0.39253125,dist_samesuper
+dist_samesuper,basic,greyhound,a dog,0.928,0.87665,0.96735,dist_samebasic
+dist_samesuper,basic,horse,a bear,0.0193333333,0.008,0.036,dist_samesuper
+dist_samesuper,basic,horse,a bird,0.0094117647,0.0047058824,0.0152941176,dist_samesuper
+dist_samesuper,basic,horse,a dog,0.0091666667,0.0025,0.0166666667,dist_samesuper
+dist_samesuper,basic,horse,a fish,0.0107692308,0.0053846154,0.0161730769,dist_samesuper
+dist_samesuper,basic,iguana,a bear,0.0364285714,0.0085714286,0.0842857143,dist_samesuper
+dist_samesuper,basic,iguana,a bird,0.0246153846,0.01,0.0430769231,dist_samesuper
+dist_samesuper,basic,iguana,a dog,0.0308333333,0.0116666667,0.0550208333,dist_samesuper
+dist_samesuper,basic,iguana,a fish,0.0261111111,0.0116666667,0.0461111111,dist_samesuper
+dist_samesuper,basic,ivy,a flower,0.17125,0.08,0.280640625,dist_samesuper
+dist_samesuper,basic,kitten,a bear,0.024,0.008,0.05,dist_samesuper
+dist_samesuper,basic,kitten,a bird,0.0258333333,0.0041666667,0.06,dist_samesuper
+dist_samesuper,basic,kitten,a dog,0.0738461538,0.0115192308,0.1884615385,dist_samesuper
+dist_samesuper,basic,kitten,a fish,0.02,0.0083333333,0.0341666667,dist_samesuper
+dist_samesuper,basic,koalabear,a bear,0.4953333333,0.3659833333,0.6187166667,dist_samebasic
+dist_samesuper,basic,lamp,a table,0.0361538462,0.0184615385,0.0554038462,dist_samesuper
+dist_samesuper,basic,lily,a flower,0.9266666667,0.8658333333,0.9750208333,dist_samebasic
+dist_samesuper,basic,lion,a bear,0.0492307692,0.0115384615,0.0977115385,dist_samesuper
+dist_samesuper,basic,lion,a bird,0.02,0.0064285714,0.0378571429,dist_samesuper
+dist_samesuper,basic,lion,a dog,0.0163636364,0.01,0.0227272727,dist_samesuper
+dist_samesuper,basic,lion,a fish,0.0115384615,0.0015384615,0.0253846154,dist_samesuper
+dist_samesuper,basic,lobster,a bear,0.004,0.001,0.007,dist_samesuper
+dist_samesuper,basic,lobster,a bird,0.0292307692,0.0107692308,0.0538461538,dist_samesuper
+dist_samesuper,basic,lobster,a dog,0.0117647059,0.0023529412,0.0241176471,dist_samesuper
+dist_samesuper,basic,lobster,a fish,0.3413333333,0.2246666667,0.4513333333,dist_samesuper
+dist_samesuper,basic,motorcycle,a car,0.1511111111,0.0577777778,0.2888888889,dist_samesuper
+dist_samesuper,basic,pig,a bear,0.012,0.0066666667,0.018,dist_samesuper
+dist_samesuper,basic,pig,a bird,0.011875,0.0025,0.026890625,dist_samesuper
+dist_samesuper,basic,pig,a dog,0.015,0.0058125,0.0275,dist_samesuper
+dist_samesuper,basic,pig,a fish,0.0809090909,0.0154545455,0.2009090909,dist_samesuper
+dist_samesuper,basic,popcorn,candy,0.1015384615,0.0245961538,0.1961538462,dist_samesuper
+dist_samesuper,basic,pottedplant,a flower,0.3607142857,0.2307142857,0.4921785714,dist_samesuper
+dist_samesuper,basic,pretzels,candy,0.0828571429,0.0192857143,0.1757142857,dist_samesuper
+dist_samesuper,basic,rabbit,a bear,0.036,0.0166666667,0.0580166667,dist_samesuper
+dist_samesuper,basic,rabbit,a bird,0.0264705882,0.0070588235,0.0564705882,dist_samesuper
+dist_samesuper,basic,rabbit,a dog,0.015,0.0066666667,0.0283333333,dist_samesuper
+dist_samesuper,basic,rabbit,a fish,0.0225,0.0066666667,0.045,dist_samesuper
+dist_samesuper,basic,rhino,a bear,0.03,0.0085714286,0.055,dist_samesuper
+dist_samesuper,basic,rhino,a bird,0.0395,0.007,0.099,dist_samesuper
+dist_samesuper,basic,rhino,a dog,0.0285714286,0.0135714286,0.05,dist_samesuper
+dist_samesuper,basic,rhino,a fish,0.0754545455,0.0109090909,0.1854545455,dist_samesuper
+dist_samesuper,basic,rosemary,a flower,0.248,0.089975,0.415,dist_samesuper
+dist_samesuper,basic,sedan,a car,0.9766666667,0.9553166667,0.99135,dist_samebasic
+dist_samesuper,basic,sheep,a bear,0.036,0.0206666667,0.0526666667,dist_samesuper
+dist_samesuper,basic,sheep,a bird,0.0191666667,0.0075,0.0366666667,dist_samesuper
+dist_samesuper,basic,sheep,a dog,0.0593333333,0.014,0.126,dist_samesuper
+dist_samesuper,basic,sheep,a fish,0.0084210526,0.0026315789,0.0163157895,dist_samesuper
+dist_samesuper,basic,sidetable,a table,0.9133333333,0.8516458333,0.965,dist_samebasic
+dist_samesuper,basic,snake,a bear,0.01625,0.00625,0.029375,dist_samesuper
+dist_samesuper,basic,snake,a bird,0.0155555556,0.0055555556,0.0266666667,dist_samesuper
+dist_samesuper,basic,snake,a dog,0.0228571429,0.0121428571,0.0371428571,dist_samesuper
+dist_samesuper,basic,snake,a fish,0.025,0.0128571429,0.0385714286,dist_samesuper
+dist_samesuper,basic,socks,a shirt,0.0714285714,0.0192857143,0.1450357143,dist_samesuper
+dist_samesuper,basic,sparrow,a bird,0.92,0.8678392857,0.9671428571,dist_samebasic
+dist_samesuper,basic,squirrel,a bear,0.0336842105,0.0131578947,0.0579078947,dist_samesuper
+dist_samesuper,basic,squirrel,a bird,0.0182352941,0.0052941176,0.0388235294,dist_samesuper
+dist_samesuper,basic,squirrel,a dog,0.0146666667,0.0046666667,0.0266666667,dist_samesuper
+dist_samesuper,basic,squirrel,a fish,0.0238888889,0.01,0.0411111111,dist_samesuper
+dist_samesuper,basic,train,a car,0.1177272727,0.0677272727,0.16775,dist_samesuper
+dist_samesuper,basic,wardrobe,a table,0.0372222222,0.0116666667,0.0711111111,dist_samesuper
+target,basic,bedsidetable,a table,0.4873333333,0.3539666667,0.638,target
+target,basic,blackbear,a bear,0.935,0.84125,0.990625,target
+target,basic,catfish,a fish,0.8525,0.8074875,0.9005125,target
+target,basic,clownfish,a fish,0.9444444444,0.91,0.9761111111,target
+target,basic,coffeetable,a table,0.8705,0.7859625,0.9365125,target
+target,basic,convertible,a car,0.921,0.832,0.988,target
+target,basic,daisy,a flower,0.9707692308,0.9492115385,0.9892307692,target
+target,basic,dalmatian,a dog,0.8936363636,0.8245227273,0.9554772727,target
+target,basic,diningtable,a table,0.9276190476,0.8876190476,0.9604761905,target
+target,basic,dressshirt,a shirt,0.9122222222,0.87,0.9538888889,target
+target,basic,eagle,a bird,0.788125,0.719359375,0.859375,target
+target,basic,germanshepherd,a dog,0.9346153846,0.8915192308,0.97,target
+target,basic,goldfish,a fish,0.9411764706,0.8929264706,0.9794117647,target
+target,basic,grizzlybear,a bear,0.9707692308,0.9492307692,0.98925,target
+target,basic,gummybears,candy,0.8561538462,0.7730769231,0.9315384615,target
+target,basic,hawaiishirt,a shirt,0.8117391304,0.7143369565,0.8926195652,target
+target,basic,hummingbird,a bird,0.8445454545,0.6545454545,0.9609090909,target
+target,basic,husky,a dog,0.8633333333,0.77325,0.93935,target
+target,basic,jellybeans,candy,0.9035714286,0.8263928571,0.9650357143,target
+target,basic,minivan,a car,0.8472727273,0.7913636364,0.9009204545,target
+target,basic,mnms,candy,0.8985,0.8409625,0.945,target
+target,basic,pandabear,a bear,0.754,0.680975,0.8295125,target
+target,basic,parrot,a bird,0.8639130435,0.7686847826,0.9313152174,target
+target,basic,picnictable,a table,0.82625,0.753109375,0.89625,target
+target,basic,pigeon,a bird,0.9015789474,0.8389473684,0.9563289474,target
+target,basic,polarbear,a bear,0.894375,0.83559375,0.94,target
+target,basic,poloshirt,a shirt,0.9675,0.9366458333,0.99,target
+target,basic,pug,a dog,0.907826087,0.8469565217,0.9582717391,target
+target,basic,rose,a flower,0.8854545455,0.7745454545,0.9618181818,target
+target,basic,skittles,candy,0.905,0.8656607143,0.9421428571,target
+target,basic,sportscar,a car,0.7753333333,0.6513166667,0.8766833333,target
+target,basic,sunflower,a flower,0.9730769231,0.9484615385,0.9923076923,target
+target,basic,suv,a car,0.8868181818,0.845,0.9254886364,target
+target,basic,swordfish,a fish,0.896,0.8293166667,0.9533333333,target
+target,basic,tshirt,a shirt,0.9371428571,0.9023809524,0.9657142857,target
+target,basic,tulip,a flower,0.9417647059,0.9029264706,0.9747205882,target
+dist_diffsuper,super,ambulance,a snack,0.0066666667,0.0022222222,0.0111111111,dist_diffsuper
+dist_diffsuper,super,ambulance,an animal,0.007,0.001,0.015,dist_diffsuper
+dist_diffsuper,super,ambulance,clothing,0.0247058824,0.0117647059,0.0411764706,dist_diffsuper
+dist_diffsuper,super,ambulance,furniture,0.102,0.012,0.270025,dist_diffsuper
+dist_diffsuper,super,bathrobe,a plant,0.0188235294,0.0117647059,0.0270588235,dist_diffsuper
+dist_diffsuper,super,bathrobe,a snack,0.028,0.002,0.07,dist_diffsuper
+dist_diffsuper,super,bathrobe,a vehicle,0.02,0.0091666667,0.0316666667,dist_diffsuper
+dist_diffsuper,super,bathrobe,an animal,0.0211764706,0.0105882353,0.0347058824,dist_diffsuper
+dist_diffsuper,super,bathrobe,furniture,0.0307142857,0.0135714286,0.0514464286,dist_diffsuper
+dist_diffsuper,super,bed,a plant,0.0076923077,0.0023076923,0.0138461538,dist_diffsuper
+dist_diffsuper,super,bed,a snack,0.011,0.003,0.021,dist_diffsuper
+dist_diffsuper,super,bed,a vehicle,0.0085714286,0.005,0.0128571429,dist_diffsuper
+dist_diffsuper,super,bed,an animal,0.0083333333,0.0022222222,0.0177777778,dist_diffsuper
+dist_diffsuper,super,bed,clothing,0.02,0.0047058824,0.0441176471,dist_diffsuper
+dist_diffsuper,super,bison,a plant,0.01,0.0036363636,0.0181818182,dist_diffsuper
+dist_diffsuper,super,bison,a snack,0.1711111111,0.02775,0.34,dist_diffsuper
+dist_diffsuper,super,bison,a vehicle,0.0533333333,0.0122222222,0.1178055556,dist_diffsuper
+dist_diffsuper,super,bison,clothing,0.0505263158,0.0189473684,0.0942368421,dist_diffsuper
+dist_diffsuper,super,bison,furniture,0.0461538462,0.0153846154,0.1000192308,dist_diffsuper
+dist_diffsuper,super,bookcase,a plant,0.0218181818,0.0118181818,0.0318409091,dist_diffsuper
+dist_diffsuper,super,bookcase,a snack,0.0075,0.003109375,0.01375,dist_diffsuper
+dist_diffsuper,super,bookcase,an animal,0.0529411765,0.0105882353,0.1317647059,dist_diffsuper
+dist_diffsuper,super,bookcase,clothing,0.0364705882,0.0047058824,0.0900147059,dist_diffsuper
+dist_diffsuper,super,chick,a plant,0.046875,0.011234375,0.107515625,dist_diffsuper
+dist_diffsuper,super,chick,a snack,0.1415,0.0755,0.210025,dist_diffsuper
+dist_diffsuper,super,chick,a vehicle,0.0166666667,0.0058333333,0.0266666667,dist_diffsuper
+dist_diffsuper,super,chick,clothing,0.0533333333,0.0225,0.0916666667,dist_diffsuper
+dist_diffsuper,super,chick,furniture,0.0125,0.005,0.023125,dist_diffsuper
+dist_diffsuper,super,chips,a plant,0.121,0.013975,0.245025,dist_diffsuper
+dist_diffsuper,super,chips,a vehicle,0.06875,0.014375,0.15875,dist_diffsuper
+dist_diffsuper,super,chips,an animal,0.0181818182,0.0081818182,0.0345454545,dist_diffsuper
+dist_diffsuper,super,chips,clothing,0.0230769231,0.01,0.0361538462,dist_diffsuper
+dist_diffsuper,super,chips,furniture,0.0257894737,0.0121052632,0.0431578947,dist_diffsuper
+dist_diffsuper,super,cookies,a plant,0.024,0.004,0.058,dist_diffsuper
+dist_diffsuper,super,cookies,a vehicle,0.0125,0.0075,0.018,dist_diffsuper
+dist_diffsuper,super,cookies,an animal,0.0122222222,0.0044444444,0.0227777778,dist_diffsuper
+dist_diffsuper,super,cookies,clothing,0.030625,0.01875,0.042515625,dist_diffsuper
+dist_diffsuper,super,cookies,furniture,0.03,0.007125,0.0685714286,dist_diffsuper
+dist_diffsuper,super,cow,a plant,0.0093333333,0.0033333333,0.0173333333,dist_diffsuper
+dist_diffsuper,super,cow,a snack,0.0485714286,0.015,0.0878571429,dist_diffsuper
+dist_diffsuper,super,cow,a vehicle,0.1261538462,0.0484615385,0.2346346154,dist_diffsuper
+dist_diffsuper,super,cow,clothing,0.04,0.0166666667,0.0750104167,dist_diffsuper
+dist_diffsuper,super,cow,furniture,0.1023076923,0.0092115385,0.2530769231,dist_diffsuper
+dist_diffsuper,super,crocodile,a plant,0.0173684211,0.0084210526,0.0294736842,dist_diffsuper
+dist_diffsuper,super,crocodile,a snack,0.0766666667,0.0044444444,0.1777777778,dist_diffsuper
+dist_diffsuper,super,crocodile,a vehicle,0.013,0.006,0.02,dist_diffsuper
+dist_diffsuper,super,crocodile,clothing,0.0825,0.020609375,0.171265625,dist_diffsuper
+dist_diffsuper,super,crocodile,furniture,0.03,0.008,0.0620166667,dist_diffsuper
+dist_diffsuper,super,dress,a plant,0.03,0.0095238095,0.0576428571,dist_diffsuper
+dist_diffsuper,super,dress,a snack,0.0483333333,0.01,0.0975416667,dist_diffsuper
+dist_diffsuper,super,dress,a vehicle,0.0423529412,0.0058823529,0.1041176471,dist_diffsuper
+dist_diffsuper,super,dress,an animal,0.012,0.006,0.018,dist_diffsuper
+dist_diffsuper,super,dress,furniture,0.025,0.0071428571,0.0471428571,dist_diffsuper
+dist_diffsuper,super,elephant,a plant,0.0554545455,0.0209090909,0.0936590909,dist_diffsuper
+dist_diffsuper,super,elephant,a snack,0.1116666667,0.0125,0.2450416667,dist_diffsuper
+dist_diffsuper,super,elephant,a vehicle,0.1090909091,0.0472272727,0.1745681818,dist_diffsuper
+dist_diffsuper,super,elephant,clothing,0.0584615385,0.0084615385,0.1384807692,dist_diffsuper
+dist_diffsuper,super,elephant,furniture,0.0108333333,0.0041666667,0.0183333333,dist_diffsuper
+dist_diffsuper,super,firetruck,a plant,0.0170588235,0.0076470588,0.0294117647,dist_diffsuper
+dist_diffsuper,super,firetruck,a snack,0.0257894737,0.0057894737,0.0589605263,dist_diffsuper
+dist_diffsuper,super,firetruck,an animal,0.0533333333,0.0183125,0.1091875,dist_diffsuper
+dist_diffsuper,super,firetruck,clothing,0.0716666667,0.005,0.1833333333,dist_diffsuper
+dist_diffsuper,super,firetruck,furniture,0.0173333333,0.0033333333,0.038,dist_diffsuper
+dist_diffsuper,super,gloves,a plant,0.0206666667,0.01,0.0326666667,dist_diffsuper
+dist_diffsuper,super,gloves,a snack,0.0153846154,0.0061538462,0.0261538462,dist_diffsuper
+dist_diffsuper,super,gloves,a vehicle,0.0458823529,0.0176470588,0.0835441176,dist_diffsuper
+dist_diffsuper,super,gloves,an animal,0.0155555556,0.0083333333,0.0222361111,dist_diffsuper
+dist_diffsuper,super,gloves,furniture,0.0138461538,0.0053846154,0.0253846154,dist_diffsuper
+dist_diffsuper,super,grasses,a snack,0.0630769231,0.0346153846,0.0954038462,dist_diffsuper
+dist_diffsuper,super,grasses,a vehicle,0.010625,0.005,0.0175,dist_diffsuper
+dist_diffsuper,super,grasses,an animal,0.0807142857,0.0114285714,0.2071428571,dist_diffsuper
+dist_diffsuper,super,grasses,clothing,0.0130769231,0.0030769231,0.0269230769,dist_diffsuper
+dist_diffsuper,super,grasses,furniture,0.0188888889,0.0088888889,0.0311111111,dist_diffsuper
+dist_diffsuper,super,horse,a plant,0.0253333333,0.006,0.05935,dist_diffsuper
+dist_diffsuper,super,horse,a snack,0.015,0.0064285714,0.025,dist_diffsuper
+dist_diffsuper,super,horse,a vehicle,0.2214285714,0.1321071429,0.3171607143,dist_diffsuper
+dist_diffsuper,super,horse,clothing,0.0258333333,0.0066666667,0.0500208333,dist_diffsuper
+dist_diffsuper,super,horse,furniture,0.0826666667,0.022,0.1866833333,dist_diffsuper
+dist_diffsuper,super,iguana,a plant,0.0215384615,0.0030769231,0.0484615385,dist_diffsuper
+dist_diffsuper,super,iguana,a snack,0.0566666667,0.005,0.1425,dist_diffsuper
+dist_diffsuper,super,iguana,a vehicle,0.0158333333,0.0066666667,0.0283333333,dist_diffsuper
+dist_diffsuper,super,iguana,furniture,0.0245454545,0.0077272727,0.0472727273,dist_diffsuper
+dist_diffsuper,super,ivy,a snack,0.0685714286,0.0171428571,0.1443035714,dist_diffsuper
+dist_diffsuper,super,ivy,a vehicle,0.0136363636,0.0036363636,0.0290909091,dist_diffsuper
+dist_diffsuper,super,ivy,an animal,0.0213333333,0.0046666667,0.042,dist_diffsuper
+dist_diffsuper,super,ivy,clothing,0.015,0.0041666667,0.0283333333,dist_diffsuper
+dist_diffsuper,super,ivy,furniture,0.04,0.015,0.0765125,dist_diffsuper
+dist_diffsuper,super,kitten,a plant,0.005,0.002,0.008,dist_diffsuper
+dist_diffsuper,super,kitten,a vehicle,0.0725,0.0158125,0.16,dist_diffsuper
+dist_diffsuper,super,kitten,clothing,0.0308695652,0.0095652174,0.0626086957,dist_diffsuper
+dist_diffsuper,super,kitten,furniture,0.0165,0.0065,0.03,dist_diffsuper
+dist_diffsuper,super,lamp,a plant,0.035625,0.005625,0.07628125,dist_diffsuper
+dist_diffsuper,super,lamp,a snack,0.0107142857,0.0042857143,0.0185714286,dist_diffsuper
+dist_diffsuper,super,lamp,a vehicle,0.0294117647,0.0105882353,0.0529558824,dist_diffsuper
+dist_diffsuper,super,lamp,an animal,0.0288235294,0.0082352941,0.0652941176,dist_diffsuper
+dist_diffsuper,super,lamp,clothing,0.028,0.01,0.055,dist_diffsuper
+dist_diffsuper,super,lion,a plant,0.023,0.008,0.039,dist_diffsuper
+dist_diffsuper,super,lion,a snack,0.039375,0.009375,0.09125,dist_diffsuper
+dist_diffsuper,super,lion,a vehicle,0.0484210526,0.0226315789,0.0784210526,dist_diffsuper
+dist_diffsuper,super,lion,clothing,0.0433333333,0.0193333333,0.0726666667,dist_diffsuper
+dist_diffsuper,super,lion,furniture,0.0433333333,0.0077777778,0.0966666667,dist_diffsuper
+dist_diffsuper,super,lobster,a plant,0.010625,0.00375,0.018125,dist_diffsuper
+dist_diffsuper,super,lobster,a snack,0.29,0.1436875,0.44375,dist_diffsuper
+dist_diffsuper,super,lobster,a vehicle,0.0194444444,0.0122222222,0.0272222222,dist_diffsuper
+dist_diffsuper,super,lobster,clothing,0.0194117647,0.0052941176,0.0358823529,dist_diffsuper
+dist_diffsuper,super,lobster,furniture,0.0285714286,0.0078571429,0.0535714286,dist_diffsuper
+dist_diffsuper,super,motorcycle,an animal,0.0423529412,0.0070441176,0.1041176471,dist_diffsuper
+dist_diffsuper,super,motorcycle,clothing,0.0144444444,0.0049861111,0.03,dist_diffsuper
+dist_diffsuper,super,motorcycle,furniture,0.0986666667,0.0406666667,0.1626833333,dist_diffsuper
+dist_diffsuper,super,pig,clothing,0.018,0.006,0.0346666667,dist_diffsuper
+dist_diffsuper,super,popcorn,a plant,0.1075,0.04875,0.18,dist_diffsuper
+dist_diffsuper,super,popcorn,a vehicle,0.015,0.0064285714,0.0250178571,dist_diffsuper
+dist_diffsuper,super,popcorn,an animal,0.0133333333,0.0058333333,0.0216875,dist_diffsuper
+dist_diffsuper,super,popcorn,clothing,0.00875,0.0025,0.015,dist_diffsuper
+dist_diffsuper,super,popcorn,furniture,0.0055555556,0,0.0144444444,dist_diffsuper
+dist_diffsuper,super,pottedplant,a vehicle,0.018125,0.006875,0.03375,dist_diffsuper
+dist_diffsuper,super,pottedplant,an animal,0.0429411765,0.0088235294,0.08825,dist_diffsuper
+dist_diffsuper,super,pottedplant,furniture,0.1094117647,0.0458676471,0.18475,dist_diffsuper
+dist_diffsuper,super,pretzels,a plant,0.0178571429,0.005,0.0378571429,dist_diffsuper
+dist_diffsuper,super,pretzels,a vehicle,0.021,0.004,0.042,dist_diffsuper
+dist_diffsuper,super,pretzels,an animal,0.0153333333,0.008,0.024,dist_diffsuper
+dist_diffsuper,super,pretzels,clothing,0.015625,0.005625,0.026875,dist_diffsuper
+dist_diffsuper,super,pretzels,furniture,0.0285714286,0.0142857143,0.0457142857,dist_diffsuper
+dist_diffsuper,super,rabbit,a plant,0.0386666667,0.0026666667,0.0993333333,dist_diffsuper
+dist_diffsuper,super,rabbit,a snack,0.1392307692,0.0453846154,0.2638846154,dist_diffsuper
+dist_diffsuper,super,rabbit,a vehicle,0.0144444444,0.0077777778,0.0222222222,dist_diffsuper
+dist_diffsuper,super,rabbit,clothing,0.0126666667,0.0053333333,0.02,dist_diffsuper
+dist_diffsuper,super,rabbit,furniture,0.0286666667,0.006,0.06135,dist_diffsuper
+dist_diffsuper,super,rhino,a plant,0.0218181818,0.0036363636,0.0490909091,dist_diffsuper
+dist_diffsuper,super,rhino,a snack,0.0166666667,0.0058333333,0.0316875,dist_diffsuper
+dist_diffsuper,super,rhino,a vehicle,0.0373684211,0.0121052632,0.0731578947,dist_diffsuper
+dist_diffsuper,super,rhino,clothing,0.0236842105,0.0121052632,0.0379078947,dist_diffsuper
+dist_diffsuper,super,rhino,furniture,0.015,0.008,0.022,dist_diffsuper
+dist_diffsuper,super,rosemary,a snack,0.0670588235,0.0288235294,0.1076764706,dist_diffsuper
+dist_diffsuper,super,rosemary,a vehicle,0.0114285714,0.0042857143,0.0192857143,dist_diffsuper
+dist_diffsuper,super,rosemary,an animal,0.015,0.005,0.027,dist_diffsuper
+dist_diffsuper,super,rosemary,clothing,0.0322222222,0.0133333333,0.0522222222,dist_diffsuper
+dist_diffsuper,super,rosemary,furniture,0.0525,0.015,0.0975125,dist_diffsuper
+dist_diffsuper,super,sheep,a plant,0.0323529412,0.0147058824,0.0535294118,dist_diffsuper
+dist_diffsuper,super,sheep,a snack,0.0429411765,0.0217647059,0.0647205882,dist_diffsuper
+dist_diffsuper,super,sheep,a vehicle,0.0457142857,0.0128392857,0.0857321429,dist_diffsuper
+dist_diffsuper,super,sheep,clothing,0.0952631579,0.0273552632,0.1742105263,dist_diffsuper
+dist_diffsuper,super,sheep,furniture,0.0115789474,0.0057894737,0.0184210526,dist_diffsuper
+dist_diffsuper,super,snake,a plant,0.078125,0.01,0.188125,dist_diffsuper
+dist_diffsuper,super,snake,a snack,0.119375,0.02875,0.249390625,dist_diffsuper
+dist_diffsuper,super,snake,a vehicle,0.0275,0.016,0.04,dist_diffsuper
+dist_diffsuper,super,snake,clothing,0.0458823529,0.01,0.1029411765,dist_diffsuper
+dist_diffsuper,super,snake,furniture,0.0157142857,0.0028571429,0.0357142857,dist_diffsuper
+dist_diffsuper,super,socks,a plant,0.0217647059,0.0064705882,0.0482352941,dist_diffsuper
+dist_diffsuper,super,socks,a snack,0.0275,0.006234375,0.056890625,dist_diffsuper
+dist_diffsuper,super,socks,a vehicle,0.026,0.0059833333,0.05535,dist_diffsuper
+dist_diffsuper,super,socks,an animal,0.0881818182,0.0109090909,0.2309090909,dist_diffsuper
+dist_diffsuper,super,socks,furniture,0.0335714286,0.0092857143,0.0714285714,dist_diffsuper
+dist_diffsuper,super,squirrel,a plant,0.01,0.003,0.017,dist_diffsuper
+dist_diffsuper,super,squirrel,a snack,0.0466666667,0.0166666667,0.0825208333,dist_diffsuper
+dist_diffsuper,super,squirrel,a vehicle,0.0523529412,0.0182352941,0.1035294118,dist_diffsuper
+dist_diffsuper,super,squirrel,clothing,0.04875,0.00375,0.1275,dist_diffsuper
+dist_diffsuper,super,squirrel,furniture,0.0221428571,0.0064107143,0.0478571429,dist_diffsuper
+dist_diffsuper,super,train,a plant,0.0116666667,0.005,0.0191666667,dist_diffsuper
+dist_diffsuper,super,train,a snack,0.02,0.0091666667,0.0325208333,dist_diffsuper
+dist_diffsuper,super,train,an animal,0.0226666667,0.0066666667,0.044,dist_diffsuper
+dist_diffsuper,super,train,clothing,0.014375,0.0075,0.02125,dist_diffsuper
+dist_diffsuper,super,train,furniture,0.0369230769,0.0107692308,0.0715576923,dist_diffsuper
+dist_diffsuper,super,wardrobe,a plant,0.0193333333,0.0053333333,0.0373333333,dist_diffsuper
+dist_diffsuper,super,wardrobe,a snack,0.0141666667,0.0058333333,0.0233333333,dist_diffsuper
+dist_diffsuper,super,wardrobe,a vehicle,0.0321428571,0.0178571429,0.0492857143,dist_diffsuper
+dist_diffsuper,super,wardrobe,an animal,0.0277777778,0.01,0.0488888889,dist_diffsuper
+dist_diffsuper,super,wardrobe,clothing,0.6188235294,0.4616617647,0.7606029412,dist_diffsuper
+dist_samesuper,super,ambulance,a vehicle,0.7293333333,0.63065,0.8293333333,dist_samesuper
+dist_samesuper,super,bathrobe,clothing,0.7764285714,0.6699821429,0.8714285714,dist_samesuper
+dist_samesuper,super,bed,furniture,0.88,0.8226315789,0.9342236842,dist_samesuper
+dist_samesuper,super,bison,an animal,0.853,0.75295,0.944025,dist_samesuper
+dist_samesuper,super,bookcase,furniture,0.6966666667,0.5727083333,0.801125,dist_samesuper
+dist_samesuper,super,campshirt,clothing,0.8823076923,0.8230576923,0.9354038462,dist_samebasic
+dist_samesuper,super,candycorn,a snack,0.698125,0.598109375,0.8006875,dist_samebasic
+dist_samesuper,super,chick,an animal,0.8246666667,0.696,0.9293333333,dist_samebasic
+dist_samesuper,super,chips,a snack,0.8469230769,0.7261346154,0.9430769231,dist_samesuper
+dist_samesuper,super,cookies,a snack,0.9390909091,0.8890909091,0.9882045455,dist_samesuper
+dist_samesuper,super,cow,an animal,0.9392307692,0.8922692308,0.9807692308,dist_samesuper
+dist_samesuper,super,crocodile,an animal,0.762,0.62495,0.876025,dist_samesuper
+dist_samesuper,super,discusfish,an animal,0.8218181818,0.6918181818,0.9318181818,dist_samebasic
+dist_samesuper,super,dress,clothing,0.8673333333,0.80265,0.926,dist_samesuper
+dist_samesuper,super,elephant,an animal,0.85,0.7638333333,0.9289444444,dist_samesuper
+dist_samesuper,super,firetruck,a vehicle,0.7266666667,0.5711111111,0.8766666667,dist_samesuper
+dist_samesuper,super,gloves,clothing,0.635625,0.514359375,0.746265625,dist_samesuper
+dist_samesuper,super,grasses,a plant,0.9011111111,0.8310972222,0.9566666667,dist_samesuper
+dist_samesuper,super,greyhound,an animal,0.8725,0.811234375,0.93125,dist_samebasic
+dist_samesuper,super,horse,an animal,0.9,0.8308586957,0.955673913,dist_samesuper
+dist_samesuper,super,iguana,an animal,0.643,0.533475,0.7440125,dist_samesuper
+dist_samesuper,super,ivy,a plant,0.794,0.633975,0.921025,dist_samesuper
+dist_samesuper,super,kitten,an animal,0.8815,0.7725,0.9535,dist_samesuper
+dist_samesuper,super,koalabear,an animal,0.8628571429,0.7827857143,0.9314642857,dist_samebasic
+dist_samesuper,super,lamp,furniture,0.5178571429,0.3606607143,0.6535892857,dist_samesuper
+dist_samesuper,super,lily,a plant,0.8635714286,0.7935714286,0.927875,dist_samebasic
+dist_samesuper,super,lion,an animal,0.8106666667,0.69465,0.9167166667,dist_samesuper
+dist_samesuper,super,lobster,an animal,0.515,0.319125,0.6941666667,dist_samesuper
+dist_samesuper,super,motorcycle,a vehicle,0.7025,0.4958333333,0.8666666667,dist_samesuper
+dist_samesuper,super,pig,an animal,0.8607142857,0.7185178571,0.9614464286,dist_samesuper
+dist_samesuper,super,popcorn,a snack,0.8972222222,0.8410972222,0.9516805556,dist_samesuper
+dist_samesuper,super,pottedplant,a plant,0.9105555556,0.8455555556,0.9577916667,dist_samesuper
+dist_samesuper,super,pretzels,a snack,0.889,0.793975,0.962025,dist_samesuper
+dist_samesuper,super,rabbit,an animal,0.8804,0.81719,0.93681,dist_samesuper
+dist_samesuper,super,rhino,an animal,0.9,0.8094605263,0.9636842105,dist_samesuper
+dist_samesuper,super,rosemary,a plant,0.8136363636,0.7154318182,0.9027272727,dist_samesuper
+dist_samesuper,super,sedan,a vehicle,0.8584615385,0.7476538462,0.9476923077,dist_samebasic
+dist_samesuper,super,sheep,an animal,0.9063636364,0.8472727273,0.96275,dist_samesuper
+dist_samesuper,super,sidetable,furniture,0.86,0.7655277778,0.9355555556,dist_samebasic
+dist_samesuper,super,snake,an animal,0.7488888889,0.6366388889,0.8744444444,dist_samesuper
+dist_samesuper,super,socks,clothing,0.732,0.57595,0.856025,dist_samesuper
+dist_samesuper,super,sparrow,an animal,0.616,0.4506666667,0.7766666667,dist_samebasic
+dist_samesuper,super,squirrel,an animal,0.913125,0.882484375,0.944375,dist_samesuper
+dist_samesuper,super,train,a vehicle,0.66,0.5727045455,0.7309318182,dist_samesuper
+dist_samesuper,super,wardrobe,furniture,0.8192857143,0.7557142857,0.8785714286,dist_samesuper
+target,super,bedsidetable,furniture,0.8984615385,0.8415384615,0.9530961538,target
+target,super,blackbear,an animal,0.8768181818,0.8104431818,0.9322727273,target
+target,super,catfish,an animal,0.5246153846,0.3453461538,0.6924423077,target
+target,super,clownfish,an animal,0.525,0.37125,0.680625,target
+target,super,coffeetable,furniture,0.8490909091,0.7754545455,0.9190909091,target
+target,super,convertible,a vehicle,0.93,0.875625,0.97625,target
+target,super,daisy,a plant,0.849,0.7834625,0.907025,target
+target,super,dalmatian,an animal,0.8922727273,0.8031818182,0.9568181818,target
+target,super,diningtable,furniture,0.905,0.8571428571,0.9485892857,target
+target,super,dressshirt,clothing,0.9427272727,0.9127045455,0.9718409091,target
+target,super,eagle,an animal,0.9225,0.8691458333,0.9716666667,target
+target,super,germanshepherd,an animal,0.957,0.913,0.987,target
+target,super,goldfish,an animal,0.7461538462,0.6576923077,0.8400576923,target
+target,super,grizzlybear,an animal,0.8571428571,0.7657142857,0.9357321429,target
+target,super,gummybears,a snack,0.765,0.6760972222,0.8477916667,target
+target,super,hawaiishirt,clothing,0.767,0.637975,0.889,target
+target,super,hummingbird,an animal,0.7458823529,0.6393970588,0.8300147059,target
+target,super,husky,an animal,0.94,0.9093970588,0.9664705882,target
+target,super,jellybeans,a snack,0.6592307692,0.5107692308,0.7923269231,target
+target,super,minivan,a vehicle,0.7742857143,0.6006785714,0.907875,target
+target,super,mnms,a snack,0.8272222222,0.7494305556,0.8944583333,target
+target,super,pandabear,an animal,0.90625,0.85625,0.95565625,target
+target,super,parrot,an animal,0.6790909091,0.4463636364,0.8918636364,target
+target,super,picnictable,furniture,0.6313333333,0.5319833333,0.7446833333,target
+target,super,pigeon,an animal,0.8208333333,0.746625,0.893375,target
+target,super,polarbear,an animal,0.9114285714,0.8585714286,0.9592857143,target
+target,super,poloshirt,clothing,0.9538095238,0.9180714286,0.9833333333,target
+target,super,pug,an animal,0.867,0.7884375,0.9365375,target
+target,super,rose,a plant,0.8507692308,0.7869230769,0.9123076923,target
+target,super,skittles,a snack,0.7918181818,0.6698636364,0.9009090909,target
+target,super,sportscar,a vehicle,0.8833333333,0.8055277778,0.95,target
+target,super,sunflower,a plant,0.8183333333,0.6582916667,0.9425208333,target
+target,super,suv,a vehicle,0.914,0.8745,0.95,target
+target,super,swordfish,an animal,0.692,0.49925,0.8580666667,target
+target,super,tshirt,clothing,0.9266666667,0.8833333333,0.9633333333,target
+target,super,tulip,a plant,0.8790909091,0.7999772727,0.9509090909,target
