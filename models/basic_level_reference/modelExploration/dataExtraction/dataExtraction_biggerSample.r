@@ -3,7 +3,7 @@ theme_set(theme_bw(18))
 setwd("/home/caroline/cocolab/overinformativeness/models/basic_level_reference/modelExploration/dataExtraction")
 #setwd("~/cogsci/projects/stanford/projects/overinformativeness/models/basic_level_reference/modelExploration")
 
-lengths = read.table(file="lengthChart_uniformLabels.csv",sep=",", header=T, quote="")
+lengths = read.table(file="lengthChart_uniformLabels_biggerSample.csv",sep=",", header=T, quote="")
 head(lengths)
 freqs = read.table(file="frequencyChart_uniformLabels.csv",sep=",", header=T, quote="")
 head(freqs)
@@ -15,33 +15,33 @@ head(typs)
 
 #overall
 mean(lengths$average_length)
-#6.891176
+#7.029412
 min(lengths$average_length)
 #3
 max(lengths$average_length)
-#14.25
+#13.13
 
 #for sub:
 sub = droplevels(subset(lengths, level == "sub"))
 head(sub)
 nrow(sub)
 mean(sub$average_length)
-#7.559444
+#7.761389
 min(sub$average_length)
 #3
 max(sub$average_length)
-#14.25
+#13.13
 
 #for basic:
 basic = droplevels(subset(lengths, level == "basic"))
 head(basic)
 nrow(basic)
 mean(basic$average_length)
-#4.367778
+#4.343333
 min(basic$average_length)
-#3
+#3.01
 max(basic$average_length)
-#6.02
+#5.98
 
 #for super:
 super = droplevels(subset(lengths, level == "super"))
@@ -258,17 +258,18 @@ max(distrDiffSuper$meanresponse)
 
 # mean typicalities, lengths and frequencies for 12 label_Condition_combinations:
 
-# 1)  item12_sub: sub_length = 7.559444, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.2646565, typ_d2 = 0.04424588, mean(typ_d1, typ_d2) = 0.1544512
-# 2)  item22_sub: sub_length = 7.559444, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.04424588, typ_d2 = 0.04424588, mean(typ_d1, typ_d2) = 0.04424588
-# 3)  item23_sub: sub_length = 7.559444, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.04424588, typ_d2 = 0, mean(typ_d1, typ_d2) = 0.02212294
-# 4)  item33_sub: sub_length = 7.559444, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0, typ_d2 = 0, mean(typ_d1, typ_d2) = 0
-# 5)  item12_basic: basic_length = 4.367778, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.861241, typ_d2 = 0.06146359, mean(typ_d1, typ_d2) = 0.4613523
-# 6)  item22_basic: basic_length = 4.367778, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.06146359, typ_d2 = 0.06146359, mean(typ_d1, typ_d2) = 0.06146359
-# 7)  item23_basic: basic_length = 4.367778, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.06146359, typ_d2 = 0, mean(typ_d1, typ_d2) = 0.03073179
-# 8)  item33_basic: basic_length = 4.367778, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0, typ_d2 = 0, mean(typ_d1, typ_d2) = 0
+# 1)  item12_sub: sub_length = 7.761389, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.2646565, typ_d2 = 0.04424588, mean(typ_d1, typ_d2) = 0.1544512
+# 2)  item22_sub: sub_length = 7.761389, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.04424588, typ_d2 = 0.04424588, mean(typ_d1, typ_d2) = 0.04424588
+# 3)  item23_sub: sub_length = 7.761389, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0.04424588, typ_d2 = 0, mean(typ_d1, typ_d2) = 0.02212294
+# 4)  item33_sub: sub_length = 7.761389, sub_freq = 1.674502e-06, typ_t = 0.9369443, typ_d1 = 0, typ_d2 = 0, mean(typ_d1, typ_d2) = 0
+# 5)  item12_basic: basic_length = 4.343333, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.861241, typ_d2 = 0.06146359, mean(typ_d1, typ_d2) = 0.4613523
+# 6)  item22_basic: basic_length = 4.343333, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.06146359, typ_d2 = 0.06146359, mean(typ_d1, typ_d2) = 0.06146359
+# 7)  item23_basic: basic_length = 4.343333, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0.06146359, typ_d2 = 0, mean(typ_d1, typ_d2) = 0.03073179
+# 8)  item33_basic: basic_length = 4.343333, basic_freq = 7.794756e-05, typ_t = 0.8803017, typ_d1 = 0, typ_d2 = 0, mean(typ_d1, typ_d2) = 0
 # 9)  item12_super: super_length = 6.666667, super_freq = 6.092217e-05, typ_t = 0.8244489, typ_d1 = 0.8160308, typ_d2 = 0.8028321, mean(typ_d1, typ_d2) = 0.8094314
 # 10) item22_super: super_length = 6.666667, super_freq = 6.092217e-05, typ_t = 0.8244489, typ_d1 = 0.8028321, typ_d2 = 0.8028321, mean(typ_d1, typ_d2) = 0.8028321
 # 11) item23_super: super_length = 6.666667, super_freq = 6.092217e-05, typ_t = 0.8244489, typ_d1 = 0.8028321, typ_d2 = 0.04304787, mean(typ_d1, typ_d2) = 0.42294
 # 12) item33_super: super_length = 6.666667, super_freq = 6.092217e-05, typ_t = 0.8244489, typ_d1 = 0.04304787, typ_d2 = 0.04304787, mean(typ_d1, typ_d2) = 0.04304787
 
-
+# global length: 7.029412
+# global frequency: 2.210477e-05

@@ -1,37 +1,10 @@
-itemtype,labeltype,item,label,meanresponse,meanresponseReal,,,t_t,t_d1
-dist_samesuper,sub,greyhound,a dalmatian,1,0.1836363636,,,1,0.01
-dist_samesuper,sub,horse,a dalmatian,1,0.0136363636,,,1,0.2
-target,sub,dalmatian,a dalmatian,0.01,0.9486666667,,,1,0.4
-dist_samesuper,basic,greyhound,a dog,0.928,0.928,,,1,0.6
-dist_samesuper,basic,horse,a dog,0.0091666667,0.0091666667,,,1,0.8
-target,basic,dalmatian,a dog,0.8936363636,0.8936363636,,,1,1
-dist_samesuper,super,greyhound,an animal,0.8725,0.8725,,,0.8,0.01
-dist_samesuper,super,horse,an animal,0.9,0.9,,,0.8,0.2
-target,super,dalmatian,an animal,0.8922727273,0.8922727273,,,0.8,0.4
-dist_samesuper,sub,bison,a dalmatian,0.04375,0.04375,,,0.8,0.6
-dist_samesuper,basic,bison,a dog,0.0305263158,0.0305263158,,,0.8,0.8
-dist_diffsuper,super,bed,an animal,0.0083333333,0.0083333333,,,0.8,1
-dist_samesuper,super,bison,an animal,0.853,0.853,,,0.6,0.01
-dist_diffsuper,super,cookies,an animal,0.0122222222,0.0122222222,,,0.6,0.2
-,,,,,,,,0.6,0.4
-,,,,,,,,0.6,0.6
-,,,,,,,,0.6,0.8
-,,,,,,,,0.6,1
-,,,,,,,,0.4,0.01
-,,,,,,,,0.4,0.2
-,,,,,,,,0.4,0.4
-,,,,,,,,0.4,0.6
-,,,,,,,,0.4,0.8
-,,,,,,,,0.4,1
-,,,,,,,,0.2,0.01
-,,,,,,,,0.2,0.2
-,,,,,,,,0.2,0.4
-,,,,,,,,0.2,0.6
-,,,,,,,,0.2,0.8
-,,,,,,,,0.2,1
-,,,,,,,,0.01,0.01
-,,,,,,,,0.01,0.2
-,,,,,,,,0.01,0.4
-,,,,,,,,0.01,0.6
-,,,,,,,,0.01,0.8
-,,,,,,,,0.01,1
+itemtype,labeltype,item,label,meanresponse,meanresponseReal
+target,sub,dalmatian,a dalmatian,0.01,0.9486666667
+dist_1,sub,greyhound,a dalmatian,1,0.1836363636
+dist_2,sub,horse,a dalmatian,1,0.0136363636
+target,basic,dalmatian,a dog,0.8936363636,0.8936363636
+dist_1,basic,greyhound,a dog,0.928,0.928
+dist_2,basic,horse,a dog,0.0091666667,0.0091666667
+target,super,dalmatian,an animal,0.8922727273,0.8922727273
+dist_1,super,greyhound,an animal,0.8725,0.8725
+dist_2,super,horse,an animal,0.9,0.9
