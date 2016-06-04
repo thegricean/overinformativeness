@@ -1,4 +1,4 @@
-noun,relFreq
-animal,0.00000167
-dalmatian,0.00000167
-dog,0.00000167
+noun,relFreq,low,med,high
+dalmatian,1.59E-010,1.59E-010,0.0000221,0.000309774
+dog,0.0000221,1.591E-010,0.00002211,0.0003097741
+animal,0.000309774,,,

@@ -99,9 +99,15 @@ var getFrequencyData = function() {
   return frequencyData;
 };
 
+//var getLengthData = function() {
+//  var lengthData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
+//			    + "/results/data/lengthChart_uniformLabels.csv");
+//  return lengthData;
+//};
+
 var getLengthData = function() {
-  var lengthData = locParse("../../experiments/4_numdistractors_basiclevel_newitems"
-			    + "/results/data/lengthChart_uniformLabels.csv");
+  var lengthData = locParse("../../experiments/7_overinf_basiclevel_biggersample"
+          + "/results/data/lengthChart_uniformLabels.csv");
   return lengthData;
 };
 
@@ -118,6 +124,8 @@ var getRelativeLogFrequency = function(label) {
   var frequencyData = getFrequencyData();
   var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
   var selector = function(row) {return Math.log(row.relFreq);};
+  //console.log("label, relevantRow, selector: ", label, relevantRow, selector)
+  console.log("standardizeVal(frequencyData, relevantRow, selector): ", label, standardizeVal(frequencyData, relevantRow, selector))
   return standardizeVal(frequencyData, relevantRow, selector);
 };
 
@@ -125,6 +133,7 @@ var getRelativeLength = function(label) {
   var lengthData = getLengthData();
   var relevantRow = _.filter(lengthData, function(row) {return row.noun == label;})[0];
   var selector = function(row) {return Number(row.average_length);};
+  console.log("standardizeVal(lengthData, relevantRow, selector): ", label, standardizeVal(lengthData, relevantRow, selector))
   return standardizeVal(lengthData, relevantRow, selector);
 };
 

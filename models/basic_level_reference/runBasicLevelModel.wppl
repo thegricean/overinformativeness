@@ -48,11 +48,12 @@
   var speaker = model.speaker;
   var runListener = model.runListener;
   var listener = model.listener;
+
   
   var modelOutput = runModel(speaker, item, domainInfo);
   var listenerOutput = runListener(listener, label, item);
 
   console.log("modelOutput: ", modelOutput);
-  console.log("listenerOutput: ", listenerOutput);
+  //console.log("listenerOutput: ", listenerOutput);
 
   //refModule.writeCSV(modelOutput, modelOutput.csv);
