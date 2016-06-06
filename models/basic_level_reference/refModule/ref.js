@@ -133,7 +133,7 @@ var getRelativeLength = function(label) {
   var lengthData = getLengthData();
   var relevantRow = _.filter(lengthData, function(row) {return row.noun == label;})[0];
   var selector = function(row) {return Number(row.average_length);};
-  console.log("standardizeVal(lengthData, relevantRow, selector): ", label, standardizeVal(lengthData, relevantRow, selector))
+  //console.log("standardizeVal(lengthData, relevantRow, selector): ", label, standardizeVal(lengthData, relevantRow, selector))
   return standardizeVal(lengthData, relevantRow, selector);
 };
 

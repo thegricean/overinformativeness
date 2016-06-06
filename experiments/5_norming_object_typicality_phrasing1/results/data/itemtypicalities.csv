@@ -1,10 +1,10 @@
 itemtype,labeltype,item,label,meanresponse,condition12,condition22,condition23,condition33
 target,sub,dalmatian,a dalmatian,0.9369443,0.9369443,0.9369443,0.9369443,0.9369443
-dist_1,sub,greyhound,a dalmatian,0.04424588,0.2646565,0.04424588,0.04424588,0
+dist_1,sub,greyhound,a dalmatian,0,0.2646565,0.04424588,0.04424588,0
 dist_2,sub,horse,a dalmatian,0,0.04424588,0.04424588,0,0
 target,basic,dalmatian,a dog,0.8803017,0.8803017,0.8803017,0.8803017,0.8803017
-dist_1,basic,greyhound,a dog,0.06146359,0.861241,0.06146359,0.06146359,0
+dist_1,basic,greyhound,a dog,0,0.861241,0.06146359,0.06146359,0
 dist_2,basic,horse,a dog,0,0.06146359,0.06146359,0,0
 target,super,dalmatian,an animal,0.8244489,0.8244489,0.8244489,0.8244489,0.8244489
-dist_1,super,greyhound,an animal,0.8028321,0.8160308,0.8028321,0.8028321,0.04304787
+dist_1,super,greyhound,an animal,0.04304787,0.8160308,0.8028321,0.8028321,0.04304787
 dist_2,super,horse,an animal,0.04304787,0.8028321,0.8028321,0.04304787,0.04304787
