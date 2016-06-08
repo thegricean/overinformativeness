@@ -20,22 +20,23 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
-# modelversion = "fixed-reducedconditions"
+# modelversion = "fixed-reducedconditions-unlogged"
+modelversion = "fixed-reducedconditions"
 # modelversion = "fixed-fullconditions"
 # modelversion = "empirical-fullconditions"
 # modelversion = "empirical-fullconditions-scaledtyp"
 # modelversion = "interpolated"
 # modelversion = "interpolated-scaledtyp"
-modelversion = "hmc-test"
+# modelversion = "hmc-test"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
-# samples = 10000 # reducedconditions
-samples = 500 # empirical-fullconditions
+samples = 10000 # reducedconditions
+# samples = 200
 param_sample_test = params %>%
   group_by(parameter) %>%
   summarise(Sum=sum(MCMCprob))
 param_sample_test
-str(params)
+summary(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
 
 alphaSubset = params.samples %>% 
