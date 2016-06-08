@@ -22,7 +22,7 @@ function appendCSV(jsonCSV, filename){
 var writeERP = function(erp, labels, filename, fixed) {
   var data = _.filter(erp.support().map(
    function(v) {
-     var prob = Math.exp(erp.score([], v));
+     var prob = Math.exp(erp.score(v));
      if (prob > 0.0){
       if(v.slice(-1) === ".")
         out = butLast(v);
@@ -58,10 +58,10 @@ var bayesianErpWriter = function(erp, filePrefix) {
   var paramFile = fs.openSync(filePrefix + "Params.csv", 'w');
   fs.writeSync(paramFile, ["parameter", "value", "MCMCprob"] + '\n');
 
-  var supp = erp.support([]);
+  var supp = erp.support();
   supp.forEach(function(s) {
-    supportWriter(s.predictive, Math.exp(erp.score([], s)), predictiveFile);
-    supportWriter(s.params, Math.exp(erp.score([], s)), paramFile);
+    supportWriter(s.predictive, Math.exp(erp.score(s)), predictiveFile);
+    supportWriter(s.params, Math.exp(erp.score(s)), paramFile);
   });
   fs.closeSync(predictiveFile);
   fs.closeSync(paramFile);

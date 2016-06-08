@@ -42,73 +42,136 @@ var getTypicalities = function() {
 };
 
 var typicality_norms = getTypicalities();
-console.log(typicality_norms);
+// console.log(typicality_norms);
 
-  var params = {
-    alpha : 5,
-    lengthWeight : .5,
-    // typNoise : .999,
-    // typWeight : .5,
-    typicality_color : .95,
-    typicality_size : .8,
-    typicality_type : .95,
-    // typicality_sizetype : .999,
-    cost_color : 1,
-    cost_size : 1,
-    cost_type : 1,
-    speakeroptimality : 1
-  };
+// contexts in Fig 1a in paper
+var context = [
+  ["size","blue","thumbtack"],
+  ["othersize","blue","thumbtack"],
+  ["othersize","red","thumbtack"]
+];
+
+// contexts in Fig 1b in paper
+//   var context = [
+//     ["size","blue","thumbtack"],
+//     ["size","red","thumbtack"],
+//     ["othersize","red","thumbtack"]
+// ];
+
+var alphas = [0,1,2,5,10,15,20];
+var lengthWeights = [0,1,2,3,4];
+var typicality_colors = [.001,.2,.4,.6,.8,.9,.999];
+var typicality_sizes = [.001,.2,.4,.6,.8,.9,.999];
+var cost_colors = [0,.5,1,1.5,2];
+var cost_sizes = [0,.5,1,1.5,2];
+
+
+
+
+// var params = {
+//   alpha : 1,
+//   lengthWeight : 0,
+//   typicality_color : .999,
+//   typicality_size : .999,
+//   typicality_type : .999,
+//   // typWeight : 1,
+//   cost_color : 1,
+//   cost_size : 1,
+//   cost_type : 1
+// };
+
+// special typicality case:
 
   // var context = [
-  //   ["size","pink","golfball"],
+  // 	["size","blue","golfball"],
+  //   // ["size","blue","golfball"],
+  //   // ["size","blue","golfball"],
+  //   ["othersize","blue","golfball"],
+  //   // ["othersize","blue","golfball"],
+  //   // ["othersize","blue","golfball"],
+  // 	// ["othersize","blue","golfball"]
+  //   // ["othersize","pink","golfball"]
   //   ["othersize","pink","golfball"],
-  //   // ["small","green"],
-  //   ["othersize","blue","golfball"]
+  //   ["othersize","pink","golfball"],    
+  //   ["othersize","pink","golfball"]
+  //   // ["othersize","blue","golfball"],
+  //   // ["othersize","blue","golfball"]
   // ];
 
-  var context = [
-  	["size","blue","golfball"],
-    // ["size","blue","golfball"],
-    // ["size","blue","golfball"],
-    ["othersize","blue","golfball"],
-    // ["othersize","blue","golfball"],
-    // ["othersize","blue","golfball"],
-  	// ["othersize","blue","golfball"]
-    // ["othersize","pink","golfball"]
-    ["othersize","pink","golfball"],
-    ["othersize","pink","golfball"],    
-    ["othersize","pink","golfball"]
-    // ["othersize","blue","golfball"],
-    // ["othersize","blue","golfball"]
-  ];
 
-  //   var context = [
-  //   ["size","green","avocado"],
-  //   ["othersize","green","avocado"],
-  //   // ["small","green"],
-  //   ["othersize","black","avocado"]
-  // ];
+  // var model = OverinformativeModel(params,context,typicality_norms);
 
-  var model = OverinformativeModel(params,context,typicality_norms);
-  var runModel = model.runModel;
-  var speaker = model.speaker;
-  var listener = model.listener;
-  var runListener = model.runListener;
-  // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
-  // var modelOutput = runModel(speaker, ["othersize","pink","golfball"]);
-  // var modelOutput = runModel(speaker, ["size","green","avocado"]);
-  // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
-  // var utts = ["golfball","size_golfball","blue_golfball","size_blue_golfball"];
-  // map(function(utt) {
-  //   var listenerOutput = runListener(listener, utt);
-  //   // console.log(listenerOutput);
-  //   refModule.writeERP(listenerOutput, [utt], "results_model/data/listener.csv",2);
-  // },utts);
+// var models = [];
+// var paramsets = [];
 
-  // map(function(c) {
-    // var modelOutput = runModel(speaker, c);
-    // console.log(modelOutput);
-    // refModule.writeERP(modelOutput, [c], "results_model/data/speaker.csv",2);
-  // },context);
-  var modelOutput = runModel(speaker, ["size","blue","golfball"]);
-  console.log(modelOutput);
+  map(function(al) {
+    console.log("next alpha: "+al);
+    map(function(le) {
+      map(function(tc) {
+        map(function(ts) {
+          map(function(cc) {
+            map(function(cs) {  
+              // models.push(OverinformativeModel({
+                var model = OverinformativeModel({
+                                alpha : al,
+                                lengthWeight : le,
+                                typicality_color : tc,
+                                typicality_size : ts,
+                                typicality_type : .999,
+                                cost_color : cc,
+                                cost_size : 1,
+                                cost_type : 1},
+                                context,typicality_norms);
+              // paramsets.push([al,le,tc,ts,cc,cs]);
+
+
+// map(function(m) {
+              var runModel = model.runModel;
+              var speaker = model.speaker;
+              var listener = model.listener;
+              var runListener = model.runListener;
+//   // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+//   // var modelOutput = runModel(speaker, ["othersize","pink","golfball"]);
+//   // var modelOutput = runModel(speaker, ["size","green","avocado"]);
+//   // var modelOutput = runModel(speaker, ["othersize","black","avocado"]);
+//   // var utts = ["golfball","size_golfball","blue_golfball","size_blue_golfball"];
+//   // map(function(utt) {
+//   //   var listenerOutput = runListener(listener, utt);
+//   //   // console.log(listenerOutput);
+//   //   refModule.writeERP(listenerOutput, [utt], "results_model/data/listener.csv",2);
+//   // },utts);
+
+//   // map(function(c) {
+//     // var modelOutput = runModel(speaker, c);
+//     // console.log(modelOutput);
+//     // refModule.writeERP(modelOutput, [c], "results_model/data/speaker.csv",2);
+//   // },context);
+//   // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
+  
+// qualitative effects for paper (modeling section)
+            // write listener results
+              var utts = ["thumbtack","size_thumbtack","blue_thumbtack","size_blue_thumbtack","othersize_thumbtack","red_thumbtack","othersize_red_thumbtack","othersize_blue_thumbtack"];
+              map(function(utt) {
+                var listenerOutput = runListener(listener, utt);
+                // console.log(listenerOutput);
+                refModule.writeERP(listenerOutput, [al,le,tc,ts,cc,cs,utt], "results_model/data/listener.csv",2);
+                // refModule.writeERP(listenerOutput, m.params, "results_model/data/listener.csv",2);
+              },utts);
+              
+              // write speaker results (size sufficient)
+              var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
+              refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_model/data/speaker.csv",2);            
+              // refModule.writeERP(modelOutput, m.params, "results_model/data/speaker.csv",2);            
+              // write speaker results (color sufficient)
+              var modelOutput = runModel(speaker, ["othersize","red","thumbtack"]);
+              refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"color_sufficient"], "results_model/data/speaker.csv",2);                        
+            // refModule.writeERP(modelOutput, m.params, "results_model/data/speaker.csv",2);                          
+              // console.log(modelOutput);
+            // }, models);
+
+            }, cost_sizes);          
+          }, cost_colors);
+        }, typicality_sizes);
+      }, typicality_colors);
+    }, lengthWeights);
+  }, alphas);

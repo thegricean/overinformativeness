@@ -245,7 +245,7 @@ var OverinformativeModel = function(params, context, typicalities) {
     };
 
     var literalListener = cache(function(utt){
-      return Enumerate(function(){
+      return Infer({method:'enumerate'},function(){
         var object = uniformDraw(context);
         // console.log(utt);
         factor(uttFitness(utt,object)); 
@@ -257,15 +257,12 @@ var OverinformativeModel = function(params, context, typicalities) {
     var speaker = cache(function(target) {
       var possibleutts = getUtterances(context);//refModule.getAllPossibleUtts(target, tax);
       // console.log(possibleutts);
-      return Enumerate(function(){
+      return Infer({method:'enumerate'},function(){
         var utt = uniformDraw(possibleutts);
         // console.log(utt);
         var literalListenerERP = literalListener(utt);
-        // factor(params.alpha * literalListenerERP.score([], target)); // how strongly to weight informativeness
-        var uttCost = getUtteranceCost(utt); // replace with a by-word cost
-        // console.log(params.lengthWeight * uttCost);
-        // factor(-params.lengthWeight * uttCost);
-        var score = params.alpha * literalListenerERP.score([], target) - params.lengthWeight * uttCost;
+        var uttCost = getUtteranceCost(utt); 
+        var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
         factor(score); 
         return utt;
       });
@@ -273,26 +270,25 @@ var OverinformativeModel = function(params, context, typicalities) {
 
     var runModel = function(speakerModel, target) { 
       var speakerERP = speakerModel(target);
-      return Enumerate(function(){
+      return Infer({method:'enumerate'},function(){
         var utt = sample(speakerERP);
-        // factor(params.speakeroptimality*speakerERP.score([],utt));
         return utt;
       });
     };
 
-    // var runListener = function(listenerModel, utterance) { 
-    //   var listenerERP = listenerModel(utterance);
-    //   return Enumerate(function(){
-    //     var obj = sample(listenerERP);
-    //     return obj;
-    //   });
-    // };    
+    var runListener = function(listenerModel, utterance) { 
+      var listenerERP = listenerModel(utterance);
+      return Infer({method:'enumerate'},function(){
+        var obj = sample(listenerERP);
+        return obj;
+      });
+    };    
   
   return {
     runModel : runModel,
-    speaker : speaker
-    // listener: literalListener,
-    // runListener : runListener
+    speaker : speaker,
+    listener: literalListener,
+    runListener : runListener
   };
 };
 
@@ -302,6 +298,6 @@ var OverinformativeModel = function(params, context, typicalities) {
 //   var runM = model.runModel;
 //   var sp = model.speaker;
 //   var modelOutput = runM(sp,["big","green"]);
-//   console.log(modelOutput.score([],"big"));
+//   console.log(modelOutput.score("big"));
 // }, contexts);
 
