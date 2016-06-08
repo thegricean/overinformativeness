@@ -30,3 +30,4 @@ corpus_results/data/*
 Caroline/5_OI_Final_Experiment2/results_round1/
 Caroline/5_OI_Final_Experiment2/results_round2/
 *.gitattributes
+models/1_basic_overinformativeness/results_model/data/*
