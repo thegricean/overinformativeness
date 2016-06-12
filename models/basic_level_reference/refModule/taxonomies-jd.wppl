@@ -1268,11 +1268,11 @@ var BasicLevelModel = function(domainInfo, params) {
   };
 
   var literalListener = cache(function(label, item){
-    return Enumerate(function(){
+    return Infer({method:'enumerate'},function(){
       var object = uniformDraw(item);
-      //console.log(object);
-      //console.log(label);
-      //console.log(labelFitness(label,object));
+      console.log(object);
+      console.log(label);
+      console.log(labelFitness(label,object));
       factor(labelFitness(label,object));
       return object;
     });
@@ -1280,10 +1280,13 @@ var BasicLevelModel = function(domainInfo, params) {
   
   var speaker = cache(function(target, item) {
     var possibleLabels = refModule.getAllPossibleLabels(target, tax);
-    return Enumerate(function(){
+    console.log(possibleLabels);
+    console.log(target);
+    console.log(tax);
+    return Infer({method:'enumerate'},function(){
       var label = uniformDraw(possibleLabels);
       var literalListenerERP = literalListener(label, item);
-      factor(params.alpha * literalListenerERP.score([], target));
+      factor(params.alpha * literalListenerERP.score(target));
 
       var labelLength = refModule.getRelativeLength(label);
       var labelFreq = refModule.getRelativeLogFrequency(label);
@@ -1295,7 +1298,7 @@ var BasicLevelModel = function(domainInfo, params) {
 
   var runModel = function(speakerModel, item, domainInfo) {
     var speakerERP = speakerModel(item[0], item);
-    return Enumerate(function(){
+    return Infer({method:'enumerate'},function(){
       var label = sample(speakerERP);
       return (_.contains(domainInfo.subLabels, label) ? "sub" :
         label === domainInfo.basicLabel ? "basic" :
@@ -1304,18 +1307,18 @@ var BasicLevelModel = function(domainInfo, params) {
     });
   };
 
-  var runListener = function(listenerModel, label, item) { 
-      var listenerERP = listenerModel(label, item);
-      return Enumerate(function(){
-        var obj = sample(listenerERP);
-        return obj;
-      });
-  };
+  // var runListener = function(listenerModel, label, item) { 
+  //     var listenerERP = listenerModel(label, item);
+  //     return Infer({method:'enumerate'},function(){
+  //       var obj = sample(listenerERP);
+  //       return obj;
+  //     });
+  // };
   
   return {
     runModel : runModel,
-    speaker : speaker,
-    listener: literalListener,
-    runListener : runListener
+    speaker : speaker//,
+    // listener: literalListener,
+    // runListener : runListener
   };
 };

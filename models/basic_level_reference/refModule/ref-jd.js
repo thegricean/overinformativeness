@@ -18,7 +18,7 @@ function appendCSV(jsonCSV, filename){
 var writeERP = function(erp, labels, filename, fixed) {
   var data = _.filter(erp.support().map(
    function(v) {
-     var prob = Math.exp(erp.score([], v));
+     var prob = Math.exp(erp.score(v));
      if (prob > 0.0){
       if(v.slice(-1) === ".")
         out = butLast(v);
@@ -56,8 +56,8 @@ var bayesianErpWriter = function(erp, filePrefix) {
 
   var supp = erp.support([]);
   supp.forEach(function(s) {
-    supportWriter(s.predictive, Math.exp(erp.score([], s)), predictiveFile);
-    supportWriter(s.params, Math.exp(erp.score([], s)), paramFile);
+    supportWriter(s.predictive, Math.exp(erp.score(s)), predictiveFile);
+    supportWriter(s.params, Math.exp(erp.score(s)), paramFile);
   });
   fs.closeSync(predictiveFile);
   fs.closeSync(paramFile);
@@ -125,7 +125,7 @@ var getRelativeLogFrequency = function(label) {
   var relevantRow = _.filter(frequencyData, function(row) {return row.noun == label;})[0];
   var selector = function(row) {return Math.log(row.relFreq);};
   //console.log("label, relevantRow, selector: ", label, relevantRow, selector)
-  console.log("standardizeVal(frequencyData, relevantRow, selector): ", label, standardizeVal(frequencyData, relevantRow, selector))
+  // console.log("standardizeVal(frequencyData, relevantRow, selector): ", label, standardizeVal(frequencyData, relevantRow, selector))
   return standardizeVal(frequencyData, relevantRow, selector);
 };
 

@@ -22,8 +22,10 @@ options("scipen"=10)
 
 #params<-read.csv("bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("bdaOutput/NOTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/FULLONTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
-samples = 10000
+# params<-read.csv("bdaOutput/FULLONTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
+params<-read.csv("bdaOutput/bdaCombined-logtypicalitiesParams.csv", sep = ",", row.names = NULL)
+# samples = 10000
+samples = 2000
 str(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
 
@@ -130,7 +132,8 @@ tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 
 #predictive.inter<-read.csv("bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 #predictive.notyp<-read.csv("bdaOutput/NOTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
-predictive<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+# predictive<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv("bdaOutput/bdaCombined-logtypicalitiesPredictives.csv", sep = ",", row.names = NULL) 
 
 
 ## collapse across targets and domains
