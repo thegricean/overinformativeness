@@ -23,10 +23,20 @@ options("scipen"=10)
 #params<-read.csv("bdaOutput/INTERPOLATEbdaOutputParams.csv", sep = ",", row.names = NULL)
 #params<-read.csv("bdaOutput/NOTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
 # params<-read.csv("bdaOutput/FULLONTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
-params<-read.csv("bdaOutput/bdaCombined-logtypicalitiesParams.csv", sep = ",", row.names = NULL)
-# samples = 10000
-samples = 2000
+# params<-read.csv("bdaOutput/bdaCombined-logtypicalitiesParams.csv", sep = ",", row.names = NULL)
+modelversion = "fulldataset-typicalities"
+modelversion = "fulldataset-detfit"
+params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
+
+samples = 3000
 str(params)
+params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
+# test whether probs add up to 1
+param_sample_test = params %>%
+  group_by(parameter) %>%
+  summarise(Sum=sum(MCMCprob))
+param_sample_test
+summary(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
 
 alphaSubset = params.samples %>% 
@@ -79,24 +89,25 @@ numericSubset[numericSubset$parameter == "freqWeight",]$parameter = "beta_f"
 numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_l"
 numericSubset[numericSubset$parameter == "typWeight",]$parameter = "beta_t"
 
-library(gridExtra)
+bw = 10
+
 ggplot(numericSubset[numericSubset$parameter != "beta_t",], aes(x=value)) +
     geom_histogram(data=subset(numericSubset, parameter == "lambda"), 
-                   binwidth = .5, colour="black", fill="white")+
+                   binwidth = (range(numericSubset[numericSubset$parameter == "lambda",]$value)[2] - range(numericSubset[numericSubset$parameter == "lambda",]$value)[1])/bw, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_f"),
-                   binwidth = .25, colour="black", fill="white")+
+                   binwidth = (range(numericSubset[numericSubset$parameter == "beta_f",]$value)[2] - range(numericSubset[numericSubset$parameter == "beta_f",]$value)[1])/bw, colour="black", fill="white")+
     geom_histogram(data=subset(numericSubset, parameter == "beta_l"),
-                 binwidth = .25, colour="black", fill="white")+
+                   binwidth = (range(numericSubset[numericSubset$parameter == "beta_l",]$value)[2] - range(numericSubset[numericSubset$parameter == "beta_l",]$value)[1])/bw, colour="black", fill="white")+
 #    geom_histogram(data=subset(numericSubset, parameter == "beta_t"),
  #                binwidth = .05, colour="black", fill="white")+
   #geom_histogram(data=subset(numericSubset, parameter == "typScale"),
    #              binwidth = .1, colour="black", fill="white")+  
-    geom_density(aes(y=.5*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
-                 alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_f"), adjust = 3.5,
-                 alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
-                 alpha=.2, fill="#FF6666")+
+    # geom_density(aes(y=.5*..count..), data =subset(numericSubset, parameter == "lambda"), adjust = 3.5,
+    #              alpha=.2, fill="#FF6666")+
+    # geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_f"), adjust = 3.5,
+    #              alpha=.2, fill="#FF6666")+
+    # geom_density(aes(y=.25*..count..),data=subset(numericSubset, parameter == "beta_l"),adjust = 3.5,
+    #              alpha=.2, fill="#FF6666")+
     #geom_density(aes(y=.05*..count..),data=subset(numericSubset, parameter == "beta_t"),adjust=2,
                 #alpha=.2, fill="#FF6666")+
   #geom_density(aes(y=.1*..count..),data=subset(numericSubset, parameter == "typScale"),adjust=2,
@@ -105,8 +116,8 @@ ggplot(numericSubset[numericSubset$parameter != "beta_t",], aes(x=value)) +
     facet_grid(~ parameter, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors.pdf",height=1.5,width=5)
-
+# ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=1.5,width=5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/basic_level_reference/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=1.5,width=5)
 
 ### Predictives
 
@@ -114,18 +125,26 @@ ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writ
 
 source("rscripts/helpers.R")
 #d_noattr = read.csv("~/Repos/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
-d_noattr = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
-d_noattr$nameClickedObj = as.character(d_noattr$nameClickedObj)
-d_noattr$nameClickedObj = tolower(d_noattr$nameClickedObj)
-d_noattr$nameClickedObj = as.factor(as.character(d_noattr$nameClickedObj))
+# d_noattr = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/4_numdistractors_basiclevel_newitems/results/noAttr.csv")
+conditions = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results/data/basiclevCor_manModified.csv") %>%
+  select(gameid,roundNum,condition,sub,basic,super)
 
-tmp = d_noattr %>%
-  select(speakerMessages,condition,nameClickedObj,basiclevelClickedObj,
-         superdomainClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned,
-         typeAttributeMentioned,basiclevelAttributeMentioned,superclassattributeMentioned)
+d_noattr = read.csv("bdaInput/basicLevelResultsExp7.csv")
+tmp = merge(d_noattr,conditions,by.x=c("gameid","roundNum"))
 
-# some cases are marked as having type and attribute mentions at different levels of the hierarchy. i'll interpret all mentions as type mentions of the lowest compatible category
-tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
+# d_noattr$nameClickedObj = as.character(d_noattr$targetName)
+# d_noattr$sub = conditions[d_noattr]
+# # d_noattr$nameClickedObj = as.character(d_noattr$nameClickedObj)
+# d_noattr$nameClickedObj = tolower(d_noattr$nameClickedObj)
+# d_noattr$nameClickedObj = as.factor(as.character(d_noattr$nameClickedObj))
+# 
+# tmp = d_noattr %>%
+#   select(speakerMessages,condition,nameClickedObj,basiclevelClickedObj,
+#          superdomainClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned,
+#          typeAttributeMentioned,basiclevelAttributeMentioned,superclassattributeMentioned)
+
+# some cases are marked as having type and attribute mentions at different levels of the hierarchy. i'll interpret all mentions as type mentions of the lowest compatible category -- doesn't apply to the bigger dataset
+# tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 
 
 # combine with model fits
@@ -133,38 +152,53 @@ tmp[tmp$basiclevelMentioned & tmp$typeMentioned,]$basiclevelMentioned = F
 #predictive.inter<-read.csv("bdaOutput/INTERPOLATEbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 #predictive.notyp<-read.csv("bdaOutput/NOTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
 # predictive<-read.csv("bdaOutput/FULLONTYPbdaOutputPredictives.csv", sep = ",", row.names = NULL) 
-predictive<-read.csv("bdaOutput/bdaCombined-logtypicalitiesPredictives.csv", sep = ",", row.names = NULL) 
-
+# predictive<-read.csv("bdaOutput/bdaCombined-logtypicalitiesPredictives.csv", sep = ",", row.names = NULL) 
+predictive<-read.csv(paste("bdaOutput/bda-",modelversion,"Predictives.csv",sep=""),sep=",",row.names=NULL)
 
 ## collapse across targets and domains
 agr = tmp %>%
-  select(condition,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
+  select(condition,sub,basic,super) %>%
   gather(Utterance, Mentioned,-condition) %>%
   group_by(Utterance,condition) %>%
   summarise(Probability=mean(Mentioned),
             cilow=ci.low(Mentioned),
             cihigh=ci.high(Mentioned)) %>%
   ungroup() %>%
-  mutate(refLevel = factor(x = ifelse(agr$Utterance == "typeMentioned","sub", ifelse(agr$Utterance == "basiclevelMentioned","basic","super")), levels=c("sub","basic","super"))) %>%
   mutate(YMax = Probability + cihigh) %>%
   mutate(YMin = Probability - cilow) %>%
-  select(condition, refLevel, Probability, YMax, YMin)
+  select(condition,Utterance, Probability, YMax, YMin)
 agr = as.data.frame(agr)
 head(agr)
 
 agr_noattr = agr
 nrow(agr_noattr) # 12 datapoints
-agr_noattr$condition = gsub("distr","item",as.character(agr_noattr$condition))
+agr_noattr$condition = gsub("basic","item",as.character(agr_noattr$condition))
 agr_noattr$ModelType = "empirical"
 
-predictive.samples <- predictive[rep(row.names(predictive), 
-                                     predictive$MCMCprob*samples), 1:6] %>%
-  mutate(refLevel = value) %>%
-  group_by(refLevel, condition, target) %>%
+# get means by item so we can see which ones are most different with and without typicality
+itemmeans = predictive[rep(row.names(predictive), 
+                           predictive$MCMCprob*samples), 1:6] %>%
+  mutate(Utterance = value) %>%
+  group_by(Utterance, condition, target, alt1, alt2) %>%
   summarize(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
-  group_by(refLevel, condition) %>%
+  group_by(Utterance, condition, target, alt1, alt2) %>%
+  summarize(Probability = mean(Prob),
+            YMax = mean(Prob) + ci.high(Prob),
+            YMin = mean(Prob) - ci.low(Prob))
+itemmeans = as.data.frame(itemmeans)
+head(itemmeans)
+write.csv(itemmeans,file=paste("data/itemmeans-",modelversion,".csv",sep=""),row.names=F,quote=F)
+
+predictive.samples <- predictive[rep(row.names(predictive), 
+                                     predictive$MCMCprob*samples), 1:6] %>%
+  mutate(Utterance = value) %>%
+  group_by(Utterance, condition, target) %>%
+  summarize(Prob = estimate_mode(prob),
+            YMax = HPDhi(prob),
+            YMin = HPDlo(prob)) %>%
+  group_by(Utterance, condition) %>%
   summarize(Probability = mean(Prob),
             YMax = mean(Prob) + ci.high(Prob),
             YMin = mean(Prob) - ci.low(Prob))
@@ -206,34 +240,36 @@ toplot = merge(agr_noattr, predictive.samples, all=T)
 
 colors = scale_colour_brewer()[1:2]
 
+toplot$Utt = factor(x=toplot$Utterance,levels=c("sub","basic","super"))
 ggplot(toplot, aes(x=condition,y=Probability,fill=ModelType)) +
   geom_bar(stat="identity",color="black") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   scale_fill_brewer(guide=F) +
   ylab("Utterance probability") +
   xlab("Condition") +
-  facet_grid(ModelType~refLevel) +
+  facet_grid(ModelType~Utt) +
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1),plot.margin=unit(c(0,0,0,0),"cm"))
-ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/qualitativepattern.pdf",height=3.5,width=4.7)
+# ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/qualitativepattern.pdf",height=3.5,width=4.7)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/basic_level_reference/graphs/qualitativepattern-",modelversion,".pdf",sep=""),height=3.5,width=5)
 
 ### ANALYZE RESIDUALS
-row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$refLevel)
+row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$Utterance)
 
 predictive.samples <- predictive[rep(row.names(predictive), 
                                      predictive$MCMCprob*samples), 1:6] %>%
-  mutate(refLevel = value) %>%
-  group_by(refLevel, condition, target) %>%
+  mutate(Utterance = value) %>%
+  group_by(Utterance, condition, target) %>%
   summarize(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
-  group_by(refLevel, condition) %>%
+  group_by(Utterance, condition) %>%
   summarize(MAP = mean(Prob),
             credHigh = mean(Prob) + ci.high(Prob),
             credLow = mean(Prob) - ci.low(Prob)) %>%
-  inner_join(agr_noattr, by = c("refLevel", "condition"))
+  inner_join(agr_noattr, by = c("Utterance", "condition"))
 View(predictive.samples)
 
-ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLevel)) +
+ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=Utterance)) +
   geom_point() +
   xlim(c(0,1)) +
   ylim(c(0,1)) +
@@ -241,39 +277,78 @@ ggplot(predictive.samples, aes(x=MAP,y=Probability,shape=condition,color=refLeve
   #  geom_errorbarh(aes(xmax = credHigh, xmin = credLow)) +
   ylab("Empirical proportion") +
   xlab("Model predicted probability") +
-  geom_abline(xintercept=0,yintercept=0,slope=1,color="gray60") #+
+  geom_abline(intercept=0,slope=1,color="gray60") #+
 #facet_wrap(~ domain)
-ggsave("graphs/reparameterized/model_empirical_bycond.pdf",width=8.4,height=6)
+ggsave(paste("graphs/reparameterized/model_empirical_bycond-",modelversion,".pdf",sep=""),width=8.4,height=6)
 
 predictive.samples = as.data.frame(predictive.samples)
-cor(predictive.samples$MAP,predictive.samples$Probability) # r = .93 ( without typicality)
+cor(predictive.samples$MAP,predictive.samples$Probability) # r = .89 ( without typicality) vs .95 (with typicality)
 
-# collapse across targets but not domains
-agr = tmp %>%
-  select(condition,basiclevelClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
-  gather(Utterance, Mentioned,-condition,-basiclevelClickedObj) %>%
-  group_by(Utterance,condition,basiclevelClickedObj) %>%
-  summarise(Probability=mean(Mentioned),
-            cilow=ci.low(Mentioned),
-            cihigh=ci.high(Mentioned)) %>%
-  ungroup() %>%
-  mutate(refLevel = factor(x = ifelse(Utterance == "typeMentioned","sub", ifelse(Utterance == "basiclevelMentioned","basic","super")), levels=c("sub","basic","super"))) %>%
-  mutate(domain=basiclevelClickedObj) %>%
-  mutate(YMin = Probability + cihigh) %>%
-  mutate(YMax = Probability - cilow) %>%
-  select(condition, domain, refLevel, Probability, YMax, YMin)
-agr = as.data.frame(agr)
-head(agr)
+# comparison of means with and without typicality
+d_without = read.csv("data/itemmeans-fulldataset-detfit.csv")
+d_with = read.csv("data/itemmeans-fulldataset-typicalities.csv")
 
-agr_noattr = agr
-nrow(agr_noattr) # 108 datapoints
-agr_noattr$condition = gsub("distr","item",as.character(agr_noattr$condition))
+nrow(d_without)
+nrow(d_with)
+d_with$withoutProbability = d_without$Probability
+# i'm somehow computing kl-divergence wrongly, because i get some negative values
+# d = d_with %>%
+#   group_by(condition,target,alt1,alt2) %>%
+#   summarise(kl=sum(Probability[1]*log(Probability[1]/withoutProbability[1]),Probability[2]*log(Probability[2]/withoutProbability[2]),Probability[3]*log(Probability[3]/withoutProbability[3])))
+# d = as.data.frame(d)
+# d = d[order(d[,c("kl")]),]
+# head(d)
+d_with$Diff = d_with$Probability - d_without$Probability
+summary(d_with)
+d_with = d_with[order(d_with[,c("Diff")]),]
+head(d_with,6)
+tail(d_with)
 
-domains = unique(tmp[,c("nameClickedObj","basiclevelClickedObj")])
-row.names(domains) = domains$nameClickedObj
+maxdiff = d_with[(d_with$condition == "item23" & d_with$target == "bedsidetable" & d_with$alt1 == "ambulance" & d_with$alt2 == "bed" | d_with$condition == "item12" & d_with$target == "diningtable" & d_with$alt1 == "bookcase" & d_with$alt2 == "sidetable" | d_with$condition == "item12" & d_with$target == "hummingbird" & d_with$alt1 == "chick" & d_with$alt2 == "snake" | d_with$condition == "item12" & d_with$target == "hummingbird" & d_with$alt1 == "chick" & d_with$alt2 == "crocodile" | d_with$condition == "item12" & d_with$target == "hummingbird" & d_with$alt1 == "bed" & d_with$alt2 == "chick" | d_with$condition == "item12" & d_with$target == "diningtable" & d_with$alt1 == "bed" & d_with$alt2 == "sidetable"),c("Utterance","condition","target","alt1","alt2","Probability","withoutProbability","Diff")]
+nrow(maxdiff)
+maxdiff = maxdiff[order(maxdiff[,c("target")]),]
+maxdiff
+write.csv(maxdiff,file="data/typicality-maxdiff.csv",row.names=F,quote=F)
 
-### ANALYZE RESIDUALS
-row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$domain,agr_noattr$refLevel)
+toplot = maxdiff %>%
+  gather(probType,Probability,-Utterance,-condition,-target,-alt1,-alt2,-Diff)
+head(toplot)  
+toplot$Typicality = as.factor(ifelse(toplot$probType == "Probability","with","without"))
+toplot$Condition = paste(toplot$condition,toplot$target,toplot$alt1,toplot$alt2)
+toplot$Utt = factor(x=toplot$Utterance,levels=c("sub","basic","super"))
+
+ggplot(toplot, aes(x=Utt,y=Probability,color=Typicality,group=Typicality)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Condition)
+ggsave("graphs/typicality-maxdiff.pdf",width=10,height=6)
+
+# collapse across targets but not domains -- recode to fit scheme
+# agr = tmp %>%
+#   select(condition,basiclevelClickedObj,typeMentioned,basiclevelMentioned,superClassMentioned) %>%
+#   gather(Utterance, Mentioned,-condition,-basiclevelClickedObj) %>%
+#   group_by(Utterance,condition,basiclevelClickedObj) %>%
+#   summarise(Probability=mean(Mentioned),
+#             cilow=ci.low(Mentioned),
+#             cihigh=ci.high(Mentioned)) %>%
+#   ungroup() %>%
+#   mutate(refLevel = factor(x = ifelse(Utterance == "typeMentioned","sub", ifelse(Utterance == "basiclevelMentioned","basic","super")), levels=c("sub","basic","super"))) %>%
+#   mutate(domain=basiclevelClickedObj) %>%
+#   mutate(YMin = Probability + cihigh) %>%
+#   mutate(YMax = Probability - cilow) %>%
+#   select(condition, domain, refLevel, Probability, YMax, YMin)
+# agr = as.data.frame(agr)
+# head(agr)
+# 
+# agr_noattr = agr
+# nrow(agr_noattr) # 108 datapoints
+# agr_noattr$condition = gsub("distr","item",as.character(agr_noattr$condition))
+# 
+# domains = unique(tmp[,c("nameClickedObj","basiclevelClickedObj")])
+# row.names(domains) = domains$nameClickedObj
+
+### ANALYZE RESIDUALS -- need to redo everything following this
+row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$domain,agr_noattr$Utterance)
 #
 
 predictive$domain = domains[as.character(predictive$target),]$basiclevelClickedObj
