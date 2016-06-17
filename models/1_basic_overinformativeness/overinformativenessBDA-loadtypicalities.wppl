@@ -215,12 +215,12 @@ var modelAnalysis = function() {
 
   // console.log(query.table);
   // console.log(params);
-  return {predictive: query.table, params : params};
+  return params//{predictive: query.table, params : params};
 };
 
 // var outputERP = Infer({method:'MCMC', samples: 200, burn: 100, verbose: true}, modelAnalysis);
 // console.log(outputERP);
-var outputERP = MCMC(modelAnalysis, {samples: 10000, burn: 3000, verbose: true});
+var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 30, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10000, verbose: true, burn: 3000,
                                      // kernel: { HMC: { steps: 1, stepSize: .01 }}});
@@ -233,7 +233,10 @@ console.log('inference complete... printing');
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-test");
 
 // reduced conditions -- 10'000 samples
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
+
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
+outputERP
+
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged");
 
 // full conditions
