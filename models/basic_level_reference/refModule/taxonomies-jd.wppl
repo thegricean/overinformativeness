@@ -208,7 +208,8 @@ var birdInfo = {
       parrot: 0,
       pigeon: 0,
       hummingbird: 0,
-      sparrow : 0
+      sparrow : 0,
+      chick: 0
     },
     eagle: {
       eagle: 0

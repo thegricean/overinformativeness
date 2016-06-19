@@ -1,0 +1,57 @@
+# Analysis of 6 most extreme items:
+
+1) diningtable, bed, sidetable
+	labels: "dining table", "table", "furniture"
+	typ_diningtable("dining table"): 0.82
+	typ_diningtable("table"): 0.93
+	typ_diningtable("furniture"): 0.90
+	typ_sidetable("dining table"): 0.55
+	typ_sidetable("table"): 0.91
+	typ_sidetable("furniture"): 0.86
+	typ_bed("dining table"): 0.05
+	typ_bed("table"): 0.05
+	typ_bed("furniture"): 0.88
+
+	* The target has a relatively low typicality for the sub level term "dining table", especially in comparison with the target's relatively high typicality for the basic level term "table" 
+	* Also, the target has the highest typicality for "table" (compared with both of the distractors)
+	* Although the sub level term fits the target best, the distractor side table also has a quite high typicality for the sub term 	* Moreover, the basic level term is a lot shorter and more frequent than the sub term. (It's very cheap!)
+	--> Including typicality here, leads to the down-weighting of the sub term and thus makes mentioning the basic level term (despite informativeness constraints) more likely.
+
+	* Note: A similar trend should be observed for other cases where the sub term is relatively atypical for the target item: e.g. "daisy" for daisy or "polo shirt" for poloshirt (both have a typicality of 0.85)
+
+2) diningtable, bed, sidetable
+
+	Same holds as above in 1)
+
+3), 4), 5) hummingbird, chick, bed / hummingbird, chick, crocodile / hummingbird, chick, snake
+
+	This is due to a mistake in the deterministic taxonomy: chick was not included here as a bird. (We realized this after doing the experiment. Since we were using typicalities as meanings, it didn't matter (we simply coded those trials with chick as item12 instead of item22 conditions); I just added chick as one of the birds in the deterministic taxonomy.) 
+	Having chick not being a bird in the deterministic case makes this item12 condition basically a item22 condition. Bird is cheap and there is no other bird competitor, so the probability to say "bird" is high.
+	However including typicalities, it's apparent that there is another bird displayed (chick has a high typicality for "bird", just like hummingbird), but the hummingbird has a higher typicality for "hummingbird" than the chick, thus speakers are more likely to use the sub level term.
+	(I'm pretty sure we wouldn't get this big of a difference if we include chick as a bird in the deterministic case.)
+
+6) bedsidetable, bed, ambulance
+	labels: "bedside table", "table", "furniture"
+	typ_bedsidetable("bedside table"): 0.93
+	typ_bedsidetable("table"): 0.49
+	typ_bedsidetable("furniture"): 0.90
+	typ_bed("bedside table"): 0.11
+	typ_bed("table"): 0.05
+	typ_bed("furniture"): 0.88
+	typ_ambulance("bedside table"): 0
+	typ_ambulance("table"): 0
+	typ_ambulance("furniture"): 0.10
+
+	In this case the basic level term is particularly atypical for the target object. That is, using deterministic semantics, informativeness constraints are quite low (item23 condition): "furniture" would not be informative enough, because there is the distractor which shares the same super class as the target (bed is also a piece of furniture), but the quite cheap basic level is sufficient, because the label "table" applies only to the target and to neither of the distractors. However, using typicalities as meanings shows that "table" is actually a quite ill-suited label for the target item (typicality 0.49) and hence the sub term with a high typicality for the target and low typicality for both of the distractors is preferred here despite it's costliness.
+
+	* Note: A similar trend should be observed for other targets with low typicality for the basic term: e.g. "bear" for a panda bear (typicality 0.75) or "car" for a sportscar (typicality 0.78)
+
+
+
+	# Other cases where typicality has a large effect:
+
+	* Cases where the typicality of a sameBasicDistractor for the sub term is relatively high: e.g. side table/”bedside table” (typicality 0.78), with typ(”bedside table/”bedside table”): The sub term is down-weighted. (Especially in this case because typ(”bedside table/table”) is only 0.49 and typ(side table/"table")=0.91)
+
+	* Cases where the typicality of a sameBasicDistractor for the basic term is relatively low: e.g. typ(koala bear/”bear”)=0.5. Here typicality upweights the probability of the basic level term (i.e. in a item12 condition, deterministic semantics would predict the sub level term, because there is a distractor with the same basic level present; but soft semantics would make the basic term more likely because it's cheaper and provides a relatively bad fit to the distractors)
+
+
