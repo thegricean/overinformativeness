@@ -239,7 +239,7 @@ var OverinformativeModel = function(params, context, typicalities) {
       // console.log(object);
       // console.log("typfit:")
       // console.log(typfit);
-      // return weightedFit; // return mixture of fixed and empirical values
+      // // return weightedFit; // return mixture of fixed and empirical values
       return typfit; // return semantics under empirical individual color typicality values
       // return fixedtypfit; // return semantics under fixed color/size typicality values
     };
@@ -257,6 +257,8 @@ var OverinformativeModel = function(params, context, typicalities) {
     var speaker = cache(function(target) {
       var possibleutts = getUtterances(context);//refModule.getAllPossibleUtts(target, tax);
       // console.log(possibleutts);
+      // console.log("target: "+target);
+
       return Infer({method:'enumerate'},function(){
         var utt = uniformDraw(possibleutts);
         // console.log(utt);
