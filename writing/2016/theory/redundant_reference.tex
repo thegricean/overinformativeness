@@ -282,7 +282,7 @@ A final observation regarding the probability of producing the insufficient utte
 To summarize, we have thus far shown that RSA with non-deterministic adjective semantics can give rise to the well-documented color-size asymmetry in the production of overinformative referring expressions when size adjectives are noisier than color adjectives. But this basic asymmetry is only one of many intriguing patterns in the literature on referring expressions, including effects of scene variation and feature typicality, discussed in the Introduction. We turn to these phenomena next.
 
 \subsection{RSA with non-deterministic semantics -- scene variation}
-\label{sec:modifiedmodel}
+\label{sec:modelkoolen}
 
 As discussed above, increased scene variation has been shown to increase overinformativeness, but scene variation can be quantified in many different ways. For concreteness sake we simulate the conditions reported by \citeA{Koolen2013}, who quantified scene variation as the number of feature dimensions along which pieces of furniture in a scene varied: type (e.g., chair, fan), size (big, small), and color (e.g., red, blue).\footnote{They also included orientation (left-facing, right-facing) as a dimension along which objects could vary in certain cases. We ignore this dimension here for simplicity's sake -- we simply wish to demonstrate that the model does indeed predict increased color redundancy with an increase in number of dimensions along which there is variation.} In particular, we  simulate the high and low variation conditions from their Experiments 1 and 2, reproduced in \figref{fig:koolencontexts}. 
 
@@ -292,8 +292,9 @@ We generated model predictions for precisely these four conditions. Note that by
 
 \begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{pics/Koolen2013-exp1}
-\includegraphics[width=.9\textwidth]{pics/Koolen2013-exp2}
+%\includegraphics[width=.9\textwidth]{pics/Koolen2013-exp1}
+%\includegraphics[width=.9\textwidth]{pics/Koolen2013-exp2}
+\includegraphics[width=\textwidth]{pics/koolen-conditions}
 \caption{Contexts from Koolen et al.'s low variation (left column) and high variation (right column) conditions in Exp.~1 (top row) and Exp.~2 (bottom row).}
 \label{fig:koolencontexts}
 \end{figure}
@@ -314,23 +315,36 @@ Differences in exact values may stem from various sources. First, the best $\lam
 
 These results are encouraging: RSA not only predicts a systematic color-size asymmetry in propensity to redundantly produce adjectives when size is noisier than color; it also predicts that there should be more redundant color mention as the number of dimensions along which objects in the scene vary increases. However, thus far we have only probed the model for qualitative effects from very few data points previously reported in the literature. Independently evaluating the utility of the model requires  testing it on a large dataset. This is what we turn to next.
 
+\section{Evaluating non-deterministic RSA for modified referring expressions}
 
-\red{CONTINUE HERE -- PUT THIS IN THE NEXT SECTION AND MODIFY TO FIT PREVIOUS SECTION AND NEW SCENEVAR DEF}
+Adequately assessing the explanatory value of RSA with non-deterministic truth functions requires evaluating how well it does at predicting the probability of various types of utterances in large datasets of naturally produced referring expressions. To this end we proceed in two steps. First we report the results of a web-based interactive reference game in which we systematically manipulate scene variation (in a somewhat different way than \citeA{Koolen2013} did). We then perform Bayesian data analysis to generate model predictions, conditioning on the observed production data. This will both allow us a) to assess  how likely the model is to generate the actually observed data -- i.e., to obtain a measure of model quality -- and b) to infer the posterior probability of parameter values -- i.e., to understand whether the assumed asymmetries in adjective fidelity and/or cost discussed in the previous section are warranted.
 
-The extended noisy semantics model makes a number of novel predictions about the probability of redundant adjective use. In particular, we can ask what the predicted rate of redundant adjective use is as a function of scene variation. Previous research has established that there is more overmodification in polychrome rather than monochrome displays \cite{Davies2013, rubiofernandez2016} and in scenes in which objects differ along more feature dimensions \cite{Koolen2013}. We will quantify scene variation here as the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
+
+\subsection{Experiment 1: scene variation in modified referring expressions}
+\label{sec:exp1-scenevar}
+
+We saw in \sectionref{sec:modelkoolen} that non-deterministic RSA correctly predicts effects of scene variation on redundant adjective use. In particular, we saw that color is more likely to be used redundantly as the number of dimensions along which objects in a scene vary increases. However, we would like to a) go beyond a qualitative investigation of scene variation effects and also b) ask whether redundant size mention is also affected by scene variation. The notion of scene variation we employ is the proportion of distractor items that do not share the value of the insufficient feature with the target, that is, as the number of distractors $n_{\textrm{diff}}$ that differ in the value of the insufficient feature divided by the total number of distractors $n_{\textrm{total}}$:
 
 \begin{equation*}
 	\textrm{scenevar} = \frac{n_{\textrm{diff}}}{n_{\textrm{total}}}
 \end{equation*}
 
-To explain, let's turn again to \figref{fig:sizesufficient}. Here, the target item is the small blue thumbtack and there are two distractor items: a big blue thumbtack and a big red thumbtack. Thus, for the purpose of establishing unique reference, size is the sufficient feature color the insufficient feature. There is one distractor that differs from the target in color (the big red thumbtack) and there are two distractors in total. That is, $\textrm{scenevar} = \frac{1}{2} = .5$. Scene variation is minimal when all distractors are of the same color as the target, in which case it is 0. Scene variation is maximal when all distractors except for one (in order for the feature to remain insufficient for establishing reference) are of a different color than the target. That is, scene variation may take on values between 0 and $\frac{n_{\textrm{total} - 1}}{n_{\textrm{total}}}$, i.e, approaching but never reaching 1.
+To explain, let's turn again to \figref{fig:sizesufficient}. Here, the target item is the small blue thumbtack and there are two distractor items: a big blue thumbtack and a big red thumbtack. Thus, for the purpose of establishing unique reference, size is the sufficient dimension and color the insufficient dimension. There is one distractor that differs from the target in color (the big red thumbtack) and there are two distractors in total. That is, $\textrm{scenevar} = \frac{1}{2} = .5$. Scene variation is minimal when all distractors are of the same color as the target, in which case it is 0. Scene variation is maximal when all distractors except for one (in order for the dimension to remain insufficient for establishing reference) are of a different color than the target. That is, scene variation may take on values between 0 and $\frac{n_{\textrm{total} - 1}}{n_{\textrm{total}}}$, i.e, approaching but never reaching 1.
 
-
-The noisy semantics model's predictions are shown in \figref{fig:numdistractors}. \jd{insert model predictions for one set of parameter values to show qualitative effect and explain why?}
+Using the same parameter values as in the previous two model explorations ($\lambda = 30$, $ \beta_c = c(u_{\textrm{size}}) = c(u_{\textrm{color}}) = 1$, fidelity($u_{\textrm{size}}) = .8$, fidelity($u_{\textrm{color}}) = .999$), we generate model predictions for size-sufficient and color-sufficient contexts, varying scene variation by varying number of distractors (2, 3, or 4) and number of distractors that don't share the insufficient feature value. The resulting model predictions are shown in \figref{fig:numdistractors}: the probability of redundant adjective use increases with increasing scene variation when size is sufficient, but not when color is sufficient. This can be explained by noise distributions in the literal listener across contexts: in size-sufficient contexts, as the number of distractors of a different color than the target increases, using the relatively noiseless color term in addition to the more noisy size term reduces uncertainty about the target object. However, the same is not true of the color-sufficient contexts: there is very little uncertainty about the target upon observing the minimal color utterance -- adding the size term only introduces more uncertainty about the target, regardless of the amount of scene variation. For slightly lower color fidelities (see \appref{app:scenevariationexploration} \red{insert this plot}), a small increase in redundant size use is also predicted. In general: increased scene variation is predicted to lead to more redundant adjective use for less noisy adjectives.
 
 \begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{pics/scenevariation-effect}
+\caption{Probability of minimal and redundant utterance as a function of scene variation and sufficient dimension (for $\lambda = 30$, $ \beta_c = c(u_{\textrm{size}}) = c(u_{\textrm{color}}) = 1$, fidelity($u_{\textrm{size}}) = .8$, fidelity($u_{\textrm{color}}) = .999$).}
 \label{fig:numdistractors}
 \end{figure}
+
+
+To test non-deterministic RSA predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we qualitatively replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were asked to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
+
+
+
 
 \begin{figure}
 \begin{subfigure}{\textwidth}
@@ -348,13 +362,7 @@ The noisy semantics model's predictions are shown in \figref{fig:numdistractors}
 \label{fig:speakerlistenerperspective}
 \end{figure}
 
-\subsection{Experiment 1: scene variation in modified referring expressions}
-\label{sec:exp1-scenevar}
-
-To test the model's predictions, we conducted an interactive web-based written production study within a reference game setting.\footnote{See \appref{app:replication}  for a validation of the general paradigm, in which we qualitatively replicate the findings of \citeA{gatt2011} with a different set of stimuli.} Speakers and listeners were shown arrays of objects of that could vary in color and size. Speakers were asked to produce a referring expression to allow the listener to identify a target object. We manipulated the number of distractor objects in the grid, as well as the variation in color and size among distractor objects.
-
 \subsubsection{Method}
-
 
 \paragraph{Participants}
 
@@ -412,7 +420,7 @@ We observed a main effect of sufficient property such that speakers were more li
 \end{figure}
 
 
-\subsection{Model evaluation}
+\subsection{Model evaluation: scene variation}
 \label{sec:modifiermodeleval}
 
 % Extra info: 10000 samples, burn 3000, uniform drift, acceptance rate .4
@@ -430,7 +438,7 @@ Point-wise maximum a posteriori (MAP) estimates of the model's posterior predict
 \label{fig:modelexp1scatter}
 \end{figure}
 
-Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
+Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:modifiedmodel} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
 
 
 \begin{figure}
@@ -440,13 +448,79 @@ Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Cruciall
 \label{fig:modifierparamposteriors}
 \end{figure}
 
+\subsection{Discussion}
+
+As should be apparent from this section, non-deterministic RSA provides an excellent fit to data of freely produced modified referring expressions. In particular, we have shown that the crucial element in obtaining the much-documented color-size asymmetry in the propensity to overmodify is that the semantic truth functions of size adjectives be noisier than those of color adjectives. Asymmetries in cost of adjectives  only serve to further enhance the asymmetries resulting from asymmetries in utterance fidelity. In addition, we showed that asymmetric effects of scene variation on overmodification are also well captured by non-deterministic RSA: scene variation leads to a greater increase in overmodification with less noisy than with more noisy modifiers.
+
+\red{already bring up discussion points here? eg is it really about COLOR vs SIZE or particular color and size terms (blue vs turqoise), or about COLOR/blue for a particular object (ie typicality)? what about the issue that regularly comes up: that in context, surely these modifiers are not noisy?}
+
+This is all well and good, but to what extent is non-deterministic RSA just a model of modifier choice in modified referring expressions? Put differently, does non-deterministic RSA provide a good account of content selection in referring expressions more generally? To answer this question we move beyond modified referring expressions and turn to simple nominal referring expressions.
+
+\section{Evaluating non-deterministic RSA for nominal choice}
+
+To test whether non-deterministic RSA can account for referring expression production beyond the choice of modifier, we present a  second production experiment. This experiment investigates speakers' choice of level of reference in nominal referring expression (\emph{dalmation}, \emph{dog}, or \emph{animal}). As discussed in \sectionref{sec:nominal},  multiple factors have been shown to play a role in the choice of nominal referring expression, including an expression's contextual informativeness and its cognitive cost (short and frequent terms are preferred over long and infrequent ones) \red{cite cite}.   We then present a minimally modified version of non-deterministic RSA and conduct the same type of Bayesian data analysis as in the previous section to evaluate the model.
+
+\red{typicality? not discussed yet in intro for nominal choice}
+
+\subsection{Experiment 2: level of reference in nominal referring expressions}
+\label{sec:exp2}
+
+Exp~.2 employed the same procedure as Exp.~1, but each display consisted of three objects. We manipulated the contextual informativeness of each level of reference -- subordinate (\emph{dalmatian}), basic (\emph{dog}), and superordinate (\emph{animal}) -- by manipulating the distractor items. 
+
+\subsubsection{Method}
+
+\paragraph{Participants}
+
+We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. \red{exclusion?}
+
+\paragraph{Procedure and materials}
+
+The procedure was identical to that of Exp.~1. Participants proceeded through 72 trials. Of these, half were critical trials of interest and half were filler trials (the critical trials from Exp.~1). On critical trials, we varied the level of reference that was sufficient to mention for uniquely establishing reference.
+
+\red{CONTINUE HERE WITH EXPERIMENT}
+
+Objects varied in color and size. On 18 trials, color was a sufficient property for distinguishing the target. On the other 18 trials, size was sufficient. See \figref{fig:speakerlistenerperspective} for an example of a size-sufficient trial from both the speaker's and the listener's perspective. 
+
+We further varied the amount of variation the scene by varying the number of distractor objects in each array (2, 3, or  4) and the number of distractors that did shared the non-sufficient feature value with the target. That is, when size was the sufficiently distinguishing property, we varied the number of distractors that shared the same color as the target. This number had to be at least one, since otherwise the non-sufficient property would have been sufficient for uniquely establishing reference, i.e.~it would not have been redundant to mention it. Each total number of distractors was crossed with each possible number of distractors that shared the non-sufficient property, leading to the following nine conditions: \emph{2-1, 2-2, 3-1, 3-2, 3-3, 4-1, 4-2, 4-3,} and \emph{4-4}, where the first number indicates the total number and the second number the shared number of distractors. Each condition occurred twice with each sufficient dimension. Objects never differed in type within one array (e.g., all objects are thumbtacks in \figref{fig:speakerlistenerperspective} but always differed in type across trials. Each object type could occur in two different sizes and two different colors. We deliberately chose photo-realistic objects of intuitively fairly typical colors. The 36 different object types and the colors they could occur with are listed in \appref{app:itemtypes}. 
+
+
+Fillers were target trials from Exp.~2, a replication of \cite{graf2016}. Each filler item contained a three-object grid. None of the filler objects occurred on target trials. Objects stood in various taxonomic relations to each other and required neither size nor color mention for unique reference. See \sectionref{sec:exp2-reflevel} for a description of these materials.
+
+\subsubsection{Data pre-processing and exclusion}
+
+We collected 2138 referential expressions. \jd{Caroline, this number isn't 60*36, which would be 2160 -- is that because there are already some exclusions that went into data/colsizeCor\_manModified.csv? If so, what were they?} Because we did not restrict participants' utterances in any way, they produced many different kinds of expressions to refer to the target. Testing the model's predictions required, for each trial, either excluding it or classifying the produced utterance as an instance of a \emph{color}-only mention, a \emph{size}-only mention, or a \emph{color-and-size} mention. To this end we conducted the following semi-automatic data pre-processing. 
+
+In a first step, an R script automatically checked whether (what the experimenters deemed to be) the target's color or size was included in the utterance. In this way, \red{XXX \%} of cases were classified as containing a size or color term. However, this did not capture that sometimes, a participant produced a different color or size term than the one we had intended (e.g., \emph{pink} instead of \emph{purple} \red{XXX \%} or \emph{large} instead of \emph{big} \red{XXX \%}) or the expression contained a typo (e.g., \emph{pruple} instead of \emph{purple} \red{XXX \%}). In a second step, one of the authors (CG) therefore manually checked the automatic coding: utterances of an unintended color or size were coded as an instance of the intended color or size if they were similar enough in meaning and utterances with typos were corrected.   Most of the time, participants converged on a convention of mentioning simply the target's size and/or color, e.g., \emph{purple} or \emph{big blue}, without even using an article (e.g., \emph{the}) or mentioning the object's type (e.g., \emph{comb}). Articles were omitted in \red{XXX \%} of cases and object types were omitted in \red{XXX \%} of cases. We did not analyze this any further.
+
+Finally, there were 46 cases (2\%) in which the speaker made reference to the distinguishing dimension in an abstract way, e.g.~\emph{different color}, \emph{unique one}, \emph{ripest}, \emph{very girly}, or \emph{guitar closest to viewer}. While interesting as utterance choices,\footnote{Certain participants seemed to have deliberately used this as a strategy even though simply mentioning the distinguishing property would have been shorter in most cases. In all, only 12 participants produced these kinds of utterances: one 18 times, one 8 times, one 6 times, two 3 times, one 2 times, and the remaining six only once each.} these cases were excluded from the analysis. After the exclusion, 2092 cases classified as one of \emph{color}, \emph{size}, or \emph{color-and-size} entered into the analysis.
+
+\jd{Caroline, is there anything else we should mention here?}
+
+\subsubsection{Results}
+
+\jd{Hm, I ended up excluding another 13 cases where speakers mentioned the insufficient dimension -- of these, 6 are true cases of "wrongly" mentioning color instead of size. Another 3 are cases where color is sufficient but speakers say "smallest color","small different color","bigger off a shade", all of which seem nonsensical to me but were categorized as size mentions. The final four are interesting cases of color overmodification where instead of making reference to size, the speaker -- it's only one person -- is making reference to distance ("orange cap closest to  viewer", "brown belt farthest from viewer"). This leaves us with 2079 cases to analyze. Does this seem like the right thing to have done?}
+
+Proportions of redundant \emph{color-and-size} and minimal \emph{color} or \emph{size} utterances are shown in \figref{fig:exp1results} alongside model results (to be explained further in \sectionref{sec:modifiermodeleval}). There are three main questions of interest: first, do we replicate the color/size asymmetry in probability of redundant adjective use? Second, do we replicate the previously established effect of increased redundant color use with increasing scene variation? Third, is there an effect of scene variation on redundant size use and if so, is it smaller compared to that on color use, as is predicted under asymmetric color and size adjective fidelities?
+
+We addressed all of these questions in one fell swoop by conducting a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of sufficient property (color vs.~size), scene variation (proportion of distractors that does not share the insufficient property value with the target), and the interaction between the two. The model included the maximal random effects structure that allowed the model to converge: by-speaker and by-item random intercepts as well as by-speaker random slopes for scene variation. 
+
+We observed a main effect of sufficient property such that speakers were more likely to redundantly use color than size adjectives ($\beta = 3.61$, $SE = .23$, $p < .0001$), replicating the much-documented color-size asymmetry. We further observed a main effect of scene variation such that redundant adjective use increased with increasing scene variation ($\beta = 4.11$, $SE = .49$, $p < .0001$). Finally, we also observed a significant interaction between sufficient property and scene variation ($\beta = 3.03$, $SE = .81$, $p < .0002$). Simple effects analysis revealed that the interaction is driven by the scene variation effect being much smaller in the \emph{color-sufficient} condition ($\beta = 2.59$, $SE = .78$, $p < .0009$) than in the \emph{size-sufficient} condition ($\beta = 5.63$, $SE = .45$, $p < .0001$), as predicted under the assumption that size modifiers are noisier than color modifiers.
 
 
 
-\subsection{Modeling speakers' choice of reference level}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
+\caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
+\label{fig:exp1results}
+\end{figure}
+
+
+
+\subsection{Model evaluation: nominal choice}
 \label{sec:reflevelmodel}
 
-\jd{motivation, bridge: ref level selection as analogous to property selection -- both fall under what kees et al call "content selection"}
+\red{first introduce diffs between this model and modifier model. then present bda results.}
 
 This is the innovation: rather than assuming that words have deterministic truth conditions, we assign each word a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
 The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both a word's length and its frequency.
@@ -472,9 +546,6 @@ We implemented both the cognitive and data-analysis models in the probabilistic 
 Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the three free parameters.
 
 \jd{insert qualitative plots and describe -- a) model predictions for the 4 different contexts if no cost diffs and no typicality; b) model predictions for the 4 different contexts when competitor is costlier/less costly but no typicality; c) model predictions for the 4 different contexts when competitor typicality is greater/lesser but no cost diffs; d) combine both or too complex? -- CAROLINE NEEDS TO FINISH MODEL EXPLORATION FOR US TO BE ABLE TO DO THIS}
-
-\subsection{Experiment 2: choice of reference level}
-\label{sec:exp2-reflevel}
 
 
 \section{Typicality effects}
