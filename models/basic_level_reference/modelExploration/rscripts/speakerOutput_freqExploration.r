@@ -1,3 +1,7 @@
+# change labels!!!:
+# d$orderedFreq = factor(x=freq,c(levels(freq)[2], levels(freq[3], levels(freq)[1]))
+
+
 theme_set(theme_bw(18))
 
 setwd("/home/caroline/cocolab/overinformativeness/models/basic_level_reference/modelExploration/rscripts")
