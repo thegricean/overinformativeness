@@ -2,12 +2,12 @@
 
 theme_set(theme_bw(18))
 
-setwd("/home/caroline/cocolab/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results")
-source("rscripts/helpers.R")
+setwd("/home/caroline/cocolab/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results/rscripts")
+source("helpers.R")
 
 ###Annotation check file###
 
-d = read.table(file="data/results.csv",sep=",", header=T, quote="")
+d = read.table(file="../data/results.csv",sep=",", header=T, quote="")
 head(d)
 summary(d)
 totalnrow = nrow(d)
@@ -74,6 +74,30 @@ summary(basiclevCor)
 write.table(basiclevCor,file="basiclevCor.csv", sep="\t")
 
 
+######################################################################################################
+
+# Extracting data from manually modified file: 1) basic levels
+
+bl = read.table(file="../data/basiclev_manModified_allAttr.csv",sep=",", header=T, quote="")
+head(bl)
+blrows = nrow(bl)
+
+blCor = droplevels(bl[!is.na(bl$targetStatusClickedObj) & bl$targetStatusClickedObj != "distractor",])
+head(blCor)
+print(paste("percentage of excluded trials because distractor was chosen: ", (blrows -nrow(blCor))*100/blrows))
+corRows = nrow(blCor) #2146
+
+summary(blCor)
+
+print(paste("percentage of automatically labelled trials: ", (1548)*100/corRows))
+print(paste("percentage of manually added trials: ", (323)*100/corRows))
+print(paste("percentage of total excluded correct trials: ", (corRows - 1871)*100/corRows))
+
+print(paste("percentage of trials where 2 levels were mentioned: ", (26)*100/corRows))
+
+print(paste("percentage of sub mentions where an additional modifier was used: ", (82)*100/924))
+print(paste("percentage of basic mentions where an additional modifier was used: ", (177)*100/925))
+print(paste("percentage of super mentions where an additional modifier was used: ", (14)*100/21))
 
 
 
