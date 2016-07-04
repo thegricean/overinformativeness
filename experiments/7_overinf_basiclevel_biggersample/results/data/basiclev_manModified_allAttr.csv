@@ -2186,6 +2186,3 @@ gameid,time,roundNum,trialType,condition,nameClickedObj,targetStatusClickedObj,s
 9173-f,1455315485479,64,subSuperTrial,basic23,eagle,target,3,2,bird,animal,pig,distractor,2,4,NA,animal,motorcycle,distractor,4,3,NA,vehicle,eagle,,1455315483562,eagle,eagle,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,0,0,0
 9173-f,1455315511932,69,subSuperTrial,basic23,tShirt,target,3,3,shirt,clothing,socks,distractor,4,2,NA,clothing,squirrel,distractor,2,4,NA,animal,shirt,,1455315509392,shirt,tShirt,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,0,0,0
 9173-f,1455315517141,70,subSuperTrial,basic12,pandaBear,target,2,2,bear,animal,koalaBear,distractor,3,3,bear,animal,rabbit,distractor,4,4,NA,animal,panda,,1455315515765,panda,pandaBear,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,0,0,0
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,82,177,14

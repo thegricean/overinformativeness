@@ -76,13 +76,29 @@ bdCorrect$SuperTyp = ttyps[paste("super",as.character(bdCorrect$clickedType)),]$
 bdCorrect$ratioTypeToBasicTypicality = bdCorrect$SubTyp/bdCorrect$BasicTyp
 bdCorrect$ratioTypeToSuperTypicality = bdCorrect$SubTyp/bdCorrect$SuperTyp
 
-# find examples for paper
+# find examples for cogsci paper
 t = ttyps[ttyps$labeltype != "super",]
 agr = t %>%
   group_by(item) %>%
   summarise(ratio=meanresponse[labeltype == "sub"]/meanresponse[labeltype == "basic"])
 agr[agr$ratio == max(agr$ratio),] # bedside table
 agr[agr$ratio == min(agr$ratio),] # daisy
+
+# get length/frequency correlation for cogsci paper
+freqs = bdCorrect %>%
+  select(subFreq,basicFreq,superFreq) %>%
+  gather(Level,Freq)
+nrow(freqs)  
+
+lengths = bdCorrect %>%
+  select(subLength,basicLength,superLength) %>%
+  gather(Level,Length)
+nrow(lengths)  
+
+full = cbind(freqs,lengths)
+full$logFreq = log(full$Freq)
+cor(full$Freq,full$Length) # -.36
+cor(full$logFreq,full$Length) # -.53
 
 #### MIXED EFFECTS MODEL ANALYSIS FOR TYPE MENTION WITH DOMAIN-LEVEL RANDOM EFFECTS
 
@@ -104,13 +120,15 @@ summary(m)
 
 # collapse across 22 and 23 conditions
 bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "basic12","sub_necessary",ifelse(bdCorrect$condition == "basic33","super_sufficient","basic_sufficient")))
+bdCorrect$binaryCondition = as.factor(ifelse(bdCorrect$condition == "basic12","sub_necessary","nonsub_sufficient"))
 table(bdCorrect$redCondition)
+table(bdCorrect$binaryCondition)
 
 # exclude frequency outliers? there are none if you do difference of logs
 #tmp = bdCorrect[bdCorrect$ratioTypeToBasicFreq > 2*sd(bdCorrect$ratioTypeToBasicFreq),]
 tmp = bdCorrect[bdCorrect$ratioTypeToBasicTypicality < mean(bdCorrect$ratioTypeToBasicTypicality) + 3*sd(bdCorrect$ratioTypeToBasicTypicality),]
 
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("subLength","basicLength","superLength","subFreq","basicFreq","superFreq","logsubFreq","logbasicFreq","logsuperFreq","ratioTypeToBasicFreq","ratioTypeTosuperFreq","ratioTypeToBasicLength","ratioTypeTosuperLength","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength","ratioTypeToBasicTypicality","ratioTypeToSuperTypicality")]))
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("subLength","basicLength","superLength","subFreq","basicFreq","superFreq","logsubFreq","logbasicFreq","logsuperFreq","ratioTypeToBasicFreq","ratioTypeTosuperFreq","ratioTypeToBasicLength","ratioTypeTosuperLength","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength","ratioTypeToBasicTypicality","ratioTypeToSuperTypicality","binaryCondition")]))
 
 contrasts(centered$redCondition) = cbind("sub.vs.rest"=c(-1/3,2/3,-1/3),"basic.vs.super"=c(1/2,0,-1/2))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
@@ -533,3 +551,8 @@ bedsidetable[,c("alt1Name","alt2Name","condition")]#,"sub")]
 bdCorrect$DistractorCombo = as.factor(ifelse(as.character(bdCorrect$alt1Name) < as.character(bdCorrect$alt2Name), paste(bdCorrect$alt1Name, bdCorrect$alt2Name), paste(bdCorrect$alt2Name, bdCorrect$alt1Name)))
 
 write.csv(unique(bdCorrect[,c("clickedType","condition","DistractorCombo")]),file="unique_conditions.csv",row.names=F,quote=F)
+
+# get unique domains and targets
+uniquetargets = unique(d[d$targetStatusClickedObj == "target",c("nameClickedObj","basiclevelClickedObj")])
+uniquetargets$length = nchar(as.character(uniquetargets$nameClickedObj))
+uniquetargets = uniquetargets[order(uniquetargets[,c("basiclevelClickedObj")],uniquetargets[,c("length")]),]

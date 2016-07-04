@@ -232,13 +232,15 @@ summary(m)
 
 # collapse across 22 and 23 conditions
 bdCorrect$redCondition = as.factor(ifelse(bdCorrect$condition == "distr12","sub_necessary",ifelse(bdCorrect$condition == "distr33","super_sufficient","basic_sufficient")))
+bdCorrect$binaryCondition = as.factor(ifelse(bdCorrect$condition == "distr12","sub_necessary","nonsub_sufficient"))
 table(bdCorrect$redCondition)
+table(bdCorrect$binaryCondition)
 
 # exclude frequency outliers? there are none if you do difference of logs
 #tmp = bdCorrect[bdCorrect$ratioTypeToBasicFreq > 2*sd(bdCorrect$ratioTypeToBasicFreq),]
 tmp = bdCorrect[bdCorrect$ratioTypeToBasicTypicality < mean(bdCorrect$ratioTypeToBasicTypicality) + 3*sd(bdCorrect$ratioTypeToBasicTypicality),]
 
-centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength","ratioTypeToBasicTypicality","ratioTypeToSuperTypicality")]))
+centered = cbind(bdCorrect, myCenter(bdCorrect[,c("TypeLength","BasicLevelLength","SuperLength","logTypeLength","logBasicLevelLength","logSuperLength","TypeFreq","BasicLevelFreq","SuperFreq","logTypeFreq","logBasicLevelFreq","logSuperFreq","ratioTypeToBasicFreq","ratioTypeToSuperFreq","ratioTypeToBasicLength","ratioTypeToSuperLength","ratioTypeToBasicMeanLength","ratioTypeToSuperMeanLength","ratioTypeToBasicTypicality","ratioTypeToSuperTypicality","binaryCondition")]))
 
 contrasts(centered$redCondition) = cbind("sub.vs.rest"=c(-1/3,2/3,-1/3),"basic.vs.super"=c(1/2,0,-1/2))
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
@@ -328,6 +330,11 @@ summary(m.m.t)
 createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Typicality","Length:Frequency"))
 
 anova(m.m,m.m.t) # typicality very important!
+
+m.m.t.binary = glmer(typeMentioned ~ cbinaryCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicTypicality + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
+summary(m.m.t.binary)
+
+anova(m.m.t.binary,m.m.t) # model comparison to report in paper: three-level condition variable is necessary, ie the findings can't just be explained as "people choose the basic level term unless forced to be more specific"!
 
 library(MuMIn)
 r.squaredGLMM(m.m)

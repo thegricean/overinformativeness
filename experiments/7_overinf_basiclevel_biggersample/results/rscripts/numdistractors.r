@@ -3,6 +3,9 @@ setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/exper
 source("rscripts/helpers.r")
 
 d = read.table(file="data/colsizeCor_manModified.csv",sep=",", header=T, quote="")
+dd = read.table(file="data/colsize_manModified.csv",sep=",", header=T, quote="") # this is the dataset without exclusion of cases where listener chose wrongly, of which there are 33 -- some seem like isolated errors, but at least one pair looks like the listener is just randomly choosing
+nrow(d)
+nrow(dd)
 
 d$Half = as.factor(ifelse(d$roundNum < 37, "first","second"))
 d$Quarter = as.factor(ifelse(d$roundNum < 19, "first",ifelse(d$roundNum < 37,"second", ifelse(d$roundNum < 55, "third","fourth"))))
@@ -83,9 +86,6 @@ d$OtherColorTypicalityUnModified = typs[paste(d$clickedType,d$clickedColor,"unmo
 d$TypicalityDiffUnModified = d$ColorTypicalityUnModified-d$OtherColorTypicalityUnModified  
 d$normTypicalityUnModified = d$ColorTypicalityUnModified/(d$ColorTypicalityUnModified+d$OtherColorTypicalityUnModified)
 
-
-#d = droplevels(d[d$targetStatusClickedObj == "target",])
-print(paste("percentage of excluded trials because distractor was chosen: ", (totalnrow -nrow(d))*100/totalnrow))
 
 summary(d)
 
@@ -185,6 +185,7 @@ head(agr)
 #agr$CorrectProprty = ifelse((agr$Utterance %in% c("Color","SizeAndColor") & agr$SufficientProperty == "color") | (agr$Utterance %in% c("Size","SizeAndColor") & agr$SufficientProperty == "size"), "correct","incorrect")
 
 # plot by ratio and numdistractors, only for 'correct' properties
+targets$redUtterance = as.factor(as.character(targets$redUtterance))
 targets$CorrectProperty = ifelse(targets$SufficientProperty == "color" & (targets$Color == 1 | targets$SizeAndColor == 1), 1, ifelse(targets$SufficientProperty == "size" & (targets$Size == 1 | targets$SizeAndColor == 1), 1, 0)) # 20 cases of incorrect property mention
 targets$minimal = ifelse(targets$SizeAndColor == 0 & targets$UtteranceType != "OTHER", 1, 0)
 targets$redundant = ifelse(targets$SizeAndColor == 1, 1, 0)
@@ -203,9 +204,14 @@ targets$BDAOtherColor = "othercolor"
 targets$BDAItem = "item"
 
 targets[targets$UtteranceType == "OTHER",]$refExp
+# exclude non-sensical and "closest"/"Farthest" cases
+targets[targets$redBDAUtterance != "other" & targets$CorrectProperty == 0,c("gameid","condition","nameClickedObj","refExp")]
+targets$WeirdCases = FALSE
+targets[targets$redBDAUtterance != "other" & targets$CorrectProperty == 0  & !targets$gameid %in% c("3791-8","7569-e"),]$WeirdCases = TRUE
+
 
 # full conditions
-write.csv(targets,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
+write.csv(targets[c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers.csv",quote=F,row.names=F)
 
 # reduced conditions
@@ -213,15 +219,19 @@ write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOt
 write.csv(unique(targets[,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
 
 ## only condition on non-"other" cases!! 
-write.csv(targets[targets$redBDAUtterance != "other",c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced_noother.csv",quote=F,row.names=F)
-write.csv(unique(targets[targets$redBDAUtterance != "other",c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced_noother.csv",quote=F,row.names=F)
+write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced_noother.csv",quote=F,row.names=F)
+write.csv(unique(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced_noother.csv",quote=F,row.names=F)
 
-write.csv(targets[targets$redBDAUtterance != "other",c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers_noother.csv",quote=F,row.names=F)
-write.csv(unique(targets[targets$redBDAUtterance != "other",c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers_noother.csv",quote=F,row.names=F)
+write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers_noother.csv",quote=F,row.names=F)
+write.csv(unique(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers_noother.csv",quote=F,row.names=F)
+
+# write file for regression analaysis (this includes the 6 cases where the insufficient dimension was underinformatively mentioned, so you need to exclude those still)
+write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,], file="data/results_for_regression.csv",quote=F,row.names=F)
+
+# total number of cases in analysis
+nrow(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,])
 
 # get reduced set of conditions and contexts
-
-
 agr = targets[targets$CorrectProperty == 1,] %>%
   select(redundant,SufficientProperty,NumDistractors,RatioOfDiffToSame) %>%
   gather(Utterance,Mentioned,-SufficientProperty,-NumDistractors,-RatioOfDiffToSame) %>%
@@ -393,101 +403,3 @@ ggplot(size, aes(x=ColorTypicality,y=Probability)) +
 ggsave("graphs_numdistractors/utterancetype_bytypicality_byvariation_sizesufficient.pdf",width=11,height=7)
 
 
-  
-
-
-######### ANALYSIS ###########
-t = droplevels(subset(targets, redUtterance %in% c("minimal","redundant")))
-nrow(t)
-
-centered = cbind(t, myCenter(t[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame")]))
-contrasts(centered$redUtterance)
-contrasts(centered$SufficientProperty)
-
-pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame")])
-m = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1+cRatioOfDiffToSame|gameid) + (1|Item), data=centered, family="binomial")
-summary(m)
-
-m.simple = glmer(redUtterance ~ SufficientProperty*cRatioOfDiffToSame - cRatioOfDiffToSame + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.simple)
-
-m.intercepts = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.intercepts)
-
-# do the analysis only on those cases that have a ratio > 0
-centered = cbind(t[t$RatioOfDiffToSame > 0,], myCenter(t[t$RatioOfDiffToSame > 0,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame")]))
-contrasts(centered$redUtterance)
-contrasts(centered$SufficientProperty)
-
-pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame")])
-m = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1+cRatioOfDiffToSame|gameid) + (1|Item), data=centered, family="binomial")
-summary(m) # doing the analysis only on the ratio > 0 cases gets rid of the interaction, ie variation has the same effect on color-redundant and size-redunant trials. (that is, the big scene variation slop in hte color-redundant condition was driven mostly by the 0-ratio cases)
-
-m.intercepts = glmer(redUtterance ~ cSufficientProperty*cRatioOfDiffToSame + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.intercepts)
-
-
-# figure out effect of typicality (only on size-sufficient trials since we don't have size norms)
-size = droplevels(subset(t, SufficientProperty == "size"))
-
-centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff","ColorTypicalityModified","normTypicalityModified","TypicalityDiffModified","ColorTypicalityUnModified","normTypicalityUnModified","TypicalityDiffUnModified")]))
-contrasts(centered$redUtterance)
-summary(centered)
-nrow(centered)
-
-pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")])
-
-# "pure typicality"
-m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m)
-
-m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.norm)
-
-m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiff + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.diff)
-
-# "unmodified" typicality gets slightly worse BIC
-m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicalityUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m)
-
-m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicalityUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.norm)
-
-m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiffUnModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.diff)
-
-# "modified" typicality gets slightly worse BIC
-m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicalityModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m)
-
-m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicalityModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.norm)
-
-m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiffModified + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.diff)
-
-# figure out effect of typicality on only those cases with at least some scene variation
-size = droplevels(subset(t, SufficientProperty == "size" & RatioOfDiffToSame > 0))
-
-centered = cbind(size, myCenter(size[,c("SufficientProperty","NumDistractors","NumSameDistractors","roundNum","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")]))
-contrasts(centered$redUtterance)
-summary(centered)
-nrow(centered)
-
-pairscor.fnc(centered[,c("redUtterance","SufficientProperty","NumDistractors","NumSameDistractors","RatioOfDiffToSame","ColorTypicality","normTypicality","TypicalityDiff")])
-
-m = glmer(redUtterance ~ cRatioOfDiffToSame+cColorTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m)
-
-m.norm = glmer(redUtterance ~ cRatioOfDiffToSame+cnormTypicality + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.norm) # both scene variation and color typicality matter!
-
-m.diff = glmer(redUtterance ~ cRatioOfDiffToSame+cTypicalityDiff + (1|gameid) + (1|Item), data=centered, family="binomial")
-summary(m.diff)
-
-# write the cases of size overspecification
-t = subset(targets, redUtterance == "redundant" & SufficientProperty == "color")
-tred = t[,c("clickedType","clickedColor","clickedSize","RatioOfDiffToSame")]
-tred[order(tred[,c("clickedType")]),]
-write.csv(tred[order(tred[,c("clickedType")]),],file="data/size_overspecification.csv",quote=F,row.names=F)
