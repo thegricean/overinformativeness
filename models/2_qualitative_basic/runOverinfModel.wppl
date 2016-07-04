@@ -1,0 +1,74 @@
+// run using:
+// webppl runOverinfModel.wppl --require ./refModule/
+
+// contexts in Fig 1a in paper
+var context = [
+  ["size","blue","thumbtack"],
+  ["othersize","blue","thumbtack"],
+  ["othersize","red","thumbtack"]
+];
+
+// contexts in Fig 1b in paper (you don't need to run this one -- it's equivalent to running context1 with the target the third object)
+//   var context = [
+//     ["size","blue","thumbtack"],
+//     ["size","red","thumbtack"],
+//     ["othersize","red","thumbtack"]
+// ];
+
+var typtype = "unlogged";
+// var typtype = "logged";
+var searchtype = "wide";
+// var searchtype = "narrow";
+
+var modeltype = "basic"; //basic asymmetry
+
+var alphas = [5,10,15,20,25,30,35];
+var lengthWeights = [0,1];//[0,1,2,3,4,5];
+var typicality_colors = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+var typicality_sizes = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+var typicality_types = [.9];
+var cost_colors = [1];
+var cost_sizes = [1];
+
+map(function(al) {
+  console.log("next alpha: "+al);
+  map(function(le) {
+    map(function(tc) {
+      map(function(ts) {
+        map(function(tt) { 
+          map(function(cc) {
+            map(function(cs) {  
+              var model = OverinformativeModel({
+                              alpha : al,
+                              lengthWeight : le,
+                              typicality_color : tc,
+                              typicality_size : ts,
+                              typicality_type : tt,
+                              cost_color : cc,
+                              cost_size : cs,
+                              cost_type : 1},
+                              context);
+              var runModel = model.runModel;
+              var speaker = model.speaker;
+              var listener = model.listener;
+              var runListener = model.runListener;
+
+              // write listener results
+              var utts = ["thumbtack","size_thumbtack","blue_thumbtack","size_blue_thumbtack","othersize_thumbtack","red_thumbtack","othersize_red_thumbtack","othersize_blue_thumbtack"];
+              map(function(utt) {
+                var listenerOutput = runListener(listener, utt);
+                refModule.writeERP(listenerOutput, [al,le,tc,ts,cc,cs,utt], "results_wppl/data/"+modeltype+"/listener_"+typtype+"_"+searchtype+".csv",2);
+              },utts);
+              // write speaker results (size sufficient)
+              var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
+              refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
+              // write speaker results (color sufficient)
+              var modelOutput = runModel(speaker, ["othersize","red","thumbtack"]);
+              refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"color_sufficient"], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
+            }, cost_sizes);          
+          }, cost_colors);
+        }, typicality_types);
+      }, typicality_sizes);
+    }, typicality_colors);
+  }, lengthWeights);
+}, alphas);
