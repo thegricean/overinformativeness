@@ -1,0 +1,177 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var getUtterancesOneFeature = function(context) {
+  var utts = [];
+  map(function(c) {
+    utts.push(c[0]+"_"+c[1]);
+    utts.push(c[1]);
+  },context);
+  return _.unique(utts);
+};
+
+var OverinformativeModel = function(params, context) {
+
+  var getUtteranceCost = function(utt) {
+  var splited = utt.split("_");
+  if (splited.length == 3) {
+    return params.cost_color + params.cost_size + params.cost_type;
+  } else {
+    if (splited.length == 2) {
+      return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited[0]) ? params.cost_type + params.cost_color : params.cost_type + params.cost_size;
+    } else {
+      return params.cost_type;
+    }
+  }
+  };
+
+ var getTailoredTypicalityUnlogged = function(utt, object) {
+  var e = .015;
+  var tailoredtypicalities = {
+    "banana" : {
+      yellow_banana : .9,
+      brown_banana : .35,
+      blue_banana : .1,
+      yellow_bla : e,
+      brown_bla : e,
+      blue_bla : e
+    },
+    "yellow_banana" : {
+      yellow_banana : .99,
+      brown_banana : e,
+      blue_banana : e,
+      yellow_bla : e,
+      brown_bla : e,
+      blue_bla : e
+    },
+    "brown_banana" : {
+      yellow_banana : e,
+      brown_banana : .99,
+      blue_banana : e,
+      yellow_bla : e,
+      brown_bla : e,
+      blue_bla : e
+    },
+    "blue_banana" : {
+      yellow_banana : e,
+      brown_banana : e,
+      blue_banana : .99,
+      yellow_bla : e,
+      brown_bla : e,
+      blue_bla : e
+    },
+    "bla" : {
+      yellow_banana : e,
+      brown_banana : e,
+      blue_banana : e,
+      yellow_bla : .99,
+      brown_bla : .99,
+      blue_bla : .99
+    },
+    "yellow_bla" : {
+      yellow_banana : e,
+      brown_banana : e,
+      blue_banana : e,
+      yellow_bla : .99,
+      brown_bla : e,
+      blue_bla : e
+    },
+    "brown_bla" : {
+      yellow_banana : e,
+      brown_banana : e,
+      blue_banana : e,
+      yellow_bla : e,
+      brown_bla : .99,
+      blue_bla : e
+    },
+    "blue_bla" : {
+      yellow_banana : e,
+      brown_banana : e,
+      blue_banana : e,
+      yellow_bla : e,
+      brown_bla : e,
+      blue_bla : .99
+    }                                  
+  };
+
+  var typicality = tailoredtypicalities[utt][object.join("_")];
+  return typicality;
+};
+
+ var uttFitness = function(utt, object) {
+  var typfit = getTailoredTypicalityUnlogged(utt,object); 
+  return typfit; 
+ };
+
+ var literalListener = cache(function(utt){
+  return Infer({method:'enumerate'},function(){
+    var object = uniformDraw(context);
+    factor(uttFitness(utt,object)); 
+    return object;
+  });
+});
+
+ var speaker = cache(function(target) {
+  var possibleutts = getUtterancesOneFeature(context);
+  return Infer({method:'enumerate'},function(){
+    var utt = uniformDraw(possibleutts);
+    var literalListenerERP = literalListener(utt);
+    var uttCost = getUtteranceCost(utt); 
+    var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+    factor(score); 
+    return utt;
+  });
+});
+
+ var runModel = function(speakerModel, target) { 
+  var speakerERP = speakerModel(target);
+  return Infer({method:'enumerate'},function(){
+    var utt = sample(speakerERP);
+    return utt;
+  });
+};
+
+ var runListener = function(listenerModel, utterance) { 
+  var listenerERP = listenerModel(utterance);
+  return Infer({method:'enumerate'},function(){
+    var obj = sample(listenerERP);
+    return obj;
+  });
+};    
+
+return {
+  runModel : runModel,
+  speaker : speaker,
+  listener: literalListener,
+  runListener : runListener
+ };
+};
