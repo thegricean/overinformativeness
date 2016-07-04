@@ -60,44 +60,162 @@ var typicality_norms = getTypicalities();
 // ];
 
 // contexts from Koolen et al 2013 
-var contexts = [
-                {condition:"lowvariation_exp1", 
-                 context:[["big", "green", "fan"],
-                   ["big", "green", "tv"],
-                   ["big", "green", "desk"],
-                   ["big", "green", "couch"],
-                   ["big", "green", "desk"],
-                   ["big", "green", "chair"],
-                   ["big", "green", "couch"],                                          
-                   ["big", "green", "chair"]]},
-                {condition:"highvariation_exp1", 
-                 context:[["small", "blue", "couch"],
-                   ["big", "gray", "chair"],
-                   ["small", "green", "tv"],
-                   ["big", "green", "fan"],
-                   ["big", "red", "fan"],
-                   ["big", "red", "desk"],
-                   ["big", "brown", "tv"],                                          
-                   ["big", "gray", "chair"]]},
-                {condition:"lowvariation_exp2", 
-                 context:[["big", "red", "chair"],
-                   ["big", "red", "fan"],
-                   ["small", "red", "desk"],
-                   ["small", "red", "tv"],
-                   ["big", "red", "desk"],
-                   ["small", "red", "chair"],
-                   ["big", "red", "fan"],                                          
-                   ["big", "red", "couch"]]},
-                {condition:"highvariation_exp2", 
-                 context:[["small", "brown", "chair"],
-                 ["big", "blue", "desk"],
-                 ["small", "gray", "fan"],
-                 ["big", "brown", "chair"],
-                 ["small", "red", "couch"],
-                 ["big", "gray", "desk"],
-                 ["small", "green", "tv"],                                          
-                 ["big", "blue", "couch"]]},                 
-                 ]; 
+// var contexts = [
+//                 {condition:"lowvariation_exp1", 
+//                  context:[["big", "green", "fan"],
+//                    ["big", "green", "tv"],
+//                    ["big", "green", "desk"],
+//                    ["big", "green", "couch"],
+//                    ["big", "green", "desk"],
+//                    ["big", "green", "chair"],
+//                    ["big", "green", "couch"],                                          
+//                    ["big", "green", "chair"]]},
+//                 {condition:"highvariation_exp1", 
+//                  context:[["small", "blue", "couch"],
+//                    ["big", "gray", "chair"],
+//                    ["small", "green", "tv"],
+//                    ["big", "green", "fan"],
+//                    ["big", "red", "fan"],
+//                    ["big", "red", "desk"],
+//                    ["big", "brown", "tv"],                                          
+//                    ["big", "gray", "chair"]]},
+//                 {condition:"lowvariation_exp2", 
+//                  context:[["big", "red", "chair"],
+//                    ["big", "red", "fan"],
+//                    ["small", "red", "desk"],
+//                    ["small", "red", "tv"],
+//                    ["big", "red", "desk"],
+//                    ["small", "red", "chair"],
+//                    ["big", "red", "fan"],                                          
+//                    ["big", "red", "couch"]]},
+//                 {condition:"highvariation_exp2", 
+//                  context:[["small", "brown", "chair"],
+//                  ["big", "blue", "desk"],
+//                  ["small", "gray", "fan"],
+//                  ["big", "brown", "chair"],
+//                  ["small", "red", "couch"],
+//                  ["big", "gray", "desk"],
+//                  ["small", "green", "tv"],                                          
+//                  ["big", "blue", "couch"]]},                 
+//                  ]; 
+
+// contexts for our scene variation effect
+// var contexts = [
+// 				{condition:"color_2_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_2_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"color_3_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_3_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"color_3_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"color_4_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_4_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"color_4_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_4_4",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"size_2_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_2_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]},
+// 				{condition:"size_3_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_3_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"size_3_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]},
+// 				{condition:"size_4_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_4_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"size_4_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_4_4",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]}				 	
+// ];
+
+// contexts for color predictability effect
+var contexts = [[["yellow", "banana"],
+   			   	   ["yellow", "bla"],
+				   ["brown", "bla"],
+				   ["brown", "bla"],
+				   ["blue", "bla"],
+				   ["blue", "bla"]],
+			   [["brown", "banana"],
+				   ["brown", "bla"],
+				   ["yellow", "bla"],
+	   			   ["yellow", "bla"],
+				   ["blue", "bla"],
+				   ["blue", "bla"]],
+			   [["blue", "banana"],
+				   ["blue", "bla"],
+				   ["yellow", "bla"],
+	   			   ["yellow", "bla"],
+				   ["brown", "bla"],
+				   ["brown", "bla"]]];				   
 
 var typtype = "unlogged";
 // var typtype = "logged";
@@ -106,36 +224,39 @@ var searchtype = "wide";
 
 // set this depending on aspect of model you're probing
 // var modeltype = "basic"; //basic asymmetry
-var modeltype = "scene_variation_koolen"; //scene variation effects a la koolen et al 2013
+// var modeltype = "scene_variation_koolen"; //scene variation effects a la koolen et al 2013
+// var modeltype = "scene_variation";
+var modeltype = "color_predictability";
+
+// var alphas = [5,10,15,20,25,30,35];
+// var lengthWeights = [1];//[0,1,2,3,4,5];
+// var typicality_colors = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+// var typicality_sizes = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+// var typicality_types = [.9];//.8,.9,.95,.999];
+// var cost_colors = [1];
+// var cost_sizes = [1];
 
 
-// var alphas = [27,28,29,30];
-// var lengthWeights = [0,.5,1,1.5,2];
-// var typicality_colors = [.95,.999];
-// var typicality_sizes = [.7, .8, .9];
-// var cost_colors = [0,.1,.2];
-// var cost_sizes = [0,.1,.2];
+var params = {
+  alpha : 12,
+  lengthWeight : 5,
+  typicality_color : .999,
+  typicality_size : .999,
+  typicality_type : .999,
+  // typWeight : 1,
+  cost_color : 1,
+  cost_size : 1,
+  cost_type : 1
+};
 
-var alphas = [5,10,15,20,25,30,35];
-var lengthWeights = [1];//[0,1,2,3,4,5];
-var typicality_colors = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
-var typicality_sizes = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
-var typicality_types = [.8,.9,.95,.999];
-var cost_colors = [1];
-var cost_sizes = [1];
-
-
-// var params = {
-//   alpha : 1,
-//   lengthWeight : 0,
-//   typicality_color : .999,
-//   typicality_size : .999,
-//   typicality_type : .999,
-//   // typWeight : 1,
-//   cost_color : 1,
-//   cost_size : 1,
-//   cost_type : 1
-// };
+// var model = OverinformativeModel(params,context,typicality_norms);
+// var listener = model.listener;
+// var runListener = model.runListener;
+// var output  = runListener(listener,"banana");
+// var runModel = model.runModel;
+// var speaker = model.speaker;
+// var output = runModel(speaker,["yellow", "banana"]);
+// console.log(output);
 
 // special typicality case:
 
@@ -154,41 +275,6 @@ var cost_sizes = [1];
   //   // ["othersize","blue","golfball"],
   //   // ["othersize","blue","golfball"]
   // ];
-
-
-  // var model = OverinformativeModel(params,context,typicality_norms);
-
-// var models = [];
-// var paramsets = [];
-
-  map(function(al) {
-    console.log("next alpha: "+al);
-    map(function(le) {
-      map(function(tc) {
-        // console.log("color fidelity: "+tc);
-        map(function(ts) {
-          map(function(tt) { // comment this out if not varying typicality of type
-          map(function(cc) {
-            map(function(cs) {  
-              map(function(context) { // comment out if not running with modeltype = "scene_variation_koolen"
-              // models.push(OverinformativeModel({
-                // console.log(context);
-                var model = OverinformativeModel({
-                                alpha : al,
-                                lengthWeight : le,
-                                typicality_color : tc,
-                                typicality_size : ts,
-                                typicality_type : tt, //.95,// modify?
-                                cost_color : cc,
-                                cost_size : cs,
-                                cost_type : 1},
-                                // context,typicality_norms); 
-                                context.context,typicality_norms);// use this line if modeltype == "scene_variation_koolen"
-
-              var runModel = model.runModel;
-              var speaker = model.speaker;
-              var listener = model.listener;
-              var runListener = model.runListener;
 //   // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
 //   // var modelOutput = runModel(speaker, ["othersize","pink","golfball"]);
 //   // var modelOutput = runModel(speaker, ["size","green","avocado"]);
@@ -207,33 +293,64 @@ var cost_sizes = [1];
 //   // },context);
 //   // var modelOutput = runModel(speaker, ["size","blue","golfball"]);
   
-// qualitative effects for paper (modeling section)
+
+  // map(function(al) {
+  //   console.log("next alpha: "+al);
+  //   map(function(le) {
+  //     map(function(tc) {
+  //       // console.log("color fidelity: "+tc);
+  //       map(function(ts) {
+  //         map(function(tt) { // comment this out if not varying typicality of type
+  //         map(function(cc) {
+  //           map(function(cs) {  
+              map(function(context) { // comment out if not running with modeltype = "scene_variation_koolen"
+
+  //               // console.log(context);
+  //               var model = OverinformativeModel({
+  //                               alpha : al,
+  //                               lengthWeight : le,
+  //                               typicality_color : tc,
+  //                               typicality_size : ts,
+  //                               typicality_type : tt, //.95,// modify?
+  //                               cost_color : cc,
+  //                               cost_size : cs,
+  //                               cost_type : 1},
+  //                               // context,typicality_norms); 
+  //                               context.context,typicality_norms);// use this line if modeltype == "scene_variation_koolen"
+  			 var model = OverinformativeModel(params,context,typicality_norms);
+              var runModel = model.runModel;
+              var speaker = model.speaker;
+              var listener = model.listener;
+              var runListener = model.runListener;
+		// qualitative effects for paper (modeling section)
             // write listener results
 
-              if (modeltype == "basic") {
-                var utts = ["thumbtack","size_thumbtack","blue_thumbtack","size_blue_thumbtack","othersize_thumbtack","red_thumbtack","othersize_red_thumbtack","othersize_blue_thumbtack"];
-                map(function(utt) {
-                  var listenerOutput = runListener(listener, utt);
-                  // write listener results 
-                  refModule.writeERP(listenerOutput, [al,le,tc,ts,cc,cs,utt], "results_model/data/"+modeltype+"/listener_"+typtype+"_"+searchtype+".csv",2);
-                },utts);
-                // write speaker results (size sufficient)
-                var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
-                refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
-                // write speaker results (color sufficient)
-                var modelOutput = runModel(speaker, ["othersize","red","thumbtack"]);
-                refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"color_sufficient"], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
-                // console.log(modelOutput);
-              } else { // ie, if modeltype == "scene_variation_koolen"
-                var modelOutput = runModel(speaker, context.context[0]); // adjust target
-                refModule.writeERP(modelOutput, [al,le,tc,ts,tt,cc,cs,"size_sufficient",context.condition], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
-              }
-              // }, models);
+    //           if (modeltype == "basic") {
+    //             var utts = ["thumbtack","size_thumbtack","blue_thumbtack","size_blue_thumbtack","othersize_thumbtack","red_thumbtack","othersize_red_thumbtack","othersize_blue_thumbtack"];
+    //             map(function(utt) {
+    //               var listenerOutput = runListener(listener, utt);
+    //               // write listener results 
+    //               refModule.writeERP(listenerOutput, [al,le,tc,ts,cc,cs,utt], "results_model/data/"+modeltype+"/listener_"+typtype+"_"+searchtype+".csv",2);
+    //             },utts);
+    //             // write speaker results (size sufficient)
+    //             var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
+    //             refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
+    //             // write speaker results (color sufficient)
+    //             var modelOutput = runModel(speaker, ["othersize","red","thumbtack"]);
+    //             refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"color_sufficient"], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
+    //             // console.log(modelOutput);
+    //           } else { // ie, if modeltype == "scene_variation_koolen"
+    //             var modelOutput = runModel(speaker, context.context[0]); // adjust target
+    //             // refModule.writeERP(modelOutput, [al,le,tc,ts,tt,cc,cs,"size_sufficient",context.condition], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
+				// refModule.writeERP(modelOutput, [al,le,tc,ts,tt,cc,cs,context.condition], "results_model/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                            
+    //           }
+    		console.log(runModel(speaker,context[0]));
+             
               }, contexts); // comment out if not running with modeltype = "scene_variation_koolen"
-            }, cost_sizes);          
-          }, cost_colors);
-        }, typicality_types);
-        }, typicality_sizes);
-      }, typicality_colors);
-    }, lengthWeights);
-  }, alphas);
+  //           }, cost_sizes);          
+  //         }, cost_colors);
+  //       }, typicality_types);
+  //       }, typicality_sizes);
+  //     }, typicality_colors);
+  //   }, lengthWeights);
+  // }, alphas);

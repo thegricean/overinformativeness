@@ -146,8 +146,8 @@ var modelAnalysis = function() {
   // };
 
   var params = {
-    alpha : sample(UniformDrift({a:0,b:25,r:12/20})),
-    lengthWeight : sample(UniformDrift({a:0,b:10,r:5/20})),
+    alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
+    lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
     typicality_color : sample(UniformDrift({a:0,b:1,r:1/20})),
     typicality_size : sample(UniformDrift({a:0,b:1,r:1/20})),
     typicality_type : 1,
@@ -215,12 +215,13 @@ var modelAnalysis = function() {
 
   // console.log(query.table);
   // console.log(params);
-  return params//{predictive: query.table, params : params};
+  // return params
+  return {predictive: query.table, params : params};
 };
 
-// var outputERP = Infer({method:'MCMC', samples: 200, burn: 100, verbose: true}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', samples: 10000, burn: 3000, verbose: true}, modelAnalysis);
 // console.log(outputERP);
-var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 30, verbose: true});
+// var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 30, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10000, verbose: true, burn: 3000,
                                      // kernel: { HMC: { steps: 1, stepSize: .01 }}});
@@ -235,8 +236,9 @@ console.log('inference complete... printing');
 // reduced conditions -- 10'000 samples
 
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
-outputERP
+// outputERP
 
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged-test");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged");
 
 // full conditions

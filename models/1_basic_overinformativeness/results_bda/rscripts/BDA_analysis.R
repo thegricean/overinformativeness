@@ -21,7 +21,8 @@ options("scipen"=10)
 
 ### Load in model results (parameters)
 # modelversion = "fixed-reducedconditions-unlogged"
-modelversion = "fixed-reducedconditions"
+modelversion = "fixed-reducedconditions-unlogged"
+# modelversion = "fixed-reducedconditions"
 # modelversion = "fixed-fullconditions"
 # modelversion = "empirical-fullconditions"
 # modelversion = "empirical-fullconditions-scaledtyp"
@@ -183,7 +184,7 @@ costs = spreadparams %>%
 ggplot(costs, aes(x=Cost,y=Value,color=MCMCprob,group=SampleNum)) +
   geom_line() +
   ylab("Parameter value") 
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-cost-",modelversion,".pdf",sep=""),height=3,width=5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/joint-cost-",modelversion,".pdf",sep=""),height=4,width=8)
 
 spreadparams$AlphaBin = cut_number(spreadparams$alpha,n=2)
 spreadparams = spreadparams %>%
@@ -335,7 +336,8 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 #   facet_grid(SufficientDimension~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-byitem-",modelversion,".pdf",sep=""),height=3,width=5)
 
-cor(toplot$ModelProbability,toplot$Probability) # .82 with "TYPE" utt, .81 with and without "tYPe" and empirical typicalities but without speaker optimality param, .8 without "TYPE" or speaker optimality but empirical typicalities; r=.83 with reduced conditions!! -- ie empirical typicality (unscaled) messes things up!!
+cor(toplot$ModelProbability,toplot$Probability) 
+# unlogged, reduced conditions: .86
 
 
 ## collapse across targets and domains
@@ -400,7 +402,8 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
   guides(shape=guide_legend("Different\ndistractors"),color=guide_legend("Distractors")) 
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=5,width=7)
 
-cor(toplot$ModelProbability,toplot$Probability) #r=.99 fixed reduced (both with and without "TYPE" utterance, with and without speaker opt parameter); r=.95 fixed full; r=.96 fixed full with "TYPE"; r=.96 with empirical and 'TYPE"; r=.95 with empirical and no "TYPE" or speaker-opt
+cor(toplot$ModelProbability,toplot$Probability) 
+# unlogged, reduced .99 
 
 # plot scene variation effect, both model and empirical
 agr = empirical %>%
@@ -428,23 +431,26 @@ pr = predictive.samples %>%
   select(SufficientDimension,SceneVariation,NumDistractors,Utterance,Probability,YMax,YMin)
 head(pr)
 pr$Data = "model"
+pr$YMin = NA
+pr$YMax = NA
 agr$Data = "empirical"
 m = rbind(agr,pr)
 m$NumDistractors = as.factor(as.character(m$NumDistractors)) 
 
 ggplot(m, aes(x=SceneVariation,y=Probability,color=Data,group=Data,shape=NumDistractors)) +
-  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  geom_point(size=2) +
+  # scale_shape_manual(values = c(21,22,23)) +
   ylab("Utterance probability") +
   xlab("Scene variation") +
   guides(shape = guide_legend("Number of\ndistractors")) +
 #  geom_smooth(method="lm") +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
   facet_grid(SufficientDimension~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1_basic_overinformativeness/results_bda/graphs/scenevariation-",modelversion,".pdf",sep=""),height=5,width=9)
 
 
 
-
+#######################################################
 # deal with item-wise typicality
 maxdiffcases = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/9_norming_colordescription_typicality/results/data/maxdiffitems.csv")
 row.names(maxdiffcases) = paste(maxdiffcases$Color,maxdiffcases$Item)
