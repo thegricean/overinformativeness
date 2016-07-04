@@ -1,0 +1,146 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var getUtterances = function(context) {
+  // console.log(context);
+  var utts = [];
+  
+  map(function(c) {
+    map(function(k) {
+        utts.push(k+"_"+c[2]);
+    },c.slice(0,2));
+    utts.push(c[0]+"_"+c[1]+"_"+c[2]);
+     utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
+  },context);
+  return _.unique(utts);
+};
+
+var OverinformativeModel = function(params, context) {
+
+  var getUtteranceCost = function(utt) {
+    var splited = utt.split("_");
+    if (splited.length == 3) {
+      return params.cost_color + params.cost_size + params.cost_type;
+    } else {
+      if (splited.length == 2) {
+        return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited[0]) ? params.cost_type + params.cost_color : params.cost_type + params.cost_size;
+      } else {
+        return params.cost_type;
+      }
+    }
+  };
+
+  var checkFeature = function(utterancetype,object,u) {
+    if (utterancetype === "color") {
+      return _.contains(object,u) ? params.typicality_color : 1 - params.typicality_color; 
+    } else {
+      if (utterancetype === "size") {
+        return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
+      } else {
+        if (utterancetype === "type") {
+          return _.contains(object,u) ? params.typicality_type : 1 - params.typicality_type;     
+        } else {
+          return -555;
+        }
+      }
+    }
+  };
+
+// this function may vary by model type (here, typicalities are set, rather than loaded empirically)
+  var getTypicality = function(utt, object) {
+    var splitutt = utt.split("_");
+    var typicalities = map(function(u) {
+        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], u)) {
+          return checkFeature("color",object,u);  
+        } else {
+          if (_.contains(["big","small","size","othersize"],u)) {
+            return checkFeature("size",object,u);
+          } else {
+            return checkFeature("type",object,u);
+          }
+        }
+    },splitutt);
+
+    var typicality = reduce(function(a,b) {return a*b;},1,typicalities); 
+    return typicality;
+  };
+
+  var uttFitness = function(utt, object) {
+    var splitutt = utt.split("_");
+    var typfit = getTypicality(utt,object); 
+    return typfit; 
+  };
+
+  var literalListener = cache(function(utt){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(context);
+      factor(uttFitness(utt,object)); 
+      return object;
+    });
+  });
+    
+  var speaker = cache(function(target) {
+    var possibleutts = getUtterances(context);
+
+    return Infer({method:'enumerate'},function(){
+      var utt = uniformDraw(possibleutts);
+      var literalListenerERP = literalListener(utt);
+      var uttCost = getUtteranceCost(utt); 
+      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+      factor(score); 
+      return utt;
+    });
+  });
+
+  var runModel = function(speakerModel, target) { 
+    var speakerERP = speakerModel(target);
+    return Infer({method:'enumerate'},function(){
+      var utt = sample(speakerERP);
+      return utt;
+    });
+  };
+
+  var runListener = function(listenerModel, utterance) { 
+    var listenerERP = listenerModel(utterance);
+    return Infer({method:'enumerate'},function(){
+      var obj = sample(listenerERP);
+      return obj;
+    });
+  };    
+  
+  return {
+    runModel : runModel,
+    speaker : speaker,
+    listener: literalListener,
+    runListener : runListener
+  };
+};

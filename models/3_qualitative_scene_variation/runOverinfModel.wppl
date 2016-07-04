@@ -1,0 +1,191 @@
+// run using:
+// webppl runOverinfModel.wppl --require ./refModule/
+
+var typtype = "unlogged";
+var searchtype = "wide";
+// var searchtype = "narrow";
+
+// set this depending on aspect of model you're probing
+var modeltype = "scene_variation_koolen";
+// var modeltype = "scene_variation";
+
+// depending on whether you want tu run our contexts or koolen's contexts, comment out one or the other of the following context blocks
+// contexts from Koolen et al 2013 
+var contexts = [
+                {condition:"lowvariation_exp1", 
+                 context:[["big", "green", "fan"],
+                   ["big", "green", "tv"],
+                   ["big", "green", "desk"],
+                   ["big", "green", "couch"],
+                   ["big", "green", "desk"],
+                   ["big", "green", "chair"],
+                   ["big", "green", "couch"],                                          
+                   ["big", "green", "chair"]]},
+                {condition:"highvariation_exp1", 
+                 context:[["small", "blue", "couch"],
+                   ["big", "gray", "chair"],
+                   ["small", "green", "tv"],
+                   ["big", "green", "fan"],
+                   ["big", "red", "fan"],
+                   ["big", "red", "desk"],
+                   ["big", "brown", "tv"],                                          
+                   ["big", "gray", "chair"]]},
+                {condition:"lowvariation_exp2", 
+                 context:[["big", "red", "chair"],
+                   ["big", "red", "fan"],
+                   ["small", "red", "desk"],
+                   ["small", "red", "tv"],
+                   ["big", "red", "desk"],
+                   ["small", "red", "chair"],
+                   ["big", "red", "fan"],                                          
+                   ["big", "red", "couch"]]},
+                {condition:"highvariation_exp2", 
+                 context:[["small", "brown", "chair"],
+                 ["big", "blue", "desk"],
+                 ["small", "gray", "fan"],
+                 ["big", "brown", "chair"],
+                 ["small", "red", "couch"],
+                 ["big", "gray", "desk"],
+                 ["small", "green", "tv"],                                          
+                 ["big", "blue", "couch"]]},                 
+                 ]; 
+
+// contexts for our scene variation effect
+// var contexts = [
+// 				{condition:"color_2_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_2_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"color_3_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_3_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"color_3_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"color_4_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_4_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"color_4_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"color_4_4",
+// 				 context:[["big","blue","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"],
+// 				 	["big","red","thing"]]},
+// 				{condition:"size_2_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_2_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]},
+// 				{condition:"size_3_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_3_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"size_3_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]},
+// 				{condition:"size_4_1",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_4_2",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"],
+// 				 	["small","red","thing"]]},				 					 	
+// 				{condition:"size_4_3",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","red","thing"]]},
+// 				{condition:"size_4_4",
+// 				 context:[["big","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"],
+// 				 	["small","blue","thing"]]}				 	
+// ];
+
+var alphas = [5,10,15,20,25,30,35];
+var lengthWeights = [1];//[0,1,2,3,4,5];
+var typicality_colors = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+var typicality_sizes = [.001,.1,.2,.3,.4,.5,.6,.7,.8,.9,.95,.999];
+var typicality_types = [.8,.9,.95,.999];
+var cost_colors = [1];
+var cost_sizes = [1];
+
+map(function(al) {
+  console.log("next alpha: "+al);
+  map(function(le) {
+    map(function(tc) {
+      map(function(ts) {
+        map(function(tt) {
+          map(function(cc) {
+            map(function(cs) {  
+              map(function(context) {
+                var model = OverinformativeModel({
+                              alpha : al,
+                              lengthWeight : le,
+                              typicality_color : tc,
+                              typicality_size : ts,
+                              typicality_type : tt,
+                              cost_color : cc,
+                              cost_size : cs,
+                              cost_type : 1},
+                              context.context);
+                var runModel = model.runModel;
+                var speaker = model.speaker;
+                var listener = model.listener;
+                var runListener = model.runListener;
+                var modelOutput = runModel(speaker, context.context[0]);
+			          refModule.writeERP(modelOutput, [al,le,tc,ts,tt,cc,cs,context.condition], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                            
+            }, contexts); 
+          }, cost_sizes);          
+        }, cost_colors);
+      }, typicality_types);
+      }, typicality_sizes);
+    }, typicality_colors);
+  }, lengthWeights);
+}, alphas);
