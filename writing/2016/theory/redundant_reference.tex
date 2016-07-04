@@ -315,7 +315,7 @@ Differences in exact values may stem from various sources. First, the best $\lam
 
 These results are encouraging: RSA not only predicts a systematic color-size asymmetry in propensity to redundantly produce adjectives when size is noisier than color; it also predicts that there should be more redundant color mention as the number of dimensions along which objects in the scene vary increases. However, thus far we have only probed the model for qualitative effects from very few data points previously reported in the literature. Independently evaluating the utility of the model requires  testing it on a large dataset. This is what we turn to next.
 
-\section{Evaluating non-deterministic RSA for modified referring expressions}
+\section{Non-deterministic RSA for modified referring expressions}
 
 Adequately assessing the explanatory value of RSA with non-deterministic truth functions requires evaluating how well it does at predicting the probability of various types of utterances in large datasets of naturally produced referring expressions. To this end we proceed in two steps. First we report the results of a web-based interactive reference game in which we systematically manipulate scene variation (in a somewhat different way than \citeA{Koolen2013} did). We then perform Bayesian data analysis to generate model predictions, conditioning on the observed production data. This will both allow us a) to assess  how likely the model is to generate the actually observed data -- i.e., to obtain a measure of model quality -- and b) to infer the posterior probability of parameter values -- i.e., to understand whether the assumed asymmetries in adjective fidelity and/or cost discussed in the previous section are warranted.
 
@@ -366,7 +366,7 @@ To test non-deterministic RSA predictions, we conducted an interactive web-based
 
 \paragraph{Participants}
 
-We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. An additional 38 trials that were contributed by 4 speakers who prematurely dropped out of the experiment and who could therefore not be compensated for their work, were also included. \jd{should we be excluding these? they look like normal trials.} Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses and only participants with a past work approval rate of at least 95\% were accepted. %The data of five pairs were excluded from analysis because one of the participants dropped out before completing the experiment.
+We recruited 58 pairs of participants (116 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. Data from another 7 pairs who prematurely dropped out of the experiment and who could therefore not be compensated for their work, were also included. Here and in all other experiments reported in this paper, participants' IP address was limited to US addresses and only participants with a past work approval rate of at least 95\% were accepted. 
 
 \paragraph{Procedure}
 
@@ -392,17 +392,19 @@ Fillers were target trials from Exp.~2, a replication of \cite{graf2016}. Each f
 
 \subsubsection{Data pre-processing and exclusion}
 
-We collected 2138 referential expressions. \jd{Caroline, this number isn't 60*36, which would be 2160 -- is that because there are already some exclusions that went into data/colsizeCor\_manModified.csv? If so, what were they?} Because we did not restrict participants' utterances in any way, they produced many different kinds of expressions to refer to the target. Testing the model's predictions required, for each trial, either excluding it or classifying the produced utterance as an instance of a \emph{color}-only mention, a \emph{size}-only mention, or a \emph{color-and-size} mention. To this end we conducted the following semi-automatic data pre-processing. 
+We collected data from 2171 critical trials. Of these, 33 (1.5\%) were excluded because the listener did not select the target. 
+
+Because we did not restrict participants' utterances in any way, they produced many different kinds of referential expressions. Testing the model's predictions required, for each trial, either excluding it or classifying the produced utterance as an instance of a \emph{color}-only mention, a \emph{size}-only mention, or a \emph{color-and-size} mention. To this end we conducted the following semi-automatic data pre-processing. 
 
 In a first step, an R script automatically checked whether (what the experimenters deemed to be) the target's color or size was included in the utterance. In this way, \red{XXX \%} of cases were classified as containing a size or color term. However, this did not capture that sometimes, a participant produced a different color or size term than the one we had intended (e.g., \emph{pink} instead of \emph{purple} \red{XXX \%} or \emph{large} instead of \emph{big} \red{XXX \%}) or the expression contained a typo (e.g., \emph{pruple} instead of \emph{purple} \red{XXX \%}). In a second step, one of the authors (CG) therefore manually checked the automatic coding: utterances of an unintended color or size were coded as an instance of the intended color or size if they were similar enough in meaning and utterances with typos were corrected.   Most of the time, participants converged on a convention of mentioning simply the target's size and/or color, e.g., \emph{purple} or \emph{big blue}, without even using an article (e.g., \emph{the}) or mentioning the object's type (e.g., \emph{comb}). Articles were omitted in \red{XXX \%} of cases and object types were omitted in \red{XXX \%} of cases. We did not analyze this any further.
 
-Finally, there were 46 cases (2\%) in which the speaker made reference to the distinguishing dimension in an abstract way, e.g.~\emph{different color}, \emph{unique one}, \emph{ripest}, \emph{very girly}, or \emph{guitar closest to viewer}. While interesting as utterance choices,\footnote{Certain participants seemed to have deliberately used this as a strategy even though simply mentioning the distinguishing property would have been shorter in most cases. In all, only 12 participants produced these kinds of utterances: one 18 times, one 8 times, one 6 times, two 3 times, one 2 times, and the remaining six only once each.} these cases were excluded from the analysis. After the exclusion, 2092 cases classified as one of \emph{color}, \emph{size}, or \emph{color-and-size} entered into the analysis.
+There were 50 cases (2\%) in which the speaker made reference to the distinguishing dimension in an abstract way, e.g.~\emph{different color}, \emph{unique one}, \emph{ripest}, \emph{very girly}, or \emph{guitar closest to viewer}. While interesting as utterance choices,\footnote{Certain participants seemed to have deliberately used this as a strategy even though simply mentioning the distinguishing property would have been shorter in most cases. In all, only 12 participants produced these kinds of utterances: one 18 times, one 8 times, one 6 times, two 3 times, one 2 times, and the remaining six only once each.} these cases were excluded from the analysis. There were 3 cases that were nonsensical, e.g. \emph{bigger off a shade}, which were also excluded. Finally, there were 6 cases where only the insufficient dimension was mentioned -- these were excluded from the analysis reported in the next section, where we are only interested in minimal or redundant utterances, not underinformative ones, but were included in the Bayesian data analysis reported in \sectionref{sec:modifiermodeleval}. After the exclusion, 2079 cases classified as one of \emph{color}, \emph{size}, or \emph{color-and-size} entered into the analysis.
 
 \jd{Caroline, is there anything else we should mention here?}
 
 \subsubsection{Results}
-
-\jd{Hm, I ended up excluding another 13 cases where speakers mentioned the insufficient dimension -- of these, 6 are true cases of "wrongly" mentioning color instead of size. Another 3 are cases where color is sufficient but speakers say "smallest color","small different color","bigger off a shade", all of which seem nonsensical to me but were categorized as size mentions. The final four are interesting cases of color overmodification where instead of making reference to size, the speaker -- it's only one person -- is making reference to distance ("orange cap closest to  viewer", "brown belt farthest from viewer"). This leaves us with 2079 cases to analyze. Does this seem like the right thing to have done?}
+\label{sec:modelempiricalresults}
+% The analysis R script is in writing/2016/theory/rscripts/analysis_modifiers.R
 
 Proportions of redundant \emph{color-and-size} and minimal \emph{color} or \emph{size} utterances are shown in \figref{fig:exp1results} alongside model results (to be explained further in \sectionref{sec:modifiermodeleval}). There are three main questions of interest: first, do we replicate the color/size asymmetry in probability of redundant adjective use? Second, do we replicate the previously established effect of increased redundant color use with increasing scene variation? Third, is there an effect of scene variation on redundant size use and if so, is it smaller compared to that on color use, as is predicted under asymmetric color and size adjective fidelities?
 
@@ -414,7 +416,8 @@ We observed a main effect of sufficient property such that speakers were more li
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
+%\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-unlogged}
 \caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
 \label{fig:exp1results}
 \end{figure}
@@ -425,26 +428,31 @@ We observed a main effect of sufficient property such that speakers were more li
 
 % Extra info: 10000 samples, burn 3000, uniform drift, acceptance rate .4
 
-We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{color}}$, size fidelity $f_{\textrm{size}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{color}} \sim \mathcal{U}(0,1)$, $f_{\textrm{size}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,5)$, $\lambda  \sim \mathcal{U}(0,12)$.
+We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{color}}$, size fidelity $f_{\textrm{size}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{color}} \sim \mathcal{U}(0,1)$, $f_{\textrm{size}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,10)$, $\lambda  \sim \mathcal{U}(0,40)$.
 We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
 Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the six free parameters.
 
-Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for each combination of utterance, sufficient dimension, number of distractors, and number of different distractors (collapsing across different items) are compared to empirical data in \figref{fig:modelexp1scatter}. At this level, the model achieves a correlation of $r = .98$. Looking at results additionally on the by-item level yields a correlation of $r = .85$. The model thus does a very good job of capturing the quantitative patterns in the data. This can also be seen in \figref{fig:exp1results}, where model predictions are plotted alongside the empirical proportions by condition. The only clear flaw is that the model predicts greater redundant adjective use than empirically observed when there is no scene variation at all. \jd{a sentence on why}.
+Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for each combination of utterance, sufficient dimension, number of distractors, and number of different distractors (collapsing across different items) are compared to empirical data in \figref{fig:modelexp1scatter}. At this level, the model achieves a correlation of $r = .99$. Looking at results additionally on the by-item level yields a correlation of $r = .85$. The model thus does a very good job of capturing the quantitative patterns in the data. This can also be seen in \figref{fig:exp1results}, where model predictions are plotted alongside the empirical proportions by condition. The only clear flaw is that the model predicts greater redundant adjective use than empirically observed when there is no scene variation at all. \jd{a sentence on why}.
 
 \begin{figure}
 \centering
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions}
+%\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions}
+\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-unlogged}
 \caption{Scatterplot of point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives against empirical proportions ($r=$.99).}
 \label{fig:modelexp1scatter}
 \end{figure}
 
-Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is hardly any overlap between the 95\% highest density intervals (HDIs) for the two parameters.\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:modifiedmodel} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
+Parameter posteriors are shown in \figref{fig:modifierparamposteriors}. Crucially, the fidelity of color is inferred to be higher than that of size -- there is no overlap between the 95\% highest density intervals (HDIs) for the two parameters. % \red{the following footnote is deprecated and only applies to logged fidelities}\footnote{Analysis of the cases where color fidelity was inferred to be lower than size fidelity reveals that these are also the cases where the cost weight is high -- that is, where the model tries to compensate by increasing the effect of the size-color cost asymmetry (recall that size is always more costly than color). See also \appref{app:fidelity-outliers} for a more detailed analysis.} 
+That is, size modifiers are inferred to be noisier than color modifiers. The relatively high inferred $\lambda$ suggests that this difference in fidelity contributes substantially to the observed color-size asymmetries in redundant adjective use. As for cost, there is a lot of overlap in the inferred cost of size and color modifiers, suggesting that no cost difference is necessary to obtain the color-size asymmetry and the scene variation effects. These results are compatible with previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, the results do suggest that a cost asymmetry is not the driving force behind the asymmetry in redundant adjective use. Note further that the asymmetry cannot be reduced to cost differences: in \sectionref{sec:modifiedmodel} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
+%\red{the following cost discussion is deprecated and applies only to logged fidelities} As for cost, the cost of size modifiers is inferred to be roughly twice that of color, with a non-zero inferred weight on cost. This provides some support for previous claims \red{cite cite} that part of the explanation for the color-size asymmetry stems from the low cognitive cost involved in producing color modifiers compared to size modifiers. However, note that the asymmetry cannot be reduced to cost differences: indeed in \sectionref{sec:modifiedmodel} we showed that the color-size asymmetry in redundant adjective use requires an asymmetry in modifier fidelity. An asymmetry in cost only serves to further enhance the asymmetry brought about by the fidelity asymmetry, but cannot carry the redundant use asymmetry on its own.
 
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
-\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.86, 95\% highest density interval (HDI) = [0.84,0.88]; MAP $f_{\textrm{color}}$ = 0.90, HDI = [0.85,0.93]; MAP $c_{\textrm{size}}$ = .91, HDI = [.75, 1.9]; MAP $c_{\textrm{color}}$ = 0.36, HDI = [0.31,0.85]; MAP $\beta_c$ = 2.2, HDI = [1.7,4.6]; MAP $\lambda$ = 10.5, HDI = [9.6,11.3]}
+%\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
+\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions-unlogged}
+%logged fidelity: \caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.86, 95\% highest density interval (HDI) = [0.84,0.88]; MAP $f_{\textrm{color}}$ = 0.90, HDI = [0.85,0.93]; MAP $c_{\textrm{size}}$ = .91, HDI = [.75, 1.9]; MAP $c_{\textrm{color}}$ = 0.36, HDI = [0.31,0.85]; MAP $\beta_c$ = 2.2, HDI = [1.7,4.6]; MAP $\lambda$ = 10.5, HDI = [9.6,11.3]}
+\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{color}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}
 \label{fig:modifierparamposteriors}
 \end{figure}
 
@@ -454,7 +462,40 @@ As should be apparent from this section, non-deterministic RSA provides an excel
 
 \red{already bring up discussion points here? eg is it really about COLOR vs SIZE or particular color and size terms (blue vs turqoise), or about COLOR/blue for a particular object (ie typicality)? what about the issue that regularly comes up: that in context, surely these modifiers are not noisy?}
 
-This is all well and good, but to what extent is non-deterministic RSA just a model of modifier choice in modified referring expressions? Put differently, does non-deterministic RSA provide a good account of content selection in referring expressions more generally? To answer this question we move beyond modified referring expressions and turn to simple nominal referring expressions.
+\red{This is all well and good, but to what extent is non-deterministic RSA just a model of modifier choice in modified referring expressions? Put differently, does non-deterministic RSA provide a good account of content selection in referring expressions more generally? To answer this question we move beyond modified referring expressions and turn to simple nominal referring expressions.}
+
+\jd{if you choose to talk about feature typicality next, you need to save the last bridge and instead include a discussion about typicality}
+
+
+
+\section{Feature typicality}
+
+The approach of non-deterministic RSA seems promising. But in \sectionref{sec:colortypicality} we discussed a further characteristic of speakers' overmodification behavior: speakers are more likely to redundantly produce modifiers that denote atypical rather than typical object features, i.e., they are more likely to refer to a blue banana as a \emph{blue banana} rather than as a \emph{banana}, and they are more likely to refer to a yellow banana as a \emph{banana} than as a \emph{yellow banana} \cite{Sedivy2003, Westerbeek2015}. Non-deterministic RSA as we have conceived of it so far does not capture this asymmetry: it knows that a particular modifier is a color modifier with a particular fidelity; it does not know anything about the typicality of the denoted properties for the referent. 
+
+We would like to warn and disillusion the reader upfront: we will not solve the problem of how to get overmodification behavior from the typicality of features compositionally. This is a problem for all theories of modification \cite{kamp1995}. However, we would like to offer a proof of concept showing that, if the non-determinism in the RSA semantics is not at the adjective type (color, size) level, but instead at the level of referring expression and object pairs, the model produces precisely the sorts of typicality effects reported in the literature. 
+
+Let us elaborate. Where before we took a fidelity to be a number between 0 and 1 indicating how likely a type of modifier (size, color) was to correctly apply to an object, we now treat it as indicating how good of an instance of a particular referring expression the object in question is. For example, take the banana case: assume three contexts of objects with yellow, brown, and blue objects. Assume further that one of the objects is a banana, and the only difference between the three contexts is whether the banana is blue, brown, or yellow. In every context there is another object of the same color as the banana, so color is redundant, while there are no other bananas, so object category mention is sufficient for reference. Assume further the fidelity values shown in \tableref{tab:colorobjectfidelities}.
+
+\begin{table}
+\centering
+\caption{Hypothetical fidelity values for utterances (rows) as applied to objects (columns).}
+\begin{tabular}{l l l l l}
+\toprule
+Utterance & yellow banana & brown banana & blue banana & other\\
+\midrule
+\emph{banana} & .9 & .35 & .1 & .015 \\
+\emph{yellow banana} & .99 & .015 & .015 & .015 \\
+\emph{brown banana} & .015 & .99 & .015 & .015 \\
+\emph{blue banana} & .015 & .015 & .99 & .015 \\
+\emph{other} & .015 & .015 & .015 & .99 \\
+\bottomrule
+\end{tabular}
+\label{tab:colorobjectfidelities}
+\end{table}
+
+With $\lambda$ = 12 and $\beta_c$ = 5 (that is, both informativeness and utterance cost receive a substantial weight), the resulting speaker probabilities for the (minimal) \emph{banana} are .99, .37, and .05, respectively, to refer to the yellow banana, the brown banana, and the blue banana. In contrast, the resulting speaker probabilities for the redundant \emph{yellow banana}, \emph{brown banana}, and \emph{blue banana} are .01, .63, and .95, respectively. That is, redundant color mention increases with decreasing fidelity of the simple \emph{banana} utterance.
+
+\red{CONTINUE HERE WITH TYPICALITY ANALYSIS OF YOUR DATASET}
 
 \section{Evaluating non-deterministic RSA for nominal choice}
 
@@ -471,7 +512,7 @@ Exp~2 employed the same procedure as Exp.~1, but each display consisted of three
 
 \paragraph{Participants}
 
-We recruited 60 pairs of participants (120 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. \red{exclusion?}
+We recruited 58 pairs of participants (116 participants total) over Amazon's Mechanical Turk who were each paid \$1.75 for their participation. 
 
 \paragraph{Procedure and materials}
 
@@ -486,52 +527,52 @@ Stimuli were selected from nine distinct domains, each corresponding to distinct
 	\label{tab:reflevelstimuli}
 	\begin{tabular}{l l l l}
 	\toprule
-	Domain & Super & Targets & Mean length \red{(sd)}\\
+	Domain & Super & Targets & Mean length (sd)\\
 	\midrule
-	\multirow{4}{*}{bear} & \multirow{4}{*}{animal} & black bear & 9.9\\
-	& & polar bear & 8.8\\
-	& & panda bear & 5.5\\
-	& & grizzly bear & 9\\
+	\multirow{4}{*}{bear} & \multirow{4}{*}{animal} & black bear & 9.9 (.14)\\
+	& & polar bear & 8.8 (.35)\\
+	& & panda bear & 5.5 (.2)\\
+	& & grizzly bear & 9 (.98)\\
 	\midrule
-	\multirow{4}{*}{bird} & \multirow{4}{*}{animal} & eagle & 4.9\\
-	& 	& parrot & 6.1\\
-	& & pigeon & 5.9\\
-	& 	& hummingbird & 10.1\\
+	\multirow{4}{*}{bird} & \multirow{4}{*}{animal} & eagle & 4.9 (.1)\\
+	& 	& parrot & 6.1 (.13)\\
+	& & pigeon & 5.9 (.22)\\
+	& 	& hummingbird & 10.1 (.5)\\
 	\midrule
-	\multirow{4}{*}{candy} & \multirow{4}{*}{snack} & MnMs & 4.4\\
-		& & skittles & 6.9\\
-		& & gummy bears & 8.5\\
-		& & jelly beans & 9.3\\
+	\multirow{4}{*}{candy} & \multirow{4}{*}{snack} & MnMs & 4.4 (.49)\\
+		& & skittles & 6.9 (.43)\\
+		& & gummy bears & 8.5 (.47)\\
+		& & jelly beans & 9.3 (.44)\\
 	\midrule
-	\multirow{4}{*}{car} & \multirow{4}{*}{vehicle} & SUV & 3\\
-		& & minivan & 5.7\\
-		& & sports car & 9.8\\
-		& & convertible & 11.1\\
+	\multirow{4}{*}{car} & \multirow{4}{*}{vehicle} & SUV & 3 (0)\\
+		& & minivan & 5.7 (.27)\\
+		& & sports car & 9.8 (.23)\\
+		& & convertible & 11.1 (.2)\\
 	\midrule
-	\multirow{4}{*}{dog} & \multirow{4}{*}{animal} & pug & 3\\
-		& & husky & 4.7\\
-		& & dalmatian & 8.8\\
-		& & German Shepherd & 13.1\\
+	\multirow{4}{*}{dog} & \multirow{4}{*}{animal} & pug & 3 (.08)\\
+		& & husky & 4.7 (.22)\\
+		& & dalmatian & 8.8 (.18)\\
+		& & German Shepherd & 13.1 (.82)\\
 	\midrule
-	\multirow{4}{*}{fish} & \multirow{4}{*}{animal} & catfish & 6.6\\
-		& & goldfish & 7.9\\
-		& & swordfish & 8\\
-		& & clownfish & 9.1\\
+	\multirow{4}{*}{fish} & \multirow{4}{*}{animal} & catfish & 6.6 (.4)\\
+		& & goldfish & 7.9 (.22)\\
+		& & swordfish & 8 (.43)\\
+		& & clownfish & 9.1 (.38)\\
 	\midrule
-	\multirow{4}{*}{flower} & \multirow{4}{*}{plant} & rose & 4\\
-		& & tulip & 4.4\\
-		& & daisy & 5.9\\
-		& & sunflower & 9\\
+	\multirow{4}{*}{flower} & \multirow{4}{*}{plant} & rose & 4 (0)\\
+		& & tulip & 4.4 (.18)\\
+		& & daisy & 5.9 (.55)\\
+		& & sunflower & 9 (.11)\\
 	\midrule
-	\multirow{4}{*}{shirt} & \multirow{4}{*}{clothing} & T-shirt & 6.4\\
-		& & polo shirt & 6.7\\
-		& & dress shirt & 11\\
-		& & Hawaii shirt & 12.6\\
+	\multirow{4}{*}{shirt} & \multirow{4}{*}{clothing} & T-shirt & 6.4 (.48)\\
+		& & polo shirt & 6.7 (.79)\\
+		& & dress shirt & 11 (0)\\
+		& & Hawaii shirt & 12.6 (.46)\\
 	\midrule
-	\multirow{4}{*}{table} & \multirow{4}{*}{furniture} & picnic table & 9.7\\
-		& & dining table & 12\\
-		& & coffee table & 9.1\\
-		& & bedside table & 8.3\\				
+	\multirow{4}{*}{table} & \multirow{4}{*}{furniture} & picnic table & 9.7 (.58)\\
+		& & dining table & 12 (0)\\
+		& & coffee table & 9.1 (.95)\\
+		& & bedside table & 8.3 (.68)\\				
 	\bottomrule
 	\end{tabular}
 \end{table}
@@ -542,9 +583,9 @@ This context manipulation served as a manipulation of utterance informativeness:
 
 \subsubsection{Data pre-processing and exclusion}
 
-We collected 2187 referential expressions. To determine the level of reference for each trial, we followed the following procedure. First, trials on which the listener selected the wrong referent were excluded \red{caroline, is this still true? caroline:Yes! (as far as I know)}, leading to the elimination of 1.87\% of trials. Then, speakers' and listeners' messages were parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 72.1\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, remaining utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the parsing algorithm due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as \emph{doggie} for \emph{dog}, or reduced forms such as \emph{gummi},\emph{gummies} and \emph{bears} for \emph{gummy bears} were counted as containing the corresponding level of reference term. This covered another 15.1\% of trials. A total of 12.8\% of correct trials were excluded because the utterance consisted only of an attribute of the superclass (\emph{the living thing} for \emph{animal}), of the basic level (\emph{can fly} for \emph{bird}), of the subcategory (\emph{barks} for \emph{dog}) or of the particular instance (\emph{the thing facing left}) rather than a category noun. These kinds of attributes were also mentioned in addition to the noun on trials which were included in the analysis for 8.9\% of sub level terms, 19.1\% of basic level terms, and 66.7\% of super level terms. On 1.2\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial.
+We collected 2187 referential expressions. To determine the level of reference for each trial, we followed the following procedure. First, 41 trials on which the listener selected the wrong referent were excluded, leading to the elimination of 1.9\% of trials. Then, speakers' and listeners' messages were parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 72.1\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, remaining utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the grep search due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as \emph{doggie} for \emph{dog}, or reduced forms such as \emph{gummi}, \emph{gummies} and \emph{bears} for \emph{gummy bears} were counted as containing the corresponding level of reference term. This covered another 15.1\% of trials. A total of 12.8\% of correct trials were excluded because the utterance consisted only of an attribute of the superclass (\emph{the living thing} for \emph{animal}), of the basic level (\emph{can fly} for \emph{bird}), of the subcategory (\emph{barks} for \emph{dog}) or of the particular instance (\emph{the thing facing left}) rather than a category noun. These kinds of attributes were also mentioned in addition to the noun on trials which were included in the analysis for 8.9\% of sub level terms, 19.1\% of basic level terms, and 66.7\% of super level terms. On 1.2\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial. After all exclusion and pre-processing, 1870 cases classified as one of \emph{sub}, \emph{basic}, or \emph{super} entered into the analysis.
 
-\red{Should we mention the percentage of utterances where type/articles were used?}
+
 
 \subsubsection{Results}
 

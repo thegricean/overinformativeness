@@ -2,10 +2,10 @@ setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/exper
 source("rscripts/helpers.r")
 
 d = read.csv(file="data/results_for_regression.csv",quote="")
+# This dataset includes the 6 cases where the insufficient dimension was underinformatively produced
+d[d$redUtterance == "other",]
 
-
-# Hm, I ended up excluding another 13 cases where spekaers mentioned the insufficient dimension -- of these, 6 are true cases of "wrongly" mentioning color instead of size. Another 3 are cases where color is sufficient but speakers say "smallest color","small different color","bigger off a shade", all of which seem nonsensical to me but were categorized as size mentions. The final four are interesting cases of color overmodification where instead of making reference to size, the speaker -- it's only one person -- is making reference to distance ("orange cap closest to  viewer", "brown belt farthest from viewer"). Does this seem like the right thing to have done?
-
+# To exclude these:
 t = droplevels(subset(targets, redUtterance %in% c("minimal","redundant")))
 t$SceneVariation = t$NumDiff/t$NumDistractors
 t$Item = as.factor(as.character(t$Item))
