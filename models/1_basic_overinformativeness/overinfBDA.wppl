@@ -1,5 +1,5 @@
 // run using:
-// webppl overinformativenessBDA-loadtypicalities.wppl --require ./refModule/
+// webppl overinfBDA.wppl --require ./refModule/
 
 util.seedRNG(10);
 
@@ -91,18 +91,14 @@ var constructContext = function(condition,size,color,othercolor,item) {
 
 // var data = refModule.readCSV("./bdaInput/data_test.csv");
 // var data = refModule.readCSV("./bdaInput/data_test_reduced.csv");
-// var data = refModule.readCSV("./bdaInput/data_bda_modifiers.csv");
-// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv"); // loads data with 46 "other utterance" cases excluded
-// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced.csv");
-var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_noother.csv"); // loads data with 46 "other utterance" cases excluded
+// var data = refModule.readCSV("./bdaInput/data_bda_modifiers_reduced_noother.csv");
 console.log("Loading data complete...");
 
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_test.csv");
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions_reduced_test.csv");
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers.csv");
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv"); // loads unique conditions with 46 "other utterance" cases excluded
-// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced.csv");
-var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_noother.csv"); // loads unique conditions with 46 "other utterance" cases excluded
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_reduced_noother.csv");
 console.log("Loading unique conditions complete...");
 // console.log(conditions);
 
@@ -219,7 +215,7 @@ var modelAnalysis = function() {
   return {predictive: query.table, params : params};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 10000, burn: 3000, verbose: true}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', samples: 2000, burn: 800, verbose: true}, modelAnalysis);
 // console.log(outputERP);
 // var outputERP = MCMC(modelAnalysis, {samples: 100, burn: 30, verbose: true});
 // var outputERP = MCMC(modelAnalysis, {samples: 10, burn: 1, verbose: true});
@@ -238,7 +234,6 @@ console.log('inference complete... printing');
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions");
 // outputERP
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged-test");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-unlogged");
 
 // full conditions
@@ -247,7 +242,7 @@ refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fixed-reducedconditions-
 
 // empirical typicality
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions");
-// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-scaledtyp");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-fullconditions-scaledtyp");
 
 // interpolation analysis (interploating between fixed and empirical typicality)
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-interpolated");
