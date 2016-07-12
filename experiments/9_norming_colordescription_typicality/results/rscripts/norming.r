@@ -45,7 +45,7 @@ ggplot(d, aes(enjoyment)) +
 
 d$Combo = paste(d$item,d$color,d$condition)
 sort(table(d$Combo)) # how many of each? is it roughly evenly distributed?
-
+  
 agr = d %>% 
   group_by(item,color,condition) %>%
   summarise(meanresponse = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
@@ -58,6 +58,13 @@ ggplot(agr, aes(x=color,y=meanresponse,color=condition)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~item,scales="free_x")
 ggsave("graphs/typicalities.pdf",height=10)
+
+# figure out which cases have overlapping error bars in modified and unmodified condition -- wow, these turn out to be exactly the four cases with the biggest difference that i was plotting anyway (green chair, pink golfball, red stapler, pink weddingcake)
+overlap = agr %>%
+  group_by(item,color) %>%
+  summarise(NonOverlappingMeans = (YMin[1] >= YMax[2] | YMax[1] <= YMin[2]))
+overlap = as.data.frame(overlap)
+overlap[overlap$NonOverlappingMeans,]
 
 mutated = agr %>%
   mutate(Item=item,Color=color,Modification=condition,Typicality=meanresponse,CI.low=YMin,CI.high=YMax)
@@ -100,6 +107,7 @@ write.table(m[m$Modification == "puretypicality",c("Item","Color","rescaledTypic
 
 write.csv(m[m$Modification != "puretypicality",c("Object","rescaledTypicality","Utterance")],file="data/typicalities.csv",row.names=F,quote=F)
 write.csv(m[m$Modification != "puretypicality",c("Object","Typicality","Utterance")],file="data/typicalities_raw.csv",row.names=F,quote=F)
+write.csv(m[m$Modification != "puretypicality",c("Object","Typicality","Utterance","Modification","CI.low","CI.high")],file="data/typicalities_raw_withci.csv",row.names=F,quote=F)
 
 
 # figure out which cases have the greatest typicality difference between modified and unmodified versions
