@@ -417,8 +417,8 @@ We observed a main effect of sufficient property such that speakers were more li
 
 \begin{figure}
 \centering
-%\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions-unlogged}
+%\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/scenevariation-fixed-reducedconditions}
+\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/scenevariation-fixed-reducedconditions-unlogged}
 \caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
 \label{fig:exp1results}
 \end{figure}
@@ -429,7 +429,7 @@ We observed a main effect of sufficient property such that speakers were more li
 
 % Extra info: 10000 samples, burn 3000, uniform drift, acceptance rate .4
 
-We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{color}}$, size fidelity $f_{\textrm{size}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{color}} \sim \mathcal{U}(0,1)$, $f_{\textrm{size}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,10)$, $\lambda  \sim \mathcal{U}(0,40)$.
+We performed Bayesian data analysis to generate model predictions and infer likely parameter values, conditioning on the observed production data (coded into \emph{size}, \emph{color}, and \emph{size-and-color} utterances as described above) and integrating over the following free parameters: color fidelity $f_{\textrm{c}}$, size fidelity $f_{\textrm{s}}$, color cost $c_{\textrm{color}}$, size cost $c_{\textrm{size}}$, cost weight $\beta_{\textrm{cost}}$, and speaker rationality parameter $\lambda$. We assumed uniform priors for each parameter: $f_{\textrm{c}} \sim \mathcal{U}(0,1)$, $f_{\textrm{s}} \sim \mathcal{U}(0,1)$, $c_{\textrm{color}} \sim \mathcal{U}(0,2)$, $c_{\textrm{size}} \sim \mathcal{U}(0,2)$, $\beta_{\textrm{cost}} \sim \mathcal{U}(0,10)$, $\lambda  \sim \mathcal{U}(0,40)$.
 We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
 Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the six free parameters.
 
@@ -437,8 +437,8 @@ Point-wise maximum a posteriori (MAP) estimates of the model's posterior predict
 
 \begin{figure}
 \centering
-%\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions}
-\includegraphics[width=.8\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-unlogged}
+%\includegraphics[width=.8\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/predictives-collapsed-fixed-reducedconditions}
+\includegraphics[width=.8\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/predictives-collapsed-fixed-reducedconditions-unlogged}
 \caption{Scatterplot of point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives against empirical proportions ($r=$.99).}
 \label{fig:modelexp1scatter}
 \end{figure}
@@ -450,10 +450,10 @@ That is, size modifiers are inferred to be noisier than color modifiers. The rel
 
 \begin{figure}
 \centering
-%\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
-\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/parameterposteriors-fixed-reducedconditions-unlogged}
-%logged fidelity: \caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.86, 95\% highest density interval (HDI) = [0.84,0.88]; MAP $f_{\textrm{color}}$ = 0.90, HDI = [0.85,0.93]; MAP $c_{\textrm{size}}$ = .91, HDI = [.75, 1.9]; MAP $c_{\textrm{color}}$ = 0.36, HDI = [0.31,0.85]; MAP $\beta_c$ = 2.2, HDI = [1.7,4.6]; MAP $\lambda$ = 10.5, HDI = [9.6,11.3]}
-\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{size}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{color}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}
+%\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/parameterposteriors-fixed-reducedconditions}
+\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/parameterposteriors-fixed-reducedconditions-unlogged}
+%logged fidelity: \caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.86, 95\% highest density interval (HDI) = [0.84,0.88]; MAP $f_{\textrm{c}}$ = 0.90, HDI = [0.85,0.93]; MAP $c_{\textrm{size}}$ = .91, HDI = [.75, 1.9]; MAP $c_{\textrm{color}}$ = 0.36, HDI = [0.31,0.85]; MAP $\beta_c$ = 2.2, HDI = [1.7,4.6]; MAP $\lambda$ = 10.5, HDI = [9.6,11.3]}
+\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}
 \label{fig:modifierparamposteriors}
 \end{figure}
 
@@ -523,7 +523,7 @@ Each participant saw each of the 36 objects once. An object was randomly display
 \begin{figure}
 \centering
 \includegraphics[width=.5\textwidth]{pics/redstapler.png}
-\caption{An modified example trial from the typicality elicitation experiment.}
+\caption{A modified example trial from the typicality elicitation experiment.}
 \label{fig:modifiertypstimulus}
 \end{figure}
 
@@ -532,27 +532,115 @@ Importantly, we only elicited typicality norms for unmodified utterances and utt
 
 \subsubsection{Results and discussion}
 
-We coded the slider endpoints as 0 (``very atypical'') and 1 (``very typical''), essentially treating each response as a typicality value between 0 and 1. For each combination of object, color, and utterance (modified/unmodified), we computed that item's mean. Mean typicalities were generally lower for unmodified than for modified utterances: mean typicality for unmodified utterances was .67 (sd=.17, mode=.76) and for modified utterances .75 (sd=.12, mode=.81). This can also be seen on the left in \figref{fig:typicalitydists}. Note that, as expected given how the stimuli were constructed, typicality was generally skewed towards the high end, even for unmodified utterances. This means that there was not much variation in typicality differences between modified and unmodified utterances: as shown on the right in \figref{fig:typicalitydists}, most differences were close to zero.
+We coded the slider endpoints as 0 (``very atypical'') and 1 (``very typical''), essentially treating each response as a typicality value between 0 and 1. For each combination of object, color, and utterance (modified/unmodified), we computed that item's mean. Mean typicalities were generally lower for unmodified than for modified utterances: mean typicality for unmodified utterances was .67 (sd=.17, mode=.76) and for modified utterances .75 (sd=.12, mode=.81). This can also be seen on the left in \figref{fig:typicalitydists}. Note that, as expected given how the stimuli were constructed, typicality was generally skewed towards the high end, even for unmodified utterances. This means that there was not much variation in  the difference in typicality between modified and unmodified utterances. We will refer to this difference as \emph{typicality gain}, reflecting the overall gain in typicality via color modification over the unmodified baseline. As can be seen on the right in \figref{fig:typicalitydists}, in most cases typicality gain was close to zero.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{pics/typicality-dists}
-\caption{Typicality densities for modified and unmodified utterances (left) and histogram of differences between modified and unmodified typicalities.}
+\includegraphics[width=.9\textwidth]{pics/typicality-dists}
+\caption{Typicality densities for modified and unmodified utterances (left) and histogram of typicality gains (differences between modified and unmodified typicalities, right).}
 \label{fig:typicalitydists}
 \end{figure}
 
-Nevertheless, we can ask whether a greater difference in modified and unmodified utterance typicality results in a greater probability of redundant adjective use. We did so by conducting a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of scene variation and the typicality difference score, only on the size-sufficient subset of the data. The model included the maximal random effects structure that allowed the model to converge: by-speaker and by-item random intercepts as well as by-speaker random slopes for typicality difference. While failing to reach significance, the effect of typicality went numerically in the right direction ($\beta = 2.05$, $SE = 1.68$, $p < .23$). 
+This makes the typicality analysis difficult: if typicality gain is close to zero for most cases (and, taking into account confidence intervals, effectively zero), it is hard to evaluate the effect of typicality on redundant adjective use. In order to maximize power, we therefore conducted the analysis only on those items for which for at least one color the confidence intervals for the modified and unmodified utterances did not overlap. There were only four such cases: \emph{(pink) golfball}, \emph{(pink) wedding cake}, \emph{(green) chair}, and \emph{(red) stapler}, for a total of 231 data points.
 
-An important point is of note: the typicality elicitation procedure we employed here is somewhat different from that employed by \citeA{Westerbeek2015}, who asked their participants ``How typical is this color for this object?'' We did this for conceptual reasons: the values that go into semantics of the RSA model are most easily conceptualized as the typicality of an object as an instance of an utterance. While the typicality of a feature for an object type no doubt features into how good of an instance of the utterance the object is, deriving our typicalities from the  statistical properties of the subjective distributions of features over objects is beyond the scope of this paper. However, in a separate experiment we did ask participants the Westerbeek question. The correlation between mean typicality ratings from the Westerbeek version and the unmodified ``How typical is this for \emph{X}'' version was .75. The correlation between the Westerbeek version and the modified version was .64. 
+Predictions differ for size-sufficient and color-sufficient trials. Given the typicality effects reported in the literature and the predictions of non-deterministic RSA, we expect greater redundant color use on size-sufficient trials with \emph{increasing} typicality gain. The predictions for redundant size use on color-sufficient trials are unclear from the previous literature. Non-deterministic RSA, however,  predicts greater redundant size use with \emph{decreasing} typicality gain: small color typicality gains reflect the relatively low out-of-context utility of color. In these cases, it may be useful to redundantly use a size modifier even if that modifier is noisy. If borne out, these predictions should surface in an interaction between sufficient property and typicality gain. Visual inspection of the empirical proportions of redundant adjective use in \figref{fig:maxtypicalitydiff} suggests that this pattern is indeed borne out.
 
-Including the Westerbeek version typicality means as a predictor instead of typicality difference again yields a marginally significant effect of typicality in the predicted direction -- more typical colors are less likely to be mentioned redundantly ($\beta = -1.08$, $SE = .63$, $p < .09$). 
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{pics/maxtypicalitydiff}
+\caption{Utterance probability for four items as a function of difference in typicality between modified and unmodified utterance (x-axis) and sufficient dimension (columns). }
+\label{fig:maxtypicalitydiff}
+\end{figure}
 
-We thus overall find moderate evidence for typicality effects in our dataset. That the evidence is scarce is no surprise: stimuli were specifically designed to minimize effects of typicality. However, the fact that both ways of quantifying typicality predicted redundant adjective use in the numerically expected direction suggests that with more power, these effects may show up more readily.
+In order to investigate the effect of typicality gain on redundant adjective use, we conducted a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of scene variation, sufficient dimension, the interaction of scene variation and sufficient property, and the interaction of typicality gain and sufficient property. This is the same model as reported in \sectionref{sec:modelempiricalresults}, with the only difference that the interaction between sufficient property and typicality gain was added. All predictors were centered before entering the analysis. The model contained the maximal random effects structure that allowed it to converge: by-participant and by-item (where item was a color-object combination) random intercepts. 
+
+The model summary is shown in \tableref{tab:colortypicalityresults}. We replicate the effects of sufficient property and scene variation observed earlier on this smaller dataset. Crucially, we observe a significant interaction between sufficient property and typicality gain.\footnote{Conducting the same analysis on the entire dataset (i.e., using all of the noisy typicality estimates, replicated the scene variation and sufficient property effects. The interaction of typicality gain and sufficient property went in the same direction numerically, but failed to reach significance ($\beta = 1.52$, $SE = 1.45$, $p < .29$).} Simple effects analysis reveals that this interaction is due to a positive effect of typicality gain on redundant adjective use in the size-sufficient condition ($\beta = 4.47$, $SE = 1.65$, $p < .007$) but a negative effect of typicality gain on redundant adjective use in the color-sufficient condition  ($\beta = -5.77$, $SE = 2.49$, $p < .03$). 
+
+\begin{table}[!tbp]
+\caption{Model coefficients, standard errors, and p-values. Significant p-values are bolded.}
+\begin{center}
+\begin{tabular}{lrrl}
+\toprule
+\multicolumn{1}{l}{}&\multicolumn{1}{c}{Coef $\beta$}&\multicolumn{1}{c}{SE($\beta$)}&\multicolumn{1}{c}{$p$}\tabularnewline
+\midrule
+Intercept&$-1.85$&$0.34$&\textbf{\textless .0001}\tabularnewline
+Scene variation&$ 4.29$&$1.16$&\textbf{\textless .001}\tabularnewline
+Sufficient property&$ 2.72$&$0.60$&\textbf{\textless .0001}\tabularnewline
+Scene variation : Sufficient property&$ 0.88$&$2.12$&\textless 0.68\tabularnewline
+Sufficient property : Typicality gain&$ 9.43$&$2.68$&\textbf{\textless .001}\tabularnewline
+\bottomrule
+\end{tabular}\end{center}
+\label{tab:colortypicalityresults}
+\end{table}
+
+An important point is of note: the typicality elicitation procedure we employed here is somewhat different from that employed by \citeA{Westerbeek2015}, who asked their participants ``How typical is this color for this object?'' We did this for conceptual reasons: the values that go into semantics of the RSA model are most easily conceptualized as the typicality of an object as an instance of an utterance. While the typicality of a feature for an object type no doubt features into how good of an instance of the utterance the object is, deriving our typicalities from the  statistical properties of the subjective distributions of features over objects is beyond the scope of this paper. However, in a separate experiment we did ask participants the Westerbeek question. The correlation between mean typicality ratings from the Westerbeek version and the unmodified ``How typical is this for \emph{X}'' version was .75. The correlation between the Westerbeek version and the modified version was .64. The correlation between the Westerbeek version and typicality gain was -.52.
+
+For comparison, including typicality means obtained via the Westerbeek question as a predictor instead of typicality gain on the four high-powered items replicated the significant interaction between typicality and sufficient property ($\beta = -6.77$, $SE = 1.88$, $p < .0003$). Simple effects analysis revealed that the interaction is again due to a difference in slope in the two sufficient property conditions: in the size-sufficient condition, color is less likely to be mentioned with increasing color typicality   ($\beta = -3.66$, $SE = 1.18$, $p < .002$), whereas in the color-sufficient condition, size is more likely to be mentioned with increasing color typicality ($\beta = 3.09$, $SE = 1.45$, $p < .04$).\footnote{Again, conducting this analysis on the entire dataset yielded only a marginal interaction of sufficient property and color typicality in the right direction ($\beta = -1.10$, $SE = .64$, $p < .09$).}
+
+We thus overall find moderate evidence for typicality effects in our dataset. Typicality effects are strong for those items that clearly display typicality differences between the modified and unmodified utterance, but much weaker for the remaining items. That the evidence for typicality effects is relatively scarce is no surprise: the stimuli were specifically designed to minimize effects of typicality. However, the fact that both ways of quantifying typicality predicted redundant adjective use in the expected direction suggests that with more power or with stimuli that exhibit greater typicality variation, these effects may show up more clearly.
 
 In the next section we evaluate whether the fit of non-deterministic RSA to the data is improved by using the empirically elicited typicalities as the values in the non-deterministic semantics.
 
 \subsection{Model evaluation: color typicality}
 \label{sec:modelevalcolortypicality}
+
+In order to evaluate the effect of utterance-object level typicality we proceed in XXX steps: first, we present the results of performing Bayesian data analysis in the same way as reported in \sectionref{sec:XXX}, with the only difference that instead of fixed utterance type level fidelities we include the more fine-grained fidelity values corresponding to the typicality norms. We will focus more closely on the cases reported in the previous section \red{report those cases!} in order to see how the model treats these cases \red{once you know, actually put a summary sentence here instead of "in order to see how the model bla"}. In a second step we then address the pressing question of whether more fine-grained typicalities add any explanatory value. 
+
+\subsubsection{Model evaluation: empirical typicalities}
+
+In order to generate model predictions and infer likely parameter values for the dataset reported above,  we repeated the same Bayesian data analysis procedure as described above, with one difference \red{well two, really, because fewer samples and different inference algorithm?}: instead of using the utterance-type level fidelities we fed the model the empirically elicited typicality norms. This was slightly less trivial than it sounds for two reasons. First, we only elicited typicality norms for object-utterance pairs for which the utterance was either just the simple object category noun (e.g., \emph{chair}) or the color-modified noun (e.g., \emph{green chair}); that is, we did not elicit size typicality norms (for reasons described in the previous section). Second, we did not elicit typicality norms for utterance-object pairs where the object would not be in the deterministic semantics' extension (e.g., \emph{green chair} used to refer to a red chair). In order to fill in the typicality gaps, so to speak, we assigned fidelity values to utterances as follows: object-utterance pairs where the object is in the extension of the utterance were assigned the empirically elicited typicality for that pair (e.g., \emph{chair} typicality for any chair, \emph{red chair} typicality for red chairs, see \tableref{tab:empiricalcolorfidelities}). If the object was not in the utterance extension, it received a fidelity of $1 - f_{c}$, where $f_c$ is an utterance type level fidelity parameter for color (as in the basic non-deterministic model reported above). For objects in the utterance extension where the utterance additionally contained a size modifier, the empirical fidelity was multiplied by an utterance type level size fidelity $f_{s}$. See \tableref{tab:empiricalcolorfidelities} for an overview of fidelity values for one item (red/green chair). 
+
+
+\begin{table}
+\centering
+\caption{Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.}
+\begin{tabular}{l l l l l}
+\toprule
+Utterance & small red chair & small green chair & big red chair & big green chair\\
+\midrule
+\emph{chair} & .83 & .67 & .83 & .67 \\
+\emph{red chair} & .84 & $1 - f_{\textrm{c}}$ & .84 & $1 - f_{\textrm{c}}$ \\
+\emph{green chair} & $1 - f_{\textrm{c}}$ & .85 & $1 - f_{\textrm{c}}$ & .85 \\
+\emph{small chair} & $f_{\textrm{s}} \cdot .83$ & $f_{\textrm{s}} \cdot .67$ & $(1 - f_{\textrm{s}}) \cdot .83$ & $(1 - f_{\textrm{s}}) \cdot .67$ \\
+\emph{big chair} & $(1 - f_{\textrm{s}}) \cdot .83$ & $(1 - f_{\textrm{s}}) \cdot .67$ & $f_{\textrm{s}} \cdot .83$ & $f_{\textrm{s}} \cdot .67$ \\
+\emph{small red chair} & $f_{\textrm{s}} \cdot .84$ & $f_{\textrm{s}} \cdot (1 - f_{\textrm{c}})$ & $(1 - f_{\textrm{s}}) \cdot .84$ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ \\
+\emph{big red chair} & $(1-f_{\textrm{s}}) \cdot .84$ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .84$ & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ \\
+\emph{small green chair} & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .85 $ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $(1-f_{\textrm{s}}) \cdot .85$ \\
+\emph{big green chair} & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & .$(1-f_{\textrm{s}}) \cdot .85$ & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .85$ \\
+\bottomrule
+\end{tabular}
+\label{tab:empiricalcolorfidelities}
+\end{table}
+
+One final point of note: empirically elicited typicality values were rescaled to range from 0.5 to 1 (instead of from 0 to 1). This was done because a fidelity value of .5, when there are only two potential feature values (e.g., two colors in the scene, red and green), leads to a random choice between green and red items; that is, the modifier contains no information. When the fidelity value is below .5 in these two-feature value scenarios, the modifier contextually acquires the meaning of the other feature dimension, e.g., \emph{green} is more likely to pick out red than green objects. The typicality values we elicited were not degree of membership values (which is what the model expects). Rather, they are more comparable to distance from prototype values \cite<see>[for a discussion of the difference]{kamp1995}. By rescaling the empirical typicality values to fall above .5, we guaranteed that the utterance would have at least an above chance of meaning what it would mean under a deterministic semantics. \tableref{tab:empiricalscaledunscaledtyps} exemplifies the effect of rescaling the raw typicality values for the red/green chair item.
+
+\begin{table}
+\centering
+\caption{Raw and rescaled typicalities for the red and green chair items.}
+\begin{tabular}{l l l l l}
+\toprule
+& \multicolumn{2}{c}{Raw} & \multicolumn{2}{c}{Rescaled}\\
+Utterance & red chair & green chair & red chair & green chair\\
+\midrule
+\emph{chair} & .68 & .41 & .83 & .67\\
+\emph{red chair} & .69 & NA & .84 & NA\\
+\emph{green chair} & NA & .70  & NA & .85\\
+\bottomrule
+\end{tabular}
+\label{tab:empiricalscaledunscaledtyps}
+\end{table}
+
+\paragraph{Results} Including typicality increased item-wise model-data correlation by \red{XXX}. Posteriors over parameters are shown in \figref{fig:typicalityparamposteriors}. \red{Discuss similarities/diffs to basic model.}
+
+\begin{figure}
+\label{fig:typicalityparamposteriors}
+%\includegraphics{bla}
+\caption{\red{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}}
+\end{figure}
+
+\subsubsection{Model evaluation: interpolation analysis}
+
+In order to evaluate whether including empirical typicality norms we present a second BDA analysis in which we introduce an additional parameter in the model that functions as a weight on fidelity type: if the weight is 0, only the utterance-type level fidelities are used; if the weight is 1 only the empirical typicalities are used
 
 \red{CONTINUE HERE by describing how you treated typicality in the model: noise parameters, fit with full typicality, interpolation analysis -- BEFORE YOU CAN DO THIS YOU NEED TO FIX THE BDA IE WHAT IS RETURNED NEEDS TO GET SMALLER, SO YOU CAN ACTUALLY GET RESULTS BECAUSE IT KEEPS RUNNING OUT OF MEMORY}
 
@@ -661,7 +749,7 @@ We collected 2187 referential expressions. To determine the level of reference f
 %
 %\begin{figure}
 %\centering
-%\includegraphics[width=\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/scenevariation-fixed-reducedconditions}
+%\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/scenevariation-fixed-reducedconditions}
 %\caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
 %\label{fig:exp1results}
 %\end{figure}
@@ -799,8 +887,8 @@ wedding cake & pink, white & yarn & purple, red\\
 %
 %\begin{figure}
 %\centering
-%\includegraphics[width=.7\textwidth]{../../../models/1_basic_overinformativeness/results_bda/graphs/fidelity-outliers-fixed-reducedconditions}
-%\caption{Each sample's cost weight $\beta_c$ against difference between color and size fidelity ($f_{\textrm{color}} - f_{\textrm{size}}$). Green region includes cases with higher inferred size than color fidelity that have a cost weight greater than or equal to the median cost weight. Red region includes cases with higher inferred size than color fidelity that have a cost weight lower than the median cost weight. Dot size and color indicates parameter values' posterior probability.}
+%\includegraphics[width=.7\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/fidelity-outliers-fixed-reducedconditions}
+%\caption{Each sample's cost weight $\beta_c$ against difference between color and size fidelity ($f_{\textrm{c}} - f_{\textrm{s}}$). Green region includes cases with higher inferred size than color fidelity that have a cost weight greater than or equal to the median cost weight. Red region includes cases with higher inferred size than color fidelity that have a cost weight lower than the median cost weight. Dot size and color indicates parameter values' posterior probability.}
 %\label{fig:fidelity-outliers-reducedconditions}
 %\end{figure}
 
