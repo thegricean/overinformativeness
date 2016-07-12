@@ -101,6 +101,18 @@ print(paste("percentage of super mentions where an additional modifier was used:
 
 
 
+###Extract incorrect modifier trials###
+
+d = read.table(file="../data/colsize_manModified.csv",sep=",", header=T, quote="")
+head(d)
+nrow(d)
+
+# only incorrect trials:
+colsizeIncor = droplevels(d[!is.na(d$targetStatusClickedObj) & d$targetStatusClickedObj != "target",])
+head(colsizeIncor)
+nrow(colsizeIncor)
+
+write.table(colsizeIncor,file="colsizeIncor.csv", sep="\t")
 
 
 
