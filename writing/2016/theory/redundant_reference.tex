@@ -502,7 +502,7 @@ We can now ask whether taking into account this more fine-grained notion of non-
 %\sectionref{sec:exp1-scenevar}. 
 A note upfront: the stimuli for Exp.~1 were specifically designed to be realistic objects; that is, very low typicality values or even a large degree of variation in typicality would be surprising. Nevertheless, it is plausible that typicality differences exist. If they do, there are two interesting questions to ask: first, do we replicate the typicality effects reported in the literature -- that is, are less typical objects more likely to lead to redundant adjective use than more typical objects? Second, does including empirically elicited typicality values at the object-utterance level further improve the quality of the RSA model? We address the first question in \sectionref{sec:modifiertypicalityeffects} and the second question in \sectionref{sec:modelevalcolortypicality}.
 
-\subsection{Typicality effects in Exp.~1}
+\subsection{Experiment 1a: Typicality effects in Exp.~1}
 \label{sec:modifiertypicalityeffects}
 
 To assess whether we replicate the color typicality effects previously reported in the literature \cite{sedivy2003a, Westerbeek2015, rubiofernandez2016}, we elicited color typicality norms for each of our items and then included typicality as an additional predictor of redundant adjective use in the regression analysis reported previously. 
@@ -584,7 +584,9 @@ In the next section we evaluate whether the fit of non-deterministic RSA to the 
 \subsection{Model evaluation: color typicality}
 \label{sec:modelevalcolortypicality}
 
-In order to evaluate the effect of utterance-object level typicality we proceed in XXX steps: first, we present the results of performing Bayesian data analysis in the same way as reported in \sectionref{sec:XXX}, with the only difference that instead of fixed utterance type level fidelities we include the more fine-grained fidelity values corresponding to the typicality norms. We will focus more closely on the cases reported in the previous section \red{report those cases!} in order to see how the model treats these cases \red{once you know, actually put a summary sentence here instead of "in order to see how the model bla"}. In a second step we then address the pressing question of whether more fine-grained typicalities add any explanatory value. 
+\red{insert actual numbers below!}
+
+In order to evaluate the effect of utterance-object level typicality we proceed in two steps: first, we present the results of performing Bayesian data analysis in the same way as reported in \sectionref{sec:modifiermodeleval}, with the only difference that instead of fixed utterance type level fidelities we include the more fine-grained fidelity values corresponding to the typicality norms. We will focus more closely on the four items shown in \figref{fig:maxtypicalitydiff} in order to demonstrate the effect of including typicality in the model \red{once you know, actually put a summary sentence here instead of "in order to see how the model bla"}. In a second step we then address the pressing question of whether more fine-grained typicalities add any predictive value. 
 
 \subsubsection{Model evaluation: empirical typicalities}
 
@@ -630,7 +632,7 @@ Utterance & red chair & green chair & red chair & green chair\\
 \label{tab:empiricalscaledunscaledtyps}
 \end{table}
 
-\paragraph{Results} Including typicality increased item-wise model-data correlation by \red{XXX}. Posteriors over parameters are shown in \figref{fig:typicalityparamposteriors}. \red{Discuss similarities/diffs to basic model.}
+\paragraph{Results} Including typicality increased yielded similar item-wise model-data correlations as the basic model \red{XXX}. Posteriors over parameters are shown in \figref{fig:typicalityparamposteriors}. \red{Discuss similarities/diffs to basic model.} 
 
 \begin{figure}
 \label{fig:typicalityparamposteriors}
@@ -638,22 +640,35 @@ Utterance & red chair & green chair & red chair & green chair\\
 \caption{\red{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}}
 \end{figure}
 
+Posterior predictives for the cases with greatest typicality gain -- \emph{chair}, \emph{golfball}, \emph{weddingcake}, and \emph{stapler} -- are shown in \figref{fig:ppmaxtypdiff} alongside the posterior predictives from the basic model (with utterance type level fidelities). In the basic non-deterministic model, probability of redundant utterances is similar for items of different colors. In the model that includes empirically elicited typicalities, the probability of redundant utterances is greater where typicality gain is greater; that is, for cases where the unmodified utterance has low typicality and the modified utterance high typicality, analogous to the \emph{blue banana} case.
+
 \subsubsection{Model evaluation: interpolation analysis}
 
-In order to evaluate whether including empirical typicality norms we present a second BDA analysis in which we introduce an additional parameter in the model that functions as a weight on fidelity type: if the weight is 0, only the utterance-type level fidelities are used; if the weight is 1 only the empirical typicalities are used
+Because the correlations between model-predicted utterance probability posterior predictives and empirical proportions are very similar across the basic and empirical typicality model, the question arises whether utterance-level typicalities add any predictive value whatsoever. In order to address this question we present a second BDA analysis in which we introduce an additional parameter in the model that functions as a weight on fidelity type: if the weight is 0, only the utterance-type level fidelities are used; if the weight is 1 only the empirical typicalities are used. Therefore, if the BDA returns posterior values for fidelity type weight greater than 0, empirical typicalities are justified.
 
-\red{CONTINUE HERE by describing how you treated typicality in the model: noise parameters, fit with full typicality, interpolation analysis -- BEFORE YOU CAN DO THIS YOU NEED TO FIX THE BDA IE WHAT IS RETURNED NEEDS TO GET SMALLER, SO YOU CAN ACTUALLY GET RESULTS BECAUSE IT KEEPS RUNNING OUT OF MEMORY}
+\paragraph{Results} Posteriors over parameters are shown in \figref{fig:interpolposteriors}. \red{insert figure} The MAP estimate for fidelity type weight is \red{XXX (HDI = [X,X])}, suggesting that utterance-level typicality adds predictive value.
+
+\begin{figure}
+\label{fig:interpolposteriors}
+%\includegraphics{bla}
+\caption{\red{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}}
+\end{figure}
+
+\subsection{Discussion}
+
+\red{what are the main discussion points here? a) that non-deterministic RSA with utterance-level typicalities as fidelity values captures the color typicality effects reported in the literature qualitatively (yellow/blue banana); b) that even in our dataset, where items were designed to not exhibit great typicality effects, we find evidence of typicality effects on utterance probability, replicating previous studies; and c) BDA shows that including empirically elicited typicality norms in the model adds predictive value. This suggests that speakers are tracking typicality at a very fine-grained level}.
+
+In the next section we turn to extending non-deterministic RSA beyond the choice of modifier.
 
 \section{Evaluating non-deterministic RSA for nominal choice}
 
-To test whether non-deterministic RSA can account for referring expression production beyond the choice of modifier, we present a  second production experiment. This experiment investigates speakers' choice of level of reference in nominal referring expression (\emph{dalmation}, \emph{dog}, or \emph{animal}). As discussed in \sectionref{sec:nominal},  multiple factors have been shown to play a role in the choice of nominal referring expression, including an expression's contextual informativeness and its cognitive cost (short and frequent terms are preferred over long and infrequent ones) \red{cite cite}.   We then present a minimally modified version of non-deterministic RSA and conduct the same type of Bayesian data analysis as in the previous section to evaluate the model.
+In this section we investigate whether non-deterministic RSA can account for referring expression production beyond the choice of modifier. To do so, we begin by presenting a  second production experiment. This experiment investigates speakers' choice of level of reference in nominal referring expression (\emph{dalmation}, \emph{dog}, or \emph{animal}). As discussed in \sectionref{sec:nominal},  multiple factors have been shown to play a role in the choice of nominal referring expression, including an expression's contextual informativeness, its cognitive cost (short and frequent terms are preferred over long and infrequent ones) \red{cite cite}, and its typicality (an utterance is more likely to be used if the object is a good example of it) \red{is that true? cite.}.   We then present a minimally modified version of non-deterministic RSA and conduct the same type of Bayesian data analysis as in the previous section to evaluate the model.
 
-\red{typicality? not discussed yet in intro for nominal choice}
 
 \subsection{Experiment 2: level of reference in nominal referring expressions}
 \label{sec:exp2}
 
-Exp~2 employed the same procedure as Exp.~1, but each display consisted of three objects. We manipulated the contextual informativeness of each level of reference -- subordinate (\emph{dalmatian}), basic (\emph{dog}), and superordinate (\emph{animal}) -- by manipulating the distractor items. 
+Exp~2 employed the same procedure as Exp.~1, but each display consisted of three objects.\footnote{Exp.~2 constitutes a replication of \cite{GrafEtAl2016}.} We manipulated the contextual informativeness of each level of reference -- subordinate (\emph{dalmatian}), basic (\emph{dog}), and superordinate (\emph{animal}) -- by manipulating the distractor items. 
 
 \subsubsection{Method}
 
@@ -725,7 +740,7 @@ Stimuli were selected from nine distinct domains, each corresponding to distinct
 \end{table}
 Each trial consisted of a display of three images, one of which was designated as the target object. Each pair of participants saw each target exactly once, for a total of 36 trials per pair. These target items were randomly assigned distractor items which were selected from four different context conditions, corresponding to different communicative pressures (see \figref{fig:dogcontexts}). We refer to these conditions with pairs of numerals specifying which levels of the taxonomy are present in the distractors: (a) item12 contexts contain one distractor of the same basic level and one distractor of the same superlevel (e.g., target: \emph{dalmatian}, distractor 1: \emph{greyhound} (also a dog), distractor 2: \emph{squirrel} (also an animal)); (b) item22 contexts contain two distractors of the same superlevel but different basic level as the target (e.g., target: \emph{husky}, distractors: \emph{hamster} and \emph{elephant}); (c) item23 contexts contain one distractor of the same superlevel and one unrelated item (e.g., target: \emph{pug}, distractor 1: \emph{cow}, distractor 2: \emph{table}); and (d) item33 contexts contain two unrelated items (e.g., target: \emph{German Shepherd}, distractors: \emph{shirt} and \emph{cookie}). 
 
-This context manipulation served as a manipulation of utterance informativeness: any target could be referred to at the sub (\emph{dalmatian}), basic (\emph{dog}) or super (\emph{animal}) level. However, the level of reference necessary for uniquely referring differed across contexts: in item12 contexts, the sub level was necessary. In item22 and item23 contexts, the basic level was necessary (though the sub level was also possible). In item33 contexts all three utterances were possible. Utterance probabilities for a speaker with the desire to be sufficiently informative in context but with no additional preference for referring at any particular level are shown in \figref{fig:reflevelresults} alongside empirical utterance proportions.
+This context manipulation served as a manipulation of utterance informativeness: any target could be referred to at the sub (\emph{dalmatian}), basic (\emph{dog}) or super (\emph{animal}) level. However, the level of reference necessary for uniquely referring differed across contexts: in item12 contexts, the sub level was necessary. In item22 and item23 contexts, the basic level was necessary (though the sub level was also possible). In item33 contexts all three utterances were possible. %Utterance probabilities for a speaker with the desire to be sufficiently informative in context but with no additional preference for referring at any particular level are shown in \figref{fig:reflevelresults} alongside empirical utterance proportions.
 
 
 \subsubsection{Data pre-processing and exclusion}
@@ -734,26 +749,59 @@ We collected 2187 referential expressions. To determine the level of reference f
 
 
 
-\subsubsection{Results}
+\subsubsection{Results and discussion}
 
-\red{JUDITH, CONTINUE HERE ONCE YOU HAVE ANSWERS FROM CAROLINE}
+Proportions of sub, basic, and super level utterances are shown in the top row of \figref{fig:exp2results}. Overall, super level mentions are highly dispreferred ($< 2\%$), so we focus in this section only on predictors of sub over basic level mentions. The clearest pattern of note is that sub level mentions are only preferred in the most constrained context that necessitates the sub level mention for unique reference (item12, e.g. target: dalmatian, distractor: greyhound). Nevertheless, even in these contexts there is a non-negligible proportion of basic level mentions (28\%). In the remaining contexts, where the sub and basic level are equally informative, there is a clear preference for the basic level. 
 
-%
-%Proportions of redundant \emph{color-and-size} and minimal \emph{color} or \emph{size} utterances are shown in \figref{fig:exp1results} alongside model results (to be explained further in \sectionref{sec:modifiermodeleval}). There are three main questions of interest: first, do we replicate the color/size asymmetry in probability of redundant adjective use? Second, do we replicate the previously established effect of increased redundant color use with increasing scene variation? Third, is there an effect of scene variation on redundant size use and if so, is it smaller compared to that on color use, as is predicted under asymmetric color and size adjective fidelities?
-%
-%We addressed all of these questions in one fell swoop by conducting a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of sufficient property (color vs.~size), scene variation (proportion of distractors that does not share the insufficient property value with the target), and the interaction between the two. The model included the maximal random effects structure that allowed the model to converge: by-speaker and by-item random intercepts as well as by-speaker random slopes for scene variation. 
-%
-%We observed a main effect of sufficient property such that speakers were more likely to redundantly use color than size adjectives ($\beta = 3.61$, $SE = .23$, $p < .0001$), replicating the much-documented color-size asymmetry. We further observed a main effect of scene variation such that redundant adjective use increased with increasing scene variation ($\beta = 4.11$, $SE = .49$, $p < .0001$). Finally, we also observed a significant interaction between sufficient property and scene variation ($\beta = 3.03$, $SE = .81$, $p < .0002$). Simple effects analysis revealed that the interaction is driven by the scene variation effect being much smaller in the \emph{color-sufficient} condition ($\beta = 2.59$, $SE = .78$, $p < .0009$) than in the \emph{size-sufficient} condition ($\beta = 5.63$, $SE = .45$, $p < .0001$), as predicted under the assumption that size modifiers are noisier than color modifiers.
-%
-%
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=\textwidth]{../../../models/1a_bda_basic/results_bda/graphs/scenevariation-fixed-reducedconditions}
-%\caption{Empirical utterance proportions  (red)  alongside point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives for utterance probability (blue) as a function of scene variation. Rows indicate the sufficient dimension, columns the produced utterance. Here and in all following plots, error bars indicate 95\% bootstrapped confidence intervals.}
-%\label{fig:exp1results}
-%\end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../../../models/basic_level_reference/graphs/paperplots/collapsed-pattern}
+\caption{\red{UPDATE THIS FIGURE -- DO THE RESCALED TYPICALITY THING?} Utterance probabilities across different conditions. Columns indicate utterances, rows indicate data type (empirical proportion, predictions of informativeness-only model, MAP estimates of posterior predictives for informativeness-and-cost model and for full model with informativeness, cost, and typicality.}
+\label{fig:exp2results}
+\end{figure}
+
+What explains these preferences? In order to test for effects of informativeness, length, frequency, and typicality on nominal choice we conducted a mixed effects logistic regression predicting sub over basic level mention from centered predictors for the factors of interest and the maximal random effects structure that allowed the model to converge (random by-speaker and by-target (\red{is this true?}) intercepts). 
+
+\emph{Frequency} was coded as the difference between the sub and the basic level's log frequency, as extracted from the Google Books Ngram English corpus ranging from 1960 to 2008. 
+
+\emph{Length} was coded as the ratio of the sub to the basic level's length. We used the mean empirical lengths in characters of the utterances participants produced. For example, the minivan, when referred to at the subcategory level, was sometimes called ``minivan'' and sometimes ``van'' leading to a mean empirical length of 5.71. This is the value that was used, rather than 7, the length of ``minivan''. That is, a higher frequency difference indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level.\footnote{We replicate the well-documented negative correlation between length and log frequency ($r = -.49$ in our dataset).} 
+
+\emph{Typicality} was coded as the ratio of the target's sub to basic level label typicality.\footnote{Typicalities were elicited in a separate norming study that was identical in procedure to that of Exp.~1a. See \appref{app:typicalitynorms2} for details about the study.} That is, the higher the ratio, the more typical the object was for the sub level label compared to the basic level; or in other words, a higher ratio indicates that the object was relatively atypical for the basic label compared to the sub label. For instance, the panda was relatively atypical for its basic level ``bear'' (mean rating 0.75) compared to the sub level term ``panda bear'' (mean rating 0.98), which resulted in a relatively \emph{high} typicality ratio.
+
+\emph{Informativeness} condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic sufficient}, and \emph{super sufficient}, where item22 and item23 were collapsed into \emph{basic sufficient}. Condition was Helmert-coded: two contrasts over the three condition levels were included in the model, comparing each level against the mean of the remaining levels (in order: \emph{sub necessary}, \emph{basic sufficient}, \emph{super sufficient}). This allowed us to determine whether the probabilities of type mention  for neighboring conditions were significantly different from each other, as suggested by \figref{fig:exp2results}.
+
+%\begin{table}[!tbp]
+%\begin{center}
+%\begin{tabular}{lrrl}
+%\toprule
+%\multicolumn{1}{l}{}&\multicolumn{1}{c}{Coef $\beta$}&\multicolumn{1}{c}{SE($\beta$)}&\multicolumn{1}{c}{$p$}\tabularnewline
+%\midrule
+%Intercept&$-0.02$&$0.27$&\textgreater 0.93\tabularnewline
+%Condition sub.vs.rest&$ 2.05$&$0.17$&\textbf{\textless .0001}\tabularnewline
+%Condition basic.vs.super&$ 0.54$&$0.15$&\textbf{\textless .001}\tabularnewline
+%Frequency&$ 0.07$&$0.10$&\textgreater 0.5\tabularnewline
+%Length&$-0.95$&$0.27$&\textbf{\textless .001}\tabularnewline
+%Typicality&$ 4.84$&$1.32$&\textbf{\textless .001}\tabularnewline
+%\bottomrule
+%\end{tabular}\end{center}
+%
+%\end{table}
+
+The log odds of mentioning the sub level term were greater in the \emph{sub necessary} condition than in either of the other two conditions ($\beta = 2.05$, $SE = .17$, $p < .0001$), and greater in the \emph{basic sufficient} condition than in the \emph{super sufficient} condition ($\beta = .54$, $SE = .15$, $p < .001$), suggesting that the contextual informativeness of the sub level mention has a gradient effect on utterance choice.\footnote{Importantly, model comparison between the reported model and one that subsumes basic and super under the same factor level revealed that the three-level condition variable is justified ($\chi ^2 (1) = 12.82$, $p < .0004$), suggesting that participants don't simply revert to the basic level unless contextually forced not to.} There was also a main effect of typicality, such that the sub level term was preferred for objects that were more typical for the sub level compared to the basic level  description ($\beta = .4.84$, $SE = 1.32$, $p < .001$, see \figref{fig:lengthtypicality}). In addition, there was a main effect of length, such that as the length of the sub level term increased compared to the basic level term (``chihuahua''/``dog'' vs.~``pug''/``dog''), the sub level term was dispreferred (``chihuahua'' is dispreferred compared to ``pug'', $\beta = -.95$, $SE = .27$, $p < .001$, see \figref{fig:lengthtypicality}). The main effect of frequency did not reach significance ($\beta = .07$, $SE = .10$, $p < .51$).
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{pics/lengthtypicality}
+\caption{Proportion of sub level (over sub and basic level) terms across conditions. Left: when the sub  length is relatively short (.67,1.82] or long [1.82,4.3) compared to the basic level term. Right: when the target object was relatively more [1.06,1.91) or less (.88,1.06] typical for the sub compared to the basic level term. Intervals were generated by splitting data into groups of roughly equal numbers of observations.}
+\label{fig:exp2effects}
+\end{figure}
+
+
+Unsurprisingly, there was also significant by-participant and by-domain variation in the log odds of sub level term mention. %\figref{fig:bigscatterplot} shows the by-domain variation in utterance choice. 
+For instance, mentioning the subclass over the basic level term was preferred more in some domains (e.g. in the ``candy'' domain) than in others. Likewise, some domains had a greater preference for basic level terms (e.g. the ``shirt'' domain). Using the superclass term also ranged from hardly being observable (e.g. the ``flower'' domain) to being used more frequently (e.g. in the ``table'' and ``car'' domain). 
+
+We thus replicate the well-documented preference to refer to objects at the basic level, which is partly modulated by contextual informativeness and partly a result of the basic level term's cognitive cost and typicality compared to its sub level competitor. \red{discuss lack of frequency effect}
 
 
 \subsection{Model evaluation: nominal choice}
@@ -800,6 +848,7 @@ Inference for the cognitive model was exact, while we used Markov Chain Monte Ca
 	\item nature of numbers in non-deterministic semantics (we see that typicality effects fall out of treating the numbers in the semantics as typicality values for noun choice, and the same if we make up values for modifier choice -- but how do we get here compositionally? one would ideally model the structure in the prior (rich world knowledge), ie the statistical correlations between different dimensions (type -- banana, color -- blue/yellow, etc) and have the fidelity/noise values emerge from THAT compositionally!
 	\item talk about how our approach fits in with incremental stories of overspecification?
 	\item The work reported here clearly shows that overmodified referring expressions, contrary to some claims in the literature \cite{Engelhardt2011} \red{who say overmodification ipmairs comprehension}, contribute more utility than `minimally' specified referring expressions.
+	\item talk about speaker vs listener utility? audience design?
 \end{itemize}
 %
 \red{There's a parallel to be made between typicality effects on ``overmodification" and the literature on instrument mention. For example, \cite{brown1987} showed that atypical instruments are more likely to be mentioned than typical ones ("The man was stabbed with an ice pick", not "The man was stabbed with a knife"). Their account of the effect is that speakers do this for speaker-internal reasons. \cite{lockridge2002} replicated the original finding in a story retelling scenario, but also manipulated whether or not the addressees saw pictures of the actions. Without pictures, there were even more mentions of atypical objects, which they take as evidence that the typicality effect is an audience design effect. THIS IS COOL AND PICKS UP ON THE SPEAKER-OR-LISTENER POINT YOU RAISE IN THE INTRO IN THE TYPICALITY PART!!!!!}
@@ -892,16 +941,37 @@ wedding cake & pink, white & yarn & purple, red\\
 %\label{fig:fidelity-outliers-reducedconditions}
 %\end{figure}
 
-\section{Empirical typicality norm elicitation}
-\label{app:typicalityexperiment}
+\section{Experiment 2a: typicality norms for Experiment 2}
+\label{app:typicalitynorms2}
 
-\jd{fill in}
+Analogous to the color typicality norms elicited for utterances in Exp.~1, we elicited typicality norms for utterances in Exp.~2. The elicited typicalities were used in the Bayesian Data Analysis reported in \sectionref{sec:nominalmodeleval}.
 
-\subsection{Methods}
+\subsubsection{Methods}
 
-\subsubsection{Participants}
+\paragraph{Participants}
 
-\subsubsection{Procedure and materials}
+We recruited 240 participants over Amazon's Mechanical Turk who were each paid \$0.50 for their participation.
+
+\paragraph{Procedure and materials}
+
+On each trial, participants saw one of the images used in Exp.~2 and were asked to answer the question ``How typical is this for an \emph{X}?'' on a continuous slider with endpoints labeled ``very atypical'' to ``very typical.'' \emph{X} was a nominal referring expression. In contrast to Exp.~1a, where we only elicited typicality norms for utterance-object pairs where the object was in the extension of the utterance under a deterministic semantics (e.g., here\emph{dalmatian}, \emph{dog}, or \emph{animal} for a dalmatian), in this norming study we also elicited norms for utterance-object pairs where that was not clearly the case (e.g., \emph{a bear} for a bison, \emph{a car} for an ambulance, or \emph{a snack} for a lobster). However, we did not test all utterance-object combinations, which would have led to an explosion of conditions. Instead, we tested each target object with its three utterances (e.g., the dalamtian was paired with \emph{dalmatian}, \emph{dog}, and \emph{animal}; the pug was paired with \emph{pug}, \emph{dog}, and \emph{animal}, etc.). That yielded a total of 108 combinations -- four targets in nine domains with three utterances each. We further tested each distractor item that shared the target's superclass category (\emph{dist-samesuper}, e.g., cows share the superclass category animal with dogs) on both the basic level and the super level term (e.g., \emph{dog} for cow and \emph{animal} for cow), for a total of 469 combinations. Finally, we also tested each distractor of a different super category than the target on the target's super level term (\emph{dist-diffsuper}, e.g., \emph{animal} for socks). This yielded another 168 combinations. Overall, we obtained typicality norms for 745 object-utterance combinations. All other object-utterance combinations were assumed to have typicality 0.
+
+Each participant rated 45 items: 7 targets, 10 dist-diffsuper, and 28 dist-samesuper cases. These were randomly sampled from the overall pool of items in each category. 
+
+\subsubsection{Results and discussion}
+
+Each combination was rated at least 5 times and at most 27 times. We coded the slider endpoints as 0 (``very atypical'') and 1 (``very typical''). In order to evaluate the model, we used each object-utterance combination's typicality mean as input. 
+
+Typicality ratings by item type (target, dist-samesuper, dist-diffsuper) and utterance type (sub, basic, super) are visualized in \figref{fig:typicalityboxplots}. As expected, typicality was close to 0 for dist-diffsuper cases and for sub/basic terms used with dist-samesuper cases. However, even for these cases, there was some variation. 
+
+For targets, typicality of the object for the utterance decreased with increasing reference level, mirroring the typicality ratings obtained for Exp.~1 -- a particular object is a better instance of the more specific term than of the more general term for that object.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{pics/typicalityboxplot}
+\caption{Boxplots of typicality ratings. \red{describe boxes and whiskers} Outliers are indicated as gray dots.}
+\label{fig:typicalityboxplots}
+\end{figure}
 
 
 

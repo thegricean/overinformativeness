@@ -1,5 +1,6 @@
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/7_overinf_basiclevel_biggersample/results")
 source("rscripts/helpers.r")
+source("rscripts/createLaTeXTable.R")
 
 d = read.csv(file="data/basiclev_manModified_allAttr.csv",quote="")
 # This dataset includes all data
@@ -88,6 +89,14 @@ cor(full$Freq,full$Length) # -.49
 
 d$binaryCondition = as.factor(ifelse(d$condition == "basic12","sub_necessary","nonsub_sufficient"))
 
+# very few super mentions
+prop.table(table(d$condition,d$super),margin = 1)
+prop.table(table(d$condition,d$basic), margin=1)
+
+# moer qualitative stuff
+table(d[d$super,]$target_basic)
+table(d[d$sub,]$target_basic)
+
 #############  ANALYSIS
 # TYPE MENTION WITH DOMAIN-LEVEL RANDOM EFFECTS
 
@@ -96,6 +105,8 @@ centered = cbind(d, myCenter(d[,c("mean_length_sub","mean_length_basic","mean_le
 # check: do you need four-level condition difference?
 contrasts(centered$condition) = cbind("12.vs.rest"=c(3/4,-1/4,-1/4,-1/4),"22.vs.3"=c(0,2/3,-1/3,-1/3),"23.vs.33"=c(0,0,1/2,-1/2))
 contrasts(centered$redCondition) = cbind("sub.vs.rest"=c(-1/3,2/3,-1/3),"basic.vs.super"=c(1/2,0,-1/2))
+
+pairscor.fnc(centered[,c("cdiff_logfreq_subbasic","cratio_length_subbasic","cratio_typ_subbasic","redCondition","sub")])
 
 m.1 = glmer(sub ~ condition + (1|gameid) + (1|target_sub), family="binomial", data=centered)
 summary(m.1)          
@@ -121,12 +132,16 @@ m = glmer(sub ~ redCondition + cdiff_logfreq_subbasic * cratio_length_subbasic +
 summary(m) # frequency doesn't appear to matter one bit
 createLatexTable(m,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Length:Frequency"))
 
-# add typicality
-m.m.t = glmer(sub ~ redCondition + cdiff_logfreq_subbasic * cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
+# add typicality -- this is what's reported in the psych review paper
+m.m.t = glmer(sub ~ redCondition + cdiff_logfreq_subbasic + cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
 summary(m.m.t)
-createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Typicality","Length:Frequency"))
+createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Typicality"))
 
 anova(m,m.m.t) # typicality very important!
+
+m.m.t.bin = glmer(sub ~ cbinaryCondition + cdiff_logfreq_subbasic + cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
+
+anova(m.m.t.bin,m.m.t) # 3-way condition important!
 
 # typicality model with most complex condition to test whether it matters once you take into account typicality
 m.m.t.c = glmer(sub ~ condition + cdiff_logfreq_subbasic * cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
@@ -205,6 +220,8 @@ cor(d$mean_length_sub,d$ratio_length_subsuper) # r=.83 between mean length and s
 #main effect of length
 d$bin_ratio_length_subbasic = cut_number(d$ratio_length_subbasic,2,labels=c("short","long"))#,labels=c("short","mid","long"))
 
+summary(cut_number(d$ratio_length_subbasic,2))
+           
 agr = d %>%
   select(sub, bin_ratio_length_subbasic,redCondition) %>%
   group_by(bin_ratio_length_subbasic,redCondition) %>%
@@ -225,12 +242,14 @@ pl = ggplot(agr, aes(x=bin_ratio_length_subbasic,y=Probability)) +
   scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
   scale_y_continuous(name="Proportion of sub level mention",breaks=seq(0,1,.2)) +
   facet_wrap(~Condition) +
-  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=16),axis.text.y = element_text(size=12),plot.margin=unit(c(0,0,0,0), "cm"))
+  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=10),axis.text.y = element_text(size=8),plot.margin=unit(c(0,0,0,0.2), "cm"))
 #theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 #ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/length-effect.pdf",height=4.2,width=6)
 
 # main effect of typicality
 d$bin_typ_subbasic = cut_number(d$ratio_typ_subbasic,2,labels=c("less typical","more typical"))#,labels=c("short","mid","long"))
+
+summary(cut_number(d$ratio_typ_subbasic,2))
 
 agr = d %>%
   select(sub, bin_typ_subbasic,redCondition) %>%
@@ -253,11 +272,12 @@ pt = ggplot(agr, aes(x=Typicality,y=Probability)) +
   #scale_fill_manual(values=wes_palette("Darjeeling2"),name="Length") +
   scale_y_continuous(name="Proportion of sub level mention",breaks=seq(0,1,.2)) +
   facet_wrap(~Condition) +
-  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=16),axis.text.y = element_text(size=12),plot.margin=unit(c(0,0,0,0), "cm"))
+  theme(axis.title.y = element_blank(),axis.title.x = element_text(size=10),axis.text.y = element_text(size=8),plot.margin=unit(c(0,0,0,0.2), "cm"))
 
 library(gridExtra)
-pdf("graphs_basiclevel/length-typicality.pdf",height=4.5,width=8)
-grid.arrange(pl,pt,nrow=1) #  left = textGrob("Proportion of sub level mention", rot = 90, vjust = 1,gp = gpar(cex = 1.3)
+library(grid)
+pdf("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/lengthtypicality.pdf",height=3.5,width=8)
+grid.arrange(pl,pt,nrow=1,  left = textGrob("Proportion of sub level mention", rot = 90, vjust = 1,gp = gpar(cex = .9)))
 dev.off()
 
 
