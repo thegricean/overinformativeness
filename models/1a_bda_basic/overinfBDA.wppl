@@ -70,7 +70,7 @@ console.log("Constructing contexts complete...");
 // console.log(contexts);
 
 var modelAnalysis = function() {
-  var myparams = {
+  var params = {
     alpha : sample(Uniform({a:0,b:40})),
     lengthWeight : sample(Uniform({a:0,b:10})),
     typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
@@ -82,9 +82,9 @@ var modelAnalysis = function() {
     cost_type : 1
   };
 
-  // console.log(myparams);
+  // console.log(params);
 
-  // var myparams = {
+  // var params = {
   //   alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
   //   lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
   //   typicality_color : sample(UniformDrift({a:0,b:1,r:1/20})),
@@ -96,7 +96,7 @@ var modelAnalysis = function() {
   //   cost_type : 1
   // };  
 
-  // console.log(myparams);
+  // console.log(params);
 
   // Run model and condition on data
   var score = sum(map(function(condition) {
@@ -110,7 +110,7 @@ var modelAnalysis = function() {
     // console.log(context);
     var target = context[0];
     // console.log("Generating model...");
-    var model = OverinformativeModel(myparams,context);//domainInfo, myparams);
+    var model = OverinformativeModel(params,context);//domainInfo, params);
     var runModel = model.runModel;
     var speaker = model.speaker;
     // return sum(map(function(condition) {
@@ -153,9 +153,9 @@ var modelAnalysis = function() {
   // factor(Math.max(score, -1000));
 
   // console.log(query.table);
-  // console.log(myparams);
-  // return myparams
-  return {predictive: query.table, myparams : myparams};
+  // console.log(params);
+  // return params
+  return {predictive: query.table, params : params};
 };
 
 // var outputERP = Infer({method:'MCMC', samples: 10000, burn: 3000, verbose: true}, modelAnalysis);

@@ -20,15 +20,10 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
-modelversion = "fixed-reducedconditions-hmc"
+# modelversion = "fixed-reducedconditions-hmc"
 # modelversion = "fixed-reducedconditions-unlogged"
-# modelversion = "fixed-reducedconditions"
-# modelversion = "fixed-fullconditions"
-# modelversion = "empirical-fullconditions"
-# modelversion = "empirical-fullconditions-scaledtyp"
-# modelversion = "interpolated"
-# modelversion = "interpolated-scaledtyp"
-# modelversion = "hmc-test"
+# modelversion = "fixed-fullconditions-hmc"
+modelversion = "fixed-fullconditions"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))
@@ -40,6 +35,7 @@ param_sample_test = params %>%
 param_sample_test
 summary(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
+params.samples = params # this is weird, somehow the following code stopped working if we use the previous line to assign params.samples
 
 alphaSubset = params.samples %>% 
   filter(parameter == "alpha") %>%
@@ -55,7 +51,7 @@ lengthWeightSubset = params.samples %>%
   filter(parameter == "lengthWeight") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("lengthWeight = ", lengthWeightSubset$md) 
@@ -65,7 +61,7 @@ typWeightSubset = params.samples %>%
   filter(parameter == "typWeight") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("typWeight = ", typWeightSubset$md) 
@@ -75,7 +71,7 @@ typColorSubset = params.samples %>%
   filter(parameter == "typicality_color") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("typicality_color = ", typColorSubset$md) 
@@ -85,7 +81,7 @@ typSizeSubset = params.samples %>%
   filter(parameter == "typicality_size") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("typicality_size = ", typSizeSubset$md) 
@@ -95,7 +91,7 @@ cat("95% HPD interval = [", typSizeSubset$md_low, ",", typSizeSubset$md_hi, "]")
 #   filter(parameter == "typicality_type") %>%
 #   #mutate(value = as.numeric(levels(value))[value]) %>%
 #   group_by(parameter) %>%
-#   summarize(md = estimate_mode(value),
+#   summarise(md = estimate_mode(value),
 #             md_hi = round(HPDhi(value), 3),
 #             md_low = round(HPDlo(value), 3))
 # cat("typicality_type = ", typTypeSubset$md) 
@@ -105,7 +101,7 @@ costColorSubset = params.samples %>%
   filter(parameter == "cost_color") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("cost_color = ", costColorSubset$md) 
@@ -115,7 +111,7 @@ costSizeSubset = params.samples %>%
   filter(parameter == "cost_size") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("cost_size = ", costSizeSubset$md) 
@@ -125,7 +121,7 @@ cat("95% HPD interval = [", costSizeSubset$md_low, ",", costSizeSubset$md_hi, "]
 #   filter(parameter == "cost_type") %>%
 #   #mutate(value = as.numeric(levels(value))[value]) %>%
 #   group_by(parameter) %>%
-#   summarize(md = estimate_mode(value),
+#   summarise(md = estimate_mode(value),
 #             md_hi = round(HPDhi(value), 3),
 #             md_low = round(HPDlo(value), 3))
 # cat("cost_type = ", costTypeSubset$md) 
@@ -304,11 +300,11 @@ predictive.samples = predictive %>%
                                      # predictive$MCMCprob*samples), 1:10] %>%
   mutate(Utterance = utterance) %>%
   group_by(Utterance, condition, ColorItem) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition, ColorItem) %>%
-  summarize(ModelProbability = mean(Prob),
+  summarise(ModelProbability = mean(Prob),
             ModelYMax = mean(Prob) + ci.high(Prob),
             ModelYMin = mean(Prob) - ci.low(Prob))
 predictive.samples = as.data.frame(predictive.samples)
@@ -369,11 +365,11 @@ predictive.samples = predictive %>%
                                      # predictive$MCMCprob*samples), 1:9] %>%
   mutate(Utterance = utterance) %>%
   group_by(Utterance, condition) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition) %>%
-  summarize(ModelProbability = mean(Prob),
+  summarise(ModelProbability = mean(Prob),
             ModelYMax = mean(Prob) + ci.high(Prob),
             ModelYMin = mean(Prob) - ci.low(Prob))
 predictive.samples = as.data.frame(predictive.samples)
@@ -464,11 +460,11 @@ predictive$combo = paste(predictive$color,predictive$item)
 pr <- predictive[rep(row.names(predictive), predictive$MCMCprob*samples), 1:12] %>%
   mutate(Utterance = utterance) %>%
   group_by(Utterance, condition, combo, TypicalityDiff) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition, combo, TypicalityDiff) %>%
-  summarize(ModelProbability = mean(Prob),
+  summarise(ModelProbability = mean(Prob),
             ModelYMax = mean(Prob) + ci.high(Prob),
             ModelYMin = mean(Prob) - ci.low(Prob))
 pr = as.data.frame(pr)
@@ -493,51 +489,3 @@ ggplot(maxitems, aes(x=TypicalityDiff,y=ModelProbability, color=Item, group=Item
   facet_grid(SufficientDimension~Utterance)
 
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1a_bda_basic/results_bda/graphs/maxtypicalitydiffcases-",modelversion,".pdf",sep=""),height=6,width=10)
-
-
-
-
-# test
-predictive$complete_item = paste(predictive$size,predictive$color,predictive$item)
-test = predictive  %>%
-  group_by(complete_item,value,condition) %>%
-  summarize(NumSamples=length(prob))
-head(test)
-
-m = lm(ModelProbability~Probability,data=toplot)
-summary(m) # R2=.85
-
-m = lm(ModelProbability~Probability,data=toplot[toplot$SufficientDimension == "color",])
-summary(m) # R2=.99
-
-m = lm(ModelProbability~Probability,data=toplot[toplot$SufficientDimension == "size",])
-summary(m) # R2=.59
-
-# check golf ball
-# golfball = droplevels(predictive[predictive$item == "golfball",])
-# predictive.golfball <- golfball[rep(row.names(golfball), 
-#                                     golfball$MCMCprob*samples), 1:9] %>%
-#   #predictive.samples <- predictive[rep(row.names(predictive), 
-#   #                                     predictive$MCMCprob*samples), 1:6] %>%
-#   mutate(Utterance = utterance) %>%
-#   group_by(Utterance, condition, color) %>%
-#   summarize(Prob = estimate_mode(prob),
-#             YMax = HPDhi(prob),
-#             YMin = HPDlo(prob)) %>%
-#   group_by(Utterance, condition, color) %>%
-#   summarize(ModelProbability = mean(Prob),
-#             ModelYMax = mean(Prob) + ci.high(Prob),
-#             ModelYMin = mean(Prob) - ci.low(Prob))
-# predictive.golfball = as.data.frame(predictive.golfball)
-# #predictive.samples$ModelType = "model"
-# predictive.golfball = droplevels(predictive.golfball[predictive.golfball$Utterance %in% c("color","size","size_color"),])
-# 
-# predictive.golfball$SufficientDimension = ifelse(substr(predictive.golfball$condition,1,5) == "color","color","size")
-# predictive.golfball$condition = gsub("(color|size)","",as.character(predictive.golfball$condition))
-# predictive.golfball$NumDistractors = substr(predictive.golfball$condition,1,1)
-# predictive.golfball$NumSame = substr(predictive.golfball$condition,2,2)
-# predictive.golfball$ProportionSame = as.numeric(as.character(predictive.golfball$NumSame))/as.numeric(as.character(predictive.golfball$NumDistractors))
-# 
-# ggplot(predictive.golfball, aes(x=ProportionSame,y=ModelProbability,color=color)) +
-#   geom_point() +
-#   facet_grid(Utterance~SufficientDimension)

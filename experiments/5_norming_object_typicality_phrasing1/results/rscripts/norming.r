@@ -44,8 +44,16 @@ ggplot(d, aes(language)) +
 ggplot(d, aes(enjoyment)) +
   geom_histogram()
 
+# numbers to report in paper:
+un = unique(d[,c("labeltype","itemtype","label","item")])
+nrow(un)
+table(un$itemtype)
+table(d$workerid,d$itemtype)
+
 d$Combo = paste(d$item,d$label)
 sort(table(d$Combo)) # how many of each? is it roughly evenly distributed?
+
+d$Utterance = factor(x=as.character(d$labeltype),levels=c("sub","basic","super"))
 
 agr = d %>% 
   group_by(itemtype,labeltype) %>%
@@ -58,6 +66,13 @@ ggplot(agr, aes(x=Utterance,y=meanresponse)) +
   geom_errorbar(aes(ymin=meanresponse-ci.low,ymax=meanresponse+ci.high),width=.25) +
   facet_wrap(~itemtype)
 ggsave("graphs/collapsed.pdf")
+
+ggplot(d, aes(x=Utterance,y=response)) +
+  geom_boxplot(notch=T,outlier.colour="gray60") +
+  ylab("Typicality rating") +
+  facet_wrap(~itemtype)
+ggsave("graphs/boxplot.pdf") 
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/typicalityboxplot.pdf",height=3.5,width=9) 
 
 
 agr = d %>% 

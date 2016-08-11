@@ -218,12 +218,17 @@ write.csv(unique(targets[,c("BDAFullColor","BDASize","condition","OtherColor","I
 write.csv(targets[,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced.csv",quote=F,row.names=F)
 write.csv(unique(targets[,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced.csv",quote=F,row.names=F)
 
-## only condition on non-"other" cases!! 
+## only condition on non-"other" cases!! -- these are the files you'll use for bda
 write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("gameid","roundNum","condition","BDASize","BDAColor","BDAOtherColor","BDAItem","redBDAUtterance")],file="data/data_bda_modifiers_reduced_noother.csv",quote=F,row.names=F)
 write.csv(unique(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("BDAColor","BDASize","condition","BDAOtherColor","BDAItem")]),file="data/unique_conditions_modifiers_reduced_noother.csv",quote=F,row.names=F)
 
 write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers_noother.csv",quote=F,row.names=F)
 write.csv(unique(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers_noother.csv",quote=F,row.names=F)
+
+# only use maxdiff typicality cases for small typicality bda
+write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE & targets$Item %in% c("golfball","chair","stapler","weddingcake"),c("gameid","roundNum","condition","BDASize","clickedColor","OtherColor","Item","BDAUtterance")],file="data/data_bda_modifiers_maxdifftypicality.csv",quote=F,row.names=F)
+write.csv(unique(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE & targets$Item %in% c("golfball","chair","stapler","weddingcake"),c("BDAFullColor","BDASize","condition","OtherColor","Item")]),file="data/unique_conditions_modifiers_maxdifftypicality.csv",quote=F,row.names=F)
+
 
 # write file for regression analaysis (this includes the 6 cases where the insufficient dimension was underinformatively mentioned, so you need to exclude those still)
 write.csv(targets[targets$redBDAUtterance != "other" & targets$WeirdCases == FALSE,], file="data/results_for_regression.csv",quote=F,row.names=F)

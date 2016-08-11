@@ -376,6 +376,73 @@ ggplot(agr, aes(x=condition,y=Probability)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed.pdf",height=4.1,width=7)
 
+# overall, collapse item22 and item23 into "basic sufficient"
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, redCondition) %>%
+  gather(Utt,Mentioned,-redCondition) %>%
+  group_by(Utt,redCondition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
+agr$Utt = as.factor(ifelse(agr$Utt == "typeMentioned","sub",ifelse(agr$Utt == "basiclevelMentioned","basic","super")))
+agr$Utterance = factor(x=as.character(agr$Utt),levels=c("sub","basic","super"))
+agr$Condition = factor(x=agr$redCondition,levels=c("sub_necessary","basic_sufficient","super_sufficient"))
+
+ggplot(agr, aes(x=Condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced.pdf",height=4.5,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced.png",height=4.5,width=7)
+
+colors = scales::hue_pal()(3)
+
+ggplot(agr, aes(x=Condition,y=Probability,fill=Condition)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  scale_fill_manual(values=colors) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),legend.position="none")
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-colors.pdf",height=4.5,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-colors.png",height=4.5,width=7)
+
+ggplot(agr, aes(x=Condition,y=Probability,fill=Condition)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  scale_fill_manual(values=c(colors[1],"gray30","gray30")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),legend.position="none")
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-sub.pdf",height=4.5,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-sub.png",height=4.5,width=7)
+
+ggplot(agr, aes(x=Condition,y=Probability,fill=Condition)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  scale_fill_manual(values=c("gray30",colors[2],"gray30")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),legend.position="none")
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-basic.pdf",height=4.5,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-basic.png",height=4.5,width=7)
+
+ggplot(agr, aes(x=Condition,y=Probability,fill=Condition)) +
+  geom_bar(stat="identity",position=dodge) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  scale_fill_manual(values=c("gray30","gray30",colors[3])) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),legend.position="none")
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-super.pdf",height=4.5,width=7)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-super.png",height=4.5,width=7)
+
+
 # overall, fig 1
 agr = bdCorrect %>%
   select(typeMentioned,basiclevelMentioned,superClassMentioned, condition, basiclevelClickedObj) %>%

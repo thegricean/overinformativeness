@@ -25,12 +25,17 @@ options("scipen"=10)
 # params<-read.csv("bdaOutput/FULLONTYPbdaOutputParams.csv", sep = ",", row.names = NULL)
 # params<-read.csv("bdaOutput/bdaCombined-logtypicalitiesParams.csv", sep = ",", row.names = NULL)
 modelversion = "fulldataset-typicalities"
-modelversion = "fulldataset-detfit"
+# modelversion = "fulldataset-detfit"
+modelversion = "fulldataset-detfit-hmc"
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 
-samples = 3000
+samples = nrow(params)/length(levels(params$parameter))
+print(paste("Number of samples:",samples))
+
 str(params)
 params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2]
+params.samples = params
+
 # test whether probs add up to 1
 param_sample_test = params %>%
   group_by(parameter) %>%
@@ -53,7 +58,7 @@ freqWeightSubset = params.samples %>%
   filter(parameter == "freqWeight") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("freqWeight = ", freqWeightSubset$md) 
@@ -63,7 +68,7 @@ lengthWeightSubset = params.samples %>%
   filter(parameter == "lengthWeight") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("lengthWeight = ", lengthWeightSubset$md) 
@@ -73,7 +78,7 @@ typWeightSubset = params.samples %>%
   filter(parameter == "typWeight") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
   group_by(parameter) %>%
-  summarize(md = estimate_mode(value),
+  summarise(md = estimate_mode(value),
             md_hi = round(HPDhi(value), 3),
             md_low = round(HPDlo(value), 3))
 cat("typWeight = ", typWeightSubset$md) 
@@ -176,30 +181,30 @@ agr_noattr$condition = gsub("basic","item",as.character(agr_noattr$condition))
 agr_noattr$ModelType = "empirical"
 
 # get means by item so we can see which ones are most different with and without typicality
-itemmeans = predictive[rep(row.names(predictive), 
-                           predictive$MCMCprob*samples), 1:6] %>%
+itemmeans = predictive %>%
   mutate(Utterance = value) %>%
   group_by(Utterance, condition, target, alt1, alt2) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition, target, alt1, alt2) %>%
-  summarize(Probability = mean(Prob),
+  summarise(Probability = mean(Prob),
             YMax = mean(Prob) + ci.high(Prob),
             YMin = mean(Prob) - ci.low(Prob))
 itemmeans = as.data.frame(itemmeans)
 head(itemmeans)
 write.csv(itemmeans,file=paste("data/itemmeans-",modelversion,".csv",sep=""),row.names=F,quote=F)
 
-predictive.samples <- predictive[rep(row.names(predictive), 
-                                     predictive$MCMCprob*samples), 1:6] %>%
+# predictive.samples <- predictive[rep(row.names(predictive), 
+                                     # predictive$MCMCprob*samples), 1:6] %>%
+predictive.samples = predictive %>%
   mutate(Utterance = value) %>%
   group_by(Utterance, condition, target) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition) %>%
-  summarize(Probability = mean(Prob),
+  summarise(Probability = mean(Prob),
             YMax = mean(Prob) + ci.high(Prob),
             YMin = mean(Prob) - ci.low(Prob))
 predictive.samples = as.data.frame(predictive.samples)
@@ -209,11 +214,11 @@ predictive.samples$ModelType = "model"
 #                                      predictive.notyp$MCMCprob*samples), 1:6] %>%
 #   mutate(refLevel = value) %>%
 #   group_by(refLevel, condition, target) %>%
-#   summarize(Prob = estimate_mode(prob),
+#   summarise(Prob = estimate_mode(prob),
 #             YMax = HPDhi(prob),
 #             YMin = HPDlo(prob)) %>%
 #   group_by(refLevel, condition) %>%
-#   summarize(Probability = mean(Prob),
+#   summarise(Probability = mean(Prob),
 #             YMax = mean(Prob) + ci.high(Prob),
 #             YMin = mean(Prob) - ci.low(Prob))
 # predictive.samples.notyp = as.data.frame(predictive.samples.notyp)
@@ -223,11 +228,11 @@ predictive.samples$ModelType = "model"
 #                                                  predictive.typ$MCMCprob*samples), 1:6] %>%
 #   mutate(refLevel = value) %>%
 #   group_by(refLevel, condition, target) %>%
-#   summarize(Prob = estimate_mode(prob),
+#   summarise(Prob = estimate_mode(prob),
 #             YMax = HPDhi(prob),
 #             YMin = HPDlo(prob)) %>%
 #   group_by(refLevel, condition) %>%
-#   summarize(Probability = mean(Prob),
+#   summarise(Probability = mean(Prob),
 #             YMax = mean(Prob) + ci.high(Prob),
 #             YMin = mean(Prob) - ci.low(Prob))
 # predictive.samples.typ = as.data.frame(predictive.samples.typ)
@@ -255,15 +260,14 @@ ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativenes
 ### ANALYZE RESIDUALS
 row.names(agr_noattr) = paste(agr_noattr$condition,agr_noattr$Utterance)
 
-predictive.samples <- predictive[rep(row.names(predictive), 
-                                     predictive$MCMCprob*samples), 1:6] %>%
+predictive.samples = predictive %>%
   mutate(Utterance = value) %>%
   group_by(Utterance, condition, target) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(Utterance, condition) %>%
-  summarize(MAP = mean(Prob),
+  summarise(MAP = mean(Prob),
             credHigh = mean(Prob) + ci.high(Prob),
             credLow = mean(Prob) - ci.low(Prob)) %>%
   inner_join(agr_noattr, by = c("Utterance", "condition"))
@@ -285,7 +289,8 @@ predictive.samples = as.data.frame(predictive.samples)
 cor(predictive.samples$MAP,predictive.samples$Probability) # r = .89 ( without typicality) vs .95 (with typicality)
 
 # comparison of means with and without typicality
-d_without = read.csv("data/itemmeans-fulldataset-detfit.csv")
+# d_without = read.csv("data/itemmeans-fulldataset-detfit.csv")
+d_without = read.csv("data/itemmeans-fulldataset-detfit-hmc.csv")
 d_with = read.csv("data/itemmeans-fulldataset-typicalities.csv")
 
 nrow(d_without)
@@ -356,11 +361,11 @@ predictive.samples <- predictive[rep(row.names(predictive),
                                      predictive$MCMCprob*samples), c(seq(1,6),8)] %>%
   mutate(refLevel = value) %>%
   group_by(refLevel, condition, target, domain) %>%
-  summarize(Prob = estimate_mode(prob),
+  summarise(Prob = estimate_mode(prob),
             YMax = HPDhi(prob),
             YMin = HPDlo(prob)) %>%
   group_by(refLevel, condition, domain) %>%
-  summarize(MAP = mean(Prob),
+  summarise(MAP = mean(Prob),
             credHigh = mean(Prob) + ci.high(Prob),
             credLow = mean(Prob) - ci.low(Prob)) %>%
   inner_join(agr_noattr, by = c("refLevel", "domain", "condition"))
@@ -412,7 +417,7 @@ predictive.samples <- predictive[rep(row.names(predictive),
                                        predictive$MCMCprob*samples), 1:6] %>%
   mutate(refLevel = value) %>%
   group_by(refLevel, target, condition) %>%
-  summarize(MAP = estimate_mode(prob),
+  summarise(MAP = estimate_mode(prob),
             credHigh = HPDhi(prob),
             credLow = HPDlo(prob)) %>%
   inner_join(agr_noattr, by = c("refLevel", "target", "condition"))

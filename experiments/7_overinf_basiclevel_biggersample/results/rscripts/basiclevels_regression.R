@@ -236,8 +236,18 @@ empirical$PredictionM = ifelse(empirical$FittedM >= .5, T, F)
 cor(empirical$sub,empirical$Prediction)
 cor(empirical$sub,empirical$PredictionM) # better correlation with than without random effects
 
-### plots for cogsci paper
 
+# plot model predictions without cost or typicality
+agr = data.frame(Utt = rep(c("sub","basic","super"),4),condition = rep(c("item12","item22","item23","item33"),each=3),Probability = c(1,0,0,.5,.5,0,.5,.5,0,.333,.333,.333))
+agr$Utterance = factor(x=as.character(agr$Utt),levels=c("sub","basic","super"))
+ggplot(agr, aes(x=condition,y=Probability)) +
+  geom_bar(stat="identity",position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Proportion of utterance choice") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("graphs_basiclevel/results-info-only.pdf",height=4.1,width=7)
+
+### plots for cogsci paper
 # overall, fig 1
 agr = bdCorrect %>%
   select(sub,basic,super, condition) %>%

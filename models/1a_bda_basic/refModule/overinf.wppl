@@ -43,30 +43,30 @@ var getUtterances = function(context) {
 };
 
 
-var OverinformativeModel = function(myparams, context) {
+var OverinformativeModel = function(params, context) {
 
   var getUtteranceCost = function(utt) {
     var splited = utt.split("_");
     if (splited.length == 3) {
-      return myparams.cost_color + myparams.cost_size + myparams.cost_type;
+      return params.cost_color + params.cost_size + params.cost_type;
     } else {
       if (splited.length == 2) {
-        return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited[0]) ? myparams.cost_type + myparams.cost_color : myparams.cost_type + myparams.cost_size;
+        return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited[0]) ? params.cost_type + params.cost_color : params.cost_type + params.cost_size;
       } else {
-        return myparams.cost_type;
+        return params.cost_type;
       }
     }
   };
 
   var checkFeature = function(utterancetype,object,u) {
     if (utterancetype === "color") {
-      return _.contains(object,u) ? myparams.typicality_color : 1 - myparams.typicality_color; 
+      return _.contains(object,u) ? params.typicality_color : 1 - params.typicality_color; 
     } else {
       if (utterancetype === "size") {
-        return _.contains(object,u) ? myparams.typicality_size : 1 - myparams.typicality_size; 
+        return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
       } else {
         if (utterancetype === "type") {
-          return _.contains(object,u) ? myparams.typicality_type : 1 - myparams.typicality_type;     
+          return _.contains(object,u) ? params.typicality_type : 1 - params.typicality_type;     
         } else {
           return -555;
         }
@@ -113,7 +113,7 @@ var OverinformativeModel = function(myparams, context) {
       var utt = uniformDraw(possibleutts);
       var literalListenerERP = literalListener(utt);
       var uttCost = getUtteranceCost(utt); 
-      var score = myparams.alpha * literalListenerERP.score(target) - myparams.lengthWeight * uttCost;
+      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
       factor(score); 
       return utt;
     });
