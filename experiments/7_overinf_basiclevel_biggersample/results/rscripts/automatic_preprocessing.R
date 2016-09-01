@@ -41,6 +41,13 @@ summary(colsizeCor)
 
 write.table(colsizeCor,file="colsizeCor.csv", sep="\t")
 
+data2 = read.table(file="../data/colsize_manModified.csv",sep=",", header=T, quote="")
+head(data2)
+summary(data2)
+data3 = droplevels(data2[!is.na(data2$targetStatusClickedObj) & data2$targetStatusClickedObj != "distractor",])
+head(data3)
+summary(data3)
+
 ##########################################################################################################
 
 # basiclevel trials:
@@ -71,7 +78,7 @@ basiclevCor$theMentioned = ifelse(grepl("the |a |an ", basiclevCor$refExp, ignor
 
 summary(basiclevCor)
 
-write.table(basiclevCor,file="basiclevCor.csv", sep="\t")
+#write.table(basiclevCor,file="basiclevCor.csv", sep="\t")
 
 
 ######################################################################################################
@@ -98,6 +105,32 @@ print(paste("percentage of trials where 2 levels were mentioned: ", (26)*100/cor
 print(paste("percentage of sub mentions where an additional modifier was used: ", (82)*100/924))
 print(paste("percentage of basic mentions where an additional modifier was used: ", (177)*100/925))
 print(paste("percentage of super mentions where an additional modifier was used: ", (14)*100/21))
+
+###Analyze manually modified + correct modifier trials###
+
+data = read.table(file="../data/colsize_manModified.csv",sep=",", header=T, quote="")
+head(data)
+colsizeCor = droplevels(data[!is.na(data$targetStatusClickedObj) & data$targetStatusClickedObj != "distractor",])
+head(colsizeCor)
+nrow(colsizeCor)
+summary(colsizeCor)
+write.table(colsizeCor,file="colsizeCor_manModified.csv", sep="\t")
+
+# Look at trials not included in analysis
+colsizeCor_excluded1 = droplevels(colsizeCor[colsizeCor$automaticallyLabelledTrials != "TRUE",])
+head(colsizeCor_excluded1)
+nrow(colsizeCor_excluded1)
+summary(colsizeCor_excluded1)
+
+colsizeCor_excluded = droplevels(colsizeCor_excluded1[colsizeCor_excluded1$manuallyAddedTrials != "TRUE",])
+head(colsizeCor_excluded)
+nrow(colsizeCor_excluded)
+summary(colsizeCor_excluded)
+write.table(colsizeCor_excluded,file="colsizeCor_excluded_manModified.csv", sep="\t")
+
+#number of automatically classified utts: 2047/2138
+#number of manually added utts: 32/2138 (42)
+#Total included trials: 2079
 
 
 
