@@ -331,6 +331,28 @@ createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Con
 
 anova(m.m,m.m.t) # typicality very important!
 
+<<<<<<< HEAD
+# plot the coefficients for cogsci talk
+coefs = as.data.frame(summary(m.m.t)$coefficients)
+coefs[,1] = round(coefs[,1],digits=2)
+coefs[,2] = round(coefs[,2],digits=2)
+coefs[,3] = round(coefs[,3],digits=1)
+row.names(coefs) = c("Intercept","Informativeness (sub vs other)", "Informativeness (basic vs super)", "Length", "Frequency","Typicality","Length/Frequency interaction")
+colnames(coefs) = c("Coefficient","SE","z","p")
+coefs$Predictor = row.names(coefs)
+coefs = coefs[coefs$Predictor != "Intercept",]
+head(coefs)
+coefs$Pred = factor(x=coefs$Predictor,levels=rev(c("Informativeness (sub vs other)", "Informativeness (basic vs super)", "Length", "Frequency","Typicality","Length/Frequency interaction")))
+ggplot(coefs, aes(x=Pred,y=Coefficient,color=Pred)) +
+  geom_errorbar(aes(ymin=Coefficient-SE,ymax=Coefficient+SE),width=0,size=1.5,color="gray70") +
+  geom_point(size=4) +
+  coord_flip() +
+  geom_hline(yintercept=0,color="gray60",linetype="dashed") +
+  theme(legend.position="none",axis.title.y=element_blank())
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/coefficientplot.png",height=4.5,width=9)
+
+=======
+>>>>>>> df080bffb41e084391dd1d71abbfe7df07e1843f
 m.m.t.binary = glmer(typeMentioned ~ cbinaryCondition + cratioTypeToBasicMeanLength + cratioTypeToBasicFreq + cratioTypeToBasicTypicality + cratioTypeToBasicMeanLength:cratioTypeToBasicFreq + (1|gameid) + (1|basiclevelClickedObj) , family="binomial",data=centered) 
 summary(m.m.t.binary)
 
@@ -443,6 +465,50 @@ ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writ
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-collapsed-reduced-color-super.png",height=4.5,width=7)
 
 
+<<<<<<< HEAD
+agr = bdCorrect %>%
+  select(typeMentioned,basiclevelMentioned,superClassMentioned, redCondition) %>%
+  gather(Utt,Mentioned,-redCondition) %>%
+  group_by(Utt,redCondition) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+summary(agr)
+dodge = position_dodge(.9)
+agr$Utt = as.factor(ifelse(agr$Utt == "typeMentioned","sub",ifelse(agr$Utt == "basiclevelMentioned","basic","super")))
+agr$Utterance = factor(x=as.character(agr$Utt),levels=c("sub","basic","super"))
+agr$Condition = factor(x=agr$redCondition,levels=c("sub_necessary","basic_sufficient","super_sufficient"))
+agr$data="empirical"
+
+infomodel = data.frame(Utterance=agr$Utterance,Condition=agr$Condition,Probability=c(.5,0,.33,0,0,.33,.5,1,.33))
+infomodel$data="model"
+
+ag = merge(agr[,c("Probability","Utterance","Condition","YMin","YMax")],infomodel,all=T)
+ag[is.na(ag$data),]$data="empirical"
+
+ggplot(ag, aes(x=Condition,y=Probability,fill=data)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Probability of utterance") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-empirical-info-only.png",height=4.5,width=9)
+
+agzero = ag
+agzero[agzero$data=="empirical",]$Probability = 0
+agzero[agzero$data=="empirical",]$YMin = 0
+agzero[agzero$data=="empirical",]$YMax = 0
+ggplot(agzero, aes(x=Condition,y=Probability,fill=data)) +
+  geom_bar(stat="identity",position=dodge,color="black") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25, position=dodge) +
+  facet_wrap(~Utterance) +
+  ylab("Probability of utterance") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/cogsci/graphs/results-empirical-info-only-noemp.png",height=4.5,width=9)
+
+=======
+>>>>>>> df080bffb41e084391dd1d71abbfe7df07e1843f
 # overall, fig 1
 agr = bdCorrect %>%
   select(typeMentioned,basiclevelMentioned,superClassMentioned, condition, basiclevelClickedObj) %>%
