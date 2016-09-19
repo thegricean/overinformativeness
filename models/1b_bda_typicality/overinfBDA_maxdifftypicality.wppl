@@ -1,0 +1,161 @@
+// run using:
+// webppl overinfBDA_maxdifftypicality.wppl --require ./refModule/
+
+util.seedRNG(10);
+
+var constructContext = function(condition,size,color,othercolor,item) {
+    var context = [];
+    var sufficientdimension = condition.substring(0,condition.length-2);
+    var numDistractors = condition.substring(condition.length-2,condition.length-1);
+    var numShared = condition.substring(condition.length-1,condition.length);
+    var numDiff = numDistractors - numShared;
+    // var othersize = size === "big" ? "small" : "big";
+    var othersize = "othersize";
+    // var othercolor = "othercolor";    
+    context.push([size,color,item]); //add the target to the context
+
+    // console.log(sufficientdimension);
+    // console.log(numDistractors);
+    // console.log(numShared);
+    // console.log(numDiff);
+    var buildUp = function(n,s,c,i) {      
+      // console.log(context);
+      // console.log(n);
+      // console.log(s);
+      // console.log(c);
+      // console.log(i);
+      if (n == 1) {
+        context.push([s,c,i]);
+      } else {
+        context.push([s,c,i]);
+        buildUp(n-1,s,c,i);
+      }
+    };   
+ 
+
+  if (sufficientdimension == "size") {
+      // console.log("at least getting in the right place");
+      buildUp(numShared,othersize,color,item);
+      // console.log("added shared features");
+      if (numDiff > 0) { buildUp(numDiff,othersize,othercolor,item); }
+    } else {
+      buildUp(numShared,size,othercolor,item);
+      if (numDiff > 0) { buildUp(numDiff,othersize,othercolor,item); }
+    }
+    return context;
+  };
+
+
+var data = refModule.readCSV("./bdaInput/data_bda_modifiers_maxdifftypicality.csv"); // loads data with only the cases of maximal typicality difference, ca 230 data points
+console.log("Loading data complete...",+data.length+" data points");
+// console.log(data);
+
+var conditions = refModule.readCSV("./bdaInput/unique_conditions_modifiers_maxdifftypicality.csv"); // loads unique conditions for only the cases of maximal typicality difference, ca 115 conditions
+console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+// console.log(conditions);
+
+var contextArrays = map(function(condition) {
+  constructContext(condition[2],condition[1],condition[0],condition[3],condition[4]);
+},conditions);
+var contextKeys = map(function(condition) {
+  [condition[2],condition[1],condition[0],condition[3],condition[4]].join("_");
+},conditions);
+var contexts = _.object(_.zip(contextKeys,contextArrays));
+console.log("Constructing contexts complete...");
+// console.log(contexts);
+
+var modelAnalysis = function() {
+  // console.log("Running next sample...");
+  // Sample params
+  // var params = {
+  //   alpha : sample(Uniform({a:0,b:40})),
+  //   lengthWeight : sample(Uniform({a:0,b:10})),
+  //   typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
+  //   typicality_size : sample(Uniform({a:0,b:1})),
+  //   typicality_type : 1,
+  //   // typWeight : uniform(0,1),
+  //   cost_color : sample(Uniform({a:0,b:2})),
+  //   cost_size : sample(Uniform({a:0,b:2})),
+  //   cost_type : 1
+  // };
+
+  var params = {
+    alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
+    lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
+    typicality_color : sample(UniformDrift({a:0,b:1,r:1/20})),
+    typicality_size : sample(UniformDrift({a:0,b:1,r:1/20})),
+    typicality_type : 1,//sample(UniformDrift({a:0,b:1,r:1/20})),
+    // typWeight : sample(uniformDriftERP, [0,1,1/20]),
+    cost_color : sample(UniformDrift({a:0,b:2,r:2/20})),
+    cost_size : sample(UniformDrift({a:0,b:2,r:2/20})),
+    cost_type : 1
+  };  
+
+  // console.log(params);
+
+  // Run model and condition on data
+  var score = sum(map(function(condition) {
+    // console.log("Creating next context...");
+    // console.log(condition[2]);
+    // console.log(condition[1]);
+    // console.log(condition[0]);
+    var context = contexts[[condition[2],condition[1],condition[0],condition[3],condition[4]].join("_")];
+    // console.log("condition... " +condition);
+    // console.log("Context construction complete... "+context);
+    // console.log(context);
+    var target = context[0];
+    // console.log("Generating model...");
+    var model = OverinformativeModel(params,context);//domainInfo, params);
+    var runModel = model.runModel;
+    var speaker = model.speaker;
+    // return sum(map(function(condition) {
+    //   return sum(map(function(item) {
+	    // Get model predictions
+    // console.log("Running model...");
+
+    var modelOutput = runModel(speaker, target);//, domainInfo);
+
+    // console.log("Conditioning on data...");
+	    // condition on data
+    var itemData = refModule.getSubset(data, {condition:condition[2],
+						  color:condition[0],
+						  size:condition[1],
+              item:condition[4]});
+    // console.log(itemData.length);
+	  var score = sum(map(function(dataRow) {
+     // console.log("Conditioning on data row..."+dataRow);
+	   var utterance = dataRow[7]+"_"+condition[4];
+     // console.log("utterance..."+utterance);
+     // console.log(_.contains(modelOutput.support(),utterance));
+     // console.log(modelOutput.score([],utterance));
+     // console.log(utterance+","+modelOutput.score([],utterance)+","+condition[2]);
+	   return modelOutput.score(utterance);
+	  }, itemData));
+    // display(score)
+    // console.log(score);
+
+	    // Store predictions
+	  foreach(modelOutput.support([]), function(s){
+      query.add([condition[0], condition[1], condition[3], condition[4], condition[2], s], Math.exp(modelOutput.score(s)));
+	  });
+
+	  return score;
+  }, conditions));
+
+  // display(score);
+
+  factor(score);
+  // factor(Math.max(score, -1000));
+
+  // console.log(query);
+  // console.log(params);
+  // return params
+  return {predictive : query.table, params : params};
+};
+
+var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+// var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.00265} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
+
+console.log('inference complete... printing');
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-seed10");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-hmc");

@@ -1,0 +1,73 @@
+// run using:
+// webppl runNominalChoiceSpeaker.wppl --require ./refModule/
+
+  var item = [
+    "target", "dist1", "dist2" 
+  ];
+
+  // var t_super = 1;
+  // var d_super = 1;
+  var t_super = .8;
+  // var d_super = .5;
+  // var t_basic = 1;
+  // var d_basic = 1;
+  // var t_sub = 1;
+  // var d_sub = 0;
+
+  var t_subs = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var d_subs = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var t_basics = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var d_basics = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var d_supers = [0,.5,.8];
+
+  var labels = [
+  "sub",
+  "basic"
+  //"super"
+  ];
+
+map(function(d_super) {
+  map(function(t_sub) {
+    map(function(d_sub) {
+      map(function(t_basic) {
+        map(function(d_basic) {
+            var model = BasicLevelModel({
+                          tax : {
+                            super : {
+                              target : t_super,
+                              dist1 : d_super,
+                              dist2 : d_super
+                            },
+                            basic : {
+                              target : t_basic,
+                              dist1 : d_basic,
+                              dist2 : d_basic
+                            },
+                            sub : {
+                              target : t_sub,
+                              dist1 : d_sub,
+                              dist2 : d_sub        
+                            }
+                          },
+                          subLabels : ["sub"],
+                          basicLabel : "basic",
+                          superLabel : "super"
+                        }, 
+                        // { alpha : 1 }
+                        { alpha : 7 }
+                        );
+            var runSpeaker = model.runSpeaker;
+            // console.log("item: ", item)
+            var speaker = model.speaker;
+            map(function(label) { 
+              var speakerOutput = runSpeaker(speaker, item);
+              // console.log("speakerOutput: ", speakerOutput);
+              // refModule.writeERP(speakerOutput, [t_sub,d_sub,t_basic,d_basic,t_super,d_super], "speakerOutput.csv",2);
+              refModule.writeERP(speakerOutput, [t_sub,d_sub,t_basic,d_basic,t_super,d_super], "speakerOutput-alpha7.csv",2);
+              // refModule.writeERP(speakerOutput, [t_sub,d_sub,t_basic,d_basic,t_super,d_super], "speakerOutput-super.5.csv",2);              
+            }, labels);
+         }, d_basics);
+      }, t_basics);
+    }, d_subs);
+  }, t_subs);
+}, d_supers);

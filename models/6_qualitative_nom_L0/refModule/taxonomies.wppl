@@ -1,0 +1,63 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var BasicLevelModel = function(domainInfo) {
+
+  var labelFitness = function(label, object) {
+    var typfit = domainInfo.tax[label][object];
+    return typfit;
+  };
+
+  var literalListener = cache(function(label, item){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(item);
+      // console.log(object);
+      // console.log(label);
+      // console.log(labelFitness(label,object));
+      factor(labelFitness(label,object));
+      return object;
+    });
+  });
+
+  var runListener = function(listenerModel, label, item) { 
+      var listenerERP = listenerModel(label, item);
+      return Infer({method:'enumerate'},function(){
+        var obj = sample(listenerERP);
+        return obj;
+      });
+  };
+  
+  return {
+    listener: literalListener,
+    runListener : runListener
+  };
+};

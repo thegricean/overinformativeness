@@ -1,0 +1,85 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var BasicLevelModel = function(domainInfo, params) {
+
+  var labelFitness = function(label, object) {
+    var typfit = domainInfo.tax[label][object];
+    return typfit;
+  };
+
+  var literalListener = cache(function(label, item){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(item);
+      // console.log(object);
+      // console.log(label);
+      // console.log(labelFitness(label,object));
+      factor(labelFitness(label,object));
+      return object;
+    });
+  });
+
+  var speaker = cache(function(target, item) {
+    var possibleLabels = refModule.getAllPossibleLabels(target, domainInfo.tax);
+    // console.log(possibleLabels);
+    // console.log(target);
+    // console.log("\n");
+    // console.log(tax);
+    return Infer({method:'enumerate'},function(){
+      var label = uniformDraw(possibleLabels);
+      var literalListenerERP = literalListener(label, item);
+      factor(params.alpha * literalListenerERP.score(target));
+
+      // var labelLength = refModule.getRelativeLength(label);
+      // var labelFreq = refModule.getRelativeLogFrequency(label);
+      // factor(-params.lengthWeight * labelLength);
+      // factor(params.freqWeight * labelFreq);
+      return label;
+    });
+  });
+
+  var runModel = function(speakerModel, item) {
+    var speakerERP = speakerModel(item[0], item);
+    return Infer({method:'enumerate'},function(){
+      var label = sample(speakerERP);
+      return (_.contains(domainInfo.subLabels, label) ? "sub" :
+        label === domainInfo.basicLabel ? "basic" :
+        label === domainInfo.superLabel ? "super" :
+        console.error("No label match"));
+    });
+  };
+  
+  return {
+    runSpeaker : runModel,
+    speaker : speaker
+  };
+};

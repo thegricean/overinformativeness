@@ -1,0 +1,60 @@
+// run using:
+// webppl basicLevelBDA.wppl --require ./refModule/
+util.seedRNG(10);
+
+var data = refModule.readCSV("./bdaInput/basicLevelResultsExp7.csv");
+var domains = globalInfo.domains;
+
+var modelAnalysis = function() {
+  // Sample params
+  // var params = {
+  //   alpha : sample(UniformDrift({a:0,b:20,r:1})),
+  //   lengthWeight : sample(UniformDrift({a:0,b:5,r:5/20})),
+  //   freqWeight : sample(UniformDrift({a:0,b:5,r:5/20}))//,
+  // };
+
+  var params = {
+    alpha : sample(Uniform({a:0,b:20}))
+  };  
+  
+  // Run model and condition on data
+  var score = sum(map(function(domain) {
+    var domainInfo = globalInfo.info[domain];
+    var model = BasicLevelModel(domainInfo, params);
+    var runModel = model.runModel;
+    var speaker = model.speaker;
+    return sum(map(function(condition) {
+      return sum(map(function(item) {
+	// Get model predictions
+	var modelOutput = runModel(speaker, item, domainInfo);
+
+	// condition on data
+	var itemData = refModule.getSubset(data, {target:item[0],
+						  alt1:item[1],
+						  alt2:item[2]});
+	var score = sum(map(function(dataRow) {
+	  var levelOfReference = dataRow[5];
+	  return modelOutput.score(levelOfReference);
+	}, itemData));
+
+	// Store predictions
+	foreach(modelOutput.support(), function(s){
+          query.add([condition, item[0], item[1], item[2], s],
+		    Math.exp(modelOutput.score(s)));
+	});
+	return score;
+      }, domainInfo.conditions[condition]));
+    }, _.keys(domainInfo.conditions)));
+  }, domains));
+
+  factor(score);
+
+  return {predictive: query.table, params : params};
+};
+
+// var outputERP = Infer({method : 'MCMC', samples: 3000, burn: 1000, verbose: true}, modelAnalysis);
+var outputERP = Infer({method : 'MCMC', kernel : {HMC : {steps:5, stepSize:.35}}, samples: 1200, burn: 600, verbose: true}, modelAnalysis);
+
+console.log('inference complete... printing');
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fulldataset-typicalities-hmc");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-fulldataset-typicalities-nocost-hmc");

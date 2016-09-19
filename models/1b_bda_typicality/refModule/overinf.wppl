@@ -1,0 +1,272 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+ return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var getTypicalities = function() {
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    // var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
+    // console.log(typicalityData);
+    var unique_objects = _.unique(map(function(row) {
+      return row[0];
+    },typicalityData));
+
+    var typicalities = [];
+    // console.log(unique_objects);
+    var consData = map(function(unique_obj) {
+      // console.log(unique_obj);
+      // var typ = function(row) {
+      //   return (row[0] === unique_obj);
+      // };
+      // console.log(typ(typicalityData[2]));
+      var matching_objs = refModule.getTypSubset(typicalityData,unique_obj);
+      // var matching_objs = _.filter(typicalityData,typ);
+      // console.log("an object");
+      // console.log(matching_objs);
+
+      // return matching_objs;
+
+    // return _.filter(typicalityData,typ);
+      var mo_array = map(function(matching_obj) {
+        // console.log("an object's unique utterance");
+        // console.log(matching_obj.slice(1,3));
+        
+          // return _.object([matching_obj[2]],[matching_obj[1]]);
+          return matching_obj.slice(1,3);
+      },matching_objs);
+      // console.log("a zipped array of typicalities and utterances");
+      // console.log(_.invert(_.object(mo_array)));
+      // console.log(unique_obj);
+      // console.log(_.object([unique_obj,_.invert(_.object(mo_array))]));
+      return [unique_obj,_.invert(_.object(mo_array))];
+    }, unique_objects);
+
+    // // return typicalities;
+    return _.object(consData);
+};
+
+var typicality_norms = getTypicalities();//refModule.readCSV("./bdaInput/typicalities.csv");
+
+var getUtterances = function(context) {
+  // console.log(context);
+  var utts = [];
+  
+  map(function(c) {
+    map(function(k) {
+        utts.push(k+"_"+c[2]);
+    },c.slice(0,2));
+    utts.push(c[0]+"_"+c[1]+"_"+c[2]);
+     utts.push(c[2]); // comment out this line if you don't want the noun alone to be an alternative
+  },context);
+  // console.log(_.unique(utts));
+  return _.unique(utts);
+};
+
+
+// var getTypicality = function(utt, object) {
+  //   var typicality = 0;
+  //   var splitutt = utt.split("_");
+  //   var reduced_obj = object[1]+"_"+object[2];
+
+  //   // console.log("utterance, object:");
+  //   // console.log(utt);
+  //   // console.log(object);
+  //   // console.log(reduced_obj);
+  //   // console.log(typicalities[reduced_obj]);
+  //   var subtyps = typicalities[reduced_obj];
+  //   // console.log(subtyps);
+  //   // console.log(subtyps[utt]);
+  //   if (splitutt.length > 1) {
+  //     return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? Math.log(params.typNoise) : Math.log(1-params.typNoise);
+  //     // return _.contains(object,splitutt[0]) && _.contains(object,splitutt[1]) ? 
+  //      Math.log(.99) : Math.log(.01);
+  //   } else {
+  //     if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], utt)) {
+  //       return _.contains(object,utt) ? 
+  //       Math.log(typicalities[reduced_obj][utt+"_"+object[2]]) : 
+  //       Math.log(1-params.typicality_color);                
+  //       // return _.contains(object,utt) ? Math.log(params.typicality_color) : Math.log(1-params.typicality_color);        
+  //     } else {
+  //       return _.contains(object,utt) ? 
+  //       Math.log(typicalities[reduced_obj][object[2]]) : 
+  //       Math.log(1-params.typicality_size);
+  //     }
+  //   }
+  // };
+
+
+
+var OverinformativeModel = function(params, context) {
+
+  var getUtteranceCost = function(utt) {
+  var splited = utt.split("_");
+  if (splited.length == 3) {
+    return params.cost_color + params.cost_size + params.cost_type;
+  } else {
+    if (splited.length == 2) {
+      return _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splited[0]) ? params.cost_type + params.cost_color : params.cost_type + params.cost_size;
+    } else {
+      return params.cost_type;
+    }
+  }
+  };
+
+  var checkFeatureEmpirical = function(utterancetype,object,u,reduced_obj) {
+  if (utterancetype === "color") { // this part will actually return the typicality of the COLOR_TYPE combination, not just color alone
+    // console.log("getting color typicality"); 
+    // console.log(typicalities[reduced_obj][reduced_obj]);
+    return _.contains(object,u) ? typicality_norms[reduced_obj][reduced_obj] : 1 - params.typicality_color; 
+  } else {
+    if (utterancetype === "size") {
+      return _.contains(object,u) ? params.typicality_size : 1 - params.typicality_size; 
+    } else {
+      if (utterancetype === "type") {
+        return _.contains(object,u) ? typicality_norms[reduced_obj][u] : 1 - params.typicality_type;     
+      } else {
+        return -555;
+      }
+    }
+  }
+ };
+
+ var getEmpiricalTypicality = function(utt, object) {
+    var splitutt = utt.split("_");
+    // next two lines: get rid of type when utterance contains a color, so you don't accidentally return product of color_type and type typicality
+    if (splitutt.length == 2 && _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splitutt[0])) { splitutt.pop(); }
+    if (splitutt.length == 3) { splitutt.pop(); } 
+    var reduced_obj = [object[1],object[2]].join("_");
+
+     var typicalities = map(function(u) {
+        if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], u)) {
+          return checkFeatureEmpirical("color",object,u,reduced_obj);  
+        } else {
+          if (_.contains(["big","small","size","othersize"],u)) {
+            return checkFeatureEmpirical("size",object,u,reduced_obj);
+          } else {
+            return checkFeatureEmpirical("type",object,u,reduced_obj);
+          }
+        }
+    },splitutt);
+
+ //     // console.log(object);
+ //    // console.log(utt);
+ //    // console.log(typicalities);
+
+    var typicality = reduce(function(a,b) {return a*b;},1,typicalities); 
+     // , function(a,b) {return a*b;}, 1);
+    // console.log(typicality);
+
+    return typicality;
+  };
+
+  var uttFitness = function(utt, object) {
+      var splitutt = utt.split("_");
+      // var typfit = getMultiplicativeFixedTypicalityUnlogged(utt,object); 
+      // var typfit = getMultiplicativeFixedTypicality(utt,object); 
+      // var fixedfit = getMultiplicativeFixedTypicality(utt,object); 
+      var typfit = getEmpiricalTypicality(utt,object); 
+      // console.log(utt+"...."+object+"...."+typfit);
+      // var fixedtypfit = getFixedTypicality(utt,object); 
+      // console.log(typfit);
+      // var deterministicfit = sum(map(function(s) {
+        // _.contains(object,s) ? 1 : 0;
+        // _.has(object,s) ? 1 : 0;
+      // }, splitutt));
+      // console.log(deterministicfit);
+      // var detfit = deterministicfit == splitutt.length ? 0 : -Infinity;
+      // console.log(detfit);
+      // var weightedFit = params.typWeight*typfit + (1-params.typWeight)*fixedfit;
+      // return weightedFit;
+      // return detfit;
+      // console.log("utt:");
+      // console.log(utt);
+      // console.log("obj:");
+      // console.log(object);
+      // console.log("typfit:")
+      // console.log(typfit);
+      // // return weightedFit; // return mixture of fixed and empirical values
+      return typfit; // return semantics under empirical individual color typicality values
+      // return fixedtypfit; // return semantics under fixed color/size typicality values
+    };
+
+    var literalListener = cache(function(utt){
+      return Infer({method:'enumerate'},function(){
+        var object = uniformDraw(context);
+        // console.log(utt);
+        // console.log(obj);
+        factor(uttFitness(utt,object)); 
+        return object;
+      });
+    });
+    // },100); //do this to limit cache size -- check activity monitor to see if used RAM increases at the same rate with and without limitation
+    
+    var speaker = cache(function(target) {
+      // var possibleutts = getUtterancesOneFeature(context);//refModule.getAllPossibleUtts(target, tax);
+      var possibleutts = getUtterances(context);//refModule.getAllPossibleUtts(target, tax);
+      // console.log(possibleutts);
+      // console.log("target: "+target);
+
+      return Infer({method:'enumerate'},function(){
+        var utt = uniformDraw(possibleutts);
+        // console.log(utt);
+        var literalListenerERP = literalListener(utt);
+        var uttCost = getUtteranceCost(utt); 
+        // console.log(utt);
+        // console.log(uttCost);
+        var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+        // console.log(score);
+        factor(score); 
+        return utt;
+      });
+    });
+
+    var runModel = function(speakerModel, target) { 
+      var speakerERP = speakerModel(target);
+      return Infer({method:'enumerate'},function(){
+        var utt = sample(speakerERP);
+        return utt;
+      });
+    };
+
+    // var runListener = function(listenerModel, utterance) { 
+    //   var listenerERP = listenerModel(utterance);
+    //   return Infer({method:'enumerate'},function(){
+    //     var obj = sample(listenerERP);
+    //     return obj;
+    //   });
+    // };    
+  
+  return {
+    runModel : runModel,
+    speaker : speaker//,
+    // listener: literalListener,
+    // runListener : runListener
+  };
+};

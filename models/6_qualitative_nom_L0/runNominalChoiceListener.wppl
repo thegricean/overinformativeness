@@ -1,0 +1,82 @@
+// run using:
+// webppl runNominalChoiceListener.wppl --require ./refModule/
+
+  var item = [
+    "target", "dist1", "dist2" 
+  ];
+
+  var t_super = 1;
+  var d_super = 1;
+  // var t_basic = 1;
+  // var d_basic = 1;
+  // var t_sub = 1;
+  // var d_sub = 0;
+
+  var t_subs = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var d_subs = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var t_basics = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+  var d_basics = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1];
+
+  var labels = [
+  "sub",
+  "basic"
+  //"super"
+  ];
+
+  // var domainInfo = {
+  //   tax : {
+  //     super : {
+  //       target : t_super,
+  //       dist1 : d_super,
+  //       dist2 : d_super
+  //     },
+  //     basic : {
+  //       target : t_basic,
+  //       dist1 : d_basic,
+  //       dist2 : d_basic
+  //     },
+  //     sub : {
+  //       target : t_sub,
+  //       dist1 : d_sub,
+  //       dist2 : d_sub        
+  //     }
+  //   }
+  // };
+  //console.log(domainInfo)
+
+  map(function(t_sub) {
+    map(function(d_sub) {
+      map(function(t_basic) {
+        map(function(d_basic) {
+            var model = BasicLevelModel({
+                          tax : {
+                            super : {
+                              target : t_super,
+                              dist1 : d_super,
+                              dist2 : d_super
+                            },
+                            basic : {
+                              target : t_basic,
+                              dist1 : d_basic,
+                              dist2 : d_basic
+                            },
+                            sub : {
+                              target : t_sub,
+                              dist1 : d_sub,
+                              dist2 : d_sub        
+                            }
+                          }
+                        });
+            var runModel = model.runModel;
+            console.log("item: ", item)
+            var runListener = model.runListener;
+            var listener = model.listener;
+            map(function(label) { 
+              var listenerOutput = runListener(listener, label, item);
+              console.log("listenerOutput: ", listenerOutput);
+              refModule.writeERP(listenerOutput, [t_sub,d_sub,t_basic,d_basic,t_super,d_super,label], "listenerOutput.csv",2);
+            }, labels);
+         }, d_basics);
+      }, t_basics);
+    }, d_subs);
+  }, t_subs);
