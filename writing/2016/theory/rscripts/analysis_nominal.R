@@ -94,6 +94,7 @@ prop.table(table(d$condition,d$super),margin = 1)
 prop.table(table(d$condition,d$basic), margin=1)
 
 # moer qualitative stuff
+table(d$target_basic)
 table(d[d$super,]$target_basic)
 table(d[d$sub,]$target_basic)
 
@@ -128,7 +129,8 @@ summary(m.2.lf)
 
 anova(m.2.lf,m.2.lfcomplex) # the sub:super diffs/ratios don't matter
 
-m = glmer(sub ~ redCondition + cdiff_logfreq_subbasic * cratio_length_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
+m = glmer(sub ~ redCondition + cdiff_logfreq_subbasic + cratio_length_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
+
 summary(m) # frequency doesn't appear to matter one bit
 createLatexTable(m,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Length:Frequency"))
 
@@ -138,6 +140,12 @@ summary(m.m.t)
 createLatexTable(m.m.t,predictornames=c("Intercept","Condition sub.vs.rest","Condition basic.vs.super","Length","Frequency","Typicality"))
 
 anova(m,m.m.t) # typicality very important!
+
+# add interaction term -- it does nothing
+m.m.t.inter = glmer(sub ~ redCondition + cdiff_logfreq_subbasic + cratio_length_subbasic + cdiff_logfreq_subbasic:cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
+summary(m.m.t.inter)
+
+# code condition as binary predictor to see whether the three-way predictor is really important
 
 m.m.t.bin = glmer(sub ~ cbinaryCondition + cdiff_logfreq_subbasic + cratio_length_subbasic + cratio_typ_subbasic + (1|gameid) + (1|target_sub) , family="binomial",data=centered) 
 
@@ -279,6 +287,52 @@ library(grid)
 pdf("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/lengthtypicality.pdf",height=3.5,width=8)
 grid.arrange(pl,pt,nrow=1,  left = textGrob("Proportion of sub level mention", rot = 90, vjust = 1,gp = gpar(cex = .9)))
 dev.off()
+
+
+######### LOOK AT QUALITATIVE CASES
+grizzly = droplevels(d[d$target_sub == "grizzlybear",])
+grizzly$koala_alt = as.factor(ifelse(grizzly$alt1_sub == "koalabear" | grizzly$alt2_sub == "koalabear",1,0))
+table(grizzly$koala_alt,grizzly$basic,grizzly$condition)
+
+panda = droplevels(d[d$target_sub == "pandabear",])
+table(panda$condition,panda$sub)
+
+hummingbird = droplevels(d[d$target_sub == "hummingbird",])
+table(hummingbird$condition,hummingbird$sub)
+
+pug = droplevels(d[d$target_sub == "pug",])
+table(pug$condition,pug$sub)
+13/44 # = .295, proportion of sub level mentions in basic and super sufficient conditions
+
+gs = droplevels(d[d$target_sub == "germanshepherd",])
+table(gs$condition,gs$sub)
+4/35 # = .11, proportion of sub level mentions in basic and super sufficient conditions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
