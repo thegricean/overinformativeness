@@ -1,5 +1,10 @@
 writing/2016/theory/redundant_reference.pdf
 writing/2016/cogsci/refexp.pdf
+*predictionsWithEmpiricalLength.csv
+*predictionsWithEmpiricalLength_ic.csv
+*predictionsWithEmpiricalLength_ict.csv
+*Params.csv
+*Predictives.csv
 */.RData
 */node_modules/
 *.bbl
