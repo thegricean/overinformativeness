@@ -7,6 +7,8 @@ writing/2016/cogsci/refexp.pdf
 *.log
 *.synctex.gz
 *.aux
+*.synctex.gz
+*.toc
 *.config
 *.input
 *.properties
