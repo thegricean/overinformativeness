@@ -65,7 +65,7 @@ function make_slides(f) {
     log_responses : function() {
         exp.data_trials.push({
           "slide_number_in_experiment" : exp.phase,
-          "item": this.stim.item,                 
+          "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost
         });
