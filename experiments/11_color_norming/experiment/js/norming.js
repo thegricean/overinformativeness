@@ -137,70 +137,70 @@ function init() {
 	var items_target = _.shuffle([
 
 {
-"item": "avocadoblack",
+"item": "avocado_black",
 },
 {
-"item": "avocadogreen",
+"item": "avocado_green",
 },
 {
-"item": "avocadored",
+"item": "avocado_red",
 },
 {
-"item": "appleblue",
+"item": "apple_blue",
 },
 {
-"item": "applered",
+"item": "apple_red",
 },
 {
-"item": "appleyellow",
+"item": "apple_yellow",
 },
 {
-"item": "applegreen",
+"item": "apple_green",
 },
 {
-"item": "bananablue",
+"item": "banana_blue",
 },
 {
-"item": "bananabrown",
+"item": "banana_brown",
 },
 {
-"item": "bananayellow",
+"item": "banana_yellow",
 },
 {
-"item": "carrotorange",
+"item": "carrot_orange",
 },
 {
-"item": "carrotpink",
+"item": "carrot_pink",
 },
 {
-"item": "carrotpurple",
+"item": "carrot_purple",
 },
 {
-"item": "orangeorange",
+"item": "orange_green",
 },
 {
-"item": "orangepurple",
+"item": "orange_orange",
 },
 {
-"item": "orangeyellow",
+"item": "orange_purple",
 },
 {
-"item": "peppergreen",
+"item": "pepper_green",
 },
 {
-"item": "pepperorange",
+"item": "pepper_orange",
 },
 {
-"item": "pepperred",
+"item": "pepper_red",
 },
 {
-"item": "tomatogreen",
+"item": "tomato_green",
 },
 {
-"item": "tomatopink",
+"item": "tomato_pink",
 },
 {
-"item": "tomatored",
+"item": "tomato_red",
 }
 	]).slice(0,22)
 	
