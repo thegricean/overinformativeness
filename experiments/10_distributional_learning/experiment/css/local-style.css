@@ -64,6 +64,11 @@
   /*transition: background-color 0.3s;*/
 }
 
+.shadow {
+  display: none;
+  opacity: 0;
+}
+
 /*color change from dragged object when dropped*/
 .drag-drop.can-drop {
   /*color: #000;*/
@@ -73,30 +78,6 @@
 #todescribe {
   margin: 40px auto 30px;
   padding: 10px;
-}
-
-#apple_target {
-  border: solid 2px #d3d3d3;
-}
-
-#banana_target {
-  border: solid 2px #d3d3d3;
-}
-
-#carrot_target {
-  border: solid 2px #d3d3d3;
-}
-
-#cucumber_target {
-  border: solid 2px #d3d3d3;
-}
-
-#onion_target {
-  border: solid 2px #d3d3d3;
-}
-
-#strawberry_target {
-  border: solid 2px #d3d3d3;
 }
 
 .to_order {

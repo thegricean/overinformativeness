@@ -57,6 +57,7 @@ function make_slides(f) {
 
         // 'transfer' picture to html file with id consisting of type of food and how many of those are already transfered
         $("#"+exp.all_expos[i].item+(count+1)).html(objimagehtml);
+        $("#"+exp.all_expos[i].item+(count+1)+"_shadow").html(objimagehtml);
 
         // add new food item to list of food items
         food.push(exp.all_expos[i].item);
@@ -64,7 +65,7 @@ function make_slides(f) {
 
       // the object that is the current stimulus, isn't in exp.all_expos; this is why it needs to be added separately
       var objimagehtml = '<img src="pictures/'+stim.label+'_'+stim.color+'.png" style="height:50px;">';
-      $("#"+stim.label+9).html(objimagehtml);
+      $("#"+stim.label+10).html(objimagehtml);
 
       //
       // DRAGGING AND DROPPING
@@ -104,7 +105,6 @@ function make_slides(f) {
 
       // 
       function dragMoveListener (event) {
-        console.log("A");
         old_spot_x = event.dx;
         old_spot_y = event.dy;
         var target = event.target,
@@ -130,18 +130,17 @@ function make_slides(f) {
        * applies to this demo as well so it doesn't have to be repeated. */
 
       // to randomly choose the accepted type of food 
-      var target_order = _.shuffle([0,1,2,3,5,6,7]);
-      target_order.push(4);
-      var acceptance = ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9', 
-                        '#avocado1, #avocado2, #avocado3, #avocado4, #avocado5, #avocado6, #avocado7, #avocado8, #avocado9', 
-                        '#banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9', 
-                        '#carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9', 
-                        '#lollipop1, #lollipop2, #lollipop3, #lollipop4, #lollipop5, #lollipop6, #lollipop7, #lollipop8, #lollipop9', 
-                        /*'#orange1, #orange2, #orange3, #orange4, #orange5, #orange6, #orange7, #orange8, #orange9', */
-                        '#pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9', 
-                        '#pepper1, #pepper2, #pepper3, #pepper4, #pepper5, #pepper6, #pepper7, #pepper8, #pepper9', 
-                        '#tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9'];
-      var object_name = ['apple', 'avocado', 'banana', 'carrot', 'lollipop', 'orange', 'pepper', 'tomato'];
+      var target_order = _.shuffle([0,1,2,3,4,5]);
+      var acceptance = ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9, #apple10', 
+                        /*'#avocado1, #avocado2, #avocado3, #avocado4, #avocado5, #avocado6, #avocado7, #avocado8, #avocado9',*/ 
+                        '#banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9, #banana10', 
+                        '#carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9, #carrot10', 
+                        /*'#lollipop1, #lollipop2, #lollipop3, #lollipop4, #lollipop5, #lollipop6, #lollipop7, #lollipop8, #lollipop9',*/ 
+                        '#orange1, #orange2, #orange3, #orange4, #orange5, #orange6, #orange7, #orange8, #orange9, #orange10', 
+                        '#pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9, #pear10', 
+                        /*'#pepper1, #pepper2, #pepper3, #pepper4, #pepper5, #pepper6, #pepper7, #pepper8, #pepper9',*/ 
+                        '#tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9, #tomato10'];
+      var object_name = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
 
       // enable draggables to be dropped into this
       function init_dropzone(target_count) {
@@ -150,7 +149,7 @@ function make_slides(f) {
         // change the food type in the title according to accepted food type
         $('#thing_to_find').html(object_name[target_order[target_count]]);
         // change the basket (new label);
-        var updated_basket = '<img src="pictures/basket_'+object_name[target_order[target_count]]+'.png" style="height:80px;">';
+        var updated_basket = '<img src="pictures/basket_'+object_name[target_order[target_count]]+'.png" style="height:100px;">';
         // var updated_basket = '<img src="pictures/basket.png" style="height:80px;">';
         $('#basket').html(updated_basket);
 
@@ -201,16 +200,19 @@ function make_slides(f) {
             // update the position attributes
             initial_position_x = event.relatedTarget.getAttribute('data-x');
             initial_position_y = event.relatedTarget.getAttribute('data-y');
-            console.log(initial_position_x);
-            console.log(initial_position_y);
 
             event.relatedTarget.remove();
+
+            var current_id = $(event.relatedTarget).attr("id");
+            var shadow_id = current_id+"_shadow";
+            $("#"+shadow_id).css("display", "inline-block");
+
             // new item of a food type was received
             target_total++;
             // if at least 9 items of one food type have been dropped
-            if (target_total >= 9) {
+            if (target_total >= 10) {
               // and if this wasn't the last food type
-              if (target_count < 7) {
+              if (target_count < 5) {
                 // restart this process and remember that one more type of food is already sorted
                 init_dropzone(target_count+1);
               // if all items are sorted, switch to next slide
@@ -365,49 +367,55 @@ function init() {
 	  {
       "item": "apple",
       "label": "apple",
-      "color": ["red", "yellow", "blue", "green"]
+      /*"color": ["red", "yellow", "blue", "green"]*/
+      "color": ["red", "blue"]
     },
-    {
+    /*{
       "item": "avocado",
       "label": "avocado",
       "color": ["red", "black", "green"]
-    },
+    },*/
     {
       "item": "banana",
       "label": "banana",
-      "color": ["blue", "brown", "yellow"]
+      /*"color": ["blue", "brown", "yellow"]*/
+      "color": ["yellow", "blue"]
     },
     {
       "item": "carrot",
       "label": "carrot",
-      "color": ["orange", "pink", "purple"]
+      /*"color": ["orange", "pink", "purple"]*/
+      "color": ["orange", "pink"]
     },
-    {
+    /*{
       "item": "lollipop",
       "label": "lollipop",
       "color": ["colored", "colored"]
-    },
-    /*{
+    },*/
+    {
       "item": "orange",
       "label": "orange",
-      "color": ["orange", "purple", "green"]
-    },*/
+      /*"color": ["orange", "purple", "green"]*/
+      "color": ["orange", "purple"]
+    },
     {
       "item": "pear",
       "label": "pear",
-      "color": ["green", "orange", "yellow"]
+      /*"color": ["green", "orange", "yellow"]*/
+      "color": ["green", "orange"]
     },
-    {
+    /*{
       "item": "pepper",
       "label": "pepper",
       "color": ["green", "orange", "red"]
-    },
+    },*/
     {
       "item": "tomato",
       "label": "tomato",
-      "color": ["green", "pink", "red"]
+      /*"color": ["green", "pink", "red"]*/
+      "color": ["red", "pink"]
     }
-  ]).slice(0,36);
+  ]).slice(0,6);
 
 
 
@@ -415,7 +423,19 @@ function init() {
     //get item
     var item = items[i];
     var item_id = item.item;
-    var color = _.shuffle(item.color)[0];
+    if (i<2) {
+      var color = item.color[0];
+    }
+    else if (i>=2 && i<4) {
+      var color = item.color[1];
+    }
+    else {
+      if (k<5) {
+        var color = item.color[0];
+      } else {
+        var color = item.color[1];
+      }
+    }
     label = item.label;
     return {
       "item": item_id,
@@ -425,8 +445,8 @@ function init() {
   }
 
   exp.all_expos = [];
-  for (var k=0; k<9; k++) {
-    for (var i=0; i<8; i++) {
+  for (var k=0; k<10; k++) {
+    for (var i=0; i<6; i++) {
       exp.all_expos.push(makeExpo(i));
     }
   }
@@ -462,6 +482,8 @@ function init() {
   }
 
   function makeProdStim(food_item, context_condition) {
+    var random_food_1 = getRandomInt(0,6);
+    var random_food_2 = getRandomInt(0,6);
     //get item
     var prod_item = [items[food_item]];
     // make sure that every item is there in two colors for two times
@@ -485,19 +507,17 @@ function init() {
     } else {
       // console.log("overinformative trial");
       // random_food can be anything except for food_item
-      random_food = getRandomInt(0,8);
-      while (random_food == food_item) {
-        random_food = getRandomInt(0,8);
+      while (random_food_1 == food_item) {
+        random_food_1 = getRandomInt(0,6);
       }
-      prod_item.push(items[random_food]);
+      prod_item.push(items[random_food_1]);
       var color2 = _.shuffle(prod_item[1].color)[0];
     }
 
-    random_food = getRandomInt(0,8);
-    while (random_food == food_item) {
-      random_food = getRandomInt(0,8);
+    while (random_food_2 == food_item || random_food_2 == random_food_1) {
+      random_food_2 = getRandomInt(0,6);
     }
-    prod_item.push(items[random_food]);
+    prod_item.push(items[random_food_2]);
     var color3 = _.shuffle(prod_item[2].color)[0];
 
     // console.log(prod_item);
@@ -513,7 +533,7 @@ function init() {
   }
 
   exp.prod_stims = [];
-  for (var food_item=0; food_item<8; food_item++) {
+  for (var food_item=0; food_item<6; food_item++) {
     for (var context_condition=0; context_condition<4; context_condition++) {
       exp.prod_stims.push(makeProdStim(food_item, context_condition));
     }
