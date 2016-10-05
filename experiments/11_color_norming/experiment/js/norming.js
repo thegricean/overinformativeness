@@ -175,7 +175,7 @@ function init() {
 {
 "item": "carrot_purple",
 },
-/*{
+{
 "item": "orange_green",
 },
 {
@@ -183,7 +183,7 @@ function init() {
 },
 {
 "item": "orange_purple",
-},*/
+},
 {
 "item": "pear_green",
 },
