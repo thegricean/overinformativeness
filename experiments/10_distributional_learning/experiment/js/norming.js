@@ -1,3 +1,4 @@
+// EXPERIMENT 10
 // Returns a random integer between min (included) and max (excluded)
 // Using Math.round() will give you a non-uniform distribution!
 function getRandomInt(min, max) {
@@ -129,14 +130,18 @@ function make_slides(f) {
        * applies to this demo as well so it doesn't have to be repeated. */
 
       // to randomly choose the accepted type of food 
-      var target_order = _.shuffle([0,1,2,3,4,5]);
+      var target_order = _.shuffle([0,1,2,3,5,6,7]);
+      target_order.push(4);
       var acceptance = ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9', 
+                        '#avocado1, #avocado2, #avocado3, #avocado4, #avocado5, #avocado6, #avocado7, #avocado8, #avocado9', 
                         '#banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9', 
                         '#carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9', 
-                        '#cucumber1, #cucumber2, #cucumber3, #cucumber4, #cucumber5, #cucumber6, #cucumber7, #cucumber8, #cucumber9', 
-                        '#onion1, #onion2, #onion3, #onion4, #onion5, #onion6, #onion7, #onion8, #onion9', 
-                        '#strawberry1, #strawberry2, #strawberry3, #strawberry4, #strawberry5, #strawberry6, #strawberry7, #strawberry8, #strawberry9'];
-      var object_name = ['apple', 'banana', 'carrot', 'cucumber', 'onion', 'strawberry']
+                        '#lollipop1, #lollipop2, #lollipop3, #lollipop4, #lollipop5, #lollipop6, #lollipop7, #lollipop8, #lollipop9', 
+                        /*'#orange1, #orange2, #orange3, #orange4, #orange5, #orange6, #orange7, #orange8, #orange9', */
+                        '#pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9', 
+                        '#pepper1, #pepper2, #pepper3, #pepper4, #pepper5, #pepper6, #pepper7, #pepper8, #pepper9', 
+                        '#tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9'];
+      var object_name = ['apple', 'avocado', 'banana', 'carrot', 'lollipop', 'orange', 'pepper', 'tomato'];
 
       // enable draggables to be dropped into this
       function init_dropzone(target_count) {
@@ -205,7 +210,7 @@ function make_slides(f) {
             // if at least 9 items of one food type have been dropped
             if (target_total >= 9) {
               // and if this wasn't the last food type
-              if (target_count < 5) {
+              if (target_count < 7) {
                 // restart this process and remember that one more type of food is already sorted
                 init_dropzone(target_count+1);
               // if all items are sorted, switch to next slide
@@ -378,9 +383,19 @@ function init() {
       "color": ["orange", "pink", "purple"]
     },
     {
+      "item": "lollipop",
+      "label": "lollipop",
+      "color": ["colored", "colored"]
+    },
+    /*{
       "item": "orange",
       "label": "orange",
-      "color": ["orange", "purple", "yellow"]
+      "color": ["orange", "purple", "green"]
+    },*/
+    {
+      "item": "pear",
+      "label": "pear",
+      "color": ["green", "orange", "yellow"]
     },
     {
       "item": "pepper",
@@ -411,7 +426,7 @@ function init() {
 
   exp.all_expos = [];
   for (var k=0; k<9; k++) {
-    for (var i=0; i<6; i++) {
+    for (var i=0; i<8; i++) {
       exp.all_expos.push(makeExpo(i));
     }
   }
@@ -470,17 +485,17 @@ function init() {
     } else {
       // console.log("overinformative trial");
       // random_food can be anything except for food_item
-      random_food = getRandomInt(0,6);
+      random_food = getRandomInt(0,8);
       while (random_food == food_item) {
-        random_food = getRandomInt(0,6);
+        random_food = getRandomInt(0,8);
       }
       prod_item.push(items[random_food]);
       var color2 = _.shuffle(prod_item[1].color)[0];
     }
 
-    random_food = getRandomInt(0,6);
+    random_food = getRandomInt(0,8);
     while (random_food == food_item) {
-      random_food = getRandomInt(0,6);
+      random_food = getRandomInt(0,8);
     }
     prod_item.push(items[random_food]);
     var color3 = _.shuffle(prod_item[2].color)[0];
@@ -498,7 +513,7 @@ function init() {
   }
 
   exp.prod_stims = [];
-  for (var food_item=0; food_item<6; food_item++) {
+  for (var food_item=0; food_item<8; food_item++) {
     for (var context_condition=0; context_condition<4; context_condition++) {
       exp.prod_stims.push(makeProdStim(food_item, context_condition));
     }
