@@ -39,7 +39,7 @@ function make_slides(f) {
       console.log('made it into exposure');
       
       // title that always tells participant which type of food they should look for
-      var tofind = "Please, collect all <strong><span id='thing_to_find'>{{}}</span>s</strong>!";
+      var tofind = "Collect all the <strong><span id='thing_to_find'>{{}}</span></strong> by dragging them into the basket!";
       $("#tofind").html(tofind);
 
       // array where all food items are saved in (to keep track of what we already have)
@@ -86,8 +86,6 @@ function make_slides(f) {
           },
           // enable autoScroll
           autoScroll: true,
-
-          snap: true,
 
           // call this function on every dragmove event
           onmove: dragMoveListener,
@@ -140,12 +138,15 @@ function make_slides(f) {
                         '#pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9, #pear10', 
                         /*'#pepper1, #pepper2, #pepper3, #pepper4, #pepper5, #pepper6, #pepper7, #pepper8, #pepper9',*/ 
                         '#tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9, #tomato10'];
-      var object_name = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
+      var acceptance_trial = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
+      var object_name = ['apples', 'bananas', 'carrots', 'oranges', 'pears', 'tomatoes'];
+      
 
       // enable draggables to be dropped into this
       function init_dropzone(target_count) {
         // keeps track of how many item from one food type have already been put into the basket
         target_total = 0;
+        var accepted_fruits = acceptance_trial[target_order[target_count]];
         // change the food type in the title according to accepted food type
         $('#thing_to_find').html(object_name[target_order[target_count]]);
         // change the basket (new label);
@@ -153,18 +154,15 @@ function make_slides(f) {
         // var updated_basket = '<img src="pictures/basket.png" style="height:80px;">';
         $('#basket').html(updated_basket);
 
-        // try out
-        function resetCoords(evt) {
-          evt.relatedTarget.style.left = "0px";
-          evt.relatedTarget.style.top = "0px";
-          evt.interaction.x = 0;
-          evt.interaction.y = 0;
-        }
-        // end of try out
 
         interact('.dropzone').dropzone({
           // only accept elements matching this CSS selecto
-          accept: acceptance[target_order[target_count]],
+          accept: ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9, #apple10,'+
+          ' #banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9, #banana10,'+
+          ' #carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9, #carrot10,'+
+          ' #orange1, #orange2, #orange3, #orange4, #orange5, #orange6, #orange7, #orange8, #orange9, #orange10,'+
+          ' #pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9, #pear10,'+
+          ' #tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9, #tomato10'],
           
           // Require a 20% element overlap for a drop to be possible
           overlap: 0.2,
@@ -177,51 +175,75 @@ function make_slides(f) {
             event.target.classList.add('drop-active');
           },
           ondragenter: function (event) {
-            // console.log("2");
             var draggableElement = event.relatedTarget,
                 dropzoneElement = event.target;
-            // console.log(acceptance[target_order[target_count]])
             // feedback the possibility of a drop
             dropzoneElement.classList.add('drop-target');
             draggableElement.classList.add('can-drop');
             // draggableElement.textContent = 'Put into basket';
           },
           ondragleave: function (event) {
-            // console.log("3");
             // remove the drop feedback style
             event.target.classList.remove('drop-target');
             event.relatedTarget.classList.remove('can-drop');
             // event.relatedTarget.textContent = 'Not in basket yet';
           },
           ondrop: function (event) {
-            // console.log("4");
-            event.relatedTarget.textContent = 'Dropped';
+            // console.log(event.relatedTarget.getAttribute('id'));
+            // event.relatedTarget.textContent = 'Dropped';
 
             // update the position attributes
             initial_position_x = event.relatedTarget.getAttribute('data-x');
             initial_position_y = event.relatedTarget.getAttribute('data-y');
 
-            event.relatedTarget.remove();
+            // var my_accept = false;
+            if (event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10') {
+              var nope = "";
+              $("#nope").html(nope);
+              event.relatedTarget.remove();
 
-            var current_id = $(event.relatedTarget).attr("id");
-            var shadow_id = current_id+"_shadow";
-            $("#"+shadow_id).css("display", "inline-block");
+              var current_id = $(event.relatedTarget).attr("id");
+              var shadow_id = current_id+"_shadow";
+              $("#"+shadow_id).css("display", "inline-block");
 
-            // new item of a food type was received
-            target_total++;
-            // if at least 9 items of one food type have been dropped
-            if (target_total >= 10) {
-              // and if this wasn't the last food type
-              if (target_count < 5) {
-                // restart this process and remember that one more type of food is already sorted
-                init_dropzone(target_count+1);
-              // if all items are sorted, switch to next slide
-              } else { exp.go() }
+              // new item of a food type was received
+              target_total++;
+              // if at least 9 items of one food type have been dropped
+              if (target_total >= 10) {
+                // and if this wasn't the last food type
+                if (target_count < 5) {
+                  // restart this process and remember that one more type of food is already sorted
+                  init_dropzone(target_count+1);
+                // if all items are sorted, switch to next slide
+                } else { exp.go() }
+              }
+            } else {
+              $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
+              $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
+              event.relatedTarget.setAttribute('data-x', 0);
+              event.relatedTarget.setAttribute('data-y', 0);
+              console.log("nope, that's not right; ondrop else");
+              var nope = "This is not the fruit we are looking for. There are some of them left. You can do it!";
+              $("#nope").html(nope);
+              // console.log("not accepted1")
             }
           },
           ondropdeactivate: function (event) {
-            // console.log("5");
+            // console.log("B");
+            $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
+            $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
+            event.relatedTarget.setAttribute('data-x', 0);
+            event.relatedTarget.setAttribute('data-y', 0);
 
+            if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
+              console.log("nope, that's not right; ondropdeactivate if");
+              var nope = "This is not the fruit we are looking for. There are some of them left. You can do it!";
+              $("#nope").html(nope);
+            } else {
+              console.log("that's right; ondropdeactivate else");
+              var nope = "";
+              $("#nope").html(nope);
+            }
             // remove active dropzone feedback
             event.target.classList.remove('drop-active');
             event.target.classList.remove('drop-target');
@@ -232,6 +254,13 @@ function make_slides(f) {
       // call function (necessary for recursive structure as 'accept' has to be updated)
       init_dropzone(0);
     },
+  });
+
+  slides.intro2 = slide({
+    name : "intro2",
+    button : function() {
+      exp.go();
+    }
   });
 
   slides.production = slide({
@@ -415,7 +444,7 @@ function init() {
       /*"color": ["green", "pink", "red"]*/
       "color": ["red", "pink"]
     }
-  ]).slice(0,6);
+  ]);
 
 
 
@@ -555,7 +584,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "intro", "exposure", "production", "objecttrial", 'subj_info', 'thanks'];
+  exp.structure=["i0", "intro", "exposure", "intro2", "production", "objecttrial", 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
@@ -578,6 +607,9 @@ function init() {
   });
 
   $("#agree_button").click(function() {
+    exp.go();
+  });
+  $("#agree_button2").click(function() {
     exp.go();
   });
 
