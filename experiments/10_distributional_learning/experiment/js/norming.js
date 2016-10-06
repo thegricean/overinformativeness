@@ -235,6 +235,7 @@ function make_slides(f) {
             event.relatedTarget.setAttribute('data-x', 0);
             event.relatedTarget.setAttribute('data-y', 0);
 
+            // also accept previous categories
             if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
               console.log("nope, that's not right; ondropdeactivate if");
               if (target_total == 9) {
