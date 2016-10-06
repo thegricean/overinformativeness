@@ -299,10 +299,23 @@ function make_slides(f) {
       } else {
         utterance = $("#utterance").val();
         console.log(utterance);
+        $('#utterance').val('');
         _stream.apply(this);
-        // stim.utterance = $("#utterance").val();
+        //stim.utterance = $("#utterance").val();
       }
     },
+    log_responses : function() {
+        exp.data_trials.push({
+          "label" : this.stim.label,
+          "slide_number_in_experiment" : exp.phase,
+          "item": this.stim.item,
+          "rt" : Date.now() - _s.trial_start,
+        "utterance" : this.stim.utterance,
+        "color": this.stim.color,
+        "size": this.stim.size,
+        "condition": this.stim.condition
+        });
+    }
   });
 
 
@@ -342,7 +355,7 @@ function make_slides(f) {
         exp.sliderPost = ui.value;
       });
     },
-    /*log_responses : function() {
+    log_responses : function() {
         exp.data_trials.push({
           "label" : this.stim.label,
           "slide_number_in_experiment" : exp.phase,
@@ -353,7 +366,7 @@ function make_slides(f) {
 	      "size": this.stim.size,
         "condition": this.stim.condition
         });
-    }*/
+    }
   });
 
 
