@@ -237,8 +237,14 @@ function make_slides(f) {
 
             if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
               console.log("nope, that's not right; ondropdeactivate if");
-              var nope = "This is not the fruit we are looking for. There are some of them left. You can do it!";
-              $("#nope").html(nope);
+              if (target_total == 9) {
+                var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
+                $("#nope").html(nope);
+              } else {
+                var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                $("#nope").html(nope);
+              }
+
             } else {
               console.log("that's right; ondropdeactivate else");
               var nope = "";
