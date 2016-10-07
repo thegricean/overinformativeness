@@ -39,7 +39,7 @@ function make_slides(f) {
       console.log('made it into exposure');
       
       // title that always tells participant which type of food they should look for
-      var tofind = "Collect all the <strong><span id='thing_to_find'>{{}}</span></strong> by dragging them into the basket!";
+      var tofind = "Daxy needs your help! Collect all the <strong><span id='thing_to_find'>{{}}</span></strong> by dragging them into the basket.";
       $("#tofind").html(tofind);
 
       // array where all food items are saved in (to keep track of what we already have)
@@ -236,20 +236,43 @@ function make_slides(f) {
             event.relatedTarget.setAttribute('data-y', 0);
 
             // also accept previous categories
-            if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
-              console.log("nope, that's not right; ondropdeactivate if");
-              if (target_total == 9) {
-                var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
-                $("#nope").html(nope);
+            if (target_count > 0) {
+              console.log("accepted_fruits");
+              console.log(accepted_fruits);
+              console.log("acceptance_trial[target_order[target_count-1]]");
+              console.log(acceptance_trial[target_order[target_count-1]]);
+              if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'1' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'2' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'3' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'4' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'5' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'6' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'7' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'8' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'9' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'10')) {
+                
+                console.log("nope, that's not right; ondropdeactivate if");
+                if (target_total == 9) {
+                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
+                  $("#nope").html(nope);
+                } else {
+                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                  $("#nope").html(nope);
+                }
+
               } else {
-                var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                console.log("that's right; ondropdeactivate else");
+                var nope = "";
                 $("#nope").html(nope);
               }
-
             } else {
-              console.log("that's right; ondropdeactivate else");
-              var nope = "";
-              $("#nope").html(nope);
+              if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
+                console.log("nope, that's not right; ondropdeactivate if");
+                if (target_total == 9) {
+                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
+                  $("#nope").html(nope);
+                } else {
+                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                  $("#nope").html(nope);
+                }
+
+              } else {
+                console.log("that's right; ondropdeactivate else");
+                var nope = "";
+                $("#nope").html(nope);
+              }
             }
             // remove active dropzone feedback
             event.target.classList.remove('drop-active');
@@ -277,7 +300,10 @@ function make_slides(f) {
       $(".err").hide();
     },
     present_handle: function(stim) {
+      this.trial_start = Date.now();
       console.log('made it into production');
+      console.log(stim);
+      this.stim = stim;
       
       /*// title that always tells participant which type of food they have to name
       var todescribe = "<strong>Which food item belongs in the <span id='thing_to_describe'>current</span> drawer?</strong> <br /> Type your answer in the field below and click 'Submit'.";
@@ -288,17 +314,27 @@ function make_slides(f) {
       var food2html = '<img src="pictures/'+stim.food2+'_'+stim.color2+'.png" style="height:90px;">';
       var food3html = '<img src="pictures/'+stim.food3+'_'+stim.color3+'.png" style="height:90px;">';
       shuffled_images = _.shuffle([food1html, food2html, food3html]);
+
+      var target_pos = shuffled_images.indexOf(food1html);
+      this.stim.target_pos = target_pos;
+      var dist1_pos = shuffled_images.indexOf(food2html);
+      this.stim.dist1_pos = dist1_pos;
+      var dist2_pos = shuffled_images.indexOf(food3html);
+      this.stim.dist2_pos = dist2_pos;
+
       // console.log(stim.food1, stim.color1);
       $("#food1").html(shuffled_images[0]);
       $("#food2").html(shuffled_images[1]);
       $("#food3").html(shuffled_images[2]);
 
     },
-    button : function() {
+    button : function() {   
       if ($("#utterance").val().length < 3) {
         $(".err").show();
       } else {
-        utterance = $("#utterance").val();
+        var utterance = $("#utterance").val();
+        this.stim.utterance = utterance;
+        this.log_responses();
         console.log(utterance);
         $('#utterance').val('');
         _stream.apply(this);
@@ -306,15 +342,21 @@ function make_slides(f) {
       }
     },
     log_responses : function() {
+      console.log(this.stim);
         exp.data_trials.push({
-          "label" : this.stim.label,
+          "target_item" : this.stim.food1,
+          "target_color" : this.stim.color1,
+          "dist1_item" : this.stim.food2,
+          "dist1_color" : this.stim.color2,
+          "dist2_item" : this.stim.food3,
+          "dist2_color" : this.stim.color3,
+          "target_pos" : this.stim.target_pos,
+          "dist1_pos" : this.stim.dist1_pos,
+          "dist2_pos" : this.stim.dist2_pos,
           "slide_number_in_experiment" : exp.phase,
-          "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
-        "utterance" : this.stim.utterance,
-        "color": this.stim.color,
-        "size": this.stim.size,
-        "condition": this.stim.condition
+          "utterance" : this.stim.utterance,
+          "condition" : this.stim.condition
         });
     }
   });
@@ -323,7 +365,7 @@ function make_slides(f) {
 
   slides.objecttrial = slide({
     name : "objecttrial",
-    present : exp.all_stims,
+    present : exp.ot_expos,
     start : function() {
 	    $(".err").hide();
     },
@@ -335,7 +377,7 @@ function make_slides(f) {
   	  this.stim = stim;
 
     	// How typical is this color for this object?
-      var contextsentence = "How typical is this for <strong>"+stim.label+"</strong>?";
+      var contextsentence = "How typical is this color for this object??";
     	var objimagehtml = '<img src="pictures/'+stim.item+'_'+stim.color+'.png" style="height:190px;">';
 
     	$("#contextsentence").html(contextsentence);
@@ -500,6 +542,29 @@ function init() {
     }
   }
 
+  function makeOtExpo(i) {
+    //get item
+    var item = items[i];
+    var item_id = item.item;
+    if (k==0) {
+      var color = item.color[0];
+    } else {
+      var color = item.color[1];
+    }
+    label = item.label;
+    return {
+      "item": item_id,
+      "label": label,
+      "color": color,  
+    }
+  }
+
+  exp.ot_expos = [];
+  for (var k=0; k<2; k++) {
+    for (var i=0; i<6; i++) {
+      exp.ot_expos.push(makeOtExpo(i));
+    }
+  }
 
 
   function makeStim(i) {
@@ -544,7 +609,9 @@ function init() {
     }
     
     // need to have one (a)typical item in overinformative and one in only informative context
+    var condition = "";
     if (context_condition==0 || context_condition==1) {
+      condition = "informative";
       prod_item.push(items[food_item]);
       // console.log("informative trial");
       if (context_condition==0) {
@@ -554,6 +621,7 @@ function init() {
         var color2 = (prod_item[1].color)[0];
       }
     } else {
+      condition = "overinformative";
       // console.log("overinformative trial");
       // random_food can be anything except for food_item
       while (random_food_1 == food_item) {
@@ -577,7 +645,8 @@ function init() {
     "food3": prod_item[2].item,
     "color1": color1,
     "color2": color2,
-    "color3": color3
+    "color3": color3,
+    "condition": condition
     }
   }
 
@@ -588,7 +657,7 @@ function init() {
     }
   }
   exp.prod_stims = _.shuffle(exp.prod_stims);
-
+  exp.ot_expos = _.shuffle(exp.ot_expos);
 
 
 	console.log(exp.all_stims);
