@@ -347,7 +347,7 @@ function make_slides(f) {
           "dist2_pos" : this.stim.dist2_pos,
           "slide_number_in_experiment" : exp.phase,
           "rt" : Date.now() - _s.trial_start,
-          "utterance" : this.stim.utterance,
+          "response" : this.stim.utterance,
           "condition" : this.stim.condition
         });
     }
@@ -671,7 +671,7 @@ function init() {
   //make corresponding slides:
   exp.slides = make_slides(exp);
 
-  exp.nQs = utils.get_exp_length(); //this does not work if there are stacks of stims (but does work for an experiment with this structure)
+  exp.nQs = 41;//utils.get_exp_length(); //this does not work if there are stacks of stims (but does work for an experiment with this structure)
                     //relies on structure and slides being defined
   $(".nQs").html(exp.nQs);
 
