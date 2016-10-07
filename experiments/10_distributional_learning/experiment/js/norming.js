@@ -245,10 +245,10 @@ function make_slides(f) {
                 
                 console.log("nope, that's not right; ondropdeactivate if");
                 if (target_total == 9) {
-                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
+                  var nope = "Oops! There is 1 "+ acceptance_trial[target_order[target_count]] + " left -- make sure to collect this one, too!";
                   $("#nope").html(nope);
                 } else {
-                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                  var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
                   $("#nope").html(nope);
                 }
 
@@ -261,10 +261,10 @@ function make_slides(f) {
               if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
                 console.log("nope, that's not right; ondropdeactivate if");
                 if (target_total == 9) {
-                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There is only 1 left. You can do it!";
+                  var nope = "Oops! There is 1 "+ acceptance_trial[target_order[target_count]] + " left -- make sure to collect this one, too!";
                   $("#nope").html(nope);
                 } else {
-                  var nope = "You have to move "+ object_name[target_order[target_count]] + " now. There are " + (10-target_total) + " of them left.";
+                  var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
                   $("#nope").html(nope);
                 }
 
@@ -377,7 +377,7 @@ function make_slides(f) {
   	  this.stim = stim;
 
     	// How typical is this color for this object?
-      var contextsentence = "How typical is this color for this object??";
+      var contextsentence = "How typical is this color for this object (on Daxy's planet)?";
     	var objimagehtml = '<img src="pictures/'+stim.item+'_'+stim.color+'.png" style="height:190px;">';
 
     	$("#contextsentence").html(contextsentence);
