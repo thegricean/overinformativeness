@@ -32,6 +32,8 @@ function make_slides(f) {
     }
   });
 
+  // exposure phase introducing the participant to the distribution of colors in fruits
+  // achieved by drag and drop task
   slides.exposure = slide({
     name: "exposure",
     present : exp.all_expos,
@@ -67,13 +69,8 @@ function make_slides(f) {
       var objimagehtml = '<img src="pictures/'+stim.label+'_'+stim.color+'.png" style="height:50px;">';
       $("#"+stim.label+10).html(objimagehtml);
 
-      //
+
       // DRAGGING AND DROPPING
-      //
-
-      var initial_position_x;
-      var initial_position_y;
-
       // target elements with the "draggable" class
       interact('.draggable').draggable({
           // enable inertial throwing
@@ -129,34 +126,26 @@ function make_slides(f) {
 
       // to randomly choose the accepted type of food 
       var target_order = _.shuffle([0,1,2,3,4,5]);
-      var acceptance = ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9, #apple10', 
-                        /*'#avocado1, #avocado2, #avocado3, #avocado4, #avocado5, #avocado6, #avocado7, #avocado8, #avocado9',*/ 
-                        '#banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9, #banana10', 
-                        '#carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9, #carrot10', 
-                        /*'#lollipop1, #lollipop2, #lollipop3, #lollipop4, #lollipop5, #lollipop6, #lollipop7, #lollipop8, #lollipop9',*/ 
-                        '#orange1, #orange2, #orange3, #orange4, #orange5, #orange6, #orange7, #orange8, #orange9, #orange10', 
-                        '#pear1, #pear2, #pear3, #pear4, #pear5, #pear6, #pear7, #pear8, #pear9, #pear10', 
-                        /*'#pepper1, #pepper2, #pepper3, #pepper4, #pepper5, #pepper6, #pepper7, #pepper8, #pepper9',*/ 
-                        '#tomato1, #tomato2, #tomato3, #tomato4, #tomato5, #tomato6, #tomato7, #tomato8, #tomato9, #tomato10'];
-      var acceptance_trial = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
+      var acceptance = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
       var object_name = ['apples', 'bananas', 'carrots', 'oranges', 'pears', 'tomatoes'];
       
 
       // enable draggables to be dropped into this
+      // target_count: how many types of fruits were already sorted 
       function init_dropzone(target_count) {
         // keeps track of how many item from one food type have already been put into the basket
         target_total = 0;
-        var accepted_fruits = acceptance_trial[target_order[target_count]];
-        // change the food type in the title according to accepted food type
+        // type of fruit that is the target now (needs to be dragged)
+        var accepted_fruits = acceptance[target_order[target_count]];
+        // change the food type in the title according to accepted food type/ target
         $('#thing_to_find').html(object_name[target_order[target_count]]);
         // change the basket (new label);
         var updated_basket = '<img src="pictures/basket_'+object_name[target_order[target_count]]+'.png" style="height:100px;">';
-        // var updated_basket = '<img src="pictures/basket.png" style="height:80px;">';
         $('#basket').html(updated_basket);
 
 
         interact('.dropzone').dropzone({
-          // only accept elements matching this CSS selecto
+          // in general, accept all items that need to be dragged at some point
           accept: ['#apple1, #apple2, #apple3, #apple4, #apple5, #apple6, #apple7, #apple8, #apple9, #apple10,'+
           ' #banana1, #banana2, #banana3, #banana4, #banana5, #banana6, #banana7, #banana8, #banana9, #banana10,'+
           ' #carrot1, #carrot2, #carrot3, #carrot4, #carrot5, #carrot6, #carrot7, #carrot8, #carrot9, #carrot10,'+
@@ -170,7 +159,6 @@ function make_slides(f) {
           // listen for drop related events:
 
           ondropactivate: function (event) {
-            // console.log("1");
             // add active dropzone feedback
             event.target.classList.add('drop-active');
           },
@@ -188,25 +176,28 @@ function make_slides(f) {
             event.relatedTarget.classList.remove('can-drop');
             // event.relatedTarget.textContent = 'Not in basket yet';
           },
+          // called, when an object is dragged and dropped onto the dropzone
           ondrop: function (event) {
-            // console.log(event.relatedTarget.getAttribute('id'));
-            // event.relatedTarget.textContent = 'Dropped';
-
             // update the position attributes
             initial_position_x = event.relatedTarget.getAttribute('data-x');
             initial_position_y = event.relatedTarget.getAttribute('data-y');
 
-            // var my_accept = false;
-            if (event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10') {
+            // label of the dragged object (e.g., apple7)
+            var current_object = event.relatedTarget.getAttribute('id');
+            // if current_object is in fact one that is currently looked for to be dragged in the dropzone
+            if (current_object == accepted_fruits+'1' || current_object == accepted_fruits+'2' || current_object == accepted_fruits+'3' ||current_object == accepted_fruits+'4' || current_object == accepted_fruits+'5' || current_object == accepted_fruits+'6' || current_object == accepted_fruits+'7' || current_object == accepted_fruits+'8' || current_object == accepted_fruits+'9' || current_object == accepted_fruits+'10') {
+              // make sure that no error message is shown
               var nope = "";
               $("#nope").html(nope);
+              // remove this object ("falls into basket")
               event.relatedTarget.remove();
 
+              // on original position of fruit item, a placeholder appears to avoid movement of the other remaining items
               var current_id = $(event.relatedTarget).attr("id");
               var shadow_id = current_id+"_shadow";
               $("#"+shadow_id).css("display", "inline-block");
 
-              // new item of a food type was received
+              // new item of a food type was received -> add 1 to target_total
               target_total++;
               // if at least 9 items of one food type have been dropped
               if (target_total >= 10) {
@@ -217,35 +208,36 @@ function make_slides(f) {
                 // if all items are sorted, switch to next slide
                 } else { exp.go() }
               }
-            } else {
-              $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
-              $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
-              event.relatedTarget.setAttribute('data-x', 0);
-              event.relatedTarget.setAttribute('data-y', 0);
-              console.log("nope, that's not right; ondrop else");
-              var nope = "This is not the fruit we are looking for. There are some of them left. You can do it!";
-              $("#nope").html(nope);
-              // console.log("not accepted1")
             }
           },
+          // called, when an object is dragged and dropped to space that is not a dropzone
           ondropdeactivate: function (event) {
-            // console.log("B");
+            // reset to original position
             $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
             $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
             event.relatedTarget.setAttribute('data-x', 0);
             event.relatedTarget.setAttribute('data-y', 0);
 
-            // also accept previous categories
+            // label of the dragged object (e.g., apple7)
+            var current_object = event.relatedTarget.getAttribute('id');
+            // fruit type that was previously accepted (to avoid error message from occuring when fruit type changes)
+            var prev_accepted_fruits = acceptance[target_order[target_count-1]];
+            // for all cases after the first fruit type has been collected
             if (target_count > 0) {
-              console.log("accepted_fruits");
-              console.log(accepted_fruits);
-              console.log("acceptance_trial[target_order[target_count-1]]");
-              console.log(acceptance_trial[target_order[target_count-1]]);
-              if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'1' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'2' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'3' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'4' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'5' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'6' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'7' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'8' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'9' || event.relatedTarget.getAttribute('id') == acceptance_trial[target_order[target_count-1]]+'10')) {
-                
+              // additionally to resetting position, give out error message if it wasn't the right fruit
+              if (!(current_object == accepted_fruits+'1' || current_object == accepted_fruits+'2' || 
+                current_object == accepted_fruits+'3' || current_object == accepted_fruits+'4' || 
+                current_object == accepted_fruits+'5' || current_object == accepted_fruits+'6' || 
+                current_object == accepted_fruits+'7' || current_object == accepted_fruits+'8' || 
+                current_object == accepted_fruits+'9' || current_object == accepted_fruits+'10' || 
+                current_object == prev_accepted_fruits+'1' || current_object == prev_accepted_fruits+'2' || 
+                current_object == prev_accepted_fruits+'3' || current_object == prev_accepted_fruits+'4' || 
+                current_object == prev_accepted_fruits+'5' || current_object == prev_accepted_fruits+'6' || 
+                current_object == prev_accepted_fruits+'7' || current_object == prev_accepted_fruits+'8' || 
+                current_object == prev_accepted_fruits+'9' || current_object == prev_accepted_fruits+'10')) {
                 console.log("nope, that's not right; ondropdeactivate if");
                 if (target_total == 9) {
-                  var nope = "Oops! There is 1 "+ acceptance_trial[target_order[target_count]] + " left -- make sure to collect this one, too!";
+                  var nope = "Oops! There is 1 "+ acceptance[target_order[target_count]] + " left -- make sure to collect this one, too!";
                   $("#nope").html(nope);
                 } else {
                   var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
@@ -257,11 +249,12 @@ function make_slides(f) {
                 var nope = "";
                 $("#nope").html(nope);
               }
+            // for first fruit type
             } else {
-              if (!(event.relatedTarget.getAttribute('id') == accepted_fruits+'1' || event.relatedTarget.getAttribute('id') == accepted_fruits+'2' || event.relatedTarget.getAttribute('id') == accepted_fruits+'3' || event.relatedTarget.getAttribute('id') == accepted_fruits+'4' || event.relatedTarget.getAttribute('id') == accepted_fruits+'5' || event.relatedTarget.getAttribute('id') == accepted_fruits+'6' || event.relatedTarget.getAttribute('id') == accepted_fruits+'7' || event.relatedTarget.getAttribute('id') == accepted_fruits+'8' || event.relatedTarget.getAttribute('id') == accepted_fruits+'9' || event.relatedTarget.getAttribute('id') == accepted_fruits+'10')) {
+              if (!(current_object == accepted_fruits+'1' || current_object == accepted_fruits+'2' || current_object == accepted_fruits+'3' ||current_object == accepted_fruits+'4' || current_object == accepted_fruits+'5' || current_object == accepted_fruits+'6' || current_object == accepted_fruits+'7' || current_object == accepted_fruits+'8' || current_object == accepted_fruits+'9' || current_object == accepted_fruits+'10')) {
                 console.log("nope, that's not right; ondropdeactivate if");
                 if (target_total == 9) {
-                  var nope = "Oops! There is 1 "+ acceptance_trial[target_order[target_count]] + " left -- make sure to collect this one, too!";
+                  var nope = "Oops! There is 1 "+ acceptance[target_order[target_count]] + " left -- make sure to collect this one, too!";
                   $("#nope").html(nope);
                 } else {
                   var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
@@ -277,7 +270,6 @@ function make_slides(f) {
             // remove active dropzone feedback
             event.target.classList.remove('drop-active');
             event.target.classList.remove('drop-target');
-
           }
         });
       }
@@ -300,21 +292,20 @@ function make_slides(f) {
       $(".err").hide();
     },
     present_handle: function(stim) {
+      // to measure response time
       this.trial_start = Date.now();
+      this.stim = stim;
       console.log('made it into production');
       console.log(stim);
-      this.stim = stim;
-      
-      /*// title that always tells participant which type of food they have to name
-      var todescribe = "<strong>Which food item belongs in the <span id='thing_to_describe'>current</span> drawer?</strong> <br /> Type your answer in the field below and click 'Submit'.";
-      $("#todescribe").html(todescribe);*/
 
       // food1 and color1 is target
+      // the other two are context
       var food1html = '<img src="pictures/target_'+stim.food1+'_'+stim.color1+'.png" style="height:90px;">';
       var food2html = '<img src="pictures/'+stim.food2+'_'+stim.color2+'.png" style="height:90px;">';
       var food3html = '<img src="pictures/'+stim.food3+'_'+stim.color3+'.png" style="height:90px;">';
       shuffled_images = _.shuffle([food1html, food2html, food3html]);
 
+      // to log position of objects
       var target_pos = shuffled_images.indexOf(food1html);
       this.stim.target_pos = target_pos;
       var dist1_pos = shuffled_images.indexOf(food2html);
@@ -322,23 +313,24 @@ function make_slides(f) {
       var dist2_pos = shuffled_images.indexOf(food3html);
       this.stim.dist2_pos = dist2_pos;
 
-      // console.log(stim.food1, stim.color1);
+      // jquery pictures to html
       $("#food1").html(shuffled_images[0]);
       $("#food2").html(shuffled_images[1]);
       $("#food3").html(shuffled_images[2]);
 
     },
     button : function() {   
+      // assume that it's not a valid utterance when it's shorter than 3 letters
       if ($("#utterance").val().length < 3) {
         $(".err").show();
       } else {
+        // otherwise log the utterance and show next stimulus
         var utterance = $("#utterance").val();
         this.stim.utterance = utterance;
         this.log_responses();
         console.log(utterance);
         $('#utterance').val('');
         _stream.apply(this);
-        //stim.utterance = $("#utterance").val();
       }
     },
     log_responses : function() {
@@ -370,21 +362,23 @@ function make_slides(f) {
 	    $(".err").hide();
     },
     present_handle : function(stim) {
+      // to measure response time
     	this.trial_start = Date.now();
+      this.stim = stim;
+      this.init_sliders();
       console.log('made it into a new trial');
-    	this.init_sliders();
       exp.sliderPost = {};
-  	  this.stim = stim;
 
     	// How typical is this color for this object?
       var contextsentence = "How typical is this color for this object (on Daxy's planet)?";
     	var objimagehtml = '<img src="pictures/'+stim.item+'_'+stim.color+'.png" style="height:190px;">';
-
     	$("#contextsentence").html(contextsentence);
     	$("#objectimage").html(objimagehtml);
-    	  console.log(this);
+
+    	console.log(this);
 	  },
 	  button : function() {
+      // if slider was set, log response and switch to next stimulus
 	    if (exp.sliderPost > -1 && exp.sliderPost < 16) {
         $(".err").hide();
         this.log_responses();
