@@ -387,7 +387,7 @@ function make_slides(f) {
 	  button : function() {
 	    if (exp.sliderPost > -1 && exp.sliderPost < 16) {
         $(".err").hide();
-        // this.log_responses();
+        this.log_responses();
         _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       } else {
         $(".err").show();
@@ -406,8 +406,6 @@ function make_slides(f) {
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost,
 	      "color": this.stim.color,
-	      "size": this.stim.size,
-        "condition": this.stim.condition
         });
     }
   });
