@@ -276,6 +276,24 @@ function make_slides(f) {
       // call function (necessary for recursive structure as 'accept' has to be updated)
       init_dropzone(0);
     },
+/*    log_responses : function() {
+      console.log(this.stim);
+        exp.data_trials.push({
+          "target_item" : this.stim.food1,
+          "target_color" : this.stim.color1,
+          "dist1_item" : this.stim.food2,
+          "dist1_color" : this.stim.color2,
+          "dist2_item" : this.stim.food3,
+          "dist2_color" : this.stim.color3,
+          "target_pos" : this.stim.target_pos,
+          "dist1_pos" : this.stim.dist1_pos,
+          "dist2_pos" : this.stim.dist2_pos,
+          "slide_number_in_experiment" : exp.phase,
+          "rt" : Date.now() - _s.trial_start,
+          "response" : this.stim.utterance,
+          "condition" : this.stim.condition
+        });
+    }*/
   });
 
   slides.intro2 = slide({
@@ -353,7 +371,12 @@ function make_slides(f) {
     }
   });
 
-
+  slides.intro3 = slide({
+    name : "intro3",
+    button : function() {
+      exp.go();
+    }
+  });
 
   slides.objecttrial = slide({
     name : "objecttrial",
@@ -376,6 +399,23 @@ function make_slides(f) {
     	$("#objectimage").html(objimagehtml);
 
     	console.log(this);
+
+      function proportionAnalysis(label, color) {
+        for (var l=0; l<exp.all_expos.length; l++) {
+          if (exp.all_expos[l].label == label && exp.all_expos[l].color == color) {
+            if (!(exp.all_expos[l].proportion == "50/50")) {
+              return "100";
+            } else {
+              return "50";
+            }
+          }
+        }
+        return "0";
+      }
+
+      var proportion = proportionAnalysis(this.stim.label, this.stim.color);
+      this.stim.proportion = proportion;
+
 	  },
 	  button : function() {
       // if slider was set, log response and switch to next stimulus
@@ -398,8 +438,9 @@ function make_slides(f) {
           "slide_number_in_experiment" : exp.phase,
           "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
-	      "response" : exp.sliderPost,
-	      "color": this.stim.color,
+  	      "response" : exp.sliderPost,
+  	      "color": this.stim.color,
+          "proportion": this.stim.proportion
         });
     }
   });
@@ -506,13 +547,17 @@ function init() {
     //get item
     var item = items[i];
     var item_id = item.item;
+    var proportion;
     if (i<2) {
       var color = item.color[0];
+      proportion = "100% typical";
     }
     else if (i>=2 && i<4) {
       var color = item.color[1];
+      proportion = "100% atypical";
     }
     else {
+      proportion = "50/50";
       if (k<5) {
         var color = item.color[0];
       } else {
@@ -524,6 +569,7 @@ function init() {
       "item": item_id,
       "label": label,
       "color": color,  
+      "proportion": proportion
     }
   }
 
@@ -665,7 +711,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "intro", "exposure", "intro2", "production", "objecttrial", 'subj_info', 'thanks'];
+  exp.structure=["i0", "intro", "exposure", "intro2", "production", "intro3", "objecttrial", 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
@@ -691,6 +737,9 @@ function init() {
     exp.go();
   });
   $("#agree_button2").click(function() {
+    exp.go();
+  });
+  $("#agree_button3").click(function() {
     exp.go();
   });
 
