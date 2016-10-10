@@ -127,6 +127,9 @@ function make_slides(f) {
       var target_order = _.shuffle([0,1,2,3,4,5]);
       var acceptance = ['apple', 'banana', 'carrot', 'orange', 'pear', 'tomato'];
       var object_name = ['apples', 'bananas', 'carrots', 'oranges', 'pears', 'tomatoes'];
+      for (var i=0; i<target_order.length; i++) {
+        exp.exposure_order.push(acceptance[target_order[i]]);
+      }
       
 
       // enable draggables to be dropped into this
@@ -317,9 +320,9 @@ function make_slides(f) {
 
       // food1 and color1 is target
       // the other two are context
-      var food1html = '<img src="pictures/target_'+stim.food1+'_'+stim.color1+'.png" style="height:90px;">';
-      var food2html = '<img src="pictures/'+stim.food2+'_'+stim.color2+'.png" style="height:90px;">';
-      var food3html = '<img src="pictures/'+stim.food3+'_'+stim.color3+'.png" style="height:90px;">';
+      var food1html = '<img src="pictures/target_'+stim.food1+'_'+stim.color1+'.png" style="height:110px;">';
+      var food2html = '<img src="pictures/'+stim.food2+'_'+stim.color2+'.png" style="height:110px;">';
+      var food3html = '<img src="pictures/'+stim.food3+'_'+stim.color3+'.png" style="height:110px;">';
       shuffled_images = _.shuffle([food1html, food2html, food3html]);
 
       // to log position of objects
@@ -415,6 +418,11 @@ function make_slides(f) {
       var proportion = proportionAnalysis(this.stim.label, this.stim.color);
       this.stim.proportion = proportion;
 
+      var position_in_exposure = exp.exposure_order.indexOf(stim.label) + 1;
+      this.stim.position_in_exposure = position_in_exposure;
+      console.log(exp.exposure_order);
+      console.log(position_in_exposure);
+
 	  },
 	  button : function() {
       // if slider was set, log response and switch to next stimulus
@@ -438,7 +446,8 @@ function make_slides(f) {
           "rt" : Date.now() - _s.trial_start,
   	      "response" : exp.sliderPost,
   	      "color": this.stim.color,
-          "proportion": this.stim.proportion
+          "proportion": this.stim.proportion,
+          "position_in_exposure": this.stim.position_in_exposure
         });
     }
   });
@@ -700,6 +709,7 @@ function init() {
   exp.trials = [];
   exp.catch_trials = [];
   exp.condition = {}; //can randomize between subject conditions here
+  exp.exposure_order = [];
   exp.system = {
       Browser : BrowserDetect.browser,
       OS : BrowserDetect.OS,
