@@ -38,7 +38,6 @@ function make_slides(f) {
     name: "exposure",
     present : exp.all_expos,
     present_handle : function(stim) {
-      console.log('made it into exposure');
       
       // title that always tells participant which type of food they should look for
       var tofind = "Daxy needs your help! Collect all the <strong><span id='thing_to_find'>{{}}</span></strong> by dragging them into the basket.";
@@ -434,7 +433,6 @@ function make_slides(f) {
     },
     log_responses : function() {
         exp.data_trials.push({
-          "label" : this.stim.label,
           "slide_number_in_experiment" : exp.phase,
           "item": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
