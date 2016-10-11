@@ -16,6 +16,10 @@ function startsWith(str, substrings) {
 }
 
 function make_slides(f) {
+  preload(
+    ["pictures/apple_blue.png","pictures/apple_green.png","pictures/apple_red.png","pictures/apple_yellow.png","pictures/avocado_black.png","pictures/avocado_green.png","pictures/avocado_red.png","pictures/banana_blue.png","pictures/banana_brown.png","pictures/banana_yellow.png","pictures/basket.png","pictures/basket_apples.png","pictures/basket_avocados.png","pictures/basket_bananas.png","pictures/basket_carrots.png","pictures/basket_label.png","pictures/basket_lollipops.png","pictures/basket_oranges.png","pictures/basket_pears.png","pictures/basket_pepper.png","pictures/basket_tomatoes.png","pictures/carrot_blue.png","pictures/carrot_orange.png","pictures/carrot_pink.png","pictures/carrot_purple.png","pictures/cucumber_blue.png","pictures/cucumber_green.png","pictures/cucumber_yellow.png","pictures/cupboard.png","pictures/cute-alien-2.png","pictures/cute-alien-3.png","pictures/cute-alien.png","pictures/frame_brown.png","pictures/gimp_fruits","pictures/letter.png","pictures/lollipop_colored.png","pictures/mauszeiger.png","pictures/onion_blue.png","pictures/onion_grey.png","pictures/onion_yellowish.png","pictures/orange_green.png","pictures/orange_orange.png","pictures/orange_purple.png","pictures/papyrus.jpeg","pictures/pear_green.png","pictures/pear_orange.png","pictures/pear_yellow.png","pictures/pepper_green.png","pictures/pepper_orange.png","pictures/pepper_red.png","pictures/production_example.png","pictures/rocket-2.png","pictures/rocket.png","pictures/strawberry_blue.png","pictures/strawberry_red.png","pictures/sweets.jpg","pictures/target_apple_blue.png","pictures/target_apple_green.png","pictures/target_apple_red.png","pictures/target_apple_yellow.png","pictures/target_avocado_black.png","pictures/target_avocado_green.png","pictures/target_avocado_red.png","pictures/target_banana_blue.png","pictures/target_banana_brown.png","pictures/target_banana_yellow.png","pictures/target_carrot_orange.png","pictures/target_carrot_pink.png","pictures/target_carrot_purple.png","pictures/target_lollipop_colored.png","pictures/target_orange_green.png","pictures/target_orange_orange.png","pictures/target_orange_purple.png","pictures/target_pear_green.png","pictures/target_pear_orange.png","pictures/target_pear_yellow.png","pictures/target_pepper_green.png","pictures/target_pepper_orange.png","pictures/target_pepper_red.png","pictures/target_tomato_green.png","pictures/target_tomato_pink.png","pictures/target_tomato_red.png","pictures/tomato_green.png","pictures/tomato_pink.png","pictures/tomato_red.png"], 
+    {after: function() {console.log("all images loaded")}}
+  );
   var   slides = {};
 
   slides.i0 = slide({
@@ -211,14 +215,6 @@ function make_slides(f) {
                 } else { exp.go() }
               }
             }
-          },
-          // called, when an object is dragged and dropped to space that is not a dropzone
-          ondropdeactivate: function (event) {
-            // reset to original position
-            $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
-            $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
-            event.relatedTarget.setAttribute('data-x', 0);
-            event.relatedTarget.setAttribute('data-y', 0);
 
             // label of the dragged object (e.g., apple7)
             var current_object = event.relatedTarget.getAttribute('id');
@@ -269,6 +265,65 @@ function make_slides(f) {
                 $("#nope").html(nope);
               }
             }
+
+          },
+          // called, when an object is dragged and dropped to space that is not a dropzone
+          ondropdeactivate: function (event) {
+            // reset to original position
+            $(event.relatedTarget).css('transform', 'translate(0px, 0px)');
+            $(event.relatedTarget).css('webkitTransform', 'translate(0px, 0px)');
+            event.relatedTarget.setAttribute('data-x', 0);
+            event.relatedTarget.setAttribute('data-y', 0);
+
+            // label of the dragged object (e.g., apple7)
+            var current_object = event.relatedTarget.getAttribute('id');
+            // fruit type that was previously accepted (to avoid error message from occuring when fruit type changes)
+            var prev_accepted_fruits = acceptance[target_order[target_count-1]];
+            // for all cases after the first fruit type has been collected
+            if (target_count > 0) {
+              // additionally to resetting position, give out error message if it wasn't the right fruit
+              if (!(current_object == accepted_fruits+'1' || current_object == accepted_fruits+'2' || 
+                current_object == accepted_fruits+'3' || current_object == accepted_fruits+'4' || 
+                current_object == accepted_fruits+'5' || current_object == accepted_fruits+'6' || 
+                current_object == accepted_fruits+'7' || current_object == accepted_fruits+'8' || 
+                current_object == accepted_fruits+'9' || current_object == accepted_fruits+'10' || 
+                current_object == prev_accepted_fruits+'1' || current_object == prev_accepted_fruits+'2' || 
+                current_object == prev_accepted_fruits+'3' || current_object == prev_accepted_fruits+'4' || 
+                current_object == prev_accepted_fruits+'5' || current_object == prev_accepted_fruits+'6' || 
+                current_object == prev_accepted_fruits+'7' || current_object == prev_accepted_fruits+'8' || 
+                current_object == prev_accepted_fruits+'9' || current_object == prev_accepted_fruits+'10')) {
+
+                console.log("bla");
+                /*if (target_total == 9) {
+                  var nope = "Oops! There is 1 "+ acceptance[target_order[target_count]] + " left -- make sure to collect this one, too!";
+                  $("#nope").html(nope);
+                } else {
+                  var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
+                  $("#nope").html(nope);
+                }
+*/
+              } else {
+                var nope = "";
+                $("#nope").html(nope);
+              }
+            // for first fruit type
+            } else {
+              if (!(current_object == accepted_fruits+'1' || current_object == accepted_fruits+'2' || current_object == accepted_fruits+'3' ||current_object == accepted_fruits+'4' || current_object == accepted_fruits+'5' || current_object == accepted_fruits+'6' || current_object == accepted_fruits+'7' || current_object == accepted_fruits+'8' || current_object == accepted_fruits+'9' || current_object == accepted_fruits+'10')) {
+                /*
+                if (target_total == 9) {
+                  var nope = "Oops! There is 1 "+ acceptance[target_order[target_count]] + " left -- make sure to collect this one, too!";
+                  $("#nope").html(nope);
+                } else {
+                  var nope = "Oops! There are " + (10-target_total) + " " + object_name[target_order[target_count]] + " left -- make sure to collect them all!";
+                  $("#nope").html(nope);
+                }*/
+                console.log("2ndbla");
+
+              } else {
+                var nope = "";
+                $("#nope").html(nope);
+              }
+            }
             // remove active dropzone feedback
             event.target.classList.remove('drop-active');
             event.target.classList.remove('drop-target');
@@ -278,24 +333,6 @@ function make_slides(f) {
       // call function (necessary for recursive structure as 'accept' has to be updated)
       init_dropzone(0);
     },
-/*    log_responses : function() {
-      console.log(this.stim);
-        exp.data_trials.push({
-          "target_item" : this.stim.food1,
-          "target_color" : this.stim.color1,
-          "dist1_item" : this.stim.food2,
-          "dist1_color" : this.stim.color2,
-          "dist2_item" : this.stim.food3,
-          "dist2_color" : this.stim.color3,
-          "target_pos" : this.stim.target_pos,
-          "dist1_pos" : this.stim.dist1_pos,
-          "dist2_pos" : this.stim.dist2_pos,
-          "slide_number_in_experiment" : exp.phase,
-          "rt" : Date.now() - _s.trial_start,
-          "response" : this.stim.utterance,
-          "condition" : this.stim.condition
-        });
-    }*/
   });
 
   slides.intro2 = slide({
@@ -337,6 +374,11 @@ function make_slides(f) {
       $("#food1").html(shuffled_images[0]);
       $("#food2").html(shuffled_images[1]);
       $("#food3").html(shuffled_images[2]);
+
+      // automatically activate text field (no clicking into it is necessary)
+      $(function() {
+        $("#utterance").focus();
+      });
 
     },
     button : function() {   
@@ -395,7 +437,7 @@ function make_slides(f) {
       exp.sliderPost = {};
 
     	// How typical is this color for this object?
-      var contextsentence = "How typical is this color for this object?";
+      var contextsentence = "How typical is this color for this object on Daxy's planet?";
     	var objimagehtml = '<img src="pictures/'+stim.item+'_'+stim.color+'.png" style="height:190px;">';
     	$("#contextsentence").html(contextsentence);
     	$("#objectimage").html(objimagehtml);

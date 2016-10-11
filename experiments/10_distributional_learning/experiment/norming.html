@@ -224,11 +224,22 @@
       	  <td id="food3"></td></tr>
     </table>
 
-  	<p>Tell Daxy which food item you want next.</p>
-  	<textarea id='utterance'></textarea>
+  	<p>Tell Daxy which food item you need next.</p>
+  	<textarea id='utterance' onkeypress="handle(event)"></textarea>
+
+    <script>
+    // enables that pressing enter submits answer 
+    function handle(e){
+        if(e.keyCode === 13){
+          // switch to next trial
+            _s.button(); 
+        }
+    }
+    </script>
+
     <p></br></p>
   	<button onclick="_s.button()">Submit</button>
-  	<div class="err">Oops, not so fast! Tell Daxy which food item you want next.</div>
+  	<div class="err">Oops, not so fast! Tell Daxy which food item you need next.</div>
   </div>
 
   <div class="slide" id="intro3" >
