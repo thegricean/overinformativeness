@@ -127,4 +127,33 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(ItemMentioned~binaryTypicality)
-ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=6)
+ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=6.5)
+
+agr = production %>%
+  group_by(Proportion,condition,binaryTypicality,workerid) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
+  geom_jitter(width = 10,height=0) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(workerid~binaryTypicality)
+ggsave("graphs/distribution_effect_production_bysubject.pdf",height=25)
+
+agr = production %>%
+  group_by(Proportion,condition,binaryTypicality,target_item) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
+  geom_jitter(width = 10,height=0) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(target_item~binaryTypicality)
+ggsave("graphs/distribution_effect_production_byitem.pdf",height=10)
+
+m = glmer(ColorMentioned ~ Proportion*binaryTypicality + (1+Proportion|workerid), data=production[production$condition == "overinformative",], family="binomial")
+summary(m)
