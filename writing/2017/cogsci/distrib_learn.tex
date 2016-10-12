@@ -1,0 +1,292 @@
+
+% 
+% Annual Cognitive Science Conference
+% Sample LaTeX Paper -- Proceedings Format
+% 
+
+% Original : Ashwin Ram (ashwin@cc.gatech.edu)       04/01/1994
+% Modified : Johanna Moore (jmoore@cs.pitt.edu)      03/17/1995
+% Modified : David Noelle (noelle@ucsd.edu)          03/15/1996
+% Modified : Pat Langley (langley@cs.stanford.edu)   01/26/1997
+% Latex2e corrections by Ramin Charles Nakisa        01/28/1997 
+% Modified : Tina Eliassi-Rad (eliassi@cs.wisc.edu)  01/31/1998
+% Modified : Trisha Yannuzzi (trisha@ircs.upenn.edu) 12/28/1999 (in process)
+% Modified : Mary Ellen Foster (M.E.Foster@ed.ac.uk) 12/11/2000
+% Modified : Ken Forbus                              01/23/2004
+% Modified : Eli M. Silk (esilk@pitt.edu)            05/24/2005
+% Modified : Niels Taatgen (taatgen@cmu.edu)         10/24/2006
+% Modified : David Noelle (dnoelle@ucmerced.edu)     11/19/2014
+% Modified : Elisa Kreiss (ekreiss@uos.de)    10/10/2016
+
+%% Change ''letterpaper'' in the following line to ''a4paper'' if you must.
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{cogsci}
+\usepackage{pslatex}
+\usepackage{apacite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{url}
+\usepackage{todonotes}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newcommand{\den}[2][]{
+\(
+\left\llbracket\;\text{#2}\;\right\rrbracket^{#1}
+\)
+}
+
+%\newcommand{\url}[1]{$#1$}
+
+
+\definecolor{Blue}{RGB}{0,0,255}
+\newcommand{\jd}[1]{\textcolor{Blue}{[jd: #1]}}  
+\definecolor{Red}{RGB}{255,0,0}
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+\definecolor{Green}{RGB}{10,200,100}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}
+\definecolor{Red}{RGB}{255,0,0}
+\newcommand{\caroline}[1]{\textcolor{Red}{#1}}
+
+
+ \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
+
+
+\newcommand{\subsubsubsection}[1]{{\em #1}}
+\newcommand{\eref}[1]{(\ref{#1})}
+\newcommand{\tableref}[1]{Table \ref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\appref}[1]{Appendix \ref{#1}}
+\newcommand{\sectionref}[1]{Section \ref{#1}}
+
+\title{Blue banana -- the linguistic phenomenon and not the discontinuous corridor of urbanisation in Western Europe}
+
+ 
+\author{{\large \bf Elisa Kreiss, Judith Degen, Noah D.~Goodman} \\
+  ekreiss@uos.de, \{jdegen,ngoodman\}@stanford.edu\\
+  Department of Psychology, 450 Serra Mall \\
+  Stanford, CA 94305 USA}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+
+What we want to find out: Are the typicality values fix in our semantic knowledge, or are they constantly updated by our world knowledge? Therefore, does an exposure of a new frequency of an object’s color influence how we produce overinformative expressions? \\
+If typicality values are taken from world knowledge, we have 0 and 1 valued semantics that are then multiplied with knowledge from the real world. If the typicality is in the semantics, we already have truth conditional values between 0 and 1. (Important when thinking about how to construct the model.)
+\textbf{Keywords:} 
+keywords
+\end{abstract}
+
+%\section{\bf Introduction}
+
+%Referring to objects is a core function of human language, and a wealth of research has explored how speakers choose referring expressions \cite{herrmann1976, Pechmann1989, VanDeemter2012}.
+%However, most of this literature has focused on the addition of modifiers \cite<as in the choice between ``the dog'', ``the brown dog'', and ``the big brown dog'', e.g.,>{sedivy2003a, Koolen2011}. Here we investigate how speakers choose a simple nominal referring expression---what governs the choice of calling a particular object ``the dalmatian'', ``the dog'', or ``the animal'' when all are literally true? That is, what governs the choice of the taxonomic level at which an object is referred to?
+%Noun choice can be seen as the most basic decision in forming a referring expression.
+%Like modification, these choices differ in their specificity; unlike modification, the number of words used does not differ---in English, \emph{some} noun must be chosen.
+%In this paper we provide experimental evidence from a coordination game regarding the flexible choice of nominal referring expressions and explain this data with a probabilistic model of pragmatic production.
+%Previous evidence about the generation of referring expressions suggests that choice of reference level will depend on the interplay of several factors. 
+%Grice's Maxim of Quantity \cite{grice1975} implies a pressure for speakers to be sufficiently \emph{informative}.
+%For instance, a speaker who is trying to distinguish a dalmatian from a German Shepherd  would be expected to avoid the insufficiently specific term ``dog'' \cite{brennan1996}.
+%On the other hand, recent work in experimental pragmatics has shown that the choice of referring expression depends on the \emph{cost} of utterance alternatives \cite{rohde2012, degenfrankejaeger2013}; sometimes, speakers are willing to produce a cheap ambiguous utterance rather than a costly (e.g.~long or difficult-to-retrieve) unambiguous one. 
+%Finally, classic work on concepts suggests that \emph{typicality} of a referent within its category affects the choice of reference \cite{RoschEtAl76_BasicLevel}. In particular, speakers will generally choose to refer at the \emph{basic level} (e.g. ``dog''), but may become more specific for objects that are atypical for the basic level term.
+%To evaluate the impact of these factors on nominal reference we constructed a two-player online game (\figref{fig:procedure}). Participants saw a shared context of objects, one of which was indicated as the referent only to the speaker. The speaker was asked to communicate this object to the listener, who then chose among the objects. Critically, the speaker and listener communicated by free use of a chat window, allowing us to gather relatively natural referring expressions. We manipulated the category of distractor objects and used items that varied in utterance complexity and object typicality. This allowed us to evaluate whether each factor influences the referring expressions generated by participants. We expect that speakers will (1) tend to avoid longer or less frequent terms, and (2) will pragmatically prefer more specific referring expressions when the target and distractor(s) belong to the same higher-level taxonomic category or when distractors are more typical members of that category level.
+
+%\begin{figure}[tb]
+%\centering
+%\includegraphics[width=.5\textwidth]{graphs/procedure}
+%\caption{Screenshots from speakers' and listeners' points of view, showing role names and short task descriptions, the chatbox used for communication and a display of three pictures of objects. The referent was identified to the speaker by a green box.}
+%\label{fig:procedure}
+%\end{figure}
+%
+%A promising modeling approach for capturing the quantitative details of human language use is the Rational Speech-Acts (RSA) framework \cite{frank2012, goodmanstuhlmueller2013}.
+%The RSA framework has been applied to many language interpretation tasks \cite<e.g.>{goodmanstuhlmueller2013,kao2014}, but relatively rarely to production data \cite<but see>{franke2014, Orita2015}. 
+%We describe an RSA model of nominal reference that includes informativeness, cost, and typicality effects.
+%A speaker in RSA is treated as an approximately optimal decision maker who chooses which utterance to use to communicate to a listener.
+%The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativeness of the utterance for a listener.
+%The listener is treated as a literal Bayesian interpreter who updates her beliefs given the truth of the utterance.
+%These truth values are usually treated as deterministic (an object either is a ``dog'' or it is not); here we relax this formulation in order to incorporate typicality effects. 
+%That is, we elicit typicality ratings in a separate experiment, and model the listener as updating her beliefs by weighting the possible referents according to how typical each is for the description used.
+%We evaluate the quantitative model predictions against our production data.
+%The model also allows us to evaluate the need for each extra component---typicality, length, frequency---and determine whether the empirical bias toward reference at the basic level \cite{RoschEtAl76_BasicLevel} can be accounted for without building it in as a separate factor.
+%
+
+\section{Experiment: color reference game}
+
+\subsection{Methods}
+
+\paragraph{Participants and materials}
+We recruited 60 self-reported native speakers of English over Mechanical Turk. The experiment was a single-player reference game with a varying initial exposure to differently colored fruit types .
+
+%\paragraph{\bf Materials}
+The stimuli were selected from 12 items: two different colors for each out of six fruit types. One of the two was a color that is typically associated with the fruit, and the other one a highly or at least mid-atypical color, e.g.,  a red and a blue apple, or a green and an orange pear.
+
+%\paragraph{\bf Design}
+Each presented context consisted of three images, one being the target (the item that had to be referred to), and two being distractors. For each fruit type, there were four context conditions. First, we have a typically colored target and two distractor items that are not from the same fruit type as the target (Fig. 2a). For an unambiguous identification of the required fruit item, naming the color is unnecessary, and therefore, if mentioned, used overinformatively. The second condition varies in the sense that one of the distractors is of the same fruit type as the target (Fig. 2b). In this case, naming the color in the utterance is necessary for an unambiguous identification of the target object, and it's use therefore informative. The last two conditions are en pendant to the previous two, and only differ in the target object being of an atypical color (Fig. 2c, Fig. 2d). If the fruit type or color is not further specified by the condition, the distractors are selected randomly from the item pool. \\Therefore, participants are presented with 24 trials, four for each of the six fruit types. The trial order is randomized.
+
+\begin{figure}[bt!]
+\centering
+\includegraphics[width=.5\textwidth]{graphs/design}
+\caption{The four context conditions, exemplified by the \textit{apple} domain. The target is outlined in green; the types of distractors differ with each condition (see text).
+}
+\label{fig:design}
+\end{figure}
+
+\paragraph{Procedure}
+The experiment was embedded into a story about an alien on his planet to make people open their minds for the existence of atypically colored fruits.\\The first block in the experiment was the exposure phase in which each participant was familiarized with a certain distribution of colored fruits. The distributions were the following: Two fruit types were presented only in their typical color, two fruit types only in their atypical color, and the last two 50\% in one and 50\% in the other. The exposure was done by presenting 10 instances of each fruit type and have the participants sort them into baskets.\\In the production, participants were told to communicate certain items to the alien (Fig. 2), the green marked one always being the needed ingredient for a recipe. It was made clear beforehand that the alien is not able to understand location vocabulary such as "middle" to enforce the usage of object descriptions. Having the participant "communicating" the utterance to an alien instead of a human being enables us to exclude side effects that might come with trying to be cooperative and assuming a common world knowledge of fruit colors.
+
+
+\paragraph{Annotation}
+%To determine the level of reference for each trial, we followed the following procedure. First, trials on which the listener selected the wrong referent were excluded, leading to the elimination of 1.2\% of trials. Then, speakers' and listeners' messages were parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 66.2\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, remaining utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the parsing algorithm due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as ``doggie'' for ``dog'',  or contractions such as ``gummi'',``gummies'' and ``bears'' for ``gummy bears'' were counted as containing a level of reference term. This caught another 13.8\% of trials. A total of 20.0\% of correct trials were excluded because the utterance consisted only of an \emph{attribute} of the superclass (``the living thing'' for ``animal''), of the basic level (``can fly'' for ``bird''), of the subcategory (``barks'' for ``dog'') or of the  particular instance (``the thing facing left'') rather than a category noun. These kinds of attributes were also sometimes mentioned in addition to the noun in the trials which were included in the analysis---4.0\% of sub level terms, 12.6\% of basic level terms, and 46.2\% of super level terms contained an additional modifier. 
+%On 0.5\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial. 
+
+\paragraph{Typicality norms}
+
+
+%To examine the influence of typicality on speaker behavior, we obtained typicality estimates in a separate norming study. 240 participants were recruited through Mechanical Turk. On each trial, we presented participants with an image from the main experiment and asked them ``How typical is this for X?'', where X was a category label at the sub-, basic-, or super- level. They then adjusted a slider bar ranging from \emph{not at all typical} to \emph{very typical}. 
+%
+%Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and descriptions: for each target (e.g., dalmatian), we collected typicality at all three levels (``dalmatian,'' ``dog,'' and ``animal''). For each distractor of the same superclass as the target (\emph{distsamesuper}, e.g., a kitten), we collected typicality at all three levels of the \emph{target}. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball) we only collected typicality at the super- level of the target (``animal'') and assumed lowest typicality at the other levels. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
+%
+%Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings.  Raw slider values ranged from 0 (not typical) to 1 (very typical); average slider values were used as the typicality values throughout our results. 
+
+\subsection{\bf Results}
+
+%Proportions of sub, basic, and super level utterance choices in the different context conditions are shown in the top row of \figref{fig:qualitativemodel}. The sub level term was preferred where it was necessary for unambiguous referent identification, i.e., when a distractor of the same basic level category as the target was present in the scene (item12, e.g. target: dalmatian, distractor: greyhound). Where it was not necessary (i.e., when there was no other object of the same basic level category present, as in conditions item22, item23 and item33), there was a clear preference for the basic level term. The super level term was strongly dispreferred overall, though it was used on some trials, especially where informativeness constraints on utterance choice were weakest (item33). 
+%To test for the independent effects of informativeness, length, frequency, and typicality on sub-level mention, we conducted a mixed effects logistic regression. Frequency was coded as the difference between the sub and the basic level's log frequency, as extracted from the Google Books Ngram English corpus ranging from 1960 to 2008. Length was coded as the ratio of the sub to the basic level's length.\footnote{We used the mean empirical lengths in characters of the utterances participants produced. For example, the minivan, when referred to at the subcategory level, was sometimes called ``minivan'' and sometimes ``van'' leading to a mean empirical length of 5.64. This is the value that was used, rather than 7, the length of ``minivan''.} That is, a higher frequency difference indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level.\footnote{We replicate the well-documented negative correlation between length and log frequency ($r = -.53$ in our dataset).} Typicality was coded as the ratio of the target's sub to basic level label typicality. That is, the higher the ratio, the more typical the object was for the sub level label compared to the basic level.
+%For instance, the panda was relatively atypical for its basic level ``bear'' (mean rating 0.75) compared to the sub level term ``panda bear'' (mean rating 0.98), which resulted in a relatively \emph{high} typicality ratio.
+
+%\begin{figure}[bt]
+%\centering
+%%\includegraphics[width=.5\textwidth]{graphs/collapsed-pattern}
+%\includegraphics[width=.5\textwidth]{graphs/qualitativepattern}
+%\caption{Empirical utterance probabilities (top row) and model posterior predictive MAP estimates (bottom row) by condition, collapsed across targets and domains. Error bars indicate bootstrapped 95\% confidence intervals.}
+%\label{fig:qualitativemodel}
+%\end{figure}
+
+%Condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic sufficient}, and \emph{super sufficient}, where item22 and item23 were collapsed into \emph{basic sufficient}. Condition was Helmert-coded: two contrasts over the three condition levels were included in the model, comparing each level against the mean of the remaining levels (in order: \emph{sub necessary}, \emph{basic sufficient}, \emph{super sufficient}). This allowed us to determine whether the probability of type mention  for neighboring conditions were significantly different from each other, as suggested by \figref{fig:qualitativemodel}.\footnote{Adding terms that code the ratio of the sub vs super level frequency and length did not lead to an improvement of model fit.} The model included random by-speaker and by-domain intercepts. 
+%
+%A summary of results is shown in \tableref{tab:modelresults}. The log odds of mentioning the sub level term was greater in the \emph{sub necessary} condition than in either of the other two conditions, and greater in the \emph{basic sufficient} condition than in the \emph{super sufficient} condition, suggesting that the contextual informativeness of the sub level mention has a gradient effect on utterance choice.\footnote{Importantly, model comparison between the reported model and one that subsumes basic and super under the same factor level revealed that the three-level condition variable is justified ($\chi ^2 (1) = 5.7$, $p < .05$), suggesting that participants don't simply revert to the basic level unless contextually forced not to.} There was also a main effect of typicality, such that the sub level term was preferred for objects that were more typical for the sub level compared to the basic level  description (\figref{fig:lengthtypicality}). In addition, there was a main effect of length, such that as the length of the sub level term increased compared to the basic level term (``chihuahua''/``dog'' vs.~``pug''/``dog''), the sub level term was dispreferred (``chihuahua'' is dispreferred compared to ``pug'', \figref{fig:lengthtypicality}). Finally, while there was no main effect of frequency, we observed a significant length by frequency interaction, such that there was a frequency effect for the relatively shorter but not the relatively longer sub level cases: for shorter sub level terms, relatively high-frequency sub level terms were more likely to be used than relatively low-frequency sub level terms. 
+
+%\begin{table}[tbp]
+%\caption{Mixed effects model summary.}
+%\begin{center}
+%\begin{tabular}{lrrl}
+%\toprule
+%\multicolumn{1}{l}{}&\multicolumn{1}{c}{Coef $\beta$}&\multicolumn{1}{c}{SE($\beta$)}&\multicolumn{1}{c}{$p$}\tabularnewline
+%\midrule
+%Intercept&$-0.30$&$0.35$&\textgreater0.4\tabularnewline
+%Condition sub.vs.rest&$ 2.46$&$0.24$&\textbf{\textless.0001}\tabularnewline
+%Condition basic.vs.super&$ 0.52$&$0.23$&\textbf{\textless.05}\tabularnewline
+%Length&$-0.52$&$0.14$&\textbf{\textless.001}\tabularnewline
+%Frequency&$-0.02$&$0.08$&\textgreater0.78\tabularnewline
+%Typicality&$ 4.17$&$0.84$&\textbf{\textless.0001}\tabularnewline
+%Length:Frequency&$-0.30$&$0.11$&\textbf{\textless.01}\tabularnewline
+%\bottomrule
+%\end{tabular}\end{center}
+%\label{tab:modelresults}
+%\end{table}
+
+%Unsurprisingly, there was also significant by-participant and by-domain variation in the log odds of sub level term mention. %\figref{fig:bigscatterplot} shows the by-domain variation in utterance choice. 
+%For instance, mentioning the subclass over the basic level term was preferred more in some domains (e.g. in the ``candy'' domain) than in others. Likewise, some domains had a greater preference for basic level terms (e.g. the ``shirt'' domain). Using the superclass term also ranged from hardly being observable (e.g. the ``flower'' domain) to being used more frequently (e.g. in the ``bird'' domain). Nevertheless, mentioning the sub level term was always the most frequent choice where a distractor of the same basic level was displayed. Furthermore, it was the case in all domains that the sub level term was mentioned most frequently and the basic level least frequently in just this condition, compared to the other three conditions.
+%
+
+%\begin{figure}[bt]
+%\centering
+%%\includegraphics[width=.5\textwidth]{graphs/lengthRatio}
+%%\includegraphics[width=.5\textwidth]{graphs/typicality-effect}
+%\includegraphics[width=.5\textwidth]{graphs/length-typicality}
+%\caption{Probability of using sub, basic and super level terms. Left: when the sub  length is relatively short (.67,2] or long [2,4.67) compared to the basic level term length. Right: when the target object was relatively more [1.06,1.91) or less (.88,1.06] typical for the sub compared to the basic level term.}
+% \label{fig:lengthtypicality}
+%\end{figure}
+
+
+\section{\bf Modeling level of reference}
+%
+%We formulated a probabilistic model of reference level selection that integrates contextual informativeness, utterance cost, and typicality.
+%As in earlier Rational Speech-Acts (RSA) models \cite{frank2012, goodmanstuhlmueller2013}, the speaker seeks to be informative with respect to an internal model of a literal listener. This listener updates her beliefs to rule out possible worlds that are inconsistent with the meaning of the speaker's utterance. Rather than assuming that words have deterministic truth conditions, as has usually been done in the past, we account for typicality by allowing each label a graded meaning. For instance, the word ``dog'' describes a dalmatian better than a grizzly bear, but it also describes a grizzly bear better than a tennis ball.
+%The speaker also seeks to be parsimonious: the speaker utility includes both informativeness and word cost; cost includes both length and frequency.
+%
+%Formally, we start by specifying a literal listener $L_0$ who hears a word $l$ at a particular level of reference  in the context of some set of objects $\mathcal{O}$ and forms a distribution over the referenced object, $o \in \mathcal{O}$ : 
+%$$P_{L_0}(o | l) \propto \denote{l}(o).$$
+%Here $\denote{l}(o)$ is the lexical meaning of the word $l$ when applied to object $o$. We take this to be a real number indicating the degree of acceptability of object $o$ for category $l$. 
+%We relate this to our empirically elicited typicality norms via an exponential relationship: $\denote{l}(o)=\exp(\text{typicality}(o,l))$.\footnote{Cases where typicality was not elicited were assumed to have typicality $0$.}
+%This relationship is motivated by considering the effect of a small difference in typicality on choice probability: in our elicitation experiment a small difference in rating should mean the same thing at the top and bottom of the scale (it is visually equivalent on the slider that participants used).
+%In order for a small difference in typicality rating to have a constant effect on relative choice probability (which is a ratio), the relationship must be exponential. 
+%Next, we specify a speaker $S_1$ who intends to refer to a particular object $o \in \mathcal{O}$ and chooses among possible nouns $l \in {\mathcal L}(o)$.
+%We take ${\mathcal L}(o)$ to be the three labels for $o$ at sub, basic, and super level.
+%The speaker chooses among these nouns in a way that is influenced by informativeness of the noun for the literal listener ($\ln P_{L_0}(o | l)$), the frequency ($\hat{c}_f$) and the length  ($\hat{c}_l$), each weighted by a free parameter:
+%$$P_{S_1}(l | o) \propto \exp(\lambda \ln P_{L_0}(o | l) + \beta_f \hat{c}_f  + \beta_l \hat{c}_l)$$
+%Length cost $\hat{c}_l$ was defined as the empirical mean number of characters used to refer at that level and frequency cost $\hat{c}_f$ was the log frequency in the Google Books corpus from 1960 to the present. 
+%
+%We performed Bayesian data analysis to generate model predictions, conditioning on the observed production data (coded into sub, basic, and super labels as described above) and integrating over the three free parameters.
+%We assumed uniform priors for each parameter: $\lambda  \sim Unif(0,20)$, $\beta_f \sim Unif(0,5)$, $\beta_l \sim Unif(0,5)$.
+%We implemented both the cognitive and data-analysis models in the probabilistic programming language WebPPL \cite{GoodmanStuhlmuller14_DIPPL}.
+%Inference for the cognitive model was exact, while we used Markov Chain Monte Carlo (MCMC) to infer posteriors for the three free parameters.
+
+%\begin{figure}[t!]
+%\centering
+%\includegraphics[width=.5\textwidth]{graphs/scatterplot}
+%\caption{Mean empirical production data for each level of reference against the MAP of the model posterior predictive at the by-target level.}
+% \label{fig:scatterplot}
+%\end{figure}
+
+%Point-wise maximum a posteriori (MAP) estimates of the model's posterior predictives at the target level (collapsing across distractors for each target, within each condition) are compared to empirical data in Fig. \ref{fig:scatterplot}. On the by-target level the model achieves a correlation of $r = .79$. Looking at results on the by-domain level (collapsing across targets) and on the by-condition level (further collapsing across domains, as in \figref{fig:qualitativemodel}) yields correlations of .88 and .96, respectively. 
+%The model does a good job of capturing the quantitative patterns in the data, especially considering the sparsity of our data at the by-target level.
+%One clear flaw is that the model predicts greater use of the super level label than people exhibit.
+%Further systematic deviation appears likely for specific items. 
+%On examination, candy items like ``gummy bears'' or ``jelly beans'' were particularly problematic, being referred to primarily by their sub level term in all contexts.
+
+%\begin{figure}
+%\includegraphics[width=.49\textwidth]{graphs/parameterposteriors.pdf}
+%\caption{Posterior distribution over model parameters. Maximum a posteriori (MAP) $\lambda = 10.8$, 95\% highest density interval (HDI) $= [9.7, 12.8]$; MAP $\beta_l = 2.5$, HDI $= [1.9, 3.1]$; MAP $\beta_f = 1.3$, HDI $= [0.8, 1.8]$.}
+%\label{fig:paramposteriors}
+%\end{figure}
+
+%Parameter posteriors are presented in Fig. \ref{fig:paramposteriors}. 
+%Informativeness is weighted relatively strongly, while length is weighted somewhat more strongly than frequency.
+%Note that the 95\% highest density intervals (HDIs) for all three weight parameters exclude zero, indicating that some contribution of each is useful in explaining the data.
+%In order to ascertain whether typicality was indeed contributing to the explanatory power of the model, we ran an additional Bayesian data analysis with an added typicality weight parameter $\beta_t \in [0,1]$. This parameter interpolated between empirical typicality values (when $\beta_t {=} 1$) and deterministic (i.e. $0$ or $1$) \emph{a priori} values based on the true taxonomy (when $\beta_t {=} 0$).
+%We found a MAP estimate for $\beta_t$ of $.94$, HDI $= [0.88,1]$, strongly indicating that it is useful to incorporate empirical typicality values.
+%Finally, we ran a model including a parameter weighting the \emph{product} of frequency and cost, corresponding to the interaction term in our regression analysis. Its posterior distribution was strongly peaked at 0, indicating that any contribution of the interaction is already captured by other aspects of the model. 
+
+
+
+\section{\bf Discussion and conclusion}
+
+%The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
+%In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
+%The interplay of these factors is naturally modeled within the RSA framework, where speakers are treated as choosing utterances by soft-maximizing utterance utility, which includes terms for informativeness and cost. In previous formulations of RSA models, informativeness was determined by a deterministic semantics; here we ``softened'' the semantics by allowing nouns to apply to objects to the extent that those objects were rated as typical for the nouns.
+%The resulting model provided a good fit to speakers' empirical utterance choices, both qualitatively and quantitatively. 
+%The model predicts a well-documented preference for speakers  to refer to objects at the basic level when not constrained by contextual considerations  \cite{RoschEtAl76_BasicLevel}. In our model, this preference emerges naturally from cost considerations: basic-level labels tend to be shorter and more frequent than sub and super level terms. However, speakers did not always use the basic level term, even when unconstrained by context. In certain cases where object typicality was relatively high for the sub level term compared to the basic level term, that term was preferred (as was the case for ``panda bear''), suggesting an interesting interplay between typicality and level of description. 
+%While our results show that a model can capture several basic-level phenomena through frequency, length, and typicality features, it leaves open the origin and causal role of these linguistic regularities.
+%Future research will be needed to determine how linguistic regularities are related to conceptual regularities and why.
+%An interesting analogy can be drawn from choosing a noun to choosing a set of adjectives; that is, between selection of a level of reference in simple nominal referring expressions and selection of a set of features to include in modified referring expressions. 
+%For the latter, a much discussed phenomenon is that of \emph{overinformative} modifier use \cite{Gatt2014}---for example, saying ``big blue'' when all objects in the context are blue. 
+%The preference for the basic level in the \emph{super sufficient} condition and the still substantial use of sub level terms in the \emph{basic sufficient} condition can also be considered overinformative. However, we showed that a Rational Speech-Acts model using non-deterministic semantics, derived from typicality estimates, predicts that speakers \emph{should} use these more specific descriptions. 
+%The extent to which similar considerations may apply to modified referring expressions should be explored.
+%Future research should also examine the interaction of these choices: circumstances under which speakers choose a modifier and how nominal and modifier choice interact.
+
+\section{\bf Acknowledgments}
+\small
+This work was supported by ONR grant N00014-13-1-0788 and a James S. McDonnell Foundation Scholar Award to NDG and an SNF Early Postdoc.~Mobility Award to JD. RXDH was supported by the Stanford Graduate Fellowship and the National Science Foundation Graduate Research Fellowship under Grant No. DGE-114747.
+
+
+
+\bibliographystyle{apacite}
+
+\setlength{\bibleftmargin}{.125in}
+\setlength{\bibindent}{-\bibleftmargin}
+
+\bibliography{bibs}
+
+
+\end{document}
