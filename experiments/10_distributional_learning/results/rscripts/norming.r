@@ -74,7 +74,7 @@ ggplot(agr, aes(x=proportion,y=MeanTypicality,color=color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)  +
   facet_wrap(~item)
-ggsave("graphs/meantypicality_byitem.pdf")
+ggsave("graphs/meantypicality_byitem.png")
 
 ggplot(agr, aes(x=proportion,y=MeanTypicality,color=binaryTypicality)) +
   geom_point() +
@@ -121,7 +121,7 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~binaryTypicality)
-ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/distribution_effect_production.png",height=3.5)
 
 # condition on whether or not item was mentioned
 table(production$Proportion,production$condition,production$binaryTypicality)
@@ -136,7 +136,7 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(ItemMentioned~binaryTypicality)
-ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=6.5)
+ggsave("graphs/distribution_effect_production_byitemmention.png",height=6.5)
 
 agr = production %>%
   group_by(Proportion,condition,binaryTypicality,workerid) %>%
@@ -149,7 +149,7 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   geom_jitter(width = 10,height=0) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(workerid~binaryTypicality)
-ggsave("graphs/distribution_effect_production_bysubject.pdf",height=25)
+ggsave("graphs/distribution_effect_production_bysubject.png",height=25)
 
 agr = production %>%
   group_by(Proportion,condition,binaryTypicality,target_item) %>%
@@ -162,7 +162,7 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   geom_jitter(width = 10,height=0) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(target_item~binaryTypicality)
-ggsave("graphs/distribution_effect_production_byitem.pdf",height=10)
+ggsave("graphs/distribution_effect_production_byitem.png",height=10)
 
 
 centered = cbind(production, myCenter(production[,c("binaryTypicality","Proportion","condition")]))

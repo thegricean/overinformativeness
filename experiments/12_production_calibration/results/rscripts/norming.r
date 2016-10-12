@@ -1,5 +1,11 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/12_production_calibration/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/12_production_calibration/results")
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/12_production_calibration/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -68,7 +74,8 @@ agr$YMax = agr$MeanTypicality + agr$ci.high
 ggplot(agr, aes(x=item,y=MeanTypicality,color=color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) 
-ggsave("graphs/meantypicality_byitem.pdf")
+ggsave("graphs/meantypicality_byitem.png")
+# ggsave("graphs/meantypicality_byitem.pdf")
 
 table(typicality$item,typicality$binaryTypicality)
 
@@ -111,7 +118,8 @@ agr$YMax = agr$PropColorMentioned + agr$ci.high
 ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
-ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/distribution_effect_production.png",height=3.5)
+# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
 
 # condition on whether or not item was mentioned
 table(production$condition,production$binaryTypicality)
@@ -126,4 +134,6 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
-ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
+# ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+

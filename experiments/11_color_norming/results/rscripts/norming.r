@@ -1,5 +1,13 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/11_color_norming/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/11_color_norming/results")
+
+theme_set(theme_bw(18))
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/11_color_norming/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -78,7 +86,8 @@ ggplot(agr, aes(x=OrdCombo,y=MeanTypicality)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~Item,scales="free_x",nrow=2) +
   theme(axis.text.x = element_text(angle=45,vjust=1,hjust=1))
-ggsave("graphs/typicalities.pdf",height=5.5)
+ggsave("graphs/typicalities.png",height=5.5)
 
 agr$Typicality = agr$MeanTypicality
 write.csv(agr[,c("Item","Color","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+
