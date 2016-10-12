@@ -56,6 +56,7 @@ typicality$binaryTypicality = as.factor(ifelse(typicality$NormedTypicality > .5,
 summary(production)
 summary(typicality)
 typicality$response = as.numeric(as.character(typicality$response))
+table(typicality$item,typicality$proportion,typicality$binaryTypicality)
 
 agr = typicality %>%
   group_by(item,color,proportion,binaryTypicality) %>%
@@ -102,6 +103,8 @@ head(production)
 #exclude cases where locative modifiers were used
 production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
 
+table(production$Proportion,production$condition,production$binaryTypicality)
+table(production$Proportion,production$condition,production$binaryTypicality,production$target_item)
 agr = production %>%
   group_by(Proportion,condition,binaryTypicality) %>%
   summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
@@ -116,6 +119,7 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
 ggsave("graphs/distribution_effect_production.pdf",height=3.5)
 
 # condition on whether or not item was mentioned
+table(production$Proportion,production$condition,production$binaryTypicality)
 agr = production %>%
   group_by(Proportion,condition,binaryTypicality,ItemMentioned) %>%
   summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
@@ -155,5 +159,46 @@ ggplot(agr, aes(x=Proportion,y=PropColorMentioned,color=condition)) +
   facet_grid(target_item~binaryTypicality)
 ggsave("graphs/distribution_effect_production_byitem.pdf",height=10)
 
-m = glmer(ColorMentioned ~ Proportion*binaryTypicality + (1+Proportion|workerid), data=production[production$condition == "overinformative",], family="binomial")
+
+centered = cbind(production, myCenter(production[,c("binaryTypicality","Proportion","condition")]))
+m = glmer(ColorMentioned ~ cProportion*cbinaryTypicality*ccondition + (1|workerid) , data=centered, family="binomial")
 summary(m)
+
+overinf = droplevels(production[production$condition == "overinformative",])
+centered = cbind(overinf, myCenter(overinf[,c("binaryTypicality","Proportion","condition")]))
+m = glmer(ColorMentioned ~ cProportion*cbinaryTypicality + (1|workerid) , data=centered, family="binomial")
+summary(m)
+
+m.simple = glmer(ColorMentioned ~ cProportion*binaryTypicality - cProportion + (1|workerid) , data=centered, family="binomial")
+summary(m.simple)
+
+m = glm(ColorMentioned ~ Proportion*cbinaryTypicality , data=centered, family="binomial")
+summary(m)
+
+m = glm(ColorMentioned ~ Proportion*binaryTypicality - Proportion, data=centered, family="binomial")
+summary(m)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
