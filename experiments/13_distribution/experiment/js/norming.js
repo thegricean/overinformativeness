@@ -437,7 +437,11 @@ function make_slides(f) {
       exp.sliderPost = {};
 
     	// How typical is this color for this object?
-      var contextsentence = "<strong>What color will the "+stim.item+" have?</strong> Adjust the slider according to your beliefs. If you're unsure, you can also place the slider somewhere in between the two possible outcomes.";
+
+      // TO DO: give entpoints subtitles like "definitely red" and "definitely green"
+      // TO DO: don't forget to log which color was on which side
+      
+      var contextsentence = "<strong>What color will the "+stim.item+" be?</strong> Adjust the slider according to your beliefs.";
     	var item_color1 = '<img src="pictures/'+stim.item+'_'+stim.color1+'.png" style="height:120px;">';
       var item_color2 = '<img src="pictures/'+stim.item+'_'+stim.color2+'.png" style="height:120px;">';
     	$("#contextsentence").html(contextsentence);
