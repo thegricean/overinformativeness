@@ -60,7 +60,7 @@ _________________
 - Included blocks: Typicality (How typical is this color for this object?)
 - Results:
     - Typicality:
-        - ![alt text](https://github.com/thegricean/overinformativeness/tree/master/experiments/11_color_norming/results/graphs/typicalities.png)
+        - ![](https://github.com/thegricean/overinformativeness/tree/master/experiments/11_color_norming/results/graphs/typicalities.png?raw=true)
 - Problems:
 
 
