@@ -52,3 +52,70 @@ _________________
     - Banana blue (target), x, y
     - Banana blue (target), something else being blue, y
 —> Have color being useful/useless
+
+_________________
+10/12/2016
+## Exp 11
+
+- Included blocks: Typicality (How typical is this color for this object?)
+- Results:
+    - Typicality:
+        - ![picture alt](https://github.com/elisakreiss/overinformativeness/experiments/10_distributional_learning/results/graphs/typicalities.png)
+- Problems:
+
+
+## Exp 10
+
+- Included blocks: Exposure, Production, Typicality (How typical is this color for this object on Daxy's planet)
+- Results:
+    - Production:
+        - distribution_effect_production
+    - Typicality:
+        - meantypicality
+        - meantypicality_byitem
+- Problems:
+
+
+## Exp 12
+
+- Included blocks: Production, Typicality (How typical is this color for this object (for you)?)
+- Results:
+    - Production:
+        - distribution_effect_production
+    - Typicality:
+        - meantypicality_byitem
+- Problems:
+
+
+## Exp 14
+
+- Included blocks: Production, Typicality (How typical is this color for this object on Daxy's planet)
+- Results:
+    - Production:
+        - distribution_effect_production
+    - Typicality:
+        - meantypicality_byitem
+- Problems:
+    - People were unsure whether Daxy knew the words for fruit items
+    --> they used color adjectives a lot to avoid naming the fruit 
+    --> overinformativeness values are "useless"
+
+
+## Exp 15
+
+- Included blocks: Production, Typicality (How typical is this color for this object on Daxy's planet)
+- Comments: 
+    - Difference to 14: Tell participants explicitely that Daxy understands fruit types
+- No results yet
+
+
+
+
+
+
+
+
+
+
+
+

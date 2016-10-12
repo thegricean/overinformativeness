@@ -1,5 +1,10 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/10_distributional_learning/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/10_distributional_learning/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -74,7 +79,7 @@ ggsave("graphs/meantypicality_byitem.pdf")
 ggplot(agr, aes(x=proportion,y=MeanTypicality,color=binaryTypicality)) +
   geom_point() +
   geom_smooth(method="lm") 
-ggsave("graphs/meantypicality.pdf")
+ggsave("graphs/meantypicality.png")
 
 table(typicality$item,typicality$binaryTypicality,typicality$proportion)
 
