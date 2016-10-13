@@ -437,7 +437,7 @@ function make_slides(f) {
       exp.sliderPost = {};
 
     	// How typical is this color for this object?
-      var contextsentence = "How typical is this color for this object on Daxy's planet?";
+      var contextsentence = "What do you think? How typical is this color for this object on Daxy's planet?";
     	var objimagehtml = '<img src="pictures/'+stim.item+'_'+stim.color+'.png" style="height:190px;">';
     	$("#contextsentence").html(contextsentence);
     	$("#objectimage").html(objimagehtml);

@@ -137,3 +137,4 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   facet_grid(~ItemMentioned)
 ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
 # ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+
