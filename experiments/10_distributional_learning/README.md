@@ -71,7 +71,7 @@ _________________
     - Production:
         - distribution_effect_production
     - Typicality:
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/10_distributional_learning/results/graphs/meantypicality.png)
+        - ![picture alt](/results/graphs/meantypicality.png)
         - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/10_distributional_learning/results/graphs/meantypicality_byitem.png)
 - Problems:
 
