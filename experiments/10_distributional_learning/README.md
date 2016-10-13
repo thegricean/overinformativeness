@@ -152,7 +152,7 @@ _________________
 		<img src="../15_prod_calibr_dtyp_cleverDaxy/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
 		- Left side: If item wasn't mentioned; Right side: If color was mentioned
 		- If the color is typical, it is used a lot less than the atypical color in the overinformative and also in the informative (!!!) condition  
-		<img src="../15_prod_calibr_dtyp_cleverDaxy/results/graphs/png/production_byitem.png" width="500"/>
+		<img src="../15_prod_calibr_dtyp_cleverDaxy/results/graphs/png/production_byitem.png" width="650"/>
 		- All items show the wanted effect, although the carrot not as much as the others; the orange can't be evaluated (it seems "orange orange" is problematic)
 	- Typicality:  
 		<img src="../15_prod_calibr_dtyp_cleverDaxy/results/graphs/png/meantypicality_byitem.png" width="500"/>
@@ -167,7 +167,7 @@ _________________
 - Included blocks: Production (Typicality would be the same as in Exp 14,15)
 - Participants: 15
 - Aim:
-	- Change listener from Daxy to human being to exclude possible overinformativeness effects, i.e., being more overinformative than usual to ensure that Daxy understands
+	- Change listener from Daxy to human being (Dan) to exclude possible overinformativeness effects, i.e., being more overinformative than usual to ensure that Daxy understands
 - No Results yet
 
 
