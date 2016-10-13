@@ -137,3 +137,17 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
 ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
 # ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
 
+agr = production %>%
+  group_by(condition,target_item,NormedTypicality,ItemMentioned) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=target_item,linetype=condition,group=interaction(condition,target_item))) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(~ItemMentioned)
+ggsave("graphs/production_byitem.png",height=3)
+

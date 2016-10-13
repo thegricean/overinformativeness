@@ -1,5 +1,11 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/14_production_calibration_dtyp/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/15_prod_calibr_dtyp_cleverDaxy/results")
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/15_prod_calibr_dtyp_cleverDaxy/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -68,7 +74,8 @@ agr$YMax = agr$MeanTypicality + agr$ci.high
 ggplot(agr, aes(x=item,y=MeanTypicality,color=color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) 
-ggsave("graphs/meantypicality_byitem.pdf")
+ggsave("graphs/meantypicality_byitem.png")
+# ggsave("graphs/meantypicality_byitem.pdf")
 
 table(typicality$item,typicality$binaryTypicality)
 
@@ -98,7 +105,7 @@ production$Proportion = untyp[paste(production$target_color,production$target_it
 head(production)
 
 #exclude cases where locative modifiers were used
-production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
+#production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
 
 table(production$Proportion,production$condition,production$binaryTypicality)
 table(production$Proportion,production$condition,production$binaryTypicality,production$target_item)
@@ -112,7 +119,8 @@ agr$YMax = agr$PropColorMentioned + agr$ci.high
 ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
-ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/distribution_effect_production.png",height=3.5)
+# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
 
 # condition on whether or not item was mentioned
 table(production$condition,production$binaryTypicality)
@@ -127,4 +135,19 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
-ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
+# ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+
+agr = production %>%
+  group_by(condition,target_item,NormedTypicality,ItemMentioned) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=target_item,linetype=condition,group=interaction(condition,target_item))) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(~ItemMentioned)
+ggsave("graphs/production_byitem.png",height=3)
