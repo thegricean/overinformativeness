@@ -57,32 +57,54 @@ _________________
 10/12/2016
 ## Exp 11
 
-- Included blocks: Typicality (How typical is this color for this object?)
+- Included blocks: Typicality (How typical is this color for this object? - no alien reference at all)
+- Participants: 30?
+- Aim: 
+    - Find a general typicality norm for chosen items (with usual world knowlwedge and no mention of an artificial world)
 - Results:
-    - Typicality:
+    - Typicality:  <br />  
         <img src="../11_color_norming/results/graphs/typicalities.png" width="400"/>
+        - Items with biggest typicality difference: apple (blue, red), banana (blue, yellow), carrot (purple, orange), tomato (pink, red)
+        - Items with good mid-typicality values: pepper (orange, red), orange (green, orange), avocado (black, green), tomato (green, red)
+        - Red avocado wasn't as atypically perceived as expected; Brown banana was more atypical than expected; Pink and purple carrot are very atypical even though they exist
 - Problems:
+    - Unclear whether orange was always perceived as an orange (could be lime, plum)
 
 
 ## Exp 10
 
-- Included blocks: Exposure, Production, Typicality (How typical is this color for this object on Daxy's planet)
+- Included blocks: Exposure, Production, Typicality (How typical is this color for this object on Daxy's planet) 
+- Participants: 15
+- Aim:
+    - Show possible problems with the set-up
+    - Compare typicality values to former study: To people adapt? Do they disregard their normal world knowledge completely when evaluating Daxy's planet?
+    - Can a certain exposure of an object in a certain color influence the speech production in a reference game? (might an alien "listening" make a difference to a human being listening?)
 - Results:
-    - Production:
+    - Production:  <br />  
         <img src="results/graphs/distribution_effect_production.png" width="300"/>
-    - Typicality:
+        - If the color is needed for an unambiguous reference (informative (red) condition), the use of color adjectives stays approximately stable along different exposure phases, i.e., the color is mentioned
+        - If the atypical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective decreases slightly with increased exposure --> we can make the atypical color more typical (used less overinformatively) --> great!
+        - If the typical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective increases slightly with increased exposure --> weird!?
+    - Typicality:  <br />  
         <img src="results/graphs/meantypicality.png" width="300"/>
         <img src="results/graphs/meantypicality_byitem.png" width="300"/>
+        - The rated typicality shows the expected upward shift (typicality increases with increased exposure) 
 - Problems:
+    - Production: Typical color in different exposures behaves weirdly. If participant wasn't exposed to typical color, he used it less overinformatively than when exposed to it a lot.
+    - Typicality: Apple behaves weird, which can be connected to fact, that sometimes there is only just one data point for a certain value --> general problem: amount of data
+
 
 
 ## Exp 12
 
 - Included blocks: Production, Typicality (How typical is this color for this object (for you)?)
+- Participants: 15
+- Aim:
+    -
 - Results:
-    - Production:
+    - Production:  <br />  
         <img src="../12_production_calibration/results/graphs/distribution_effect_production.png" width="300"/>
-    - Typicality:
+    - Typicality:  <br />  
         <img src="../12_production_calibration/results/graphs/meantypicality_byitem.png" width="300"/>
 - Problems:
 
@@ -91,9 +113,9 @@ _________________
 
 - Included blocks: Production, Typicality (How typical is this color for this object on Daxy's planet)
 - Results:
-    - Production:
+    - Production:  <br />  
         <img src="../14_production_calibration_dtyp/results/graphs/distribution_effect_production.png" width="300"/>
-    - Typicality:
+    - Typicality:  <br />  
         <img src="../14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png" width="300"/>
 - Problems:
     - People were unsure whether Daxy knew the words for fruit items
