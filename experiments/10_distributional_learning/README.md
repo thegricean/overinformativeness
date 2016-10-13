@@ -85,6 +85,7 @@ _________________
     - Show possible problems with the set-up
     - Compare typicality values to former study: Do people adapt? Do they disregard their normal world knowledge completely when evaluating Daxy's planet?
     - Can a certain exposure of an object in a certain color influence the speech production in a reference game? (might an alien "listening" make a difference to a human being listening?)
+- Material: Chose six items with most differing typicality norms from Exp 11 
 - Results:
     - Production:  <br />  
         <img src="results/graphs/png/distribution_effect_production.png" width="300"/>
