@@ -60,7 +60,7 @@ _________________
 - Included blocks: Typicality (How typical is this color for this object?)
 - Results:
     - Typicality:
-        - ![](https://github.com/thegricean/overinformativeness/tree/master/experiments/11_color_norming/results/graphs/typicalities.png?raw=true)
+        - ![](../11_color_norming/results/graphs/typicalities.png?raw=true)
 - Problems:
 
 
@@ -71,8 +71,8 @@ _________________
     - Production:
         - distribution_effect_production
     - Typicality:
-        - ![picture alt](results/graphs/meantypicality.png)
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/10_distributional_learning/results/graphs/meantypicality_byitem.png)
+        - ![picture alt](results/graphs/meantypicality.png =100x)
+        - ![picture alt](results/graphs/meantypicality_byitem.png)
 - Problems:
 
 
@@ -81,9 +81,9 @@ _________________
 - Included blocks: Production, Typicality (How typical is this color for this object (for you)?)
 - Results:
     - Production:
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/12_production_calibration/results/graphs/distribution_effect_production.png)
+        - ![picture alt](../12_production_calibration/results/graphs/distribution_effect_production.png)
     - Typicality:
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/12_production_calibration/results/graphs/meantypicality_byitem.png)
+        - ![picture alt](../12_production_calibration/results/graphs/meantypicality_byitem.png)
 - Problems:
 
 
@@ -92,9 +92,9 @@ _________________
 - Included blocks: Production, Typicality (How typical is this color for this object on Daxy's planet)
 - Results:
     - Production:
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/14_production_calibration_dtyp/results/graphs/distribution_effect_production.png)
+        - ![picture alt](../14_production_calibration_dtyp/results/graphs/distribution_effect_production.png)
     - Typicality:
-        - ![picture alt](https://github.com/thegricean/overinformativeness/tree/master/experiments/14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png)
+        - ![picture alt](../14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png)
 - Problems:
     - People were unsure whether Daxy knew the words for fruit items
     --> they used color adjectives a lot to avoid naming the fruit 
