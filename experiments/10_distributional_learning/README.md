@@ -60,7 +60,7 @@ _________________
 - Included blocks: Typicality (How typical is this color for this object?)
 - Results:
     - Typicality:
-        - ![](../11_color_norming/results/graphs/typicalities.png?raw=true)
+        - <img src="../11_color_norming/results/graphs/typicalities.png" />
 - Problems:
 
 
@@ -71,7 +71,7 @@ _________________
     - Production:
         - distribution_effect_production
     - Typicality:
-        - <img src="results/graphs/meantypicality.png" style="width: 10px;"/>
+        - <img src="results/graphs/meantypicality.png" width="50"/>
         - ![picture alt](results/graphs/meantypicality_byitem.png)
 - Problems:
 
