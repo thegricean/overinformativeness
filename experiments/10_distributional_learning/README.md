@@ -60,7 +60,7 @@ _________________
 - Included blocks: Typicality (How typical is this color for this object?)
 - Results:
     - Typicality:
-        <img src="../11_color_norming/results/graphs/typicalities.png" width="300"/>
+        <img src="../11_color_norming/results/graphs/typicalities.png" width="400"/>
 - Problems:
 
 
@@ -97,8 +97,8 @@ _________________
         <img src="../14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png" width="300"/>
 - Problems:
     - People were unsure whether Daxy knew the words for fruit items
-    --> they used color adjectives a lot to avoid naming the fruit 
-    --> overinformativeness values are "useless"
+    - --> they used color adjectives a lot to avoid naming the fruit 
+    - --> overinformativeness values are "useless"
 
 
 ## Exp 15
