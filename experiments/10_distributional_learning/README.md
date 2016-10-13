@@ -1,15 +1,16 @@
-09/23/2016
+09/23/2016  
+most recent update: 10/13/2016
 ## Idea
 
 - What we want to find out: Are the typicality values fix in our semantic knowledge, or are they constantly updated by our world knowledge? Therefore, does an exposure of a new frequency of an object’s color influence how we produce overinformative expressions?
 - If typicality values are taken from world knowledge, we have 0 and 1 valued semantics that are then multiplied with knowledge from the real world. If the typicality is in the semantics, we already have truth conditional values between 0 and 1. (Important when thinking about how to construct the model.)
 
-## Experimental set-up
+## General experimental set-up
 
 - Story
     - Daxi (Alien): Can you help me sort my food?
 - 6 different items each in 2 colors, 2 (maybe 3) conditions
-    - Item (typical color, atypical color): banana (yellow, blue), apple (red, blue), pear (orange, green), carrot (orange, pink), tomato (red, pink), orange (orange, green) [update 10/07/2016]
+    - Item (typical color, atypical color): banana (yellow, blue), apple (red, blue), pear (orange, green), carrot (orange, pink), tomato (red, pink), orange (orange, green) (for Exp 10,12,14,15)
     - 3 prevalence/frequency conditions: low - atypical color no (in current study [update 10/07/2016])/ only in very few instances, middle - atypical color in 50% of the instances, high - atypical color in (almost) every instance
     -—>  6 different combinations per item
 
@@ -19,10 +20,6 @@
 - Maybe always have sweets as the last thing to be sorted into buckets because looking at them closely is not so important
 
 Question: Make typicality measure and production on one subject or separately? If together, which one first?
-
-_________________
-09/30/2016
-6 items in 2 - 3 colors
 
 ## Production
 
@@ -85,7 +82,6 @@ _________________
     - Show possible problems with the set-up
     - Compare typicality values to former study: Do people adapt? Do they disregard their normal world knowledge completely when evaluating Daxy's planet?
     - Can a certain exposure of an object in a certain color influence the speech production in a reference game? (might an alien "listening" make a difference to a human being listening?)
-- Material: Chose six items with most differing typicality norms from Exp 11 
 - Results:
     - Production:  <br />  
         <img src="results/graphs/png/distribution_effect_production.png" width="300"/>

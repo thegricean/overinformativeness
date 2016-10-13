@@ -565,23 +565,24 @@ function init() {
       "label": "lollipop",
       "color": ["colored", "colored"]
     },*/
-    {
+    /*{
       "item": "orange",
       "label": "orange",
-      /*"color": ["orange", "purple", "green"]*/
+      "color": ["orange", "purple", "green"]
       "color": ["orange", "purple"]
-    },
+    },*/
     {
       "item": "pear",
       "label": "pear",
       /*"color": ["green", "orange", "yellow"]*/
       "color": ["green", "orange"]
     },
-    /*{
+    {
       "item": "pepper",
       "label": "pepper",
-      "color": ["green", "orange", "red"]
-    },*/
+      /*"color": ["green", "orange", "red"]*/
+      "color": ["red", "orange"]
+    },
     {
       "item": "tomato",
       "label": "tomato",
