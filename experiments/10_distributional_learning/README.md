@@ -60,7 +60,7 @@ _________________
 - Included blocks: Typicality (How typical is this color for this object?)
 - Results:
     - Typicality:
-        - <img src="../11_color_norming/results/graphs/typicalities.png" />
+        - <img src="../11_color_norming/results/graphs/typicalities.png" width="200"/>
 - Problems:
 
 
@@ -69,10 +69,10 @@ _________________
 - Included blocks: Exposure, Production, Typicality (How typical is this color for this object on Daxy's planet)
 - Results:
     - Production:
-        - distribution_effect_production
+        - <img src="results/graphs/distribution_effect_production" width="200"/>
     - Typicality:
-        - <img src="results/graphs/meantypicality.png" width="50"/>
-        - ![picture alt](results/graphs/meantypicality_byitem.png)
+        - <img src="results/graphs/meantypicality.png" width="200"/>
+        - <img src="results/graphs/meantypicality_byitem.png" width="200"/>
 - Problems:
 
 
@@ -81,9 +81,9 @@ _________________
 - Included blocks: Production, Typicality (How typical is this color for this object (for you)?)
 - Results:
     - Production:
-        - ![picture alt](../12_production_calibration/results/graphs/distribution_effect_production.png)
+        - <img src="../12_production_calibration/results/graphs/distribution_effect_production.png" width="200"/>
     - Typicality:
-        - ![picture alt](../12_production_calibration/results/graphs/meantypicality_byitem.png)
+        - <img src="../12_production_calibration/results/graphs/meantypicality_byitem.png" width="200"/>
 - Problems:
 
 
@@ -92,9 +92,9 @@ _________________
 - Included blocks: Production, Typicality (How typical is this color for this object on Daxy's planet)
 - Results:
     - Production:
-        - ![picture alt](../14_production_calibration_dtyp/results/graphs/distribution_effect_production.png)
+        - <img src="../14_production_calibration_dtyp/results/graphs/distribution_effect_production.png" width="200"/>
     - Typicality:
-        - ![picture alt](../14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png)
+        - <img src="../14_production_calibration_dtyp/results/graphs/meantypicality_byitem.png" width="200"/>
 - Problems:
     - People were unsure whether Daxy knew the words for fruit items
     --> they used color adjectives a lot to avoid naming the fruit 
