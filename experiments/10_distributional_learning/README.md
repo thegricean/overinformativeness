@@ -71,7 +71,7 @@ _________________
     - Production:
         - distribution_effect_production
     - Typicality:
-        - ![picture alt](results/graphs/meantypicality.png =100x)
+        - ![picture alt](results/graphs/meantypicality.png) {width: 100px}
         - ![picture alt](results/graphs/meantypicality_byitem.png)
 - Problems:
 
