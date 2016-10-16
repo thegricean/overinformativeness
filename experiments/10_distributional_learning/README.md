@@ -164,11 +164,29 @@ _________________
 
 ## Exp 16
 
-- Included blocks: Production (Typicality would be the same as in Exp 14,15)
+- Included blocks: Production (Typicality would be the same as in Exp 14,15; Orange was from now on replaced by pepper)
 - Participants: 15
 - Aim:
 	- Change listener from Daxy to human being (Dan) to exclude possible overinformativeness effects, i.e., being more overinformative than usual to ensure that Daxy understands
+- Results:
+	- Production:
+	<img src="../16_prod_calibr_bob/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
+		- Again we get an effect of people not even being sufficiently informative (if the color is typical they just name the fruit item, even though an atypically colored fruit of the same kind was present) --> don't they accept the other one as being a "real" representative of this kind?
+		- The typical overinformativeness rate is still a lot higher than in Westerbeek (2015)
+		- Daxy didn't seem to be the reason for people being more overinformative than usual (but there were less cases, where the participants neither mentioned the fruit nor the color)
+	<img src="../16_prod_calibr_bob/results/graphs/png/production_byitem.png" width="500"/>
+		- Probability of mentioning the color in the pepper case doesn't change as much as more the other, which was expected as it's "atypical" correspondent isn't as much atypical as in the other cases 
+- Problems:
+	- We still don't know why in the typical overinformative case the probability of mentioning the color is still very high
+    
+## Exp 16
+
+- Included blocks: Production (Typicality would be the same as in Exp 14,15)
+- Participants: 15
+- Aim:
+	- Leave out the informative trials in production to avoid possible priming of naming the color - Maybe Westerbeek (2015) primed them through is filler trials for not naming the colors?
 - No Results yet
+
 
 
 
