@@ -185,7 +185,15 @@ _________________
 - Participants: 15
 - Aim:
 	- Leave out the informative trials in production to avoid possible priming of naming the color - Maybe Westerbeek (2015) primed them through is filler trials for not naming the colors?
-- No Results yet
+- Results:
+	<img src="../17_prod_calibr_noInformTrial/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
+	- Overinformative use of colors still above Westerbeek's; no big change to previous measurements
+	<img src="../17_prod_calibr_noInformTrial/results/graphs/png/distribution_effect_production_bysubject.png" width="500"/>
+	- Most of the subjects either used color all the time or never
+	<img src="../17_prod_calibr_noInformTrial/results/graphs/png/production_byitem.png" width="500"/>
+	- Effect can be seen in all items, except for pear
+- Problems:
+	- Still haven't found reason for still high overinformative use of color; maybe because Westerbeek always had a distractor in same color as target
 
 
 
