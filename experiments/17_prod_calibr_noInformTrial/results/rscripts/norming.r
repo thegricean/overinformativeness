@@ -5,7 +5,7 @@ library(lme4)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/17_prod_calibr_noInformTrial/results")
-# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/15_prod_calibr_dtyp_cleverDaxy/results")
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/17_prod_calibr_noInformTrial/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
