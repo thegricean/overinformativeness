@@ -67,8 +67,10 @@ most recent update: 10/13/2016
 	- Typical shape mean: 29
 	- Atypical shape mean: 54
 - Rubio-Fernandez:
-	- Typical mean: 
-	- Atypical mean:
+	- Exp1 (English speakers): Mean proportion of redundant color adjectives: 95% (polychrome) to 37% (monochrome)
+	- Exp2 (Spanish speakers):
+		- Typical: 0%
+		- Atypical: 14% to 67% (depending on type of instructions)
 
 _________________
 ## Exp 11
