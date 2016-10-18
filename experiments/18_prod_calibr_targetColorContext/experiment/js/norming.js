@@ -358,7 +358,7 @@ function make_slides(f) {
       // food1 and color1 is target
       // the other two are context
       var food1html = '<img src="pictures/target_'+stim.food1+'_'+stim.color1+'.png" style="height:110px;">';
-      var food2html = '<img src="pictures/'+stim.food2+'_'+stim.color2+'.png" style="height:110px;">';
+      var food2html = '<img src="pictures/midtyp_distractor/'+stim.food2+'_'+stim.color2+'.png" style="height:110px;">';
       var food3html = '<img src="pictures/'+stim.food3+'_'+stim.color3+'.png" style="height:110px;">';
       shuffled_images = _.shuffle([food1html, food2html, food3html]);
 
@@ -565,23 +565,23 @@ function init() {
       "label": "lollipop",
       "color": ["colored", "colored"]
     },*/
-    {
+/*    {
       "item": "orange",
       "label": "orange",
-      /*"color": ["orange", "purple", "green"]*/
+      "color": ["orange", "purple", "green"]
       "color": ["orange", "purple"]
-    },
+    },*/
     {
       "item": "pear",
       "label": "pear",
       /*"color": ["green", "orange", "yellow"]*/
       "color": ["green", "orange"]
     },
-    /*{
+    {
       "item": "pepper",
       "label": "pepper",
-      "color": ["green", "orange", "red"]
-    },*/
+      "color": ["orange", "red"]
+    },
     {
       "item": "tomato",
       "label": "tomato",
@@ -590,6 +590,32 @@ function init() {
     }
   ]);
 
+  var distractors = _.shuffle([
+    {
+      "color": "red",
+      "item": ["bowl", "cup", "spoon"]
+    },
+    {
+      "color": "blue",
+      "item": ["bowl", "cup", "spoon"]
+    },
+    {
+      "color": "green",
+      "item": ["bowl", "cup", "spoon", "tomato"]
+    },
+    {
+      "color": "yellow",
+      "item": ["tomato", "cup", "spoon"]
+    },
+    {
+      "color": "orange",
+      "item": ["cup", "spoon", "pepper"]
+    },
+    {
+      "color": "pink",
+      "item": ["bowl", "cup", "spoon"]
+    }
+  ]);
 
 
   function makeExpo(i) {
@@ -683,8 +709,6 @@ function init() {
   }
 
   function makeProdStim(food_item, context_condition) {
-    var random_food_1 = getRandomInt(0,6);
-    var random_food_2 = getRandomInt(0,6);
     //get item
     var prod_item = [items[food_item]];
     // make sure that every item is there in two colors for two times
@@ -696,39 +720,37 @@ function init() {
     }
     
     // need to have one (a)typical item in overinformative and one in only informative context
-    var condition = "";
-    if (context_condition==0 || context_condition==1) {
-      condition = "informative";
-      prod_item.push(items[food_item]);
-      // console.log("informative trial");
-      if (context_condition==0) {
-        var color2 = (prod_item[1].color)[1];
-      }
-      else {
-        var color2 = (prod_item[1].color)[0];
-      }
-    } else {
-      condition = "overinformative";
-      // console.log("overinformative trial");
-      // random_food can be anything except for food_item
-      while (random_food_1 == food_item) {
-        random_food_1 = getRandomInt(0,6);
-      }
-      prod_item.push(items[random_food_1]);
-      var color2 = _.shuffle(prod_item[1].color)[0];
-    }
+    var condition = "overinformative";
+    // console.log("overinformative trial");
+    // random_food can be anything except for food_item
 
-    while (random_food_2 == food_item || random_food_2 == random_food_1) {
+    var distractor = getRandomInt(0,6);
+    while (distractors[distractor].color != color1) {
+      distractor = getRandomInt(0,6);
+    }
+    var distractor_item = getRandomInt(0,(distractors[distractor].item.length));
+    while (distractors[distractor].item[distractor_item] == prod_item[0].item) {
+      distractor_item = getRandomInt(0,(distractors[distractor].item.length));
+    }
+    prod_item.push(distractors[distractor].item[distractor_item]);
+    var color2 = distractors[distractor].color;
+
+
+    var random_food_2 = getRandomInt(0,6);
+    while (random_food_2 == food_item) {
       random_food_2 = getRandomInt(0,6);
     }
     prod_item.push(items[random_food_2]);
     var color3 = _.shuffle(prod_item[2].color)[0];
+    while (color3 == color1) {
+      color3 = _.shuffle(prod_item[2].color)[0];
+    }
 
     // console.log(prod_item);
 
     return {
     "food1": prod_item[0].item,
-    "food2": prod_item[1].item,
+    "food2": prod_item[1],
     "food3": prod_item[2].item,
     "color1": color1,
     "color2": color2,
@@ -739,7 +761,7 @@ function init() {
 
   exp.prod_stims = [];
   for (var food_item=0; food_item<6; food_item++) {
-    for (var context_condition=0; context_condition<4; context_condition++) {
+    for (var context_condition=0; context_condition<2; context_condition++) {
       exp.prod_stims.push(makeProdStim(food_item, context_condition));
     }
   }
@@ -761,7 +783,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "intro", /*"exposure",*/ "intro2", "production", "intro3", "objecttrial", 'subj_info', 'thanks'];
+  exp.structure=["i0", "intro",/* "exposure",*/ "intro2", "production",/* "intro3", "objecttrial",*/ 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:

@@ -57,6 +57,19 @@ most recent update: 10/13/2016
 	- Show (or just sketch (no shades)) b/w food item and have a slider that goes from yellow to blue banana: where to position the slider between the two according two likelihood of the color
 	- Alternatively the versions above can be done with asking for the color of the specific item, as black and white may already influence the probability of the color (yellow being very bright, blue being rather dark)
 
+## Overinformative values
+- Westerbeek: 
+	- Typical color mean: 15%
+	- Atypical color mean: 75%
+- Mitchell:
+	- Typical material mean: 36 out of?
+	- Atypical material mean: 41
+	- Typical shape mean: 29
+	- Atypical shape mean: 54
+- Rubio-Fernandez:
+	- Typical mean: 
+	- Atypical mean:
+
 _________________
 ## Exp 11
 
