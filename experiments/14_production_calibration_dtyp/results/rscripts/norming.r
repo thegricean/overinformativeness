@@ -55,7 +55,6 @@ ggplot(d, aes(enjoyment)) +
 
 # process typicality data
 typicality = droplevels(d[!is.na(d$position_in_exposure),])
-production = production[production$target_item != "orange",]
 typicality <- typicality[,colSums(is.na(typicality))<nrow(typicality)]
 typicality$NormedTypicality = typ[paste(typicality$color,typicality$item),]$Typicality
 typicality$binaryTypicality = as.factor(ifelse(typicality$NormedTypicality > .5, "typical", "atypical"))
@@ -82,6 +81,7 @@ table(typicality$item,typicality$binaryTypicality)
 
 # process production data
 production = droplevels(d[is.na(d$position_in_exposure),])
+production = production[production$target_item != "orange",]
 production$NormedTypicality = typ[paste(production$target_color,production$target_item),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 production <- production[,colSums(is.na(production))<nrow(production)]

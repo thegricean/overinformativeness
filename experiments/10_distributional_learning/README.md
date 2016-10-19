@@ -115,7 +115,8 @@ _________________
     - Can a certain exposure of an object in a certain color influence the speech production in a reference game? (might an alien "listening" make a difference to a human being listening?)
 - Results:
     - Production:  <br />  
-        <img src="results/graphs/png/distribution_effect_production.png" width="500"/>
+        with orange <img src="results/graphs/png/distribution_effect_production.png" width="500"/>  
+        without orange <img src="results/graphs/png/excl_orange_distribution_effect_production.png" width="500"/>  
         - If the color is needed for an unambiguous reference (informative (red) condition), the use of color adjectives stays approximately stable along different exposure phases, i.e., the color is mentioned
         - If the atypical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective decreases slightly with increased exposure --> we can make the atypical color more typical (used less overinformatively) --> great!
         - If the typical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective increases slightly with increased exposure --> weird!?
