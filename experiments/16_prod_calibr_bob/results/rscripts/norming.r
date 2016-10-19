@@ -75,6 +75,9 @@ table(production[production$ColorMentioned & !production$ItemMentioned,]$target_
 #exclude cases where locative modifiers were used
 #production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
 
+production$PearMentioned = ifelse(grepl("pear", production$CleanedResponse, ignore.case = TRUE), T, F)
+production[production$PearMentioned,]$response
+
 table(production$condition,production$binaryTypicality)
 table(production$condition,production$binaryTypicality,production$target_item)
 agr = production %>%
