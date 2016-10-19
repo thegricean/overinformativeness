@@ -75,12 +75,13 @@ _________________
 
 ## Experimental overview
 
+without orange (with orange)
+
 |Exp|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf. typ. |Changes|
 |---|--------------|--------------|--------------|--------------|----------|
-|10 |              |              |              |              ||
-|12 |88%           |90%           |82%           |71%           |no exposure|
-|14 |97%           |92%           |85%           |85%           |no relevant change|
-|15 |100%          |86%           |68%           |47%           |clarification that Daxy understands fruit names|
+|12 |74% (76%)     |80% (85%)     |73% (65%)     |56% (58%)     |no exposure|
+|14 |94% (91%)     |79% (85%)     |63% (64%)     |62% (73%)     |no relevant change|
+|15 |100% (100%)   |83% (86%)     |63% (68%)     |45% (47%)     |clarification that Daxy understands fruit names; orange is replaced by pepper|
 |16 |87%           |80%           |48%           |41%           |change listener from Daxy to human being|
 |17 |NA            |NA            |51%           |40%           |back with Daxy; no informative trials|
 |18 |NA            |NA            |54%           |46%           |include color competitor (still no informative trials)|
@@ -139,7 +140,7 @@ _________________
     - Does the typicality measure differ from the one in Exp 11 (original norming study)
 - Results:
     - Production:  <br />  
-        <img src="../12_production_calibration/results/graphs/png/distribution_effect_production.png" width="500"/>
+        <img src="../12_production_calibration/results/graphs/png/excl_orange_distribution_effect_production_byitemmention.png" width="500"/>
         - Atypical colors are mentioned more often than typical colors (what other studies also have shown), but we have a very high rate; possible reason: people didn't know that Daxy understands fruit names and therefore tried to avoid them 
     - Typicality:  <br />  
         <img src="../12_production_calibration/results/graphs/png/meantypicality_byitem.png" width="500"/>
@@ -158,7 +159,7 @@ _________________
 	- How does the typicality measurement change, when not asking "for you", but "on Daxy's planet"  
 - Results:
     - Production:  <br />  
-        <img src="../14_production_calibration_dtyp/results/graphs/png/distribution_effect_production.png" width="500"/>
+        <img src="../14_production_calibration_dtyp/results/graphs/png/excl_orange_distribution_effect_production_byitemmention.png" width="500"/>
         - Same problem as in Exp 12
     - Typicality:  <br />  
         <img src="../14_production_calibration_dtyp/results/graphs/png/meantypicality_byitem.png" width="500"/>

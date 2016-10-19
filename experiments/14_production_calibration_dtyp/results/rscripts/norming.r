@@ -55,6 +55,7 @@ ggplot(d, aes(enjoyment)) +
 
 # process typicality data
 typicality = droplevels(d[!is.na(d$position_in_exposure),])
+production = production[production$target_item != "orange",]
 typicality <- typicality[,colSums(is.na(typicality))<nrow(typicality)]
 typicality$NormedTypicality = typ[paste(typicality$color,typicality$item),]$Typicality
 typicality$binaryTypicality = as.factor(ifelse(typicality$NormedTypicality > .5, "typical", "atypical"))
@@ -74,7 +75,7 @@ agr$YMax = agr$MeanTypicality + agr$ci.high
 ggplot(agr, aes(x=item,y=MeanTypicality,color=color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) 
-ggsave("graphs/meantypicality_byitem.png")
+ggsave("graphs/png/meantypicality_byitem.png")
 # ggsave("graphs/meantypicality_byitem.pdf")
 
 table(typicality$item,typicality$binaryTypicality)
@@ -119,8 +120,8 @@ agr$YMax = agr$PropColorMentioned + agr$ci.high
 ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
-ggsave("graphs/distribution_effect_production.png",height=3.5)
-# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/png/excl_orange_distribution_effect_production.png",height=3.5)
+# ggsave("graphs/png/excl_orange_distribution_effect_production.pdf",height=3.5)
 
 # condition on whether or not item was mentioned
 table(production$condition,production$binaryTypicality)
@@ -135,6 +136,6 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
-ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
+ggsave("graphs/png/excl_orange_distribution_effect_production_byitemmention.png",height=3)
 # ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
 
