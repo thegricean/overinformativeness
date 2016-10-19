@@ -766,7 +766,7 @@ function init() {
     greeble2_color = getRandomInt(1,9);
     greeble3_color = getRandomInt(10,23);
 
-    var condition = "filler trial";
+    var condition = "filler";
 
     greeble1 = "greeble";
     greeble2 = "greeble";
