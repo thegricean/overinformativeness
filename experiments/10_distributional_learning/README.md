@@ -71,6 +71,21 @@ most recent update: 10/13/2016
 	- Exp2 (Spanish speakers):
 		- Typical: 0%
 		- Atypical: 14% to 67% (depending on type of instructions)
+_________________
+
+## Experimental overview
+
+|Exp|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf. typ. |Changes|
+|---|--------------|--------------|--------------|--------------|----------|
+|10 |              |              |              |              ||
+|12 |88%           |90%           |82%           |71%           |no exposure|
+|14 |97%           |92%           |85%           |85%           |no relevant change|
+|15 |100%          |86%           |68%           |47%           |clarification that Daxy understands fruit names|
+|16 |87%           |80%           |48%           |41%           |change listener from Daxy to human being|
+|17 |NA            |NA            |51%           |40%           |back with Daxy; no informative trials|
+|18 |NA            |NA            |54%           |46%           |include color competitor (still no informative trials)|
+|19 |NA            |NA            |39%           |32%           |include greebles (still color competitor and no informative trials)|
+
 
 _________________
 ## Exp 11
@@ -194,7 +209,7 @@ _________________
 - Problems:
 	- We still don't know why in the typical overinformative case the probability of mentioning the color is still very high
     
-## Exp 16
+## Exp 17
 
 - Included blocks: Production (Typicality would be the same as in Exp 14,15)
 - Participants: 15
@@ -208,8 +223,33 @@ _________________
 	<img src="../17_prod_calibr_noInformTrial/results/graphs/png/production_byitem.png" width="500"/>
 	- Effect can be seen in all items, except for pear
 - Problems:
-	- Still haven't found reason for still high overinformative use of color; maybe because Westerbeek always had a distractor in same color as target
+	- Still haven't found reason for still high overinformative use of typical color; maybe because Westerbeek always had a distractor in same color as target
 
+## Exp 18
 
+- Included blocks: Production (Typicality would be the same as in Exp 14,15) (include cups, bowls, spoons, yellow/green tomato, orange pepper as distractors)
+- Participants: 15
+- Aim:
+	- Make study more comparable to Westerbeek's by always having one distractor in the same color as target
+- Results:
+	<img src="../18_prod_calibr_targetColorContext/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
+	- Rather smaller typicality effect
+	<img src="../18_prod_calibr_targetColorContext/results/graphs/png/production_byitem.png" width="500"/>
+	- Weird behavior: apple, tomato (pepper)
+	
+## Exp 19
 
-
+- Included blocks: Production (Typicality would be the same as in Exp 14,15) (only have cups as color competitors)
+- Participants: 15
+- Aim:
+	- Make trials more similar to Westerbeek's study to obtain the same amount of typical overinformative color production, i.e., include greebles (6 trials)
+	- Difference to 18: Distractors that have the same color as target are now only cups with a very similar color tone as target 
+- Results:
+	<img src="../19_18_enhanced/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
+	- Minimal typicality effect with lower values than before
+	<img src="../19_18_enhanced/results/graphs/png/production_byitem.png" width="500"/>
+	- Almost no cases, where color was mentioned but not the fruit type 
+	- Weird behavior: pear, pepper, apple
+- Problems:
+	- Also almost no atypical colors were mentioned
+	- Almost no typicality effect
