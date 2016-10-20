@@ -69,6 +69,9 @@ production[production$ColorMentioned & !production$ItemMentioned,c("response","w
 production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
 nrow(production) # 1932 cases to analyze
 
+# exclude "orange" trials
+production = droplevels(production[production$target_item != "orange",])
+
 table(production$condition,production$binaryTypicality)
 table(production$condition,production$binaryTypicality,production$target_item)
 agr = production %>%
@@ -82,6 +85,7 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
 ggsave("graphs/png/distribution_effect_production.png",height=3.5,width=6)
+ggsave("graphs/png/distribution_effect_production_noorange.png",height=3.5,width=6)
 
 # by subject
 agr = production %>%
@@ -95,7 +99,8 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~workerid)
-ggsave("graphs/png/distribution_effect_production_bysubject.png",height=8.5)
+ggsave("graphs/png/distribution_effect_production_bysubject.png",height=10)
+ggsave("graphs/png/distribution_effect_production_bysubject_noorange.png",height=10)
 
 
 # by trial
@@ -112,6 +117,7 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~FirstTrial)
 ggsave("graphs/png/distribution_effect_production_byfirsttrial.png",height=3.5)
+ggsave("graphs/png/distribution_effect_production_byfirsttrial_noorange.png",height=3.5)
 
 
 # condition on whether or not item was mentioned
@@ -128,7 +134,7 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
 ggsave("graphs/png/distribution_effect_production_byitemmention.png",height=3.5)
-
+ggsave("graphs/png/distribution_effect_production_byitemmention_noorange.png",height=3.5)
 
 agr = production %>%
   group_by(condition,target_item,NormedTypicality,ItemMentioned) %>%
@@ -143,12 +149,28 @@ ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=target_item,linety
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
 ggsave("graphs/png/production_byitem.png",height=3.5)
+ggsave("graphs/png/production_byitem_noorange.png",height=3.5)
 
-centered = cbind(production,myCenter(production[,c("binaryTypicality","condition")]))
+centered = cbind(production,myCenter(production[,c("binaryTypicality","condition","NormedTypicality")]))
 m = glmer(ColorMentioned ~ cbinaryTypicality*ccondition + (1|workerid) + (1|target_item), data=centered, family="binomial")
 summary(m)
 
 ranef(m)
 
-m = glm(ColorMentioned ~ binaryTypicality, data=production, family="binomial")
+m.n = glmer(ColorMentioned ~ cNormedTypicality*ccondition + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
+summary(m.n)
+
+centered$Predicted = fitted(m.n)
+agr = centered %>%
+  group_by(condition,target_item,NormedTypicality,Predicted) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=Predicted,y=PropColorMentioned,color=target_item)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) 
+
+m = glm(ColorMentioned ~ cbinaryTypicality*ccondition, data=centered, family="binomial")
 summary(m)
