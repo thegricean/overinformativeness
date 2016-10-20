@@ -43,14 +43,7 @@ most recent update: 10/13/2016
 - Interchange order of production and typicality to get purer results in typicality/ distribution measurements
 - Include distribution summary slide after exposure
 - Production:
-	- Context variation: 
-		- Another approach to the four different cases
-		    - Banana yellow (target), x, y
-		    - Banana yellow (target), something else being yellow, y
-		    - Banana blue (target), x, y
-		    - Banana blue (target), something else being blue, y  
-			—> Have color being useful/useless
-		- Have more distractors (Westerbeek had 6 items in context)
+	- Have more distractors (Westerbeek had 6 items in context)
 	-  Show alternative answers, most fitting needs to be chosen 
 -  Typicality:
 	- Show (or just sketch (no shades)) b/w food item and ask which color this most probably has
@@ -70,7 +63,19 @@ most recent update: 10/13/2016
 	- Exp1 (English speakers): Mean proportion of redundant color adjectives: 95% (polychrome) to 37% (monochrome)
 	- Exp2 (Spanish speakers):
 		- Typical: 0%
-		- Atypical: 14% to 67% (depending on type of instructions)
+		- Atypical: 14% to 67% (depending on type of instructions)  
+
+## Meta analysis of Experiments 12-19
+- First trial corresponds to rest of the data
+- More than half of the participants either never mentioned the color at all or mentioned it all the time  
+
+<img src="../meta_analysis/graphs/png/distribution_effect_production_byitemmention.png" width="700"/>
+
+- Typicality effect can be seen in overinformative condition, but also in informative condition  
+- Significant overinformativeness and typicality effects  
+
+<img src="../meta_analysis/graphs/png/production_byitem.png" width="700"/>
+
 _________________
 
 ## Experimental overview
@@ -115,8 +120,10 @@ _________________
     - Can a certain exposure of an object in a certain color influence the speech production in a reference game? (might an alien "listening" make a difference to a human being listening?)
 - Results:
     - Production:  <br />  
-        with orange <img src="results/graphs/png/distribution_effect_production.png" width="500"/>  
-        without orange <img src="results/graphs/png/excl_orange_distribution_effect_production.png" width="500"/>  
+        with orange  
+        <img src="results/graphs/png/distribution_effect_production.png" width="500"/>  
+        without orange  
+        <img src="results/graphs/png/excl_orange_distribution_effect_production.png" width="500"/>  
         - If the color is needed for an unambiguous reference (informative (red) condition), the use of color adjectives stays approximately stable along different exposure phases, i.e., the color is mentioned
         - If the atypical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective decreases slightly with increased exposure --> we can make the atypical color more typical (used less overinformatively) --> great!
         - If the typical color is not needed to name for an unambiguous reference (overinformative (blue) condition), the use of the color adjective increases slightly with increased exposure --> weird!?
