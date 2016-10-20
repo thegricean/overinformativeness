@@ -73,7 +73,7 @@ most recent update: 10/13/2016
 <img src="../meta_analysis/graphs/png/distribution_effect_production_byitemmention_noorange.png" width="700"/>
 
 - Typicality effect can be seen in overinformative condition, but also in informative condition  
-- Significant overinformativeness and typicality effects  
+- Significant main effects of overinformativeness and typicality
 
 <img src="../meta_analysis/graphs/png/production_byitem_noorange.png" width="700"/>
 
