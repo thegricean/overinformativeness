@@ -66,15 +66,16 @@ most recent update: 10/13/2016
 		- Atypical: 14% to 67% (depending on type of instructions)  
 
 ## Meta analysis of Experiments 12-19
+- For analysis, the orange was excluded because of interpretation issues (color or fruit?)
 - First trial corresponds to rest of the data
 - More than half of the participants either never mentioned the color at all or mentioned it all the time  
 
-<img src="../meta_analysis/graphs/png/distribution_effect_production_byitemmention.png" width="700"/>
+<img src="../meta_analysis/graphs/png/distribution_effect_production_byitemmention_noorange.png" width="700"/>
 
 - Typicality effect can be seen in overinformative condition, but also in informative condition  
 - Significant overinformativeness and typicality effects  
 
-<img src="../meta_analysis/graphs/png/production_byitem.png" width="700"/>
+<img src="../meta_analysis/graphs/png/production_byitem_noorange.png" width="700"/>
 
 _________________
 

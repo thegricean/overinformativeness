@@ -1,5 +1,11 @@
-theme_set(theme_bw(18))
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
 
+theme_set(theme_bw(18))
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/meta_analysis/")
+source("rscripts/helpers.r")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/meta_analysis/")
 source("rscripts/helpers.r")
 
