@@ -29,6 +29,9 @@ d6$workerid = d6$workerid + 75
 d7 = read.table(file="../19_18_enhanced/results/data/norming.csv",sep=",", header=T)[,c("workerid","target_item","target_color","condition","slide_number_in_experiment","response")]
 d7$Exp = "19"
 d7$workerid = d7$workerid + 90
+d8 = read.table(file="../20_prod_calibr_Dan_noInform/results/data/norming.csv",sep=",", header=T)[,c("workerid","target_item","target_color","condition","slide_number_in_experiment","response")]
+d8$Exp = "20"
+d8$workerid = d8$workerid + 105
 
 d = rbind(d1,d2)
 d = rbind(d,d3)
@@ -37,6 +40,7 @@ d = rbind(d,d5)
 d = rbind(d,d6)
 d$condition = as.character(d$condition)
 d = rbind(d,d7)
+d = rbind(d,d8)
 d$Exp = as.factor(as.character(d$Exp))
 d$condition = as.factor(as.character(d$condition))
 
@@ -73,7 +77,7 @@ production[production$ColorMentioned & !production$ItemMentioned,c("response","w
 
 #exclude cases where locative modifiers were used
 production = droplevels(production[!(!production$ColorMentioned & !production$ItemMentioned),])
-nrow(production) # 1932 cases to analyze
+nrow(production) # 2105 cases to analyze
 
 # exclude "orange" trials
 production = droplevels(production[production$target_item != "orange",])
@@ -157,6 +161,7 @@ ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=target_item,linety
 ggsave("graphs/png/production_byitem.png",height=3.5)
 ggsave("graphs/png/production_byitem_noorange.png",height=3.5)
 
+# not filtering by whether item is mentioned
 centered = cbind(production,myCenter(production[,c("binaryTypicality","condition","NormedTypicality")]))
 m = glmer(ColorMentioned ~ cbinaryTypicality*ccondition + (1|workerid) + (1|target_item), data=centered, family="binomial")
 summary(m)
@@ -166,17 +171,29 @@ ranef(m)
 m.n = glmer(ColorMentioned ~ cNormedTypicality*ccondition + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
 summary(m.n)
 
-centered$Predicted = fitted(m.n)
-agr = centered %>%
-  group_by(condition,target_item,NormedTypicality,Predicted) %>%
-  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
-agr = as.data.frame(agr)
-agr$YMin = agr$PropColorMentioned - agr$ci.low
-agr$YMax = agr$PropColorMentioned + agr$ci.high
+# filtering by whether item is mentioned
+filtered = droplevels(production[production$ItemMentioned,])
+centered = cbind(filtered,myCenter(filtered[,c("binaryTypicality","condition","NormedTypicality")]))
 
-ggplot(agr, aes(x=Predicted,y=PropColorMentioned,color=target_item)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) 
+m.n = glmer(ColorMentioned ~ cNormedTypicality*ccondition + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
+summary(m.n)
 
-m = glm(ColorMentioned ~ cbinaryTypicality*ccondition, data=centered, family="binomial")
+
+# analysis of presence of informative trials and daxy/dan
+dd = production[production$Exp %in% c("15","16","17","20"),]
+dd$InfPresent = as.factor(ifelse(dd$Exp %in% c("15","16"),"informative present","informative absent"))
+dd$DaxyDan = as.factor(ifelse(dd$Exp %in% c("15","17"),"daxy","dan"))
+
+filtered = dd[dd$condition == "overinformative",]
+centered = cbind(filtered,myCenter(filtered[,c("condition","NormedTypicality","DaxyDan","InfPresent")]))
+m = glmer(ColorMentioned ~ cNormedTypicality + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
+summary(m)
+
+m = glmer(ColorMentioned ~ cNormedTypicality*cInfPresent + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
+summary(m)
+
+m = glmer(ColorMentioned ~ cNormedTypicality*cDaxyDan + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
+summary(m)
+
+m = glmer(ColorMentioned ~ cNormedTypicality + cDaxyDan + cInfPresent + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
 summary(m)

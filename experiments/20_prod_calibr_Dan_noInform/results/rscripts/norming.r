@@ -4,7 +4,7 @@ library(bootstrap)
 library(lme4)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/19_18_enhanced/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/20_prod_calibr_Dan_noInform/results")
 # setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/19_18_enhanced/results")
 source("rscripts/helpers.r")
 
@@ -163,3 +163,4 @@ summary(m)
 
 m = glm(ColorMentioned ~ binaryTypicality, data=production, family="binomial")
 summary(m)
+

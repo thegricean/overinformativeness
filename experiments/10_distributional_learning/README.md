@@ -77,6 +77,8 @@ most recent update: 10/13/2016
 
 <img src="../meta_analysis/graphs/png/production_byitem_noorange.png" width="700"/>
 
+- Further analysis showed that leaving out the informative condition has significant impact on the results, changing Daxy to a human being doesn't (just a small numerical difference)
+
 _________________
 
 ## Experimental overview
@@ -92,6 +94,8 @@ without orange (with orange)
 |17 |NA            |NA            |51%           |40%           |back with Daxy; no informative trials|
 |18 |NA            |NA            |54%           |46%           |include color competitor (still no informative trials)|
 |19 |NA            |NA            |39%           |32%           |include greebles (still color competitor and no informative trials)|
+|20 |NA            |NA            |48%           |28%           |human being, no informative trials|
+
 
 
 _________________
@@ -263,3 +267,14 @@ _________________
 - Problems:
 	- Also almost no atypical colors were mentioned
 	- Almost no typicality effect
+
+## Exp 20
+
+- Included blocks: Production (Typicality would be the same as in Exp 14,15) (only have cups as color competitors)
+- Participants: 15
+- Aim:
+	- Difference to 17: Have Dan (human being) instead of Daxy 
+- Results:
+	<img src="../20_prod_calibr_Dan_noInform/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
+	<img src="../20_prod_calibr_Dan_noInform/results/graphs/png/production_byitem.png" width="500"/>
+	- Weird behavior: pepper
