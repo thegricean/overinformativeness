@@ -140,6 +140,20 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
 ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
 # ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
 
+# only color mention
+production$OnlyColorMentioned = ifelse(production$ColorMentioned & !production$ItemMentioned,T,F)
+agr = production %>%
+  group_by(condition,binaryTypicality) %>%
+  summarise(PropOnlyColorMentioned=mean(OnlyColorMentioned),ci.low=ci.low(OnlyColorMentioned),ci.high=ci.high(OnlyColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropOnlyColorMentioned - agr$ci.low
+agr$YMax = agr$PropOnlyColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=binaryTypicality,y=PropOnlyColorMentioned,color=condition)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
+ggsave("graphs/png/excl_orange_distribution_colorOnly_production.png",height=3.5)
+# ggsave("graphs/distribution_color_production.pdf",height=3.5)
 
 agr = production %>%
   group_by(condition,target_item,NormedTypicality,ItemMentioned) %>%

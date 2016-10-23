@@ -77,8 +77,7 @@ most recent update: 10/13/2016
 
 <img src="../meta_analysis/graphs/png/production_byitem_noorange.png" width="700"/>
 
-- Further analysis showed that leaving out the informative condition has significant impact on the results, changing Daxy to a human being doesn't (just a small numerical difference)
-
+- Further analysis showed that leaving out the informative condition, or changing Daxy to a human being doesn't have a significant impact on the results
 _________________
 
 ## Experimental overview
@@ -89,8 +88,8 @@ without orange (with orange)
 |---|--------------|--------------|--------------|--------------|----------|
 |12 |74% (76%)     |80% (85%)     |73% (65%)     |56% (58%)     |no exposure|
 |14 |94% (91%)     |79% (85%)     |63% (64%)     |62% (73%)     |no relevant change|
-|15 |100% (100%)   |83% (86%)     |63% (68%)     |45% (47%)     |clarification that Daxy understands fruit names; orange is replaced by pepper|
-|16 |87%           |80%           |48%           |41%           |change listener from Daxy to human being|
+|15 |100% (100%)   |83% (86%)     |63% (68%)     |45% (47%)     |clarification that Daxy understands fruit names|
+|16 |87%           |80%           |48%           |41%           |change listener from Daxy to human being; orange is replaced by pepper|
 |17 |NA            |NA            |51%           |40%           |back with Daxy; no informative trials|
 |18 |NA            |NA            |54%           |46%           |include color competitor (still no informative trials)|
 |19 |NA            |NA            |39%           |32%           |include greebles (still color competitor and no informative trials)|
@@ -247,7 +246,7 @@ _________________
 	- Make study more comparable to Westerbeek's by always having one distractor in the same color as target
 - Results:
 	<img src="../18_prod_calibr_targetColorContext/results/graphs/png/distribution_effect_production_byitemmention.png" width="500"/>
-	- Rather smaller typicality effect
+	- No significant change in production when inserting a color competitor
 	<img src="../18_prod_calibr_targetColorContext/results/graphs/png/production_byitem.png" width="500"/>
 	- Weird behavior: apple, tomato (pepper)
 	
