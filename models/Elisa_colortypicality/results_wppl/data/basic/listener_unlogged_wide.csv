@@ -4,6 +4,12 @@
 12,5,0.1,1,1,blue_banana,"yellow,banana",0.21
 12,5,0.1,1,1,blue_banana,"blue,cup",0.21
 12,5,0.1,1,1,blue_banana,"blue,banana",0.57
+12,5,0.1,1,1,yellow_banana,"yellow,banana",0.57
+12,5,0.1,1,1,yellow_banana,"blue,cup",0.21
+12,5,0.1,1,1,yellow_banana,"blue,banana",0.21
+12,5,0.1,1,1,blue_banana,"yellow,banana",0.21
+12,5,0.1,1,1,blue_banana,"blue,cup",0.21
+12,5,0.1,1,1,blue_banana,"blue,banana",0.57
 12,5,0.1,1,1,banana,"yellow,banana",0.34
 12,5,0.1,1,1,banana,"blue,cup",0.31
 12,5,0.1,1,1,banana,"blue,banana",0.34
