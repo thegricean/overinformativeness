@@ -1,13 +1,15 @@
-library(dplyr)
-library(ggplot2)
-library(bootstrap)
 library(lme4)
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+library(magrittr)
+library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/meta_analysis/")
 source("rscripts/helpers.r")
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/meta_analysis/")
-source("rscripts/helpers.r")
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/meta_analysis/")
+# source("rscripts/helpers.r")
 
 d1 = read.table(file="../12_production_calibration/results/data/norming.csv",sep=",", header=T)[,c("workerid","target_item","target_color","condition","slide_number_in_experiment","response")]
 d1$Exp = "12"
@@ -81,6 +83,21 @@ nrow(production) # 2105 cases to analyze
 
 # exclude "orange" trials
 production = droplevels(production[production$target_item != "orange",])
+
+# exclude participants that consistently (don't) name color 
+# ConsWorker = ddply(production,~workerid,summarise,mean=mean(ColorMentioned))
+# ConsWorker$Useful = ifelse((ConsWorker$mean==1), F, T)
+# production <- merge(production, ConsWorker, by.x = "workerid", by.y = "workerid")
+# production = droplevels(production[production$Useful != F,])
+
+consworkers = production %>%
+  group_by(workerid) %>%
+  summarise(MeanColorMentioned = mean(ColorMentioned))
+consworkers = consworkers[consworkers$MeanColorMentioned > 0 & consworkers$MeanColorMentioned < 1,]
+head(consworkers)
+nrow(consworkers)
+
+production$Consistent = as.factor(ifelse(production$workerid %in% as.character(consworkers$workerid),"inconsistent","consistent"))
 
 table(production$condition,production$binaryTypicality)
 table(production$condition,production$binaryTypicality,production$target_item)
@@ -197,3 +214,46 @@ summary(m)
 
 m = glmer(ColorMentioned ~ cNormedTypicality + cDaxyDan + cInfPresent + (1+cNormedTypicality|workerid) + (1|target_item), data=centered, family="binomial")
 summary(m)
+
+# consistent participants excluded
+agr = production %>%
+  group_by(condition,binaryTypicality,Consistent) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~Consistent)
+ggsave("graphs/png/distribution_effect_production_bystrategy.png",height=3.5,width=6)
+
+# consistent participants excluded
+agr = production %>%
+  filter(Consistent == "inconsistent") %>%
+  group_by(condition,binaryTypicality,workerid) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=as.factor(workerid),group=as.factor(workerid))) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~condition)
+ggsave("graphs/png/distribution_effect_production_bystrategy_byworker.png",height=3.5,width=6)
+
+agr = production %>%
+  filter(Consistent == "inconsistent") %>%
+  group_by(condition,binaryTypicality,ItemMentioned,Consistent) %>%
+  summarise(PropColorMentioned=mean(ColorMentioned),ci.low=ci.low(ColorMentioned),ci.high=ci.high(ColorMentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(~ItemMentioned)
+
