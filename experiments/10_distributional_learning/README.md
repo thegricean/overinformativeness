@@ -102,7 +102,7 @@ _________________
 ## Exp 11
 
 - Included blocks: Typicality (How typical is this color for this object? - no alien reference at all)
-- Participants: 30?
+- Participants: 30
 - Aim: 
     - Find a general typicality norm for chosen items (with usual world knowlwedge and no mention of an artificial world)
 - Results:
