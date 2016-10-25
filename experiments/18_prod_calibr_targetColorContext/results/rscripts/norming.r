@@ -4,7 +4,7 @@ library(bootstrap)
 library(lme4)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/15_prod_calibr_dtyp_cleverDaxy/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/18_prod_calibr_targetColorContext/results")
 # setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/18_prod_calibr_targetColorContext/results")
 source("rscripts/helpers.r")
 
@@ -92,8 +92,8 @@ agr$YMax = agr$PropColorMentioned + agr$ci.high
 ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25)
-ggsave("graphs/distribution_effect_production.png",height=3.5)
-# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/png/distribution_effect_production.png",height=3.5)
+# ggsave("graphs/png/distribution_effect_production.pdf",height=3.5)
 
 # by subject
 agr = production %>%
@@ -107,8 +107,8 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~workerid)
-ggsave("graphs/distribution_effect_production_bysubject.png",height=8.5)
-# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/png/distribution_effect_production_bysubject.png",height=8.5)
+# ggsave("graphs/png/distribution_effect_production.pdf",height=3.5)
 
 # by trial
 production$FirstTrial = ifelse(production$Trial == 3, "first","not-first")
@@ -123,8 +123,8 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~FirstTrial)
-ggsave("graphs/distribution_effect_production_byfirsttrial.png",height=8.5)
-# ggsave("graphs/distribution_effect_production.pdf",height=3.5)
+ggsave("graphs/png/distribution_effect_production_byfirsttrial.png",height=8.5)
+# ggsave("graphs/png/distribution_effect_production.pdf",height=3.5)
 
 
 # condition on whether or not item was mentioned
@@ -140,8 +140,8 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=condition)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
-ggsave("graphs/distribution_effect_production_byitemmention.png",height=3)
-# ggsave("graphs/distribution_effect_production_byitemmention.pdf",height=3)
+ggsave("graphs/png/distribution_effect_production_byitemmention.png",height=3)
+# ggsave("graphs/png/distribution_effect_production_byitemmention.pdf",height=3)
 
 
 agr = production %>%
@@ -156,4 +156,4 @@ ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=target_item,linety
   geom_line() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~ItemMentioned)
-ggsave("graphs/production_byitem.png",height=3)
+ggsave("graphs/png/production_byitem.png",height=3)

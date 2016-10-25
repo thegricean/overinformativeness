@@ -20,10 +20,10 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
-# modelversion = "fixed-reducedconditions-hmc"
+#modelversion = "fixed-reducedconditions-hmc"
 # modelversion = "fixed-reducedconditions-unlogged"
 # modelversion = "fixed-fullconditions-hmc"
-modelversion = "fixed-fullconditions"
+modelversion = "fixed-fullconditions-old"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))

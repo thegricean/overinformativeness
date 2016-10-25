@@ -66,11 +66,9 @@ agr = droplevels(agr[agr$SimCondition != "other",])
 agr$Condition = factor(x=as.character(agr$SimCondition),levels=c("sub necessary","basic sufficient","super sufficient"))
 
 ggplot(agr, aes(x=t_sub,y=TTypicalityGain,color=Probability)) +
-  geom_point(size=7,shape=15) +
-  scale_colour_gradient(low="red") +
-  # geom_vline(xintercept=0,color="gray80") +
-  # geom_hline(yintercept=0,color="gray80") +
+  geom_point(size=8,shape=15) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
   xlab("Target sub typicality") +
   ylab("Target typicality gain") +
   facet_grid(Condition~Utt)
-ggsave("S1probs_typgainmap_alpha7.png",width=10,height=7.8)
+ggsave("S1probs_typgainmap_alpha7.png",width=10.5,height=8)

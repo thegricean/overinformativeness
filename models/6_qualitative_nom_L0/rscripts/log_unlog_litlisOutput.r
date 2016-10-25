@@ -17,13 +17,12 @@ agr = as.data.frame(agr)
 # agr$YMax = agr$Probability + agr$ci.high
 head(agr)
 
-ggplot(agr, aes(x=t_sub,y=Probability,color=d_sub,group=d_sub)) +
-  geom_point() +
-  geom_line(size=2) +
+ggplot(agr, aes(x=t_sub,y=d_sub,color=Probability)) +
+  geom_point(size=8,shape=15) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability of\ntarget choice") +
   xlab("Target typicality") +
-  scale_colour_continuous(name="Distractor\ntypicality") #+
-  #theme(axis.text.x = element_text(size=7),axis.text.y = element_text(size=7),axis.title.x = element_text(size=7),axis.title.y = element_text(size=7))
-ggsave("L0probs.png",width=4,height=2.5)#,dpi=1400)
+  ylab("Distractor typicality")
+ggsave("L0probs.png",width=5.6,height=3.5)#,dpi=1400)
 
 
 # t_t = targetTypicality 

@@ -68,8 +68,8 @@ var OverinformativeModel = function(params, context) {
   };
 
   var getTailoredTypicalityUnlogged = function(utt, object) {
-    console.log(utt);
-    console.log(object);
+    // console.log(utt);
+    // console.log(object);
     // var e = Number.NEGATIVE_INFINITY;
     var e = 0.015;
     var tailoredtypicalities = {

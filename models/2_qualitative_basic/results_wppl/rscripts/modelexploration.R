@@ -91,27 +91,21 @@ head(dp)
 
 dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
 dp$Utterance = factor(x=as.character(dp$utterance),levels=c("insufficient","sufficient","redundant"))
-ggplot(dp[dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=probability,color=typicality_insufficient,group=typicality_insufficient)) +
-  geom_point(size=1) +
-  geom_line(size=1.5) +
-  geom_hline(yintercept=.5,color="gray20", linetype="dashed") +
-  ylab("Probability of utterance") +
+ggplot(dp[dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
+  geom_point(size=8,shape=15) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
   xlab("Fidelity of sufficient utterance") +
-  # scale_colour_brewer(palette = "PiYG",name="Fidelity of\nsufficient\nutterance") +
-  scale_colour_brewer(palette = "RdYlBu",name="Fidelity of\nsufficient\nutterance") +
+  ylab("Fidelity of insufficient utterance") +
   facet_grid(alpha~Utterance) 
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=11,width=9)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=11,width=9)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
 
 dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
-ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=probability,color=typicality_insufficient,group=typicality_insufficient)) +
-  geom_point(size=1) +
-  geom_line(size=1.5) +
-  geom_hline(yintercept=.5,color="gray20", linetype="dashed") +
-  ylab("Probability of utterance") +
+ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
+  geom_point(size=8,shape=15) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
   xlab("Fidelity of sufficient utterance") +
-  # scale_colour_brewer(palette = "PiYG",name="Fidelity of\nsufficient\nutterance") +
-  scale_colour_brewer(palette = "RdYlBu",name="Fidelity of\ninsufficient\nutterance") +
-  facet_wrap(~Utterance) 
+  ylab("Fidelity of insufficient utterance") +
+  facet_wrap(~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.5,width=10)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=4,width=11)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.8,width=11)
