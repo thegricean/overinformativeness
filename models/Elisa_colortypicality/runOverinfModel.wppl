@@ -52,6 +52,17 @@ var modeltype = "basic"; //basic asymmetry
 var alpha = [12];
 var lengthWeight = [5];
 var u_banana_o_yellow_banana = [.1,.95];
+var u_banana_o_blue_banana = [.1,.95];
+var u_cup_o_yellow_cup = [.1,.8];
+var u_cup_o_blue_cup = [.1,.8];
+var u_yellow_banana_o_yellow_banana = [.1,.99];
+var u_blue_banana_o_blue_banana = [.1,.99];
+var u_yellow_cup_o_yellow_cup = [.1,.99];
+var u_blue_cup_o_blue_cup = [.1,.99];
+var u_apple_o_yellow_apple = [.1,.9];
+var u_apple_o_blue_apple = [.1,.9];
+var u_yellow_apple_o_yellow_apple = [.1,.99];
+var u_blue_apple_o_blue_apple = [.1,.99];
 var cost_colors = [1];
 var cost_types = [1];
 
@@ -59,13 +70,35 @@ var cost_types = [1];
 map(function(al) {
   console.log("next alpha: "+al);
   map(function(le) {
-    map(function(tc) {
+    map(function(tc1) {
+      map(function(tc2) {
+        map(function(tc3) {
+          map(function(tc4) {
+            map(function(tc5) {
+              map(function(tc6) {
+                map(function(tc7) {
+                  map(function(tc8) {
+                    map(function(tc9) {
+                      map(function(tc10) {
+                        map(function(tc11) {
+                          map(function(tc12) {
       map(function(cc) {
         map(function(ct) {  
           var model = OverinformativeModel({
                           alpha : al,
                           lengthWeight : le,
-                          u_banana_o_yellow_banana : tc,
+                          u_banana_o_yellow_banana : tc1,
+                          u_banana_o_blue_banana : tc2,
+                          u_cup_o_yellow_cup : tc3,
+                          u_cup_o_blue_cup : tc4,
+                          u_yellow_banana_o_yellow_banana : tc5,
+                          u_blue_banana_o_blue_banana : tc6,
+                          u_yellow_cup_o_yellow_cup : tc7,
+                          u_blue_cup_o_blue_cup : tc8,
+                          u_apple_o_yellow_apple : tc9,
+                          u_apple_o_blue_apple : tc10,
+                          u_yellow_apple_o_yellow_apple : tc11,
+                          u_blue_apple_o_blue_apple : tc12,
                           cost_colors : cc,
                           cost_types : ct},
                           contexts);
@@ -78,17 +111,28 @@ map(function(al) {
           var utts = [/*"yellow","blue",*/"yellow_banana","blue_banana","banana","yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"];
           map(function(utt) {
             var listenerOutput = runListener(listener, utt);
-            refModule.writeERP(listenerOutput, [al,le,tc,cc,ct,utt], "results_wppl/data/"+modeltype+"/listener_"+typtype+"_"+searchtype+".csv",2);
+            refModule.writeERP(listenerOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct,utt], "results_wppl/data/"+modeltype+"/listener_"+typtype+"_"+searchtype+".csv",2);
           },utts);
           // write speaker results (size sufficient)
           /*var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
           refModule.writeERP(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            */
           // write speaker results (color sufficient)
           var modelOutput = runModel(speaker, ["yellow","banana"]);
-          refModule.writeERP(modelOutput, [al,le,tc,tc,cc,ct], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
+          refModule.writeERP(modelOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
         }, cost_types);          
       }, cost_colors);
     }, u_banana_o_yellow_banana);
+    }, u_banana_o_blue_banana);
+    }, u_cup_o_yellow_cup);
+    }, u_cup_o_blue_cup);
+    }, u_yellow_banana_o_yellow_banana);
+    }, u_blue_banana_o_blue_banana);
+    }, u_yellow_cup_o_yellow_cup);
+    }, u_blue_cup_o_blue_cup);
+    }, u_apple_o_yellow_apple);
+    }, u_apple_o_blue_apple);
+    }, u_yellow_apple_o_yellow_apple);
+    }, u_blue_apple_o_blue_apple);
   }, lengthWeight);
 }, alpha);
 

@@ -68,14 +68,14 @@ var OverinformativeModel = function(params, context) {
   };
 
   var getTailoredTypicalityUnlogged = function(utt, object) {
-/*    console.log(utt);
-    console.log(object);*/
+    console.log(utt);
+    console.log(object);
     // var e = Number.NEGATIVE_INFINITY;
     var e = 0.015;
     var tailoredtypicalities = {
       "banana" : {
         yellow_banana : params.u_banana_o_yellow_banana,
-        blue_banana : .1,
+        blue_banana : params.u_banana_o_blue_banana,
         yellow_apple : e,
         blue_apple : e,
         yellow_cup : e,
@@ -86,8 +86,8 @@ var OverinformativeModel = function(params, context) {
         blue_banana : e,
         yellow_apple : e,
         blue_apple : e,
-        yellow_cup : .8,
-        blue_cup : .8
+        yellow_cup : params.u_cup_o_yellow_cup,
+        blue_cup : params.u_cup_o_blue_cup
       },
       /*"yellow" : {
         yellow_banana : .3,
@@ -106,7 +106,7 @@ var OverinformativeModel = function(params, context) {
         blue_cup : .3
       },*/
       "yellow_banana" : {
-        yellow_banana : .99,
+        yellow_banana : params.u_yellow_banana_o_yellow_banana,
         blue_banana : e,
         yellow_apple : e,
         blue_apple : e,
@@ -115,7 +115,7 @@ var OverinformativeModel = function(params, context) {
       },
       "blue_banana" : {
         yellow_banana : e,
-        blue_banana : .99,
+        blue_banana : params.u_blue_banana_o_blue_banana,
         yellow_apple : e,
         blue_apple : e,
         yellow_cup : e,
@@ -126,7 +126,7 @@ var OverinformativeModel = function(params, context) {
         blue_banana : e,
         yellow_apple : e,
         blue_apple : e,
-        yellow_cup : .99,
+        yellow_cup : params.u_yellow_cup_o_yellow_cup,
         blue_cup : e
       },
       "blue_cup" : {
@@ -135,20 +135,20 @@ var OverinformativeModel = function(params, context) {
         yellow_apple : e,
         blue_apple : e,
         yellow_cup : e,
-        blue_cup : .99
+        blue_cup : params.u_blue_cup_o_blue_cup
       },
       "apple" : {
         yellow_banana : e,
         blue_banana : e,
-        yellow_apple : .99,
-        blue_apple : .99,
+        yellow_apple : params.u_apple_o_yellow_apple,
+        blue_apple : params.u_apple_o_blue_apple,
         yellow_cup : e,
         blue_cup : e
       },
       "yellow_apple" : {
         yellow_banana : e,
         blue_banana : e,
-        yellow_apple : .99,
+        yellow_apple : params.u_yellow_apple_o_yellow_apple,
         blue_apple : e,
         yellow_cup : e,
         blue_cup : e
@@ -157,7 +157,7 @@ var OverinformativeModel = function(params, context) {
         yellow_banana : e,
         blue_banana : e,
         yellow_apple : e,
-        blue_apple : .99,
+        blue_apple : params.u_blue_apple_o_blue_apple,
         yellow_cup : e,
         blue_cup : e
       }                                  
