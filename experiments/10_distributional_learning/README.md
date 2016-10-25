@@ -78,6 +78,7 @@ most recent update: 10/13/2016
 <img src="../meta_analysis/graphs/png/production_byitem_noorange.png" width="700"/>
 
 - Further analysis showed that leaving out the informative condition, or changing Daxy to a human being doesn't have a significant impact on the results
+
 _________________
 
 ## Experimental overview

@@ -3,7 +3,7 @@ library(ggplot2)
 library(dplyr)
 library(reshape2)
 library(magrittr)
-library(tidyr)
+# library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/meta_analysis/")

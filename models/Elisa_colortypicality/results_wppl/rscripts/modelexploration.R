@@ -1,3 +1,10 @@
+library(lme4)
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+library(magrittr)
+# library(tidyr)
+
 # setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/")
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/models/Elisa_colortypicality/")
 
