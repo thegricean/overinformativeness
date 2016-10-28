@@ -59,46 +59,44 @@ var OverinformativeModel = function(params, context) {
   var getUtteranceCost = function(utt) {
     var splited = utt.split("_");
     if (splited.length == 2) {
-      // conditioning cost on typicality
-      // return _.contains(["blue"], splited[0]) ? params.cost_type + 0.2 : params.cost_color + params.cost_type;
-      return params.cost_color + params.cost_type;
+      // return params.cost_color + params.cost_type;
+      return params.cost_colors + params.cost_types;
     } else {
-      return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_color : params.cost_type;
-      // return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_colors : params.cost_types;
+      // return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_color : params.cost_type;
+      return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_colors : params.cost_types;
     }
   };
-
 
   var getTailoredTypicalityUnlogged = function(utt, object) {
     // console.log(utt);
     // console.log(object);
-    // var f = Number.NEGATIVE_INFINITY;
+    // var e = Number.NEGATIVE_INFINITY;
     var e = 0.015;
-    var f = 0.015;
+    var f = 0;
     var tailoredtypicalities = {
       "banana" : {
         yellow_banana : params.u_banana_o_yellow_banana,
         blue_banana : params.u_banana_o_blue_banana,
-        yellow_apple : f,
-        blue_apple : f,
-        yellow_cup : f,
-        blue_cup : f
+        yellow_apple : e,
+        blue_apple : e,
+        yellow_cup : e,
+        blue_cup : e
       },
       "cup" : {
-        yellow_banana : f,
-        blue_banana : f,
-        yellow_apple : f,
-        blue_apple : f,
+        yellow_banana : e,
+        blue_banana : e,
+        yellow_apple : e,
+        blue_apple : e,
         yellow_cup : params.u_cup_o_yellow_cup,
         blue_cup : params.u_cup_o_blue_cup
       },
       "apple" : {
-        yellow_banana : f,
-        blue_banana : f,
+        yellow_banana : e,
+        blue_banana : e,
         yellow_apple : params.u_apple_o_yellow_apple,
         blue_apple : params.u_apple_o_blue_apple,
-        yellow_cup : f,
-        blue_cup : f
+        yellow_cup : e,
+        blue_cup : e
       },
       "yellow" : {
         /*yellow_of_yellow_banana : .8,
@@ -107,12 +105,12 @@ var OverinformativeModel = function(params, context) {
         yellow_of_blue_banana : f,
         yellow_of_blue_apple : f,
         yellow_of_blue_cup : f*/
-        yellow_banana : .9,
-        yellow_apple : .9,
+        yellow_banana : .8,
+        yellow_apple : .5,
         yellow_cup : .9,
-        blue_banana : e,
-        blue_apple : e,
-        blue_cup : e
+        blue_banana : f,
+        blue_apple : f,
+        blue_cup : f
       },
       "blue" : {
         /*blue_of_blue_banana : .8,
@@ -121,26 +119,65 @@ var OverinformativeModel = function(params, context) {
         blue_of_yellow_banana : f,
         blue_of_yellow_apple : f,
         blue_of_yellow_cup : f*/
-        blue_banana : .9,
+        blue_banana : .8,
         blue_apple : .9,
         blue_cup : .9,
-        yellow_banana : e,
+        yellow_banana : f,
+        yellow_apple : f,
+        yellow_cup : f
+      },
+/*      "yellow_banana" : {
+        yellow_banana : params.u_yellow_banana_o_yellow_banana,
+        blue_banana : e,
         yellow_apple : e,
-        yellow_cup : e
-      },                 
+        blue_apple : e,
+        yellow_cup : e,
+        blue_cup : e
+      },
+      "blue_banana" : {
+        yellow_banana : e,
+        blue_banana : params.u_blue_banana_o_blue_banana,
+        yellow_apple : e,
+        blue_apple : e,
+        yellow_cup : e,
+        blue_cup : e
+      },
+      "yellow_cup" : {
+        yellow_banana : e,
+        blue_banana : e,
+        yellow_apple : e,
+        blue_apple : e,
+        yellow_cup : params.u_yellow_cup_o_yellow_cup,
+        blue_cup : e
+      },
+      "blue_cup" : {
+        yellow_banana : e,
+        blue_banana : e,
+        yellow_apple : e,
+        blue_apple : e,
+        yellow_cup : e,
+        blue_cup : params.u_blue_cup_o_blue_cup
+      },*/
+/*      "yellow_apple" : {
+        yellow_banana : e,
+        blue_banana : e,
+        yellow_apple : params.u_yellow_apple_o_yellow_apple,
+        blue_apple : e,
+        yellow_cup : e,
+        blue_cup : e
+      },
+      "blue_apple" : {
+        yellow_banana : e,
+        blue_banana : e,
+        yellow_apple : e,
+        blue_apple : params.u_blue_apple_o_blue_apple,
+        yellow_cup : e,
+        blue_cup : e
+      }              */                    
     };
 
-    var splited = utt.split("_");
-    if (splited.length === 2) {
-      // console.log(tailoredtypicalities[splited[0]][object.join("_")]);
-      // console.log(tailoredtypicalities[splited[1]][object.join("_")]);
-      var typicality = /*0.8 * */ (((/*0.6 * */tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")]))/2);
-      // console.log(typicality);
-      return typicality;
-    } else {
-      var typicality = tailoredtypicalities[utt][object.join("_")];
-      return typicality;
-    }
+    var typicality = tailoredtypicalities[utt][object.join("_")];
+    return typicality;
   };
 
   var uttFitness = function(utt, object) {
@@ -165,12 +202,9 @@ var OverinformativeModel = function(params, context) {
       var utt = uniformDraw(possibleutts);
       // what does ERP stand for?
       var literalListenerERP = literalListener(utt);
-      var uttCost = getUtteranceCost(utt);
-      // console.log(uttCost);
+      var uttCost = getUtteranceCost(utt); 
       // var noise = getNoise(utt);
       var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * (uttCost);
-      // console.log("score: ");
-      // console.log(score);
       factor(score); 
       return utt;
     });

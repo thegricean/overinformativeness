@@ -82,19 +82,19 @@ most recent update: 10/13/2016
 _________________
 
 ## Experimental overview
+- none of these experiments has an exposure phase  
+- without orange (with orange)
 
-without orange (with orange)
-
-|Exp|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf. typ. |Changes|
-|---|--------------|--------------|--------------|--------------|----------|
-|12 |74% (76%)     |80% (85%)     |73% (65%)     |56% (58%)     |no exposure|
-|14 |94% (91%)     |79% (85%)     |63% (64%)     |62% (73%)     |no relevant change|
-|15 |100% (100%)   |83% (86%)     |63% (68%)     |45% (47%)     |clarification that Daxy understands fruit names|
-|16 |87%           |80%           |48%           |41%           |change listener from Daxy to human being; orange is replaced by pepper|
-|17 |NA            |NA            |51%           |40%           |back with Daxy; no informative trials|
-|18 |NA            |NA            |54%           |46%           |include color competitor (still no informative trials)|
-|19 |NA            |NA            |39%           |32%           |include greebles (still color competitor and no informative trials)|
-|20 |NA            |NA            |48%           |28%           |human being, no informative trials|
+|Exp|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf. typ. |General changes (for this and all following)|Informative trials|Human instead of Daxy|Color competitor|Greebles
+|---|--------------|--------------|--------------|--------------|----------|---|---|---|---|---|---|
+|12 |74% (76%)     |80% (85%)     |73% (65%)     |56% (58%)     | |x|
+|14 |94% (91%)     |79% (85%)     |63% (64%)     |62% (73%)     | |x|
+|15 |100% (100%)   |83% (86%)     |63% (68%)     |45% (47%)     |clarification: Daxy unterstands fruit names|x|
+|16 |87%           |80%           |48%           |41%           |pepper replaces orange|x|x|
+|17 |NA            |NA            |51%           |40%           | |||
+|18 |NA            |NA            |54%           |46%           | |||x|
+|19 |NA            |NA            |39%           |32%           | |||x|x|
+|20 |NA            |NA            |48%           |28%           | ||x|
 
 
 

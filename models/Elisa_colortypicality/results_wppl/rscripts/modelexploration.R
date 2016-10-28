@@ -4,6 +4,7 @@ library(dplyr)
 library(reshape2)
 library(magrittr)
 # library(tidyr)
+theme_set(theme_bw())
 
 # setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/")
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/models/Elisa_colortypicality/")
@@ -13,7 +14,7 @@ setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/models/El
 dlistener = read.table(paste("results_wppl/data/listener_exploration.csv",sep=""),sep=",")
 
 # fix headers:
-colnames(dlistener) = c("alpha","lengthWeight","u_banana_o_yellow_banana","u_banana_o_blue_banana","u_cup_o_yellow_cup","u_cup_o_blue_cup","u_yellow_banana_o_yellow_banana","u_blue_banana_o_blue_banana","u_yellow_cup_o_yellow_cup","u_blue_cup_o_blue_cup","u_apple_o_yellow_apple","u_apple_o_blue_apple","u_yellow_apple_o_yellow_apple","u_blue_apple_o_blue_apple","cost_color","cost_type","utterance","object","probability")
+colnames(dlistener) = c("alpha","lengthWeight",rev(c("u_banana_o_yellow_banana","u_banana_o_blue_banana","u_cup_o_yellow_cup","u_cup_o_blue_cup","u_yellow_banana_o_yellow_banana","u_blue_banana_o_blue_banana","u_yellow_cup_o_yellow_cup","u_blue_cup_o_blue_cup","u_apple_o_yellow_apple","u_apple_o_blue_apple","u_yellow_apple_o_yellow_apple","u_blue_apple_o_blue_apple")),"cost_color","cost_type","utterance","object","probability")
 head(dlistener)
 summary(dlistener)
 
@@ -29,3 +30,15 @@ ggplot(bananatestplot,aes(x=object,y=probability,color=as.factor(u_banana_o_yell
   geom_line() +
   facet_grid(utterance~u_banana_o_blue_banana) +
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
+
+# heatmap
+ggplot(bananatestplot,aes(x=u_banana_o_yellow_banana,y=u_banana_o_blue_banana,color=probability)) +
+  geom_point(size=8,shape=15) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof object") +
+  xlab("Typicality of 'banana' for yellow banana") +
+  ylab("Typicality of 'banana' for blue banana") +
+  facet_grid(utterance~object) 
+
+
+
+
