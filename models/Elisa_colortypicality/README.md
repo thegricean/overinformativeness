@@ -64,8 +64,10 @@ Typicality Connector|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf. typ. 
 |multiplication     |86%           |1%            |.5%           |.3%           |.5%           |.3%           | 
 |mean               |94%           |1%            |17%           |.7%           |1%            |.06%          |
 
-
-
+------------------
+- Thoughts: 
+	- so far we can't include the difference between the category, e.g., banana, and the modifier, e.g., yellow; problem to explain that there isn't a big difference between overinformative with and without color competitor
+	- when we include color as single alternative, this outperforms all the other possibilities (not expensive and informative) --> need differentiation between category and modifier (independent of typicality connector)
 
 
 

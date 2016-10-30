@@ -38,8 +38,8 @@ var getUtterancesOneFeature = function(context) {
     utts.push(c[0]+"_"+c[1]);
     // utterance only with noun
     utts.push(c[1]);
-/*    // utterance only with adjective
-    utts.push(c[0]);*/
+    // utterance only with adjective
+    utts.push(c[0]);
   },context);
   // returns list of strings with all possible utterances
   return _.unique(utts);
@@ -134,7 +134,7 @@ var OverinformativeModel = function(params, context) {
     if (splited.length === 2) {
       // console.log(tailoredtypicalities[splited[0]][object.join("_")]);
       // console.log(tailoredtypicalities[splited[1]][object.join("_")]);
-      var typicality = /*0.8 * */ (((/*0.6 * */tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")]))/2);
+      var typicality = /*0.8 * */ (((tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")]))/2);
       // console.log(typicality);
       return typicality;
     } else {
