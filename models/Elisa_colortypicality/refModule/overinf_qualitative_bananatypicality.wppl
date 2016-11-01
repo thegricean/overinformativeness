@@ -39,7 +39,7 @@ var getUtterancesOneFeature = function(context) {
     // utterance only with noun
     utts.push(c[1]);
     // utterance only with adjective
-    utts.push(c[0]);
+    // utts.push(c[0]);
   },context);
   // returns list of strings with all possible utterances
   return _.unique(utts);
@@ -63,7 +63,7 @@ var OverinformativeModel = function(params, context) {
       // return _.contains(["blue"], splited[0]) ? params.cost_type + 0.2 : params.cost_color + params.cost_type;
       return params.cost_color + params.cost_type;
     } else {
-      return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_color : params.cost_type;
+      return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_color+2 : params.cost_type;
       // return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? params.cost_colors : params.cost_types;
     }
   };
@@ -134,7 +134,7 @@ var OverinformativeModel = function(params, context) {
     if (splited.length === 2) {
       // console.log(tailoredtypicalities[splited[0]][object.join("_")]);
       // console.log(tailoredtypicalities[splited[1]][object.join("_")]);
-      var typicality = /*0.8 * */ (((tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")]))/2);
+      var typicality = /*0.8 * */ (((tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")])));
       // console.log(typicality);
       return typicality;
     } else {

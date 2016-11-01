@@ -3,35 +3,42 @@
 
 // contexts for color predictability effect
 
-var contexts = [[["blue", "banana"],
+var contexts = [{condition:"informative_atypical",
+                 context: [["blue", "banana"],
                  ["yellow", "cup"],
-                 ["yellow", "banana"]],
+                 ["yellow", "banana"]]},
 
-                [["yellow", "banana"],
+                {condition:"informative_typical",
+                 context:[["yellow", "banana"],
                  ["blue", "cup"],
-                 ["blue", "banana"]],
+                 ["blue", "banana"]]},
 
-                [["blue", "banana"],
+                {condition:"overinformative_atypical",
+                 context:[["blue", "banana"],
                  ["yellow", "cup"],
-                 ["yellow", "apple"]],
+                 ["yellow", "apple"]]},
 
-                [["yellow", "banana"],
+                {condition:"overinformative_typical",
+                 context:[["yellow", "banana"],
                  ["blue", "cup"],
-                 ["blue", "apple"]],
+                 ["blue", "apple"]]},
 
-                [["blue", "banana"],
+                {condition:"color_competitor_overinformative_atypical",
+                 context:[["blue", "banana"],
                  ["blue", "cup"],
-                 ["yellow", "apple"]],
+                 ["yellow", "apple"]]},
 
-                [["yellow", "banana"],
+                {condition:"color_competitor_overinformative_typical",
+                 context:[["yellow", "banana"],
    			   	  	 ["yellow", "cup"],
-							   ["blue", "apple"]]];				 
+							   ["blue", "apple"]]}
+                ];				 
 /*var contexts = [["yellow", "banana"],
                  ["blue", "cup"],
                  ["blue", "banana"]];   */      
 
 
-var params = {
+/*var params = {
 	// speaker optimality parameter
   alpha : 13,
   // alpha : 5,
@@ -47,107 +54,86 @@ var params = {
   // cost_type : .3
   cost_color : 1,
   cost_type : 1
-};
-map(function(context) { 
-  var model = OverinformativeModel(params,context);
-  var runModel = model.runModel;
-  var speaker = model.speaker;
-  var listener = model.listener;
-  var runListener = model.runListener;
-  console.log("");
-  console.log("Speaker: ");
-  console.log(runModel(speaker,context[0]));
-  console.log("Listener Banana: ");
-  console.log(runListener(listener,"banana"));
-  console.log("Listener Yellow Banana: ");
-  console.log(runListener(listener,"yellow_banana"));
-}, contexts);
+};*/
+// map(function(context) { 
+//   var model = OverinformativeModel(params,context);
+//   var runModel = model.runModel;
+//   var speaker = model.speaker;
+//   var listener = model.listener;
+//   var runListener = model.runListener;
+//   console.log("");
+//   console.log("Speaker: ");
+//   console.log(runModel(speaker,context[0]));
+//   console.log("Listener Banana: ");
+//   console.log(runListener(listener,"banana"));
+//   console.log("Listener Yellow Banana: ");
+//   console.log(runListener(listener,"yellow_banana"));
+// }, contexts);
 
 
-/*var alpha = [12];
-var lengthWeight = [5];
-var u_banana_o_yellow_banana = [.1,.95];
-var u_banana_o_blue_banana = [.1,.95];
-var u_cup_o_yellow_cup = [.1];
-var u_cup_o_blue_cup = [.1];
-var u_yellow_banana_o_yellow_banana = [.95];
-var u_blue_banana_o_blue_banana = [.95];
-var u_yellow_cup_o_yellow_cup = [.1];
-var u_blue_cup_o_blue_cup = [.1];
-var u_apple_o_yellow_apple = [.1];
-var u_apple_o_blue_apple = [.1];
-var u_yellow_apple_o_yellow_apple = [.1];
-var u_blue_apple_o_blue_apple = [.1];
-var cost_colors = [1];
-var cost_types = [1];*/
+var alphas = [5,10,20];
+var lengthWeights = [0,5];
+var u_banana_o_yellow_bananas = [.9];
+var u_banana_o_blue_bananas = [.3];
+var u_cup_o_yellow_cups = [.9];
+var u_cup_o_blue_cups = [.9];
+var u_apple_o_yellow_apples = [.9];
+var u_apple_o_blue_apples = [.3];
+var cost_colors = [1,.6,.3];
+var cost_types = [1,.6,.3];
 
 
-/*map(function(al) {
+map(function(al) {
   console.log("next alpha: "+al);
   map(function(le) {
-    map(function(tc1) {
-      map(function(tc2) {
-        map(function(tc3) {
-          map(function(tc4) {
-            map(function(tc5) {
-              map(function(tc6) {
-                map(function(tc7) {
-                  map(function(tc8) {
-                    map(function(tc9) {
-                      map(function(tc10) {
-                        map(function(tc11) {
-                          map(function(tc12) {
-      map(function(cc) {
-        map(function(ct) {  
-          var model = OverinformativeModel({
+    map(function(by) {
+      map(function(bb) {
+        map(function(cy) {
+          map(function(cb) {
+            map(function(ay) {
+              map(function(ab) {
+                map(function(cc) {
+                  map(function(ct) {  
+                    map(function(context) {
+                      var model = OverinformativeModel({
                           alpha : al,
                           lengthWeight : le,
-                          u_banana_o_yellow_banana : tc1,
-                          u_banana_o_blue_banana : tc2,
-                          u_cup_o_yellow_cup : tc3,
-                          u_cup_o_blue_cup : tc4,
-                          u_yellow_banana_o_yellow_banana : tc5,
-                          u_blue_banana_o_blue_banana : tc6,
-                          u_yellow_cup_o_yellow_cup : tc7,
-                          u_blue_cup_o_blue_cup : tc8,
-                          u_apple_o_yellow_apple : tc9,
-                          u_apple_o_blue_apple : tc10,
-                          u_yellow_apple_o_yellow_apple : tc11,
-                          u_blue_apple_o_blue_apple : tc12,
-                          cost_colors : cc,
-                          cost_types : ct},
-                          contexts);
-          var runModel = model.runModel;
-          var speaker = model.speaker;
-          var listener = model.listener;
-          var runListener = model.runListener;*/
+                          u_banana_o_yellow_banana : by,
+                          u_banana_o_blue_banana : bb,
+                          u_cup_o_yellow_cup : cy,
+                          u_cup_o_blue_cup : cb,
+                          u_apple_o_yellow_apple : ay,
+                          u_apple_o_blue_apple : ab,
+                          cost_color : cc,
+                          cost_type : ct},
+                          context.context);
+                      var runModel = model.runModel;
+                      var speaker = model.speaker;
+                      // var listener = model.listener;
+                      // var runListener = model.runListener;
 
-          // write listener results
-          /*var utts = ["yellow","blue","yellow_banana","blue_banana","banana","yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"];
-          map(function(utt) {
-            var listenerOutput = runListener(listener, utt);
-            // refModule.writeERP(listenerOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct,utt], "results_wppl/data/listener_exploration.csv",2);
-          },utts);
-          // write speaker results (color sufficient)
-          var modelOutput = runModel(speaker, ["yellow","banana"]);
-          // refModule.writeERP(modelOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct], "results_wppl/data/speaker_exploration.csv",2);                        
-        }, cost_types);          
-      }, cost_colors);
-    }, u_banana_o_yellow_banana);
-    }, u_banana_o_blue_banana);
-    }, u_cup_o_yellow_cup);
-    }, u_cup_o_blue_cup);
-    }, u_yellow_banana_o_yellow_banana);
-    }, u_blue_banana_o_blue_banana);
-    }, u_yellow_cup_o_yellow_cup);
-    }, u_blue_cup_o_blue_cup);
-    }, u_apple_o_yellow_apple);
-    }, u_apple_o_blue_apple);
-    }, u_yellow_apple_o_yellow_apple);
-    }, u_blue_apple_o_blue_apple);
-  }, lengthWeight);
-}, alpha);
-*/
+                      // // write listener results
+                      // var utts = ["yellow","blue","yellow_banana","blue_banana","banana","yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"];
+                      // map(function(utt) {
+                      //   var listenerOutput = runListener(listener, utt);
+                      //   // refModule.writeERP(listenerOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct,utt], "results_wppl/data/listener_exploration.csv",2);
+                      // },utts);
+                      // // write speaker results (color sufficient)
+                      var modelOutput = runModel(speaker, context.context[0]);
+                      refModule.writeERP(modelOutput, [al,le,by,bb,cy,cb,ay,ab,cc,ct,context.condition], "results_wppl/data/speaker_exploration.csv",2);                        
+                      // refModule.writeERP(modelOutput, [al,le,by,bb,cy,cb,ay,ab,cc,ct,context.condition], "results_wppl/data/speaker_exploration_coloronly.csv",2);                        
+                    }, contexts);
+                  }, cost_types);          
+                }, cost_colors);
+              }, u_apple_o_blue_apples);
+            }, u_apple_o_yellow_apples);
+          }, u_cup_o_blue_cups);                
+        }, u_cup_o_yellow_cups);
+      }, u_banana_o_blue_bananas);
+    }, u_banana_o_yellow_bananas);
+  }, lengthWeights);
+}, alphas);
+
 
 
 
