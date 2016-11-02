@@ -71,7 +71,7 @@ var contexts = [{condition:"informative_atypical",
 // }, contexts);
 
 
-var alphas = [5,10,20,30];
+var alphas = [5,10,13,20,30];
 var lengthWeights = [0,5,10,20];
 var u_banana_o_yellow_bananas = [.9];
 var u_banana_o_blue_bananas = [.3];
@@ -79,7 +79,7 @@ var u_cup_o_yellow_cups = [.9];
 var u_cup_o_blue_cups = [.9];
 var u_apple_o_yellow_apples = [.9];
 var u_apple_o_blue_apples = [.3];
-var cost_colors = [1,.6,.3];
+var cost_colors = [.3,.6,1,1.2];
 var cost_types = [1,.6,.3];
 
 
