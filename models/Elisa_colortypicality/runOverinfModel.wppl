@@ -71,8 +71,8 @@ var contexts = [{condition:"informative_atypical",
 // }, contexts);
 
 
-var alphas = [5,10,20];
-var lengthWeights = [0,5];
+var alphas = [5,10,20,30];
+var lengthWeights = [0,5,10,20];
 var u_banana_o_yellow_bananas = [.9];
 var u_banana_o_blue_bananas = [.3];
 var u_cup_o_yellow_cups = [.9];

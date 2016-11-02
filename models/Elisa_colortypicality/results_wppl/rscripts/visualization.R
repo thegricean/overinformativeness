@@ -46,7 +46,7 @@ ggplot(toplot, aes(x=Condition,y=probability,color=AlphaType, group=AlphaType)) 
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
 ggsave("results_wppl/graphs/alpha_variation.png", height=6)
 ggsave("results_wppl/graphs/alpha_variation_coloronly.png", height=6)
-ggsave("results_wppl/graphs/alpha_variation_weighted_coloronly.png", height=6)
+ggsave("results_wppl/graphs/alpha_variation_weighted_coloronly_w=1-5.png", height=6)
 
 # color cost variation
 
@@ -70,7 +70,7 @@ ggplot(toplot, aes(x=Condition,y=probability,color=ColorCostType, group=ColorCos
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
 ggsave("results_wppl/graphs/cost_color_variation.png", height=6)
 ggsave("results_wppl/graphs/cost_color_variation_coloronly.png", height=6)
-ggsave("results_wppl/graphs/cost_color_variation_weighted_coloronly.png", height=6)
+ggsave("results_wppl/graphs/cost_color_variation_weighted_coloronly_w=1-5.png", height=6)
 
 # type cost variation
 
@@ -94,6 +94,6 @@ ggplot(toplot, aes(x=Condition,y=probability,color=TypeCostType, group=TypeCostT
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
 ggsave("results_wppl/graphs/cost_type_variation.png", height=6)
 ggsave("results_wppl/graphs/cost_type_variation_coloronly.png", height=6)
-ggsave("results_wppl/graphs/cost_type_variation_weighted_coloronly.png", height=6)
+ggsave("results_wppl/graphs/cost_type_variation_weighted_coloronly_w=1-5.png", height=6)
 
 
