@@ -5,31 +5,43 @@
 
 var contexts = [{condition:"informative_atypical",
                  context: [["blue", "banana"],
+                 ["yellow","apple"],
+                 ["yellow","apple"],
                  ["yellow", "cup"],
                  ["yellow", "banana"]]},
 
                 {condition:"informative_typical",
                  context:[["yellow", "banana"],
+                 ["blue","apple"],
+                 ["blue","apple"],
                  ["blue", "cup"],
                  ["blue", "banana"]]},
 
                 {condition:"overinformative_atypical",
                  context:[["blue", "banana"],
+                  ["yellow","apple"],
+                 ["yellow","apple"],
                  ["yellow", "cup"],
                  ["yellow", "apple"]]},
 
                 {condition:"overinformative_typical",
                  context:[["yellow", "banana"],
+                 ["blue","apple"],
+                 ["blue","apple"],
                  ["blue", "cup"],
                  ["blue", "apple"]]},
 
                 {condition:"color_competitor_overinformative_atypical",
                  context:[["blue", "banana"],
+                 ["yellow","apple"],
+                 ["yellow","apple"],
                  ["blue", "cup"],
                  ["yellow", "apple"]]},
 
                 {condition:"color_competitor_overinformative_typical",
                  context:[["yellow", "banana"],
+                 ["blue","apple"],
+                 ["blue","apple"], 
    			   	  	 ["yellow", "cup"],
 							   ["blue", "apple"]]}
                 ];				 
@@ -75,6 +87,8 @@ var alphas = [5,10,13,20,30];
 var lengthWeights = [0,5,10,20];
 var u_banana_o_yellow_bananas = [.9];
 var u_banana_o_blue_bananas = [.3];
+// var u_banana_o_yellow_bananas = [3];
+// var u_banana_o_blue_bananas = [1];
 var u_cup_o_yellow_cups = [.9];
 var u_cup_o_blue_cups = [.9];
 var u_apple_o_yellow_apples = [.9];
@@ -109,15 +123,15 @@ map(function(al) {
                           context.context);
                       var runModel = model.runModel;
                       var speaker = model.speaker;
-                      // var listener = model.listener;
-                      // var runListener = model.runListener;
+                      var listener = model.listener;
+                      var runListener = model.runListener;
 
-                      // // write listener results
-                      // var utts = ["yellow","blue","yellow_banana","blue_banana","banana","yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"];
-                      // map(function(utt) {
-                      //   var listenerOutput = runListener(listener, utt);
-                      //   // refModule.writeERP(listenerOutput, [al,le,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10,tc11,tc12,cc,ct,utt], "results_wppl/data/listener_exploration.csv",2);
-                      // },utts);
+                      // write listener results
+                      var utts = [/*"yellow","blue",*/"yellow_banana","blue_banana","banana"/*,"yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"*/];
+                      map(function(utt) {
+                        var listenerOutput = runListener(listener, utt);
+                        refModule.writeERP(listenerOutput, [al,le,by,bb,cy,cb,ay,ab,cc,ct,context.condition,utt], "results_wppl/data/listener_exploration.csv",2);
+                      },utts);
                       // // write speaker results (color sufficient)
                       var modelOutput = runModel(speaker, context.context[0]);
                       refModule.writeERP(modelOutput, [al,le,by,bb,cy,cb,ay,ab,cc,ct,context.condition], "results_wppl/data/speaker_exploration.csv",2);                        

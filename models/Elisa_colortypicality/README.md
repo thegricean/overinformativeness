@@ -48,6 +48,8 @@ Alpha|Cost color|Cost type|Inform. atyp. |Inform. typ.  |Overinf. atyp.|Overinf.
 
 - Cost color = 1, Cost type = 1, lengthweight = 5 without single-color utterances
 <img src="results_wppl/graphs/alpha_variation.png" width="700"/>
+- Variation of costs and lengthweight can further improve the model fit
+- When including more distractor objects with a color that is not the target color, the model predicts more overinformativeness use
 
 - Cost color = 1, Cost type = 1, lengthweight = 5 with single-color utterances and only-color utterances have increased costs (w=0, w=1, w=1.5, w=2)  
 <img src="results_wppl/graphs/alpha_variation_coloronly.png" width="400"/>

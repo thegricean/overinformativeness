@@ -72,8 +72,8 @@ var OverinformativeModel = function(params, context) {
     // console.log(utt);
     // console.log(object);
     // var f = Number.NEGATIVE_INFINITY;
-    var e = 0.015;
-    var f = 0.015;
+    var e = -1;//0.00015;
+    var f = -1;//0.00015;
     var tailoredtypicalities = {
       "banana" : {
         yellow_banana : params.u_banana_o_yellow_banana,
@@ -106,9 +106,12 @@ var OverinformativeModel = function(params, context) {
         yellow_of_blue_banana : f,
         yellow_of_blue_apple : f,
         yellow_of_blue_cup : f*/
+        // yellow_banana : .9,
+        // yellow_apple : .9,
+        // yellow_cup : .9,
         yellow_banana : .9,
         yellow_apple : .9,
-        yellow_cup : .9,
+        yellow_cup : .9,        
         blue_banana : e,
         blue_apple : e,
         blue_cup : e
@@ -120,9 +123,12 @@ var OverinformativeModel = function(params, context) {
         blue_of_yellow_banana : f,
         blue_of_yellow_apple : f,
         blue_of_yellow_cup : f*/
-        blue_banana : .9,
-        blue_apple : .9,
-        blue_cup : .9,
+        // blue_banana : .9,
+        // blue_apple : .9,
+        // blue_cup : .9,
+        blue_banana : .5,
+        blue_apple : .5,
+        blue_cup : .5,        
         yellow_banana : e,
         yellow_apple : e,
         yellow_cup : e

@@ -17,8 +17,8 @@ emp$probability = emp$probability/100
 
 ######### PLOT SPEAKER #########
 
-d = read.table(paste("results_wppl/data/speaker_exploration.csv",sep=""),sep=",")
 d = read.table(paste("results_wppl/data/speaker_exploration_coloronly.csv",sep=""),sep=",")
+d = read.table(paste("results_wppl/data/speaker_exploration.csv",sep=""),sep=",")
 head(d)
 colnames(d) = c("alpha","lengthWeight","by", "bb", "cy", "cb", "ay", "ab", "cost_color","cost_type","condition","utterance","probability")
 str(d)
