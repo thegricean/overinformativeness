@@ -361,25 +361,15 @@ function mouseClickListener(evt) {
       var obj = game.objects[i];
       //var condition = game.trialList[0];
       if (hitTest(obj, mouseX, mouseY)) {
-	called = false;
+	      called = false;
         var alternative1 = _.sample(_.without(game.objects, obj));
         var alternative2 = _.sample(_.without(game.objects, obj, alternative1));
-        var alternative3 = (_.sample(_.without(game.objects, obj, alternative1,
-					       alternative2))
-			    || {speakerCoords : {}, listenerCoords : {}});
-	var alternative4 = (_.sample(_.without(game.objects, obj, alternative1,
-					       alternative2, alternative3))
-			    || {speakerCoords : {}, listenerCoords : {}});
-        game.socket.send("clickedObj." + obj.type + "." + obj.condition + "." + obj.fullName + "." + obj.targetStatus 
-          + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX  + "." + obj.basiclevel + "." + obj.superdomain
+        game.socket.send("clickedObj." + obj.targetType + "." + obj.context + "." + obj.fullName + "." + obj.targetStatus 
+          + "." + obj.speakerCoords.gridX + "." + obj.listenerCoords.gridX
           + "." + alternative1.fullName + "." + alternative1.targetStatus + "." + alternative1.speakerCoords.gridX 
-          + "." + alternative1.listenerCoords.gridX + "." + alternative1.basiclevel + "." + alternative1.superdomain 
+          + "." + alternative1.listenerCoords.gridX  
           + "." + alternative2.fullName + "." + alternative2.targetStatus + "." + alternative2.speakerCoords.gridX 
-          + "." + alternative2.listenerCoords.gridX + "." + alternative2.basiclevel + "." + alternative2.superdomain 
-          + "." + alternative3.fullName + "." + alternative3.targetStatus + "." + alternative3.speakerCoords.gridX 
-          + "." + alternative3.listenerCoords.gridX + "." + alternative3.basiclevel + "." + alternative3.superdomain 
-          + "." + alternative4.fullName + "." + alternative4.targetStatus + "." + alternative4.speakerCoords.gridX 
-          + "." + alternative4.listenerCoords.gridX + "." + alternative4.basiclevel + "." + alternative4.superdomain );
+          + "." + alternative2.listenerCoords.gridX );
 
         //highlight the object that was clicked:
         var upperLeftXListener = obj.listenerCoords.gridPixelX;

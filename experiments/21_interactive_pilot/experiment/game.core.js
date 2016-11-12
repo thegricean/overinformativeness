@@ -677,11 +677,12 @@ var sampleObjects = function(targetPos) {
 
 var sampleDistractors = function(target) {
     return _.map(_.range(2), function(dNum) {
+      distractorname = getDistractorName(target, dNum, target.context);
       return _.extend(_.clone(target), {
   targetStatus : "distractor",
-  fullName : getDistractorName(target, dNum, target.context),
-  url : "stimuli/" + getDistractorName(target, dNum, target.context) + ".png",
-  condition : target.context
+  fullName : distractorname,
+  url : "stimuli/" + distractorname + ".png",
+  context : target.context
     });
   });
 };
