@@ -83,59 +83,25 @@ var writeData = function(client, type, message_parts) {
       var clickedObjSpeakerLocs = message_parts[5];
       var clickedObjListenerLocs = message_parts[6];
 
-      var alternative1Name = message_parts[7]; 
-      var alternative1TargetStatus = message_parts[8];
-      var alternative1SpeakerLocs = message_parts[9];
-      var alternative1ListenerLocs = message_parts[10];
+      var alternat1Name = message_parts[7]; 
+      var alternat1TargetStatus = message_parts[8];
+      var alternat1SpeakerLocs = message_parts[9];
+      var alternat1ListenerLocs = message_parts[10];
 
-      var alternative2Name = message_parts[11]; 
-      var alternative2TargetStatus = message_parts[12];
-      var alternative2SpeakerLocs = message_parts[13];
-      var alternative2ListenerLocs = message_parts[14];
+      var alternat2Name = message_parts[11]; 
+      var alternat2TargetStatus = message_parts[12];
+      var alternat2SpeakerLocs = message_parts[13];
+      var alternat2ListenerLocs = message_parts[14];
       
       var line = (id + ',' + Date.now() + ',' + roundNum + ',' + trialType + ',' + clickedObjContext 
         + "," + clickedObjName + "," + clickedObjTargetStatus + "," + clickedObjSpeakerLocs 
-        + "," + clickedObjListenerLocs
-        + "," + alternative1Name + "," + alternative1TargetStatus + "," + alternative1SpeakerLocs 
-        + "," + alternative1ListenerLocs 
-        + "," + alternative2Name + "," + alternative2TargetStatus + "," + alternative2SpeakerLocs 
-        + "," + alternative2ListenerLocs + '\n');
-      // console.log("id");
-      // console.log(id);
-      // console.log("Date.now()");
-      // console.log(Date.now());
-      // console.log("roundNum");
-      // console.log(roundNum);
-      // console.log("trialType");
-      // console.log(trialType);
-      // console.log("clickedObjContext");
-      // console.log(clickedObjContext);
-      // console.log("clickedObjName");
-      // console.log(clickedObjName);
-      // console.log("clickedObjTargetStatus");
-      // console.log(clickedObjTargetStatus);
-      // console.log("clickedObjSpeakerLocs");
-      // console.log(clickedObjSpeakerLocs);
-      // console.log("clickedObjListenerLocs");
-      // console.log(clickedObjListenerLocs);
-      // console.log("alternative1Name");
-      // console.log(alternative1Name);
-      // console.log("alternative1TargetStatus");
-      // console.log(alternative1TargetStatus);
+        + "," + clickedObjListenerLocs 
+        + "," + alternat1Name + "," + alternat1TargetStatus + "," + alternat1SpeakerLocs 
+        + "," + alternat1ListenerLocs 
+        + "," + alternat2Name + "," + alternat2TargetStatus + "," + alternat2SpeakerLocs 
+        + "," + alternat2ListenerLocs + '\n');
       console.log(line);
     break;
-
-    // case "nonClickedObj" :
-    //   var nonClickedObjName = message_parts[1];
-    //   var nonCickedObjTargetStatus = message_parts[2];
-    //   var nonClickedObjSpeakerLocs = message_parts[3];
-    //   var nonClickedObjListenerLocs = message_parts[4];
-    //   var nonClickedObjCondition = message_parts[5];
-    //   var line = (id + ',' + Date.now() + ',' + roundNum + ',' + nonClickedObjName + "," + 
-    //     nonClickedObjTargetStatus + "," + nonClickedObjSpeakerLocs + "," + nonClickedObjListenerLocs + "," + nonClickedObjCondition + '\n');
-    //   console.log("nonClickedObj: " + line);
-    //   gc.nonClickObjStream.write(line, function (err) {if(err) throw err;});
-    //   break;
 
   case "message" :
     var msg = message_parts[1].replace('~~~','.');

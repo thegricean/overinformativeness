@@ -657,22 +657,15 @@ game_core.prototype.server_send_update = function(){
 };
 
 var sampleObjects = function(targetPos) {
-  // console.log("targetPos");
-  // console.log(targetPos);
   var target = objectList[0][targetPos];
   target.targetStatus = "target";
-  // console.log("target");
-  // console.log(target);
+
   var distractors = sampleDistractors(target);
-  // console.log("distractors");
-  // console.log(distractors);
+  while (distractors[0].fullName === distractors[1].fullName) {
+    var distractors = sampleDistractors(target);
+  }
   
   return [target].concat(distractors);
-  // if(checkItem(target,distractors)) {
-  //   return [target].concat(distractors);
-  // } else { // Try again if something is wrong
-  //   return sampleObjects(targetPos);
-  // }
 };
 
 var sampleDistractors = function(target) {
