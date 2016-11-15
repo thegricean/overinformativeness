@@ -1,2 +1,0 @@
-gameid, time, roundNum, trialType, context,nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs
-7147-5,1478932159559,1,apple,overinformative,apple_blue,target,4,3,banana_brown,distractor,2,2,banana_yellow,distractor,3,4

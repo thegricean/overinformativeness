@@ -1,3 +1,0 @@
-gameid, time, roundNum, trialType, context,nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs
-2269-7,1478925772607,1,carrot,overinformative-cc,carrot_pink,target,3,4,4,3,pear_green,distractor,undefined,undefined,undefined,undefined
-2269-7,1478925784327,2,avocado,overinformative,avocado_red,target,3,3,4,2,tomato_pink,distractor,undefined,undefined,undefined,undefined

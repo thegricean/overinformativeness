@@ -16,9 +16,13 @@ var
     _               = require('underscore');
 
 try {
-  var privateKey  = fs.readFileSync('/etc/apache2/ssl/private.key'),
-      certificate = fs.readFileSync('/etc/apache2/ssl/ssl.crt'),
-      options     = {key: privateKey, cert: certificate},
+  // var privateKey  = fs.readFileSync('/etc/apache2/ssl/private.key'),
+  //     certificate = fs.readFileSync('/etc/apache2/ssl/ssl.crt'),
+  //     options     = {key: privateKey, cert: certificate},
+  var privateKey  = fs.readFileSync('/etc/apache2/ssl/rxdhawkins.me.key'),
+      certificate = fs.readFileSync('/etc/apache2/ssl/rxdhawkins.me.crt'),
+      intermed    = fs.readFileSync('/etc/apache2/ssl/intermediate.crt'),
+      options     = {key: privateKey, cert: certificate, ca: intermed},
       server      = require('https').createServer(options,app).listen(gameport),
       io          = require('socket.io')(server);
 } catch (err) {
@@ -47,47 +51,47 @@ console.log('\t :: Express :: Listening on port ' + gameport );
 app.get( '/*' , function( req, res ) {
   // this is the current file they have requested
   var file = req.params[0]; 
-  console.log('\t :: Express :: file requested: ' + file);    
   if(req.query.workerId && !valid_id(req.query.workerId)) {
-    res.redirect('https://rxdhawkins.net:8888/' + exp + 'forms/invalid.html');
+    console.log("invalid id: blocking request");
+    res.redirect('https://rxdhawkins.me:8888/sharedUtils/invalid.html');
+  } else if(req.query.workerId && req.query.workerId in global_player_set) {
+    console.log("duplicate id: blocking request");
+    res.redirect('https://rxdhawkins.me:8888/sharedUtils/duplicate.html');
   } else {
-    if(req.query.workerId && req.query.workerId in global_player_set) {
-      console.log("duplicate!");
-      res.redirect('https://rxdhawkins.net:8888/' + exp + 'forms/duplicate.html');
-    } else {
-      res.sendfile("./" + file); // give them what they want
+    console.log('\t :: Express :: file requested: ' + file);
+    if(req.query.workerId) {
+      console.log(" by workerID " + req.query.workerId);
     }
+    res.sendfile("./" + file); // give them what they want
   }
 }); 
 
 // Socket.io will call this function when a client connects. We check
 // to see if the client supplied a id. If so, we distinguish them by
 // that, otherwise we assign them one at random
-io.on('connection', function (client) {
+iio.on('connection', function (client) {
   // Recover query string information and set condition
-  var hs = client.handshake;    
-  var query = require('url').parse(client.handshake.headers.referer, true).query;
+  var hs = client.request;
+  console.log(hs.headers);
+  var query = require('url').parse(hs.headers.referer, true).query;
   var id;
   if( !(query.workerId && query.workerId in global_player_set) ) {
     if(query.workerId) {
       global_player_set[query.workerId] = true;
-      // use id from query string if exists
+      // useid from query string if exists
       id = query.workerId; 
     } else {
-      // otherwise, create new one
       id = utils.UUID();
     }
     if(valid_id(id)) {
-      console.log("user connecting...");
       initialize(query, client, id);
     }
   }
 });
 
+
 var valid_id = function(id) {
-  return (id.length == 12 || id.length == 13 ||
-	  id.length == 14 || id.length == 15 || 
-	  id.length == 41);
+  return (id.length <= 15 && id.length >= 12) || id.length == 41;
 };
 
 var initialize = function(query, client, id) {                        
