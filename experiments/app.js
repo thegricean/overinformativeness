@@ -69,7 +69,7 @@ app.get( '/*' , function( req, res ) {
 // Socket.io will call this function when a client connects. We check
 // to see if the client supplied a id. If so, we distinguish them by
 // that, otherwise we assign them one at random
-iio.on('connection', function (client) {
+io.on('connection', function (client) {
   // Recover query string information and set condition
   var hs = client.request;
   console.log(hs.headers);
