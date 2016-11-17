@@ -19,10 +19,12 @@ HPDlo<- function(s){
 }
 options("scipen"=10) 
 
+source("results_bda/rscripts/helpers.R")
 ### Load in model results (parameters)
 # modelversion = "empirical-scaledtyp"
 modelversion = "empirical-scaledtyp-hmc"
 modelversion = "empirical-scaledtyp-hmc-seed8"
+modelversion = "empirical-rawtyp-hmc-seed8"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))
@@ -330,6 +332,7 @@ ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativenes
 cor(toplot$ModelProbability,toplot$Probability) 
 # empirical typicality, round 1: .84
 # empirical typicality, seed 8: .83
+# raw empirical typicality, seed 8: .49
 
 
 ## collapse across targets and domains

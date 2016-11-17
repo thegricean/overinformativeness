@@ -1,217 +1,253 @@
 gameid	 time	 roundNum	 trialType	 context	nameClickedObj	 targetStatusClickedObj	 spLocsClickedObj	 lisLocsClickedObj	 alt1Name	 alt1TargetStatus	 alt1SpLocs	 alt1LisLocs	 alt2Name	 alt2TargetStatus	 alt2SpLocs	 alt2LisLocs	numMessages	numSMessages	numLMessages	speakerMessages	listenerMessages	messageTimeStamps	 refExp	colorMentioned	typeMentioned	clickedType	clickedColor
-1267-7	1479309523704	1	tomato	informative	tomato_red	target	2	4	pear_yellow	distractor	3	3	tomato_pink	distractor	4	2	8	3	5	APPLE___tomato___red	yo___what's the target?___there are no apples___there are two tomatoes and a pear___gotcha	1479309499105___1479309506026___1479309506534___1479309512697___1479309516595___1479309516744___1479309520251___1479309523053	APPLE	False	False	tomato	red
-1267-7	1479309535670	2	banana	overinformative	banana_blue	target	4	3	pear_green	distractor	3	2	avocado_black	distractor	2	4	1	1	0	blue bananna		1479309533746	blue bananna	True	False	banana	blue
-1267-7	1479309542351	3	carrot	overinformative	carrot_purple	target	4	2	banana_blue	distractor	2	3	tomato_pink	distractor	3	4	1	1	0	purple carrot		1479309540960	purple carrot	True	True	carrot	purple
-1267-7	1479309553619	4	avocado	informative	avocado_green	target	3	3	avocado_black	distractor	2	2	pear_orange	distractor	4	4	2	1	1	green veg	avocado! heck yeah	1479309546800___1479309552689	green veg	True	False	avocado	green
-1267-7	1479309560518	5	banana	overinformative	banana_brown	target	4	4	avocado_black	distractor	3	3	tomato_red	distractor	2	2	1	1	0	brown banana		1479309559237	brown banana	True	True	banana	brown
-1267-7	1479309566232	6	pear	overinformative	pear_orange	target	3	4	apple_green	distractor	4	2	tomato_pink	distractor	2	3	1	1	0	orange pear		1479309564751	orange pear	True	True	pear	orange
-1267-7	1479309570934	7	apple	overinformative	apple_blue	target	2	2	tomato_green	distractor	4	4	banana_brown	distractor	3	3	1	1	0	blue apple		1479309569909	blue apple	True	True	apple	blue
-1267-7	1479309580951	8	avocado	overinformative-cc	avocado_red	target	4	4	tomato_pink	distractor	2	2	cup_red	distractor	3	3	1	1	0	red avacado		1479309579277	red avacado	True	False	avocado	red
-1267-7	1479309587519	9	pear	overinformative-cc	pear_yellow	target	3	4	apple_blue	distractor	2	2	cup_yellow	distractor	4	3	1	1	0	yellow pear		1479309586101	yellow pear	True	True	pear	yellow
-1267-7	1479309592388	10	banana	overinformative	banana_yellow	target	4	3	pear_green	distractor	3	2	pear_orange	distractor	2	4	1	1	0	yellow banana		1479309591388	yellow banana	True	True	banana	yellow
-1267-7	1479309597091	11	tomato	overinformative	tomato_green	target	3	2	carrot_orange	distractor	4	3	banana_brown	distractor	2	4	1	1	0	green apple		1479309595950	green apple	True	False	tomato	green
-1267-7	1479309604309	12	avocado	overinformative	avocado_green	target	3	4	tomato_pink	distractor	2	3	pear_yellow	distractor	4	2	1	1	0	green avacado		1479309603242	green avacado	True	False	avocado	green
-1267-7	1479309610576	13	tomato	overinformative-cc	tomato_red	target	4	2	cup_red	distractor	3	3	carrot_orange	distractor	2	4	1	1	0	red tomato		1479309608995	red tomato	True	True	tomato	red
-1267-7	1479309619179	14	tomato	informative	tomato_green	target	4	2	banana_blue	distractor	3	3	tomato_red	distractor	2	4	1	1	0	green tomato		1479309617405	green tomato	True	True	tomato	green
-1267-7	1479309625098	15	avocado	overinformative	avocado_red	target	2	2	pear_orange	distractor	4	4	banana_blue	distractor	3	3	1	1	0	red avacado		1479309624057	red avacado	True	False	avocado	red
-1267-7	1479309630658	16	carrot	overinformative	carrot_pink	target	4	3	pear_yellow	distractor	2	2	tomato_red	distractor	3	4	1	1	0	purple carrot		1479309629663	purple carrot	False	True	carrot	pink
-1267-7	1479309636588	17	avocado	overinformative-cc	avocado_black	target	4	2	cup_black	distractor	2	3	tomato_red	distractor	3	4	1	1	0	black avacado		1479309635593	black avacado	True	False	avocado	black
-1267-7	1479309642297	18	avocado	overinformative-cc	avocado_green	target	3	2	pear_yellow	distractor	2	3	cup_green	distractor	4	4	1	1	0	green avacado		1479309641302	green avacado	True	False	avocado	green
-1267-7	1479309648121	19	apple	informative	apple_blue	target	2	3	carrot_purple	distractor	4	2	apple_red	distractor	3	4	1	1	0	blue apple		1479309647065	blue apple	True	True	apple	blue
-1267-7	1479309653295	20	apple	overinformative	apple_green	target	3	4	tomato_pink	distractor	4	3	banana_yellow	distractor	2	2	1	1	0	green apple		1479309651890	green apple	True	True	apple	green
-1267-7	1479309659183	21	carrot	overinformative-cc	carrot_purple	target	3	3	cup_purple	distractor	2	4	apple_red	distractor	4	2	1	1	0	purple carrot		1479309658163	purple carrot	True	True	carrot	purple
-1267-7	1479309663880	22	banana	informative	banana_brown	target	2	3	banana_blue	distractor	4	4	carrot_purple	distractor	3	2	1	1	0	brown banana		1479309662889	brown banana	True	True	banana	brown
-1267-7	1479309670190	23	carrot	informative	carrot_purple	target	4	2	apple_green	distractor	2	4	carrot_orange	distractor	3	3	1	1	0	purple carrot		1479309669014	purple carrot	True	True	carrot	purple
-1267-7	1479309675031	24	apple	overinformative-cc	apple_blue	target	4	2	cup_blue	distractor	3	4	tomato_red	distractor	2	3	1	1	0	blue apple		1479309673990	blue apple	True	True	apple	blue
-1267-7	1479309680151	25	tomato	overinformative-cc	tomato_green	target	2	4	cup_green	distractor	4	2	avocado_black	distractor	3	3	1	1	0	green apple		1479309678569	green apple	True	False	tomato	green
-1267-7	1479309684759	26	tomato	overinformative	tomato_red	target	2	2	pear_green	distractor	4	4	banana_yellow	distractor	3	3	1	1	0	red tomato		1479309683721	red tomato	True	True	tomato	red
-1267-7	1479309688510	27	apple	overinformative-cc	apple_red	target	2	2	cup_red	distractor	4	3	carrot_pink	distractor	3	4	1	1	0	red apple		1479309687657	red apple	True	True	apple	red
-1267-7	1479309694671	28	avocado	overinformative	avocado_black	target	2	2	pear_green	distractor	3	4	apple_blue	distractor	4	3	1	1	0	black avacado		1479309693602	black avacado	True	False	avocado	black
-1267-7	1479309700983	29	carrot	overinformative-cc	carrot_pink	target	2	3	banana_brown	distractor	4	2	cup_pink	distractor	3	4	1	1	0	purple carrot		1479309698416	purple carrot	False	True	carrot	pink
-1267-7	1479309705925	30	banana	overinformative-cc	banana_blue	target	3	2	carrot_orange	distractor	4	4	cup_blue	distractor	2	3	1	1	0	blue banana		1479309704971	blue banana	True	True	banana	blue
-1267-7	1479309710052	31	apple	overinformative	apple_red	target	2	2	tomato_pink	distractor	4	4	banana_brown	distractor	3	3	1	1	0	red apple		1479309708933	red apple	True	True	apple	red
-1267-7	1479309714807	32	pear	informative	pear_orange	target	3	4	banana_blue	distractor	2	2	pear_yellow	distractor	4	3	1	1	0	orange pear		1479309713641	orange pear	True	True	pear	orange
-1267-7	1479309720748	33	tomato	overinformative-cc	tomato_pink	target	3	4	cup_pink	distractor	2	2	banana_yellow	distractor	4	3	1	1	0	purple tomato		1479309719097	purple tomato	False	True	tomato	pink
-1267-7	1479309726037	34	pear	informative	pear_green	target	4	2	pear_orange	distractor	2	3	avocado_black	distractor	3	4	1	1	0	green pear		1479309725019	green pear	True	True	pear	green
-1267-7	1479309731301	35	pear	overinformative-cc	pear_green	target	4	3	apple_red	distractor	3	4	cup_green	distractor	2	2	1	1	0	green pear		1479309730163	green pear	True	True	pear	green
-1267-7	1479309736965	36	pear	informative	pear_yellow	target	4	4	tomato_pink	distractor	3	3	pear_green	distractor	2	2	1	1	0	yellow pear		1479309735818	yellow pear	True	True	pear	yellow
-1267-7	1479309741676	37	carrot	overinformative-cc	carrot_orange	target	4	3	cup_orange	distractor	3	2	banana_brown	distractor	2	4	1	1	0	orange carrot		1479309740809	orange carrot	True	True	carrot	orange
-1267-7	1479309746718	38	carrot	informative	carrot_pink	target	3	4	banana_yellow	distractor	4	2	carrot_orange	distractor	2	3	1	1	0	purple carrot		1479309745583	purple carrot	False	True	carrot	pink
-1267-7	1479309751372	39	banana	informative	banana_blue	target	3	2	avocado_green	distractor	2	4	banana_brown	distractor	4	3	1	1	0	blue banana		1479309750035	blue banana	True	True	banana	blue
-1267-7	1479309756980	40	banana	overinformative-cc	banana_brown	target	2	4	tomato_green	distractor	4	3	cup_brown	distractor	3	2	1	1	0	brown banana		1479309755684	brown banana	True	True	banana	brown
-1267-7	1479309761902	41	banana	overinformative-cc	banana_yellow	target	2	4	tomato_green	distractor	4	3	cup_yellow	distractor	3	2	1	1	0	yellow banana		1479309760989	yellow banana	True	True	banana	yellow
-1267-7	1479309766715	42	carrot	informative	carrot_orange	target	4	2	carrot_purple	distractor	2	4	avocado_black	distractor	3	3	1	1	0	orange carrot		1479309765447	orange carrot	True	True	carrot	orange
-1267-7	1479309771924	43	avocado	informative	avocado_black	target	3	2	avocado_green	distractor	2	3	apple_green	distractor	4	4	1	1	0	black avacado		1479309771085	black avacado	True	False	avocado	black
-1267-7	1479309777836	44	pear	overinformative	pear_yellow	target	4	3	tomato_red	distractor	2	4	carrot_purple	distractor	3	2	1	1	0	yellow pear		1479309776781	yellow pear	True	True	pear	yellow
-1267-7	1479309783178	45	tomato	overinformative	tomato_pink	target	2	4	apple_red	distractor	4	2	banana_blue	distractor	3	3	1	1	0	purple tomato		1479309781725	purple tomato	False	True	tomato	pink
-1267-7	1479309788081	46	banana	informative	banana_yellow	target	4	2	avocado_red	distractor	2	4	banana_brown	distractor	3	3	1	1	0	yellow banana		1479309787257	yellow banana	True	True	banana	yellow
-1267-7	1479309792882	47	tomato	informative	tomato_pink	target	2	4	banana_brown	distractor	4	3	tomato_green	distractor	3	2	1	1	0	purple tomato		1479309791823	purple tomato	False	True	tomato	pink
-1267-7	1479309797471	48	apple	informative	apple_red	target	4	2	apple_green	distractor	3	4	pear_yellow	distractor	2	3	1	1	0	red apple		1479309796288	red apple	True	True	apple	red
-1267-7	1479309802937	49	avocado	informative	avocado_red	target	3	3	tomato_green	distractor	4	4	avocado_black	distractor	2	2	1	1	0	red avacadfo		1479309801895	red avacadfo	True	False	avocado	red
-1267-7	1479309808352	50	apple	overinformative-cc	apple_green	target	3	2	cup_green	distractor	2	4	carrot_pink	distractor	4	3	1	1	0	green apple		1479309807238	green apple	True	True	apple	green
-1267-7	1479309812921	51	apple	informative	apple_green	target	2	4	apple_blue	distractor	4	3	carrot_orange	distractor	3	2	1	1	0	green apple		1479309811863	green apple	True	True	apple	green
-1267-7	1479309818003	52	pear	overinformative-cc	pear_orange	target	4	3	banana_brown	distractor	2	4	cup_orange	distractor	3	2	1	1	0	orange pear		1479309816806	orange pear	True	True	pear	orange
-1267-7	1479309822888	53	pear	overinformative	pear_green	target	2	4	carrot_pink	distractor	3	2	avocado_black	distractor	4	3	1	1	0	green pear		1479309821969	green pear	True	True	pear	green
-1267-7	1479309828349	54	carrot	overinformative	carrot_orange	target	4	4	tomato_pink	distractor	2	3	tomato_green	distractor	3	2	1	1	0	orange carrot		1479309827296	orange carrot	True	True	carrot	orange
-3436-e	1479311129719	1	apple	overinformative	apple_blue	target	3	2	banana_yellow	distractor	4	4	avocado_black	distractor	2	3	1	1	0	It is blue		1479311126970	It is blue	True	False	apple	blue
-3436-e	1479311140357	2	tomato	informative	tomato_green	target	3	4	tomato_red	distractor	2	3	banana_brown	distractor	4	2	1	1	0	It is green		1479311138154	It is green	True	False	tomato	green
-3436-e	1479311146715	3	tomato	informative	tomato_red	target	4	4	pear_green	distractor	3	2	tomato_pink	distractor	2	3	1	1	0	It is red		1479311144799	It is red	True	False	tomato	red
-3436-e	1479311155200	4	tomato	overinformative-cc	tomato_green	target	3	4	cup_green	distractor	4	3	avocado_black	distractor	2	2	1	1	0	green fruit		1479311152320	green fruit	True	False	tomato	green
-3436-e	1479311162755	5	pear	overinformative-cc	pear_green	target	4	4	cup_green	distractor	3	3	tomato_pink	distractor	2	2	1	1	0	green fruit		1479311160092	green fruit	True	False	pear	green
-3436-e	1479311171719	6	carrot	overinformative-cc	carrot_orange	target	2	2	cup_orange	distractor	4	3	apple_blue	distractor	3	4	1	1	0	orange veggie		1479311169365	orange veggie	True	False	carrot	orange
-3436-e	1479311183437	7	carrot	informative	carrot_pink	target	4	3	banana_brown	distractor	2	4	carrot_purple	distractor	3	2	1	1	0	light purple veggie		1479311180467	light purple veggie	False	False	carrot	pink
-3436-e	1479311194560	8	carrot	informative	carrot_purple	target	2	2	carrot_orange	distractor	4	3	tomato_green	distractor	3	4	1	1	0	purple veggie		1479311192605	purple veggie	True	False	carrot	purple
-3436-e	1479311202599	9	avocado	informative	avocado_red	target	3	4	avocado_black	distractor	2	3	pear_green	distractor	4	2	1	1	0	red 		1479311199949	red 	True	False	avocado	red
-3436-e	1479311210240	10	carrot	overinformative-cc	carrot_purple	target	2	4	cup_purple	distractor	4	3	pear_green	distractor	3	2	1	1	0	purple veggie		1479311208227	purple veggie	True	False	carrot	purple
-3436-e	1479311216957	11	avocado	informative	avocado_green	target	4	2	avocado_red	distractor	2	4	pear_yellow	distractor	3	3	1	1	0	green 		1479311214336	green 	True	False	avocado	green
-3436-e	1479311226317	12	banana	overinformative-cc	banana_yellow	target	3	3	cup_yellow	distractor	4	2	carrot_orange	distractor	2	4	1	1	0	yellow fruit		1479311224117	yellow fruit	True	False	banana	yellow
-3436-e	1479311239721	13	pear	informative	pear_yellow	target	3	2	pear_green	distractor	4	4	tomato_pink	distractor	2	3	1	1	0	yellow NOT GREEN fruit		1479311236421	yellow NOT GREEN fruit	True	False	pear	yellow
-3436-e	1479311246802	14	avocado	overinformative	avocado_green	target	4	2	carrot_orange	distractor	2	4	banana_brown	distractor	3	3	1	1	0	green veggie		1479311244360	green veggie	True	False	avocado	green
-3436-e	1479311253722	15	pear	informative	pear_green	target	4	3	tomato_red	distractor	3	2	pear_orange	distractor	2	4	1	1	0	green 		1479311251809	green 	True	False	pear	green
-3436-e	1479311262755	16	tomato	overinformative-cc	tomato_red	target	2	2	cup_red	distractor	4	3	carrot_pink	distractor	3	4	1	1	0	red veggie		1479311260996	red veggie	True	False	tomato	red
-3436-e	1479311269919	17	banana	overinformative-cc	banana_brown	target	3	4	cup_brown	distractor	4	2	tomato_pink	distractor	2	3	1	1	0	brown fruit		1479311267887	brown fruit	True	False	banana	brown
-3436-e	1479311281843	18	pear	informative	pear_orange	target	4	3	tomato_pink	distractor	3	2	pear_green	distractor	2	4	1	1	0	reddish orange fruit		1479311279228	reddish orange fruit	True	False	pear	orange
-3436-e	1479311307640	19	banana	overinformative	banana_brown	target	2	4	carrot_purple	distractor	3	2	pear_orange	distractor	4	3	1	1	0	brown		1479311305511	brown	True	False	banana	brown
-3436-e	1479311313041	20	apple	informative	apple_red	target	2	3	apple_green	distractor	3	4	avocado_black	distractor	4	2	1	1	0	red		1479311310500	red	True	False	apple	red
-3436-e	1479311318043	21	carrot	overinformative	carrot_orange	target	4	2	pear_green	distractor	3	3	avocado_red	distractor	2	4	1	1	0	orange		1479311316001	orange	True	False	carrot	orange
-3436-e	1479311322914	22	avocado	overinformative	avocado_red	target	3	4	apple_blue	distractor	2	3	banana_blue	distractor	4	2	1	1	0	red		1479311320927	red	True	False	avocado	red
-3436-e	1479311327277	23	apple	overinformative	apple_red	target	4	3	banana_blue	distractor	2	2	pear_yellow	distractor	3	4	1	1	0	red		1479311325457	red	True	False	apple	red
-3436-e	1479311333197	24	tomato	informative	tomato_pink	target	4	4	tomato_green	distractor	3	2	banana_brown	distractor	2	3	1	1	0	purple		1479311330687	purple	False	False	tomato	pink
-3436-e	1479311338077	25	tomato	overinformative	tomato_red	target	4	3	avocado_black	distractor	3	4	carrot_pink	distractor	2	2	1	1	0	red		1479311335805	red	True	False	tomato	red
-3436-e	1479311345882	26	avocado	overinformative-cc	avocado_green	target	4	3	apple_blue	distractor	2	4	cup_green	distractor	3	2	2	2	0	green ___veggie		1479311342221___1479311343716	green 	True	False	avocado	green
-3436-e	1479311351563	27	banana	informative	banana_brown	target	3	2	banana_blue	distractor	2	3	apple_blue	distractor	4	4	1	1	0	brown		1479311349613	brown	True	False	banana	brown
-3436-e	1479311359198	28	pear	overinformative	pear_green	target	3	3	avocado_black	distractor	4	2	banana_brown	distractor	2	4	1	1	0	green fruit		1479311356917	green fruit	True	False	pear	green
-3436-e	1479311363879	29	banana	overinformative	banana_blue	target	3	3	avocado_black	distractor	2	4	pear_green	distractor	4	2	1	1	0	blue		1479311362062	blue	True	False	banana	blue
-3436-e	1479311371281	30	pear	overinformative-cc	pear_yellow	target	4	3	avocado_black	distractor	3	4	cup_yellow	distractor	2	2	1	1	0	yellow fruit		1479311369433	yellow fruit	True	False	pear	yellow
-3436-e	1479311377516	31	apple	informative	apple_blue	target	3	4	apple_red	distractor	2	2	carrot_orange	distractor	4	3	1	1	0	blue		1479311375373	blue	True	False	apple	blue
-3436-e	1479311382763	32	carrot	informative	carrot_orange	target	4	4	banana_yellow	distractor	2	3	carrot_purple	distractor	3	2	1	1	0	orange		1479311380513	orange	True	False	carrot	orange
-3436-e	1479311388963	33	apple	overinformative-cc	apple_red	target	4	4	pear_orange	distractor	2	3	cup_red	distractor	3	2	1	1	0	red fruit		1479311387257	red fruit	True	False	apple	red
-3436-e	1479311396520	34	avocado	informative	avocado_black	target	4	3	carrot_orange	distractor	3	4	avocado_red	distractor	2	2	1	1	0	black 		1479311394534	black 	True	False	avocado	black
-3436-e	1479311403406	35	pear	overinformative-cc	pear_orange	target	4	4	cup_orange	distractor	2	2	carrot_pink	distractor	3	3	2	2	0	orange ___frut		1479311401087___1479311403672	orange 	True	False	pear	orange
-3436-e	1479311408443	36	banana	informative	banana_blue	target	4	2	apple_red	distractor	3	3	banana_brown	distractor	2	4	1	1	0	blue		1479311406218	blue	True	False	banana	blue
-3436-e	1479311414242	37	carrot	overinformative	carrot_pink	target	3	4	avocado_green	distractor	4	2	banana_blue	distractor	2	3	1	1	0	purple		1479311412014	purple	False	False	carrot	pink
-3436-e	1479311420719	38	apple	overinformative-cc	apple_green	target	3	4	carrot_purple	distractor	2	3	cup_green	distractor	4	2	1	1	0	green fruit		1479311418705	green fruit	True	False	apple	green
-3436-e	1479311427037	39	apple	overinformative	apple_green	target	2	4	tomato_red	distractor	4	3	carrot_orange	distractor	3	2	1	1	0	green fruit		1479311424822	green fruit	True	False	apple	green
-3436-e	1479311434122	40	tomato	overinformative-cc	tomato_pink	target	3	2	cup_pink	distractor	2	3	carrot_orange	distractor	4	4	1	1	0	purple veggie		1479311431774	purple veggie	False	False	tomato	pink
-3436-e	1479311439921	41	apple	informative	apple_green	target	2	3	apple_red	distractor	3	2	carrot_orange	distractor	4	4	1	1	0	green		1479311437534	green	True	False	apple	green
-3436-e	1479311448275	42	banana	overinformative-cc	banana_blue	target	2	4	carrot_pink	distractor	4	2	cup_blue	distractor	3	3	1	1	0	blue fruit		1479311446058	blue fruit	True	False	banana	blue
-3436-e	1479311459483	43	banana	overinformative	banana_yellow	target	2	4	apple_red	distractor	3	2	apple_green	distractor	4	3	1	1	0	yellow fruit		1479311457198	yellow fruit	True	False	banana	yellow
-3436-e	1479311465442	44	avocado	overinformative	avocado_black	target	4	4	carrot_purple	distractor	2	3	banana_yellow	distractor	3	2	1	1	0	black 		1479311462983	black 	True	False	avocado	black
-3436-e	1479311472676	45	carrot	overinformative-cc	carrot_pink	target	2	2	banana_blue	distractor	3	4	cup_pink	distractor	4	3	1	1	0	purple veggie		1479311470510	purple veggie	False	False	carrot	pink
-3436-e	1479311478515	46	carrot	overinformative	carrot_purple	target	3	3	avocado_green	distractor	4	4	apple_blue	distractor	2	2	1	1	0	purple		1479311476510	purple	True	False	carrot	purple
-3436-e	1479311486362	47	apple	overinformative-cc	apple_blue	target	2	2	carrot_purple	distractor	3	3	cup_blue	distractor	4	4	1	1	0	fruit		1479311483395	fruit	False	False	apple	blue
-3436-e	1479311492037	48	pear	overinformative	pear_orange	target	3	4	carrot_pink	distractor	2	3	banana_brown	distractor	4	2	1	1	0	orange		1479311490127	orange	True	False	pear	orange
-3436-e	1479311498277	49	tomato	overinformative	tomato_green	target	2	4	banana_brown	distractor	4	3	avocado_black	distractor	3	2	1	1	0	green		1479311495966	green	True	False	tomato	green
-3436-e	1479311505882	50	pear	overinformative	pear_yellow	target	2	3	tomato_green	distractor	4	4	apple_green	distractor	3	2	1	1	0	yellow fruit		1479311503578	yellow fruit	True	False	pear	yellow
-3436-e	1479311518558	51	tomato	overinformative	tomato_pink	target	2	3	carrot_purple	distractor	4	2	apple_red	distractor	3	4	1	1	0	light purple		1479311515603	light purple	False	False	tomato	pink
-3436-e	1479311538480	52	avocado	overinformative-cc	avocado_red	target	4	3	pear_orange	distractor	3	4	cup_red	distractor	2	2	1	1	0	reddish veggie		1479311535527	reddish veggie	False	False	avocado	red
-3436-e	1479311543241	53	banana	informative	banana_yellow	target	2	3	banana_blue	distractor	4	4	apple_red	distractor	3	2	1	1	0	yellow		1479311541563	yellow	True	False	banana	yellow
-3436-e	1479311550319	54	avocado	overinformative-cc	avocado_black	target	3	4	tomato_red	distractor	4	3	cup_black	distractor	2	2	1	1	0	black veggie		1479311548368	black veggie	True	False	avocado	black
-7473-8	1479311659913	1	avocado	informative	avocado_green	target	2	3	banana_brown	distractor	4	2	avocado_red	distractor	3	4	1	1	0	select the green avacado		1479311579632	select the green avacado	True	False	avocado	green
-7473-8	1479311674368	2	pear	overinformative-cc	pear_yellow	target	4	3	apple_red	distractor	3	4	cup_yellow	distractor	2	2	1	1	0	the yellow pear		1479311671662	the yellow pear	True	True	pear	yellow
-7473-8	1479311680337	3	avocado	overinformative	avocado_green	target	2	4	carrot_purple	distractor	3	3	carrot_orange	distractor	4	2	1	1	0	avacado		1479311678758	avacado	False	False	avocado	green
-7473-8	1479311686008	4	carrot	overinformative	carrot_pink	target	3	3	pear_orange	distractor	2	4	apple_green	distractor	4	2	1	1	0	carrot		1479311684472	carrot	False	True	carrot	pink
-7473-8	1479311691775	5	avocado	overinformative	avocado_red	target	3	3	carrot_orange	distractor	2	2	apple_green	distractor	4	4	1	1	0	avacado		1479311689749	avacado	False	False	avocado	red
-7473-8	1479311696682	6	carrot	overinformative-cc	carrot_orange	target	3	2	cup_orange	distractor	2	4	apple_red	distractor	4	3	1	1	0	carrot		1479311695401	carrot	False	True	carrot	orange
-7473-8	1479311701679	7	banana	overinformative	banana_blue	target	4	2	avocado_green	distractor	2	4	carrot_purple	distractor	3	3	1	1	0	banana		1479311700559	banana	False	True	banana	blue
-7473-8	1479311707216	8	apple	informative	apple_green	target	2	3	pear_orange	distractor	4	4	apple_blue	distractor	3	2	1	1	0	green apple		1479311705739	green apple	True	True	apple	green
-7473-8	1479311714861	9	tomato	informative	tomato_red	target	3	4	apple_green	distractor	2	3	tomato_green	distractor	4	2	1	1	0	red tomato		1479311713139	red tomato	True	True	tomato	red
-7473-8	1479311719459	10	banana	overinformative	banana_yellow	target	2	3	tomato_pink	distractor	3	2	apple_blue	distractor	4	4	1	1	0	banana		1479311718462	banana	False	True	banana	yellow
-7473-8	1479311724912	11	banana	informative	banana_yellow	target	4	3	tomato_red	distractor	3	4	banana_blue	distractor	2	2	1	1	0	yellow banana		1479311723898	yellow banana	True	True	banana	yellow
-7473-8	1479311729945	12	pear	overinformative	pear_green	target	3	2	apple_blue	distractor	4	4	banana_brown	distractor	2	3	1	1	0	pear		1479311728380	pear	False	True	pear	green
-7473-8	1479311734303	13	banana	overinformative-cc	banana_yellow	target	4	4	carrot_pink	distractor	3	2	cup_yellow	distractor	2	3	1	1	0	banana		1479311733081	banana	False	True	banana	yellow
-7473-8	1479311739326	14	apple	overinformative	apple_blue	target	4	2	avocado_green	distractor	2	3	pear_orange	distractor	3	4	1	1	0	apple		1479311737273	apple	False	True	apple	blue
-7473-8	1479311743955	15	apple	overinformative-cc	apple_green	target	2	2	tomato_pink	distractor	4	4	cup_green	distractor	3	3	1	1	0	apple		1479311742918	apple	False	True	apple	green
-7473-8	1479311747777	16	carrot	overinformative	carrot_purple	target	2	2	avocado_red	distractor	4	4	apple_blue	distractor	3	3	1	1	0	carrot		1479311746662	carrot	False	True	carrot	purple
-7473-8	1479311752790	17	avocado	overinformative-cc	avocado_red	target	4	4	pear_orange	distractor	3	2	cup_red	distractor	2	3	1	1	0	avacado		1479311751330	avacado	False	False	avocado	red
-7473-8	1479311760172	18	pear	informative	pear_yellow	target	2	3	pear_green	distractor	4	2	avocado_green	distractor	3	4	1	1	0	yellow pear		1479311758059	yellow pear	True	True	pear	yellow
-7473-8	1479311764897	19	carrot	informative	carrot_purple	target	2	3	pear_yellow	distractor	4	2	carrot_orange	distractor	3	4	1	1	0	purple carrot		1479311763837	purple carrot	True	True	carrot	purple
-7473-8	1479311768987	20	tomato	overinformative	tomato_red	target	3	3	banana_blue	distractor	4	2	carrot_orange	distractor	2	4	1	1	0	tomato		1479311767865	tomato	False	True	tomato	red
-7473-8	1479311774260	21	tomato	overinformative-cc	tomato_pink	target	2	2	banana_yellow	distractor	4	3	cup_pink	distractor	3	4	1	1	0	toato		1479311772135	toato	False	False	tomato	pink
-7473-8	1479311779062	22	banana	overinformative-cc	banana_blue	target	2	4	avocado_red	distractor	3	3	cup_blue	distractor	4	2	1	1	0	banana		1479311777679	banana	False	True	banana	blue
-7473-8	1479311782901	23	pear	overinformative-cc	pear_green	target	3	2	tomato_pink	distractor	4	4	cup_green	distractor	2	3	1	1	0	pear		1479311781768	pear	False	True	pear	green
-7473-8	1479311786915	24	pear	overinformative-cc	pear_orange	target	4	4	avocado_red	distractor	3	3	cup_orange	distractor	2	2	1	1	0	pear		1479311785469	pear	False	True	pear	orange
-7473-8	1479311793813	25	pear	informative	pear_green	target	2	3	pear_orange	distractor	3	4	tomato_pink	distractor	4	2	1	1	0	green pear		1479311792327	green pear	True	True	pear	green
-7473-8	1479311798353	26	apple	overinformative-cc	apple_red	target	3	4	cup_red	distractor	4	2	pear_orange	distractor	2	3	1	1	0	apple		1479311796840	apple	False	True	apple	red
-7473-8	1479311803247	27	tomato	overinformative-cc	tomato_green	target	3	2	carrot_pink	distractor	2	3	cup_green	distractor	4	4	1	1	0	tomato		1479311801771	tomato	False	True	tomato	green
-7473-8	1479311808314	28	tomato	informative	tomato_pink	target	3	2	banana_blue	distractor	2	4	tomato_red	distractor	4	3	1	1	0	purple tomato		1479311807070	purple tomato	False	True	tomato	pink
-7473-8	1479311815119	29	avocado	informative	avocado_red	target	3	2	avocado_green	distractor	2	4	banana_blue	distractor	4	3	1	1	0	red avacado		1479311813653	red avacado	True	False	avocado	red
-7473-8	1479311819816	30	avocado	overinformative-cc	avocado_green	target	3	3	cup_green	distractor	4	4	apple_blue	distractor	2	2	1	1	0	avacado		1479311818459	avacado	False	False	avocado	green
-7473-8	1479311825276	31	banana	informative	banana_blue	target	4	2	banana_yellow	distractor	2	3	tomato_green	distractor	3	4	1	1	0	blue banana		1479311824093	blue banana	True	True	banana	blue
-7473-8	1479311831678	32	avocado	overinformative	avocado_black	target	3	3	apple_red	distractor	4	2	carrot_pink	distractor	2	4	1	1	0	avacado		1479311830192	avacado	False	False	avocado	black
-7473-8	1479311838506	33	avocado	informative	avocado_black	target	4	4	avocado_green	distractor	2	3	tomato_red	distractor	3	2	1	1	0	black avacado		1479311837281	black avacado	True	False	avocado	black
-7473-8	1479311844136	34	carrot	overinformative-cc	carrot_pink	target	2	3	cup_pink	distractor	4	2	banana_brown	distractor	3	4	1	1	0	carrot		1479311843043	carrot	False	True	carrot	pink
-7473-8	1479311848819	35	tomato	overinformative	tomato_green	target	4	4	avocado_black	distractor	2	2	avocado_red	distractor	3	3	1	1	0	tomato		1479311847427	tomato	False	True	tomato	green
-7473-8	1479311852919	36	banana	overinformative-cc	banana_brown	target	4	4	apple_blue	distractor	2	2	cup_brown	distractor	3	3	1	1	0	banana		1479311851710	banana	False	True	banana	brown
-7473-8	1479311858782	37	apple	informative	apple_blue	target	2	3	banana_brown	distractor	4	2	apple_green	distractor	3	4	1	1	0	blue apple		1479311857689	blue apple	True	True	apple	blue
-7473-8	1479311862614	38	carrot	overinformative	carrot_orange	target	2	3	banana_brown	distractor	4	4	avocado_red	distractor	3	2	1	1	0	carrot		1479311861645	carrot	False	True	carrot	orange
-7473-8	1479311866561	39	pear	overinformative	pear_orange	target	4	4	carrot_pink	distractor	2	2	banana_yellow	distractor	3	3	1	1	0	pear		1479311865286	pear	False	True	pear	orange
-7473-8	1479311873471	40	pear	informative	pear_orange	target	4	4	pear_yellow	distractor	3	3	tomato_pink	distractor	2	2	1	1	0	orange pear		1479311872173	orange pear	True	True	pear	orange
-7473-8	1479311877885	41	banana	overinformative	banana_brown	target	2	4	pear_orange	distractor	3	3	avocado_green	distractor	4	2	1	1	0	banana		1479311876628	banana	False	True	banana	brown
-7473-8	1479311881628	42	apple	overinformative-cc	apple_blue	target	2	3	avocado_red	distractor	3	4	cup_blue	distractor	4	2	1	1	0	apple		1479311880513	apple	False	True	apple	blue
-7473-8	1479311888059	43	banana	informative	banana_brown	target	4	3	carrot_purple	distractor	3	4	banana_yellow	distractor	2	2	1	1	0	brown banana		1479311885989	brown banana	True	True	banana	brown
-7473-8	1479311892350	44	apple	overinformative	apple_green	target	3	3	tomato_red	distractor	4	2	banana_yellow	distractor	2	4	1	1	0	apple		1479311891055	apple	False	True	apple	green
-7473-8	1479311896622	45	avocado	overinformative-cc	avocado_black	target	4	2	cup_black	distractor	3	4	pear_yellow	distractor	2	3	1	1	0	avacado		1479311895460	avacado	False	False	avocado	black
-7473-8	1479311900252	46	carrot	overinformative-cc	carrot_purple	target	2	2	cup_purple	distractor	3	3	tomato_red	distractor	4	4	1	1	0	carrot		1479311899330	carrot	False	True	carrot	purple
-7473-8	1479311905035	47	carrot	informative	carrot_pink	target	3	3	carrot_purple	distractor	4	2	avocado_green	distractor	2	4	1	1	0	pink carrot		1479311903695	pink carrot	True	True	carrot	pink
-7473-8	1479311913057	48	carrot	informative	carrot_orange	target	3	4	apple_green	distractor	4	3	carrot_pink	distractor	2	2	1	1	0	orange carrot		1479311911660	orange carrot	True	True	carrot	orange
-7473-8	1479311917240	49	pear	overinformative	pear_yellow	target	4	3	banana_brown	distractor	3	4	apple_green	distractor	2	2	1	1	0	pear		1479311915537	pear	False	True	pear	yellow
-7473-8	1479311923525	50	tomato	informative	tomato_green	target	2	4	tomato_red	distractor	4	2	pear_orange	distractor	3	3	1	1	0	green tomato		1479311921540	green tomato	True	True	tomato	green
-7473-8	1479311927310	51	apple	overinformative	apple_red	target	3	3	banana_brown	distractor	2	2	pear_yellow	distractor	4	4	1	1	0	apple		1479311926041	apple	False	True	apple	red
-7473-8	1479311931799	52	apple	informative	apple_red	target	3	2	pear_yellow	distractor	2	3	apple_green	distractor	4	4	1	1	0	red apple		1479311930568	red apple	True	True	apple	red
-7473-8	1479311936469	53	tomato	overinformative	tomato_pink	target	4	3	pear_yellow	distractor	2	2	apple_blue	distractor	3	4	1	1	0	tomato		1479311935283	tomato	False	True	tomato	pink
-7473-8	1479311940633	54	tomato	overinformative-cc	tomato_red	target	4	3	pear_orange	distractor	2	2	cup_red	distractor	3	4	1	1	0	tomato		1479311939739	tomato	False	True	tomato	red
-2325-a	1479323094608	1	tomato	overinformative	tomato_red	target	2	3	pear_green	distractor	4	2	pear_yellow	distractor	3	4	1	1	0	the tomato		1479323092492	the tomato	False	True	tomato	red
-2325-a	1479323103793	2	pear	overinformative-cc	pear_yellow	target	4	3	apple_blue	distractor	2	4	cup_yellow	distractor	3	2	1	1	0	pear		1479323101435	pear	False	True	pear	yellow
-2325-a	1479323113231	3	banana	overinformative-cc	banana_yellow	target	4	2	cup_yellow	distractor	2	4	pear_green	distractor	3	3	1	1	0	banana		1479323111264	banana	False	True	banana	yellow
-2325-a	1479323121696	4	apple	overinformative-cc	apple_green	target	4	3	cup_green	distractor	3	4	tomato_red	distractor	2	2	1	1	0	apple		1479323118327	apple	False	True	apple	green
-2325-a	1479323131187	5	apple	informative	apple_green	target	3	2	banana_brown	distractor	2	4	apple_blue	distractor	4	3	1	1	0	green apple		1479323129145	green apple	True	True	apple	green
-2325-a	1479323140137	6	carrot	overinformative	carrot_purple	target	3	2	tomato_pink	distractor	2	4	avocado_black	distractor	4	3	1	1	0	carrot		1479323138254	carrot	False	True	carrot	purple
-2325-a	1479323148697	7	banana	overinformative	banana_yellow	target	2	3	avocado_black	distractor	3	2	apple_red	distractor	4	4	1	1	0	banana		1479323146661	banana	False	True	banana	yellow
-2325-a	1479323161699	8	pear	overinformative	pear_orange	target	2	2	apple_green	distractor	3	3	avocado_red	distractor	4	4	1	1	0	orange pear		1479323158737	orange pear	True	True	pear	orange
-2325-a	1479323169097	9	carrot	overinformative-cc	carrot_pink	target	4	2	cup_pink	distractor	3	3	avocado_black	distractor	2	4	1	1	0	carrot		1479323167076	carrot	False	True	carrot	pink
-2325-a	1479323191706	10	avocado	overinformative	avocado_green	target	3	2	banana_brown	distractor	4	4	apple_blue	distractor	2	3	1	1	0	the green thing, not the apple or banana		1479323189324	the green thing, not the apple or banana	True	False	avocado	green
-2325-a	1479323200294	11	tomato	informative	tomato_green	target	4	3	pear_orange	distractor	2	2	tomato_red	distractor	3	4	1	1	0	green tomato		1479323197816	green tomato	True	True	tomato	green
-2325-a	1479323206024	12	tomato	overinformative-cc	tomato_red	target	2	2	cup_red	distractor	3	4	pear_yellow	distractor	4	3	1	1	0	tomato		1479323203839	tomato	False	True	tomato	red
-2325-a	1479323217605	13	tomato	overinformative	tomato_pink	target	2	3	pear_yellow	distractor	4	4	apple_green	distractor	3	2	1	1	0	tomato		1479323215116	tomato	False	True	tomato	pink
-2325-a	1479323223682	14	carrot	overinformative-cc	carrot_orange	target	3	2	avocado_black	distractor	2	3	cup_orange	distractor	4	4	1	1	0	carrot		1479323221779	carrot	False	True	carrot	orange
-2325-a	1479323242052	15	avocado	informative	avocado_red	target	4	3	pear_orange	distractor	2	2	avocado_black	distractor	3	4	1	1	0	the red fruit		1479323236622	the red fruit	True	False	avocado	red
-2325-a	1479323250765	16	banana	overinformative	banana_blue	target	4	2	avocado_green	distractor	2	4	avocado_red	distractor	3	3	1	1	0	banana		1479323248798	banana	False	True	banana	blue
-2325-a	1479323259872	17	tomato	informative	tomato_red	target	4	2	pear_orange	distractor	2	4	tomato_green	distractor	3	3	1	1	0	red tomato		1479323257173	red tomato	True	True	tomato	red
-2325-a	1479323268833	18	banana	overinformative-cc	banana_blue	target	2	4	pear_orange	distractor	4	2	cup_blue	distractor	3	3	1	1	0	banana		1479323266447	banana	False	True	banana	blue
-2325-a	1479323275904	19	apple	overinformative	apple_blue	target	2	4	banana_brown	distractor	4	2	tomato_red	distractor	3	3	1	1	0	apple		1479323273565	apple	False	True	apple	blue
-2325-a	1479323301852	20	avocado	overinformative-cc	avocado_black	target	3	4	pear_green	distractor	4	2	cup_black	distractor	2	3	1	1	0	not the mug, not the pear.~~~~~~What is that thing?		1479323293805	not the mug, not the pear.~~~~~~What is that thing?	False	False	avocado	black
-2325-a	1479323312951	21	banana	informative	banana_brown	target	2	3	avocado_black	distractor	3	2	banana_blue	distractor	4	4	1	1	0	brown banana		1479323309395	brown banana	True	True	banana	brown
-2325-a	1479323325203	22	avocado	informative	avocado_black	target	3	2	avocado_green	distractor	4	4	banana_brown	distractor	2	3	1	1	0	black fruit		1479323320872	black fruit	True	False	avocado	black
-2325-a	1479323337490	23	apple	informative	apple_red	target	3	2	apple_green	distractor	4	3	avocado_black	distractor	2	4	1	1	0	red apple		1479323330033	red apple	True	True	apple	red
-2325-a	1479323358898	24	carrot	overinformative	carrot_pink	target	3	4	banana_brown	distractor	4	3	apple_red	distractor	2	2	2	1	1	carrot	sounds good we will call it that	1479323339322___1479323356837	carrot	False	True	carrot	pink
-2325-a	1479323367606	25	pear	overinformative	pear_green	target	4	4	apple_red	distractor	2	3	banana_brown	distractor	3	2	1	1	0	pear		1479323364875	pear	False	True	pear	green
-2325-a	1479323376029	26	banana	informative	banana_yellow	target	4	2	tomato_green	distractor	3	4	banana_blue	distractor	2	3	1	1	0	yellow banana		1479323373989	yellow banana	True	True	banana	yellow
-2325-a	1479323385306	27	carrot	informative	carrot_pink	target	4	4	tomato_green	distractor	2	3	carrot_orange	distractor	3	2	1	1	0	purple carrot		1479323382772	purple carrot	False	True	carrot	pink
-2325-a	1479323392132	28	banana	informative	banana_blue	target	4	2	banana_brown	distractor	3	4	tomato_green	distractor	2	3	1	1	0	blue banana		1479323390309	blue banana	True	True	banana	blue
-2325-a	1479323401001	29	avocado	informative	avocado_green	target	2	3	banana_yellow	distractor	4	2	avocado_black	distractor	3	4	1	1	0	green fruit		1479323398984	green fruit	True	False	avocado	green
-2325-a	1479323414765	30	carrot	informative	carrot_orange	target	2	3	carrot_pink	distractor	4	2	banana_brown	distractor	3	4	1	1	0	orange/normal carrot		1479323410999	orange/normal carrot	False	True	carrot	orange
-2325-a	1479323421893	31	carrot	overinformative-cc	carrot_purple	target	3	2	cup_purple	distractor	4	4	apple_green	distractor	2	3	1	1	0	carrot		1479323419929	carrot	False	True	carrot	purple
-2325-a	1479323429154	32	apple	overinformative	apple_green	target	4	4	avocado_black	distractor	3	2	tomato_red	distractor	2	3	1	1	0	apple		1479323425777	apple	False	True	apple	green
-2325-a	1479323438889	33	banana	overinformative-cc	banana_brown	target	4	4	cup_brown	distractor	2	2	pear_orange	distractor	3	3	1	1	0	banana		1479323433168	banana	False	True	banana	brown
-2325-a	1479323446276	34	apple	overinformative	apple_red	target	4	4	banana_yellow	distractor	3	2	banana_brown	distractor	2	3	1	1	0	apple		1479323442656	apple	False	True	apple	red
-2325-a	1479323452500	35	pear	overinformative-cc	pear_orange	target	3	4	banana_blue	distractor	4	2	cup_orange	distractor	2	3	1	1	0	pear		1479323450466	pear	False	True	pear	orange
-2325-a	1479323458801	36	pear	overinformative-cc	pear_green	target	2	3	banana_brown	distractor	3	2	cup_green	distractor	4	4	1	1	0	pear		1479323456748	pear	False	True	pear	green
-2325-a	1479323465338	37	banana	overinformative	banana_brown	target	4	3	apple_red	distractor	2	4	pear_orange	distractor	3	2	1	1	0	banana		1479323463938	banana	False	True	banana	brown
-2325-a	1479323472584	38	apple	informative	apple_blue	target	4	4	tomato_pink	distractor	2	2	apple_green	distractor	3	3	1	1	0	blue apple		1479323470924	blue apple	True	True	apple	blue
-2325-a	1479323497996	39	pear	informative	pear_orange	target	4	4	banana_blue	distractor	3	2	pear_green	distractor	2	3	1	1	0	orange pear		1479323478598	orange pear	True	True	pear	orange
-2325-a	1479323507180	40	pear	informative	pear_green	target	4	2	carrot_pink	distractor	2	4	pear_orange	distractor	3	3	1	1	0	green pear		1479323505558	green pear	True	True	pear	green
-2325-a	1479323515779	41	carrot	overinformative	carrot_orange	target	3	3	tomato_green	distractor	2	4	banana_yellow	distractor	4	2	1	1	0	carrot		1479323510901	carrot	False	True	carrot	orange
-2325-a	1479323523812	42	tomato	overinformative-cc	tomato_green	target	2	4	avocado_red	distractor	3	2	cup_green	distractor	4	3	1	1	0	tomato		1479323521908	tomato	False	True	tomato	green
-2325-a	1479323530837	43	avocado	overinformative	avocado_red	target	4	3	banana_blue	distractor	3	4	carrot_purple	distractor	2	2	1	1	0	red fruit		1479323529445	red fruit	True	False	avocado	red
-2325-a	1479323540983	44	pear	informative	pear_yellow	target	4	2	pear_orange	distractor	2	4	avocado_green	distractor	3	3	1	1	0	yellow pear		1479323537200	yellow pear	True	True	pear	yellow
-2325-a	1479323548590	45	pear	overinformative	pear_yellow	target	3	2	carrot_pink	distractor	4	4	tomato_green	distractor	2	3	1	1	0	yellow pear again		1479323546755	yellow pear again	True	True	pear	yellow
-2325-a	1479323556371	46	avocado	overinformative-cc	avocado_red	target	3	3	banana_brown	distractor	2	4	cup_red	distractor	4	2	1	1	0	red fruit		1479323554940	red fruit	True	False	avocado	red
-2325-a	1479323564073	47	carrot	informative	carrot_purple	target	2	4	carrot_orange	distractor	4	3	banana_yellow	distractor	3	2	1	1	0	purple carrot		1479323562410	purple carrot	True	True	carrot	purple
-2325-a	1479323572168	48	tomato	overinformative-cc	tomato_pink	target	3	4	cup_pink	distractor	2	2	avocado_black	distractor	4	3	1	1	0	tomato		1479323569465	tomato	False	True	tomato	pink
-2325-a	1479323588448	49	tomato	informative	tomato_pink	target	2	4	avocado_black	distractor	4	2	tomato_green	distractor	3	3	1	1	0	purple tomato		1479323585951	purple tomato	False	True	tomato	pink
-2325-a	1479323596359	50	avocado	overinformative-cc	avocado_green	target	4	4	cup_green	distractor	3	3	banana_yellow	distractor	2	2	1	1	0	green fruit		1479323594330	green fruit	True	False	avocado	green
-2325-a	1479323602529	51	apple	overinformative-cc	apple_red	target	4	4	tomato_pink	distractor	2	2	cup_red	distractor	3	3	1	1	0	apple		1479323600445	apple	False	True	apple	red
-2325-a	1479323608224	52	apple	overinformative-cc	apple_blue	target	2	4	pear_green	distractor	4	3	cup_blue	distractor	3	2	1	1	0	apple		1479323606394	apple	False	True	apple	blue
-2325-a	1479323616762	53	avocado	overinformative	avocado_black	target	3	4	tomato_red	distractor	2	3	carrot_purple	distractor	4	2	1	1	0	black fruit		1479323614662	black fruit	True	False	avocado	black
-2325-a	1479323626178	54	tomato	overinformative	tomato_green	target	4	2	apple_red	distractor	2	4	apple_blue	distractor	3	3	1	1	0	tomato		1479323621289	tomato	False	True	tomato	green
+6314-6	1479397379353	1	pear	informative	pear_yellow	distractor	2	3	pear_orange	target	4	2	pepper_red	distractor	3	4	1	0	1		??	1479397372332	NA	False	False	pear	yellow
+6314-6	1479397393815	2	avocado	overinformative-cc	avocado_green	target	4	2	banana_yellow	distractor	2	3	cup_green	distractor	3	4	1	0	1		Avocado	1479397391901	NA	False	False	avocado	green
+6314-6	1479397400922	3	carrot	overinformative-cc	apple_green	distractor	2	4	carrot_purple	target	4	3	cup_purple	distractor	3	2	1	0	1		Apple	1479397399616	NA	False	False	apple	green
+6314-6	1479397407990	4	apple	overinformative-cc	apple_red	target	2	4	pear_yellow	distractor	4	3	cup_red	distractor	3	2	1	0	1		Pear	1479397406476	NA	False	False	apple	red
+6314-6	1479397413255	5	carrot	overinformative	apple_red	distractor	4	3	carrot_orange	target	3	2	avocado_red	distractor	2	4	1	0	1		Apple	1479397412089	NA	False	False	apple	red
+6314-6	1479397418939	6	apple	overinformative	apple_green	target	2	4	avocado_black	distractor	3	3	pear_yellow	distractor	4	2	1	0	1		Apple	1479397417615	NA	False	False	apple	green
+6314-6	1479397425430	7	tomato	overinformative-cc	tomato_red	target	2	4	cup_red	distractor	3	2	pear_orange	distractor	4	3	1	0	1		Tomato	1479397424007	NA	False	False	tomato	red
+6314-6	1479397443341	8	tomato	informative	tomato_green	target	4	2	tomato_pink	distractor	2	3	apple_red	distractor	3	4	1	0	1		Tomato	1479397441788	NA	False	False	tomato	green
+6314-6	1479397450550	9	carrot	informative	banana_brown	distractor	3	4	carrot_pink	distractor	4	2	carrot_orange	target	2	3	1	0	1		Banana	1479397449389	NA	False	False	banana	brown
+6314-6	1479397456103	10	avocado	overinformative	banana_yellow	distractor	3	3	avocado_red	target	2	2	pear_yellow	distractor	4	4	1	0	1		Banana	1479397455106	NA	False	False	banana	yellow
+6314-6	1479397461582	11	carrot	overinformative	apple_green	distractor	4	2	carrot_purple	target	3	4	pepper_green	distractor	2	3	1	0	1		Apple	1479397460269	NA	False	False	apple	green
+6314-6	1479397467732	12	pepper	informative	banana_blue	distractor	3	4	pepper_orange	target	4	2	pepper_red	distractor	2	3	1	0	1		Banana	1479397466470	NA	False	False	banana	blue
+6314-6	1479397474137	13	banana	overinformative-cc	banana_blue	target	2	2	cup_blue	distractor	3	3	pepper_orange	distractor	4	4	1	0	1		Banana	1479397472910	NA	False	False	banana	blue
+6314-6	1479397480900	14	banana	overinformative	banana_yellow	target	4	4	apple_red	distractor	3	2	apple_blue	distractor	2	3	1	0	1		Banana	1479397479740	NA	False	False	banana	yellow
+6314-6	1479397487943	15	tomato	overinformative-cc	banana_brown	distractor	2	4	tomato_green	target	4	3	cup_green	distractor	3	2	1	0	1		Banana	1479397486477	NA	False	False	banana	brown
+6314-6	1479397498990	16	pepper	informative	carrot_purple	distractor	3	2	pepper_red	distractor	2	3	pepper_green	target	4	4	1	0	1		Carrot	1479397497542	NA	False	False	carrot	purple
+6314-6	1479397508442	17	carrot	informative	carrot_orange	distractor	3	4	carrot_pink	target	2	3	pepper_orange	distractor	4	2	1	0	1		Carott	1479397507144	NA	False	False	carrot	orange
+6314-6	1479397514091	18	pear	overinformative-cc	avocado_green	distractor	3	2	cup_orange	distractor	2	4	pear_orange	target	4	3	1	0	1		Avocado	1479397512776	NA	False	False	avocado	green
+6314-6	1479397520766	19	apple	informative	tomato_pink	distractor	3	3	apple_red	distractor	2	2	apple_green	target	4	4	1	0	1		tomato	1479397519704	NA	False	False	tomato	pink
+6314-6	1479397525478	20	tomato	informative	apple_blue	distractor	4	4	tomato_green	distractor	2	3	tomato_pink	target	3	2	1	0	1		Apple	1479397524522	NA	False	False	apple	blue
+6314-6	1479397530606	21	avocado	overinformative	banana_yellow	distractor	3	3	avocado_black	target	4	2	apple_blue	distractor	2	4	1	0	1		Banana	1479397529359	NA	False	False	banana	yellow
+6314-6	1479397534629	22	tomato	overinformative	banana_brown	distractor	2	3	tomato_pink	target	3	2	apple_blue	distractor	4	4	1	0	1		Banana	1479397533775	NA	False	False	banana	brown
+6314-6	1479397539803	23	pepper	overinformative	avocado_black	distractor	3	3	tomato_pink	distractor	4	2	pepper_green	target	2	4	1	0	1		Avocado	1479397538712	NA	False	False	avocado	black
+6314-6	1479397544428	24	tomato	overinformative-cc	avocado_green	distractor	2	3	tomato_pink	target	4	4	cup_pink	distractor	3	2	1	0	1		Avocado	1479397543382	NA	False	False	avocado	green
+6314-6	1479397550101	25	banana	informative	carrot_orange	distractor	4	4	banana_yellow	target	3	3	banana_brown	distractor	2	2	2	1	1	yellow	Carott	1479397548302___1479397549478	yellow	False	False	carrot	orange
+6314-6	1479397556110	26	banana	informative	banana_blue	target	2	3	banana_yellow	distractor	4	4	pear_orange	distractor	3	2	2	1	1	blue	pear	1479397553427___1479397553608	blue	True	False	banana	blue
+6314-6	1479397561411	27	banana	informative	banana_brown	target	4	2	banana_blue	distractor	2	3	tomato_green	distractor	3	4	1	1	0	brown		1479397560213	brown	True	False	banana	brown
+6314-6	1479397565739	28	pepper	overinformative	pepper_red	target	3	3	banana_yellow	distractor	2	2	banana_brown	distractor	4	4	1	1	0	red		1479397564531	red	True	False	pepper	red
+6314-6	1479397570132	29	banana	overinformative	banana_blue	target	2	3	tomato_red	distractor	4	2	carrot_purple	distractor	3	4	1	1	0	blue		1479397568770	blue	True	False	banana	blue
+6314-6	1479397573932	30	apple	informative	apple_red	target	2	3	pepper_orange	distractor	4	4	apple_blue	distractor	3	2	1	1	0	red		1479397572754	red	True	False	apple	red
+6314-6	1479397578924	31	avocado	overinformative	avocado_green	target	2	4	pear_orange	distractor	4	2	pear_yellow	distractor	3	3	1	1	0	green		1479397577769	green	True	False	avocado	green
+6314-6	1479397584436	32	pear	overinformative	pear_orange	target	4	4	apple_green	distractor	2	3	apple_blue	distractor	3	2	1	1	0	orange		1479397582818	orange	True	False	pear	orange
+6314-6	1479397591053	33	pepper	overinformative	pepper_orange	target	3	3	carrot_purple	distractor	4	4	tomato_pink	distractor	2	2	1	1	0	orange		1479397589618	orange	True	False	pepper	orange
+6314-6	1479397595516	34	tomato	overinformative	tomato_green	target	4	2	pepper_orange	distractor	3	3	pear_orange	distractor	2	4	1	1	0	green		1479397594418	green	True	False	tomato	green
+6314-6	1479397599415	35	pepper	overinformative-cc	pepper_green	target	2	2	cup_green	distractor	3	4	carrot_pink	distractor	4	3	1	1	0	green		1479397598550	green	True	False	pepper	green
+6314-6	1479397607163	36	avocado	overinformative-cc	avocado_red	target	3	4	cup_red	distractor	2	3	banana_yellow	distractor	4	2	1	1	0	red fruit		1479397605218	red fruit	True	False	avocado	red
+6314-6	1479397612722	37	pepper	informative	pepper_red	target	4	2	banana_brown	distractor	3	4	pepper_orange	distractor	2	3	1	1	0	red		1479397610626	red	True	False	pepper	red
+6314-6	1479397621499	38	carrot	overinformative-cc	carrot_orange	target	4	4	cup_orange	distractor	3	2	pear_green	distractor	2	3	1	1	0	carrot		1479397620258	carrot	False	True	carrot	orange
+6314-6	1479397626962	39	pear	overinformative	pear_yellow	target	2	3	tomato_green	distractor	3	4	pepper_red	distractor	4	2	1	1	0	yellow		1479397625799	yellow	True	False	pear	yellow
+6314-6	1479397631491	40	banana	overinformative-cc	banana_yellow	target	4	4	avocado_black	distractor	2	2	cup_yellow	distractor	3	3	2	2	0	yellow___ban		1479397630151___1479397631785	yellow	True	False	banana	yellow
+6314-6	1479397638964	41	banana	overinformative-cc	banana_brown	target	2	4	cup_brown	distractor	4	3	pear_green	distractor	3	2	1	1	0	brown ban		1479397636263	brown ban	True	False	banana	brown
+6314-6	1479397643566	42	banana	overinformative	banana_brown	target	4	2	tomato_pink	distractor	2	4	avocado_black	distractor	3	3	1	1	0	brown		1479397642280	brown	True	False	banana	brown
+6314-6	1479397647555	43	apple	overinformative	apple_red	target	4	2	pepper_orange	distractor	3	4	pear_green	distractor	2	3	1	1	0	red		1479397646471	red	True	False	apple	red
+6314-6	1479397651499	44	apple	overinformative	apple_blue	target	4	3	banana_yellow	distractor	2	2	pear_green	distractor	3	4	1	1	0	blue		1479397650312	blue	True	False	apple	blue
+6314-6	1479397658870	45	pear	overinformative-cc	pear_green	target	4	3	tomato_pink	distractor	2	4	cup_green	distractor	3	2	1	1	0	pear		1479397657415	pear	False	True	pear	green
+6314-6	1479397664236	46	pear	overinformative-cc	pear_yellow	target	4	3	cup_yellow	distractor	2	2	pepper_red	distractor	3	4	1	1	0	pear		1479397663080	pear	False	True	pear	yellow
+6314-6	1479397668123	47	tomato	informative	tomato_red	target	2	3	avocado_black	distractor	4	4	tomato_green	distractor	3	2	1	1	0	red		1479397667015	red	True	False	tomato	red
+6314-6	1479397672366	48	pear	informative	pear_yellow	target	3	3	carrot_purple	distractor	2	2	pear_orange	distractor	4	4	1	1	0	yellow		1479397671415	yellow	True	False	pear	yellow
+6314-6	1479397676194	49	tomato	overinformative	tomato_red	target	3	2	pepper_green	distractor	2	3	pepper_orange	distractor	4	4	1	1	0	red		1479397675128	red	True	False	tomato	red
+6314-6	1479397680562	50	avocado	informative	avocado_green	target	3	3	avocado_black	distractor	2	4	apple_blue	distractor	4	2	1	1	0	green		1479397679464	green	True	False	avocado	green
+6314-6	1479397684194	51	pepper	overinformative-cc	pepper_red	target	3	3	cup_red	distractor	2	2	avocado_black	distractor	4	4	1	1	0	red		1479397683284	red	True	False	pepper	red
+6314-6	1479397688737	52	carrot	informative	carrot_purple	target	3	4	avocado_black	distractor	4	2	carrot_orange	distractor	2	3	1	1	0	blue		1479397687544	blue	False	False	carrot	purple
+6314-6	1479397695098	53	carrot	overinformative-cc	carrot_pink	target	2	2	cup_pink	distractor	4	4	banana_yellow	distractor	3	3	1	1	0	carrot		1479397693816	carrot	False	True	carrot	pink
+6314-6	1479397707506	54	avocado	overinformative-cc	apple_blue	distractor	3	2	avocado_black	target	2	4	cup_black	distractor	4	3	1	1	0	black fruit		1479397704147	black fruit	False	False	apple	blue
+6314-6	1479397713561	55	apple	overinformative-cc	apple_green	target	3	2	cup_green	distractor	4	4	avocado_black	distractor	2	3	1	1	0	apple		1479397712138	apple	False	True	apple	green
+6314-6	1479397719642	56	apple	overinformative-cc	apple_blue	target	2	4	cup_blue	distractor	4	3	pear_yellow	distractor	3	2	1	1	0	apple		1479397717192	apple	False	True	apple	blue
+6314-6	1479397724698	57	carrot	overinformative	carrot_pink	target	3	2	tomato_red	distractor	2	3	avocado_green	distractor	4	4	1	1	0	purple		1479397723400	purple	False	False	carrot	pink
+6314-6	1479397729130	58	avocado	informative	avocado_black	target	3	2	avocado_red	distractor	2	4	tomato_red	distractor	4	3	1	1	0	black		1479397727928	black	True	False	avocado	black
+6314-6	1479397735323	59	pear	informative	pear_green	target	4	4	pear_orange	distractor	3	2	avocado_red	distractor	2	3	1	1	0	green		1479397734058	green	True	False	pear	green
+6314-6	1479397739761	60	apple	informative	apple_blue	target	4	4	apple_green	distractor	2	2	avocado_red	distractor	3	3	1	1	0	blue		1479397738504	blue	True	False	apple	blue
+6314-6	1479397744594	61	avocado	informative	avocado_red	target	2	4	apple_blue	distractor	4	2	avocado_black	distractor	3	3	1	1	0	red		1479397743176	red	True	False	avocado	red
+6314-6	1479397750697	62	pepper	overinformative-cc	pepper_orange	target	4	2	cup_orange	distractor	3	4	pear_yellow	distractor	2	3	1	1	0	pepper		1479397748293	pepper	False	True	pepper	orange
+6314-6	1479397755922	63	pear	overinformative	pear_green	target	2	3	apple_red	distractor	3	4	banana_yellow	distractor	4	2	1	1	0	green		1479397754440	green	True	False	pear	green
+4041-d	1479399978757	1	pear	overinformative-cc	pear_yellow	target	4	2	cup_yellow	distractor	3	3	avocado_red	distractor	2	4	1	1	0	pear		1479399977142	pear	False	True	pear	yellow
+4041-d	1479399986577	2	tomato	informative	tomato_green	target	2	4	tomato_pink	distractor	4	2	carrot_orange	distractor	3	3	1	1	0	green tomato		1479399984882	green tomato	True	True	tomato	green
+4041-d	1479399994623	3	carrot	overinformative	carrot_purple	target	2	3	avocado_black	distractor	3	4	apple_red	distractor	4	2	1	1	0	purple carrot		1479399992918	purple carrot	True	True	carrot	purple
+4041-d	1479400002104	4	banana	informative	banana_brown	target	2	4	banana_yellow	distractor	3	3	avocado_black	distractor	4	2	1	1	0	brown banana		1479400000747	brown banana	True	True	banana	brown
+4041-d	1479400015809	5	avocado	informative	avocado_green	target	2	2	apple_blue	distractor	3	3	avocado_black	distractor	4	4	2	2	0	avacado___green		1479400010257___1479400013792	avacado	False	False	avocado	green
+4041-d	1479400025617	6	tomato	overinformative	tomato_red	target	2	3	apple_blue	distractor	4	2	pear_orange	distractor	3	4	1	1	0	tomato		1479400022433	tomato	False	True	tomato	red
+4041-d	1479400030985	7	carrot	overinformative-cc	carrot_orange	target	3	2	pear_yellow	distractor	2	4	cup_orange	distractor	4	3	1	1	0	carrot		1479400029626	carrot	False	True	carrot	orange
+4041-d	1479400037793	8	avocado	overinformative-cc	avocado_green	target	3	3	cup_green	distractor	4	2	apple_red	distractor	2	4	1	1	0	avacado		1479400036416	avacado	False	False	avocado	green
+4041-d	1479400044179	9	pear	overinformative	pear_green	target	4	2	apple_red	distractor	3	3	carrot_purple	distractor	2	4	1	1	0	pear		1479400042906	pear	False	True	pear	green
+4041-d	1479400051130	10	banana	informative	banana_blue	target	4	3	avocado_black	distractor	3	2	banana_brown	distractor	2	4	1	1	0	blue banana		1479400049911	blue banana	True	True	banana	blue
+4041-d	1479400060315	11	pepper	informative	pepper_red	target	4	3	pepper_green	distractor	3	2	pear_green	distractor	2	4	1	1	0	red pepper		1479400058973	red pepper	True	True	pepper	red
+4041-d	1479400067746	12	pear	informative	pear_orange	target	3	2	banana_brown	distractor	4	4	pear_green	distractor	2	3	1	1	0	orange pear		1479400065050	orange pear	True	True	pear	orange
+4041-d	1479400072944	13	apple	overinformative	apple_red	target	4	3	pear_orange	distractor	2	4	banana_blue	distractor	3	2	1	1	0	apple		1479400071668	apple	False	True	apple	red
+4041-d	1479400080240	14	banana	overinformative	banana_brown	target	4	3	apple_green	distractor	2	4	apple_blue	distractor	3	2	1	1	0	brown banana		1479400078762	brown banana	True	True	banana	brown
+4041-d	1479400087192	15	carrot	overinformative	carrot_pink	target	2	4	avocado_black	distractor	3	3	tomato_green	distractor	4	2	1	1	0	purple		1479400085103	purple	False	False	carrot	pink
+4041-d	1479400096784	16	avocado	overinformative	avocado_red	target	2	2	banana_blue	distractor	4	4	tomato_pink	distractor	3	3	1	1	0	red avacado		1479400095330	red avacado	True	False	avocado	red
+4041-d	1479400103864	17	carrot	overinformative-cc	carrot_purple	target	4	2	cup_purple	distractor	3	3	avocado_black	distractor	2	4	1	1	0	purple carrot		1479400102448	purple carrot	True	True	carrot	purple
+4041-d	1479400110081	18	apple	overinformative-cc	apple_red	target	3	4	cup_red	distractor	4	2	carrot_pink	distractor	2	3	1	1	0	apple		1479400107556	apple	False	True	apple	red
+4041-d	1479400115352	19	carrot	informative	carrot_purple	target	2	2	carrot_orange	distractor	4	4	apple_red	distractor	3	3	1	1	0	purple		1479400113747	purple	True	False	carrot	purple
+4041-d	1479400120519	20	pear	overinformative-cc	pear_green	target	2	3	pepper_orange	distractor	3	4	cup_green	distractor	4	2	1	1	0	pear		1479400119112	pear	False	True	pear	green
+4041-d	1479400125608	21	pepper	overinformative-cc	pepper_red	target	3	3	apple_blue	distractor	4	2	cup_red	distractor	2	4	1	1	0	pepper		1479400124377	pepper	False	True	pepper	red
+4041-d	1479400136602	22	pear	informative	pear_yellow	target	2	4	pepper_red	distractor	3	3	pear_green	distractor	4	2	1	1	0	yellow pear		1479400134614	yellow pear	True	True	pear	yellow
+4041-d	1479400143248	23	carrot	overinformative-cc	carrot_pink	target	2	3	apple_red	distractor	4	4	cup_pink	distractor	3	2	1	1	0	purple carrot		1479400141858	purple carrot	False	True	carrot	pink
+4041-d	1479400148256	24	banana	overinformative	banana_blue	target	4	4	avocado_green	distractor	3	2	avocado_red	distractor	2	3	1	1	0	banana		1479400146718	banana	False	True	banana	blue
+4041-d	1479400153456	25	apple	informative	apple_green	target	4	3	banana_yellow	distractor	2	2	apple_red	distractor	3	4	1	1	0	green		1479400152135	green	True	False	apple	green
+4041-d	1479400158554	26	apple	overinformative	apple_green	target	2	3	carrot_purple	distractor	3	2	pepper_red	distractor	4	4	1	1	0	green		1479400157100	green	True	False	apple	green
+4041-d	1479400164416	27	apple	overinformative-cc	apple_green	target	4	2	cup_green	distractor	2	4	tomato_red	distractor	3	3	1	1	0	apple		1479400162558	apple	False	True	apple	green
+4041-d	1479400170136	28	banana	overinformative-cc	banana_blue	target	2	2	cup_blue	distractor	3	4	tomato_pink	distractor	4	3	1	1	0	banana		1479400168741	banana	False	True	banana	blue
+4041-d	1479400178924	29	pear	informative	pear_green	target	3	4	pear_orange	distractor	4	3	avocado_black	distractor	2	2	1	1	0	green pear		1479400176422	green pear	True	True	pear	green
+4041-d	1479400184056	30	pepper	overinformative	pepper_orange	target	3	3	avocado_black	distractor	2	2	apple_red	distractor	4	4	1	1	0	pepper		1479400182568	pepper	False	True	pepper	orange
+4041-d	1479400188312	31	pear	overinformative	pear_yellow	target	3	3	banana_blue	distractor	4	4	carrot_orange	distractor	2	2	1	1	0	pear		1479400187142	pear	False	True	pear	yellow
+4041-d	1479400192601	32	pear	overinformative	pear_orange	target	3	3	tomato_pink	distractor	4	2	tomato_green	distractor	2	4	1	1	0	pear		1479400191107	pear	False	True	pear	orange
+4041-d	1479400200177	33	avocado	informative	avocado_red	target	4	4	carrot_purple	distractor	2	2	avocado_black	distractor	3	3	1	1	0	red avacado		1479400198610	red avacado	True	False	avocado	red
+4041-d	1479400209784	34	avocado	overinformative-cc	avocado_black	target	3	4	apple_red	distractor	4	3	cup_black	distractor	2	2	1	1	0	avacado		1479400208429	avacado	False	False	avocado	black
+4041-d	1479400214530	35	apple	informative	apple_blue	target	3	2	tomato_red	distractor	4	3	apple_green	distractor	2	4	1	1	0	blue		1479400213096	blue	True	False	apple	blue
+4041-d	1479400219984	36	tomato	informative	tomato_red	target	4	3	tomato_green	distractor	3	2	banana_brown	distractor	2	4	1	1	0	red		1479400218879	red	True	False	tomato	red
+4041-d	1479400225008	37	pepper	informative	pepper_green	target	2	2	pepper_orange	distractor	3	3	banana_blue	distractor	4	4	1	1	0	green		1479400223556	green	True	False	pepper	green
+4041-d	1479400239567	38	avocado	overinformative	avocado_green	target	2	2	pepper_orange	distractor	4	3	tomato_red	distractor	3	4	2	2	0	green___avacado		1479400229725___1479400236924	green	True	False	avocado	green
+4041-d	1479400246361	39	avocado	overinformative-cc	avocado_red	target	3	2	cup_red	distractor	2	4	pear_orange	distractor	4	3	1	1	0	avacado		1479400245039	avacado	False	False	avocado	red
+4041-d	1479400251112	40	pepper	overinformative	pepper_green	target	2	3	tomato_pink	distractor	4	4	apple_red	distractor	3	2	1	1	0	green		1479400250122	green	True	False	pepper	green
+4041-d	1479400256034	41	avocado	overinformative	avocado_black	target	3	2	apple_blue	distractor	2	3	carrot_pink	distractor	4	4	1	1	0	black		1479400254693	black	True	False	avocado	black
+4041-d	1479400264327	42	tomato	informative	tomato_pink	target	3	3	pear_orange	distractor	4	4	tomato_green	distractor	2	2	1	1	0	purple		1479400259468	purple	False	False	tomato	pink
+4041-d	1479400269531	43	carrot	overinformative	carrot_orange	target	2	4	apple_blue	distractor	3	3	apple_green	distractor	4	2	1	1	0	carrot		1479400268162	carrot	False	True	carrot	orange
+4041-d	1479400275024	44	pear	overinformative-cc	pear_orange	target	3	3	cup_orange	distractor	4	4	carrot_purple	distractor	2	2	1	1	0	pear		1479400273831	pear	False	True	pear	orange
+4041-d	1479400288863	45	carrot	informative	carrot_pink	target	2	4	apple_red	distractor	3	3	carrot_orange	distractor	4	2	1	1	0	purple		1479400279681	purple	False	False	carrot	pink
+4041-d	1479400294852	46	pepper	overinformative-cc	pepper_orange	target	2	2	banana_yellow	distractor	3	4	cup_orange	distractor	4	3	1	1	0	pepper		1479400293322	pepper	False	True	pepper	orange
+4041-d	1479400301265	47	pepper	informative	pepper_orange	target	3	2	pear_green	distractor	2	4	pepper_green	distractor	4	3	1	1	0	orange 		1479400299972	orange 	True	False	pepper	orange
+4041-d	1479400309064	48	banana	informative	banana_yellow	target	4	2	carrot_orange	distractor	3	4	banana_brown	distractor	2	3	1	1	0	yellow		1479400307651	yellow	True	False	banana	yellow
+4041-d	1479400313250	49	apple	overinformative	apple_blue	target	4	3	pear_yellow	distractor	3	2	tomato_red	distractor	2	4	1	1	0	blue		1479400312071	blue	True	False	apple	blue
+4041-d	1479400318320	50	banana	overinformative-cc	banana_brown	target	3	3	cup_brown	distractor	4	4	avocado_green	distractor	2	2	1	1	0	banana		1479400317177	banana	False	True	banana	brown
+4041-d	1479400326100	51	tomato	overinformative-cc	tomato_pink	target	2	2	cup_pink	distractor	4	4	banana_yellow	distractor	3	3	1	1	0	tomato		1479400324377	tomato	False	True	tomato	pink
+4041-d	1479400330889	52	avocado	informative	avocado_black	target	4	3	carrot_orange	distractor	3	2	avocado_green	distractor	2	4	1	1	0	black		1479400329588	black	True	False	avocado	black
+4041-d	1479400336473	53	apple	informative	apple_red	target	3	3	carrot_pink	distractor	4	4	apple_green	distractor	2	2	1	1	0	red		1479400335221	red	True	False	apple	red
+4041-d	1479400341399	54	tomato	overinformative-cc	tomato_red	target	2	2	banana_blue	distractor	4	4	cup_red	distractor	3	3	1	1	0	tomato		1479400340137	tomato	False	True	tomato	red
+4041-d	1479400348344	55	tomato	overinformative	tomato_green	target	2	2	banana_blue	distractor	3	4	banana_yellow	distractor	4	3	1	1	0	tomato		1479400346674	tomato	False	True	tomato	green
+4041-d	1479400353208	56	pepper	overinformative	pepper_red	target	2	3	apple_green	distractor	3	4	carrot_purple	distractor	4	2	1	1	0	red		1479400351761	red	True	False	pepper	red
+4041-d	1479400359465	57	apple	overinformative-cc	apple_blue	target	2	4	cup_blue	distractor	4	2	pear_orange	distractor	3	3	1	1	0	apple		1479400357645	apple	False	True	apple	blue
+4041-d	1479400369985	58	tomato	overinformative	tomato_pink	target	2	3	pear_green	distractor	3	2	banana_blue	distractor	4	4	1	1	0	purple		1479400366200	purple	False	False	tomato	pink
+4041-d	1479400378688	59	tomato	overinformative-cc	tomato_green	target	4	4	avocado_red	distractor	2	2	cup_green	distractor	3	3	1	1	0	tomato		1479400377057	tomato	False	True	tomato	green
+4041-d	1479400383432	60	banana	overinformative	banana_yellow	target	2	3	pepper_orange	distractor	4	2	avocado_green	distractor	3	4	1	1	0	banana		1479400382076	banana	False	True	banana	yellow
+4041-d	1479400392408	61	banana	overinformative-cc	banana_yellow	target	2	3	cup_yellow	distractor	3	4	tomato_pink	distractor	4	2	1	1	0	banana		1479400387175	banana	False	True	banana	yellow
+4041-d	1479400399791	62	carrot	informative	carrot_orange	target	2	4	apple_blue	distractor	3	3	carrot_pink	distractor	4	2	1	1	0	orange		1479400397148	orange	True	False	carrot	orange
+4041-d	1479400406985	63	pepper	overinformative-cc	pepper_green	target	3	2	carrot_pink	distractor	4	4	cup_green	distractor	2	3	2	1	1	peper	great job :)	1479400402059___1479400405337	peper	False	False	pepper	green
+3377-8	1479402925794	1	avocado	overinformative	avocado_green	target	2	2	tomato_pink	distractor	4	4	carrot_orange	distractor	3	3	1	1	0	avocado		1479402923806	avocado	False	True	avocado	green
+3377-8	1479402934709	2	avocado	overinformative-cc	avocado_black	target	4	4	apple_blue	distractor	3	2	cup_black	distractor	2	3	1	1	0	avocado		1479402932820	avocado	False	True	avocado	black
+3377-8	1479402949842	3	carrot	informative	carrot_pink	target	4	3	apple_green	distractor	2	2	carrot_purple	distractor	3	4	1	1	0	purple carrot 		1479402945852	purple carrot 	False	True	carrot	pink
+3377-8	1479402958729	4	carrot	overinformative-cc	carrot_orange	target	4	3	cup_orange	distractor	2	2	avocado_red	distractor	3	4	1	1	0	carrot 		1479402957011	carrot 	False	True	carrot	orange
+3377-8	1479402964950	5	apple	overinformative-cc	apple_blue	target	3	4	carrot_orange	distractor	2	2	cup_blue	distractor	4	3	1	1	0	apple		1479402963186	apple	False	True	apple	blue
+3377-8	1479402973098	6	pepper	overinformative-cc	pepper_red	target	4	2	cup_red	distractor	3	4	carrot_purple	distractor	2	3	1	1	0	pepper 		1479402971462	pepper 	False	True	pepper	red
+3377-8	1479402979672	7	banana	overinformative	banana_brown	target	4	2	carrot_orange	distractor	2	4	avocado_green	distractor	3	3	1	1	0	banana		1479402977315	banana	False	True	banana	brown
+3377-8	1479402985340	8	apple	overinformative	apple_green	target	2	3	banana_yellow	distractor	4	2	tomato_red	distractor	3	4	1	1	0	apple		1479402983917	apple	False	True	apple	green
+3377-8	1479402999923	9	tomato	informative	tomato_pink	target	2	4	tomato_green	distractor	3	3	apple_blue	distractor	4	2	1	1	0	pink tomato 		1479402997835	pink tomato 	True	True	tomato	pink
+3377-8	1479403007405	10	tomato	overinformative	tomato_red	target	2	3	pepper_green	distractor	3	4	banana_blue	distractor	4	2	1	1	0	tomato		1479403005743	tomato	False	True	tomato	red
+3377-8	1479403013669	11	tomato	informative	tomato_green	target	3	2	pepper_orange	distractor	4	3	tomato_pink	distractor	2	4	1	1	0	green		1479403012237	green	True	False	tomato	green
+3377-8	1479403019594	12	banana	overinformative-cc	banana_blue	target	3	2	carrot_purple	distractor	2	4	cup_blue	distractor	4	3	1	1	0	banana		1479403018150	banana	False	True	banana	blue
+3377-8	1479403025938	13	banana	informative	banana_yellow	target	2	4	banana_brown	distractor	3	3	pear_green	distractor	4	2	1	1	0	yellow		1479403024078	yellow	True	False	banana	yellow
+3377-8	1479403033434	14	pepper	informative	pepper_orange	target	2	2	pepper_red	distractor	3	4	banana_blue	distractor	4	3	1	1	0	orange		1479403031611	orange	True	False	pepper	orange
+3377-8	1479403048956	15	avocado	informative	avocado_red	target	4	2	pepper_orange	distractor	3	4	avocado_green	distractor	2	3	1	1	0	brown avocado		1479403046604	brown avocado	False	True	avocado	red
+3377-8	1479403054714	16	pepper	overinformative-cc	pepper_orange	target	4	2	cup_orange	distractor	3	4	banana_blue	distractor	2	3	1	1	0	pepper		1479403053184	pepper	False	True	pepper	orange
+3377-8	1479403060845	17	pear	overinformative	pear_yellow	target	4	4	avocado_red	distractor	3	3	apple_green	distractor	2	2	1	1	0	pear		1479403059077	pear	False	True	pear	yellow
+3377-8	1479403066705	18	pepper	overinformative	pepper_red	target	2	4	tomato_green	distractor	4	2	avocado_green	distractor	3	3	1	1	0	red		1479403065123	red	True	False	pepper	red
+3377-8	1479403073177	19	pear	overinformative-cc	pear_orange	target	4	2	avocado_black	distractor	3	4	cup_orange	distractor	2	3	1	1	0	pear		1479403071769	pear	False	True	pear	orange
+3377-8	1479403078031	20	pear	overinformative-cc	pear_green	target	4	4	cup_green	distractor	3	2	apple_blue	distractor	2	3	1	1	0	pear		1479403076544	pear	False	True	pear	green
+3377-8	1479403084546	21	carrot	overinformative	carrot_purple	target	2	4	tomato_green	distractor	3	3	avocado_black	distractor	4	2	1	1	0	carrot		1479403083069	carrot	False	True	carrot	purple
+3377-8	1479403089835	22	pepper	informative	pepper_green	target	4	3	pepper_orange	distractor	2	2	pear_yellow	distractor	3	4	1	1	0	green		1479403088420	green	True	False	pepper	green
+3377-8	1479403095353	23	apple	overinformative	apple_red	target	2	4	avocado_green	distractor	3	3	pear_orange	distractor	4	2	1	1	0	apple		1479403093487	apple	False	True	apple	red
+3377-8	1479403101094	24	pear	overinformative	pear_green	target	2	4	banana_yellow	distractor	3	2	apple_blue	distractor	4	3	1	1	0	pear		1479403099129	pear	False	True	pear	green
+3377-8	1479403107001	25	banana	overinformative	banana_yellow	target	3	3	avocado_red	distractor	2	4	pear_green	distractor	4	2	1	1	0	banana		1479403104785	banana	False	True	banana	yellow
+3377-8	1479403113021	26	pear	overinformative	tomato_green	distractor	3	2	pear_orange	target	4	4	apple_blue	distractor	2	3	1	1	0	pea		1479403110827	pea	False	False	tomato	green
+3377-8	1479403118313	27	tomato	informative	tomato_red	target	3	3	avocado_black	distractor	2	2	tomato_green	distractor	4	4	1	1	0	red		1479403116816	red	True	False	tomato	red
+3377-8	1479403123289	28	banana	overinformative-cc	banana_yellow	target	2	4	apple_blue	distractor	3	3	cup_yellow	distractor	4	2	1	1	0	banana		1479403121921	banana	False	True	banana	yellow
+3377-8	1479403128872	29	carrot	overinformative-cc	carrot_pink	target	3	2	banana_brown	distractor	4	3	cup_pink	distractor	2	4	1	1	0	carrot		1479403127407	carrot	False	True	carrot	pink
+3377-8	1479403133961	30	pepper	overinformative	pepper_green	target	4	3	pear_orange	distractor	2	4	carrot_purple	distractor	3	2	1	1	0	green		1479403132806	green	True	False	pepper	green
+3377-8	1479403140639	31	carrot	overinformative	carrot_pink	target	4	3	pepper_green	distractor	3	2	avocado_black	distractor	2	4	1	1	0	carrot		1479403139221	carrot	False	True	carrot	pink
+3377-8	1479403147856	32	tomato	overinformative-cc	tomato_red	target	2	2	apple_green	distractor	3	3	cup_red	distractor	4	4	1	1	0	tomato		1479403146535	tomato	False	True	tomato	red
+3377-8	1479403159252	33	carrot	informative	carrot_orange	target	2	2	tomato_pink	distractor	3	3	carrot_purple	distractor	4	4	1	1	0	orange		1479403157458	orange	True	False	carrot	orange
+3377-8	1479403166142	34	avocado	overinformative-cc	avocado_green	target	2	2	cup_green	distractor	3	4	banana_yellow	distractor	4	3	1	1	0	avocado		1479403164823	avocado	False	True	avocado	green
+3377-8	1479403172530	35	pear	informative	pear_yellow	target	2	3	pear_orange	distractor	4	2	apple_blue	distractor	3	4	1	1	0	yellow		1479403171179	yellow	True	False	pear	yellow
+3377-8	1479403178593	36	tomato	overinformative	tomato_green	target	2	4	banana_blue	distractor	3	2	carrot_pink	distractor	4	3	1	1	0	green		1479403176205	green	True	False	tomato	green
+3377-8	1479403183580	37	apple	informative	apple_green	target	3	3	avocado_black	distractor	4	2	apple_red	distractor	2	4	1	1	0	green		1479403182334	green	True	False	apple	green
+3377-8	1479403190325	38	apple	overinformative-cc	apple_green	target	4	4	avocado_black	distractor	2	2	cup_green	distractor	3	3	1	1	0	apple		1479403188975	apple	False	True	apple	green
+3377-8	1479403199348	39	carrot	informative	carrot_purple	target	4	3	carrot_pink	distractor	3	4	pepper_red	distractor	2	2	1	1	0	black		1479403197859	black	False	False	carrot	purple
+3377-8	1479403204317	40	apple	overinformative	apple_blue	target	3	4	pear_yellow	distractor	2	3	banana_yellow	distractor	4	2	1	1	0	apple		1479403202722	apple	False	True	apple	blue
+3377-8	1479403209645	41	pear	informative	pear_green	target	3	2	pear_orange	distractor	2	4	avocado_red	distractor	4	3	1	1	0	green		1479403208194	green	True	False	pear	green
+3377-8	1479403215045	42	avocado	informative	avocado_green	target	3	4	carrot_purple	distractor	2	2	avocado_black	distractor	4	3	1	1	0	green		1479403213513	green	True	False	avocado	green
+3377-8	1479403220243	43	carrot	overinformative	carrot_orange	target	4	4	banana_yellow	distractor	2	2	pear_yellow	distractor	3	3	1	1	0	orange		1479403219061	orange	True	False	carrot	orange
+3377-8	1479403225494	44	apple	informative	apple_blue	target	4	2	apple_red	distractor	3	4	pear_green	distractor	2	3	1	1	0	blue		1479403224082	blue	True	False	apple	blue
+3377-8	1479403229988	45	apple	informative	apple_red	target	3	4	banana_brown	distractor	4	3	apple_blue	distractor	2	2	1	1	0	red		1479403228682	red	True	False	apple	red
+3377-8	1479403236786	46	apple	overinformative-cc	apple_red	target	2	2	pear_orange	distractor	3	4	cup_red	distractor	4	3	1	1	0	apple		1479403235522	apple	False	True	apple	red
+3377-8	1479403242961	47	avocado	overinformative	avocado_red	target	3	3	carrot_purple	distractor	2	4	pepper_orange	distractor	4	2	1	1	0	avocado		1479403241463	avocado	False	True	avocado	red
+3377-8	1479403247307	48	banana	overinformative-cc	banana_brown	target	3	3	avocado_red	distractor	2	4	cup_brown	distractor	4	2	1	1	0	banana		1479403246037	banana	False	True	banana	brown
+3377-8	1479403252944	49	carrot	overinformative-cc	carrot_purple	target	2	3	tomato_pink	distractor	4	4	cup_purple	distractor	3	2	1	1	0	carrot		1479403251730	carrot	False	True	carrot	purple
+3377-8	1479403263104	50	banana	informative	banana_brown	target	4	2	banana_blue	distractor	3	4	pear_green	distractor	2	3	1	1	0	dark banana		1479403261673	dark banana	False	True	banana	brown
+3377-8	1479403274337	51	tomato	overinformative	tomato_pink	target	4	2	pepper_red	distractor	3	3	pear_green	distractor	2	4	1	1	0	tomato		1479403272142	tomato	False	True	tomato	pink
+3377-8	1479403283093	52	pepper	overinformative-cc	pepper_green	target	2	4	pear_orange	distractor	4	2	cup_green	distractor	3	3	1	1	0	pepper		1479403281464	pepper	False	True	pepper	green
+3377-8	1479403288760	53	pepper	overinformative	pepper_orange	target	3	2	avocado_black	distractor	4	3	avocado_green	distractor	2	4	1	1	0	pepper		1479403287293	pepper	False	True	pepper	orange
+3377-8	1479403294860	54	avocado	overinformative	avocado_black	target	2	4	pear_green	distractor	3	2	tomato_green	distractor	4	3	1	1	0	avocado		1479403293351	avocado	False	True	avocado	black
+3377-8	1479403302632	55	pear	informative	pear_orange	target	4	3	pepper_red	distractor	2	4	pear_yellow	distractor	3	2	1	1	0	orange		1479403300653	orange	True	False	pear	orange
+3377-8	1479403309968	56	tomato	overinformative-cc	tomato_pink	target	2	4	cup_pink	distractor	4	3	banana_brown	distractor	3	2	1	1	0	tomato		1479403308512	tomato	False	True	tomato	pink
+3377-8	1479403314771	57	banana	informative	banana_blue	target	3	3	banana_yellow	distractor	2	2	apple_red	distractor	4	4	1	1	0	blue		1479403313381	blue	True	False	banana	blue
+3377-8	1479403320368	58	pear	overinformative-cc	pear_yellow	target	2	2	cup_yellow	distractor	4	3	pepper_green	distractor	3	4	1	1	0	pear		1479403318187	pear	False	True	pear	yellow
+3377-8	1479403330221	59	avocado	informative	avocado_black	target	2	2	tomato_pink	distractor	4	3	avocado_green	distractor	3	4	1	1	0	dark avocado		1479403328470	dark avocado	False	True	avocado	black
+3377-8	1479403334833	60	pepper	informative	pepper_red	target	2	3	banana_yellow	distractor	4	4	pepper_green	distractor	3	2	1	1	0	red		1479403333525	red	True	False	pepper	red
+3377-8	1479403340549	61	avocado	overinformative-cc	avocado_red	target	4	3	cup_red	distractor	3	2	pear_yellow	distractor	2	4	1	1	0	avocado		1479403339146	avocado	False	True	avocado	red
+3377-8	1479403347265	62	tomato	overinformative-cc	tomato_green	target	2	3	cup_green	distractor	3	4	pepper_orange	distractor	4	2	1	1	0	tomato		1479403344896	tomato	False	True	tomato	green
+3377-8	1479403352617	63	banana	overinformative	banana_blue	target	4	4	pepper_green	distractor	2	3	carrot_orange	distractor	3	2	1	1	0	banana		1479403350836	banana	False	True	banana	blue
+2430-2	1479409025676	1	carrot	informative	carrot_purple	target	3	4	carrot_orange	distractor	2	2	apple_blue	distractor	4	3	1	1	0	purple		1479409023033	purple	True	False	carrot	purple
+2430-2	1479409031900	2	avocado	overinformative	avocado_black	target	2	2	banana_blue	distractor	3	4	pear_orange	distractor	4	3	1	1	0	black		1479409030321	black	True	False	avocado	black
+2430-2	1479409036824	3	banana	informative	banana_yellow	target	3	4	carrot_pink	distractor	4	3	banana_blue	distractor	2	2	1	1	0	yellow		1479409035537	yellow	True	False	banana	yellow
+2430-2	1479409042394	4	avocado	informative	avocado_red	target	4	3	pepper_orange	distractor	3	4	avocado_black	distractor	2	2	1	1	0	red		1479409041200	red	True	False	avocado	red
+2430-2	1479409046975	5	pepper	informative	pepper_green	target	4	3	banana_yellow	distractor	3	2	pepper_orange	distractor	2	4	1	1	0	green		1479409045885	green	True	False	pepper	green
+2430-2	1479409056220	6	pear	overinformative-cc	pear_green	target	4	4	cup_green	distractor	3	3	tomato_red	distractor	2	2	1	1	0	pear		1479409052500	pear	False	True	pear	green
+2430-2	1479409063170	7	apple	overinformative-cc	apple_red	target	2	3	cup_red	distractor	3	4	pepper_orange	distractor	4	2	1	1	0	apple red		1479409060986	apple red	True	True	apple	red
+2430-2	1479409070418	8	banana	overinformative-cc	banana_brown	target	4	2	avocado_red	distractor	3	4	cup_brown	distractor	2	3	1	1	0	brown banana		1479409068362	brown banana	True	True	banana	brown
+2430-2	1479409077880	9	avocado	overinformative-cc	avocado_green	target	2	3	cup_green	distractor	4	2	banana_brown	distractor	3	4	1	1	0	green avocado		1479409076372	green avocado	True	True	avocado	green
+2430-2	1479409086095	10	carrot	overinformative-cc	carrot_orange	target	4	4	banana_yellow	distractor	3	2	cup_orange	distractor	2	3	1	1	0	or carrot		1479409083506	or carrot	False	True	carrot	orange
+2430-2	1479409092180	11	tomato	overinformative-cc	tomato_red	target	4	2	pear_yellow	distractor	3	3	cup_red	distractor	2	4	1	1	0	tomato		1479409090763	tomato	False	True	tomato	red
+2430-2	1479409097100	12	avocado	informative	avocado_black	target	3	3	apple_blue	distractor	4	4	avocado_red	distractor	2	2	1	1	0	black		1479409095510	black	True	False	avocado	black
+2430-2	1479409101182	13	banana	overinformative	banana_blue	target	4	3	tomato_red	distractor	2	4	tomato_pink	distractor	3	2	1	1	0	blue		1479409100034	blue	True	False	banana	blue
+2430-2	1479409106916	14	carrot	informative	carrot_orange	target	4	3	carrot_purple	distractor	3	2	tomato_red	distractor	2	4	1	1	0	orange		1479409105013	orange	True	False	carrot	orange
+2430-2	1479409111104	15	pepper	overinformative	pepper_red	target	2	4	pear_green	distractor	3	2	banana_yellow	distractor	4	3	1	1	0	red		1479409109852	red	True	False	pepper	red
+2430-2	1479409115086	16	apple	overinformative	apple_green	target	3	3	pear_yellow	distractor	2	4	pepper_orange	distractor	4	2	1	1	0	green		1479409114092	green	True	False	apple	green
+2430-2	1479409124160	17	avocado	overinformative-cc	avocado_red	target	4	3	cup_red	distractor	2	4	apple_blue	distractor	3	2	1	1	0	red veggie		1479409122758	red veggie	True	False	avocado	red
+2430-2	1479409129136	18	banana	overinformative	banana_yellow	target	2	4	carrot_pink	distractor	3	2	avocado_green	distractor	4	3	1	1	0	yellow		1479409127572	yellow	True	False	banana	yellow
+2430-2	1479409135447	19	carrot	overinformative-cc	carrot_pink	target	2	3	cup_pink	distractor	4	4	tomato_red	distractor	3	2	1	1	0	purple veg		1479409134278	purple veg	False	False	carrot	pink
+2430-2	1479409141222	20	pepper	overinformative-cc	pepper_red	target	3	3	tomato_pink	distractor	2	4	cup_red	distractor	4	2	1	1	0	red pepper		1479409139960	red pepper	True	True	pepper	red
+2430-2	1479409146125	21	apple	overinformative	apple_blue	target	2	3	avocado_black	distractor	4	2	tomato_green	distractor	3	4	1	1	0	blue 		1479409144641	blue 	True	False	apple	blue
+2430-2	1479409154158	22	pear	overinformative-cc	pear_orange	target	4	3	carrot_pink	distractor	2	4	cup_orange	distractor	3	2	1	1	0	orange pear		1479409152445	orange pear	True	True	pear	orange
+2430-2	1479409158281	23	tomato	overinformative	tomato_red	target	3	2	pepper_orange	distractor	2	3	carrot_orange	distractor	4	4	1	1	0	red		1479409156965	red	True	False	tomato	red
+2430-2	1479409163726	24	carrot	overinformative	avocado_black	distractor	3	3	carrot_pink	target	4	2	banana_brown	distractor	2	4	1	1	0	purple		1479409161310	purple	False	False	avocado	black
+2430-2	1479409168086	25	banana	informative	banana_blue	target	2	3	apple_red	distractor	3	2	banana_yellow	distractor	4	4	1	1	0	blue		1479409166714	blue	True	False	banana	blue
+2430-2	1479409174156	26	banana	overinformative	banana_brown	target	4	3	pear_green	distractor	2	4	avocado_black	distractor	3	2	1	1	0	brown bana		1479409172870	brown bana	True	False	banana	brown
+2430-2	1479409179026	27	tomato	overinformative	tomato_green	target	4	2	banana_brown	distractor	3	3	banana_yellow	distractor	2	4	1	1	0	green		1479409177694	green	True	False	tomato	green
+2430-2	1479409183646	28	carrot	informative	carrot_pink	target	4	3	avocado_green	distractor	2	2	carrot_orange	distractor	3	4	1	1	0	purlpe		1479409182414	purlpe	False	False	carrot	pink
+2430-2	1479409191127	29	carrot	overinformative-cc	carrot_purple	target	4	2	cup_purple	distractor	2	3	pear_orange	distractor	3	4	1	1	0	purple veg		1479409189791	purple veg	True	False	carrot	purple
+2430-2	1479409195841	30	banana	overinformative-cc	banana_blue	target	2	3	cup_blue	distractor	3	4	carrot_purple	distractor	4	2	1	1	0	blue banana		1479409194495	blue banana	True	True	banana	blue
+2430-2	1479409200122	31	apple	informative	apple_green	target	3	3	apple_red	distractor	2	2	pepper_red	distractor	4	4	1	1	0	green		1479409198714	green	True	False	apple	green
+2430-2	1479409204252	32	pepper	overinformative	pepper_green	target	3	4	tomato_red	distractor	2	3	avocado_red	distractor	4	2	1	1	0	green		1479409203012	green	True	False	pepper	green
+2430-2	1479409209417	33	banana	overinformative-cc	banana_yellow	target	2	4	carrot_pink	distractor	4	2	cup_yellow	distractor	3	3	1	1	0	banan		1479409207872	banan	False	False	banana	yellow
+2430-2	1479409214290	34	pepper	informative	pepper_orange	target	2	3	pear_yellow	distractor	4	4	pepper_red	distractor	3	2	1	1	0	orange		1479409212500	orange	True	False	pepper	orange
+2430-2	1479409218567	35	apple	informative	apple_blue	target	2	3	apple_green	distractor	3	4	pear_orange	distractor	4	2	1	1	0	blue		1479409216823	blue	True	False	apple	blue
+2430-2	1479409222512	36	tomato	informative	tomato_red	target	4	3	tomato_pink	distractor	2	2	avocado_green	distractor	3	4	1	1	0	red		1479409221239	red	True	False	tomato	red
+2430-2	1479409228077	37	tomato	overinformative-cc	tomato_pink	target	2	2	cup_pink	distractor	3	3	pear_yellow	distractor	4	4	1	1	0	pruple tomato		1479409226768	pruple tomato	False	True	tomato	pink
+2430-2	1479409232259	38	pear	overinformative	pear_orange	target	3	3	carrot_pink	distractor	4	4	pepper_green	distractor	2	2	1	1	0	orange		1479409230800	orange	True	False	pear	orange
+2430-2	1479409239245	39	pear	overinformative-cc	pear_yellow	target	4	4	pepper_red	distractor	3	2	cup_yellow	distractor	2	3	1	1	0	yllow pear		1479409237369	yllow pear	False	True	pear	yellow
+2430-2	1479409244378	40	pear	overinformative	pear_yellow	target	2	2	carrot_purple	distractor	3	3	apple_blue	distractor	4	4	1	1	0	pear		1479409242408	pear	False	True	pear	yellow
+2430-2	1479409249610	41	pepper	overinformative-cc	pepper_green	target	4	4	cup_green	distractor	2	2	pear_yellow	distractor	3	3	1	1	0	green peper		1479409248283	green peper	True	False	pepper	green
+2430-2	1479409253923	42	apple	informative	apple_red	target	3	2	carrot_pink	distractor	4	4	apple_green	distractor	2	3	1	1	0	red		1479409252129	red	True	False	apple	red
+2430-2	1479409258108	43	pear	overinformative	pear_green	target	4	2	carrot_orange	distractor	3	4	banana_yellow	distractor	2	3	1	1	0	green		1479409256906	green	True	False	pear	green
+2430-2	1479409262083	44	banana	informative	banana_brown	target	3	4	banana_yellow	distractor	2	3	tomato_red	distractor	4	2	1	1	0	brown		1479409261002	brown	True	False	banana	brown
+2430-2	1479409267233	45	carrot	overinformative	carrot_orange	target	4	2	banana_blue	distractor	3	3	apple_blue	distractor	2	4	1	1	0	orange		1479409264937	orange	True	False	carrot	orange
+2430-2	1479409271422	46	avocado	informative	avocado_green	target	2	4	avocado_red	distractor	4	3	banana_blue	distractor	3	2	1	1	0	green		1479409270049	green	True	False	avocado	green
+2430-2	1479409277253	47	tomato	overinformative-cc	tomato_green	target	2	4	cup_green	distractor	3	3	banana_brown	distractor	4	2	1	1	0	green tomato		1479409276019	green tomato	True	True	tomato	green
+2430-2	1479409282203	48	pear	informative	pear_orange	target	3	4	apple_green	distractor	4	2	pear_green	distractor	2	3	1	1	0	orange		1479409280907	orange	True	False	pear	orange
+2430-2	1479409286863	49	tomato	informative	tomato_pink	target	3	2	apple_red	distractor	4	3	tomato_green	distractor	2	4	1	1	0	pruple		1479409285374	pruple	False	False	tomato	pink
+2430-2	1479409294073	50	avocado	overinformative	avocado_green	target	2	3	pear_orange	distractor	3	4	banana_blue	distractor	4	2	1	1	0	green		1479409289561	green	True	False	avocado	green
+2430-2	1479409299158	51	avocado	overinformative	avocado_red	target	2	4	banana_brown	distractor	3	3	pepper_orange	distractor	4	2	1	1	0	red		1479409297715	red	True	False	avocado	red
+2430-2	1479409304910	52	pepper	overinformative-cc	pepper_orange	target	2	2	carrot_purple	distractor	4	3	cup_orange	distractor	3	4	1	1	0	orange ppeer		1479409303303	orange ppeer	True	False	pepper	orange
+2430-2	1479409311067	53	pear	informative	pear_green	target	4	3	pear_yellow	distractor	3	4	carrot_pink	distractor	2	2	1	1	0	green pear		1479409309309	green pear	True	True	pear	green
+2430-2	1479409315220	54	pepper	overinformative	pepper_orange	target	3	3	avocado_red	distractor	4	2	tomato_pink	distractor	2	4	1	1	0	orange		1479409313604	orange	True	False	pepper	orange
+2430-2	1479409322904	55	avocado	overinformative-cc	avocado_black	target	4	4	banana_blue	distractor	3	3	cup_black	distractor	2	2	1	1	0	black veg		1479409319892	black veg	True	False	avocado	black
+2430-2	1479409327064	56	pepper	informative	pepper_red	target	2	4	apple_blue	distractor	4	3	pepper_orange	distractor	3	2	1	1	0	red		1479409325756	red	True	False	pepper	red
+2430-2	1479409331422	57	tomato	informative	tomato_green	target	4	4	apple_red	distractor	3	3	tomato_pink	distractor	2	2	1	1	0	green		1479409329849	green	True	False	tomato	green
+2430-2	1479409338211	58	apple	overinformative-cc	apple_green	target	2	4	cup_green	distractor	3	3	pear_yellow	distractor	4	2	1	1	0	grean apple		1479409336446	grean apple	False	True	apple	green
+2430-2	1479409342809	59	carrot	overinformative	carrot_purple	target	3	4	tomato_red	distractor	2	2	avocado_green	distractor	4	3	1	1	0	purple		1479409341637	purple	True	False	carrot	purple
+2430-2	1479409349350	60	apple	overinformative-cc	apple_blue	target	3	4	cup_blue	distractor	2	2	carrot_purple	distractor	4	3	1	1	0	blue apple		1479409346402	blue apple	True	True	apple	blue
+2430-2	1479409355290	61	tomato	overinformative	tomato_pink	target	4	2	banana_blue	distractor	2	4	pepper_green	distractor	3	3	1	1	0	purple		1479409352641	purple	False	False	tomato	pink
+2430-2	1479409359285	62	apple	overinformative	apple_red	target	4	2	avocado_green	distractor	2	3	pear_yellow	distractor	3	4	1	1	0	red		1479409357989	red	True	False	apple	red
+2430-2	1479409364230	63	pear	informative	pear_yellow	target	2	2	apple_blue	distractor	3	3	pear_green	distractor	4	4	1	1	0	yellow		1479409362542	yellow	True	False	pear	yellow

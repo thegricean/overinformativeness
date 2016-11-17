@@ -20,6 +20,8 @@ HPDlo<- function(s){
 options("scipen"=10) 
 
 ### Load in model results (parameters)
+modelversion = "empirical-scaledtyp-maxdifftyp-hmc-seed8-rawtyp"
+modelversion = "empirical-scaledtyp-maxdifftyp-hmc-seed8"
 modelversion = "empirical-scaledtyp-maxdifftyp-hmc"
 modelversion = "empirical-scaledtyp-maxdifftyp-seed10"
 
@@ -330,7 +332,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1b_bda_typicality/results_bda/graphs/predictives-byitem-",modelversion,".pdf",sep=""),height=3,width=5)
 
 cor(toplot$ModelProbability,toplot$Probability) 
-# empirical typicality: .85
+# empirical typicality: .7
 
 
 ## collapse across targets and domains
@@ -396,7 +398,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=NumDistractors,shape=N
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/1b_bda_typicality/results_bda/graphs/predictives-collapsed-",modelversion,".pdf",sep=""),height=5,width=7)
 
 cor(toplot$ModelProbability,toplot$Probability) 
-# empirical typicality, round 1: .9 
+# empirical typicality, round 1: .7 
 
 # plot scene variation effect, both model and empirical
 agr = empirical %>%

@@ -1,7 +1,7 @@
 // run using:
 // webppl overinfBDA_maxdifftypicality.wppl --require ./refModule/
 
-util.seedRNG(10);
+util.seedRNG(8);
 
 var constructContext = function(condition,size,color,othercolor,item) {
     var context = [];
@@ -67,29 +67,29 @@ console.log("Constructing contexts complete...");
 var modelAnalysis = function() {
   // console.log("Running next sample...");
   // Sample params
-  // var params = {
-  //   alpha : sample(Uniform({a:0,b:40})),
-  //   lengthWeight : sample(Uniform({a:0,b:10})),
-  //   typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
-  //   typicality_size : sample(Uniform({a:0,b:1})),
-  //   typicality_type : 1,
-  //   // typWeight : uniform(0,1),
-  //   cost_color : sample(Uniform({a:0,b:2})),
-  //   cost_size : sample(Uniform({a:0,b:2})),
-  //   cost_type : 1
-  // };
-
   var params = {
-    alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
-    lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
-    typicality_color : sample(UniformDrift({a:0,b:1,r:1/20})),
-    typicality_size : sample(UniformDrift({a:0,b:1,r:1/20})),
-    typicality_type : 1,//sample(UniformDrift({a:0,b:1,r:1/20})),
-    // typWeight : sample(uniformDriftERP, [0,1,1/20]),
-    cost_color : sample(UniformDrift({a:0,b:2,r:2/20})),
-    cost_size : sample(UniformDrift({a:0,b:2,r:2/20})),
+    alpha : sample(Uniform({a:0,b:40})),
+    lengthWeight : sample(Uniform({a:0,b:10})),
+    typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
+    typicality_size : sample(Uniform({a:0,b:1})),
+    typicality_type : 1,
+    // typWeight : uniform(0,1),
+    cost_color : sample(Uniform({a:0,b:2})),
+    cost_size : sample(Uniform({a:0,b:2})),
     cost_type : 1
-  };  
+  };
+
+  // var params = {
+  //   alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
+  //   lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
+  //   typicality_color : sample(UniformDrift({a:0,b:1,r:1/20})),
+  //   typicality_size : sample(UniformDrift({a:0,b:1,r:1/20})),
+  //   typicality_type : 1,//sample(UniformDrift({a:0,b:1,r:1/20})),
+  //   // typWeight : sample(uniformDriftERP, [0,1,1/20]),
+  //   cost_color : sample(UniformDrift({a:0,b:2,r:2/20})),
+  //   cost_size : sample(UniformDrift({a:0,b:2,r:2/20})),
+  //   cost_type : 1
+  // };  
 
   // console.log(params);
 
@@ -153,9 +153,13 @@ var modelAnalysis = function() {
   return {predictive : query.table, params : params};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+// var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+// seed 10:
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.00265} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
+// seed 8:
+var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0014} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
 
 console.log('inference complete... printing');
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-seed10");
-// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-hmc");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-seed8");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-hmc-seed8");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-hmc-seed8-rawtyp");
