@@ -1,12 +1,5 @@
-library(lme4)
-library(ggplot2)
-library(dplyr)
-library(reshape2)
-library(magrittr)
-library(tidyr)
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/21_interactive_pilot/results")
-setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/21_interactive_pilot/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -57,14 +50,12 @@ production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato)","tomato",as.
 production$CleanedResponse = gsub("[Aa]ppe|APPLE","apple",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Aa]vacado|[Aa]vacadfo","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie", production$CleanedResponse, ignore.case = TRUE), T, F)
-
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 production[!production$ColorMentioned & production$ItemMentioned,c("CleanedResponse","context","gameid")]
 
-production$UtteranceType = as.factor(ifelse(production$ItemMentioned & production$ColorMentioned, "color_and_type", ifelse(production$ColorMentioned & !production$CatMentioned & !production$ItemMentioned, "color", ifelse(production$ItemMentioned & !production$ColorMentioned & !production$CatMentioned, "type", ifelse(!production$ItemMentioned & !production$ColorMentioned & production$CatMentioned, "cat", ifelse(!production$ItemMentioned & production$ColorMentioned & production$CatMentioned, "color_and_cat","OTHER"))))))
+production$UtteranceType = as.factor(ifelse(production$ItemMentioned & production$ColorMentioned, "color_and_type", ifelse(production$ColorMentioned, "color", ifelse(production$ItemMentioned, "type","OTHER"))))
 
 production[production$UtteranceType == "OTHER",c("gameid","refExp","context")]
 table(production[production$UtteranceType == "OTHER",]$gameid) 
@@ -72,8 +63,6 @@ table(production[production$UtteranceType == "OTHER",]$gameid)
 production$Color = ifelse(production$UtteranceType == "color",1,0)
 production$ColorAndType = ifelse(production$UtteranceType == "color_and_type",1,0)
 production$Type = ifelse(production$UtteranceType == "type",1,0)
-production$ColorAndCat = ifelse(production$UtteranceType == "color_and_cat",1,0)
-production$Cat = ifelse(production$UtteranceType == "cat",1,0)
 production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
 production$Half = ifelse(production$roundNum < 28,1,2)
@@ -106,7 +95,7 @@ ggplot(agr, aes(x=Utterance,y=Probability)) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs/mentioned_features_by_context_colorOnly.pdf",width=10,height=3.5)
+ggsave("graphs/mentioned_features_by_context_other.pdf",width=10,height=3.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -123,7 +112,7 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   geom_line() +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
-ggsave("graphs/utterance_by_binarytyp_colorOnly.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_binarytyp.png",width=10,height=3.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -140,7 +129,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   geom_smooth(method="lm") +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
-ggsave("graphs/utterance_by_conttyp_colorOnly.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_conttyp.png",width=10,height=3.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -157,25 +146,5 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   geom_line() +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(Half~context)
-ggsave("graphs/utterance_by_binarytyp_byhalf_colorOnly.png",width=10,height=3.5)
-
-
-production$firstTrial1 = ifelse(production$trialType == production$trialType[1] & production$gameid == production$gameid[1],T,F)
-production$firstTrial2 = ifelse(production$trialType == production$trialType[55] & production$gameid == production$gameid[55],T,F)
-production$firstTrial3 = ifelse(production$trialType == production$trialType[109] & production$gameid == production$gameid[109],T,F)
-production$firstTrial4 = ifelse(production$trialType == production$trialType[163] & production$gameid == production$gameid[163],T,F)
-
-ifelse(production$firstTrial1, paste(production$speakerMessages), "")
-ifelse(production$firstTrial1, paste(production$trialType), "")
-ifelse(production$firstTrial2, paste(production$speakerMessages), "")
-ifelse(production$firstTrial2, paste(production$trialType), "")
-ifelse(production$firstTrial3, paste(production$speakerMessages), "")
-ifelse(production$firstTrial3, paste(production$trialType), "")
-ifelse(production$firstTrial4, paste(production$speakerMessages), "")
-ifelse(production$firstTrial4, paste(production$trialType), "")
-
-
-
-
-
+ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=3.5)
 
