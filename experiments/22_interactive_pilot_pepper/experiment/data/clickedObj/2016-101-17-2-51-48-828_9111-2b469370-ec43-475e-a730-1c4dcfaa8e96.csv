@@ -1,0 +1,4 @@
+gameid, time, roundNum, trialType, context,nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs
+9111-2,1479351117654,1,pepper,informative,pepper_green,target,3,2,pepper_orange,distractor,4,3,banana_yellow,distractor,2,4
+9111-2,1479351121932,2,tomato,informative,tomato_red,target,2,3,tomato_pink,distractor,3,4,apple_blue,distractor,4,2
+9111-2,1479351127120,3,pear,overinformative,pear_yellow,target,2,2,pepper_red,distractor,3,4,pepper_orange,distractor,4,3
