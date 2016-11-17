@@ -175,7 +175,7 @@ ifelse(production$firstTrial4, paste(production$speakerMessages), "")
 ifelse(production$firstTrial4, paste(production$trialType), "")
 
 
-
+write.csv(production,file="data/results-21.csv")
 
 
 
