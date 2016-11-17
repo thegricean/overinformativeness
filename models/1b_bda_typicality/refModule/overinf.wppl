@@ -31,8 +31,8 @@ var foreach = function(lst, fn) {
 };
 
 var getTypicalities = function() {
-    var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
-    // var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
+    // var typicalityData = refModule.readCSV("./bdaInput/typicalities.csv");
+    var typicalityData = refModule.readCSV("./bdaInput/typicalities_raw.csv");    
     // console.log(typicalityData);
     var unique_objects = _.unique(map(function(row) {
       return row[0];
@@ -162,7 +162,11 @@ var OverinformativeModel = function(params, context) {
     if (splitutt.length == 2 && _.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], splitutt[0])) { splitutt.pop(); }
     if (splitutt.length == 3) { splitutt.pop(); } 
     var reduced_obj = [object[1],object[2]].join("_");
+    // console.log(utt);
+    // console.log(splitutt);
 
+    // console.log(utt+"...."+object+"...."+reduced_obj);
+    
      var typicalities = map(function(u) {
         if (_.contains(["color","othercolor","brown", "red", "black", "blue", "purple", "green", "white", "yellow", "pink", "orange"], u)) {
           return checkFeatureEmpirical("color",object,u,reduced_obj);  
@@ -177,9 +181,10 @@ var OverinformativeModel = function(params, context) {
 
  //     // console.log(object);
  //    // console.log(utt);
- //    // console.log(typicalities);
+    // console.log(typicalities);
 
-    var typicality = reduce(function(a,b) {return a*b;},1,typicalities); 
+
+    var typicality = reduce(function(a,b) {return a*1+b*1;},0,typicalities); 
      // , function(a,b) {return a*b;}, 1);
     // console.log(typicality);
 
