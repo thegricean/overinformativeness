@@ -11,6 +11,28 @@ function make_slides(f) {
 // {after: function() { console.log("everything's loaded now") }}
 // )  
 
+function startsWith(str, substrings) {
+    for (var i = 0; i != substrings.length; i++) {
+       var substring = substrings[i];
+       if (str.indexOf(substring) == 0) {
+         return 1;
+       }
+    }
+    return -1; 
+}
+
+function getArticleItem(item_id) {
+
+  var article = "";
+
+  if (startsWith(item_id, ["a","e","i","o","u"]) == 1) {
+    article = "an ";
+  } else {
+    article = "a ";
+  }
+  return article + item_id;
+}
+
   slides.i0 = slide({
      name : "i0",
      start: function() {
@@ -39,9 +61,10 @@ function make_slides(f) {
 	  this.stim = stim;
     stim.item = _.shuffle(stim.item);
 	  console.log(this.stim);
+    var utt = getArticleItem(stim.item[0]);
    //  console.log(stim.item);
    //  console.log(stim.label);
-	var contextsentence = "How typical is this object for "+stim.item[0]+"?";
+	var contextsentence = "How typical is this object for "+utt+"?";
 	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
 	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
 	var objimagehtml = '<img src="images/'+stim.label+'.png" style="height:190px;">';
