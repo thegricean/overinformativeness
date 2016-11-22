@@ -1,11 +1,11 @@
 import os, csv
 
 
-datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/"
+datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/24_interactive_color_reference_game/experiment/data/"
 
-csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/message/") if (o.endswith('csv') & o.startswith('2016-10'))]
+csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/24_interactive_color_reference_game/experiment/data/message/") if (o.endswith('csv') & o.startswith('2016-101-22'))]
 
-csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/clickedObj/") if (o.endswith('csv') & o.startswith('2016-10'))]
+csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/24_interactive_color_reference_game/experiment/data/clickedObj/") if (o.endswith('csv') & o.startswith('2016-101-22'))]
 
 
 # helper function to get messages associated with a particular trial
@@ -77,9 +77,9 @@ for k,m in enumerate(csv_messagenames):
 		triallines[i]['speakerMessages'] = "___".join(mess['speakermessages'])
 		triallines[i]['listenerMessages'] = "___".join(mess['listenermessages'])
 		triallines[i]['messageTimeStamps'] = "___".join(mess['times'])
-		print i
-		print k
-		print mess['speakermessages']
+		# print i
+		# print k
+		# print mess['speakermessages']
 		try:
 			triallines[i][' refExp']	= mess['speakermessages'][0]
 		except IndexError:
@@ -121,7 +121,7 @@ headers.append('clickedColor')
 
 #print headers
 
-print triallines[0].keys()
+#print triallines[0].keys()
 
 
 w = csv.DictWriter(open("../data/results.csv", "wb"),fieldnames=headers,restval="NA",delimiter="\t")

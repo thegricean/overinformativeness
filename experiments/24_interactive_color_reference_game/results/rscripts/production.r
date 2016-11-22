@@ -1,5 +1,5 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/24_interactive_color_reference_game/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -50,9 +50,10 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark", production$refExp, ignore.case = TRUE), T, F)
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen", production$refExp, ignore.case = TRUE), T, F)
 production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa)","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot|[Cc]arrott","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato)","tomato",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Aa]ppe|APPLE","apple",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Pp]eper","pepper",as.character(production$CleanedResponse))
@@ -143,6 +144,21 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   facet_wrap(~context)
 ggsave("graphs/utterance_by_conttyp.png",width=10,height=3.5)
 
+agr = production %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality,-nameClickedObj) %>%
+  group_by(Utterance,context,NormedTypicality,nameClickedObj) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point() +
+  geom_text(aes(label=nameClickedObj)) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~context)
+
 # plot utterance choice proportions by typicality
 agr = production %>%
   select(Color,Type,ColorAndType,Other,binaryTypicality,context,Half) %>%
@@ -160,5 +176,4 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   facet_grid(Half~context)
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=3.5)
 
-write.csv(production,file="data/results-22.csv")
 
