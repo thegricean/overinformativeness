@@ -30,7 +30,7 @@ function getArticleItem(item_id) {
   } else {
     article = "a ";
   }
-  return article + item_id;
+  return article;
 }
 
   slides.i0 = slide({
@@ -59,12 +59,12 @@ function getArticleItem(item_id) {
       exp.sliderPost = {};
 	//$("#objectlabel").val("");	
 	  this.stim = stim;
-    stim.item = _.shuffle(stim.item);
+    // stim.item = _.shuffle(stim.item);
 	  console.log(this.stim);
-    var utt = getArticleItem(stim.item[0]);
+    var article = getArticleItem(stim.item);
    //  console.log(stim.item);
    //  console.log(stim.label);
-	var contextsentence = "How typical is this object for "+utt+"?";
+	var contextsentence = "How typical is this object for "+article+"<strong>"+stim.item+"</strong>?";
 	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
 	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
 	var objimagehtml = '<img src="images/'+stim.label+'.png" style="height:190px;">';
@@ -91,7 +91,7 @@ function getArticleItem(item_id) {
     log_responses : function() {
         exp.data_trials.push({
           "slide_number_in_experiment" : exp.phase,
-          "utterance": this.stim.item[0],
+          "utterance": this.stim.item,
           "object": this.stim.label,
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost
@@ -161,7 +161,7 @@ function getArticleItem(item_id) {
 /// init ///
 function init() {
 
-	var items_target = _.shuffle([
+/*	var items_target = _.shuffle([
 
 {
 "label": "avocado_black",
@@ -210,6 +210,42 @@ function init() {
 {
 "label": "carrot_purple",
 "item": ["carrot"]
+},
+{
+"label": "cup_black",
+"item": ["cup"]
+},
+{
+"label": "cup_blue",
+"item": ["cup"]
+},
+{
+"label": "cup_brown",
+"item": ["cup"]
+},
+{
+"label": "cup_green",
+"item": ["cup"]
+},
+{
+"label": "cup_orange",
+"item": ["cup"]
+},
+{
+"label": "cup_pink",
+"item": ["cup"]
+},
+{
+"label": "cup_purple",
+"item": ["cup"]
+},
+{
+"label": "cup_red",
+"item": ["cup"]
+},
+{
+"label": "cup_yellow",
+"item": ["cup"]
 },
 {
 "label": "pear_green",
@@ -295,6 +331,42 @@ function init() {
 },
 {
 "label": "carrot_purple",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_black",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_blue",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_brown",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_green",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_orange",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_pink",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_purple",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_red",
+"item": ["avocado", "apple"]
+},
+{
+"label": "cup_yellow",
 "item": ["avocado", "apple"]
 },
 {
@@ -384,6 +456,42 @@ function init() {
 "item": ["banana", "pear"]
 },
 {
+"label": "cup_black",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_blue",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_brown",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_green",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_orange",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_pink",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_purple",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_red",
+"item": ["banana", "pear"]
+},
+{
+"label": "cup_yellow",
+"item": ["banana", "pear"]
+},
+{
 "label": "pear_green",
 "item": ["banana", "carrot"]
 },
@@ -423,96 +531,387 @@ function init() {
 
 {
 "label": "avocado_black",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "avocado_green",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "avocado_red",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "apple_blue",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "apple_red",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "apple_green",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "banana_blue",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "banana_brown",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "banana_yellow",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "carrot_orange",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "carrot_pink",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "carrot_purple",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
+},
+{
+"label": "cup_black",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_blue",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_brown",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_green",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_orange",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_pink",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_purple",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_red",
+"item": ["pepper", "tomato", "carrot"]
+},
+{
+"label": "cup_yellow",
+"item": ["pepper", "tomato", "carrot"]
 },
 {
 "label": "pear_green",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "pear_orange",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "pear_yellow",
-"item": ["pepper", "tomato"]
+"item": ["pepper", "tomato", "cup"]
 },
 {
 "label": "pepper_green",
-"item": ["pear", "tomato"]
+"item": ["pear", "tomato", "cup"]
 },
 {
 "label": "pepper_orange",
-"item": ["pear", "tomato"]
+"item": ["pear", "tomato", "cup"]
 },
 {
 "label": "pepper_red",
-"item": ["pear", "tomato"]
+"item": ["pear", "tomato", "cup"]
 },
 {
 "label": "tomato_green",
-"item": ["pear", "pepper"]
+"item": ["pear", "pepper", "cup"]
 },
 {
 "label": "tomato_pink",
-"item": ["pear", "pepper"]
+"item": ["pear", "pepper", "cup"]
 },
 {
 "label": "tomato_red",
-"item": ["pear", "pepper"]
+"item": ["pear", "pepper", "cup"]
 }
-	]).slice(0,100)
+	]).slice(0,200)*/
+
+  var items_target = _.shuffle([
+
+{
+"label": "avocado_black",
+"item": ["avocado"]
+},
+{
+"label": "avocado_green",
+"item": ["avocado"]
+},
+{
+"label": "avocado_red",
+"item": ["avocado"]
+},
+{
+"label": "apple_blue",
+"item": ["apple"]
+},
+{
+"label": "apple_red",
+"item": ["apple"]
+},
+{
+"label": "apple_green",
+"item": ["apple"]
+},
+{
+"label": "banana_blue",
+"item": ["banana"]
+},
+{
+"label": "banana_brown",
+"item": ["banana"]
+},
+{
+"label": "banana_yellow",
+"item": ["banana"]
+},
+{
+"label": "carrot_orange",
+"item": ["carrot"]
+},
+{
+"label": "carrot_pink",
+"item": ["carrot"]
+},
+{
+"label": "carrot_purple",
+"item": ["carrot"]
+},
+{
+"label": "cup_black",
+"item": ["cup"]
+},
+{
+"label": "cup_blue",
+"item": ["cup"]
+},
+{
+"label": "cup_brown",
+"item": ["cup"]
+},
+{
+"label": "cup_green",
+"item": ["cup"]
+},
+{
+"label": "cup_orange",
+"item": ["cup"]
+},
+{
+"label": "cup_pink",
+"item": ["cup"]
+},
+{
+"label": "cup_purple",
+"item": ["cup"]
+},
+{
+"label": "cup_red",
+"item": ["cup"]
+},
+{
+"label": "cup_yellow",
+"item": ["cup"]
+},
+{
+"label": "pear_green",
+"item": ["pear"]
+},
+{
+"label": "pear_orange",
+"item": ["pear"]
+},
+{
+"label": "pear_yellow",
+"item": ["pear"]
+},
+{
+"label": "pepper_green",
+"item": ["pepper"]
+},
+{
+"label": "pepper_orange",
+"item": ["pepper"]
+},
+{
+"label": "pepper_red",
+"item": ["pepper"]
+},
+{
+"label": "tomato_green",
+"item": ["tomato"]
+},
+{
+"label": "tomato_pink",
+"item": ["tomato"]
+},
+{
+"label": "tomato_red",
+"item": ["tomato"]
+}
+])
+
+
+
+
+
+
+
+
+
+var items_target_2 = _.shuffle([
+{
+"label": "avocado_black",
+"item": ["apple", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "avocado_green",
+"item": ["apple", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "avocado_red",
+"item": ["apple", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "apple_blue",
+"item": ["avocado", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "apple_red",
+"item": ["avocado", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "apple_green",
+"item": ["avocado", "banana", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "banana_blue",
+"item": ["avocado", "apple", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "banana_brown",
+"item": ["avocado", "apple", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "banana_yellow",
+"item": ["avocado", "apple", "carrot", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "carrot_orange",
+"item": ["avocado", "apple", "banana", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "carrot_pink",
+"item": ["avocado", "apple", "banana", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "carrot_purple",
+"item": ["avocado", "apple", "banana", "pear", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "cup_black",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_blue",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_brown",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_green",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_orange",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_pink",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_purple",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_red",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "cup_yellow",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "tomato", "fruit", "vegetable"]
+},
+{
+"label": "pear_green",
+"item": ["avocado", "apple", "banana", "carrot", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "pear_orange",
+"item": ["avocado", "apple", "banana", "carrot", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "pear_yellow",
+"item": ["avocado", "apple", "banana", "carrot", "pepper", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "pepper_green",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "pepper_orange",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "pepper_red",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "tomato", "cup", "fruit", "vegetable"]
+},
+{
+"label": "tomato_green",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "cup", "fruit", "vegetable"]
+},
+{
+"label": "tomato_pink",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "cup", "fruit", "vegetable"]
+},
+{
+"label": "tomato_red",
+"item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "cup", "fruit", "vegetable"]
+}
+  ])
 	
 
 
   function makeTargetStim(i) {
     //get item
     var item = items_target[i];
-    var item_id = item.item;
+    var item_id = item.item[0];
     var object_label = item.label;
       
       return {
@@ -521,10 +920,27 @@ function init() {
     }
   }
   
+  function makeTargetStim2(l,k) {
+    //get item
+    var item = items_target_2[l];
+    var item_id = item.item[k];
+    var object_label = item.label;
+      
+      return {
+    "item": item_id,
+    "label": object_label
+    }
+  }
 
   exp.all_stims = [];
   for (var i=0; i<items_target.length; i++) {
     exp.all_stims.push(makeTargetStim(i));
+  }
+  for (var l=0; l<items_target_2.length; l++) {
+    items_target_2[l].item = _.shuffle(items_target_2[l].item);
+    for (var k=0; k<4; k++) {
+      exp.all_stims.push(makeTargetStim2(l,k));
+    }
   }
 
   exp.all_stims = _.shuffle(exp.all_stims);

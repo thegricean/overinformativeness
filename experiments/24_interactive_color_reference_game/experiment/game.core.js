@@ -101,6 +101,8 @@ var game_player = function( game_instance, player_instance) {
 // we can use them in other files (specifically, game.server.js)
 if('undefined' != typeof global) {
   var objectList = _.map(require('./stimuli/objectSet', _.clone)); 
+  console.log("objectList.length");
+  console.log(objectList[0].length);
   // console.log(objectList);
   module.exports = global.game_core = game_core;
   module.exports = global.game_player = game_player;
@@ -174,7 +176,7 @@ game_core.prototype.makeTrialList = function () {
   targetPos = 0;
 
   randomObjectList = randomItemChoice();
-  console.log(randomObjectList[0].length);
+  // console.log(randomObjectList[0].length);
 
   // Had to switch to a for loop here to keep track of previousTargets
   for (var i = 0; i < randomObjectList[0].length; i++) {
@@ -192,6 +194,7 @@ game_core.prototype.makeTrialList = function () {
   };
   // console.log(trialList);
   trialList = _.shuffle(trialList);
+  console.log("trialList");
   console.log(trialList.length);
   return(trialList);
 };
@@ -255,11 +258,11 @@ var randomItemChoice = function() {
     var randomPosList = _.shuffle([1,2,3,4]);
     newObjectList.push(objectList[0][nextItemPos-randomPosList[0]]);
     newObjectList.push(objectList[0][nextItemPos-randomPosList[1]]);
-    console.log("new i");
-    console.log(i);
-    console.log(nextItemPos);
-    console.log(randomPosList[0]);
-    console.log(objectList[0][nextItemPos-randomPosList[0]]);
+    // console.log("new i");
+    // console.log(i);
+    // console.log(nextItemPos);
+    // console.log(randomPosList[0]);
+    // console.log(objectList[0][nextItemPos-randomPosList[0]]);
   };
 
   return [newObjectList];

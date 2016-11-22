@@ -40,7 +40,7 @@ function make_slides(f) {
 	  console.log(this.stim);
     stim.color = _.shuffle(stim.color);
     console.log(stim.color[0]);
-	var contextsentence = "How typical is this color for the color "+stim.color[0]+"?";
+	var contextsentence = "How typical is this color for the color <strong>"+stim.color[0]+"</strong>?";
 	//var contextsentence = "How typical is this for "+stim.basiclevel+"?";
 	//var objimagehtml = '<img src="images/'+stim.basiclevel+'/'+stim.item+'.jpg" style="height:190px;">';
 	var objimagehtml = '<img src="images/'+stim.item+'.png" style="height:190px;">';
@@ -189,6 +189,42 @@ function init() {
 "color": ["purple"]
 },
 {
+"item": "cup_black",
+"color": ["black"]
+},
+{
+"item": "cup_blue",
+"color": ["blue"]
+},
+{
+"item": "cup_brown",
+"color": ["brown"]
+},
+{
+"item": "cup_green",
+"color": ["green"]
+},
+{
+"item": "cup_orange",
+"color": ["orange"]
+},
+{
+"item": "cup_pink",
+"color": ["pink"]
+},
+{
+"item": "cup_purple",
+"color": ["purple"]
+},
+{
+"item": "cup_red",
+"color": ["red"]
+},
+{
+"item": "cup_yellow",
+"color": ["yellow"]
+},
+{
 "item": "pear_green",
 "color": ["green"]
 },
@@ -272,6 +308,42 @@ function init() {
 },
 {
 "item": "carrot_purple",
+"color": ["black", "green"]
+},
+{
+"item": "cup_black",
+"color": ["green", "red"]
+},
+{
+"item": "cup_blue",
+"color": ["black", "green"]
+},
+{
+"item": "cup_brown",
+"color": ["black", "green"]
+},
+{
+"item": "cup_green",
+"color": ["black", "red"]
+},
+{
+"item": "cup_orange",
+"color": ["black", "green"]
+},
+{
+"item": "cup_pink",
+"color": ["black", "green"]
+},
+{
+"item": "cup_purple",
+"color": ["black", "green"]
+},
+{
+"item": "cup_red",
+"color": ["black", "green"]
+},
+{
+"item": "cup_yellow",
 "color": ["black", "green"]
 },
 {
@@ -361,6 +433,42 @@ function init() {
 "color": ["red", "brown"]
 },
 {
+"item": "cup_black",
+"color": ["brown", "yellow"]
+},
+{
+"item": "cup_blue",
+"color": ["red", "brown"]
+},
+{
+"item": "cup_brown",
+"color": ["red", "yellow"]
+},
+{
+"item": "cup_green",
+"color": ["brown", "yellow"]
+},
+{
+"item": "cup_orange",
+"color": ["red", "brown"]
+},
+{
+"item": "cup_pink",
+"color": ["red", "brown"]
+},
+{
+"item": "cup_purple",
+"color": ["red", "brown"]
+},
+{
+"item": "cup_red",
+"color": ["brown", "yellow"]
+},
+{
+"item": "cup_yellow",
+"color": ["red", "brown"]
+},
+{
 "item": "pear_green",
 "color": ["brown", "yellow"]
 },
@@ -446,6 +554,42 @@ function init() {
 {
 "item": "carrot_purple",
 "color": ["yellow", "blue"]
+},
+{
+"item": "cup_black",
+"color": ["blue", "pink"]
+},
+{
+"item": "cup_blue",
+"color": ["yellow", "pink"]
+},
+{
+"item": "cup_brown",
+"color": ["blue", "pink"]
+},
+{
+"item": "cup_green",
+"color": ["blue", "pink"]
+},
+{
+"item": "cup_orange",
+"color": ["yellow", "blue"]
+},
+{
+"item": "cup_pink",
+"color": ["yellow", "blue"]
+},
+{
+"item": "cup_purple",
+"color": ["yellow", "blue"]
+},
+{
+"item": "cup_red",
+"color": ["blue", "pink"]
+},
+{
+"item": "cup_yellow",
+"color": ["blue", "pink"]
 },
 {
 "item": "pear_green",
@@ -532,6 +676,42 @@ function init() {
 {
 "item": "carrot_purple",
 "color": ["pink", "orange"]
+},
+{
+"item": "cup_black",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_blue",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_brown",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_green",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_orange",
+"color": ["pink", "purple"]
+},
+{
+"item": "cup_pink",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_purple",
+"color": ["pink", "orange"]
+},
+{
+"item": "cup_red",
+"color": ["purple", "orange"]
+},
+{
+"item": "cup_yellow",
+"color": ["purple", "orange"]
 },
 {
 "item": "pear_green",
