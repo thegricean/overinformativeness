@@ -130,7 +130,8 @@ agr$YMax = agr$PropColorMentioned + agr$ci.high
 
 ggplot(agr, aes(x=NormedTypicality,y=PropColorMentioned,color=Item,linetype=context,group=interaction(context,Item))) +
   geom_point() +
-  geom_line() +
+  geom_smooth(method="lm") +
+  ylim(c(0,1)) +
   # geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(~context)
 ggsave("graphs/merged_production_byitem.png",height=3)

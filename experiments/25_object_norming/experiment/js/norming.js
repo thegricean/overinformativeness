@@ -10,6 +10,8 @@ function make_slides(f) {
 // ["images/bathrobe.png","images/belt.jpg"],
 // {after: function() { console.log("everything's loaded now") }}
 // )  
+preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/apple_yellow.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/strawberry_blue.png","images/strawberry_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png","images/tomato_yellow.png"],
+ {after: function() { console.log("everything's loaded now") }});
 
 function startsWith(str, substrings) {
     for (var i = 0; i != substrings.length; i++) {
@@ -773,7 +775,7 @@ function init() {
 "label": "tomato_red",
 "item": ["tomato"]
 }
-])
+]);
 
 
 
@@ -904,7 +906,7 @@ var items_target_2 = _.shuffle([
 "label": "tomato_red",
 "item": ["avocado", "apple", "banana", "carrot", "pear", "pepper", "cup", "fruit", "vegetable"]
 }
-  ])
+  ]);
 	
 
 
@@ -936,9 +938,10 @@ var items_target_2 = _.shuffle([
   for (var i=0; i<items_target.length; i++) {
     exp.all_stims.push(makeTargetStim(i));
   }
+
   for (var l=0; l<items_target_2.length; l++) {
     items_target_2[l].item = _.shuffle(items_target_2[l].item);
-    for (var k=0; k<4; k++) {
+    for (var k=0; k<2; k++) {
       exp.all_stims.push(makeTargetStim2(l,k));
     }
   }

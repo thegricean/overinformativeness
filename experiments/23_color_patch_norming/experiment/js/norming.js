@@ -10,6 +10,9 @@ function make_slides(f) {
 // ["images/bathrobe.png","images/belt.jpg"],
 // {after: function() { console.log("everything's loaded now") }}
 // )  
+preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png"],
+{after: function() { console.log("everything's loaded now") }}
+  );
 
   slides.i0 = slide({
      name : "i0",
@@ -259,9 +262,10 @@ function init() {
 {
 "item": "tomato_red",
 "color": ["red"]
-}, 
+}]);
 
 
+var items_target_2 = _.shuffle([
 {
 "item": "avocado_black",
 "color": ["green", "red"]
@@ -748,9 +752,7 @@ function init() {
 {
 "item": "tomato_red",
 "color": ["purple", "orange"]
-}
-
-	]).slice(0,250)
+}]).slice(0,60);
 	
 
 
@@ -765,11 +767,26 @@ function init() {
     "color": item_color
     }
   }
+
+    function makeTargetStim2(k) {
+    //get item
+    var item = items_target_2[k];
+    var item_id = item.item;
+    var item_color = item.color;
+      
+      return {
+    "item": item_id,
+    "color": item_color
+    }
+  }
   
 
   exp.all_stims = [];
   for (var i=0; i<items_target.length; i++) {
     exp.all_stims.push(makeTargetStim(i));
+  }
+  for (var k=0; k<items_target_2.length; k++) {
+    exp.all_stims.push(makeTargetStim2(k));
   }
 
   exp.all_stims = _.shuffle(exp.all_stims);
