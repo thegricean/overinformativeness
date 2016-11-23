@@ -1,11 +1,11 @@
 import os, csv
 
 
-datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/"
+datadir = "/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/experiment/data/"
 
-csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/message/") if (o.endswith('csv') & o.startswith('2016-10'))]
+csv_messagenames = [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/experiment/data/message/") if (o.endswith('csv') & o.startswith('2016-10'))]
 
-csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/22_interactive_pilot_pepper/experiment/data/clickedObj/") if (o.endswith('csv') & o.startswith('2016-10'))]
+csv_trialnames =  [o for o in os.listdir("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/experiment/data/clickedObj/") if (o.endswith('csv') & o.startswith('2016-10'))]
 
 
 # helper function to get messages associated with a particular trial
@@ -84,7 +84,11 @@ for k,m in enumerate(csv_messagenames):
 			triallines[i][' refExp']	= mess['speakermessages'][0]
 		except IndexError:
 			triallines[i][' refExp'] = "NA"	
-		typ,color = triallines[i]['nameClickedObj'].split("_")
+		print triallines[i]['nameClickedObj']
+		try:			
+			typ,color = triallines[i]['nameClickedObj'].split("_")
+		except ValueError:
+			dist,typ,color = triallines[i]['nameClickedObj'].split("_")
 		triallines[i]['clickedColor'] = color
 		triallines[i]['clickedType'] = typ
 		colormentioned = False	
