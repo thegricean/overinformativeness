@@ -6,9 +6,9 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/25_object_norming/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results")
 
 theme_set(theme_bw(18))
-# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/11_color_norming/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -63,6 +63,15 @@ ggplot(d, aes(item)) +
   stat_count() +
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
   
+items = as.data.frame(table(d$utterance,d$object))
+nrow(items)
+colnames(items) = c("Utterance","Object","Freq")
+items = items[order(items[,c("Freq")]),]
+items = items[grep("cup",items$Object,invert=T),]
+items = items[grep("cup",items$Utterance,invert=T),]
+nrow(items)
+write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
+
 ggplot(d, aes(x=response,fill=Color)) +
   geom_histogram(position="dodge") +
   geom_density(alpha=.4,color="gray80") +
