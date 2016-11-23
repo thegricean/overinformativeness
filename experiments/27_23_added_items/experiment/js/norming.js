@@ -10,7 +10,7 @@ function make_slides(f) {
 // ["images/bathrobe.png","images/belt.jpg"],
 // {after: function() { console.log("everything's loaded now") }}
 // )  
-preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/apple_yellow.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/carrot_brown.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/pepper_black.png","images/strawberry_blue.png","images/strawberry_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png","images/tomato_yellow.png"],
+preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/apple_yellow.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/carrot_brown.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/pepper_black.png","images/strawberry_blue.png","images/strawberry_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png","images/tomato_yellow.png","images/pepper_black.png","images/carrot_brown.png"],
  {after: function() { console.log("everything's loaded now") }});
 
   slides.i0 = slide({
@@ -67,7 +67,7 @@ preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png"
     log_responses : function() {
         exp.data_trials.push({
           "slide_number_in_experiment" : exp.phase,
-          "color_utterance": this.stim.color[0],
+          "color_utterance": this.stim.color,
           "item_color": this.stim.item,
           "rt" : Date.now() - _s.trial_start,
 	      "response" : exp.sliderPost
@@ -157,15 +157,7 @@ function init() {
 },
 {
 "item": "avocado_green",
-"color": ["purple"]
-},
-{
-"item": "avocado_green",
 "color": ["blue"]
-},
-{
-"item": "avocado_red",
-"color": ["purple"]
 },
 {
 "item": "avocado_red",
@@ -178,10 +170,6 @@ function init() {
 {
 "item": "apple_blue",
 "color": ["green"]
-},
-{
-"item": "apple_blue",
-"color": ["purple"]
 },
 {
 "item": "apple_blue",
@@ -214,10 +202,6 @@ function init() {
 {
 "item": "apple_red",
 "color": ["orange"]
-},
-{
-"item": "apple_red",
-"color": ["purple"]
 },
 {
 "item": "apple_green",
@@ -290,30 +274,6 @@ function init() {
 {
 "item": "carrot_pink",
 "color": ["orange"]
-},
-{
-"item": "carrot_pink",
-"color": ["purple"]
-},
-{
-"item": "carrot_purple",
-"color": ["green"]
-},
-{
-"item": "carrot_purple",
-"color": ["blue"]
-},
-{
-"item": "carrot_purple",
-"color": ["pink"]
-},
-{
-"item": "carrot_purple",
-"color": ["black"]
-},
-{
-"item": "carrot_purple",
-"color": ["red"]
 },
 {
 "item": "carrot_brown",
@@ -405,100 +365,141 @@ function init() {
 },
 {
 "item": "pepper_orange",
-"color": ["purple"]
+"color": ["red"]
+},
+{
+"item": "pepper_red",
+"color": ["brown"]
+},
+{
+"item": "pepper_red",
+"color": ["green"]
+},
+{
+"item": "pepper_red",
+"color": ["yellow"]
+},
+{
+"item": "pepper_black",
+"color": ["yellow"]
+},
+{
+"item": "pepper_black",
+"color": ["brown"]
+},
+{
+"item": "pepper_black",
+"color": ["pink"]
+},
+{
+"item": "pepper_black",
+"color": ["red"]
+},
+{
+"item": "pepper_black",
+"color": ["orange"]
+},
+{
+"item": "pepper_black",
+"color": ["green"]
+},
+{
+"item": "pepper_black",
+"color": ["blue"]
+},
+{
+"item": "pepper_black",
+"color": ["black"]
+},
+{
+"item": "tomato_green",
+"color": ["black"]
+},
+{
+"item": "tomato_green",
+"color": ["orange"]
+},
+{
+"item": "tomato_pink",
+"color": ["red"]
+},
+{
+"item": "tomato_pink",
+"color": ["blue"]
+},
+{
+"item": "tomato_pink",
+"color": ["green"]
+},
+{
+"item": "tomato_red",
+"color": ["blue"]
+},
+{
+"item": "tomato_red",
+"color": ["brown"]
+},
+{
+"item": "tomato_red",
+"color": ["green"]
+},
+{
+"item": "tomato_red",
+"color": ["pink"]
+},
+{
+"item": "apple_green",
+"color": ["yellow"]
+},
+{
+"item": "avocado_black",
+"color": ["yellow"]
+},
+{
+"item": "avocado_green",
+"color": ["black"]
+},
+{
+"item": "avocado_green",
+"color": ["pink"]
+},
+{
+"item": "banana_brown",
+"color": ["pink"]
+},
+{
+"item": "banana_yellow",
+"color": ["black"]
+},
+{
+"item": "carrot_orange",
+"color": ["black"]
+},
+{
+"item": "carrot_pink",
+"color": ["red"]
+},
+{
+"item": "pear_green",
+"color": ["blue"]
+},
+{
+"item": "pear_green",
+"color": ["orange"]
+},
+{
+"item": "pear_orange",
+"color": ["black"]
+},
+{
+"item": "pear_orange",
+"color": ["pink"]
 },
 {
 "item": "pepper_orange",
-"color": ["red"]
-},
-{
-"item": "pepper_red",
-"color": ["brown"]
-},
-{
-"item": "pepper_red",
 "color": ["green"]
-},
-{
-"item": "pepper_red",
-"color": ["yellow"]
-},
-{
-"item": "pepper_black",
-"color": ["yellow"]
-},
-{
-"item": "pepper_black",
-"color": ["brown"]
-},
-{
-"item": "pepper_black",
-"color": ["pink"]
-},
-{
-"item": "pepper_black",
-"color": ["red"]
-},
-{
-"item": "pepper_black",
-"color": ["orange"]
-},
-{
-"item": "pepper_black",
-"color": ["green"]
-},
-{
-"item": "pepper_black",
-"color": ["blue"]
-},
-{
-"item": "pepper_black",
-"color": ["black"]
-},
-{
-"item": "tomato_green",
-"color": ["black"]
-},
-{
-"item": "tomato_green",
-"color": ["orange"]
-},
-{
-"item": "tomato_green",
-"color": ["purple"]
-},
-{
-"item": "tomato_pink",
-"color": ["red"]
-},
-{
-"item": "tomato_pink",
-"color": ["purple"]
-},
-{
-"item": "tomato_pink",
-"color": ["blue"]
-},
-{
-"item": "tomato_pink",
-"color": ["green"]
-},
-{
-"item": "tomato_red",
-"color": ["blue"]
-},
-{
-"item": "tomato_red",
-"color": ["brown"]
-},
-{
-"item": "tomato_red",
-"color": ["green"]
-},
-{
-"item": "tomato_red",
-"color": ["pink"]
-}]);
+}
+]);
 
 
   function makeTargetStim(i) {
