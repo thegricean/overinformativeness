@@ -6,9 +6,9 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/23_color_patch_norming/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/23_color_patch_norming/results")
 
 theme_set(theme_bw(18))
-# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/11_color_norming/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
@@ -63,6 +63,14 @@ ggplot(d, aes(item)) +
   stat_count() +
   theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
   
+ggplot(d, aes(x=interaction(color_utterance,item_color))) +
+  stat_count()
+
+items = as.data.frame(table(d$color_utterance,d$item_color))
+colnames(items) = c("Utterance","Color","Freq")
+items = items[order(items[,c("Freq")]),]
+write.csv(items[1:74,c("Utterance","Color")],file="data/rerun.csv",row.names=F,quote=F)
+
 agr = d %>% 
   group_by(Item,Color) %>%
   summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
