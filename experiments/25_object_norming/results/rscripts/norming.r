@@ -102,6 +102,7 @@ agr$YMin = agr$MeanTypicality - agr$ci.low
 agr$YMax = agr$MeanTypicality + agr$ci.high
 
 agr$Combo = paste(agr$Color,agr$Item)
+agr$Color = as.factor(as.character(agr$Color))
 #agr$OrdCombo = factor(agr$Combo, levels=agr[order(agr$MeanTypicality), "Combo"])
 #agr$OrdCombo = factor(x=as.character(agr$Combo), levels=agr[order(agr$MeanTypicality,decreasing=T), "Combo"])
 #agr = agr[order(agr[,c("MeanTypicality")],decreasing=T),]
@@ -110,7 +111,7 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~utterance,scales="free_x",nrow=4) +
-  scale_color_manual(values=as.character(agr$Color)) +
+  scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=9, width=15)
 
