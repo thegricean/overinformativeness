@@ -116,5 +116,5 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
 ggsave("graphs/typicalities.png",height=9, width=15)
 
 agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+write.csv(agr[,c("Item","Color","utterance","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
 
