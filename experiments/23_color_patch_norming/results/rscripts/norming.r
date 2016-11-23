@@ -69,6 +69,9 @@ ggplot(d, aes(x=interaction(color_utterance,item_color))) +
 items = as.data.frame(table(d$color_utterance,d$item_color))
 colnames(items) = c("Utterance","Color","Freq")
 items = items[order(items[,c("Freq")]),]
+items = items[grep("cup",items$Color,invert=T),]
+items = items[grep("purple",items$Color,invert=T),]
+items = items[grep("purple",items$Utterance,invert=T),]
 write.csv(items[1:74,c("Utterance","Color")],file="data/rerun.csv",row.names=F,quote=F)
 
 agr = d %>% 

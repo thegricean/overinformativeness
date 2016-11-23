@@ -68,6 +68,8 @@ nrow(items)
 colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
 items = items[grep("cup",items$Object,invert=T),]
+items = items[grep("purple",items$Object,invert=T),]
+items = items[grep("pepper_green",items$Object,invert=T),]
 items = items[grep("cup",items$Utterance,invert=T),]
 nrow(items)
 write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
