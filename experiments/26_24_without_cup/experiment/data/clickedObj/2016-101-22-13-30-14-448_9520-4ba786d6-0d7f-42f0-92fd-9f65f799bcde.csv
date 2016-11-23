@@ -1,8 +1,0 @@
-gameid, time, roundNum, trialType, context,nameClickedObj, targetStatusClickedObj, spLocsClickedObj, lisLocsClickedObj, alt1Name, alt1TargetStatus, alt1SpLocs, alt1LisLocs, alt2Name, alt2TargetStatus, alt2SpLocs, alt2LisLocs
-9520-4,1479850247339,1,banana,overinformative,banana_yellow,target,3,4,pepper_red,distractor,4,2,carrot_brown,distractor,2,3
-9520-4,1479850267530,2,avocado,overinformative-cc,avocado_black,target,3,2,distractor_avocado_black,distractor,4,4,pear_yellow,distractor,2,3
-9520-4,1479850283536,3,banana,overinformative-cc,banana_brown,target,3,2,pepper_red,distractor,2,3,distractor_banana_brown,distractor,4,4
-9520-4,1479850315170,4,carrot,informative,carrot_brown,target,4,4,banana_blue,distractor,2,3,carrot_orange,distractor,3,2
-9520-4,1479850342304,5,pepper,overinformative,pepper_red,target,4,2,tomato_pink,distractor,2,3,apple_blue,distractor,3,4
-9520-4,1479850355852,6,banana,overinformative,banana_blue,target,4,2,pear_yellow,distractor,3,4,apple_green,distractor,2,3
-9520-4,1479850371545,7,pear,informative-cc,pear_yellow,target,2,4,pear_orange,distractor,4,3,distractor_pear_yellow,distractor,3,2
