@@ -17,7 +17,7 @@ d[d$listenerMessages != "",c("listenerMessages","speakerMessages")]
 summary(d)
 
 # look at turker comments
-comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
+comments = read.table(file="data/overinf2.csv",sep=";", header=T, quote="")
 
 unique(comments$comments)
 
@@ -57,20 +57,18 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|prurple|purople|yllow|grean|dark|purp|yel|gree|gfeen", production$refExp, ignore.case = TRUE), T, F)
-production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban)","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot|[Cc]arrott|[Cc]arr","carrot",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]earr|pea","pear",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato|tom|tomat)","tomato",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]ppe|APPLE|app","apple",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]eper|[Pp]ep|pepp","pepper",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]vacado|[Aa]vacadfo|[Aa]vo","avocado",as.character(production$CleanedResponse))
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|prurple|purople|yllow|grean|dark|purp|yel|gree|gfeen|lighter", production$refExp, ignore.case = TRUE), T, F)
+production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban)$","banana",as.character(production$refExp))
+production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|[Cc]arr|carott)$","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Pp]earr|pea)$","pear",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|tomati|toato|tom|tomat|tomator)$","tomato",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]ppe|APPLE|app)$","apple",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Pp]eper|[Pp]ep|pepp)$","pepper",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]vacado|[Aa]vacadfo|[Aa]vo|avocodo)$","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegige", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegige|veffie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
-
-production[production$ItemMentioned,c("CleanedResponse","context","gameid")]
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 production[!production$ColorMentioned & production$ItemMentioned,c("CleanedResponse","context","gameid")]
@@ -134,7 +132,7 @@ agr$YMax = agr$Probability + agr$ci.high
 ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance)) +
   geom_point() +
   geom_line() +
-  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
 ggsave("graphs/utterance_by_binarytyp.png",width=10,height=3.5)
 
@@ -153,7 +151,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   geom_smooth(method="lm") +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
-ggsave("graphs/utterance_by_conttyp.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_conttyp.png",width=7.5,height=3.5)
 
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
@@ -186,5 +184,22 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(Half~context)
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=3.5)
+
+# plot utterance choice proportions by typicality
+agr = production %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,context,Half) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality,-Half) %>%
+  group_by(Utterance,context,NormedTypicality, Half) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_grid(Half~context)
+ggsave("graphs/utterance_by_conttyp_byhalf.png",width=10,height=3.5)
 
 
