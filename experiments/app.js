@@ -9,7 +9,7 @@
 
 var 
     use_https       = true,
-    gameport        = 8888,
+    gameport        = 8889,
     https           = require('https'),
     fs              = require('fs'),
     app             = require('express')(),
@@ -53,10 +53,10 @@ app.get( '/*' , function( req, res ) {
   var file = req.params[0]; 
   if(req.query.workerId && !valid_id(req.query.workerId)) {
     console.log("invalid id: blocking request");
-    res.redirect('https://rxdhawkins.me:8888/sharedUtils/invalid.html');
+    res.redirect('https://rxdhawkins.me:8889/sharedUtils/invalid.html');
   } else if(req.query.workerId && req.query.workerId in global_player_set) {
     console.log("duplicate id: blocking request");
-    res.redirect('https://rxdhawkins.me:8888/sharedUtils/duplicate.html');
+    res.redirect('https://rxdhawkins.me:8889/sharedUtils/duplicate.html');
   } else {
     console.log('\t :: Express :: file requested: ' + file);
     if(req.query.workerId) {
