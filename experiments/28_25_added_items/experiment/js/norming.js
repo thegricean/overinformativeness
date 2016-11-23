@@ -10,7 +10,7 @@ function make_slides(f) {
 // ["images/bathrobe.png","images/belt.jpg"],
 // {after: function() { console.log("everything's loaded now") }}
 // )  
-preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/apple_yellow.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/carrot_brown.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/pepper_black.png","images/strawberry_blue.png","images/strawberry_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png","images/tomato_yellow.png"],
+preload(["images/apple_blue.png","images/apple_green.png","images/apple_red.png","images/apple_yellow.png","images/avocado_black.png","images/avocado_green.png","images/avocado_red.png","images/banana_blue.png","images/banana_brown.png","images/banana_yellow.png","images/carrot_orange.png","images/carrot_pink.png","images/carrot_purple.png","images/carrot_brown.png","images/cup_black.png","images/cup_blue.png","images/cup_brown.png","images/cup_green.png","images/cup_orange.png","images/cup_pink.png","images/cup_purple.png","images/cup_red.png","images/cup_yellow.png","images/pear_green.png","images/pear_orange.png","images/pear_yellow.png","images/pepper_green.png","images/pepper_orange.png","images/pepper_red.png","images/pepper_black.png","images/strawberry_blue.png","images/strawberry_red.png","images/tomato_green.png","images/tomato_pink.png","images/tomato_red.png","images/tomato_yellow.png","images/pepper_black.png","images/carrot_brown.png"],
  {after: function() { console.log("everything's loaded now") }});
 
 
@@ -199,10 +199,6 @@ function init() {
 "item": ["vegetable"]
 },
 {
-"label": "carrot_purple",
-"item": ["pepper"]
-},
-{
 "label": "carrot_pink",
 "item": ["apple"]
 },
@@ -251,14 +247,6 @@ function init() {
 "item": ["banana"]
 },
 {
-"label": "pepper_green",
-"item": ["vegetable"]
-},
-{
-"label": "pepper_green",
-"item": ["avocado"]
-},
-{
 "label": "pepper_orange",
 "item": ["apple"]
 },
@@ -273,10 +261,6 @@ function init() {
 {
 "label": "pepper_orange",
 "item": ["vegetable"]
-},
-{
-"label": "pepper_green",
-"item": ["tomato"]
 },
 {
 "label": "apple_green",
@@ -295,10 +279,6 @@ function init() {
 "item": ["pepper"]
 },
 {
-"label": "carrot_purple",
-"item": ["banana"]
-},
-{
 "label": "pear_orange",
 "item": ["pepper"]
 },
@@ -525,6 +505,26 @@ function init() {
 {
 "label": "avocado_black",
 "item": ["vegetable"]
+},
+{
+  "label": "avocado_black",
+  "item": ["pear"]
+},
+{
+  "label": "avocado_green",
+  "item": ["pepper"]
+},
+{
+  "label": "avocado_green",
+  "item": ["vegetable"]
+},
+{
+  "label": "avocado_red",
+  "item": ["banana"]
+},
+{
+  "label": "avocado_red",
+  "item": ["pepper"]
 }
 ]);
 

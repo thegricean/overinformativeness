@@ -6,9 +6,9 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/25_object_norming/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/28_25_added_items/results")
 
 theme_set(theme_bw(18))
-# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/11_color_norming/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
