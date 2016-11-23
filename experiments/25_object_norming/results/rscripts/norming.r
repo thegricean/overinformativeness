@@ -12,16 +12,27 @@ theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
+d1 = read.table(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
 head(d)
 nrow(d)
+nrow(d1)
+
+d1$workerid = d1$workerid + 60
+d = rbind(d,d1)
 summary(d)
+
 totalnrow = nrow(d)
 d$Trial = d$slide_number_in_experiment - 1
 length(unique(d$workerid))
 d$Item = sapply(strsplit(as.character(d$object),"_"), "[", 1)
 d$Color = sapply(strsplit(as.character(d$object),"_"), "[", 2)
 # look at turker comments
-unique(d$comments)
+unique(d[,c("workerid","comments")])
+
+# exclude one worker who did the hit wrong
+d = d[d$workerid != 16,]
+nrow(d)
+#d = subset(d, workerid != 16)
 
 ggplot(d, aes(rt)) +
   geom_histogram() +
@@ -59,9 +70,6 @@ ggplot(d, aes(Item)) +
 ggplot(d, aes(Color)) +
   stat_count()
 
-ggplot(d, aes(item)) +
-  stat_count() +
-  theme(axis.text.x = element_text(angle=45,hjust=1,vjust=1))
   
 items = as.data.frame(table(d$utterance,d$object))
 nrow(items)
