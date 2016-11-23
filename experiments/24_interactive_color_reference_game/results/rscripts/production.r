@@ -1,5 +1,12 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+library(tidyr)
+
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/24_interactive_color_reference_game/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/24_interactive_color_reference_game/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -10,7 +17,7 @@ d[d$listenerMessages != "",c("listenerMessages","speakerMessages")]
 summary(d)
 
 # look at turker comments
-comments = read.table(file="../mturk/overinf.csv",sep=",", header=T, quote="")
+comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
 
 unique(comments$comments)
 
@@ -50,18 +57,20 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen", production$refExp, ignore.case = TRUE), T, F)
-production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa)","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot|[Cc]arrott","carrot",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato)","tomato",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]ppe|APPLE","apple",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]eper","pepper",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]vacado|[Aa]vacadfo","avocado",as.character(production$CleanedResponse))
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|prurple|purople|yllow|grean|dark|purp|yel|gree|gfeen", production$refExp, ignore.case = TRUE), T, F)
+production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban)","banana",as.character(production$refExp))
+production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot|[Cc]arrott|[Cc]arr","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Pp]earr|pea","pear",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato|tom|tomat)","tomato",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Aa]ppe|APPLE|app","apple",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Pp]eper|[Pp]ep|pepp","pepper",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("[Aa]vacado|[Aa]vacadfo|[Aa]vo","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegige", production$CleanedResponse, ignore.case = TRUE), T, F)
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
+
+production[production$ItemMentioned,c("CleanedResponse","context","gameid")]
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 production[!production$ColorMentioned & production$ItemMentioned,c("CleanedResponse","context","gameid")]
@@ -78,7 +87,9 @@ production$ColorAndCat = ifelse(production$UtteranceType == "color_and_cat",1,0)
 production$Cat = ifelse(production$UtteranceType == "cat",1,0)
 production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
-production$Half = ifelse(production$roundNum < 28,1,2)
+production$Half = ifelse(production$roundNum < 21,1,2)
+
+production[!production$Color & !production$Type & !production$ColorAndType & !production$ColorAndCat & !production$Color & !production$Cat ,c("CleanedResponse","context","gameid")]
 
 # plot histogram of mentioned features by context
 agr = production %>%
