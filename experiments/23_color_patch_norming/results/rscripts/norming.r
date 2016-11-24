@@ -85,6 +85,7 @@ write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,
 nocups = d[grep("cup",d$item_color,invert=T),]
 nocups = nocups[grep("cup",nocups$item_color,invert=T),]
 nocups = nocups[grep("pepper_green",nocups$item_color,invert=T),]
+nocups = nocups[grep("purple",nocups$item_color,invert=T),]
 nocups = nocups[grep("purple",nocups$color_utterance,invert=T),]
 nocups = droplevels(nocups)
 
@@ -107,4 +108,4 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   facet_wrap(~color_utterance,scales="free_x",nrow=4) +
   scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/typicalities.png",height=9, width=15)
+ggsave("graphs/merged_typicalities.png",height=9, width=15)

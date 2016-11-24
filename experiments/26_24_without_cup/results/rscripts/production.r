@@ -15,6 +15,9 @@ head(d)
 unique(d$listenerMessages)
 d[d$listenerMessages != "",c("listenerMessages","speakerMessages")]
 summary(d)
+d = d[!d$speakerMessages == "",]
+head(d)
+nrow(d)
 
 # look at turker comments
 comments = read.table(file="data/overinf.csv",sep=",", header=T, quote="")
@@ -64,9 +67,9 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac", production$refExp, ignore.case = TRUE), T, F)
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac|lavender", production$refExp, ignore.case = TRUE), T, F)
 production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana)$","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car)$","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt)$","carrot",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato)$","tomato",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("([Aa]ppe|APPLE|appl|app|apale|aple)$","apple",as.character(production$CleanedResponse))
@@ -74,13 +77,14 @@ production$CleanedResponse = gsub("([Pp]eper|pepp|pep|bell)$","pepper",as.charac
 production$CleanedResponse = gsub("([Aa]vacado|[Aa]vacadfo|avo|avacoda|avo|advocado)$","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't", production$CleanedResponse, ignore.case = TRUE), T, F)
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 production[production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 
-production$UtteranceType = as.factor(ifelse(production$ItemMentioned & production$ColorMentioned, "color_and_type", ifelse(production$ColorMentioned & !production$CatMentioned & !production$ItemMentioned, "color", ifelse(production$ItemMentioned & !production$ColorMentioned & !production$CatMentioned, "type", ifelse(!production$ItemMentioned & !production$ColorMentioned & production$CatMentioned, "cat", ifelse(!production$ItemMentioned & production$ColorMentioned & production$CatMentioned, "color_and_cat","OTHER"))))))
+production$UtteranceType = as.factor(ifelse(production$ItemMentioned & production$ColorMentioned & !production$NegationMentioned, "color_and_type", ifelse(production$ColorMentioned & !production$CatMentioned & !production$ItemMentioned & !production$NegationMentioned, "color", ifelse(production$ItemMentioned & !production$ColorMentioned & !production$CatMentioned & !production$NegationMentioned, "type", ifelse(!production$ItemMentioned & !production$ColorMentioned & production$CatMentioned & !production$NegationMentioned, "cat", ifelse(!production$ItemMentioned & production$ColorMentioned & production$CatMentioned & !production$NegationMentioned, "color_and_cat",ifelse(production$NegationMentioned, "negation", "OTHER")))))))
 
 production[production$UtteranceType == "OTHER",c("gameid","refExp","context")]
 table(production[production$UtteranceType == "OTHER",]$gameid) 
@@ -90,9 +94,12 @@ production$ColorAndType = ifelse(production$UtteranceType == "color_and_type",1,
 production$Type = ifelse(production$UtteranceType == "type",1,0)
 production$ColorAndCat = ifelse(production$UtteranceType == "color_and_cat",1,0)
 production$Cat = ifelse(production$UtteranceType == "cat",1,0)
+production$Neg = ifelse(production$UtteranceType == "negation",1,0)
 production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
 production$Half = ifelse(production$roundNum < 21,1,2)
+
+
 
 # plot histogram of mentioned features by context
 agr = production %>%
@@ -109,7 +116,7 @@ ggsave("graphs/mentioned_features_by_context.png",width=8,height=3.5)
 
 # plot utterance choice proportions with error bars
 agr = production %>%
-  select(Color,Type,ColorAndType,ColorAndCat,Cat,Other,context) %>%
+  select(Color,Type,ColorAndType,ColorAndCat,Cat,Neg,Other,context) %>%
   gather(Utterance,Mentioned,-context) %>%
   group_by(Utterance,context) %>%
   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
@@ -126,7 +133,7 @@ ggsave("graphs/mentioned_features_by_context_other.pdf",width=10,height=3.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
-  select(Color,Type,ColorAndType,Other,binaryTypicality,context) %>%
+  select(Color,Type,ColorAndType,Neg,ColorAndCat,Other,binaryTypicality,context) %>%
   gather(Utterance,Mentioned,-context,-binaryTypicality) %>%
   group_by(Utterance,context,binaryTypicality) %>%
   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
@@ -143,7 +150,7 @@ ggsave("graphs/utterance_by_binarytyp.png",width=10,height=6.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
-  select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
+  select(Color,Type,ColorAndType,Neg,ColorAndCat,Other,NormedTypicality,context) %>%
   gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
   group_by(Utterance,context,NormedTypicality) %>%
   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
@@ -175,7 +182,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
 
 # plot utterance choice proportions by typicality
 agr = production %>%
-  select(Color,Type,ColorAndType,Other,binaryTypicality,context,Half) %>%
+  select(Color,Type,ColorAndType,Neg,ColorAndCat,Other,binaryTypicality,context,Half) %>%
   gather(Utterance,Mentioned,-context,-binaryTypicality,-Half) %>%
   group_by(Utterance,context,binaryTypicality,Half) %>%
   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
