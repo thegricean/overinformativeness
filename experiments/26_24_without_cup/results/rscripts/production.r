@@ -165,6 +165,36 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   facet_wrap(~context)
 ggsave("graphs/utterance_by_conttyp.png",width=12,height=9)
 
+
+
+
+
+
+# by subject
+agr = production %>%
+  group_by(binaryContext,binaryTypicality,gameid) %>%
+  summarise(PropColorMentioned=mean(ColorAndType),ci.low=ci.low(ColorAndType),ci.high=ci.high(ColorAndType))
+agr = as.data.frame(agr)
+agr$YMin = agr$PropColorMentioned - agr$ci.low
+agr$YMax = agr$PropColorMentioned + agr$ci.high
+
+ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=binaryContext)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~gameid)
+ggsave("graphs/distribution_effect_production_bysubject.png",width=20,height=30)
+
+
+
+
+
+
+
+
+
+
+
+
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
   gather(Utterance,Mentioned,-context,-NormedTypicality,-nameClickedObj) %>%
