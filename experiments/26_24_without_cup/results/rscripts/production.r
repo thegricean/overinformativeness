@@ -1,5 +1,12 @@
+library(dplyr)
+library(ggplot2)
+library(bootstrap)
+library(lme4)
+library(tidyr)
+
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/results")
+setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/26_24_without_cup/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -46,25 +53,32 @@ typ = read.table(file="../../11_color_norming/results/data/meantypicalities.csv"
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
 
+typ = read.table(file="../../25_object_norming/results/data/meantypicalities.csv",sep=",",header=T)
+typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
+row.names(typ) = paste(typ$Color,typ$Item)
+head(typ)
+nrow(typ)
+
+
 production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen", production$refExp, ignore.case = TRUE), T, F)
-production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa)","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("[Cc]arot|[Cc]arrrot|[Cc]arrott","carrot",as.character(production$CleanedResponse))
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac", production$refExp, ignore.case = TRUE), T, F)
+production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana)$","banana",as.character(production$refExp))
+production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car)$","carrot",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato)","tomato",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]ppe|APPLE","apple",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]eper","pepper",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Aa]vacado|[Aa]vacadfo","avocado",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato)$","tomato",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]ppe|APPLE|appl|app|apale|aple)$","apple",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Pp]eper|pepp|pep|bell)$","pepper",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]vacado|[Aa]vacadfo|avo|avacoda|avo|advocado)$","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
-production[!production$ColorMentioned & production$ItemMentioned,c("CleanedResponse","context","gameid")]
+production[production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
 
 production$UtteranceType = as.factor(ifelse(production$ItemMentioned & production$ColorMentioned, "color_and_type", ifelse(production$ColorMentioned & !production$CatMentioned & !production$ItemMentioned, "color", ifelse(production$ItemMentioned & !production$ColorMentioned & !production$CatMentioned, "type", ifelse(!production$ItemMentioned & !production$ColorMentioned & production$CatMentioned, "cat", ifelse(!production$ItemMentioned & production$ColorMentioned & production$CatMentioned, "color_and_cat","OTHER"))))))
 
@@ -78,7 +92,7 @@ production$ColorAndCat = ifelse(production$UtteranceType == "color_and_cat",1,0)
 production$Cat = ifelse(production$UtteranceType == "cat",1,0)
 production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
-production$Half = ifelse(production$roundNum < 28,1,2)
+production$Half = ifelse(production$roundNum < 21,1,2)
 
 # plot histogram of mentioned features by context
 agr = production %>%
@@ -125,7 +139,7 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   geom_line() +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
-ggsave("graphs/utterance_by_binarytyp.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_binarytyp.png",width=10,height=6.5)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -142,7 +156,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   geom_smooth(method="lm") +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~context)
-ggsave("graphs/utterance_by_conttyp.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_conttyp.png",width=12,height=9)
 
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
@@ -174,7 +188,7 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   geom_line() +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(Half~context)
-ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=3.5)
+ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=6.5)
 
 production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
 production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
