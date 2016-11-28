@@ -44,6 +44,10 @@ d = d[!(is.na(d$refExp)),]
 
 # exclude trials with distractor choices
 d = droplevels(d[d$targetStatusClickedObj == "target",])
+# exclude participants that were not paid because they didn't finish it
+d = droplevels(d[!(d$gameid == "6444-b" | d$gameid == "4924-4"), ])
+# exclude tabu players
+d = droplevels(d[!(d$gameid == "1544-1" | d$gameid == "4885-8" | d$gameid == "8360-7" | d$gameid == "4624-5" | d$gameid == "5738-a" | d$gameid == "8931-5" | d$gameid == "8116-a" | d$gameid == "6180-c" | d$gameid == "1638-6" | d$gameid == "6836-b"), ])
 nrow(d)
 
 # how many unique pairs?
@@ -67,16 +71,16 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac|lavender|ornage", production$refExp, ignore.case = TRUE), T, F)
-production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana)$","banana",as.character(production$refExp))
-production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt)$","carrot",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Tt]omaot|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato)$","tomato",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Aa]ppe|APPLE|appl|app|apale|aple)$","apple",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Pp]eper|pepp|pep|bell)$","pepper",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("([Aa]vacado|[Aa]vacadfo|avo|avacoda|avo|advocado)$","avocado",as.character(production$CleanedResponse))
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|re", production$refExp, ignore.case = TRUE), T, F)
+production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana|banada|nana|bannan|babanana|B)$","banana",as.character(production$refExp))
+production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt|carrote)$","carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Pp]earr|pea)$","pear",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Tt]omaot|tokm|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato|toamoat|mato|totomato|tomatop)$","tomato",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]ppe|APPLE|appl|app|apale|aple|ap)$","apple",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Pp]eper|pepp|peppre|pep|bell|jalapeno|jalpaeno|eppper)$","pepper",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("([Aa]vacado|avacdo|[Aa]vacadfo|avo|avacoda|avo|advocado|avavcado|avacodo|guacamole|guacolome)$","avocado",as.character(production$CleanedResponse))
 production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't", production$CleanedResponse, ignore.case = TRUE), T, F)
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
@@ -166,10 +170,6 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
 ggsave("graphs/utterance_by_conttyp.png",width=12,height=9)
 
 
-
-
-
-
 # by subject
 agr = production %>%
   group_by(binaryContext,binaryTypicality,gameid) %>%
@@ -184,31 +184,6 @@ ggplot(agr, aes(x=binaryTypicality,y=PropColorMentioned,color=binaryContext)) +
   facet_wrap(~gameid)
 ggsave("graphs/distribution_effect_production_bysubject.png",width=20,height=30)
 
-
-
-
-
-
-
-
-
-
-
-
-agr = production %>%
-  select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
-  gather(Utterance,Mentioned,-context,-NormedTypicality,-nameClickedObj) %>%
-  group_by(Utterance,context,NormedTypicality,nameClickedObj) %>%
-  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
-agr = as.data.frame(agr)
-agr$YMin = agr$Probability - agr$ci.low
-agr$YMax = agr$Probability + agr$ci.high
-
-ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
-  geom_point() +
-  geom_text(aes(label=nameClickedObj)) +
-  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~context)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -226,6 +201,7 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(Half~context)
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=6.5)
+
 
 production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
 production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
