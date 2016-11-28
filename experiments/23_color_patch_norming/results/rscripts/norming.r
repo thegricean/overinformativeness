@@ -109,3 +109,10 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/merged_typicalities.png",height=9, width=15)
+
+
+agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
+subset(agr[agr$color_utterance=="black",], select=c("Combo", "MeanTypicality"))
+
+
+

@@ -12,7 +12,7 @@ theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
-d1 = read.table(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
+d1 = read.table(file="/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
 head(d)
 nrow(d)
 nrow(d1)
@@ -115,6 +115,11 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=9, width=15)
 
+
+agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
+subset(agr[agr$utterance=="tomato",], select=c("Combo", "MeanTypicality"))
+
+
+
 agr$Typicality = agr$MeanTypicality
 write.csv(agr[,c("Item","Color","utterance","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
-

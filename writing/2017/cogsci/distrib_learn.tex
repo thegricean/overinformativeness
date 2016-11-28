@@ -122,42 +122,55 @@ keywords
 
 \section{Experiment: color reference game}
 
+\begin{figure}[bt!]
+	\centering
+	\includegraphics[width=.5\textwidth]{graphs/design_0}
+	\caption{Experimental setup.
+	}
+	\label{fig:design_0}
+\end{figure}
+
 \subsection{Methods}
 
 \paragraph{Participants and materials}
-We recruited 60 self-reported native speakers of English over Mechanical Turk. The experiment was a multi-player reference game, one participant being randomly assigned to the role of the speaker, and the other one as a listener. The speaker had to communicate what the target in the context is, and the listener clicked the object they assumed to be the target. It was a free production system where they also were allowed to ask additional questions, or just comment on the speaker's utterance. 
+We recruited 60 self-reported native speakers of English over Mechanical Turk. The experiment was a multi-player reference game in which one participant was randomly assigned to the role of the speaker, and the other one to the role of the listener. The speaker had to communicate what the target in the context was, and the listener clicked the object they assumed to be the target. The speaker and the listener could communicate freely through a chatbox.
 
 %\paragraph{\bf Materials}
 The stimuli were selected from seven food items that each occurred in three different colors, e.g., one of the seven food items was the banana that occurred in the colors yellow, brown, and blue.
 
 %\paragraph{\bf Design}
-Each presented context consisted of three images, one being the target (the item that had to be referred to), and two being distractors. The contexts were always one of the four possible conditions out of which two have been overinformative and two informative. An overinformative context describes one where mentioning the type of the item, e.g., banana, would be sufficient for an unambiguous identification of the target. An additional mention of color would mean that the speaker uses the color adjective in an overinformatively, i.e., they are adding "unnecessary" information. However, in this condition the target never has a color competitor, i.e., if the target is blue, there is no distractor of the same color in the context, which means that an only-color utterance would lead to an unambiguous identification, too. This is why there is one overinformative context without and additionally one with a color competitor. In the informative conditions, one has to say the color in addition to the type to make an unambiguous utterance. Again, one is informative without and the other one with a color competitor.
-\\The item selection is random but conditioned on the corresponding context condition. In the end each subjects sees 42 different contexts which are always two out of the four randomly drawn conditions for each colored item. All in all, we looked at 84 different configurations, i.e., seven food items each in three colors that could occur in four contexts. The trial order was randomized.
+Each presented context consisted of three objects, one being the target (the item that had to be referred to), and two being distractors. The contexts were always one out of four possible conditions. The different context types are referred to as "overinformative without a color competitor" (Fig. 2a), "overinformative with a color competitor" (Fig. 2b), "informative without a color competitor" (Fig. 2c), and "informative with a color competitor" (Fig. 2d). An overinformative context describes a situation where mentioning the type of the item, e.g., banana, would be sufficient for an unambiguous identification of the target. An additional mention of color would mean that the speaker uses the color adjective overinformatively, i.e., they are adding "unnecessary" information. However, in this condition the target never has a color competitor, i.e., if the target is brown, there is no distractor of the same color in the context, which means that an only-color utterance would lead to an unambiguous identification, too. This is why there is additionally one overinformative condition with a color competitor (Fig. 2b). In the informative conditions, one has to say the color in addition to the type to make an unambiguous utterance. Again condition, one is without (Fig. 2c) and the other one with a color competitor (Fig. 2d).
+\\The item selection is random but conditioned on the corresponding context condition, i.e., the items need to fulfill the properties dictated by the condition. In the end, each subject sees 42 different contexts. All of the differently colored items are the target for exactly two times but the context in which they occur is drawn randomly from the four possible conditions mentioned above. All in all, we looked at 84 different configurations, i.e., seven food items, each of them in three colors where each could occur in four contexts. The trial order was randomized.
 
 \begin{figure}[bt!]
 \centering
 \includegraphics[width=.5\textwidth]{graphs/design_1}
-\caption{The four context conditions, exemplified by the \textit{apple} domain. The target is outlined in green; the types of distractors differ with each condition (see text).
+\caption{The four context conditions, exemplified by the \textit{banana} domain. The target is outlined in green; the color and type of the distractors differ with each condition (see text).
 }
 \label{fig:design}
 \end{figure}
 
 \paragraph{Procedure}
-The experiment was embedded into a story about an alien on his planet to make people open their minds for the existence of atypically colored fruits.\\The first block in the experiment was the exposure phase in which each participant was familiarized with a certain distribution of colored fruits. The distributions were the following: Two fruit types were presented only in their typical color, two fruit types only in their atypical color, and the last two 50\% in one and 50\% in the other. The exposure was done by presenting 10 instances of each fruit type and have the participants sort them into baskets.\\In the production, participants were told to communicate certain items to the alien (Fig. 2), the green marked one always being the needed ingredient for a recipe. It was made clear beforehand that the alien is not able to understand location vocabulary such as "middle" to enforce the usage of object descriptions. Having the participant "communicating" the utterance to an alien instead of a human being enables us to exclude side effects that might come with trying to be cooperative and assuming a common world knowledge of fruit colors.
+The participants were randomly formed to pairs and each of them was randomly assigned either the role of the speaker, or the listener. They communicated through a real-time multi-player interface as described in (Hawkins, 2015). The virtual environment of the experiment can be seen in Fig. 1. The speaker and the listener saw the same set of objects but in a randomized order to avoid trivial position-based references such as "the left one". The speaker's task was to tell the listener which of the three displayed objects is the target. The target could be identified by the green border around it. Then the listener could either ask further questions, or immediately click on the object they thought was correct. Afterwards both got a feedback showing whether the right object had been selected by the listener, or not.
 
 
 \paragraph{Annotation}
-%To determine the level of reference for each trial, we followed the following procedure. First, trials on which the listener selected the wrong referent were excluded, leading to the elimination of 1.2\% of trials. Then, speakers' and listeners' messages were parsed automatically; the referential expression used by the speaker was extracted for each trial and checked for whether it contained the current target's correct sub, basic or super level term using a simple grep search. In this way, 66.2\% of trials were labelled as mentioning a pre-coded level of reference. In the next step, remaining utterances were checked manually to determine whether they contained a correct level of reference term which was not detected by the parsing algorithm due to typos or grammatical modification of the expression. In this way, meaning-equivalent alternatives such as ``doggie'' for ``dog'',  or contractions such as ``gummi'',``gummies'' and ``bears'' for ``gummy bears'' were counted as containing a level of reference term. This caught another 13.8\% of trials. A total of 20.0\% of correct trials were excluded because the utterance consisted only of an \emph{attribute} of the superclass (``the living thing'' for ``animal''), of the basic level (``can fly'' for ``bird''), of the subcategory (``barks'' for ``dog'') or of the  particular instance (``the thing facing left'') rather than a category noun. These kinds of attributes were also sometimes mentioned in addition to the noun in the trials which were included in the analysis---4.0\% of sub level terms, 12.6\% of basic level terms, and 46.2\% of super level terms contained an additional modifier. 
-%On 0.5\% of trials two different levels of reference were mentioned; in this case the more specific level of reference was counted as being mentioned in this trial. 
+After collecting the data, the different utterances had to be labeled as belonging to one of the following categories: type-only ("banana"), color-and-type ("yellow banana"),  color-only ("yellow"), category-only ("fruit"), and color-and-category ("yellow fruit"). Before sorting, trials have been excluded where the speaker was absent and the listener clicked random objects (the listener self-reported this issue in the comments after completing the study). Additionally, trials were excluded where the listener could not identify the target. The remaining utterances (..\% of the original set) had to be cleaned manually from misspellings and abbreviations, e.g., "avoc" for avocado.\\
+Then the resulting utterances were categorized. Still, ..\% had to be labeled as "other" with referential expressions, such as "monkeys love..." for banana, or "bugs bunny" for carrot.
 
-\paragraph{Typicality norms}
+\begin{figure}[bt!]
+	\centering
+	\includegraphics[width=.5\textwidth]{graphs/design_2}
+	\caption{Typicality norming studies for object and color patch norming.
+	}
+	\label{fig:design_2}
+\end{figure}
 
-
-%To examine the influence of typicality on speaker behavior, we obtained typicality estimates in a separate norming study. 240 participants were recruited through Mechanical Turk. On each trial, we presented participants with an image from the main experiment and asked them ``How typical is this for X?'', where X was a category label at the sub-, basic-, or super- level. They then adjusted a slider bar ranging from \emph{not at all typical} to \emph{very typical}. 
-%
-%Due to the large number of possible combinations of objects, we only collected norms for certain combinations of objects and descriptions: for each target (e.g., dalmatian), we collected typicality at all three levels (``dalmatian,'' ``dog,'' and ``animal''). For each distractor of the same superclass as the target (\emph{distsamesuper}, e.g., a kitten), we collected typicality at all three levels of the \emph{target}. For each distractor of a different superclass (\emph{distdiffsuper}, e.g., a basketball) we only collected typicality at the super- level of the target (``animal'') and assumed lowest typicality at the other levels. This resulted in the following distribution of 745 norms:  \emph{target-sub} (36), \emph{target-basic} (36), \emph{target-super} (36), \emph{distdiffsuper-super} (168), \emph{distsamesuper-sub} (331), \emph{distsamesuper-basic} (93), and \emph{distsamesuper-super} (45). 
-%
-%Each participant provided typicality ratings for 7 \emph{target}, 10 \emph{distdiffsuper}, and 28 \emph{distsamesuper} cases (randomly sampled from the total set of items). Each case received between 6 and 27 ratings.  Raw slider values ranged from 0 (not typical) to 1 (very typical); average slider values were used as the typicality values throughout our results. 
+\paragraph{Typicality norming}
+For further analysis of the objects, we conducted two norming studies - an object and a color norming study. Both had 75 participants that were recruited over Mechanical Turk.\\
+In the object norming study, the participants were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a type, e.g., banana, or a category, e.g., fruit). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every type and category expression from the set, resulting in 189 different trials.\\ 
+The aim of the color norming study was to identify how typical a certain object's color is for different color terms, i.e., how blue is the given color. The color patches were constructed by determining the average color of the object, stems and leaves excluded. The participants were presented with this color patch, and had to rate its typicality given a certain color term. Again, they had a continuous draggable scale with the end marks "very atypical" and "very typical". Eight color terms were paired with 21 color patches and which resulted in 168 trials.\\
+Due to the amount of trials, each participant only saw a subset of 90. The decision on which trials were shown was random with a slight preference on fitting combinations, e.g., seeing a blue banana and asking for "banana", in contrast to seeing a blue carrot and asking for "apple". The amount of data per combination ranged from 13 to 60. The assumed typicality values are the averaged slider values for each combination ranging from .. (very atypical) to .. (very typical). 
 
 \subsection{\bf Results}
 

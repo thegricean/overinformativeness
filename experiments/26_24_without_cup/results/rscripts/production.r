@@ -67,7 +67,7 @@ production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac|lavender", production$refExp, ignore.case = TRUE), T, F)
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|silver|blue|pink|red|purlpe|pruple|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|gray|blck|blu|blac|lavender|ornage", production$refExp, ignore.case = TRUE), T, F)
 production$CleanedResponse = gsub("([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana)$","banana",as.character(production$refExp))
 production$CleanedResponse = gsub("([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt)$","carrot",as.character(production$CleanedResponse))
 production$CleanedResponse = gsub("[Pp]earr","pear",as.character(production$CleanedResponse))
