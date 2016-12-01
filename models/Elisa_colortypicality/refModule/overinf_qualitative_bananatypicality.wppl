@@ -63,7 +63,7 @@ var OverinformativeModel = function(params, context) {
       // return _.contains(["blue"], splited[0]) ? params.cost_type + 0.2 : params.cost_color + params.cost_type;
       return params.cost_color + params.cost_type;
     } else {
-      return _.contains(["yellow","orange","red","pink","green","blue","brown","black"], splited[0]) ? params.cost_color + 2 : params.cost_type;
+      return _.contains(["yellow","orange","red","pink","green","blue","brown","black"], splited[0]) ? params.cost_color + params.color_only_cost : params.cost_type;
     }
   };
 

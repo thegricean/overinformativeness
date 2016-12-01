@@ -3,158 +3,151 @@
 
 // contexts for color predictability effect
 
-var contexts = [
-                {condition:"informative_typical",
-                 context:[["yellow", "banana"],
-                 ["black","pepper"],
-                 ["blue", "banana"]]},
+var constructContext = function(condition,color_t,type_t,color_d1,type_d1,color_d2,type_d2) {
+    var context = [];
+                 //    {condition:"informative",
+                 // context:[["yellow", "banana"],
+                 // ["black","pepper"],
+                 // ["blue", "banana"]]}
+    context.push([color_t,type_t]); //add the target to the context
+    context.push([color_d1,type_d1]);
+    context.push([color_d2,type_d2]);
 
-                {condition:"informative_midtypical",
-                 context:[["brown", "banana"],
-                 ["black","pepper"],
-                 ["blue", "banana"]]},
+    var ocontext = {condition: condition,
+                    context: context};
 
-                {condition:"informative_atypical",
-                 context: [["blue", "banana"],
-                 ["black","pepper"],
-                 ["yellow", "banana"]]},
-
-                {condition:"overinformative_typical",
-                 context:[["yellow", "banana"],
-                 ["green","tomato"],
-                 ["pink", "carrot"]]},
-
-                {condition:"overinformative_midtypical",
-                 context:[["brown", "banana"],
-                 ["green","tomato"],
-                 ["pink", "carrot"]]},
-
-                {condition:"overinformative_atypical",
-                 context:[["blue", "banana"],
-                  ["green","tomato"],
-                  ["pink", "carrot"]]},
-
-                {condition:"color_competitor_informative_typical",
-                 context:[["yellow", "banana"],
-                 ["black","pepper"],
-                 ["yellow", "pear"]]},
-
-                {condition:"color_competitor_informative_midtypical",
-                 context:[["brown", "banana"],
-                 ["brown","carrot"],
-                 ["blue", "banana"]]},
-
-                {condition:"color_competitor_informative_atypical",
-                 context:[["blue", "banana"],
-                 ["blue","apple"],
-                 ["yellow", "banana"]]},
-
-                {condition:"color_competitor_overinformative_typical",
-                 context:[["yellow", "banana"],
-                 ["brown","banana"],
-                 ["yellow", "pear"]]},
-
-                {condition:"color_competitor_overinformative_midtypical",
-                 context:[["brown", "banana"],
-                 ["yellow","banana"],
-                 ["brown", "carrot"]]},
-
-                {condition:"color_competitor_overinformative_atypical",
-                 context:[["blue", "banana"],
-                 ["blue","apple"],
-                 ["yellow", "banana"]]}
-                ];				 
-/*var contexts = [["yellow", "banana"],
-                 ["blue", "cup"],
-                 ["blue", "banana"]];   */      
+    return ocontext;
+  };
 
 
-/*var params = {
-	// speaker optimality parameter
-  alpha : 13,
-  // alpha : 5,
-  // alpha : 20,
-  lengthWeight : 5,
-  u_banana_o_yellow_banana : .9,
-  u_banana_o_blue_banana : .3,
-  u_cup_o_yellow_cup : .9,
-  u_cup_o_blue_cup : .9,
-  u_apple_o_yellow_apple : .9,
-  u_apple_o_blue_apple : .3,
-  // cost_color : .6,
-  // cost_type : .3
-  cost_color : 1,
-  cost_type : 1
-};*/
-// map(function(context) { 
-//   var model = OverinformativeModel(params,context);
-//   var runModel = model.runModel;
-//   var speaker = model.speaker;
-//   var listener = model.listener;
-//   var runListener = model.runListener;
-//   console.log("");
-//   console.log("Speaker: ");
-//   console.log(runModel(speaker,context[0]));
-//   console.log("Listener Banana: ");
-//   console.log(runListener(listener,"banana"));
-//   console.log("Listener Yellow Banana: ");
-//   console.log(runListener(listener,"yellow_banana"));
-// }, contexts);
+var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+console.log("Loading unique conditions complete...");
+// console.log(conditions);
+
+var contexts = map(function(condition) {
+  constructContext(condition[0],condition[1],condition[2],condition[3],condition[4],condition[5],condition[6]);
+},conditions);
+
+console.log("Constructing contexts complete...");
+console.log(contexts);
+
+
+// var contexts = [
+//                 {condition:"informative",
+//                  context:[["yellow", "banana"],
+//                  ["black","pepper"],
+//                  ["blue", "banana"]]},
+
+//                 {condition:"informative",
+//                  context:[["brown", "banana"],
+//                  ["black","pepper"],
+//                  ["blue", "banana"]]},
+
+//                 {condition:"informative",
+//                  context: [["blue", "banana"],
+//                  ["black","pepper"],
+//                  ["yellow", "banana"]]},
+
+//                 {condition:"overinformative",
+//                  context:[["yellow", "banana"],
+//                  ["green","tomato"],
+//                  ["pink", "carrot"]]},
+
+//                 {condition:"overinformative",
+//                  context:[["brown", "banana"],
+//                  ["green","tomato"],
+//                  ["pink", "carrot"]]},
+
+//                 {condition:"overinformative",
+//                  context:[["blue", "banana"],
+//                   ["green","tomato"],
+//                   ["pink", "carrot"]]},
+
+//                 {condition:"informative-cc",
+//                  context:[["yellow", "banana"],
+//                  ["black","pepper"],
+//                  ["yellow", "pear"]]},
+
+//                 {condition:"informative-cc",
+//                  context:[["brown", "banana"],
+//                  ["brown","carrot"],
+//                  ["blue", "banana"]]},
+
+//                 {condition:"informative-cc",
+//                  context:[["blue", "banana"],
+//                  ["blue","apple"],
+//                  ["yellow", "banana"]]},
+
+//                 {condition:"overinformative-cc",
+//                  context:[["yellow", "banana"],
+//                  ["brown","banana"],
+//                  ["yellow", "pear"]]},
+
+//                 {condition:"overinformative-cc",
+//                  context:[["brown", "banana"],
+//                  ["yellow","banana"],
+//                  ["brown", "carrot"]]},
+
+//                 {condition:"overinformative-cc",
+//                  context:[["blue", "banana"],
+//                  ["blue","apple"],
+//                  ["yellow", "banana"]]}
+//                 ];				    
+
+
 
 
 // var alphas = [5,10,13,20,30];
-var alphas = [5,10,13,20];
-// var lengthWeights = [0,5,10,20];
+var alphas = [5,10,20,30,40,50];
 var lengthWeights = [5];
-// var u_banana_o_yellow_bananas = [.9];
-// var u_banana_o_blue_bananas = [.3];
-// var u_banana_o_yellow_bananas = [3];
-// var u_banana_o_blue_bananas = [1];
-// var u_cup_o_yellow_cups = [.9];
-// var u_cup_o_blue_cups = [.9];
-// var u_apple_o_yellow_apples = [.9];
-// var u_apple_o_blue_apples = [.3];
-var cost_colors = [.3,.6,1,1.2,2];
+// var lengthWeights = [5];
+var color_only_cost = [0,.5,1,1.5,2];
+var cost_colors = [.5,1,1.5,2];
 // var cost_colors = [1];
-var cost_types = [1,.6,.3];
+var cost_types = [.5,1];
 // var cost_types = [1];
 
 map(function(al) {
   console.log("next alpha: "+al);
   map(function(le) {
-    map(function(cc) {
-      map(function(ct) {  
-        map(function(context) {
-          var model = OverinformativeModel({
-              alpha : al,
-              lengthWeight : le,
-              cost_color : cc,
-              cost_type : ct},
-              context.context);
-          var runModel = model.runModel;
-          var speaker = model.speaker;
-          var listener = model.listener;
-          var runListener = model.runListener;
+    map(function(coc) {
+      map(function(cc) {
+        map(function(ct) {  
+          map(function(context) {
+            var model = OverinformativeModel({
+                alpha : al,
+                lengthWeight : le,
+                color_only_cost : coc,
+                cost_color : cc,
+                cost_type : ct},
+                context.context);
+            var runModel = model.runModel;
+            var speaker = model.speaker;
+            var listener = model.listener;
+            var runListener = model.runListener;
 
-          // write listener results
-          var utts = [/*"yellow","blue",*/"banana"/*,"yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"*/];
-          map(function(utt) {
-            console.log("Listener");
-            console.log(utt);
-            var listenerOutput = runListener(listener, utt);
-            console.log(listenerOutput);
-            refModule.writeERP(listenerOutput, [al,le,cc,ct,context.condition,context.context[0],utt], "results_wppl/data/listener_exploration.csv",2);
-          },utts);
-          console.log("new context");
-          console.log(context.context);
-          // write speaker results (color sufficient)
-          var modelOutput = runModel(speaker, context.context[0]);
-          console.log("Speaker");
-          console.log(modelOutput);
-          refModule.writeERP(modelOutput, [al,le,cc,ct,context.condition,context.context[0]], "results_wppl/data/speaker_exploration.csv",2);                        
-        }, contexts);
-      }, cost_types);          
-    }, cost_colors);
+            // write listener results
+
+            // var utts = [/*"yellow","blue",*/"banana"/*,"yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"*/];
+            // map(function(utt) {
+            //   // console.log("Listener");
+            //   // console.log(utt);
+            //   var listenerOutput = runListener(listener, utt);
+            //   // console.log(listenerOutput);
+            //   refModule.writeERP(listenerOutput, [al,le,cc,ct,context.condition,context.context[0],utt], "results_wppl/data/listener_exploration.csv",2);
+            // },utts);
+
+            // console.log("new context");
+            // console.log(context.context);
+            // write speaker results (color sufficient)
+            var modelOutput = runModel(speaker, context.context[0]);
+            // console.log("Speaker");
+            // console.log(modelOutput);
+            refModule.writeERP(modelOutput, [al,le,coc,cc,ct,context.condition,context.context[0]], "results_wppl/data/speaker_exploration.csv",2);                        
+          }, contexts);
+        }, cost_types);          
+      }, cost_colors);
+    }, color_only_cost);
   }, lengthWeights);
 }, alphas);
 
