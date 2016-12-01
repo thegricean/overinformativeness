@@ -71,6 +71,8 @@ var modelAnalysis = function() {
     alpha : sample(Uniform({a:0,b:40})),
     lengthWeight : sample(Uniform({a:0,b:10})),
     typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
+    // typicality_color : .9,
+    // typicality_size : .8,
     typicality_size : sample(Uniform({a:0,b:1})),
     typicality_type : 1,
     // typWeight : uniform(0,1),
@@ -157,7 +159,7 @@ var modelAnalysis = function() {
 // seed 10:
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.00265} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
 // seed 8:
-var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0014} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0013} }, samples: 800, burn: 200, verbose: true}, modelAnalysis);
 
 console.log('inference complete... printing');
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-empirical-scaledtyp-maxdifftyp-seed8");

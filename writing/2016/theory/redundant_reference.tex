@@ -589,19 +589,19 @@ In order to generate model predictions and infer likely parameter values for the
 
 \begin{table}
 \centering
-\caption{Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.}
+\caption{Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.\jd{redo this whole table now that you're doing the right thing and summing. weird thing: do we want a size+type utterance (e.g.) to have more utility than just the type utterance if size modifier is "wrong"? because that's what's currently happening. ie, adding any additional modifier is adding utility}}
 \begin{tabular}{l l l l l}
 \toprule
 Utterance & small red chair & small green chair & big red chair & big green chair\\
 \midrule
 \emph{chair} & .83 & .67 & .83 & .67 \\
-\emph{red chair} & .84 & $1 - f_{\textrm{c}}$ & .84 & $1 - f_{\textrm{c}}$ \\
-\emph{green chair} & $1 - f_{\textrm{c}}$ & .85 & $1 - f_{\textrm{c}}$ & .85 \\
-\emph{small chair} & $f_{\textrm{s}} \cdot .83$ & $f_{\textrm{s}} \cdot .67$ & $(1 - f_{\textrm{s}}) \cdot .83$ & $(1 - f_{\textrm{s}}) \cdot .67$ \\
-\emph{big chair} & $(1 - f_{\textrm{s}}) \cdot .83$ & $(1 - f_{\textrm{s}}) \cdot .67$ & $f_{\textrm{s}} \cdot .83$ & $f_{\textrm{s}} \cdot .67$ \\
-\emph{small red chair} & $f_{\textrm{s}} \cdot .84$ & $f_{\textrm{s}} \cdot (1 - f_{\textrm{c}})$ & $(1 - f_{\textrm{s}}) \cdot .84$ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ \\
-\emph{big red chair} & $(1-f_{\textrm{s}}) \cdot .84$ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .84$ & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ \\
-\emph{small green chair} & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .85 $ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $(1-f_{\textrm{s}}) \cdot .85$ \\
+\emph{red chair} & .84 & $.67+(1 - f_{\textrm{c}}$) & .84 & $.67 + (1 - f_{\textrm{c}}$) \\
+\emph{green chair} & .83 + ($1 - f_{\textrm{c}}$) & .85 & .83 + ($1 - f_{\textrm{c}}$) & .85 \\
+\emph{small chair} & .83 + $f_{\textrm{s}}$ &  .67 + $f_{\textrm{s}}$ & .83 + $(1 - f_{\textrm{s}})$ & .67 + $(1 - f_{\textrm{s}})$ \\
+\emph{big chair} & .83 + $(1 - f_{\textrm{s}})$ & .67 + $(1 - f_{\textrm{s}})$ &  .83 + $f_{\textrm{s}}$ &  .67 + $f_{\textrm{s}}$ \\
+\emph{small red chair} &  .84 + $f_{\textrm{s}}$ & .67 + $f_{\textrm{s}} + (1 - f_{\textrm{c}})$ & .84 + $(1 - f_{\textrm{s}})$ & .67 + $(1-f_{\textrm{s}}) + (1-f_{\textrm{c}})$ \\
+\emph{big red chair} &  .84 + $(1-f_{\textrm{s}})$ & .67 + $(1-f_{\textrm{s}}) + (1-f_{\textrm{c}})$ &  .84 + $f_{\textrm{s}}$ & .67 + $f_{\textrm{s}} + (1-f_{\textrm{c}})$ \\
+\emph{small green chair} & .83 + $f_{\textrm{s}} + (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \jd{conthere}\cdot .85 $ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $(1-f_{\textrm{s}}) \cdot .85$ \\
 \emph{big green chair} & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & .$(1-f_{\textrm{s}}) \cdot .85$ & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .85$ \\
 \bottomrule
 \end{tabular}
