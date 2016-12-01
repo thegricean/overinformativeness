@@ -107,14 +107,25 @@ production$Half = ifelse(production$roundNum < 21,1,2)
 nrow(production)
 
 # add "real" distractors
-dists = read.csv("data/distractors.csv")
+dists = read.csv("data/dist_lexicon.csv")
 row.names(dists) = dists$target
 production$dDist1 = grepl("distractor_",production$alt1Name)
 production$dDist2 = grepl("distractor_",production$alt2Name)
 production$Dist1 = as.character(production$alt1Name)
 production$Dist2 = as.character(production$alt2Name)
-production[production$dDist1,]$Dist1 = dists[as.character(production[production$dDist1,]$nameClickedObj),]$distractor
-production[production$dDist2,]$Dist2 = dists[as.character(production[production$dDist2,]$nameClickedObj),]$distractor
+production[production$dDist1,]$Dist1 = as.character(dists[as.character(production[production$dDist1,]$nameClickedObj),]$distractor)
+production[production$dDist2,]$Dist2 = as.character(dists[as.character(production[production$dDist2,]$nameClickedObj),]$distractor)
+
+production$Dist1Color = sapply(strsplit(as.character(production$Dist1),"_"), "[", 2)
+production$Dist1Type = sapply(strsplit(as.character(production$Dist1),"_"), "[", 1)
+production$Dist2Color = sapply(strsplit(as.character(production$Dist2),"_"), "[", 2)
+production$Dist2Type = sapply(strsplit(as.character(production$Dist2),"_"), "[", 1)
+
+# create utterances for bda
+production$UttforBDA = "other"
+production[production$Color == 1,]$UttforBDA = as.character(production[production$Color == 1,]$clickedColor)
+production[production$Type == 1,]$UttforBDA = as.character(production[production$Type == 1,]$clickedType)
+production[production$ColorAndType == 1,]$UttforBDA = paste(as.character(production[production$ColorAndType == 1,]$clickedColor),as.character(production[production$ColorAndType == 1,]$clickedType),sep="_")
 
 # plot histogram of mentioned features by context
 agr = production %>%
@@ -219,10 +230,13 @@ production$CC = as.factor(ifelse(production$context %in% c("informative-cc","ove
 head(production)
 
 # write unique conditions for bda
-write.table(production[,c("context","clickedColor","clickedType","")],file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/unique_conditions.csv",sep=",",col.names=F,row.names=F,quote=F)
+p_no_other = droplevels(production[production$UttforBDA != "other",])
+nrow(p_no_other)
+
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","Dist1Color","Dist1Type","Dist2Color","Dist2Type")]),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/unique_conditions.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # write data for bda
-write.table(,file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/bda_data.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(p_no_other[,c("context","clickedColor","clickedType","Dist1Color","Dist1Type","Dist2Color","Dist2Type","UttforBDA")],file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/bda_data.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 centered = cbind(production,myCenter(production[,c("NormedTypicality","Informative","CC")]))
 m = glmer(ColorMentioned ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
