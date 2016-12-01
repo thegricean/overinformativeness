@@ -69,7 +69,7 @@ var contexts = [
 
 
 // var alphas = [5,10,13,20,30];
-var alphas = [5];
+var alphas = [15];
 var lengthWeights = [5];
 // var lengthWeights = [5];
 var color_only_cost = [0];
@@ -99,14 +99,14 @@ map(function(al) {
 
             // write listener results
 
-            var utts = [/*"yellow","blue",*/"yellow_banana","yellow","banana"/*,"yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"*/];
-            map(function(utt) {
-              console.log("Listener");
-              console.log(utt);
-              var listenerOutput = runListener(listener, utt);
-              console.log(listenerOutput);
-              // refModule.writeERP(listenerOutput, [al,le,cc,ct,context.condition,context.context[0],utt], "results_wppl/data/listener_exploration.csv",2);
-            },utts);
+            // var utts = [/*"yellow","blue",*/"yellow_banana","yellow","banana"/*,"yellow_cup","blue_cup","cup","yellow_apple","blue_apple","apple"*/];
+            // map(function(utt) {
+            //   console.log("Listener");
+            //   console.log(utt);
+            //   var listenerOutput = runListener(listener, utt);
+            //   console.log(listenerOutput);
+            //   // refModule.writeERP(listenerOutput, [al,le,cc,ct,context.condition,context.context[0],utt], "results_wppl/data/listener_exploration.csv",2);
+            // },utts);
 
             // console.log("new context");
             // console.log(context.context);
