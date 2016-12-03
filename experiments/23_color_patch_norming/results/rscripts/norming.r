@@ -77,14 +77,14 @@ colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
 items = items[grep("cup",items$Object,invert=T),]
 items = items[grep("purple",items$Object,invert=T),]
-items = items[grep("pepper_green",items$Object,invert=T),]
+# items = items[grep("pepper_green",items$Object,invert=T),]
 items = items[grep("cup",items$Utterance,invert=T),]
 nrow(items)
 write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
 
 nocups = d[grep("cup",d$item_color,invert=T),]
 nocups = nocups[grep("cup",nocups$item_color,invert=T),]
-nocups = nocups[grep("pepper_green",nocups$item_color,invert=T),]
+# nocups = nocups[grep("pepper_green",nocups$item_color,invert=T),]
 nocups = nocups[grep("purple",nocups$item_color,invert=T),]
 nocups = nocups[grep("purple",nocups$color_utterance,invert=T),]
 nocups = droplevels(nocups)

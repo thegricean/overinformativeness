@@ -112,6 +112,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.058,
         orange_pepper : 0.043,
         red_pepper : 0.027,
+        green_pepper : 0.030,
         green_tomato : 0.102,
         pink_tomato : 0.022,
         red_tomato : 0.093
@@ -135,6 +136,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.046,
         orange_pepper : 0.045,
         red_pepper : 0.068,
+        green_pepper : 0.015,
         green_tomato : 0.017,
         pink_tomato : 0.065,
         red_tomato : 0.023
@@ -158,6 +160,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.069,
         orange_pepper : 0.011,
         red_pepper : 0.019,
+        green_pepper : 0.026,
         green_tomato : 0.096,
         pink_tomato : 0.037,
         red_tomato : 0.013
@@ -181,6 +184,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.065,
         orange_pepper : 0.083,
         red_pepper : 0.036,
+        green_pepper : 0.019,
         green_tomato : 0.013,
         pink_tomato : 0.056,
         red_tomato : 0.011
@@ -204,6 +208,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.060,
         orange_pepper : 0.040,
         red_pepper : 0.077,
+        green_pepper : 0.020,
         green_tomato : 0.045,
         pink_tomato : 0.011,
         red_tomato : 0.047
@@ -227,6 +232,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.637,
         orange_pepper : 0.841,
         red_pepper : 0.934,
+        green_pepper : 0.941,
         green_tomato : 0.083,
         pink_tomato : 0.063,
         red_tomato : 0.049
@@ -250,6 +256,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.089,
         orange_pepper : 0.052,
         red_pepper : 0.018,
+        green_pepper : 0.032,
         green_tomato : 0.738,
         pink_tomato : 0.412,
         red_tomato : 0.962
@@ -273,6 +280,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.182,
         orange_pepper : 0.194,
         red_pepper : 0.106,
+        green_pepper : 0.183,
         green_tomato : 0.341,
         pink_tomato : 0.233,
         red_tomato : 0.413
@@ -296,6 +304,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.531,
         orange_pepper : 0.777,
         red_pepper : 0.777,
+        green_pepper : 0.824,
         green_tomato : 0.598,
         pink_tomato : 0.336,
         red_tomato : 0.745
@@ -319,6 +328,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.073,
         orange_pepper : 0.169,
         red_pepper : 0.049,
+        green_pepper : 0.048,
         green_tomato : 0.058,
         pink_tomato : 0.031,
         red_tomato : 0.063
@@ -342,6 +352,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.063,
         orange_pepper : 0.787,
         red_pepper : 0.276,
+        green_pepper : 0.142,
         green_tomato : 0.064,
         pink_tomato : 0.106,
         red_tomato : 0.120
@@ -365,6 +376,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.118,
         orange_pepper : 0.141,
         red_pepper : 0.864,
+        green_pepper : 0.074,
         green_tomato : 0.064,
         pink_tomato : 0.111,
         red_tomato : 0.858
@@ -388,6 +400,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.040,
         orange_pepper : 0.036,
         red_pepper : 0.160,
+        green_pepper : 0.025,
         green_tomato : 0.030,
         pink_tomato : 0.515,
         red_tomato : 0.198
@@ -411,6 +424,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.101,
         orange_pepper : 0.053,
         red_pepper : 0.087,
+        green_pepper : 0.929,
         green_tomato : 0.817,
         pink_tomato : 0.058,
         red_tomato : 0.084
@@ -434,6 +448,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.115,
         orange_pepper : 0.059,
         red_pepper : 0.018,
+        green_pepper : 0.112,
         green_tomato : 0.050,
         pink_tomato : 0.075,
         red_tomato : 0.052
@@ -457,6 +472,7 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.128,
         orange_pepper : 0.285,
         red_pepper : 0.085,
+        green_pepper : 0.071,
         green_tomato : 0.081,
         pink_tomato : 0.012,
         red_tomato : 0.160
@@ -480,11 +496,13 @@ var OverinformativeModel = function(params, trueContext) {
         black_pepper : 0.838,
         orange_pepper : 0.032,
         red_pepper : 0.019,
+        green_pepper : 0.044,
         green_tomato : 0.043,
         pink_tomato : 0.013,
         red_tomato : 0.025
       },             
     };
+
 
     var splited = utt.split("_");
     if (splited.length === 2) {

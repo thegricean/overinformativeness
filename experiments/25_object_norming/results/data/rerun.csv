@@ -1,4 +1,7 @@
 Utterance,Object
+vegetable,pepper_green
+avocado,pepper_green
+tomato,pepper_green
 carrot,banana_brown
 carrot,banana_yellow
 tomato,pepper_red
@@ -15,6 +18,7 @@ vegetable,pear_green
 carrot,pear_orange
 tomato,pear_orange
 avocado,pear_yellow
+fruit,pepper_green
 tomato,pepper_orange
 avocado,pepper_red
 avocado,tomato_green
@@ -40,6 +44,7 @@ banana,carrot_pink
 pear,carrot_pink
 banana,pear_orange
 tomato,pear_yellow
+banana,pepper_green
 pepper,tomato_green
 fruit,tomato_pink
 pear,tomato_pink
@@ -68,8 +73,3 @@ tomato,avocado_black
 fruit,avocado_green
 pear,banana_brown
 avocado,banana_yellow
-avocado,carrot_orange
-avocado,carrot_pink
-carrot,pear_yellow
-pepper,pear_yellow
-pepper,tomato_red

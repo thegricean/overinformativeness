@@ -45,6 +45,7 @@ yellow,pear_orange
 brown,pear_yellow
 pink,pear_yellow
 purple,pear_yellow
+yellow,pepper_green
 blue,pepper_orange
 black,pepper_red
 blue,pepper_red
@@ -72,4 +73,3 @@ orange,tomato_pink
 yellow,tomato_pink
 purple,tomato_red
 blue,apple_green
-orange,avocado_green

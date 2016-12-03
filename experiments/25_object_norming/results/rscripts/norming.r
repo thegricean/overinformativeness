@@ -77,7 +77,7 @@ colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
 items = items[grep("cup",items$Object,invert=T),]
 items = items[grep("purple",items$Object,invert=T),]
-items = items[grep("pepper_green",items$Object,invert=T),]
+# items = items[grep("pepper_green",items$Object,invert=T),]
 items = items[grep("cup",items$Utterance,invert=T),]
 nrow(items)
 write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
@@ -90,7 +90,7 @@ ggsave("graphs/typicalities_histograms.pdf",height=5,width=10)
 
 nocups = d[grep("cup",d$object,invert=T),]
 nocups = nocups[grep("purple",nocups$object,invert=T),]
-nocups = nocups[grep("pepper_green",nocups$object,invert=T),]
+# nocups = nocups[grep("pepper_green",nocups$object,invert=T),]
 nocups = nocups[grep("cup",nocups$utterance,invert=T),]
 nocups = droplevels(nocups)
 
@@ -117,7 +117,7 @@ ggsave("graphs/typicalities.png",height=9, width=15)
 
 
 agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
-subset(agr[agr$utterance=="tomato",], select=c("Combo", "MeanTypicality"))
+subset(agr[agr$utterance=="vegetable",], select=c("Combo", "MeanTypicality"))
 
 
 
