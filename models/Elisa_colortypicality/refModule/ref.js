@@ -52,7 +52,7 @@ var supportWriter = function(s, p, handle) {
 // Note this is highly specific to a single type of erp
 var bayesianErpWriter = function(erp, filePrefix) {
   var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
-  fs.writeSync(predictiveFile, ["color", "size","othercolor","item","condition",
+  fs.writeSync(predictiveFile, ["condition", "TargetColor","TargetType","Dist1Color","Dist1Type","Dist2Color","Dist2Type",
 				"value", "prob", "MCMCprob"] + '\n');
 
   var paramFile = fs.openSync(filePrefix + "Params.csv", 'w');
@@ -69,15 +69,21 @@ var bayesianErpWriter = function(erp, filePrefix) {
 };
 
 var getSubset = function(data, options) {
-  var condition = options.condition,
-      color = options.color,
-      size = options.size;
-      item = options.item;
+  var condition = options.condition;
+      t_color = options.t_color;
+      t_type = options.t_type;
+      d1_color = options.d1_color;
+      d1_type = options.d1_type;
+      d2_color = options.d2_color;
+      d2_type = options.d2_type;      
   var cond = function(row) {
-    return (row[2] === condition &&
-		 row[3] === size &&
-		 row[4] === color &&
-     row[6] === item);
+    return (row[0] === condition &&
+		 row[1] === t_color &&
+		 row[2] === t_type &&
+     row[3] === d1_color &&
+     row[4] === d1_type &&
+     row[5] === d2_color &&
+     row[6] === d2_type);
   };
   return _.filter(data, cond);
 };

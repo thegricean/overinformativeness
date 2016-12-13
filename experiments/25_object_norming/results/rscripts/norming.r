@@ -12,7 +12,8 @@ theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
-d1 = read.table(file="/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
+#d1 = read.table(file="/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
+d1 = read.table(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
 head(d)
 nrow(d)
 nrow(d1)
@@ -71,16 +72,16 @@ ggplot(d, aes(Color)) +
   stat_count()
 
   
-items = as.data.frame(table(d$utterance,d$object))
-nrow(items)
-colnames(items) = c("Utterance","Object","Freq")
-items = items[order(items[,c("Freq")]),]
-items = items[grep("cup",items$Object,invert=T),]
-items = items[grep("purple",items$Object,invert=T),]
-# items = items[grep("pepper_green",items$Object,invert=T),]
-items = items[grep("cup",items$Utterance,invert=T),]
-nrow(items)
-write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
+# items = as.data.frame(table(d$utterance,d$object))
+# nrow(items)
+# colnames(items) = c("Utterance","Object","Freq")
+# items = items[order(items[,c("Freq")]),]
+# items = items[grep("cup",items$Object,invert=T),]
+# items = items[grep("purple",items$Object,invert=T),]
+# # items = items[grep("pepper_green",items$Object,invert=T),]
+# items = items[grep("cup",items$Utterance,invert=T),]
+# nrow(items)
+# write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
 
 ggplot(d, aes(x=response,fill=Color)) +
   geom_histogram(position="dodge") +
@@ -120,6 +121,5 @@ agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
 subset(agr[agr$utterance=="vegetable",], select=c("Combo", "MeanTypicality"))
 
 
-
 agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","utterance","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+write.csv(agr[,c("Item","Color","utterance","MeanTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
