@@ -82,7 +82,7 @@ agr = as.data.frame(agr)
 agr$YMin = agr$MeanTypicality - agr$ci.low
 agr$YMax = agr$MeanTypicality + agr$ci.high
 
-agr$Combo = paste(agr$Color,agr$Item)
+agr$Combo = paste(agr$Color,agr$Item,sep="_")
 agr$Color = as.factor(as.character(agr$Color))
 
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
@@ -93,6 +93,12 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=20, width=35)
 
+# do something awful:
+for (u in unique(agr$Utterance)) {
+  cat(paste("\"",u,"\" : {\n",sep=""))
+  cat(paste(paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$MeanTypicality,sep=":"),",\n",sep=""))
+  cat("},\n")
+}
 
 
 ggplot(d, aes(x=response)) +

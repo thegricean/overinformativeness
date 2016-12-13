@@ -58,14 +58,14 @@ table(d$context,d$typeMentioned)
 table(d$context,d$colorMentioned)
 
 typ = read.csv(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
-# typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
+typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
 nrow(typ)
 summary(typ)
 
 production = d
-production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
+production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$MeanTypicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
 production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|re", production$refExp, ignore.case = TRUE), T, F)
@@ -295,11 +295,21 @@ write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist
 # write data for bda
 write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/bda_data.csv",sep=",",col.names=F,row.names=F,quote=F)
 
-centered = cbind(production,myCenter(production[,c("NormedTypicality","Informative","CC")]))
-m = glmer(ColorMentioned ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+############
+# Analysis #
+############
+
+# Exclude all "other" utterances
+an = droplevels(production[production$UttforBDA != "other",])
+nrow(an)
+
+centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+centered$ColorOrType = centered$ColorAndType | centered$Color
+
+m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)
 
-m = glmer(ColorMentioned ~ cNormedTypicality + cInformative  + (1|gameid) , data = centered, family="binomial")
+m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)

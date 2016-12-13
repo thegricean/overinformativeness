@@ -112,10 +112,11 @@ var modelAnalysis = function() {
 
 // var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 500, burn: 200, verbose: true}, modelAnalysis); // seed8
-var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.02} }, samples: 200, burn: 50, verbose: true}, modelAnalysis); // seed10
+var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.06} }, samples: 200, burn: 50, verbose: true}, modelAnalysis); // seed10
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8");
 
