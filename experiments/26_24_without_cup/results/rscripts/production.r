@@ -57,15 +57,15 @@ length(levels(d$gameid))
 table(d$context,d$typeMentioned)
 table(d$context,d$colorMentioned)
 
-typ = read.table(file="../../25_object_norming/results/data/meantypicalities.csv",sep=",",header=T)
+typ = read.csv(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
 nrow(typ)
-
+summary(typ)
 
 production = d
-production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
+production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$MeanTypicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 #production <- production[,colSums(is.na(production))<nrow(production)]
 production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|re", production$refExp, ignore.case = TRUE), T, F)
@@ -126,6 +126,12 @@ production$UttforBDA = "other"
 production[production$Color == 1,]$UttforBDA = as.character(production[production$Color == 1,]$clickedColor)
 production[production$Type == 1,]$UttforBDA = as.character(production[production$Type == 1,]$clickedType)
 production[production$ColorAndType == 1,]$UttforBDA = paste(as.character(production[production$ColorAndType == 1,]$clickedColor),as.character(production[production$ColorAndType == 1,]$clickedType),sep="_")
+
+production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
+production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
+
+head(production)
+
 
 # plot histogram of mentioned features by context
 agr = production %>%
@@ -191,6 +197,50 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   facet_wrap(~context)
 ggsave("graphs/utterance_by_conttyp.png",width=12,height=9)
 
+# plot utterance choice proportions by typicality
+production$UmbrellaOther = ifelse(production$Color == 1 | production$Type == 1 | production$ColorAndType == 1, 0, 1)
+agr = production %>%
+  select(Color,Type,ColorAndType,UmbrellaOther,NormedTypicality,context) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
+  group_by(Utterance,context,NormedTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+agr$Condition = factor(x=as.character(agr$context),levels=c("overinformative","overinformative-cc","informative","informative-cc"))
+agr$Utterance = as.character(agr$Utterance)
+agr[agr$Utterance == "UmbrellaOther",]$Utterance = "Other"
+agr$Utterance = factor(agr$Utterance, levels=c("Color","Type","ColorAndType","Other"))
+
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point(size=2) +
+  geom_smooth(method="lm") +
+  xlab("Typicality") +
+  ylab("Empirical utterance proportion") +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~Condition)
+ggsave("../../../talks/2017/cuny/utterances.png",width=10,height=7)
+
+agr = production %>%
+  select(Color,Type,ColorAndType,UmbrellaOther,NormedTypicality,context,nameClickedObj) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality,-nameClickedObj) %>%
+  group_by(Utterance,context,NormedTypicality,nameClickedObj) %>%
+  summarise(Probability=mean(Mentioned))
+agr = as.data.frame(agr)
+agr$Condition = factor(x=as.character(agr$context),levels=c("overinformative","overinformative-cc","informative","informative-cc"))
+agr$Utterance = as.character(agr$Utterance)
+agr[agr$Utterance == "UmbrellaOther",]$Utterance = "Other"
+agr$Utterance = factor(agr$Utterance, levels=c("Color","Type","ColorAndType","Other"))
+
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+#  geom_point(size=2) +
+  geom_text(aes(label=nameClickedObj),size=2) +
+  # geom_smooth(method="lm") +
+  xlab("Typicality") +
+  ylab("Empirical utterance proportion") +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~Condition)
+ggsave("../../../talks/2017/cuny/utterances_text.png",width=10,height=7)
 
 # by subject
 agr = production %>%
@@ -224,25 +274,42 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   facet_grid(Half~context)
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=6.5)
 
-production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
-production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
-
-head(production)
 
 # write unique conditions for bda
 p_no_other = droplevels(production[production$UttforBDA != "other",])
 nrow(p_no_other)
 
-write.table(unique(p_no_other[,c("context","clickedColor","clickedType","Dist1Color","Dist1Type","Dist2Color","Dist2Type")]),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/unique_conditions.csv",sep=",",col.names=F,row.names=F,quote=F)
+p_no_other$DistractorCombo = as.factor(ifelse(as.character(p_no_other$Dist1) < as.character(p_no_other$Dist2), paste(p_no_other$Dist1, p_no_other$Dist2), paste(p_no_other$Dist2, p_no_other$Dist1)))
+
+nrow(unique(p_no_other[,c("nameClickedObj","DistractorCombo")]))
+p_no_other$BDADist1 = sapply(strsplit(as.character(p_no_other$DistractorCombo)," "), "[", 1)
+p_no_other$BDADist2 = sapply(strsplit(as.character(p_no_other$DistractorCombo)," "), "[", 2)
+p_no_other$BDADist1Color = sapply(strsplit(as.character(p_no_other$BDADist1),"_"), "[", 2)
+p_no_other$BDADist1Type = sapply(strsplit(as.character(p_no_other$BDADist1),"_"), "[", 1)
+p_no_other$BDADist2Color = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 2)
+p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 1)
+
+
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/unique_conditions.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # write data for bda
-write.table(p_no_other[,c("context","clickedColor","clickedType","Dist1Color","Dist1Type","Dist2Color","Dist2Type","UttforBDA")],file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/bda_data.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/bdaInput/bda_data.csv",sep=",",col.names=F,row.names=F,quote=F)
 
-centered = cbind(production,myCenter(production[,c("NormedTypicality","Informative","CC")]))
-m = glmer(ColorMentioned ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+############
+# Analysis #
+############
+
+# Exclude all "other" utterances
+an = droplevels(production[production$UttforBDA != "other",])
+nrow(an)
+
+centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+centered$ColorOrType = centered$ColorAndType | centered$Color
+
+m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)
 
-m = glmer(ColorMentioned ~ cNormedTypicality + cInformative  + (1|gameid) , data = centered, family="binomial")
+m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)

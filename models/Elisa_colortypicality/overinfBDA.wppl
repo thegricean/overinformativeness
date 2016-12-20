@@ -1,0 +1,122 @@
+// run using:
+// webppl overinfBDA.wppl --require ./refModule/
+
+util.seedRNG(10);
+// util.seedRNG(8);
+
+
+var data = refModule.readCSV("./bdaInput/bda_data.csv");
+console.log("Loading data complete...",+data.length+" data points");
+
+var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+
+// var contextArrays = map(function(condition) {
+//   constructContext(condition[2],condition[1],condition[0],condition[3],condition[4]);
+// },conditions);
+// var contextKeys = map(function(condition) {
+//   [condition[2],condition[1],condition[0],condition[3],condition[4]].join("_");
+// },conditions);
+// var contexts = _.object(_.zip(contextKeys,contextArrays));
+// console.log("Constructing contexts complete...");
+
+var modelAnalysis = function() {
+  // var params = {
+  //   alpha : sample(Uniform({a:0,b:40})),
+  //   lengthWeight : sample(Uniform({a:0,b:10})),
+  //   typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
+  //   typicality_size : sample(Uniform({a:0,b:1})),
+  //   typicality_type : 1,
+  //   // typWeight : uniform(0,1),
+  //   cost_color : sample(Uniform({a:0,b:2})),
+  //   cost_size : sample(Uniform({a:0,b:2})),
+  //   cost_type : 1
+  // };
+
+  // console.log(params);
+
+  var params = {
+    alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
+    lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
+    cost_color : sample(UniformDrift({a:0,b:3,r:3/20})),
+    cost_type : sample(UniformDrift({a:0,b:3,r:3/20})),
+    color_only_cost : sample(UniformDrift({a:0,b:3,r:3/20}))
+  };  
+
+  // console.log(params);
+
+  // Run model and condition on data
+  var score = sum(map(function(condition) {
+    // console.log("Creating next context...");
+    // console.log(condition[2]);
+    // console.log(condition[1]);
+    // console.log(condition[0]);
+    var context = {condition: condition[0], 
+                   context:[[condition[1],condition[2]],[condition[3],condition[4]],[condition[5],condition[6]]]};
+    // console.log("condition... " +condition);
+    // console.log("Context construction complete... "+context);
+    // console.log(context);
+    var target = context.context[0];
+    // console.log("Generating model...");
+    var model = OverinformativeModel(params,context.context);//domainInfo, params);
+    var runModel = model.runModel;
+    var speaker = model.speaker;
+    // return sum(map(function(condition) {
+    //   return sum(map(function(item) {
+	    // Get model predictions
+    // console.log("Running model...");
+
+    var modelOutput = runModel(speaker, target);//, domainInfo);
+
+    // console.log("Conditioning on data...");
+	    // condition on data
+    var itemData = refModule.getSubset(data, {condition:condition[0],
+						  t_color:condition[1],
+						  t_type:condition[2],
+              d1_color:condition[3],
+              d1_type:condition[4],
+              d2_color:condition[5],
+              d2_type:condition[6]
+            });
+    // console.log(itemData.length);
+	  var score = sum(map(function(dataRow) {
+     // console.log("Conditioning on data row..."+dataRow);
+	   var utterance = dataRow[7];
+     // console.log("utterance..."+utterance);
+     // console.log(_.contains(modelOutput.support(),utterance));
+     // console.log(modelOutput.score([],utterance));
+     // console.log(utterance+","+modelOutput.score([],utterance)+","+condition[2]);
+	   return modelOutput.score(utterance);
+	  }, itemData));
+    // display(score)
+    // console.log(score);
+
+	    // Store predictions
+	  foreach(modelOutput.support([]), function(s){
+      query.add([condition[0], condition[1], condition[2], condition[3], condition[4], condition[5], condition[6], s], Math.exp(modelOutput.score(s)));
+	  });
+
+	  return score;
+  }, conditions));
+
+  // display(score);
+
+  factor(score)
+  // factor(Math.max(score, -1000));
+
+  // console.log(query.table);
+  // console.log(params);
+  // return params
+  return {predictive: query.table, params : params};
+};
+
+// var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+// var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 500, burn: 200, verbose: true}, modelAnalysis); // seed8
+var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.06} }, samples: 200, burn: 50, verbose: true}, modelAnalysis); // seed10
+
+console.log('inference complete... printing');
+
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8");
+
