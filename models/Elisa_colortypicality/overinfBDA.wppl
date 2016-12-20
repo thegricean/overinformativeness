@@ -1,7 +1,8 @@
 // run using:
 // webppl overinfBDA.wppl --require ./refModule/
 
-util.seedRNG(10);
+util.seedRNG(2);
+// util.seedRNG(10);
 // util.seedRNG(8);
 
 
@@ -24,13 +25,10 @@ var modelAnalysis = function() {
   // var params = {
   //   alpha : sample(Uniform({a:0,b:40})),
   //   lengthWeight : sample(Uniform({a:0,b:10})),
-  //   typicality_color : sample(Uniform({a:0,b:1})), // this doesn't matter when you use empirical typicalities
-  //   typicality_size : sample(Uniform({a:0,b:1})),
-  //   typicality_type : 1,
-  //   // typWeight : uniform(0,1),
-  //   cost_color : sample(Uniform({a:0,b:2})),
-  //   cost_size : sample(Uniform({a:0,b:2})),
-  //   cost_type : 1
+  //   cost_color : sample(Uniform({a:0,b:3})),
+  //   cost_type : sample(Uniform({a:0,b:3})),
+  //   color_only_cost : sample(Uniform({a:0,b:3})),
+  //   theta : sample(Uniform({a:0,b:1}))
   // };
 
   // console.log(params);
@@ -40,7 +38,8 @@ var modelAnalysis = function() {
     lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
     cost_color : sample(UniformDrift({a:0,b:3,r:3/20})),
     cost_type : sample(UniformDrift({a:0,b:3,r:3/20})),
-    color_only_cost : sample(UniformDrift({a:0,b:3,r:3/20}))
+    color_only_cost : sample(UniformDrift({a:0,b:3,r:3/20})),
+    theta : sample(UniformDrift({a:0,b:1,r:1/10}))
   };  
 
   // console.log(params);
@@ -112,11 +111,13 @@ var modelAnalysis = function() {
 
 // var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 500, burn: 200, verbose: true}, modelAnalysis); // seed8
-var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.06} }, samples: 200, burn: 50, verbose: true}, modelAnalysis); // seed10
+var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.017} }, samples: 200, burn: 50, verbose: true}, modelAnalysis); // seed10
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed2-theta");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8");
 

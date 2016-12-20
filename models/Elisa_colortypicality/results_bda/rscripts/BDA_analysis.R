@@ -24,6 +24,7 @@ source("results_bda/rscripts/helpers.R")
 modelversion = "hmc-seed8"
 modelversion = "hmc-seed10"
 modelversion = "extended-hmc-seed10"
+modelversion = "hmc-seed10-theta"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))

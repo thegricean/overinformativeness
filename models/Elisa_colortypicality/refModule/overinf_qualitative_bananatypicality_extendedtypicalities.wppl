@@ -1,0 +1,905 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var mean = function(thunk){
+  return expectation(Enumerate(thunk), function(v){return v;});
+};
+
+var negate = function(predicate){
+  return function(x){
+    return !predicate(x);
+  };
+};
+
+var identity = function(x){
+  return x;
+};
+
+var condition = function(x){
+ factor(x ? 0 : -Infinity);
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var getUtterancesOneFeature = function(context) {
+  var utts = [];
+  // map takes array context and with each element in context does what is in function
+  map(function(c) {
+    // utterance with adjective and noun
+    utts.push(c[0]+"_"+c[1]);
+    // utterance only with noun
+    utts.push(c[1]);
+    // utterance only with adjective
+    utts.push(c[0]);
+  },context);
+  // returns list of strings with all possible utterances
+  return _.unique(utts);
+};
+
+ var getTailoredTypicalityUnlogged = function(utt, object) {
+    // console.log(utt);
+    // console.log(object);
+    // var f = Number.NEGATIVE_INFINITY;
+    // var e = -1;//0.00015;
+    // var f = -1;//0.00015;
+    var tailoredtypicalities = {
+      "apple" : {
+        blue_apple : 0.462,
+        green_apple : 0.961,
+        red_apple : 0.953,
+        black_avocado : 0.055,
+        green_avocado : 0.022,
+        red_avocado : 0.080,
+        blue_banana : 0.044,
+        brown_banana : 0.040,
+        yellow_banana : 0.043,
+        brown_carrot : 0.059,
+        orange_carrot : 0.013,
+        pink_carrot : 0.052,
+        green_pear : 0.196,
+        orange_pear : 0.142,
+        yellow_pear : 0.140,
+        black_pepper : 0.058,
+        orange_pepper : 0.043,
+        red_pepper : 0.027,
+        green_pepper : 0.030,
+        green_tomato : 0.102,
+        pink_tomato : 0.022,
+        red_tomato : 0.093
+      },
+      "avocado" : {
+        blue_apple : 0.039,
+        green_apple : 0.022,
+        red_apple : 0.052,
+        black_avocado : 0.812,
+        green_avocado : 0.966,
+        red_avocado : 0.696,
+        blue_banana : 0.016,
+        brown_banana : 0.048,
+        yellow_banana : 0.024,
+        brown_carrot : 0.053,
+        orange_carrot : 0.034,
+        pink_carrot : 0.061,
+        green_pear : 0.055,
+        orange_pear : 0.055,
+        yellow_pear : 0.026,
+        black_pepper : 0.046,
+        orange_pepper : 0.045,
+        red_pepper : 0.068,
+        green_pepper : 0.015,
+        green_tomato : 0.017,
+        pink_tomato : 0.065,
+        red_tomato : 0.023
+      },
+      "banana" : {
+        blue_apple : 0.040,
+        green_apple : 0.072,
+        red_apple : 0.070,
+        black_avocado : 0.036,
+        green_avocado : 0.046,
+        red_avocado : 0.070,
+        blue_banana : 0.419,
+        brown_banana : 0.657,
+        yellow_banana : 0.979,
+        brown_carrot : 0.076,
+        orange_carrot : 0.079,
+        pink_carrot : 0.021,
+        green_pear : 0.021,
+        orange_pear : 0.010,
+        yellow_pear : 0.071,
+        black_pepper : 0.069,
+        orange_pepper : 0.011,
+        red_pepper : 0.019,
+        green_pepper : 0.026,
+        green_tomato : 0.096,
+        pink_tomato : 0.037,
+        red_tomato : 0.013
+      },
+      "carrot" : {
+        blue_apple : 0.035,
+        green_apple : 0.023,
+        red_apple : 0.011,
+        black_avocado : 0.016,
+        green_avocado : 0.060,
+        red_avocado : 0.008,
+        blue_banana : 0.039,
+        brown_banana : 0.013,
+        yellow_banana : 0.011,
+        brown_carrot : 0.565,
+        orange_carrot : 0.976,
+        pink_carrot : 0.503,
+        green_pear : 0.085,
+        orange_pear : 0.052,
+        yellow_pear : 0.016,
+        black_pepper : 0.065,
+        orange_pepper : 0.083,
+        red_pepper : 0.036,
+        green_pepper : 0.019,
+        green_tomato : 0.013,
+        pink_tomato : 0.056,
+        red_tomato : 0.011
+      },
+      "pear" : {
+        blue_apple : 0.004,
+        green_apple : 0.140,
+        red_apple : 0.014,
+        black_avocado : 0.080,
+        green_avocado : 0.045,
+        red_avocado : 0.103,
+        blue_banana : 0.012,
+        brown_banana : 0.041,
+        yellow_banana : 0.074,
+        brown_carrot : 0.052,
+        orange_carrot : 0.034,
+        pink_carrot : 0.013,
+        green_pear : 0.953,
+        orange_pear : 0.686,
+        yellow_pear : 0.924,
+        black_pepper : 0.060,
+        orange_pepper : 0.040,
+        red_pepper : 0.077,
+        green_pepper : 0.020,
+        green_tomato : 0.045,
+        pink_tomato : 0.011,
+        red_tomato : 0.047
+      },
+      "pepper" : {
+        blue_apple : 0.045,
+        green_apple : 0.014,
+        red_apple : 0.026,
+        black_avocado : 0.080,
+        green_avocado : 0.069,
+        red_avocado : 0.104,
+        blue_banana : 0.073,
+        brown_banana : 0.060,
+        yellow_banana : 0.070,
+        brown_carrot : 0.086,
+        orange_carrot : 0.043,
+        pink_carrot : 0.049,
+        green_pear : 0.016,
+        orange_pear : 0.054,
+        yellow_pear : 0.142,
+        black_pepper : 0.637,
+        orange_pepper : 0.841,
+        red_pepper : 0.934,
+        green_pepper : 0.941,
+        green_tomato : 0.083,
+        pink_tomato : 0.063,
+        red_tomato : 0.049
+      },
+      "tomato" : {
+        blue_apple : 0.034,
+        green_apple : 0.044,
+        red_apple : 0.088,
+        black_avocado : 0.069,
+        green_avocado : 0.052,
+        red_avocado : 0.051,
+        blue_banana : 0.042,
+        brown_banana : 0.033,
+        yellow_banana : 0.018,
+        brown_carrot : 0.041,
+        orange_carrot : 0.047,
+        pink_carrot : 0.037,
+        green_pear : 0.018,
+        orange_pear : 0.022,
+        yellow_pear : 0.023,
+        black_pepper : 0.089,
+        orange_pepper : 0.052,
+        red_pepper : 0.018,
+        green_pepper : 0.032,
+        green_tomato : 0.738,
+        pink_tomato : 0.412,
+        red_tomato : 0.962
+      },
+      "fruit" : {
+        blue_apple : 0.506,
+        green_apple : 0.929,
+        red_apple : 0.932,
+        black_avocado : 0.539,
+        green_avocado : 0.503,
+        red_avocado : 0.329,
+        blue_banana : 0.603,
+        brown_banana : 0.726,
+        yellow_banana : 0.973,
+        brown_carrot : 0.092,
+        orange_carrot : 0.019,
+        pink_carrot : 0.051,
+        green_pear : 0.937,
+        orange_pear : 0.777,
+        yellow_pear : 0.905,
+        black_pepper : 0.182,
+        orange_pepper : 0.194,
+        red_pepper : 0.106,
+        green_pepper : 0.183,
+        green_tomato : 0.341,
+        pink_tomato : 0.233,
+        red_tomato : 0.413
+      },
+      "vegetable" : {
+        blue_apple : 0.081,
+        green_apple : 0.128,
+        red_apple : 0.182,
+        black_avocado : 0.332,
+        green_avocado : 0.455,
+        red_avocado : 0.236,
+        blue_banana : 0.054,
+        brown_banana : 0.077,
+        yellow_banana : 0.055,
+        brown_carrot : 0.623,
+        orange_carrot : 0.895,
+        pink_carrot : 0.401,
+        green_pear : 0.115,
+        orange_pear : 0.140,
+        yellow_pear : 0.120,
+        black_pepper : 0.531,
+        orange_pepper : 0.777,
+        red_pepper : 0.777,
+        green_pepper : 0.824,
+        green_tomato : 0.598,
+        pink_tomato : 0.336,
+        red_tomato : 0.745
+      },
+      "yellow" : {
+        blue_apple : 0.078,
+        green_apple : 0.187,
+        red_apple : 0.011,
+        black_avocado : 0.036,
+        green_avocado : 0.053,
+        red_avocado : 0.029,
+        blue_banana : 0.058,
+        brown_banana : 0.047,
+        yellow_banana : 0.766,
+        brown_carrot : 0.094,
+        orange_carrot : 0.188,
+        pink_carrot : 0.058,
+        green_pear : 0.307,
+        orange_pear : 0.121,
+        yellow_pear : 0.703,
+        black_pepper : 0.073,
+        orange_pepper : 0.169,
+        red_pepper : 0.049,
+        green_pepper : 0.048,
+        green_tomato : 0.058,
+        pink_tomato : 0.031,
+        red_tomato : 0.063
+      },
+      "orange" : {
+        blue_apple : 0.022,
+        green_apple : 0.027,
+        red_apple : 0.085,
+        black_avocado : 0.009,
+        green_avocado : 0.028,
+        red_avocado : 0.075,
+        blue_banana : 0.093,
+        brown_banana : 0.081,
+        yellow_banana : 0.219,
+        brown_carrot : 0.101,
+        orange_carrot : 0.889,
+        pink_carrot : 0.079,
+        green_pear : 0.092,
+        orange_pear : 0.831,
+        yellow_pear : 0.341,
+        black_pepper : 0.063,
+        orange_pepper : 0.787,
+        red_pepper : 0.276,
+        green_pepper : 0.142,
+        green_tomato : 0.064,
+        pink_tomato : 0.106,
+        red_tomato : 0.120
+      },           
+      "red" : {
+        blue_apple : 0.060,
+        green_apple : 0.088,
+        red_apple : 0.762,
+        black_avocado : 0.107,
+        green_avocado : 0.018,
+        red_avocado : 0.528,
+        blue_banana : 0.057,
+        brown_banana : 0.072,
+        yellow_banana : 0.073,
+        brown_carrot : 0.105,
+        orange_carrot : 0.162,
+        pink_carrot : 0.153,
+        green_pear : 0.073,
+        orange_pear : 0.156,
+        yellow_pear : 0.057,
+        black_pepper : 0.118,
+        orange_pepper : 0.141,
+        red_pepper : 0.864,
+        green_pepper : 0.074,
+        green_tomato : 0.064,
+        pink_tomato : 0.111,
+        red_tomato : 0.858
+      },    
+      "pink" : {
+        blue_apple : 0.054,
+        green_apple : 0.080,
+        red_apple : 0.132,
+        black_avocado : 0.088,
+        green_avocado : 0.055,
+        red_avocado : 0.116,
+        blue_banana : 0.045,
+        brown_banana : 0.040,
+        yellow_banana : 0.079,
+        brown_carrot : 0.135,
+        orange_carrot : 0.112,
+        pink_carrot : 0.498,
+        green_pear : 0.048,
+        orange_pear : 0.123,
+        yellow_pear : 0.031,
+        black_pepper : 0.040,
+        orange_pepper : 0.036,
+        red_pepper : 0.160,
+        green_pepper : 0.025,
+        green_tomato : 0.030,
+        pink_tomato : 0.515,
+        red_tomato : 0.198
+      },   
+      "green" : {
+        blue_apple : 0.145,
+        green_apple : 0.791,
+        red_apple : 0.045,
+        black_avocado : 0.032,
+        green_avocado : 0.642,
+        red_avocado : 0.084,
+        blue_banana : 0.017,
+        brown_banana : 0.058,
+        yellow_banana : 0.031,
+        brown_carrot : 0.068,
+        orange_carrot : 0.048,
+        pink_carrot : 0.046,
+        green_pear : 0.640,
+        orange_pear : 0.032,
+        yellow_pear : 0.099,
+        black_pepper : 0.101,
+        orange_pepper : 0.053,
+        red_pepper : 0.087,
+        green_pepper : 0.929,
+        green_tomato : 0.817,
+        pink_tomato : 0.058,
+        red_tomato : 0.084
+      },    
+      "blue" : {
+        blue_apple : 0.896,
+        green_apple : 0.069,
+        red_apple : 0.079,
+        black_avocado : 0.087,
+        green_avocado : 0.067,
+        red_avocado : 0.028,
+        blue_banana : 0.917,
+        brown_banana : 0.059,
+        yellow_banana : 0.063,
+        brown_carrot : 0.075,
+        orange_carrot : 0.059,
+        pink_carrot : 0.025,
+        green_pear : 0.070,
+        orange_pear : 0.102,
+        yellow_pear : 0.053,
+        black_pepper : 0.115,
+        orange_pepper : 0.059,
+        red_pepper : 0.018,
+        green_pepper : 0.112,
+        green_tomato : 0.050,
+        pink_tomato : 0.075,
+        red_tomato : 0.052
+      },    
+      "brown" : {
+        blue_apple : 0.076,
+        green_apple : 0.063,
+        red_apple : 0.231,
+        black_avocado : 0.103,
+        green_avocado : 0.135,
+        red_avocado : 0.368,
+        blue_banana : 0.007,
+        brown_banana : 0.868,
+        yellow_banana : 0.108,
+        brown_carrot : 0.860,
+        orange_carrot : 0.141,
+        pink_carrot : 0.051,
+        green_pear : 0.053,
+        orange_pear : 0.107,
+        yellow_pear : 0.234,
+        black_pepper : 0.128,
+        orange_pepper : 0.285,
+        red_pepper : 0.085,
+        green_pepper : 0.071,
+        green_tomato : 0.081,
+        pink_tomato : 0.012,
+        red_tomato : 0.160
+      },    
+      "black" : {
+        blue_apple : 0.044,
+        green_apple : 0.013,
+        red_apple : 0.085,
+        black_avocado : 0.952,
+        green_avocado : 0.090,
+        red_avocado : 0.066,
+        blue_banana : 0.051,
+        brown_banana : 0.204,
+        yellow_banana : 0.061,
+        brown_carrot : 0.168,
+        orange_carrot : 0.056,
+        pink_carrot : 0.048,
+        green_pear : 0.056,
+        orange_pear : 0.056,
+        yellow_pear : 0.057,
+        black_pepper : 0.838,
+        orange_pepper : 0.032,
+        red_pepper : 0.019,
+        green_pepper : 0.044,
+        green_tomato : 0.043,
+        pink_tomato : 0.013,
+        red_tomato : 0.025
+      },
+      "black_avocado" : {
+         blue_apple : 0.1,
+         black_avocado : 0.949473684210526,
+         green_avocado : 0.208421052631579,
+         red_avocado : 0.322631578947368,
+         blue_banana : 0.04,
+         yellow_banana : 0.03,
+         pink_carrot : 0.085,
+         green_pear : 0.406666666666667,
+         orange_pear : 0.136666666666667,
+         yellow_pear : 0.02,
+         black_pepper : 0.075,
+         orange_pepper : 0.02,
+         red_pepper : 0.145,
+         red_tomato : 0.04
+        },
+        "black_pepper" : {
+         red_apple : 0.05,
+         blue_banana : 0.11,
+         brown_carrot : 0.0333333333333333,
+         orange_carrot : 0.024,
+         pink_carrot : 0.00333333333333333,
+         green_pear : 0.02,
+         yellow_pear : 0.06,
+         black_pepper : 0.812727272727273,
+         green_pepper : 0.222666666666667,
+         orange_pepper : 0.177058823529412,
+         red_pepper : 0.186666666666667,
+         green_tomato : 0.03,
+         red_tomato : 0.08
+        },
+        "blue_apple" : {
+        blue_apple : 0.870526315789474,
+         green_apple : 0.199473684210526,
+         red_apple : 0.185263157894737,
+         green_avocado : 0.0275,
+         red_avocado : 0.05,
+         blue_banana : 0.0333333333333333,
+         brown_banana : 0.122,
+         brown_carrot : 0.02,
+         orange_carrot : 0.015,
+         pink_carrot : 0.0466666666666667,
+         orange_pear : 0.175,
+         yellow_pear : 0.76,
+         green_pepper : 0.03
+        },
+        "blue_banana" : {
+        blue_apple : 0.05,
+         green_apple : 0.03,
+         red_apple : 0.05,
+         black_avocado : 0.0183333333333333,
+         green_avocado : 0.0333333333333333,
+         blue_banana : 0.804210526315789,
+         brown_banana : 0.184210526315789,
+         yellow_banana : 0.216842105263158,
+         orange_carrot : 0.07,
+         green_pear : 0.06,
+         black_pepper : 0.015,
+         red_pepper : 0.455,
+         pink_tomato : 0.095
+        },
+        "brown_banana" : {
+         red_apple : 0.85,
+         green_avocado : 0.015,
+         red_avocado : 0.05,
+         blue_banana : 0.153684210526316,
+         brown_banana : 0.756315789473684,
+         yellow_banana : 0.246315789473684,
+         brown_carrot : 0.0233333333333333,
+         green_pear : 0.03,
+         black_pepper : 0.06,
+         green_pepper : 0.05,
+         orange_pepper : 0.216666666666667,
+         green_tomato : 0.015,
+         red_tomato : 0.27
+        },
+        "green_apple" : {
+        blue_apple : 0.152631578947368,
+         green_apple : 0.916842105263158,
+         red_apple : 0.233684210526316,
+         black_avocado : 0.025,
+         red_avocado : 0.046,
+         yellow_banana : 0.183333333333333,
+         orange_carrot : 0.385,
+         green_pear : 0.19,
+         orange_pear : 0.046,
+         green_pepper : 0.13,
+         red_pepper : 0.08,
+         green_tomato : 0.93,
+         pink_tomato : 0.025
+        },
+        "green_avocado" : {
+         black_avocado : 0.288421052631579,
+         green_avocado : 0.937368421052632,
+         red_avocado : 0.226315789473684,
+         blue_banana : 0.14,
+         brown_banana : 0.06,
+         brown_carrot : 0.04,
+         orange_carrot : 0.06,
+         green_pepper : 0.545,
+         orange_pepper : 0.025,
+         red_pepper : 0.015,
+         green_tomato : 0.17,
+         pink_tomato : 0.0375
+        },
+        "green_pear" : {
+         green_apple : 0.09,
+         red_apple : 0.02,
+         green_avocado : 0.05,
+         blue_banana : 0.02,
+         yellow_banana : 0.35,
+         brown_carrot : 0.21,
+         green_pear : 0.952631578947368,
+         orange_pear : 0.204210526315789,
+         yellow_pear : 0.451052631578947,
+         black_pepper : 0.265,
+         green_pepper : 0.265,
+         orange_pepper : 0.195,
+         green_tomato : 0.333333333333333,
+         red_tomato : 0.0333333333333333
+        },
+        "green_pepper" : {
+         green_apple : 0.495,
+         red_avocado : 0.02,
+         blue_banana : 0.085,
+         yellow_banana : 0.04,
+         pink_carrot : 0.05,
+         green_pear : 0.0516666666666667,
+         orange_pear : 0.08,
+         yellow_pear : 0.085,
+         black_pepper : 0.224117647058824,
+         green_pepper : 0.931875,
+         orange_pepper : 0.243125,
+         red_pepper : 0.289375,
+         green_tomato : 0.31,
+         pink_tomato : 0.12,
+         red_tomato : 0.04
+        },
+        "orange_carrot" : {
+        blue_apple : 0.00333333333333333,
+         yellow_banana : 0.0175,
+         brown_carrot : 0.158947368421053,
+         orange_carrot : 0.897368421052632,
+         pink_carrot : 0.157894736842105,
+         green_pear : 0.0233333333333333,
+         orange_pear : 0.04,
+         yellow_pear : 0.115,
+         black_pepper : 0.02,
+         orange_pepper : 0.1,
+         red_pepper : 0.0325,
+         pink_tomato : 0.06
+        },
+        "orange_pear" : {
+        blue_apple : 0.0525,
+         green_apple : 0.35,
+         red_apple : 0.0166666666666667,
+         red_avocado : 0.385,
+         orange_carrot : 0.02,
+         pink_carrot : 0.1,
+         green_pear : 0.221578947368421,
+         orange_pear : 0.712631578947368,
+         yellow_pear : 0.498947368421053,
+         black_pepper : 0.02,
+         green_pepper : 0.02,
+         red_pepper : 0.03,
+         green_tomato : 0.0766666666666667,
+         red_tomato : 0.0833333333333333
+        },
+        "orange_pepper" : {
+        blue_apple : 0.005,
+         green_apple : 0.065,
+         red_apple : 0.09,
+         black_avocado : 0.02,
+         red_avocado : 0.1025,
+         blue_banana : 0.09,
+         brown_banana : 0.0828571428571429,
+         yellow_banana : 0.025,
+         brown_carrot : 0.0133333333333333,
+         orange_carrot : 0.28,
+         yellow_pear : 0.3,
+         black_pepper : 0.114285714285714,
+         green_pepper : 0.246923076923077,
+         orange_pepper : 0.921538461538462,
+         red_pepper : 0.224166666666667,
+         green_tomato : 0.11,
+         pink_tomato : 0.1425,
+         red_tomato : 0.24
+        },
+        "pink_carrot" : {
+         green_apple : 0.03,
+         red_apple : 0.0475,
+         black_avocado : 0.065,
+         green_avocado : 0.405,
+         brown_banana : 0.02,
+         brown_carrot : 0.193157894736842,
+         orange_carrot : 0.243157894736842,
+         pink_carrot : 0.463157894736842,
+         green_pear : 0.03,
+         yellow_pear : 0.045,
+         orange_pepper : 0.0425,
+         pink_tomato : 0.195
+        },
+        "pink_tomato" : {
+        blue_apple : 0.12,
+         red_apple : 0.07,
+         black_avocado : 0.005,
+         green_avocado : 0.06,
+         brown_banana : 0.025,
+         brown_carrot : 0.0433333333333333,
+         pink_carrot : 0.0533333333333333,
+         orange_pear : 0.0525,
+         black_pepper : 0.1,
+         orange_pepper : 0.028,
+         green_tomato : 0.161052631578947,
+         pink_tomato : 0.595789473684211,
+         red_tomato : 0.234210526315789
+        },
+        "red_apple" : {
+        blue_apple : 0.114736842105263,
+         green_apple : 0.215263157894737,
+         red_apple : 0.968421052631579,
+         black_avocado : 0.07,
+         green_avocado : 0.13,
+         red_avocado : 0.27,
+         orange_carrot : 0.08,
+         pink_carrot : 0.055,
+         green_pear : 0.89,
+         orange_pear : 0.0266666666666667,
+         yellow_pear : 0.03,
+         black_pepper : 0.03,
+         green_pepper : 0.0125,
+         orange_pepper : 0.0275,
+         red_pepper : 0.0975,
+         green_tomato : 0.155,
+         red_tomato : 0.095
+        },
+        "red_avocado" : {
+         green_apple : 0.0166666666666667,
+         red_apple : 0.09,
+         black_avocado : 0.184736842105263,
+         green_avocado : 0.227368421052632,
+         red_avocado : 0.803684210526316,
+         blue_banana : 0.065,
+         brown_banana : 0.0333333333333333,
+         yellow_banana : 0.00333333333333333,
+         brown_carrot : 0.02,
+         pink_carrot : 0.09,
+         orange_pear : 0.02,
+         yellow_pear : 0.0166666666666667,
+         black_pepper : 0.2,
+         green_pepper : 0.0633333333333333,
+         red_pepper : 0.0166666666666667,
+         pink_tomato : 0.09,
+         red_tomato : 0.105
+        },
+        "red_pepper" : {
+         red_apple : 0.075,
+         black_avocado : 0.263333333333333,
+         green_avocado : 0.14,
+         red_avocado : 0.02,
+         yellow_banana : 0.02,
+         brown_carrot : 0.03,
+         orange_carrot : 0.015,
+         green_pear : 0.065,
+         black_pepper : 0.167333333333333,
+         green_pepper : 0.185384615384615,
+         orange_pepper : 0.275454545454545,
+         red_pepper : 0.948571428571429,
+         green_tomato : 0.0366666666666667,
+         red_tomato : 0.095
+        },
+        "red_tomato" : {
+        blue_apple : 0.02,
+         green_apple : 0.03,
+         green_avocado : 0.03,
+         red_avocado : 0.395,
+         brown_banana : 0.0725,
+         yellow_banana : 0.455,
+         pink_carrot : 0.05,
+         orange_pear : 0.04,
+         yellow_pear : 0.065,
+         green_pepper : 0.09,
+         orange_pepper : 0.148,
+         red_pepper : 0.24,
+         green_tomato : 0.205789473684211,
+         pink_tomato : 0.173157894736842,
+         red_tomato : 0.930526315789474
+        },
+        "yellow_banana" : {
+        blue_apple : 0.103333333333333,
+         blue_banana : 0.118947368421053,
+         brown_banana : 0.341578947368421,
+         yellow_banana : 0.963157894736842,
+         green_pear : 0.13,
+         orange_pear : 0.04,
+         yellow_pear : 0.0233333333333333,
+         black_pepper : 0.0766666666666667,
+         green_pepper : 0.0266666666666667,
+         orange_pepper : 0.025,
+         red_tomato : 0.0133333333333333
+        },
+        "yellow_pear" : {
+        blue_apple : 0.02,
+         green_apple : 0.323333333333333,
+         red_apple : 0.28,
+         black_avocado : 0.188,
+         red_avocado : 0.045,
+         blue_banana : 0.03,
+         brown_banana : 0.025,
+         yellow_banana : 0.555,
+         brown_carrot : 0.245,
+         orange_carrot : 0.221666666666667,
+         pink_carrot : 0.0333333333333333,
+         green_pear : 0.58,
+         orange_pear : 0.24,
+         yellow_pear : 0.901578947368421,
+         green_pepper : 0.435,
+         orange_pepper : 0.16,
+         red_pepper : 0.29,
+         pink_tomato : 0.08,
+         red_tomato : 0.09
+        },
+        "brown_carrot" : {
+         red_apple : 0.02,
+         green_avocado : 0.0133333333333333,
+         red_avocado : 0.08,
+         blue_banana : 0.106666666666667,
+         yellow_banana : 0.12,
+         brown_carrot : 0.83,
+         orange_carrot : 0.268947368421053,
+         pink_carrot : 0.113684210526316,
+         green_pear : 0.005,
+         black_pepper : 0.0166666666666667,
+         red_pepper : 0.44,
+         green_tomato : 0.02,
+         pink_tomato : 0.38
+        },
+        "green_tomato" : {
+         brown_carrot : 0.06,
+         green_pear : 0.00666666666666667,
+         yellow_pear : 0.0125,
+         black_pepper : 0.03,
+         green_pepper : 0.06,
+         orange_pepper : 0.02,
+         green_tomato : 0.958421052631579,
+         pink_tomato : 0.136842105263158,
+         red_tomato : 0.236315789473684             
+     }  ,
+
+    };
+
+      var typicality = tailoredtypicalities[utt][object.join("_")];
+      if (typeof typicality != 'undefined') {
+        // console.log(typicality);
+        return typicality;
+      } else {
+        // console.log("reassigned");
+        return 0;
+    }
+    
+  };
+  
+var OverinformativeModel = function(params, context) {
+
+    // console.log(context);
+  /*var getNoise = function(utt) {
+    var splited = utt.split("_");
+    if (splited.length == 2) {
+      return 0.1
+    } else {
+      return _.contains(["color","othercolor","yellow", "blue"], splited[0]) ? 0.5 : 0;
+    }
+  }*/
+
+  var getUtteranceCost = function(utt) {
+    var splited = utt.split("_");
+    if (splited.length == 2) {
+      // conditioning cost on typicality
+      // return _.contains(["blue"], splited[0]) ? params.cost_type + 0.2 : params.cost_color + params.cost_type;
+      return params.cost_color + params.cost_type;
+    } else {
+      return _.contains(["yellow","orange","red","pink","green","blue","brown","black"], splited[0]) ? params.cost_color + params.color_only_cost : params.cost_type;
+    }
+  };
+
+  var uttFitness = function(utt, object) {
+    var typfit = getTailoredTypicalityUnlogged(utt,object); 
+    // console.log(typfit);
+    return typfit; 
+  };
+
+  var literalListener = cache(function(utt){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(context);
+      // console.log(object);
+      // console.log(utt);
+      // that's awesome
+      factor(uttFitness(utt,object)); 
+      return object;
+    });
+  });
+
+  // what does cache do?
+  var speaker = cache(function(target) {
+    // list all possible utterances in context
+    var possibleutts = getUtterancesOneFeature(context);
+    return Infer({method:'enumerate'},function(){
+      var utt = uniformDraw(possibleutts);
+      var literalListenerERP = literalListener(utt);
+      var uttCost = getUtteranceCost(utt);
+      // console.log(uttCost);
+      // var noise = getNoise(utt);
+      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+      // console.log("score: ");
+      // console.log(score);
+      factor(score); 
+      return utt;
+    });
+  });
+
+  var runModel = function(speakerModel, target) { 
+    var speakerERP = speakerModel(target);
+    return Infer({method:'enumerate'},function(){
+      var utt = sample(speakerERP);
+      return utt;
+    });
+  };
+
+  var runListener = function(listenerModel, utterance) { 
+    var listenerERP = listenerModel(utterance);
+    return Infer({method:'enumerate'},function(){
+      var obj = sample(listenerERP);
+      return obj;
+    });
+  };    
+
+  return {
+    runModel : runModel,
+    speaker : speaker,
+    listener: literalListener,
+    runListener : runListener
+  };
+};
