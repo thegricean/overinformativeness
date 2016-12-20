@@ -47,6 +47,7 @@ var getUtterancesOneFeature = function(context) {
 
 var OverinformativeModel = function(params, context) {
 
+    // console.log("context:");
     // console.log(context);
   /*var getNoise = function(utt) {
     var splited = utt.split("_");
@@ -487,14 +488,24 @@ var OverinformativeModel = function(params, context) {
     };
 
     var splited = utt.split("_");
+    // console.log("\n");
     if (splited.length === 2) {
       // console.log(tailoredtypicalities[splited[0]][object.join("_")]);
       // console.log(tailoredtypicalities[splited[1]][object.join("_")]);
-      var typicality = (((tailoredtypicalities[splited[0]][object.join("_")]) + (tailoredtypicalities[splited[1]][object.join("_")])));
+      var typicality = ((tailoredtypicalities[splited[0]][object.join("_")]*1.0-params.theta + tailoredtypicalities[splited[1]][object.join("_")]*1.0-params.theta));
+      // console.log("theta:");
+      // console.log(params.theta);
+      // console.log(utt);
+      // console.log(object);
       // console.log(typicality);
       return typicality;
     } else {
-      var typicality = tailoredtypicalities[utt][object.join("_")];
+      var typicality = tailoredtypicalities[utt][object.join("_")]*1.0-params.theta;
+      // console.log("theta:");
+      // console.log(params.theta);
+      // console.log(utt);
+      // console.log(object);
+      // console.log(typicality);
       return typicality;
     }
   };
@@ -520,7 +531,6 @@ var OverinformativeModel = function(params, context) {
   var speaker = cache(function(target) {
     // list all possible utterances in context
     var possibleutts = getUtterancesOneFeature(context);
-    console.log(possibleutts);
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var literalListenerERP = literalListener(utt);

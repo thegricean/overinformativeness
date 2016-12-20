@@ -45,9 +45,32 @@ var getUtterancesOneFeature = function(context) {
   return _.unique(utts);
 };
 
-var OverinformativeModel = function(params, context) {
+var objects = [
+  // ["blue","apple"],
+  // ["green","apple"],
+  // ["red","apple"],
+  // ["black","avocado"],
+  // ["green","avocado"],
+  // ["red","avocado"],
+  // ["blue","banana"],
+  // ["brown","banana"],
+  // ["yellow","banana"],
+  // ["brown","carrot"],
+  // ["orange","carrot"],
+  // ["pink","carrot"],
+  // ["green","pear"],
+  // ["orange","pear"],
+  ["yellow","pear"],
+  // ["black","pepper"],
+  // ["orange","pepper"],
+  // ["red","pepper"],
+  // ["green","tomato"],
+  // ["pink","tomato"],
+  // ["red","tomato"]
+];
 
-    // console.log(context);
+var OverinformativeModel = function(params, trueContext) {
+
   /*var getNoise = function(utt) {
     var splited = utt.split("_");
     if (splited.length == 2) {
@@ -59,7 +82,7 @@ var OverinformativeModel = function(params, context) {
 
   var getUtteranceCost = function(utt) {
     var splited = utt.split("_");
-    if (splited.length == 2) {
+     if (splited.length == 2) {
       // conditioning cost on typicality
       // return _.contains(["blue"], splited[0]) ? params.cost_type + 0.2 : params.cost_color + params.cost_type;
       return params.cost_color + params.cost_type;
@@ -67,14 +90,8 @@ var OverinformativeModel = function(params, context) {
       return _.contains(["yellow","orange","red","pink","green","blue","brown","black"], splited[0]) ? params.cost_color + params.color_only_cost : params.cost_type;
     }
   };
-
-
+  
   var getTailoredTypicalityUnlogged = function(utt, object) {
-    // console.log(utt);
-    // console.log(object);
-    // var f = Number.NEGATIVE_INFINITY;
-    // var e = -1;//0.00015;
-    // var f = -1;//0.00015;
     var tailoredtypicalities = {
       "apple" : {
         blue_apple : 0.462,
@@ -486,6 +503,7 @@ var OverinformativeModel = function(params, context) {
       },             
     };
 
+
     var splited = utt.split("_");
     if (splited.length === 2) {
       // console.log(tailoredtypicalities[splited[0]][object.join("_")]);
@@ -501,15 +519,24 @@ var OverinformativeModel = function(params, context) {
 
   var uttFitness = function(utt, object) {
     var typfit = getTailoredTypicalityUnlogged(utt,object); 
-    // console.log(typfit);
     return typfit; 
   };
 
-  var literalListener = cache(function(utt){
+  var transform = function(obj) {
+    return uniformDraw(remove(obj, objects));
+  }
+  
+  var noisyObserve = function(context) {
+    return map(function(obj) {
+      return flip(params.perceptionNoise) ? transform(obj) : obj;
+    }, context)
+  }
+  
+  var literalListener = cache(function(utt, perceivedContext){
     return Infer({method:'enumerate'},function(){
-      var object = uniformDraw(context);
-      // console.log(object);
-      // console.log(utt);
+      // console.log("perceivedContext");
+      // console.log(perceivedContext);
+      var object = uniformDraw(perceivedContext);
       // that's awesome
       factor(uttFitness(utt,object)); 
       return object;
@@ -519,15 +546,17 @@ var OverinformativeModel = function(params, context) {
   // what does cache do?
   var speaker = cache(function(target) {
     // list all possible utterances in context
-    var possibleutts = getUtterancesOneFeature(context);
-    console.log(possibleutts);
     return Infer({method:'enumerate'},function(){
+      var possibleContext = noisyObserve(trueContext)
+      // console.log("possibleContext");
+      // console.log(possibleContext);
+      var possibleutts = getUtterancesOneFeature(possibleContext);
       var utt = uniformDraw(possibleutts);
-      var literalListenerERP = literalListener(utt);
+      var literalListenerERP = literalListener(utt, possibleContext);
       var uttCost = getUtteranceCost(utt);
       // console.log(uttCost);
       // var noise = getNoise(utt);
-      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * (uttCost);
       // console.log("score: ");
       // console.log(score);
       factor(score); 
