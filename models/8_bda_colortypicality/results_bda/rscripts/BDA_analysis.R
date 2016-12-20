@@ -1,4 +1,4 @@
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/8_bda_colortypicality")
 library(ggplot2)
 library(dplyr)
 library(coda)
@@ -25,6 +25,7 @@ modelversion = "hmc-seed8"
 modelversion = "hmc-seed10"
 modelversion = "extended-hmc-seed10"
 modelversion = "hmc-seed10-theta"
+modelversion = "hmc-seed2-theta"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))
@@ -114,7 +115,7 @@ ggplot(numericSubset, aes(x=value)) +
     facet_grid(~ param, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/results_bda/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=2,width=13)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/8_bda_colortypicality/results_bda/graphs/parameterposteriors-",modelversion,".pdf",sep=""),height=2,width=13)
 
 ### Predictives
 
@@ -262,7 +263,7 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=condition)) +
   geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
   geom_abline(intercept=0,slope=1,color="gray60") +
   facet_wrap(~Utterance)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/Elisa_colortypicality/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=4,width=14)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/8_bda_colortypicality/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=4,width=14)
 
 cor(toplot$ModelProbability,toplot$Probability) 
 

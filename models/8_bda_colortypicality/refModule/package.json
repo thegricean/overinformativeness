@@ -2,7 +2,7 @@
   "name": "refModule",
   "main" : "ref.js",
   "webppl": {
-    "wppl" : ["overinf_qualitative_bananatypicality.wppl"]
+    "wppl" : ["overinf_qualitative_bananatypicality_theta.wppl"]
   },
   "dependencies": {
     "underscore": "~1.7.0",
