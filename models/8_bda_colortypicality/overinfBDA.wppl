@@ -32,17 +32,20 @@ var modelAnalysis = function() {
   // };
 
   // console.log(params);
-
+  // note: uniformDrift helper equivalent to:
+  // var makeUniformKernel = function(width) {
+  //   return function(prevVal) {
+  //     return Uniform({a:prevVal-width,
+  //                     b:prevVal+width})}};
   var params = {
-    alpha : sample(UniformDrift({a:0,b:40,r:40/20})),
-    lengthWeight : sample(UniformDrift({a:0,b:10,r:10/20})),
-    cost_color : sample(UniformDrift({a:0,b:3,r:3/20})),
-    cost_type : sample(UniformDrift({a:0,b:3,r:3/20})),
-    color_only_cost : sample(UniformDrift({a:0,b:3,r:3/20})),
-    theta : sample(UniformDrift({a:0,b:1,r:1/20}))
+    alpha : uniformDrift({a:0,b:40,width:40/20}),
+    lengthWeight : uniformDrift({a:0,b:10,width:10/20}),
+    cost_color : uniformDrift({a:0,b:3,width:3/20}),
+    cost_type : uniformDrift({a:0,b:3,width:3/20}),
+    color_only_cost : uniformDrift({a:0,b:3,width:3/20}),
+    theta : uniformDrift({a:0,b:1,width:1/20})
   };  
-
-  // console.log(params);
+  
 
   // Run model and condition on data
   var score = sum(map(function(condition) {
@@ -91,14 +94,16 @@ var modelAnalysis = function() {
     // console.log(score);
 
 	    // Store predictions
-	  foreach(modelOutput.support([]), function(s){
+    foreach(modelOutput.support([]), function(s){
       query.add([condition[0], condition[1], condition[2], condition[3], condition[4], condition[5], condition[6], s], Math.exp(modelOutput.score(s)));
-	  });
+    });
 
-	  return score;
+    return score;
   }, conditions));
 
   // display(score);
+  console.log(params);
+  console.log(score);
 
   factor(score)
   // factor(Math.max(score, -1000));
@@ -109,9 +114,9 @@ var modelAnalysis = function() {
   return {predictive: query.table, params : params};
 };
 
-// var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 500, burn: 200, verbose: true}, modelAnalysis); // seed8
-var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0172} }, samples: 5, burn: 1, verbose: true}, modelAnalysis); // seed10
+//var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0172} }, samples: 5, burn: 1, verbose: true}, modelAnalysis); // seed10
 
 console.log('inference complete... printing');
 
