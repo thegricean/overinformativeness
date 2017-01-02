@@ -807,8 +807,7 @@ var getUtterancesOneFeature = function(context) {
          green_tomato : 0.958421052631579,
          pink_tomato : 0.136842105263158,
          red_tomato : 0.236315789473684             
-     }  ,
-
+     }
     };
 
       var typicality = tailoredtypicalities[utt][object.join("_")];
