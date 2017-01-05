@@ -913,12 +913,9 @@ var OverinformativeModel = function(params, trueContext) {
 	// }
 
 	var similarity = function(context1, context2) {
-		// var context1 = [1];
-		// var context2 = [1];
 	  var commonElements = _.intersection(context1, context2);
 	  console.log("");
 		console.log("context1");
-		// console.log(typeof context1);
 		console.log(context1);
 		console.log("context2");
 		console.log(context2);
@@ -930,23 +927,7 @@ var OverinformativeModel = function(params, trueContext) {
 	  console.log(context1.length);
 	  console.log("similarity");
 	  console.log(commonElements.length/context1.length);
-	 //  var context1 = [[ 'yellow', 'pear' ],[ 'yellow', 'pear' ],[ 'blue', 'banana' ]];
-	 //  var context2 = [[ 'yellow', 'pear' ],[ 'yellow', 'pear' ],[ 'blue', 'banana' ]];
-		// // var context2 = [[ 'yellow', 'banana' ],[ 'yellow', 'pear' ],[ 'blue', 'banana' ]];
-		// var commonElements = _.intersection(context1, context2);
-		// console.log("context1");
-	 //  console.log(context1);
-		// console.log("context2");
-		// console.log(context2);
-	 //  console.log("number common elements");
-	 //  console.log(commonElements.length);
-	 //  console.log("common elements");
-	 //  console.log(commonElements);
-	 //  console.log("length possible context");
-	 //  console.log(context1.length);
-	 //  console.log("similarity");
-	 //  console.log(commonElements.length/context1.length);
-	 //  console.log("");
+	  console.log("");
 	  return commonElements.length/context1.length;
 	}
 
@@ -985,19 +966,17 @@ var OverinformativeModel = function(params, trueContext) {
 	});
 
 	var runModel = function(speakerModel, target) { 
-		var speakerERP = speakerModel(target);
-		return Infer({method:'enumerate'},function(){
-			var utt = sample(speakerERP);
-			return utt;
-		});
+		// console.log("here");
+		var context1 = [['yellow', 'pear'], ['yellow', 'pear'], ['blue', 'banana']];
+		var context2 = [['yellow', 'banana'], ['yellow', 'pear'], ['blue', 'banana']];
+		// console.log(typeof context1);
+		var commonElements = _.intersection(context1,context2);
+		console.log("commonElements");
+		console.log(commonElements);
 	};
 
 	var runListener = function(listenerModel, utterance) { 
-		var listenerERP = listenerModel(utterance);
-		return Infer({method:'enumerate'},function(){
-			var obj = sample(listenerERP);
-			return obj;
-		});
+		// console.log("here");
 	};    
 
 	return {
