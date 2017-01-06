@@ -58,6 +58,7 @@ table(d$context,d$typeMentioned)
 table(d$context,d$colorMentioned)
 
 typ = read.csv(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
+typ = read.csv(file="/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
@@ -156,12 +157,26 @@ agr = as.data.frame(agr)
 agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
 
+  # change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "Cat", "ColorAndType", "ColorAndCat", "ColorModifier", "Description", "Neg", "Other"))
+
+  # change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+
 ggplot(agr, aes(x=Utterance,y=Probability)) +
-  geom_bar(stat="identity") +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  geom_bar(stat="identity",width=.2,fill="orange",colour="orange") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.15,colour="grey") +
   facet_wrap(~context) +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave("graphs/mentioned_features_by_context_other.png",width=10,height=3.5)
+  scale_x_discrete(labels=c("Only Type", "Only Color", "Only Category", "Color + Type", "Color + Category", "Includes Color Modifier", "Includes Description", "Includes Negation", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1,size=11,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
+ggsave("graphs/mentioned_features_by_context_other.png",width=7,height=7)
 
 # plot utterance choice proportions by typicality
 agr = production %>%
@@ -173,11 +188,30 @@ agr = as.data.frame(agr)
 agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
 
+  # change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "Cat", "ColorAndType", "ColorAndCat", "ColorModifier", "Description", "Neg", "Other"))
+
+  # change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+
 ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance)) +
   geom_point() +
   geom_line() +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~context)
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                      breaks=c("Type", "Color", "Cat", "ColorAndType", "ColorAndCat", "ColorModifier", "Description", "Neg", "Other"),
+                      labels=c("Only Type", "Only Color", "Only Category", "Color + Type", "Color + Category", "Includes Color Modifier", "Includes Description", "Includes Negation", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(size=11,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(legend.title=element_text(size=14,color="#757575")) +
+  theme(legend.text=element_text(size=11,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
 ggsave("graphs/utterance_by_binarytyp.png",width=10,height=6.5)
 
 # plot utterance choice proportions by typicality
@@ -190,11 +224,30 @@ agr = as.data.frame(agr)
 agr$YMin = agr$Probability - agr$ci.low
 agr$YMax = agr$Probability + agr$ci.high
 
+  # change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "Cat", "ColorAndType", "ColorAndCat", "ColorModifier", "Description", "Neg", "Other"))
+
+  # change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+
 ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
-  geom_point() +
-  geom_smooth(method="lm") +
+  geom_point(size=.5) +
+  geom_smooth(method="lm",size=.6) +
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~context)
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                       breaks=c("Type", "Color", "Cat", "ColorAndType", "ColorAndCat", "ColorModifier", "Description", "Neg", "Other"),
+                       labels=c("Only Type", "Only Color", "Only Category", "Color + Type", "Color + Category", "Includes Color Modifier", "Includes Description", "Includes Negation", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(size=10,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(legend.title=element_text(size=14,color="#757575")) +
+  theme(legend.text=element_text(size=11,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
 ggsave("graphs/utterance_by_conttyp.png",width=12,height=9)
 
 # plot utterance choice proportions by typicality
