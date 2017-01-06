@@ -70,7 +70,8 @@ var objects = [
 ];
 
 var OverinformativeModel = function(params, trueContext) {
-
+			console.log("blub");
+			console.log(trueContext);
 	/*var getNoise = function(utt) {
 		var splited = utt.split("_");
 		if (splited.length == 2) {
