@@ -1,0 +1,273 @@
+var uniformDraw = function (xs) {
+  return xs[randomInteger(xs.length)];
+};
+
+var foreach = function(lst, fn) {
+  var foreach_ = function(i) {
+    if (i < lst.length) {
+      fn(lst[i]);
+      foreach_(i + 1);
+    }
+  };
+  foreach_(0);
+};
+
+var colors = ["yellow","orange","red","pink",
+          "green","blue","brown","black"];
+
+ var typicality = {
+  "apple" : {
+    blue_apple : 0,
+    green_apple : 0,
+    red_apple : 0
+  },
+  "avocado" : {
+    black_avocado : 0,
+    green_avocado : 0,
+    red_avocado : 0
+  },
+  "banana" : {
+    blue_banana : 0,
+    brown_banana : 0,
+    yellow_banana : 0
+  },
+  "carrot" : {
+    brown_carrot : 0,
+    orange_carrot : 0,
+    pink_carrot : 0
+  },
+  "pear" : {
+    green_pear : 0,
+    orange_pear : 0,
+    yellow_pear : 0
+  },
+  "pepper" : {
+    black_pepper : 0,
+    orange_pepper : 0,
+    red_pepper : 0,
+    green_pepper : 0
+  },
+  "tomato" : {
+    green_tomato : 0,
+    pink_tomato : 0,
+    red_tomato : 0
+  },
+  "fruit" : {
+    blue_apple : 0,
+    green_apple : 0,
+    red_apple : 0,
+    black_avocado : 0,
+    green_avocado : 0,
+    red_avocado : 0,
+    blue_banana : 0,
+    brown_banana : 0,
+    yellow_banana : 0,
+    green_pear : 0,
+    orange_pear : 0,
+    yellow_pear : 0
+  },
+  "vegetable" : {
+    brown_carrot : 0,
+    orange_carrot : 0,
+    pink_carrot : 0
+  },
+  "yellow" : {
+    yellow_banana : 0,
+    yellow_pear : 0
+  },
+  "orange" : {
+    orange_carrot : 0,
+    orange_pear : 0,
+    orange_pepper : 0
+  },           
+  "red" : {
+    red_apple : 0,
+    red_avocado : 0,
+    red_pepper : 0,
+    red_tomato : 0
+  },    
+  "pink" : {
+    pink_carrot : 0,
+    pink_tomato : 0
+  },   
+  "green" : {
+    green_apple : 0,
+    green_avocado : 0,
+    green_pear : 0,
+    green_pepper : 0,
+    green_tomato : 0
+  },    
+  "blue" : {
+    blue_apple : 0,
+    blue_banana : 0
+  },    
+  "brown" : {
+    brown_banana : 0,
+    brown_carrot : 0
+  },    
+  "black" : {
+    black_avocado : 0,
+    black_pepper : 0
+  },
+  // "black_avocado" : {
+  //   black_avocado : 0
+  // },
+  // "black_pepper" : {
+  //   black_pepper : 0
+  // },
+  // "blue_apple" : {
+  //   blue_apple : 0
+  // },
+  // "blue_banana" : {
+  //   blue_banana : 0
+  // },
+  // "brown_banana" : {
+  //   brown_banana : 0
+  // },
+  // "green_apple" : {
+  //   green_apple : 0
+  // },
+  // "green_avocado" : {
+  //   green_avocado : 0
+  // },
+  // "green_pear" : {
+  //   green_pear : 0
+  // },
+  // "green_pepper" : {
+  //   green_pepper : 0
+  // },
+  // "orange_carrot" : {
+  //   orange_carrot : 0
+  // },
+  // "orange_pear" : {
+  //   orange_pear : 0
+  // },
+  // "orange_pepper" : {
+  //   orange_pepper : 0
+  // },
+  // "pink_carrot" : {
+  //   pink_carrot : 0
+  // },
+  // "pink_tomato" : {
+  //   pink_tomato : 0
+  // },
+  // "red_apple" : {
+  //   red_apple : 0
+  // },
+  // "red_avocado" : {
+  //   red_avocado : 0
+  // },
+  // "red_pepper" : {
+  //   red_pepper : 0
+  // },
+  // "red_tomato" : {
+  //   red_tomato : 0
+  // },
+  // "yellow_banana" : {
+  //   yellow_banana : 0
+  // },
+  // "yellow_pear" : {
+  //   yellow_pear : 0
+  // },
+  // "brown_carrot" : {
+  //   brown_carrot : 0
+  // },
+  // "green_tomato" : {
+  //   green_tomato : 0            
+  // }
+};
+
+  
+
+// TODO: represent context items as
+// {color: ..., type: ...} instead of arrays
+var getUtterancesOneFeature = function(context) {
+  return _.unique(_.flatten(map(function(itemArr) {
+    return [itemArr[0], itemArr[1], itemArr.join('_')];
+  },context)));
+};
+
+var OverinformativeModel = function(params, context) {
+
+  // Cost of full utterances is sum of individual word costs,
+  // unless you just use a color, in which case you incur
+  // an additional costx
+  var getUtteranceCost = function(utt) {
+    var splited = utt.split("_");
+    if (splited.length == 2) {
+      return params.cost_color + params.cost_type;
+    } else {
+      return (_.contains(colors, splited[0]) ?
+          params.cost_color + params.color_only_cost :
+          params.cost_type);
+    }
+  };
+
+
+  // Looks up typicality of object for each word in utt,
+  // centers them using theta, and adds them up
+  var getTypicality = function(utt, object) {
+    var objStr = object.join("_");
+    // reduce takes utt and splits it (yellow_banana becomes yellow and banana)
+    // checks for both and adds up their typicality values 
+    // (memo "remembers" value from yellow in this case)
+    return reduce(function(word, memo) {
+      var origTyp = typicality[word][objStr];
+      var typ = typeof origTyp === 'undefined' ? Number.NEGATIVE_INFINITY : origTyp;
+      return memo + typ;
+    }, 0, utt.split('_'));
+  };
+  
+  var uttFitness = function(utt, object) {
+    return getTypicality(utt, object); 
+  };
+
+  var literalListener = cache(function(utt){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(context);
+      factor(uttFitness(utt,object)); 
+      return object;
+    });
+  });
+
+  // what does cache do?
+  var speaker = cache(function(target) {
+    // list all possible utterances in context
+    var possibleutts = getUtterancesOneFeature(context);
+    return Infer({method:'enumerate'},function(){
+      var utt = uniformDraw(possibleutts);
+      var literalListenerERP = literalListener(utt);
+      var uttCost = getUtteranceCost(utt);
+      // console.log(uttCost);
+      // var noise = getNoise(utt);
+      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
+      // console.log("score: ");
+      // console.log(score);
+      factor(score); 
+      return utt;
+    });
+  });
+
+  var runModel = function(speakerModel, target) { 
+    var speakerERP = speakerModel(target);
+    return Infer({method:'enumerate'},function(){
+      var utt = sample(speakerERP);
+      return utt;
+    });
+  };
+
+  var runListener = function(listenerModel, utterance) { 
+    var listenerERP = listenerModel(utterance);
+    return Infer({method:'enumerate'},function(){
+      var obj = sample(listenerERP);
+      return obj;
+    });
+  };    
+
+  return {
+    runModel : runModel,
+    speaker : speaker,
+    listener: literalListener,
+    runListener : runListener
+  };
+};
