@@ -2,7 +2,7 @@
   "name": "refModule",
   "main" : "ref.js",
   "webppl": {
-    "wppl" : ["overinf_baseline.wppl"]
+    "wppl" : ["overinf_noisycontext.wppl"]
   },
   "dependencies": {
     "underscore": "~1.7.0",
