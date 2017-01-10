@@ -69,7 +69,14 @@ var colors = ["yellow","orange","red","pink",
   "vegetable" : {
     brown_carrot : 0,
     orange_carrot : 0,
-    pink_carrot : 0
+    pink_carrot : 0,
+    green_tomato : 0,
+    pink_tomato : 0,
+    red_tomato : 0,
+    black_pepper : 0,
+    orange_pepper : 0,
+    red_pepper : 0,
+    green_pepper : 0
   },
   "yellow" : {
     yellow_banana : 0,
