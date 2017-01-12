@@ -6,7 +6,7 @@
 var contexts = [
                 {condition:"informative",
                  context:[["yellow", "banana"],
-                 ["yellow", "pear"],
+                 ["blue", "banana"],
                  ["blue", "apple"]]}/*,*/
 
 //                 {condition:"informative",
@@ -69,10 +69,10 @@ var contexts = [
 
 
 // var alphas = [5,10,13,20,30];
-var alphas = [15];
+var alphas = [5];
 var lengthWeights = [5];
 // var lengthWeights = [5];
-var color_only_cost = [0];
+var color_only_cost = [.5];
 var cost_colors = [.5];
 // var cost_colors = [1];
 var cost_types = [.5];

@@ -17,27 +17,28 @@ var colors = ["yellow","orange","red","pink",
 
 
 var objects = [
-	// ["blue","apple"],
-	// ["green","apple"],
-	// ["red","apple"],
-	// ["black","avocado"],
-	// ["green","avocado"],
-	// ["red","avocado"],
+	["blue","apple"],
+	["green","apple"],
+	["red","apple"],
+	["black","avocado"],
+	["green","avocado"],
+	["red","avocado"],
 	["blue","banana"],
-	// ["brown","banana"],
+	["brown","banana"],
 	["yellow","banana"],
-	// ["brown","carrot"],
-	// ["orange","carrot"],
-	// ["pink","carrot"],
-	// ["green","pear"],
-	// ["orange","pear"],
+	["brown","carrot"],
+	["orange","carrot"],
+	["pink","carrot"],
+	["green","pear"],
+	["orange","pear"],
 	["yellow","pear"],
-	// ["black","pepper"],
-	// ["orange","pepper"],
-	// ["red","pepper"],
-	// ["green","tomato"],
-	// ["pink","tomato"],
-	// ["red","tomato"]
+	["black","pepper"],
+    ["green","pepper"],
+	["orange","pepper"],
+	["red","pepper"],
+	["green","tomato"],
+	["pink","tomato"],
+	["red","tomato"]
 ];
 
 var typicality = {
@@ -459,6 +460,8 @@ var colorSim = {
         green : .5,
         orange : .3,
         red : .09,
+        black : .05,
+        pink : .05
     },
     "blue" : {
         yellow : .05,
@@ -467,6 +470,8 @@ var colorSim = {
         green : .1,
         orange : .05,
         red : .05,
+        black : .2,
+        pink : .05
     },
     "brown" : {
         yellow : .4,
@@ -475,6 +480,8 @@ var colorSim = {
         green : .2,
         orange : .4,
         red : .1,
+        black : .2,
+        pink : .05
     },
     "green" : {
         yellow : .5,
@@ -483,6 +490,8 @@ var colorSim = {
         green : 1,
         orange : .05,
         red : .05,
+        black : .05,
+        pink : .05
     },
     "orange" : {
         yellow : .3,
@@ -491,6 +500,8 @@ var colorSim = {
         green : .05,
         orange : 1,
         red : .5,
+        black : .05,
+        pink : .1
     },
     "red" : {
         yellow : .09,
@@ -499,6 +510,8 @@ var colorSim = {
         green : .05,
         orange : .5,
         red : 1,
+        black : .05,
+        pink : .3
     }
 }
 
@@ -570,14 +583,31 @@ var OverinformativeModel = function(params, trueContext) {
     var getSimilarity = function(obj1, obj2) {
         return (1 + colorSim[obj1[0]][obj2[0]])/2;
     };
+
+    // input: true and perceived context
+    // output: value between 0 and 1 representing their similarity
+    // idea: for each object in the first context check whether
+        // there is an object of the same type in the second context;
+        // if not, return 0 as the similarity and continue with next
+        // object from first context;
+        // if there is at least one, look up their color similarity, 
+        // the one with the biggest similarity is deleted from the
+        // context and the value is returned;
+        // this has to be done for every possible ordering of the 
+        // first context as otherwise cases such as
+        // c1: blue ban, yellow ban, blue app
+        // c2: yellow ban, red app, blue app
+        // would go wrong as it would already choose the yellow ban
+        // as a blue banana pendant even though there are 2 yellows;
+        // in the end the value with the highest similarity is chosen
 	var similarity = function(context1, context2) {
-        console.log("");
-        console.log("############");
-        console.log("New Context");
-        console.log("context1");
-        console.log(context1);
-        console.log("context2");
-        console.log(context2);
+        // console.log("");
+        // console.log("############");
+        // console.log("New Context");
+        // console.log("context1");
+        // console.log(context1);
+        // console.log("context2");
+        // console.log(context2);
         var context11 = context1;
         var context12 = [context1[1],context1[2],context1[0]];
         var context13 = [context1[2],context1[0],context1[1]];
@@ -605,8 +635,8 @@ var OverinformativeModel = function(params, trueContext) {
         var allSims = map(function(r) {return (r[0][0]+r[1][0]+r[2][0])/r.length},sim);
         var sortedSim = sort(allSims,gt);
         var maxSim = sortedSim[0];
-        console.log("maxSim");
-        console.log(maxSim);
+        // console.log("maxSim");
+        // console.log(maxSim);
         
         return maxSim;
 	};
@@ -633,7 +663,7 @@ var OverinformativeModel = function(params, trueContext) {
 			var similarity = similarity(possibleContext, trueContext);
             // console.log(similarity);
 			// var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * (uttCost);
-			var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * (uttCost) + similarity;
+			var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * (uttCost) + /*params.simWeight **/ similarity;
 			factor(score); 
 			return utt;
 		});
