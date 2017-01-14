@@ -51,7 +51,25 @@ summary(typ)
 production = d
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$MeanTypicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
-#production <- production[,colSums(is.na(production))<nrow(production)]
+
+#better/newer one
+production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|^or ", production$refExp, ignore.case = TRUE), T, F)
+production$CleanedResponse = gsub("(^| )([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana|banada|nana|bannan|babanana|B)($| )"," banana",as.character(production$refExp))
+production$CleanedResponse = gsub("(^| )([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt|carrote|carr)($| )"," carrot",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("(^| )([Pp]earr|pea)$"," pear",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("(^| )([Tt]omaot|tokm|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato|toamoat|mato|totomato|tomatop)($| )"," tomato",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("(^| )([Aa]ppe|appple|APPLE|appl|app|apale|aple|ap)($| )"," apple",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("(^| )([Pp]eper|pepp|peppre|pep|bell|jalapeno|jalpaeno|eppper|jalpaeno?)($| )"," pepper",as.character(production$CleanedResponse))
+production$CleanedResponse = gsub("(^| )([Aa]vacado|avodado|avacdo|[Aa]vacadfo|avo|avacoda|avo|advocado|avavcado|avacodo|guacamole|gaucamole|guacolome|advacado|avacado,|avacado\\\\)($| )"," avocado",as.character(production$CleanedResponse))
+production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
+
+
+
+#old
 production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|re", production$refExp, ignore.case = TRUE), T, F)
 production$CleanedResponse = gsub("(^| )([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana|banada|nana|bannan|babanana|B)($| )"," banana",as.character(production$refExp))
 production$CleanedResponse = gsub("(^| )([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt|carrote)($| )"," carrot",as.character(production$CleanedResponse))
@@ -65,6 +83,7 @@ production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable",
 production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
+#end of old 
 
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
 
@@ -79,7 +98,12 @@ table(production[production$UtteranceType == "OTHER",]$gameid)
 production$Color = ifelse(production$UtteranceType == "color",1,0)
 production$ColorAndType = ifelse(production$UtteranceType == "color_and_type",1,0)
 production$Type = ifelse(production$UtteranceType == "type",1,0)
-production$Other = ifelse(production$UtteranceType == "OTHER" | production$UtteranceType == "color_and_cat" | production$UtteranceType == "cat" | production$UtteranceType == "negation" | production$UtteranceType == "description" | production$UtteranceType == "color_modifier",1,0)
+production$ColorAndCat = ifelse(production$UtteranceType == "color_and_cat",1,0)
+production$Cat = ifelse(production$UtteranceType == "cat",1,0)
+production$Neg = ifelse(production$UtteranceType == "negation",1,0)
+production$Description = ifelse(production$UtteranceType == "description",1,0)
+production$ColorModifier = ifelse(production$UtteranceType == "color_modifier",1,0)
+production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
 production$Half = ifelse(production$roundNum < 21,1,2)
 
