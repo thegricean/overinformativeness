@@ -17,27 +17,28 @@ var colors = ["yellow","orange","red","pink",
 
 
 var objects = [
-	// ["blue","apple"],
-	// ["green","apple"],
-	// ["red","apple"],
-	// ["black","avocado"],
-	// ["green","avocado"],
-	// ["red","avocado"],
+	["blue","apple"],
+	["green","apple"],
+	["red","apple"],
+	["black","avocado"],
+	["green","avocado"],
+	["red","avocado"],
 	["blue","banana"],
 	["brown","banana"],
 	["yellow","banana"],
-	// ["brown","carrot"],
-	// ["orange","carrot"],
-	// ["pink","carrot"],
+	["brown","carrot"],
+	["orange","carrot"],
+	["pink","carrot"],
 	["green","pear"],
 	["orange","pear"],
 	["yellow","pear"],
-	// ["black","pepper"],
-	// ["orange","pepper"],
-	// ["red","pepper"],
-	// ["green","tomato"],
-	// ["pink","tomato"],
-	// ["red","tomato"]
+	["black","pepper"],
+    ["green","pepper"],
+	["orange","pepper"],
+	["red","pepper"],
+	["green","tomato"],
+	["pink","tomato"],
+	["red","tomato"]
 ];
 
 var typicality = {
@@ -476,7 +477,7 @@ var OverinformativeModel = function(params, trueContext) {
 	};
 
 	// Looks up typicality of object for each word in utt,
-	// centers them using theta, and adds them up
+	// (centers them using theta,) and adds them up
 	var getTypicality = function(utt, object) {
 	  var objStr = object.join("_");
 	  return reduce(function(word, memo) {
