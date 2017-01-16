@@ -3,7 +3,7 @@
 1. overinf_baseline.wppl
 	- adding up typicalities --> compositional
 	- typicalities either 0 or -Infinity
-2. overinf\_qualitative\_bananatypicality_theta.wppl
+2. overinf\_qualitative\_bananatypicality_negtyp.wppl
 	- adding up typicalities --> compositional
 	- typicalities originally are between 0 and 1, but in this version params.theta - typicality
 	- idea of introducing theta: be able to make a worse fit by adding a word (blue banana is a worse fit for a yellow banana than just banana)
