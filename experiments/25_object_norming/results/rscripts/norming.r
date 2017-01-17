@@ -5,14 +5,14 @@ library(lme4)
 library(tidyr)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/25_object_norming/results")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/25_object_norming/results")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results")
 
 theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
-#d1 = read.table(file="/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
+d1 = read.table(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
 d1 = read.table(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/28_25_added_items/results/data/norming.csv",sep=",", header=T)#, quote="")
 head(d)
 nrow(d)
