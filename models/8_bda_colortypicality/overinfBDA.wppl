@@ -1,9 +1,9 @@
 // run using:
 // webppl overinfBDA.wppl --require ./refModule/
 
-util.seedRNG(2);
+// util.seedRNG(2);
 // util.seedRNG(10);
-// util.seedRNG(8);
+util.seedRNG(8);
 
 
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
@@ -114,13 +114,15 @@ var modelAnalysis = function() {
   return {predictive: query.table, params : params};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 1500, burn: 500, verbose: true}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', samples: 1000, lag: 10, verbose: true}, modelAnalysis);
 // var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 500, burn: 200, verbose: true}, modelAnalysis); // seed8
 //var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.0172} }, samples: 5, burn: 1, verbose: true}, modelAnalysis); // seed10
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed2-theta");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10-theta");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed2-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");

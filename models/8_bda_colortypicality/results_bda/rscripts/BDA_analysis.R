@@ -26,6 +26,7 @@ modelversion = "hmc-seed10"
 modelversion = "extended-hmc-seed10"
 modelversion = "hmc-seed10-theta"
 modelversion = "hmc-seed2-theta"
+modelversion = "hmc-seed8-theta"
 
 params<-read.csv(paste("bdaOutput/bda-",modelversion,"Params.csv",sep=""), sep = ",", row.names = NULL)
 samples = nrow(params)/length(levels(params$parameter))
@@ -77,7 +78,6 @@ typSizeSubset = params.samples %>%
 cat("cost_type = ", typSizeSubset$md) 
 cat("95% HPD interval = [", typSizeSubset$md_low, ",", typSizeSubset$md_hi, "]")
 
-
 costColorSubset = params.samples %>% 
   filter(parameter == "color_only_cost") %>%
   #mutate(value = as.numeric(levels(value))[value]) %>%
@@ -88,16 +88,28 @@ costColorSubset = params.samples %>%
 cat("color_only_cost = ", costColorSubset$md) 
 cat("95% HPD interval = [", costColorSubset$md_low, ",", costColorSubset$md_hi, "]")
 
+thetaSubset = params.samples %>% 
+  filter(parameter == "theta") %>%
+  #mutate(value = as.numeric(levels(value))[value]) %>%
+  group_by(parameter) %>%
+  summarise(md = estimate_mode(value),
+            md_hi = round(HPDhi(value), 3),
+            md_low = round(HPDlo(value), 3))
+cat("theta = ", thetaSubset$md) 
+cat("95% HPD interval = [", thetaSubset$md_low, ",", thetaSubset$md_hi, "]")
+
 numericSubset = params.samples %>% 
-  filter(parameter %in% c("alpha", "lengthWeight", "cost_color","cost_type","color_only_cost")) #%>%
+  filter(parameter %in% c("alpha", "lengthWeight", "cost_color","cost_type","color_only_cost","theta")) #%>%
 numericSubset$parameter = as.character(numericSubset$parameter)
 numericSubset[numericSubset$parameter == "alpha",]$parameter = "lambda"
 numericSubset[numericSubset$parameter == "lengthWeight",]$parameter = "beta_c"
 numericSubset[numericSubset$parameter == "cost_color",]$parameter = "cost_color"
 numericSubset[numericSubset$parameter == "cost_type",]$parameter = "cost_type"
 numericSubset[numericSubset$parameter == "color_only_cost",]$parameter = "color_only_cost"
+numericSubset[numericSubset$parameter == "theta",]$parameter = "theta"
 
-numericSubset$param = factor(x=numericSubset$parameter,levels=c("lambda","beta_c","cost_color","cost_type","color_only_cost"))
+# numericSubset$param = factor(x=numericSubset$parameter,levels=c("lambda","beta_c","cost_color","cost_type","color_only_cost"))
+numericSubset$param = factor(x=numericSubset$parameter,levels=c("lambda","beta_c","cost_color","cost_type","color_only_cost","theta"))
 
 bw = 10
 
@@ -111,7 +123,9 @@ ggplot(numericSubset, aes(x=value)) +
   geom_histogram(data=subset(numericSubset, parameter == "cost_type"),
                  binwidth = (range(numericSubset[numericSubset$parameter == "cost_type",]$value)[2] - range(numericSubset[numericSubset$parameter == "cost_type",]$value)[1])/bw, colour="black", fill="white")+ 
   geom_histogram(data=subset(numericSubset, parameter == "color_only_cost"),
-                 binwidth = (range(numericSubset[numericSubset$parameter == "color_only_cost",]$value)[2] - range(numericSubset[numericSubset$parameter == "color_only_cost",]$value)[1])/bw, colour="black", fill="white")+  
+                 binwidth = (range(numericSubset[numericSubset$parameter == "color_only_cost",]$value)[2] - range(numericSubset[numericSubset$parameter == "color_only_cost",]$value)[1])/bw, colour="black", fill="white")+
+  geom_histogram(data=subset(numericSubset, parameter == "theta"),
+                 binwidth = (range(numericSubset[numericSubset$parameter == "theta",]$value)[2] - range(numericSubset[numericSubset$parameter == "theta",]$value)[1])/bw, colour="black", fill="white")+  
     facet_grid(~ param, scales = "free_x") +
     theme_bw() +
   theme(plot.margin=unit(c(0,0,0,0),"cm"))
@@ -265,5 +279,27 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=condition)) +
   facet_wrap(~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/8_bda_colortypicality/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=4,width=14)
 
-cor(toplot$ModelProbability,toplot$Probability) 
+library(hydroGOF)
+gof(toplot$ModelProbability,toplot$Probability)
+gof(toplot[toplot$ModelProbability != 0,]$ModelProbability,toplot[toplot$ModelProbability != 0,]$Probability)
 
+# ME      -0.01
+# MAE      0.14
+# MSE      0.04
+# RMSE     0.20
+# NRMSE % 60.90
+# PBIAS % -2.30
+# RSR      0.61
+# rSD      0.84
+# NSE      0.63
+# mNSE     0.48
+# rNSE     -Inf
+# d        0.88
+# md       0.72
+# rd       -Inf
+# cp      -0.06
+# r        0.79
+# R2       0.63
+# bR2      0.52
+# KGE      0.74
+# VE       0.57

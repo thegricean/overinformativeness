@@ -25,7 +25,6 @@ overinformative,orange,pear,pink,carrot,red,tomato,orange
 informative,red,pepper,green,pear,orange,pepper,red
 overinformative,black,pepper,green,avocado,green,pear,black
 overinformative,yellow,banana,black,pepper,red,tomato,yellow
-informative-cc,black,avocado,red,avocado,black,pepper,black_avocado
 informative,red,apple,blue,apple,green,avocado,red_apple
 overinformative-cc,yellow,pear,yellow,banana,red,tomato,pear
 informative,red,tomato,orange,pepper,pink,tomato,red
@@ -414,7 +413,7 @@ overinformative-cc,orange,carrot,black,pepper,orange,pepper,carrot
 informative,red,pepper,yellow,banana,orange,pepper,red_pepper
 informative,yellow,pear,brown,banana,orange,pear,yellow_pear
 overinformative,orange,pear,red,apple,green,tomato,orange_pear
-overinformative-cc,red,apple,black,pepper,red,tomato,red
+overinformative-cc,red,apple,black,pepper,red,tomato,red_apple
 informative-cc,blue,apple,green,apple,blue,banana,blue_apple
 informative-cc,green,apple,red,apple,green,tomato,green_apple
 overinformative,red,avocado,blue,apple,orange,pepper,red_avocado
@@ -909,7 +908,6 @@ overinformative,red,tomato,green,pear,yellow,pear,tomato
 informative,red,avocado,black,avocado,brown,banana,red_avocado
 informative,blue,apple,red,apple,yellow,pear,blue
 informative,green,pear,blue,banana,yellow,pear,green
-overinformative,red,tomato,green,apple,brown,carrot,red
 informative,pink,carrot,red,apple,orange,carrot,pink
 informative,black,pepper,green,apple,orange,pepper,black
 informative-cc,orange,pear,orange,carrot,yellow,pear,orange_pear
@@ -936,7 +934,6 @@ overinformative-cc,blue,apple,blue,banana,yellow,banana,apple
 informative-cc,yellow,pear,yellow,banana,green,pear,yellow_pear
 overinformative,yellow,pear,blue,banana,black,pepper,pear
 overinformative,brown,carrot,blue,apple,yellow,banana,carrot
-informative-cc,yellow,banana,blue,banana,yellow,pear,banana
 overinformative-cc,brown,carrot,green,apple,brown,banana,carrot
 overinformative,green,apple,black,pepper,red,tomato,apple
 overinformative-cc,orange,pear,blue,banana,orange,carrot,pear
@@ -1229,7 +1226,7 @@ informative,green,tomato,yellow,banana,pink,tomato,green_tomato
 informative,blue,banana,brown,banana,pink,carrot,blue_banana
 informative,pink,tomato,yellow,banana,green,tomato,pink_tomato
 informative,green,avocado,black,avocado,black,pepper,green_avocado
-overinformative-cc,brown,carrot,brown,banana,green,tomato,brown
+overinformative-cc,brown,carrot,brown,banana,green,tomato,brown_carrot
 informative-cc,orange,carrot,brown,carrot,orange,pepper,orange_carrot
 overinformative-cc,red,pepper,pink,carrot,red,tomato,pepper
 informative-cc,black,avocado,green,avocado,black,pepper,black_avocado
@@ -1237,17 +1234,17 @@ informative-cc,red,apple,green,apple,red,tomato,red_apple
 informative-cc,green,apple,red,apple,green,tomato,green_apple
 informative-cc,pink,tomato,pink,carrot,green,tomato,pink_tomato
 informative-cc,brown,banana,blue,banana,brown,carrot,brown_banana
-overinformative-cc,orange,carrot,red,avocado,orange,pepper,carrot
+overinformative-cc,orange,carrot,red,avocado,orange,pepper,orange_carrot
 informative,black,pepper,blue,apple,red,pepper,black_pepper
 informative-cc,pink,carrot,orange,carrot,pink,tomato,pink_carrot
 informative-cc,yellow,pear,yellow,banana,orange,pear,yellow_pear
 overinformative,red,avocado,blue,apple,brown,banana,red_avocado
 overinformative,green,apple,orange,carrot,orange,pepper,green_apple
 overinformative-cc,red,tomato,blue,banana,red,pepper,tomato
-informative,orange,pear,blue,apple,green,pear,pear
-overinformative,orange,pepper,red,apple,yellow,banana,pepper
+informative,orange,pear,blue,apple,green,pear,orange_pear
+overinformative,orange,pepper,red,apple,yellow,banana,orange_pepper
 overinformative-cc,brown,banana,green,apple,brown,carrot,brown_banana
-overinformative,pink,carrot,red,avocado,green,tomato,pink
+overinformative,pink,carrot,red,avocado,green,tomato,pink_carrot
 overinformative-cc,blue,apple,blue,banana,pink,tomato,blue_apple
 informative,red,avocado,black,avocado,yellow,banana,red_avocado
 overinformative,blue,banana,orange,carrot,red,pepper,blue_banana
@@ -1270,7 +1267,6 @@ informative,brown,carrot,pink,carrot,yellow,pear,brown_carrot
 informative,pink,carrot,red,apple,brown,carrot,pink_carrot
 informative,red,apple,blue,apple,green,avocado,red_apple
 informative-cc,black,avocado,green,avocado,black,pepper,black_avocado
-informative,orange,carrot,red,apple,brown,carrot,carrot
 informative,red,pepper,blue,banana,orange,pepper,red_pepper
 informative-cc,black,pepper,black,avocado,orange,pepper,black_pepper
 overinformative,green,apple,yellow,banana,pink,carrot,green_apple
@@ -1370,12 +1366,12 @@ overinformative,red,tomato,brown,carrot,orange,pear,tomato
 informative-cc,yellow,banana,brown,banana,yellow,pear,yellow_banana
 informative,pink,carrot,brown,carrot,green,pear,pink_carrot
 overinformative,orange,pear,black,avocado,brown,banana,pear
-overinformative,yellow,pear,red,apple,red,pepper,yellow_pear
+overinformative,yellow,pear,red,apple,red,pepper,pear
 overinformative,red,apple,orange,carrot,orange,pear,apple
 overinformative-cc,orange,pear,green,apple,orange,carrot,pear
 informative,blue,apple,red,apple,red,avocado,blue_apple
 overinformative-cc,yellow,banana,red,avocado,yellow,pear,banana
-informative-cc,black,avocado,green,avocado,black,pepper,black
+informative-cc,black,avocado,green,avocado,black,pepper,black_avocado
 overinformative,black,pepper,green,avocado,pink,tomato,black_pepper
 informative-cc,brown,carrot,brown,banana,pink,carrot,brown_carrot
 overinformative-cc,pink,carrot,red,avocado,pink,tomato,pink_carrot
@@ -1666,7 +1662,6 @@ informative-cc,orange,pear,orange,carrot,green,pear,orange_pear
 overinformative-cc,orange,pepper,brown,carrot,orange,pear,orange_pepper
 informative-cc,blue,banana,blue,apple,brown,banana,blue_banana
 overinformative-cc,green,pear,green,apple,brown,banana,pear
-overinformative-cc,orange,carrot,orange,pepper,pink,tomato,orange
 informative-cc,black,avocado,red,avocado,black,pepper,avocado
 informative,green,avocado,red,avocado,orange,carrot,green_avocado
 informative,orange,pear,red,avocado,green,pear,orange_pear
@@ -1770,7 +1765,7 @@ informative,blue,apple,green,apple,brown,carrot,blue_apple
 overinformative,black,avocado,brown,carrot,red,pepper,black_avocado
 overinformative,orange,carrot,blue,banana,red,pepper,carrot
 overinformative-cc,red,apple,black,pepper,red,tomato,red_apple
-informative,black,avocado,green,avocado,brown,banana,black
+informative,black,avocado,green,avocado,brown,banana,black_avocado
 informative,brown,banana,yellow,banana,orange,pear,brown_banana
 overinformative,pink,tomato,red,avocado,yellow,banana,pink_tomato
 informative,green,tomato,black,avocado,pink,tomato,green_tomato

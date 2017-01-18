@@ -25,7 +25,6 @@ overinformative,orange,pear,pink,carrot,red,tomato
 informative,red,pepper,green,pear,orange,pepper
 overinformative,black,pepper,green,avocado,green,pear
 overinformative,yellow,banana,black,pepper,red,tomato
-informative-cc,black,avocado,red,avocado,black,pepper
 informative,red,apple,blue,apple,green,avocado
 overinformative-cc,yellow,pear,yellow,banana,red,tomato
 informative,red,tomato,orange,pepper,pink,tomato
@@ -113,6 +112,7 @@ informative,red,pepper,yellow,banana,black,pepper
 overinformative,blue,banana,black,avocado,orange,pepper
 informative,red,avocado,green,avocado,black,pepper
 informative,orange,pear,green,pear,red,tomato
+informative-cc,black,avocado,red,avocado,black,pepper
 informative-cc,green,pear,green,apple,orange,pear
 overinformative,red,pepper,orange,carrot,pink,carrot
 overinformative,blue,banana,green,avocado,pink,carrot
@@ -634,7 +634,6 @@ overinformative,red,tomato,green,pear,yellow,pear
 informative,red,avocado,black,avocado,brown,banana
 informative,blue,apple,red,apple,yellow,pear
 informative,green,pear,blue,banana,yellow,pear
-overinformative,red,tomato,green,apple,brown,carrot
 informative,pink,carrot,red,apple,orange,carrot
 overinformative-cc,green,tomato,green,pear,orange,pepper
 overinformative,green,tomato,red,apple,black,avocado
@@ -810,7 +809,6 @@ informative,blue,banana,green,avocado,yellow,banana
 overinformative,red,avocado,green,apple,orange,pear
 informative,brown,banana,yellow,banana,orange,pepper
 informative,pink,carrot,red,apple,brown,carrot
-informative,orange,carrot,red,apple,brown,carrot
 overinformative,green,apple,yellow,banana,pink,carrot
 overinformative,blue,apple,brown,banana,red,pepper
 overinformative-cc,blue,banana,blue,apple,red,tomato
