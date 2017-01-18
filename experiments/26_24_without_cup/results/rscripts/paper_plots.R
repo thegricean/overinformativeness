@@ -255,3 +255,39 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(panel.background=element_rect(colour="#939393"))
 ggsave("graphs/paper/utterance_by_conttyp.png",width=12,height=9)
 
+
+
+# plot utterance choice proportions by typicality - find banana
+agr = production %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,context,nameClickedObj) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality,-nameClickedObj) %>%
+  group_by(Utterance,context,NormedTypicality,nameClickedObj) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+# change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
+# change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance,label=nameClickedObj)) +
+  geom_point(size=.5) +
+  geom_smooth(method="lm",size=.6) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                       breaks=c("Type", "Color", "ColorAndType", "Other"),
+                       labels=c("Only Type", "Only Color", "Color + Type", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(size=10,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(legend.title=element_text(size=14,color="#757575")) +
+  theme(legend.text=element_text(size=11,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
+#get banana values
+agr[agr$context=="informative\nwith color competitor" & agr$Utterance=="ColorAndType" & agr$nameClickedObj=="banana_yellow",c("NormedTypicality","Probability")]
+

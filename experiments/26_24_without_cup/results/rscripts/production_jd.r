@@ -6,7 +6,7 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/results")
-setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/26_24_without_cup/results")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/26_24_without_cup/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")

@@ -5,7 +5,7 @@ library(lme4)
 library(tidyr)
 
 theme_set(theme_bw(18))
-#setwd("/Users/elisakreiss/Documents/stanford/study/overinformativeness/experiments/25_object_norming/results")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/29_complete_typicality_norming/results")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/29_complete_typicality_norming/results")
 
 theme_set(theme_bw(18))
