@@ -42,8 +42,8 @@ var modelAnalysis = function() {
     lengthWeight : uniformDrift({a:0,b:10,width:10/20}),
     cost_color : uniformDrift({a:0,b:3,width:3/20}),
     cost_type : uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDrift({a:0,b:3,width:3/20}),
-    theta : uniformDrift({a:0,b:1,width:1/20})
+    color_only_cost : uniformDrift({a:0,b:3,width:3/20})
+    // theta : uniformDrift({a:0,b:1,width:1/20})
   };  
   
 
@@ -120,11 +120,12 @@ var outputERP = Infer({method:'MCMC', samples: 1000, lag: 10, verbose: true}, mo
 
 console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed2-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed10");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-extended-hmc-seed8");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed10");
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8");
 
