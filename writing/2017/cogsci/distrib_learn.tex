@@ -45,14 +45,12 @@
 
 
 \definecolor{Blue}{RGB}{0,0,255}
-\newcommand{\jd}[1]{\textcolor{Blue}{[jd: #1]}}  
-\definecolor{Red}{RGB}{255,0,0}
-\newcommand{\red}[1]{\textcolor{Red}{#1}}
 \definecolor{Green}{RGB}{10,200,100}
-\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}
 \definecolor{Red}{RGB}{255,0,0}
-\newcommand{\caroline}[1]{\textcolor{Red}{#1}}
-
+\newcommand{\jd}[1]{\textcolor{Blue}{[jd: #1]}}  
+\newcommand{\rdh}[1]{\textcolor{Red}{[rdh: #1]}}  
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}
 
  \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
 
@@ -237,12 +235,32 @@ They were shown a colored food item, e.g., a blue banana, and asked "How typical
 
 \section{\bf Modeling referential expressions}
 
-\jd{robert, can you fill some of this in?}
+Next, we consider a family of computational models characterizing the communicative challenge a speaker agent faces in the reference game scenarios above. These models are all situated within the broader Rational Speech Act (RSA) framework, which has successfully explained a range of sophisticated language phenomena through a recursive process of social reasoning between speaker and listener agents \cite{frank2012, goodmanstuhlmueller2013, GoodmanFrank2016}. More formally, we define a \emph{literal listener} $L_0$ that selects between contextual referents $c \in \mathcal{C}$ proportionally to the meanings given by a lexicon $\mathcal{L}$:
 
-In the baseline model, we assume deterministic semantics in which the typicality values can only be -Infinity, or 0. 
-The simple model incorporates a non-deterministic semantics, i.e., the typicality values can range from 0 to 1.
-The ghost-context model is similar to the simple model, but adds uncertainty by taking the true context and creating possible variants from it in a random fashion. This contributes the possibility of a misperception. Possible contexts that are more similar to the true context appear with a higher probability than those with a lower one. Here, similarity is only calculated on basis of the whole object (color and type) being identical to its corresponding partner in the true context
-This model also has an extended version in which the similarity measure is more fine-grained, i.e., color is not a binary feature anymore (either true or false) but rather can be more or less similar to the color of the object in the true context.
+$$L_0(c | u, \mathcal{C}) \propto \mathcal{L}(u, c) P(c)$$
+
+We then introduce a pragmatic speaker $S_1$, which selects an utterance $u \in \mathcal{U}$ to communicate an intended referent $c_i$ by trading off \emph{informativity} with cost:
+%%%
+$$S_1(u | c_i) \propto \exp\left( \alpha\log(L_0(c_i | u, \mathcal{C})) - \textrm{cost}(u) \right)$$
+%%%
+where cost is usually defined as a function of an utterance's length or corpus frequency and $\alpha$ is a parameter controlling the speaker's ``optimality'': as $\alpha\rightarrow \infty$, they will choose utterances that maximize informativity. We explore several variations of this model in our model comparison, first considering different formulations of the lexicon $\mathcal{L}$ and then  several novel ways of enriching the speaker to marginalize over possible \emph{noise} in the listener's perception of the context:
+
+\begin{description}
+
+\item[Baseline:] The simplest version of the lexicon $\mathcal{L}$ uses truth-conditional meanings, such that a given utterance is either true or false of a given referent: $\mathcal{L}(u,c) = \delta_{u(c)}$. This is the traditional formulation in formal semantics, and the one most frequently used in previous RSA models. 
+
+\item[Typicality:] Next, we consider the elaborated model in \citeA{GrafEtAl2016}, which focused on nominal reference contexts where a speaker must choose between different taxonomic levels of reference (e.g. `dalmatian,' `dog,' or `animal'). The primary innovation introduced by \citeA{GrafEtAl2016} was a shift to a graded, real-valued meaning function based on the \emph{typicality} of the referent relative to the utterance category: $\mathcal{L}(u,c) = \textrm{typicality(u, c)}$. This gives rise to phenomena where, for example, a speaker is more likely to use an overinformative utterance for a particularly atypical category member when a more typical referent is in context because they reason that $L_0$ would interpret the simpler utterance to mean the more typical referent. 
+
+\item[Uniform Perceptual Noise:] We propose that perceptual noise is another critical factor in explaining the overproduction of redundant modifiers. In this variation of the model, the speaker supposes that with some noise parameter $p_{noise}$, the listener might have misperceived one or more of the objects in context, thus leading to a corrupted context $\mathcal{C}'$:
+$$S_{noisy}(u|c_i) \propto \exp\left( \alpha\log\left(\sum_{\mathcal{C'}} P(\mathcal{C}')L_0(c_i | u, \mathcal{C}')\right) - \textrm{cost}(u)\right)$$
+In the simplest version of this noisy-context model, the prior over possible misperceptions $P(\mathcal{C}')$ is uniform, such that the true context has probability $P(\mathcal{C}) = p_{noise}$, and the rest of the probability mass is spread evenly across all possible replacements of one or more objects $c \in \mathcal{C}$. Intuitively, this has the effect of making the speaker more cautious about using less specific utterances: even if there is only one `banana' in context, the speaker reasons that the listener may misperceive one of the distractors as another banana with some small probability, hence it may be useful to include a color modifier just in case.
+
+\item[Similarity-Based Perceptual Noise:] This model is equivalent to the Uniform Perceptual Noise except for the prior $P(\mathcal{C'})$ over possible corruptions. Rather than choosing uniform across possible corruptions, we define a similarity metric such that misperceptions closer in similarity space to the true context (e.g. sharing one or more complete objects, only differing in color, and so on) are proportionally more likely: $P(\mathcal{C'}) \propto \textrm{sim}(\mathcal{C}, \mathcal{C'})$.
+\rdh{Need to explain this similarity metric more once we've settled on one}
+\end{description}
+
+%The ghost-context model is similar to the simple model, but adds uncertainty by taking the true context and creating possible variants from it in a random fashion. This contributes the possibility of a misperception. Possible contexts that are more similar to the true context appear with a higher probability than those with a lower one. Here, similarity is only calculated on basis of the whole object (color and type) being identical to its corresponding partner in the true context
+%This model also has an extended version in which the similarity measure is more fine-grained, i.e., color is not a binary feature anymore (either true or false) but rather can be more or less similar to the color of the object in the true context.
 
 
 
