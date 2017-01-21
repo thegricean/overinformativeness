@@ -24,6 +24,7 @@ source("results_bda/rscripts/helpers.R")
 modelversion = "hmc-seed8"
 modelversion = "hmc-seed10"
 modelversion = "extended-hmc-seed10"
+modelversion = "extended-hmc-seed8"
 modelversion = "hmc-seed10-theta"
 modelversion = "hmc-seed2-theta"
 modelversion = "hmc-seed8-theta"
@@ -36,7 +37,8 @@ param_sample_test = params %>%
   summarise(Sum=sum(MCMCprob))
 param_sample_test
 summary(params)
-params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2] # this gets you only the ones with non-zero probability
+# params.samples <- params[rep(row.names(params), params$MCMCprob*samples), 1:2] # this gets you only the ones with non-zero probability
+params.samples = params
 
 alphaSubset = params.samples %>% 
   filter(parameter == "alpha") %>%
@@ -247,8 +249,9 @@ head(agr)
 summary(agr)
 agr$Data="empirical"
 
-predictive.samples <- predictive[rep(row.names(predictive), 
-                                     predictive$MCMCprob*samples), ] %>%
+predictive.samples = predictive %>%
+# <- predictive[rep(row.names(predictive), 
+                                     # predictive$MCMCprob*samples), ] %>%
   mutate(Utterance = utterance) %>%
   group_by(Utterance, condition, target_item) %>%
   summarise(Prob = estimate_mode(prob),
@@ -279,6 +282,14 @@ ggplot(toplot, aes(x=ModelProbability,y=Probability,color=condition)) +
   facet_wrap(~Utterance)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/8_bda_colortypicality/results_bda/graphs/predictives-",modelversion,".pdf",sep=""),height=4,width=14)
 
+ggplot(toplot, aes(x=ModelProbability,y=Probability,color=condition)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax)) +
+  geom_errorbarh(aes(xmin=ModelYMin,xmax=ModelYMax)) +
+  geom_abline(intercept=0,slope=1,color="gray60") +
+  geom_text(aes(label=target_item)) +
+  facet_wrap(~Utterance)
+
 library(hydroGOF)
 gof(toplot$ModelProbability,toplot$Probability)
 gof(toplot[toplot$ModelProbability != 0,]$ModelProbability,toplot[toplot$ModelProbability != 0,]$Probability)
@@ -303,3 +314,24 @@ gof(toplot[toplot$ModelProbability != 0,]$ModelProbability,toplot[toplot$ModelPr
 # bR2      0.52
 # KGE      0.74
 # VE       0.57
+
+ME      -0.01
+MAE      0.14
+MSE      0.04
+RMSE     0.20
+NRMSE % 60.90
+PBIAS % -2.10
+RSR      0.61
+rSD      0.85
+NSE      0.63
+mNSE     0.48
+rNSE     -Inf
+d        0.88
+md       0.72
+rd       -Inf
+cp      -0.06
+r        0.79
+R2       0.63
+bR2      0.53
+KGE      0.74
+VE       0.58

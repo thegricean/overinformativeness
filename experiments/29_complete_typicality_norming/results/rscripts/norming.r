@@ -11,7 +11,22 @@ setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/exper
 theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
-d = read.table(file="data/norming.csv",sep=",", header=T)#, quote="")
+# first time
+# d0 = read.table(file="../mturk0/norming.csv",sep=",",header=T)
+# d1 = read.table(file="../mturk1/norming.csv",sep=",",header=T)
+# d1$workerid = d1$workerid + 20
+# d2 = read.table(file="../mturk2/norming.csv",sep=",",header=T)
+# d2$workerid = d2$workerid + 20 + 10
+# d3 = read.table(file="../mturk3/norming.csv",sep=",",header=T)
+# d3$workerid = d3$workerid + 20 + 10 + 9
+# d4 = read.table(file="../mturk4/norming.csv",sep=",",header=T)
+# d4$workerid = d4$workerid + 20 + 10 + 9 + 9
+# d5 = read.table(file="../mturk5/norming.csv",sep=",",header=T)
+# d5$workerid = d5$workerid + 20 + 10 + 9 + 9 + 9
+# d = rbind(d0,d1,d2,d3,d4,d5)
+# write.table(d, file="data/norming.csv",sep="\t",row.names=F,col.names=T,quote=F)
+
+d = read.table(file="data/norming.csv",sep="\t", header=T)#, quote="")
 head(d)
 nrow(d)
 
@@ -68,7 +83,7 @@ ggplot(d, aes(Color)) +
 # sanity check
 d[d$object == d$InvUtterance & d$response < .6,c("workerid","Third","object","utterance","response")]
 table(d[d$object == d$InvUtterance & d$response < .6,]$Third)
-d = droplevels(d[d$workerid != 12,])
+d = droplevels(d[!d$workerid %in% c(12,20),]) # exclude 2 people because they didn't give higher ratings to utterances that correctly applied to the objects (i.e., random clickers)
   
 items = as.data.frame(table(d$Utterance,d$object))
 nrow(items)
@@ -100,8 +115,9 @@ for (u in unique(agr$Utterance)) {
   cat("},\n")
 }
 
+d$Correct = d$InvUtterance == d$object
 
-ggplot(d, aes(x=response)) +
+ggplot(d, aes(x=response,fill=Correct)) +
   geom_histogram() +
   facet_wrap(~workerid)
-ggsave("graphs/subject_variability.png",height=10, width=15)
+ggsave("graphs/subject_variability.png",height=20, width=20)
