@@ -10,7 +10,6 @@ var data = refModule.readCSV("./bdaInput/bda_data.csv");
 //console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
-console.log(conditions);
 // console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
 var modelAnalysis = function() {
@@ -34,10 +33,10 @@ var modelAnalysis = function() {
     var target = context[0];
 
     // Set up and run model
-    var model = OverinformativeModel(params, context);
+    var model = OverinformativeModel(params, context, refModule.typicalities);
     var runModel = model.runModel, speaker = model.speaker;
     var modelOutput = runModel(speaker, target);
-
+    
     // Store predictions
     foreach(modelOutput.support(), function(s){
       query.add(_.values(conditionObj).concat(s), Math.exp(modelOutput.score(s)));
@@ -57,7 +56,7 @@ var modelAnalysis = function() {
   return {predictive: query.table, params : params};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 1, verbose: true},
+var outputERP = Infer({method:'MCMC', samples: 10, verbose: true},
 		      modelAnalysis);
 console.log(outputERP);
 // console.log('inference complete... printing');
