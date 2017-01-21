@@ -13,17 +13,19 @@ var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 // console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
 var modelAnalysis = function() {
-  var params = {
+  var bdaParams = {
+    lexicon: uniformDraw(['realValued', 'truthConditional']),
     alpha : uniformDrift({a:0,b:40,width:40/20}),
     lengthWeight : uniformDrift({a:0,b:10,width:10/20}),
     cost_color : uniformDrift({a:0,b:3,width:3/20}),
     cost_type : uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDrift({a:0,b:3,width:3/20}),
-    theta : uniformDrift({a:0,b:1,width:1/20})
+    color_only_cost : uniformDrift({a:0,b:3,width:3/20})
   };  
-  
 
-  // Run model and condition on data
+  // Substitute in the right data structure to pass into model
+  var modelParams = _.extend(bdaParams,
+			     {'lexicon': refModule.getLexicon(bdaParams.lexicon)});
+
   var score = reduce(function(conditionObj, memo) {
     // Extract condition information
     var conditionName = conditionObj.conditionName;
@@ -32,8 +34,8 @@ var modelAnalysis = function() {
 		   [conditionObj.d2_color, conditionObj.d2_type]];
     var target = context[0];
 
-    // Set up and run model
-    var model = OverinformativeModel(params, context, refModule.typicalities);
+    // Run model
+    var model = OverinformativeModel(modelParams, context);
     var runModel = model.runModel, speaker = model.speaker;
     var modelOutput = runModel(speaker, target);
     
@@ -49,11 +51,11 @@ var modelAnalysis = function() {
     }, 0, itemData);
   }, 0, conditions);
   
-  console.log(params);
+  console.log(bdaParams);
   console.log(score);
 
   factor(score);
-  return {predictive: query.table, params : params};
+  return {predictive: query.table, params : bdaParams};
 };
 
 var outputERP = Infer({method:'MCMC', samples: 10, verbose: true},

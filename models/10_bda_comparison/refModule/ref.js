@@ -1,7 +1,13 @@
 var _ = require('underscore');
 var fs = require('fs');
 var babyparse = require('babyparse');
-var typicalities = require('./typicalities.json');
+
+var getLexicon = function(lexiconChoice) {
+  var f = (lexiconChoice === 'realValued' ? './realValuedMeanings.json' :
+	   lexiconChoice === 'truthConditional' ? './truthConditionalMeanings.json' :
+	   console.error('lexicon choice unknown with value: ' + lexiconChoice));
+  return require(f);
+};
 
 function testPrint() {
   console.log("this is working");
@@ -89,7 +95,7 @@ var locParse = function(filename) {
 
 module.exports = {
   getSubset : getSubset,
-  typicalities: typicalities,
+  getLexicon: getLexicon,
   bayesianErpWriter : bayesianErpWriter,
   writeERP : writeERP,
   writeCSV : writeCSV,
