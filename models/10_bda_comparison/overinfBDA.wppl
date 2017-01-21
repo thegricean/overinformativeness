@@ -25,47 +25,41 @@ var modelAnalysis = function() {
   
 
   // Run model and condition on data
-  var score = sum(map(function(condition) {
-    var context = {condition: condition[0], 
-                   context:[[condition[1],condition[2]],[condition[3],condition[4]],[condition[5],condition[6]]]};
-    var target = context.context[0];
-    var model = OverinformativeModel(params,context.context);//domainInfo, params);
-    var runModel = model.runModel;
-    var speaker = model.speaker;
+  var score = reduce(function(conditionObj, memo) {
+    // Extract condition information
+    var conditionName = conditionObj.conditionName;
+    var context = [[conditionObj.t_color, conditionObj.t_type],
+		   [conditionObj.d1_color, conditionObj.d1_type],
+		   [conditionObj.d2_color, conditionObj.d2_type]];
+    var target = context[0];
+
+    // Set up and run model
+    var model = OverinformativeModel(params, context);
+    var runModel = model.runModel, speaker = model.speaker;
     var modelOutput = runModel(speaker, target);
 
-    // condition on data
-    var itemData = refModule.getSubset(data, {
-      condition:condition[0],
-      t_color:condition[1],
-      t_type:condition[2],
-      d1_color:condition[3],
-      d1_type:condition[4],
-      d2_color:condition[5],
-      d2_type:condition[6]
-    });
-    var score = sum(map(function(dataRow) {
-      var utterance = dataRow[7];
-      return modelOutput.score(utterance);
-    }, itemData));
-
     // Store predictions
-    foreach(modelOutput.support([]), function(s){
-      query.add([condition[0], condition[1], condition[2], condition[3], condition[4], condition[5], condition[6], s], Math.exp(modelOutput.score(s)));
+    foreach(modelOutput.support(), function(s){
+      query.add(_.values(conditionObj).concat(s), Math.exp(modelOutput.score(s)));
     });
     
-    return score;
-  }, conditions));
-
+    // condition on data
+    var itemData = refModule.getSubset(data, conditionObj);
+    return memo + reduce(function(datum, memo) {
+      return modelOutput.score(datum.utterance) + memo;
+    }, 0, itemData);
+  }, 0, conditions);
+  
   console.log(params);
   console.log(score);
 
-  factor(score)
+  factor(score);
   return {predictive: query.table, params : params};
 };
 
-// var outputERP = Infer({method:'MCMC', samples: 1000, lag: 10, verbose: true}, modelAnalysis);
-
+var outputERP = Infer({method:'MCMC', samples: 1, verbose: true},
+		      modelAnalysis);
+console.log(outputERP);
 // console.log('inference complete... printing');
 
 // refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
