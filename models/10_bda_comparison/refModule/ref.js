@@ -1,7 +1,7 @@
 var _ = require('underscore');
 var fs = require('fs');
 var babyparse = require('babyparse');
-// var tax = require('./typicalityTax');
+var typicalities = require('./typicalities.json');
 
 function testPrint() {
   console.log("this is working");
@@ -87,9 +87,9 @@ var locParse = function(filename) {
         skipEmptyLines : true}).data;
 };
 
-
 module.exports = {
   getSubset : getSubset,
+  typicalities: typicalities,
   bayesianErpWriter : bayesianErpWriter,
   writeERP : writeERP,
   writeCSV : writeCSV,
