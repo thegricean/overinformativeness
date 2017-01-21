@@ -1,4 +1,4 @@
-condition,t_color,t_type,d1_color,d1_type,d2_color,d2_type
+conditionName,t_color,t_type,d1_color,d1_type,d2_color,d2_type,utterance
 informative,green,pear,orange,pear,red,pepper,green_pear
 informative,green,tomato,orange,pear,red,tomato,green_tomato
 overinformative,brown,carrot,red,apple,green,pear,carrot
