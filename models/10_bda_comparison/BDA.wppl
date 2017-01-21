@@ -16,7 +16,6 @@ var modelAnalysis = function() {
   var bdaParams = {
     lexicon: uniformDraw(['realValued', 'truthConditional']),
     alpha : uniformDrift({a:0,b:40,width:40/20}),
-    lengthWeight : uniformDrift({a:0,b:10,width:10/20}),
     cost_color : uniformDrift({a:0,b:3,width:3/20}),
     cost_type : uniformDrift({a:0,b:3,width:3/20}),
     color_only_cost : uniformDrift({a:0,b:3,width:3/20})
@@ -35,10 +34,9 @@ var modelAnalysis = function() {
     var target = context[0];
 
     // Run model
-    var model = OverinformativeModel(modelParams, context);
-    var runModel = model.runModel, speaker = model.speaker;
-    var modelOutput = runModel(speaker, target);
-    
+    var speakerModel = initializeModel(modelParams);
+    var modelOutput = speakerModel(target, context);
+
     // Store predictions
     foreach(modelOutput.support(), function(s){
       query.add(_.values(conditionObj).concat(s), Math.exp(modelOutput.score(s)));

@@ -14,13 +14,13 @@ var colors = ["yellow","orange","red","pink",
 
 // TODO: represent context items as
 // {color: ..., type: ...} instead of arrays
-var getUtterancesOneFeature = function(context) {
+var getPossibleUtts = function(context) {
   return _.unique(_.flatten(map(function(itemArr) {
     return [itemArr[0], itemArr[1], itemArr.join('_')];
   },context)));
 };
 
-var OverinformativeModel = function(params, context) {
+var initializeModel = function(params) {
 
   // Cost of full utterances is sum of individual word costs,
   // unless you just use a color, in which case you incur
@@ -28,7 +28,6 @@ var OverinformativeModel = function(params, context) {
   var getUtteranceCost = function(utt) {
     var split = utt.split("_");
     if (split.length == 2) {
-      console.log(params.cost_color + params.cost_type);
       return params.cost_color + params.cost_type;
     } else {
       return (_.contains(colors, split[0]) ?
@@ -46,7 +45,7 @@ var OverinformativeModel = function(params, context) {
   };
 
   // Selects among objects in context using lexicon
-  var literalListener = cache(function(utt){
+  var literalListener = cache(function(utt, context){
     return Infer({method:'enumerate'},function(){
       var object = uniformDraw(context);
       factor(meaning(utt,object)); 
@@ -54,40 +53,16 @@ var OverinformativeModel = function(params, context) {
     });
   });
 
-  // what does cache do?
-  var speaker = cache(function(target) {
-    // list all possible utterances in context
-    var possibleutts = getUtterancesOneFeature(context);
+  // Selects among utterances given informativity in context and cost of production
+  var speaker = cache(function(target, context) {
+    var possibleutts = getPossibleUtts(context);
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
-      var literalListenerERP = literalListener(utt);
-      var uttCost = getUtteranceCost(utt);
-      var score = params.alpha * literalListenerERP.score(target) - params.lengthWeight * uttCost;
-      factor(score); 
+      factor(params.alpha * literalListener(utt, context).score(target)
+	     - getUtteranceCost(utt));
       return utt;
     });
   });
 
-  var runModel = function(speakerModel, target) { 
-    var speakerERP = speakerModel(target);
-    return Infer({method:'enumerate'},function(){
-      var utt = sample(speakerERP);
-      return utt;
-    });
-  };
-
-  var runListener = function(listenerModel, utterance) { 
-    var listenerERP = listenerModel(utterance);
-    return Infer({method:'enumerate'},function(){
-      var obj = sample(listenerERP);
-      return obj;
-    });
-  };    
-
-  return {
-    runModel : runModel,
-    speaker : speaker,
-    listener: literalListener,
-    runListener : runListener
-  };
+  return speaker;
 };
