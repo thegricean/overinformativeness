@@ -8,7 +8,8 @@ function testPrint() {
 };
 
 function readCSV(filename){
-  return babyparse.parse(fs.readFileSync(filename, 'utf8')).data;
+  return babyparse.parse(fs.readFileSync(filename, 'utf8'),
+			 {header:true}).data;
 };
 
 function writeCSV(jsonCSV, filename){
@@ -68,24 +69,9 @@ var bayesianErpWriter = function(erp, filePrefix) {
   console.log('writing complete.');
 };
 
-var getSubset = function(data, options) {
-  var condition = options.condition;
-      t_color = options.t_color;
-      t_type = options.t_type;
-      d1_color = options.d1_color;
-      d1_type = options.d1_type;
-      d2_color = options.d2_color;
-      d2_type = options.d2_type;      
-  var cond = function(row) {
-    return (row[0] === condition &&
-		 row[1] === t_color &&
-		 row[2] === t_type &&
-     row[3] === d1_color &&
-     row[4] === d1_type &&
-     row[5] === d2_color &&
-     row[6] === d2_type);
-  };
-  return _.filter(data, cond);
+var getSubset = function(data, properties) {
+  var matchProps = _.matches(properties);
+  return _.filter(data, matchProps);
 };
 
 var getTypSubset = function(data, obj_features) {
