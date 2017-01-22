@@ -15,15 +15,18 @@ var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 var modelAnalysis = function() {
   var bdaParams = {
     lexicon: uniformDraw(['realValued', 'truthConditional']),
+    perceptualNoise: uniformDraw(['none', 'random', 'similarityBased']),
+    noiseRate: uniformDrift({a: 0, b: 1, width: 1/20}),
     alpha : uniformDrift({a:0,b:40,width:40/20}),
     cost_color : uniformDrift({a:0,b:3,width:3/20}),
     cost_type : uniformDrift({a:0,b:3,width:3/20}),
     color_only_cost : uniformDrift({a:0,b:3,width:3/20})
   };  
 
-  // Substitute in the right data structure to pass into model
-  var modelParams = _.extend(bdaParams,
-			     {'lexicon': refModule.getLexicon(bdaParams.lexicon)});
+  // Substitute in the right lexicon data structure for model
+  var modelParams = _.extend(bdaParams, {
+    'lexicon': refModule.getLexicon(bdaParams.lexicon)
+  });
 
   var score = reduce(function(conditionObj, memo) {
     // Extract condition information
