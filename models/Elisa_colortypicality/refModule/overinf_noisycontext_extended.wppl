@@ -512,6 +512,26 @@ var colorSim = {
         red : 1,
         black : .05,
         pink : .3
+    },
+    "black" : {
+        yellow : .05,
+        blue : .2,
+        brown : .2,
+        green : .05,
+        orange : .05,
+        red : .05,
+        black : 1,
+        pink : .05
+    },
+    "pink" : {
+        yellow : .05,
+        blue : .05,
+        brown : .05,
+        green : .05,
+        orange : .1,
+        red : .3,
+        black : .05,
+        pink : 1
     }
 }
 

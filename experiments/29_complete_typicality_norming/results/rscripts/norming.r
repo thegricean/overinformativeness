@@ -84,6 +84,8 @@ ggplot(d, aes(Color)) +
 d[d$object == d$InvUtterance & d$response < .6,c("workerid","Third","object","utterance","response")]
 table(d[d$object == d$InvUtterance & d$response < .6,]$Third)
 d = droplevels(d[!d$workerid %in% c(12,20),]) # exclude 2 people because they didn't give higher ratings to utterances that correctly applied to the objects (i.e., random clickers)
+d = droplevels(d[!d$language == "Chinese",])
+d = droplevels(d[!d$language == "Urdu/English",])
   
 items = as.data.frame(table(d$Utterance,d$object))
 nrow(items)
