@@ -110,12 +110,26 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=20, width=35)
 
+agr$RoundMTypicality = round(agr$MeanTypicality, digits=3);
+
 # do something awful:
 for (u in unique(agr$Utterance)) {
   cat(paste("\"",u,"\" : {\n",sep=""))
-  cat(paste(paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$MeanTypicality,sep=":"),",\n",sep=""))
+  cat(paste(paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$RoundMTypicality,sep=" : "),",\n",sep=""))
   cat("},\n")
 }
+
+output = "{\n"
+for (u in unique(agr$Utterance)) {
+  output1 = paste("    \"",u,"\" : {\n",sep="")
+  output2 = paste("        \"",paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$RoundMTypicality,sep="\" : "),",\n",sep="",collapse="")
+  output = paste(output,output1,output2,"    },\n",sep="")
+}
+output = paste(output,"}",sep="")
+#cat(output)
+write.table(output,file="../../../models/10_bda_comparison/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
+
+
 
 d$Correct = d$InvUtterance == d$object
 
