@@ -4,13 +4,14 @@ var initializeModel = function(params) {
   // 1. if 'none', there's no noise, and this prior is a delta on true context
   // 2. if 'random', then all possible corruptions are equally likely
   // 3. if 'similarityBased', then contexts closer to trueContext are more likely
-  var noisyContextPrior = function(trueContext) {
+  // Timeit note: this takes about 30ms for 'random' and 1000ms for 'similarityBased'
+  var getNoisyContextPrior = function(trueContext) {
     return Infer({method: 'enumerate'}, function() {
       if(params.perceptualNoise === 'none') return trueContext;
       var context = (flip(1 - params.noiseRate) ? trueContext :
 		     uniformDraw(uniqueContexts));
       factor(params.perceptualNoise === 'similarityBased' ?
-	     Math.log(similarity(trueContext, context)) : 0);
+	     similarity(trueContext, context) : 0);
       return context;
     });
   };
@@ -48,12 +49,14 @@ var initializeModel = function(params) {
 
   // Selects among utterances given informativity in context and cost of production,
   // marginalizing over possible noise in perception of context
+  // Timeit note: marginalizing over listener takes about 200-300ms per utt
   var speaker = cache(function(target, context) {
     var possibleutts = getPossibleUtts(context);
+    var noisyContextPrior = getNoisyContextPrior(context);
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var listener = Infer({method: 'enumerate'}, function() {
-	var noisyContext = sample(noisyContextPrior(context));
+	var noisyContext = sample(noisyContextPrior);
 	return sample(literalListener(utt, noisyContext));
       });
       factor(params.alpha * listener.score(target)
