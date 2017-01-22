@@ -3,8 +3,8 @@ var fs = require('fs');
 var babyparse = require('babyparse');
 
 var getLexicon = function(lexiconChoice) {
-  var f = (lexiconChoice === 'realValued' ? './realValuedMeanings.json' :
-	   lexiconChoice === 'truthConditional' ? './truthConditionalMeanings.json' :
+  var f = (lexiconChoice === 'realValued' ? './json/realValuedMeanings.json' :
+	   lexiconChoice === 'truthConditional' ? './json/truthConditionalMeanings.json' :
 	   console.error('lexicon choice unknown with value: ' + lexiconChoice));
   return require(f);
 };
