@@ -5,6 +5,7 @@ var initializeModel = function(params) {
   // 2. if 'random', then all possible corruptions are equally likely
   // 3. if 'similarityBased', then contexts closer to trueContext are more likely
   // Timeit note: this takes about 30ms for 'random' and 1000ms for 'similarityBased'
+  // TODO: restrict to smaller set (e.g. reject contexts with < 1 similarity?)
   var getNoisyContextPrior = function(trueContext) {
     return Infer({method: 'enumerate'}, function() {
       if(params.perceptualNoise === 'none') return trueContext;
@@ -53,12 +54,14 @@ var initializeModel = function(params) {
   var speaker = cache(function(target, context) {
     var possibleutts = getPossibleUtts(context);
     var noisyContextPrior = getNoisyContextPrior(context);
+
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var listener = Infer({method: 'enumerate'}, function() {
 	var noisyContext = sample(noisyContextPrior);
 	return sample(literalListener(utt, noisyContext));
       });
+
       factor(params.alpha * listener.score(target)
 	     - getUtteranceCost(utt));
       return utt;
