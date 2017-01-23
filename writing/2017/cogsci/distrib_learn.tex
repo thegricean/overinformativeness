@@ -153,13 +153,13 @@ After collecting the data, the different utterances were labeled as belonging to
 
 The resulting utterances were then categorized according to the categories laid out above. Only five utterances (0.003\%) were assigned to the category "other".
 
-\begin{figure}[bt!]
-	\centering
-	\includegraphics[width=.5\textwidth]{graphs/design_2}
-	\caption{Typicality norming studies for object and color patch norming.
-	}
-	\label{fig:design_2}
-\end{figure}
+%\begin{figure}[bt!]
+%	\centering
+%	\includegraphics[width=.5\textwidth]{graphs/design_2}
+%	\caption{Typicality norming studies for object and color patch norming.
+%	}
+%	\label{fig:design_2}
+%\end{figure}
 
 \begin{figure}[bt!]
 	\centering
@@ -170,16 +170,16 @@ The resulting utterances were then categorized according to the categories laid 
 \end{figure}
 
 \paragraph{Typicality norming}
-For further analysis of the objects, we conducted two norming studies - an object and a color norming study. Both had 75 participants that were recruited over Mechanical Turk.
+%For further analysis of the objects, we conducted two norming studies - an object and a color norming study. Both had 75 participants that were recruited over Mechanical Turk.
+%
+%In the object norming study, the participants were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a type, e.g., banana, or a category, e.g., fruit). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every type and category expression from the set, resulting in 189 different trials.
+%
+%The aim of the color norming study was to identify how typical a certain object's color is for different color terms, i.e., how blue is the given color. The color patches were constructed by determining the average color of the object, stems and leaves excluded. The participants were presented with this color patch, and had to rate its typicality given a certain color term. Again, they had a continuous draggable scale with the end marks "very atypical" and "very typical". Eight color terms were paired with 21 color patches and which resulted in 168 trials.
+%
+%Due to the amount of trials, each participant only saw a subset of 90. The decision on which trials were shown was random with a slight preference on fitting combinations, e.g., seeing a blue banana and asking for "banana", in contrast to seeing a blue carrot and asking for "apple". The amount of data per combination ranged from 13 to 60. The assumed typicality values are the averaged slider values for each combination ranging from 0.004 (very atypical) to 0.989 (very typical). 
 
-In the object norming study, the participants were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a type, e.g., banana, or a category, e.g., fruit). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every type and category expression from the set, resulting in 189 different trials.
-
-The aim of the color norming study was to identify how typical a certain object's color is for different color terms, i.e., how blue is the given color. The color patches were constructed by determining the average color of the object, stems and leaves excluded. The participants were presented with this color patch, and had to rate its typicality given a certain color term. Again, they had a continuous draggable scale with the end marks "very atypical" and "very typical". Eight color terms were paired with 21 color patches and which resulted in 168 trials.
-
-Due to the amount of trials, each participant only saw a subset of 90. The decision on which trials were shown was random with a slight preference on fitting combinations, e.g., seeing a blue banana and asking for "banana", in contrast to seeing a blue carrot and asking for "apple". The amount of data per combination ranged from 13 to 60. The assumed typicality values are the averaged slider values for each combination ranging from 0.004 (very atypical) to 0.989 (very typical). 
-
-To get empirical typicality values of the objects, we conducted a norming study. 64 participants (2 excluded because of random clicking, 2 excluded because of non-English speakers) have been recruited via Mechanical turk. 
-They were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a color-type combination, e.g., blue banana, or red apple). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every color-type combination from the set, resulting in 484 different trials. Each participant answered 110 trials in which type consistent trials (showing all kinds of bananas when utterance contains banana) were always present, and non-fitting trials which were selected randomly. The amount of data per combination ranged from ... to ... . The assumed typicality values are the averaged slider values for each combination ranging from 0 (very atypical) to 0.968 (very typical). 
+To get empirical typicality values of the objects, we conducted a norming study. 66 participants  have been recruited via Mechanical turk, two of which had to be excluded because they were non-English speakers, and two because they only clicked randomly.
+They were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a color-type combination, e.g., blue banana, or red apple). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every color-type combination from the set, resulting in 484 different trials. Each participant answered 110 trials in which type consistent trials (showing all kinds of bananas when utterance contains the word banana) were always present, and non-fitting trials which were selected randomly. The amount of data per combination ranged from 1 to 62. The assumed typicality values are the averaged slider values for each combination ranging from 0 (very atypical) to 0.983 (very typical). 
 
 \subsection{\bf Results}
 
@@ -319,6 +319,8 @@ In the simplest version of this noisy-context model, the prior over possible mis
 
 
 \section{\bf Discussion and conclusion}
+to get a more intuitive model: tried to compute typicalities for an object given a particular utterance by taking the value of how good that particular color is as an instance of that color, and the typicality of that object as an instance of the object's type. In other words, if there is a blue banana how blue is this particular blue and how good of an instance is this blue banana for a banana.
+
 
 %The choice speakers make of how to refer to an object is influenced by a rich variety of factors.
 %In this paper, we specifically investigated the choice of level of reference in nominal referring expressions. In an interactive reference game task in which speakers freely produced referring expressions, utterance choice was affected by utterance cost (in terms of length and frequency), contextual informativeness (as manipulated via distractor objects), and object typicality.
