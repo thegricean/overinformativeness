@@ -1,15 +1,13 @@
 // run using:
 // webppl overinfBDA.wppl --require ./refModule/
 
-// util.seedRNG(2);
-// util.seedRNG(10);
-util.seedRNG(8);
-
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
-//console.log("Loading data complete...",+data.length+" data points");
+console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+
+globalStore.bigLoop = 0;
 
 var modelAnalysis = function() {
   
@@ -29,8 +27,10 @@ var modelAnalysis = function() {
   });
 
   var speakerModel = initializeModel(modelParams);
-
+  
   var score = reduce(function(conditionObj, memo) {
+    var timing = timeit(function() {
+    
     // Extract condition information
     var conditionName = conditionObj.conditionName;
     var context = [[conditionObj.t_color, conditionObj.t_type],
@@ -39,7 +39,10 @@ var modelAnalysis = function() {
     var target = context[0];
 
     // Run model
-    var modelOutput = speakerModel(target, context);
+    var timing = timeit(function() {
+      speakerModel(target, context);
+    });
+    var modelOutput = timing.value;
 
     // Store predictions
     // foreach(modelOutput.support(), function(s){
@@ -53,8 +56,12 @@ var modelAnalysis = function() {
     return memo + reduce(function(datum, memo) {
       return modelOutput.score(datum.utterance) + memo;
     }, 0, itemData);
+    });
+    globalStore.bigLoop += timing.runtimeInMilliseconds;
+//    console.log('big loop: ' + timing.runtimeInMilliseconds);
+    return timing.value;
   }, 0, conditions);
-  
+  console.log(globalStore.bigLoop);
   console.log(bdaParams);
   console.log(score);
 
