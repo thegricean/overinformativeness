@@ -7,17 +7,15 @@ console.log("Loading data complete...",+data.length+" data points");
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
-globalStore.bigLoop = 0;
-
 var modelAnalysis = function() {
   
   var bdaParams = {
-    lexicon: uniformDraw(['realValued', 'truthConditional']),
-    noiseType: uniformDraw(['none', 'addition', 'replacement']),
-    noiseRate: uniformDraw([.01, .1, .5]), // uniformDrift({a: 0, b: 1, width: 1/20}),
-    alpha : uniformDraw([0,1,5,10]), // uniformDrift({a:0,b:40,width:40/20}),
-    cost_color : uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
-    cost_type : uniformDraw([0.5,1,2])//uniformDrift({a:0,b:3,width:3/20}),
+    lexicon: 'truthConditional', // uniformDraw(['realValued', 'truthConditional']),
+    noiseType: 'replacement', // uniformDraw(['none', 'addition', 'replacement']),
+    noiseRate: .5, //uniformDraw([.01, .1, .5]), // uniformDrift({a: 0, b: 1, width: 1/20}),
+    alpha : 10, //uniformDraw([0,1,5,10]), // uniformDrift({a:0,b:40,width:40/20}),
+    cost_color : 1,//uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
+    cost_type : .5//uniformDraw([0.5,1,2])//uniformDrift({a:0,b:3,width:3/20}),
 //    color_only_cost : uniformDrift({a:0,b:3,width:3/20})
   };  
 
@@ -29,8 +27,6 @@ var modelAnalysis = function() {
   var speakerModel = initializeModel(modelParams);
   
   var score = reduce(function(conditionObj, memo) {
-    var timing = timeit(function() {
-    
     // Extract condition information
     var conditionName = conditionObj.conditionName;
     var context = [[conditionObj.t_color, conditionObj.t_type],
@@ -39,38 +35,29 @@ var modelAnalysis = function() {
     var target = context[0];
 
     // Run model
-    var timing = timeit(function() {
-      speakerModel(target, context);
-    });
-    var modelOutput = timing.value;
+    var modelOutput = speakerModel(target, context);
 
     // Store predictions
-    // foreach(modelOutput.support(), function(s){
-    //   var key = _.values(conditionObj).concat(s);
-    //   var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
-    //   globalStore.predictives = extend(globalStore.predictives, newPair);
-    // });
+    foreach(modelOutput.support(), function(s){
+      var key = _.values(conditionObj).concat(s);
+      var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
+      globalStore.predictives = extend(globalStore.predictives, newPair);
+    });
     
     // condition on data
     var itemData = refModule.getSubset(data, conditionObj);
     return memo + reduce(function(datum, memo) {
       return modelOutput.score(datum.utterance) + memo;
     }, 0, itemData);
-    });
-    globalStore.bigLoop += timing.runtimeInMilliseconds;
-//    console.log('big loop: ' + timing.runtimeInMilliseconds);
-    return timing.value;
   }, 0, conditions);
-  console.log(globalStore.bigLoop);
+
   console.log(bdaParams);
   console.log(score);
 
   factor(score);
-  return {predictive: {}, params : bdaParams};
+  return {predictive: globalStore.predictives, params : bdaParams};
 };
 
 var outputERP = Infer({method:'enumerate'}, modelAnalysis);
-//console.log(outputERP);
-// console.log('inference complete... printing');
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/MAP_");
