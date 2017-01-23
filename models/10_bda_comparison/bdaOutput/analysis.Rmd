@@ -1,0 +1,119 @@
+---
+title: "Overinformativeness BDA"
+output: html_notebook
+---
+
+# Set up environment
+
+```{r}
+setwd("~/Repos/overinformativeness/models/10_bda_comparison/")
+library(ggplot2)
+library(dplyr)
+library(coda)
+library(purrr)
+library(gridExtra)
+library(lme4)
+estimate_mode <- function(s) {
+  d <- density(s)
+  return(d$x[which.max(d$y)])
+}
+HPDhi<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","upper"])
+}
+HPDlo<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","lower"])
+}
+options("scipen"=10) 
+
+source("./bdaOutput/helpers.R")
+```
+
+
+### Load in model results
+
+```{r}
+params <- read.csv("./bdaParams.csv", sep = ",", row.names = NULL)
+qparams_raw %>% group_by(parameter, value) %>% summarize(prob = sum(MCMCprob))
+```
+
+Wanna know the best parameters for "expPragFlip == false"
+
+```{r}
+View(qparams_raw %>% 
+       mutate(sampleNum = floor((row_number() - 1)/6)) %>%
+       group_by(sampleNum) %>%
+       spread(parameter, value) %>%
+       ungroup()%>%
+       filter(MCMCprob == max(MCMCprob))
+)
+```
+
+Looks like there's a super narrow range where the pragmatic model makes much much better predictions... 
+
+### Predictives
+
+# Import empirical data
+
+```{r}
+empirical = read_csv("../bdaInput/bda_data.csv") %>%
+  mutate(target_item = paste(t_color, t_type, sep = "_")) %>%
+  mutate(color = ifelse(as.character(utterance) == as.character(t_color),1,0)) %>%
+  mutate(type = ifelse(as.character(utterance) == as.character(t_type),1,0)) %>%
+  mutate(color_type = ifelse(as.character(utterance) == as.character(target_item),1,0))
+
+agr = empirical %>%
+  select(color,type,color_type,conditionName,target_item) %>%
+  gather(Utterance,Mentioned,-conditionName,-target_item) %>%
+  group_by(conditionName,Utterance,target_item) %>%
+  summarise(Probability=mean(Mentioned),
+            cilow=ci.low(Mentioned),
+            cihigh=ci.high(Mentioned)) %>%
+  ungroup() %>%
+  mutate(YMax = Probability + cihigh) %>%
+  mutate(YMin = Probability - cilow) %>%
+  select(conditionName, target_item, Utterance, Probability, YMax, YMin)
+agr = as.data.frame(agr)
+View(agr)
+```
+
+# Import predictives data
+
+```{r}
+colors <- c("yellow","orange","red","pink", "green","blue","brown","black")
+types <- c('apple', 'avocado', 'banana', 'carrot', 'pear', 'tomato', 'pepper')
+predictive<-read_csv("./MAP_Predictives.csv") %>%
+  rowwise() %>%
+  mutate(target_item = paste0(c(TargetColor, TargetType), collapse = '_')) %>%
+  filter(value %in% c(TargetColor, TargetType, target_item)) %>%
+  mutate(Utterance = ifelse(value %in% colors, 'color', 
+                            ifelse(value %in% types, 'type',
+                                   'color_type'))) %>%
+  rename(conditionName = condition) %>%
+  group_by(conditionName, Utterance, target_item) %>%
+  summarize(modelProbability=mean(prob)) 
+```
+
+# Plot predictives w/ empirical data
+
+```{r}
+combined <- left_join(agr, predictive)
+
+#pdf(file="../writing/2016/journal-manuscript/figures/AnswererPredictive.pdf",
+# width = 6, height = 3)
+answer_plots = (ggplot(combined, aes(x = modelProbability, y = Probability))
+  + geom_errorbar(aes(ymax = YMax, ymin = YMin)) 
+  + geom_point(aes(colour = conditionName))
+  + geom_abline(intercept = 0, slope = 1, linetype = "dotted")
+  + scale_x_continuous(lim = c(0,1), breaks=c(0,.5,1))
+  + ggtitle("Answerer Posterior Predictive")
+  + geom_smooth(method = "lm")
+  + theme(text = element_text(size = 20),  axis.text.x = element_text(angle=90, vjust=1))
+  + xlab("Model predicted probability")
+  + ylim(0,1)
+  + ylab("Empirical Probability")
+  + theme_bw())
+answer_plots
+#dev.off()
+```
