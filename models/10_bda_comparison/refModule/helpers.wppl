@@ -27,7 +27,7 @@ var uniqueContexts = Infer({method: 'enumerate'}, function() {
 
 // for all objects in a given context, can name the color, type, or both
 var getPossibleUtts = function(context) {
-  return _.unique(_.flatten(map(function(itemArr) {
+  return _.uniq(_.flatten(map(function(itemArr) {
     return [itemArr[0], itemArr[1], itemArr.join('_')];
   },context)));
 };

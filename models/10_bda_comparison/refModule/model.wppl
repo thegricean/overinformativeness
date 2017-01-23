@@ -2,18 +2,25 @@ var initializeModel = function(params) {
 
   // construct prior over possible misperceptions, based on version in params
   // 1. if 'none', there's no noise, and this prior is a delta on true context
-  // 2. if 'random', then all possible corruptions are equally likely
-  // 3. if 'similarityBased', then contexts closer to trueContext are more likely
-  // Timeit note: this takes about 30ms for 'random' and 1000ms for 'similarityBased'
-  // TODO: restrict to smaller set (e.g. reject contexts with < 1 similarity?)
+  // 2. if 'addition', then we supplement the context with a 'ghost object'
+  // 3. if 'replacement', then we swap out one of the objects with a 'misperception'
+  // Note: might want to think about whether we want all supplements to be equal
+  //       e.g. might want to only add objects that aren't already in context...
   var getNoisyContextPrior = function(trueContext) {
     return Infer({method: 'enumerate'}, function() {
-      if(params.perceptualNoise === 'none') return trueContext;
-      var context = (flip(1 - params.noiseRate) ? trueContext :
-		     uniformDraw(uniqueContexts));
-      factor(params.perceptualNoise === 'similarityBased' ?
-	     similarity(trueContext, context) : 0);
-      return context;
+      if(params.noiseType === 'none' || flip(1 - params.noiseRate))
+	return trueContext;
+      else if(params.noiseType === 'addition')
+	return trueContext.concat([uniformDraw(objects)]);
+      else if(params.noiseType === 'replacement') {
+	var replaceIndex = randomInteger(trueContext.length);
+	var replaceObj = uniformDraw(objects);
+	return (trueContext.slice(0,replaceIndex)
+		.concat([replaceObj])
+		.concat(trueContext.slice(replaceIndex+1,trueContext.length)));
+      } else {
+	console.error("unknown noiseType: " + params.noiseType);
+      }
     });
   };
   
@@ -25,8 +32,8 @@ var initializeModel = function(params) {
     if (split.length == 2) {
       return params.cost_color + params.cost_type;
     } else {
-      return (_.contains(colors, split[0]) ?
-	      params.cost_color + params.color_only_cost :
+      return (_.includes(colors, split[0]) ?
+	      params.cost_color ://  + params.color_only_cost :
 	      params.cost_type);
     }
   };
@@ -54,7 +61,6 @@ var initializeModel = function(params) {
   var speaker = cache(function(target, context) {
     var possibleutts = getPossibleUtts(context);
     var noisyContextPrior = getNoisyContextPrior(context);
-
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var listener = Infer({method: 'enumerate'}, function() {

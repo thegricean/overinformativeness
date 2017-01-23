@@ -5,28 +5,30 @@
 // util.seedRNG(10);
 util.seedRNG(8);
 
-
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
 //console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
-// console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
 var modelAnalysis = function() {
+  
   var bdaParams = {
     lexicon: uniformDraw(['realValued', 'truthConditional']),
-    perceptualNoise: uniformDraw(['none', 'random', 'similarityBased']),
-    noiseRate: uniformDrift({a: 0, b: 1, width: 1/20}),
-    alpha : uniformDrift({a:0,b:40,width:40/20}),
-    cost_color : uniformDrift({a:0,b:3,width:3/20}),
-    cost_type : uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDrift({a:0,b:3,width:3/20})
+    noiseType: uniformDraw(['none', 'addition', 'replacement']),
+    noiseRate: uniformDraw([.01, .1, .5]), // uniformDrift({a: 0, b: 1, width: 1/20}),
+    alpha : uniformDraw([0,1,5,10]), // uniformDrift({a:0,b:40,width:40/20}),
+    cost_color : uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
+    cost_type : uniformDraw([0.5,1,2])//uniformDrift({a:0,b:3,width:3/20}),
+//    color_only_cost : uniformDrift({a:0,b:3,width:3/20})
   };  
 
   // Substitute in the right lexicon data structure for model
-  var modelParams = _.extend(bdaParams, {
+  var modelParams = extend(bdaParams, {
     'lexicon': refModule.getLexicon(bdaParams.lexicon)
   });
+
+  var speakerModel = initializeModel(modelParams);
 
   var score = reduce(function(conditionObj, memo) {
     // Extract condition information
@@ -37,13 +39,14 @@ var modelAnalysis = function() {
     var target = context[0];
 
     // Run model
-    var speakerModel = initializeModel(modelParams);
     var modelOutput = speakerModel(target, context);
 
     // Store predictions
-    foreach(modelOutput.support(), function(s){
-      query.add(_.values(conditionObj).concat(s), Math.exp(modelOutput.score(s)));
-    });
+    // foreach(modelOutput.support(), function(s){
+    //   var key = _.values(conditionObj).concat(s);
+    //   var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
+    //   globalStore.predictives = extend(globalStore.predictives, newPair);
+    // });
     
     // condition on data
     var itemData = refModule.getSubset(data, conditionObj);
@@ -56,12 +59,11 @@ var modelAnalysis = function() {
   console.log(score);
 
   factor(score);
-  return {predictive: query.table, params : bdaParams};
+  return {predictive: {}, params : bdaParams};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 10, verbose: true},
-		      modelAnalysis);
-console.log(outputERP);
+var outputERP = Infer({method:'enumerate'}, modelAnalysis);
+//console.log(outputERP);
 // console.log('inference complete... printing');
 
-// refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda-hmc-seed8-theta");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/bda");
