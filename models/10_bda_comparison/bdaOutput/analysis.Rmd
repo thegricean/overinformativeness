@@ -7,6 +7,7 @@ output: html_notebook
 
 ```{r}
 setwd("~/Repos/overinformativeness/models/10_bda_comparison/")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/models/10_bda_comparison")
 library(ggplot2)
 library(dplyr)
 library(coda)

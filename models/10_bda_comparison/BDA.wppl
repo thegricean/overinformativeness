@@ -4,7 +4,8 @@
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
 console.log("Loading data complete...",+data.length+" data points");
 
-var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+var conditions = refModule.readCSV("./bdaInput/unique_condition_subset.csv");
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
 var modelAnalysis = function() {
