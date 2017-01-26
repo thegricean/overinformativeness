@@ -1,0 +1,150 @@
+[
+  {
+    "Utterance": "black_avocado",
+    "Length": 13
+  },
+  {
+    "Utterance": "black_pepper",
+    "Length": 12
+  },
+  {
+    "Utterance": "blue_apple",
+    "Length": 10
+  },
+  {
+    "Utterance": "blue_banana",
+    "Length": 11
+  },
+  {
+    "Utterance": "brown_banana",
+    "Length": 12
+  },
+  {
+    "Utterance": "brown_carrot",
+    "Length": 12
+  },
+  {
+    "Utterance": "green_apple",
+    "Length": 11
+  },
+  {
+    "Utterance": "green_avocado",
+    "Length": 13
+  },
+  {
+    "Utterance": "green_pear",
+    "Length": 10
+  },
+  {
+    "Utterance": "green_pepper",
+    "Length": 12
+  },
+  {
+    "Utterance": "green_tomato",
+    "Length": 12
+  },
+  {
+    "Utterance": "orange_carrot",
+    "Length": 13
+  },
+  {
+    "Utterance": "orange_pear",
+    "Length": 11
+  },
+  {
+    "Utterance": "orange_pepper",
+    "Length": 13
+  },
+  {
+    "Utterance": "pink_carrot",
+    "Length": 11
+  },
+  {
+    "Utterance": "pink_tomato",
+    "Length": 11
+  },
+  {
+    "Utterance": "red_apple",
+    "Length": 9
+  },
+  {
+    "Utterance": "red_avocado",
+    "Length": 11
+  },
+  {
+    "Utterance": "red_pepper",
+    "Length": 10
+  },
+  {
+    "Utterance": "red_tomato",
+    "Length": 10
+  },
+  {
+    "Utterance": "yellow_banana",
+    "Length": 13
+  },
+  {
+    "Utterance": "yellow_pear",
+    "Length": 11
+  },
+  {
+    "Utterance": "apple",
+    "Length": 5
+  },
+  {
+    "Utterance": "avocado",
+    "Length": 7
+  },
+  {
+    "Utterance": "banana",
+    "Length": 6
+  },
+  {
+    "Utterance": "carrot",
+    "Length": 6
+  },
+  {
+    "Utterance": "pear",
+    "Length": 4
+  },
+  {
+    "Utterance": "pepper",
+    "Length": 6
+  },
+  {
+    "Utterance": "tomato",
+    "Length": 6
+  },
+  {
+    "Utterance": "black",
+    "Length": 5
+  },
+  {
+    "Utterance": "blue",
+    "Length": 4
+  },
+  {
+    "Utterance": "brown",
+    "Length": 5
+  },
+  {
+    "Utterance": "green",
+    "Length": 5
+  },
+  {
+    "Utterance": "orange",
+    "Length": 6
+  },
+  {
+    "Utterance": "pink",
+    "Length": 4
+  },
+  {
+    "Utterance": "red",
+    "Length": 3
+  },
+  {
+    "Utterance": "yellow",
+    "Length": 6
+  }
+]
