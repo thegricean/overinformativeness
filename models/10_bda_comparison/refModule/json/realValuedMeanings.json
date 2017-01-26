@@ -21,7 +21,7 @@
         "red_pepper" : 0.071,
         "green_tomato" : 0.028,
         "pink_tomato" : 0.01,
-        "red_tomato" : 0.132,
+      "red_tomato" : 0.132
     },
     "black_pepper" : {
         "blue_apple" : 0.002,
@@ -45,7 +45,7 @@
         "red_pepper" : 0.226,
         "green_tomato" : 0.009,
         "pink_tomato" : 0.034,
-        "red_tomato" : 0.061,
+        "red_tomato" : 0.061
     },
     "blue_apple" : {
         "blue_apple" : 0.916,
@@ -69,7 +69,7 @@
         "red_pepper" : 0.014,
         "green_tomato" : 0.14,
         "pink_tomato" : 0.05,
-        "red_tomato" : 0.006,
+        "red_tomato" : 0.006
     },
     "blue_banana" : {
         "blue_apple" : 0.026,
@@ -93,7 +93,7 @@
         "red_pepper" : 0.013,
         "green_tomato" : 0.108,
         "pink_tomato" : 0.064,
-        "red_tomato" : 0.029,
+        "red_tomato" : 0.029
     },
     "brown_banana" : {
         "blue_apple" : 0.038,
@@ -117,7 +117,7 @@
         "red_pepper" : 0.037,
         "green_tomato" : 0.015,
         "pink_tomato" : 0.003,
-        "red_tomato" : 0.045,
+        "red_tomato" : 0.045
     },
     "brown_carrot" : {
         "blue_apple" : 0.02,
@@ -141,7 +141,7 @@
         "red_pepper" : 0.01,
         "green_tomato" : 0.026,
         "pink_tomato" : 0.138,
-        "red_tomato" : 0.022,
+        "red_tomato" : 0.022
     },
     "green_apple" : {
         "blue_apple" : 0.198,
@@ -165,7 +165,7 @@
         "red_pepper" : 0.043,
         "green_tomato" : 0.336,
         "pink_tomato" : 0.07,
-        "red_tomato" : 0.248,
+        "red_tomato" : 0.248
     },
     "green_avocado" : {
         "blue_apple" : 0.031,
@@ -189,7 +189,7 @@
         "red_pepper" : 0.043,
         "green_tomato" : 0.107,
         "pink_tomato" : 0.03,
-        "red_tomato" : 0.032,
+        "red_tomato" : 0.032
     },
     "green_pear" : {
         "blue_apple" : 0.029,
@@ -213,7 +213,7 @@
         "red_pepper" : 0.08,
         "green_tomato" : 0.053,
         "pink_tomato" : 0.009,
-        "red_tomato" : 0.146,
+        "red_tomato" : 0.146
     },
     "green_pepper" : {
         "blue_apple" : 0.088,
@@ -237,7 +237,7 @@
         "red_pepper" : 0.269,
         "green_tomato" : 0.137,
         "pink_tomato" : 0.12,
-        "red_tomato" : 0.036,
+        "red_tomato" : 0.036
     },
     "green_tomato" : {
         "blue_apple" : 0.04,
@@ -261,7 +261,7 @@
         "red_pepper" : 0,
         "green_tomato" : 0.953,
         "pink_tomato" : 0.187,
-        "red_tomato" : 0.272,
+        "red_tomato" : 0.272
     },
     "orange_carrot" : {
         "blue_apple" : 0.025,
@@ -285,7 +285,7 @@
         "red_pepper" : 0.101,
         "green_tomato" : 0.017,
         "pink_tomato" : 0.007,
-        "red_tomato" : 0.167,
+        "red_tomato" : 0.167
     },
     "orange_pear" : {
         "blue_apple" : 0.008,
@@ -309,7 +309,7 @@
         "red_pepper" : 0.055,
         "green_tomato" : 0.038,
         "pink_tomato" : 0.055,
-        "red_tomato" : 0.044,
+        "red_tomato" : 0.044
     },
     "orange_pepper" : {
         "blue_apple" : 0.022,
@@ -333,7 +333,7 @@
         "red_pepper" : 0.363,
         "green_tomato" : 0.105,
         "pink_tomato" : 0.052,
-        "red_tomato" : 0.01,
+        "red_tomato" : 0.01
     },
     "pink_carrot" : {
         "blue_apple" : 0.015,
@@ -357,7 +357,7 @@
         "red_pepper" : 0,
         "green_tomato" : 0.005,
         "pink_tomato" : 0.128,
-        "red_tomato" : 0.032,
+        "red_tomato" : 0.032
     },
     "pink_tomato" : {
         "blue_apple" : 0.086,
@@ -381,7 +381,7 @@
         "red_pepper" : 0.036,
         "green_tomato" : 0.198,
         "pink_tomato" : 0.567,
-        "red_tomato" : 0.328,
+        "red_tomato" : 0.328
     },
     "red_apple" : {
         "blue_apple" : 0.176,
@@ -405,7 +405,7 @@
         "red_pepper" : 0.09,
         "green_tomato" : 0.095,
         "pink_tomato" : 0.037,
-        "red_tomato" : 0.098,
+        "red_tomato" : 0.098
     },
     "red_avocado" : {
         "blue_apple" : 0.008,
@@ -429,7 +429,7 @@
         "red_pepper" : 0.017,
         "green_tomato" : 0.098,
         "pink_tomato" : 0.113,
-        "red_tomato" : 0.298,
+        "red_tomato" : 0.298
     },
     "red_pepper" : {
         "blue_apple" : 0.015,
@@ -453,7 +453,7 @@
         "red_pepper" : 0.971,
         "green_tomato" : 0.018,
         "pink_tomato" : 0.041,
-        "red_tomato" : 0.11,
+        "red_tomato" : 0.11
     },
     "red_tomato" : {
         "blue_apple" : 0.012,
@@ -477,7 +477,7 @@
         "red_pepper" : 0.235,
         "green_tomato" : 0.275,
         "pink_tomato" : 0.254,
-        "red_tomato" : 0.973,
+        "red_tomato" : 0.973
     },
     "yellow_banana" : {
         "blue_apple" : 0.08,
@@ -501,7 +501,7 @@
         "red_pepper" : 0.01,
         "green_tomato" : 0.015,
         "pink_tomato" : 0.014,
-        "red_tomato" : 0.022,
+        "red_tomato" : 0.022
     },
     "yellow_pear" : {
         "blue_apple" : 0.058,
@@ -525,7 +525,7 @@
         "red_pepper" : 0.29,
         "green_tomato" : 0.116,
         "pink_tomato" : 0.065,
-        "red_tomato" : 0.042,
+        "red_tomato" : 0.042
     },
     "black" : {
         "blue_apple" : 0.044,
@@ -549,7 +549,7 @@
         "red_pepper" : 0.019,
         "green_tomato" : 0.043,
         "pink_tomato" : 0.013,
-        "red_tomato" : 0.025,
+        "red_tomato" : 0.025
     },
     "blue" : {
         "blue_apple" : 0.896,
@@ -573,7 +573,7 @@
         "red_pepper" : 0.018,
         "green_tomato" : 0.05,
         "pink_tomato" : 0.075,
-        "red_tomato" : 0.052,
+        "red_tomato" : 0.052
     },
     "brown" : {
         "blue_apple" : 0.076,
@@ -597,7 +597,7 @@
         "red_pepper" : 0.085,
         "green_tomato" : 0.081,
         "pink_tomato" : 0.012,
-        "red_tomato" : 0.16,
+        "red_tomato" : 0.16
     },
     "green" : {
         "blue_apple" : 0.145,
@@ -621,7 +621,7 @@
         "red_pepper" : 0.087,
         "green_tomato" : 0.817,
         "pink_tomato" : 0.058,
-        "red_tomato" : 0.084,
+        "red_tomato" : 0.084
     },
     "orange" : {
         "blue_apple" : 0.022,
@@ -645,7 +645,7 @@
         "red_pepper" : 0.276,
         "green_tomato" : 0.064,
         "pink_tomato" : 0.106,
-        "red_tomato" : 0.12,
+        "red_tomato" : 0.12
     },
     "pink" : {
         "blue_apple" : 0.054,
@@ -669,7 +669,7 @@
         "red_pepper" : 0.16,
         "green_tomato" : 0.03,
         "pink_tomato" : 0.515,
-        "red_tomato" : 0.198,
+        "red_tomato" : 0.198
     },
     "red" : {
         "blue_apple" : 0.06,
@@ -693,7 +693,7 @@
         "red_pepper" : 0.864,
         "green_tomato" : 0.064,
         "pink_tomato" : 0.111,
-        "red_tomato" : 0.858,
+        "red_tomato" : 0.858
     },
     "yellow" : {
         "blue_apple" : 0.078,
@@ -717,7 +717,7 @@
         "red_pepper" : 0.049,
         "green_tomato" : 0.058,
         "pink_tomato" : 0.031,
-        "red_tomato" : 0.063,
+        "red_tomato" : 0.063
     },
     "apple" : {
         "blue_apple" : 0.462,
@@ -741,7 +741,7 @@
         "red_pepper" : 0.027,
         "green_tomato" : 0.102,
         "pink_tomato" : 0.022,
-        "red_tomato" : 0.093,
+        "red_tomato" : 0.093
     },
     "avocado" : {
         "blue_apple" : 0.039,
@@ -765,7 +765,7 @@
         "red_pepper" : 0.068,
         "green_tomato" : 0.017,
         "pink_tomato" : 0.065,
-        "red_tomato" : 0.023,
+        "red_tomato" : 0.023
     },
     "banana" : {
         "blue_apple" : 0.04,
@@ -789,7 +789,7 @@
         "red_pepper" : 0.019,
         "green_tomato" : 0.096,
         "pink_tomato" : 0.037,
-        "red_tomato" : 0.013,
+        "red_tomato" : 0.013
     },
     "carrot" : {
         "blue_apple" : 0.035,
@@ -813,7 +813,7 @@
         "red_pepper" : 0.036,
         "green_tomato" : 0.013,
         "pink_tomato" : 0.056,
-        "red_tomato" : 0.011,
+        "red_tomato" : 0.011
     },
     "fruit" : {
         "blue_apple" : 0.506,
@@ -837,7 +837,7 @@
         "red_pepper" : 0.106,
         "green_tomato" : 0.341,
         "pink_tomato" : 0.233,
-        "red_tomato" : 0.413,
+        "red_tomato" : 0.413
     },
     "pear" : {
         "blue_apple" : 0.004,
@@ -861,7 +861,7 @@
         "red_pepper" : 0.077,
         "green_tomato" : 0.045,
         "pink_tomato" : 0.011,
-        "red_tomato" : 0.047,
+        "red_tomato" : 0.047
     },
     "pepper" : {
         "blue_apple" : 0.045,
@@ -885,7 +885,7 @@
         "red_pepper" : 0.934,
         "green_tomato" : 0.083,
         "pink_tomato" : 0.063,
-        "red_tomato" : 0.049,
+        "red_tomato" : 0.049
     },
     "tomato" : {
         "blue_apple" : 0.034,
@@ -909,7 +909,7 @@
         "red_pepper" : 0.018,
         "green_tomato" : 0.738,
         "pink_tomato" : 0.412,
-        "red_tomato" : 0.962,
+        "red_tomato" : 0.962
     },
     "vegetable" : {
         "blue_apple" : 0.081,
@@ -933,6 +933,6 @@
         "red_pepper" : 0.777,
         "green_tomato" : 0.598,
         "pink_tomato" : 0.336,
-        "red_tomato" : 0.745,
+        "red_tomato" : 0.745
     },
 }
