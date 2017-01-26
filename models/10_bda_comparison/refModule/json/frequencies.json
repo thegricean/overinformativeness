@@ -1,0 +1,187 @@
+[
+  {
+    "Frequency": 0.0018,
+    "Utterance": "apple",
+    "_row": "apple"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "avocado",
+    "_row": "avocado"
+  },
+  {
+    "Frequency": 0.0004,
+    "Utterance": "banana",
+    "_row": "banana"
+  },
+  {
+    "Frequency": 0.0002,
+    "Utterance": "carrot",
+    "_row": "carrot"
+  },
+  {
+    "Frequency": 0.0006,
+    "Utterance": "pear",
+    "_row": "pear"
+  },
+  {
+    "Frequency": 0.001,
+    "Utterance": "pepper",
+    "_row": "pepper"
+  },
+  {
+    "Frequency": 0.0003,
+    "Utterance": "tomato",
+    "_row": "tomato"
+  },
+  {
+    "Frequency": 0.023,
+    "Utterance": "black",
+    "_row": "black"
+  },
+  {
+    "Frequency": 0.0119,
+    "Utterance": "blue",
+    "_row": "blue"
+  },
+  {
+    "Frequency": 0.008,
+    "Utterance": "brown",
+    "_row": "brown"
+  },
+  {
+    "Frequency": 0.0133,
+    "Utterance": "green",
+    "_row": "green"
+  },
+  {
+    "Frequency": 0.0025,
+    "Utterance": "orange",
+    "_row": "orange"
+  },
+  {
+    "Frequency": 0.0005,
+    "Utterance": "pink",
+    "_row": "pink"
+  },
+  {
+    "Frequency": 0.0036,
+    "Utterance": "red",
+    "_row": "red"
+  },
+  {
+    "Frequency": 0.0014,
+    "Utterance": "yellow",
+    "_row": "yellow"
+  },
+  {
+    "Frequency": 8.6139e-09,
+    "Utterance": "black avocado",
+    "_row": "black avocado"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "black pepper",
+    "_row": "black pepper"
+  },
+  {
+    "Frequency": 3.0285e-08,
+    "Utterance": "blue apple",
+    "_row": "blue apple"
+  },
+  {
+    "Frequency": 3.5438e-08,
+    "Utterance": "blue banana",
+    "_row": "blue banana"
+  },
+  {
+    "Frequency": 3.0742e-08,
+    "Utterance": "brown banana",
+    "_row": "brown banana"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "brown carrot",
+    "_row": "brown carrot"
+  },
+  {
+    "Frequency": 1.2123e-06,
+    "Utterance": "green apple",
+    "_row": "green apple"
+  },
+  {
+    "Frequency": 3.7499e-08,
+    "Utterance": "green avocado",
+    "_row": "green avocado"
+  },
+  {
+    "Frequency": 9.2273e-08,
+    "Utterance": "green pear",
+    "_row": "green pear"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "green pepper",
+    "_row": "green pepper"
+  },
+  {
+    "Frequency": 5.7166e-07,
+    "Utterance": "green tomato",
+    "_row": "green tomato"
+  },
+  {
+    "Frequency": 8.5348e-08,
+    "Utterance": "orange carrot",
+    "_row": "orange carrot"
+  },
+  {
+    "Frequency": 2.6244e-08,
+    "Utterance": "orange pear",
+    "_row": "orange pear"
+  },
+  {
+    "Frequency": 1.8874e-08,
+    "Utterance": "orange pepper",
+    "_row": "orange pepper"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "pink carrot",
+    "_row": "pink carrot"
+  },
+  {
+    "Frequency": 2.5164e-08,
+    "Utterance": "pink tomato",
+    "_row": "pink tomato"
+  },
+  {
+    "Frequency": 2.1026e-06,
+    "Utterance": "red apple",
+    "_row": "red apple"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "red avocado",
+    "_row": "red avocado"
+  },
+  {
+    "Frequency": 0,
+    "Utterance": "red pepper",
+    "_row": "red pepper"
+  },
+  {
+    "Frequency": 4.9652e-07,
+    "Utterance": "red tomato",
+    "_row": "red tomato"
+  },
+  {
+    "Frequency": 1.4963e-07,
+    "Utterance": "yellow banana",
+    "_row": "yellow banana"
+  },
+  {
+    "Frequency": 1.2189e-07,
+    "Utterance": "yellow pear",
+    "_row": "yellow pear"
+  }
+]
