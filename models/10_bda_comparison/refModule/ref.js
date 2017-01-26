@@ -67,8 +67,8 @@ var bayesianErpWriter = function(erp, filePrefix) {
 
   var supp = erp.support();
   supp.forEach(function(s) {
-    supportWriter(s.predictive, Math.exp(erp.score(s)), predictiveFile);
-    supportWriter(s.params, Math.exp(erp.score(s)), paramFile);
+    supportWriter(s.predictive, erp.score(s), predictiveFile);
+    supportWriter(s.params, erp.score(s), paramFile);
   });
   fs.closeSync(predictiveFile);
   fs.closeSync(paramFile);
