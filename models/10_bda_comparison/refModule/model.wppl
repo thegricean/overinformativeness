@@ -4,8 +4,6 @@ var initializeModel = function(params) {
   // 1. if 'none', there's no noise, and this prior is a delta on true context
   // 2. if 'addition', then we supplement the context with a 'ghost object'
   // 3. if 'replacement', then we swap out one of the objects with a 'misperception'
-  // Note: might want to think about whether we want all supplements to be equal
-  //       e.g. might want to only add objects that aren't already in context...
   var getNoisyContextPrior = function(trueContext) {
     return Infer({method: 'enumerate'}, function() {
       if(params.noiseType === 'none' || flip(1 - params.noiseRate))
@@ -33,7 +31,7 @@ var initializeModel = function(params) {
       return params.cost_color + params.cost_type;
     } else {
       return (_.includes(colors, split[0]) ?
-	      params.cost_color ://  + params.color_only_cost :
+	      params.cost_color + params.color_only_cost :
 	      params.cost_type);
     }
   };

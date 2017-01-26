@@ -36,13 +36,13 @@ source("./bdaOutput/helpers.R")
 
 ```{r}
 params <- read.csv("./bdaParams.csv", sep = ",", row.names = NULL)
-qparams_raw %>% group_by(parameter, value) %>% summarize(prob = sum(MCMCprob))
+params %>% group_by(parameter, value) %>% summarize(prob = sum(MCMCprob))
 ```
 
 Wanna know the best parameters for "expPragFlip == false"
 
 ```{r}
-View(qparams_raw %>% 
+View(params %>% 
        mutate(sampleNum = floor((row_number() - 1)/6)) %>%
        group_by(sampleNum) %>%
        spread(parameter, value) %>%
@@ -84,7 +84,7 @@ View(agr)
 ```{r}
 colors <- c("yellow","orange","red","pink", "green","blue","brown","black")
 types <- c('apple', 'avocado', 'banana', 'carrot', 'pear', 'tomato', 'pepper')
-predictive<-read_csv("./MAP_Predictives.csv") %>%
+predictive<-read_csv("./realValued_Predictives.csv") %>%
   rowwise() %>%
   mutate(target_item = paste0(c(TargetColor, TargetType), collapse = '_')) %>%
   filter(value %in% c(TargetColor, TargetType, target_item)) %>%
