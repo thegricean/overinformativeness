@@ -1,150 +1,39 @@
-[
-  {
-    "Utterance": "black_avocado",
-    "Length": 13
-  },
-  {
-    "Utterance": "black_pepper",
-    "Length": 12
-  },
-  {
-    "Utterance": "blue_apple",
-    "Length": 10
-  },
-  {
-    "Utterance": "blue_banana",
-    "Length": 11
-  },
-  {
-    "Utterance": "brown_banana",
-    "Length": 12
-  },
-  {
-    "Utterance": "brown_carrot",
-    "Length": 12
-  },
-  {
-    "Utterance": "green_apple",
-    "Length": 11
-  },
-  {
-    "Utterance": "green_avocado",
-    "Length": 13
-  },
-  {
-    "Utterance": "green_pear",
-    "Length": 10
-  },
-  {
-    "Utterance": "green_pepper",
-    "Length": 12
-  },
-  {
-    "Utterance": "green_tomato",
-    "Length": 12
-  },
-  {
-    "Utterance": "orange_carrot",
-    "Length": 13
-  },
-  {
-    "Utterance": "orange_pear",
-    "Length": 11
-  },
-  {
-    "Utterance": "orange_pepper",
-    "Length": 13
-  },
-  {
-    "Utterance": "pink_carrot",
-    "Length": 11
-  },
-  {
-    "Utterance": "pink_tomato",
-    "Length": 11
-  },
-  {
-    "Utterance": "red_apple",
-    "Length": 9
-  },
-  {
-    "Utterance": "red_avocado",
-    "Length": 11
-  },
-  {
-    "Utterance": "red_pepper",
-    "Length": 10
-  },
-  {
-    "Utterance": "red_tomato",
-    "Length": 10
-  },
-  {
-    "Utterance": "yellow_banana",
-    "Length": 13
-  },
-  {
-    "Utterance": "yellow_pear",
-    "Length": 11
-  },
-  {
-    "Utterance": "apple",
-    "Length": 5
-  },
-  {
-    "Utterance": "avocado",
-    "Length": 7
-  },
-  {
-    "Utterance": "banana",
-    "Length": 6
-  },
-  {
-    "Utterance": "carrot",
-    "Length": 6
-  },
-  {
-    "Utterance": "pear",
-    "Length": 4
-  },
-  {
-    "Utterance": "pepper",
-    "Length": 6
-  },
-  {
-    "Utterance": "tomato",
-    "Length": 6
-  },
-  {
-    "Utterance": "black",
-    "Length": 5
-  },
-  {
-    "Utterance": "blue",
-    "Length": 4
-  },
-  {
-    "Utterance": "brown",
-    "Length": 5
-  },
-  {
-    "Utterance": "green",
-    "Length": 5
-  },
-  {
-    "Utterance": "orange",
-    "Length": 6
-  },
-  {
-    "Utterance": "pink",
-    "Length": 4
-  },
-  {
-    "Utterance": "red",
-    "Length": 3
-  },
-  {
-    "Utterance": "yellow",
-    "Length": 6
+{
+    "apple": 5,
+    "avocado": 7,
+    "banana": 6,
+    "black": 5,
+    "black_avocado": 13,
+    "black_pepper": 12,
+    "blue": 4,
+    "blue_apple": 10,
+    "blue_banana": 11,
+    "brown": 5,
+    "brown_banana": 12,
+    "brown_carrot": 12,
+    "carrot": 6,
+    "green": 5,
+    "green_apple": 11,
+    "green_avocado": 13,
+    "green_pear": 10,
+    "green_pepper": 12,
+    "green_tomato": 12,
+    "orange": 6,
+    "orange_carrot": 13,
+    "orange_pear": 11,
+    "orange_pepper": 13,
+    "pear": 4,
+    "pepper": 6,
+    "pink": 4,
+    "pink_carrot": 11,
+    "pink_tomato": 11,
+    "red": 3,
+    "red_apple": 9,
+    "red_avocado": 11,
+    "red_pepper": 10,
+    "red_tomato": 10,
+    "tomato": 6,
+    "yellow": 6,
+    "yellow_banana": 13,
+    "yellow_pear": 11
   }
-]
