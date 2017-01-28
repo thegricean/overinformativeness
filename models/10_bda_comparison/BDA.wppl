@@ -5,26 +5,29 @@ var data = refModule.readCSV("./bdaInput/bda_data.csv");
 console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
-
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+
+// Cache the lexicons so we don't have to incur repeated cost of importing jsons
+var lexicons = {
+  'realValued' : refModule.getLexicon('realValued'),
+  'truthConditional' : refModule.getLexicon('truthConditional')
+};
 
 var modelAnalysis = function() {
 
   var bdaParams = {
     lexicon: uniformDraw(['realValued', 'truthConditional']),
-    noiseType: 'none', // uniformDraw(['none', 'addition', 'replacement']),
-//    noiseRate: uniformDraw([.1, .5]), // uniformDrift({a: 0, b: 1, width: 1/20}),
+    noiseType: uniformDraw(['none', 'addition', 'replacement']),
+    noiseRate: uniformDraw([.1]), // uniformDrift({a: 0, b: 1, width: 1/20}),
     alpha : uniformDraw([1,10,20,50]), // uniformDrift({a:0,b:40,width:40/20}),
-    cost_color : uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
-    cost_type : uniformDraw([0.5,1,2]),//uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDraw([0, 1, 2]) //uniformDrift({a:0,b:3,width:3/20})
+    cost_color : uniformDraw([0,1]), // uniformDrift({a:0,b:3,width:3/20}),
+    cost_type : uniformDraw([0,1]),//uniformDrift({a:0,b:3,width:3/20}),
+    color_only_cost : uniformDraw([0,1]) //uniformDrift({a:0,b:3,width:3/20})
   };  
 
   // Substitute in the right lexicon data structure for model
-  var modelParams = extend(bdaParams, {
-    'lexicon': refModule.getLexicon(bdaParams.lexicon)
-  });
-
+  var modelParams = extend(bdaParams, {'lexicon': lexicons[bdaParams.lexicon]});
+  
   var speakerModel = initializeModel(modelParams);
   
   var score = reduce(function(conditionObj, memo) {
@@ -37,7 +40,7 @@ var modelAnalysis = function() {
 
     // Run model
     var modelOutput = speakerModel(target, context);
-
+    
     // Store predictions
     foreach(modelOutput.support(), function(s){
       var key = _.values(conditionObj).concat(s);
@@ -61,4 +64,4 @@ var modelAnalysis = function() {
 
 var outputERP = Infer({method:'enumerate'}, modelAnalysis);
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/noNoise_");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/MAPnoNoise_");
