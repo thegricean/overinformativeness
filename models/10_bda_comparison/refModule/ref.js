@@ -93,6 +93,32 @@ var locParse = function(filename) {
         skipEmptyLines : true}).data;
 };
 
+var getFrequencyData = function() {
+  var frequencyData = require("./json/frequencies.json");
+  return frequencyData;
+};
+
+var getLengthData = function() {
+  var lengthData = require("./json/lengths.json");
+  return lengthData;
+};
+
+var standardizeVal = function(data, val) {
+  var maxVal = _.max(_.values(data));
+  var minVal = _.min(_.values(data));
+  return (val - minVal)/(maxVal - minVal);
+};
+
+var getRelativeLogFrequency = function(label) {
+  var frequencyData = getFrequencyData();
+  return 1-standardizeVal(frequencyData, frequencyData[label]);
+};
+
+var getRelativeLength = function(label) {
+  var lengthData = getLengthData();
+  return standardizeVal(lengthData, lengthData[label]);
+};
+
 module.exports = {
   getSubset : getSubset,
   getLexicon: getLexicon,
@@ -101,5 +127,7 @@ module.exports = {
   writeCSV : writeCSV,
   readCSV : readCSV,
   locParse : locParse,
+  getRelativeLength : getRelativeLength,
+  getRelativeLogFrequency : getRelativeLogFrequency,
   getTypSubset : getTypSubset
 };

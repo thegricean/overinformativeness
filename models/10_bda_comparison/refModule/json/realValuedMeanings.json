@@ -21,7 +21,7 @@
         "red_pepper" : 0.071,
         "green_tomato" : 0.028,
         "pink_tomato" : 0.01,
-      "red_tomato" : 0.132
+        "red_tomato" : 0.132
     },
     "black_pepper" : {
         "blue_apple" : 0.002,

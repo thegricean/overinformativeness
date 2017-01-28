@@ -1,5 +1,5 @@
 // run using:
-// webppl overinfBDA.wppl --require ./refModule/
+// webppl BDA.wppl --require ./refModule/
 
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
 console.log("Loading data complete...",+data.length+" data points");
@@ -17,12 +17,12 @@ var modelAnalysis = function() {
 
   var bdaParams = {
     lexicon: uniformDraw(['realValued', 'truthConditional']),
-    noiseType: uniformDraw(['none', 'addition', 'replacement']),
-    noiseRate: uniformDraw([.1]), // uniformDrift({a: 0, b: 1, width: 1/20}),
-    alpha : uniformDraw([1,10,20,50]), // uniformDrift({a:0,b:40,width:40/20}),
-    cost_color : uniformDraw([0,1]), // uniformDrift({a:0,b:3,width:3/20}),
-    cost_type : uniformDraw([0,1]),//uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDraw([0,1]) //uniformDrift({a:0,b:3,width:3/20})
+    lengthWeight: uniformDraw([0, .25, .5, .75, 1]),
+    noiseType: 'none', // uniformDraw(['none', 'addition', 'replacement']),
+    alpha : uniformDraw([1,10,20,30]), // uniformDrift({a:0,b:40,width:40/20}),
+    // cost_color : uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
+    // cost_type : uniformDraw([0.5,1,2]),//uniformDrift({a:0,b:3,width:3/20}),
+    // color_only_cost : uniformDraw([0, 1, 2]) //uniformDrift({a:0,b:3,width:3/20})
   };  
 
   // Substitute in the right lexicon data structure for model
