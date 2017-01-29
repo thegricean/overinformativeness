@@ -111,11 +111,15 @@ var standardizeVal = function(data, val) {
 
 var getRelativeLogFrequency = function(label) {
   var frequencyData = getFrequencyData();
+  // console.log("raw freq:")
+  // console.log(frequencyData[label]);
   return 1-standardizeVal(frequencyData, frequencyData[label]);
 };
 
 var getRelativeLength = function(label) {
   var lengthData = getLengthData();
+  // console.log("raw length:")
+  // console.log(lengthData[label]);
   return standardizeVal(lengthData, lengthData[label]);
 };
 

@@ -1,29 +1,32 @@
 // run using:
 // webppl BDA.wppl --require ./refModule/
 
+util.seedRNG(8);
+
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
 console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
-
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+
+// Cache the lexicons so we don't have to incur repeated cost of importing jsons
+var lexicons = {
+  'realValued' : refModule.getLexicon('realValued'),
+  'truthConditional' : refModule.getLexicon('truthConditional')
+};
 
 var modelAnalysis = function() {
 
   var bdaParams = {
-    lexicon: uniformDraw(['realValued', 'truthConditional']),
-    lengthWeight: uniformDraw([0, .25, .5, .75, 1]),
-    noiseType: 'none', // uniformDraw(['none', 'addition', 'replacement']),
-//    noiseRate: uniformDraw([.1, .5]), // uniformDrift({a: 0, b: 1, width: 1/20}),
-    alpha : uniformDraw([1,10,20,30]), // uniformDrift({a:0,b:40,width:40/20}),
-    // cost_color : uniformDraw([0.5,1,2]), // uniformDrift({a:0,b:3,width:3/20}),
-    // cost_type : uniformDraw([0.5,1,2]),//uniformDrift({a:0,b:3,width:3/20}),
-    color_only_cost : uniformDraw([0, 1, 2]) //uniformDrift({a:0,b:3,width:3/20})
-  };  
+    alpha : uniformDrift({a:0,b:20,width:20/20}),
+    typWeight : uniformDrift({a:0,b:10,width:10/20}),
+    cost_color : uniformDrift({a:-10,b:10,width:20/20}),
+    cost_type : uniformDrift({a:-10,b:10,width:20/20})
+  };
 
   // Substitute in the right lexicon data structure for model
   var modelParams = extend(bdaParams, {
-    'lexicon': refModule.getLexicon(bdaParams.lexicon)
+    'lexicon': refModule.getLexicon('realValued')//bdaParams.lexicon)
   });
 
   var speakerModel = initializeModel(modelParams);
@@ -38,7 +41,7 @@ var modelAnalysis = function() {
 
     // Run model
     var modelOutput = speakerModel(target, context);
-
+    
     // Store predictions
     foreach(modelOutput.support(), function(s){
       var key = _.values(conditionObj).concat(s);
@@ -60,6 +63,7 @@ var modelAnalysis = function() {
   return {predictive: globalStore.predictives, params : bdaParams};
 };
 
-var outputERP = Infer({method:'enumerate'}, modelAnalysis);
+var outputERP = Infer({method:'MCMC', samples: 500, lag: 2, verbose: true}, modelAnalysis);
+// var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 10, burn: 5, verbose: true}, modelAnalysis); // seed8
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/noNoise_");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/negcost-mcmc");
