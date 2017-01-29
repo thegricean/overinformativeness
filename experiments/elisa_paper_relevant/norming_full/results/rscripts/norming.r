@@ -110,7 +110,12 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=20, width=35)
 
+agr$Combo = paste(agr$Color,agr$Item,sep=" ")
 agr$RoundMTypicality = round(agr$MeanTypicality, digits=3);
+
+
+write.csv(agr[,c("Item","Color","Utterance","Combo","RoundMTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+
 
 # do something awful:
 for (u in unique(agr$Utterance)) {
