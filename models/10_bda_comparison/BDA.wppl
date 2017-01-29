@@ -1,22 +1,20 @@
 // run using:
 // webppl BDA.wppl --require ./refModule/
 
-util.seedRNG(8);
-
 var data = refModule.readCSV("./bdaInput/bda_data.csv");
 console.log("Loading data complete...",+data.length+" data points");
 
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
-// Cache the lexicons so we don't have to incur repeated cost of importing jsons
-var lexicons = {
-  'realValued' : refModule.getLexicon('realValued'),
-  'truthConditional' : refModule.getLexicon('truthConditional')
+// Fix some configuration options
+var globalConfig = {
+  'lexicon' : refModule.getLexicon('realValued'),
+  'storePredictives' : false,
+  'outputFileName' : 'negCost'
 };
 
 var modelAnalysis = function() {
-
   var bdaParams = {
     alpha : uniformDrift({a:0,b:20,width:20/20}),
     typWeight : uniformDrift({a:0,b:10,width:10/20}),
@@ -24,11 +22,8 @@ var modelAnalysis = function() {
     cost_type : uniformDrift({a:-10,b:10,width:20/20})
   };
 
-  // Substitute in the right lexicon data structure for model
-  var modelParams = extend(bdaParams, {
-    'lexicon': refModule.getLexicon('realValued')//bdaParams.lexicon)
-  });
-
+  // Run specified version of model
+  var modelParams = extend(bdaParams, {'lexicon': globalConfig.lexicon});
   var speakerModel = initializeModel(modelParams);
   
   var score = reduce(function(conditionObj, memo) {
@@ -42,12 +37,14 @@ var modelAnalysis = function() {
     // Run model
     var modelOutput = speakerModel(target, context);
     
-    // Store predictions
-    foreach(modelOutput.support(), function(s){
-      var key = _.values(conditionObj).concat(s);
-      var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
-      globalStore.predictives = extend(globalStore.predictives, newPair);
-    });
+    // Store predives
+    if(globalConfig.storePredictives) {
+      foreach(modelOutput.support(), function(s){
+	var key = _.values(conditionObj).concat(s);
+	var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
+	globalStore.predictives = extend(globalStore.predictives, newPair);
+      });
+    }
     
     // condition on data
     var itemData = refModule.getSubset(data, conditionObj);
@@ -63,7 +60,7 @@ var modelAnalysis = function() {
   return {predictive: globalStore.predictives, params : bdaParams};
 };
 
-var outputERP = Infer({method:'MCMC', samples: 500, lag: 2, verbose: true}, modelAnalysis);
-// var outputERP = Infer({method:'MCMC', kernel : {HMC: {steps:5, stepSize:.01} }, samples: 10, burn: 5, verbose: true}, modelAnalysis); // seed8
+var outputERP = Infer({method:'MCMC', samples: 500, lag: 2, burn: 100, verbose: true},
+		      modelAnalysis);
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/negcost-mcmc");
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.filename);
