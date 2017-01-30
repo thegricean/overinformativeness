@@ -23,11 +23,20 @@ var initializeModel = function(params) {
   };
   
   // Cost of full utterances is sum of individual word costs,
+  // Use empirical costs as a base
   var getUtteranceCost = function(utt) {
-    return reduce(function(word, memo) {
-      var cost = _.contains(colors, word) ? params.cost_color : params.cost_type;
+    var adjustment = reduce(function(word, memo) {
+      var cost = _.includes(colors, word) ? params.colorCost : params.typeCost;
       return memo + cost;
     }, 0, utt.split('_'));
+
+    if(params.costsChoice === 'empirical') {
+      var lengthTerm = params.lengthWeight * refModule.getRelativeLength(utt);
+      var freqTerm = (1 - params.lengthWeight) * refModule.getRelativeLogFrequency(utt);
+      return lengthTerm + freqTerm + adjustment;
+    } else {
+      return adjustment;
+    }
   };
 
   // Looks up meaning in given lexicon
@@ -59,9 +68,7 @@ var initializeModel = function(params) {
 	var noisyContext = sample(noisyContextPrior);
 	return sample(literalListener(utt, noisyContext));
       });
-
-      var uttcost = getUtteranceCost(utt);
-      factor(params.alpha * listener.score(target) - uttcost);
+      factor(params.alpha * listener.score(target) - getUtteranceCost(utt));
       return utt;
     });
   };
