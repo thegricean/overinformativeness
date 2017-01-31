@@ -15,8 +15,8 @@ var globalConfig = {
   'lexiconChoice' : 'empirical',
   'costsChoice' : 'empirical',
   'noiseType' : 'none',
-  'storePredictives' : false,
-  'outputFileName' : 'negCost'
+  'storePredictives' : true,
+  'outputFileName' : 'empiricalCosts'
 };
 
 var modelAnalysis = function() {
@@ -27,7 +27,7 @@ var modelAnalysis = function() {
     typeCost : uniformDrift({a:-10,b:10,width:20/20})
   };
 
-  // Additional params if using empirical values
+  // Additional params for particular versions
   var empCostParams = (globalConfig.costsChoice == 'empirical' ? {
     lengthWeight : uniformDrift({a: 0, b: 1, width: 1/20})
   } : {});
@@ -35,9 +35,13 @@ var modelAnalysis = function() {
   var empTypicalitiesParams = (globalConfig.lexiconChoice == 'empirical' ? {
     typWeight : uniformDrift({a:0, b:10, width:10/20})
   } : {});
+  
+  var noiseParams = (globalConfig.noiseType != 'none' ? {
+    noiseRate : uniformDrift({a: 0, b: 1, width: 1/20})
+  } : {});
 
   // Combine params together
-  var params = extend(baseParams, empCostParams, empTypicalitiesParams);
+  var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
   
   var score = reduce(function(conditionObj, memo) {
     // Extract condition information
