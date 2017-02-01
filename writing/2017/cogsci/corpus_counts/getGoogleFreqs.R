@@ -40,11 +40,18 @@ for (p in pairs) {
  d[p,"Utterance"] = paste(strsplit(p," ")[[1]][1],strsplit(p," ")[[1]][2],sep="_")
 }
 
-write(toJSON(d[,1:2], pretty=TRUE),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/refModule/json/frequencies.json")
+d[d$Frequency == 0,]$Frequency = min(d[d$Frequency>0,]$Frequency)/10
+d$logFrequency = log(d$Frequency)
+freqs = d %>%
+  select(Utterance,logFrequency) %>%
+  spread(Utterance,logFrequency)
+
+write(toJSON(freqs, pretty=TRUE),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/refModule/json/frequencies.json")
 
 lengths = data.frame(Utterance = c("black_avocado","black_pepper","blue_apple","blue_banana","brown_banana","brown_carrot","green_apple","green_avocado","green_pear","green_pepper","green_tomato","orange_carrot","orange_pear","orange_pepper","pink_carrot","pink_tomato","red_apple","red_avocado","red_pepper","red_tomato","yellow_banana","yellow_pear","apple","avocado","banana","carrot","pear","pepper","tomato","black","blue","brown","green","orange","pink","red","yellow"))
 lengths$Length = nchar(as.character(lengths$Utterance))
-lengths
+lengths = lengths %>%
+  spread(Utterance,Length)
 
 write(toJSON(lengths,pretty=TRUE), file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/refModule/json/lengths.json")
                      

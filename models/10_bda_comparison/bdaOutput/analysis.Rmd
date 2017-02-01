@@ -16,6 +16,7 @@ library(readr)
 #library(purrr)
 #library(gridExtra)
 library(lme4)
+library(tidyr)
 estimate_mode <- function(s) {
   d <- density(s)
   return(d$x[which.max(d$y)])
@@ -37,7 +38,8 @@ source("./bdaOutput/helpers.R")
 ### Load in model results
 
 ```{r}
-params <- read.csv("./negCostParams.csv", sep = ",", row.names = NULL)
+params <- read.csv("./empiricalCosts_noiseAddParams.csv", sep = ",", row.names = NULL)
+params %>% group_by(parameter, value) %>% summarize(prob = sum(MCMCprob))
 ```
 
 look at MAP, credible intervals...
@@ -123,7 +125,7 @@ agr = as.data.frame(agr)
 ```{r}
 colors <- c("yellow","orange","red","pink", "green","blue","brown","black")
 types <- c('apple', 'avocado', 'banana', 'carrot', 'pear', 'tomato', 'pepper')
-predictive<-read_csv("./MAPneglCostPredictives.csv") %>%
+predictive<-read_csv("./empiricalCosts_noiseAddPredictives.csv") %>%
   rowwise() %>%
   mutate(target_item = paste0(c(TargetColor, TargetType), collapse = '_')) %>%
   filter(value %in% c(TargetColor, TargetType, target_item)) %>%

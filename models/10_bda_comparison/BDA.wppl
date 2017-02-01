@@ -14,9 +14,9 @@ var realValuedLexicon = refModule.getLexicon('realValued');
 var globalConfig = {
   'lexiconChoice' : 'empirical',
   'costsChoice' : 'empirical',
-  'noiseType' : 'none',
-  'storePredictives' : true,
-  'outputFileName' : 'empiricalCosts'
+  'noiseType' : 'addition',
+  'storePredictives' : false,
+  'outputFileName' : 'empiricalCosts_noiseAdd'
 };
 
 var modelAnalysis = function() {
