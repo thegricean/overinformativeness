@@ -98,22 +98,22 @@ An account of why more typical properties are less likely to be mentioned is sti
 
 Following the bulk of the previous literature, we assume that a speaker's choice of referring expression is governed by multiple factors, including the expression's contextual informativeness and its cost. Following  \citeA{GrafEtAl2016,DegenEtAl-inprep} \jd{who else?}, we model speaker behavior formally within the Rational Speech Act (RSA) framework \cite{frank2012, GoodmanFrank2016}. However, we show that with a deterministic semantics for nouns and color adjectives, RSA cannot capture typicality effects in language. Therefore, also following \citeA{GrafEtAl2016,DegenEtAl-inprep}, we allow the semantics of expressions to assume a continuous value. That is, we allow `banana'-hood or `blue'-ness to apply to a given object to some degree rather than deterministically. This change directly affects expressions' contextual informativeness, resulting in precisely the expected typicality effects, as we demonstrate below.
 
-In order to quantitatively evaluate the model, we collected freely produced referring expressions to objects in a web-based two-player reference game experiment (see \figref{fig:mturk}). We presented participants with color-diagnostic objects that varied in how typical their colors were. Objects were presented in different contexts to vary the contextual informativeness of mentioning color (see \figref{fig:contexts}). \jd{continue here} 
+In order to quantitatively evaluate the model, we collected freely produced referring expressions to objects in a web-based two-player reference game experiment (see \figref{fig:mturk}). We presented participants with color-diagnostic objects that varied in how typical their colors were. Objects were presented in different contexts to vary the contextual informativeness of mentioning color (see \figref{fig:contexts}). 
 
 %One of the two players was given the role of the listener, the other one the role of the speaker. They could communicate freely with each other through a chat box which ensured natural language data. In each context, both saw the same objects but only the speaker had the special marking of the referent which he had to communicate to the listener. The listener then had to deduce the correct target from the speaker’s utterance and mark it by clicking on the object. 
 %The context were manipulated by a differing typicality for the target object, and by distractor variation (either sharing the target's type, color or none of those). This way we could evaluate the effect of typicality and different kinds of contexts on referring expressions.
 
-We expected to replicate color typicality effects on referring expressions in at least those contexts where color use would be `overinformative' (Fig.~1c) and 1d)), i.e., not strictly necessary for uniquely establishing reference. We included contexts in which mentioning color was informative (Fig.~1a) and 1b)) as a control condition as well as to test (to our knowledge, for the first time) whether typicality effects are observed even in situations where mentioning color is seemingly necessary for uniquely establishing reference.
+We expected to replicate color typicality effects on referring expressions in at least those contexts where color use would be `overinformative' (Fig.~1c) and 1d)), i.e., not strictly necessary for uniquely establishing reference. We also included control contexts in which mentioning color was informative (Fig.~1a) and 1b)). In these conditions, it is necessary to mention an object's color to unambiguously establish reference. Thus, we can test for typicality effects even in situations where mentioning color is seemingly necessary.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{graphs/context_overview}
+	\includegraphics[width=.6\textwidth]{graphs/context_overview}
 	\caption{The four context conditions, exemplified by the \textit{banana} domain. The target is outlined in green; the color and type of the distractors differ with each condition (see text).
 	}
 	\label{fig:contexts}
 \end{figure}
 
-We first report the production experiment. We then report norming studies we conducted to empirically elicit typicality values for all utterance-object pairs. We then report a comparison of different RSA models with graded semantics against a deterministic semantics baseline. Model comparison makes use of the empirically elicited typicality values to derive behavioral predictions, which we compare against the data obtained in the reported production experiment.
+We begin by reporting the production experiment, including norming studies we conducted to empirically elicit typicality values for all utterance-object pairs. We then report a comparison of different RSA models with graded semantics against a deterministic semantics baseline. Model comparison makes use of the empirically elicited typicality values to derive behavioral predictions, which we compare against the data obtained in the reported production experiment.
 
 %In this paper, we also describe how this effect can be modeled by using the Rational-Speech-Acts (RSA) framework (Frank \& Goodman, 2012; Goodman \& Stuhlmüller, 2013). This model already showed good performance in various language interpretation tasks (e.g. Goodman \& Stuhlmüller, 2013; Kao, Wu, Bergen, \& Goodman, 2014), but has only recently been applied to production data(, also with promising results???) (but see Franke, 2014; Orita, Vornov, Feldman, \& Daume ́ III, 2015, Graf, 2016). 
 %A speaker in RSA is treated as an approximately optimal decision maker who chooses which utterance to use to communicate to a listener. The speaker has a utility which includes terms for the cost of producing an utterance (in terms of length or frequency) and the informativeness of the utterance for a listener. The listener is treated as a literal Bayesian interpreter who updates her beliefs given the truth of the utterance. These truth values are usually treated as deterministic (an object either is a “dog” or it is not); here we relax this formulation in order to incorporate typicality effects. That is, we elicit typicality ratings in a separate experiment, and model the listener as updating her beliefs by weighting the possible referents according to how typical each is for the description used. We evaluate the quantitative model predictions against our production data. The model also allows us to evaluate the need for each extra component—typicality, length, frequency—and determine whether the empirical bias toward reference at the basic level (Rosch et al., 1976) can be accounted for without build- ing it in as a separate factor.  (from Caroline)\\
@@ -129,9 +129,9 @@ We first report the production experiment. We then report norming studies we con
 	\label{fig:mturk}
 \end{figure}
 
-\subsection{Methods}
+%\subsection{Methods}
 
-\paragraph{Participants and materials}
+\subsection{Participants and materials}
 We recruited 120 self-reported native speakers of English over Mechanical Turk. The experiment was a multi-player reference game in which one participant was randomly assigned to the role of the speaker, and the other one to the role of the listener. The speaker's task was to communicate a target object out of three-object contexts to the listener. The target was always marked with a green border (see \figref{fig:mturk}). The listener clicked on the object they thought was the target. The speaker and the listener could communicate freely through a chat box.
 
 %\paragraph{\bf Materials}
@@ -143,13 +143,13 @@ Each presented context consisted of three objects, one target and two distractor
 The item selection was randomized but conditioned on the corresponding context condition, i.e., the items had to fulfill the properties dictated by the condition. In the end, each participant saw 42 different contexts. All of the differently colored items were the target exactly twice but the context in which they occurred was drawn randomly from the four possible conditions mentioned above. All in all, there were 84 different configurations, i.e., seven target food items, each of them in three colors, where each could occur in four contexts. Trial order was randomized.
 
 
-\paragraph{Procedure}
+\subsection{Procedure}
 
-Participants were randomly paired up and each was randomly assigned either to the role of  speaker or listener. They communicated through a real-time multi-player interface as described in \citeA{hawkins2015}. The virtual environment of the experiment can be seen in \figref{fig:mturk}. The speaker and the listener saw the same set of objects but in a randomized order to avoid trivial position-based references such as ``the left one". After the listener clicked on the presumed target, both speaker and listener received feedback about whether the right object had been selected.
+Participants were randomly paired up and each was randomly assigned either to the role of  speaker or listener. They communicated through a real-time multi-player interface as described in \citeA{Hawkins15_RealTimeWebExperiments}. The virtual environment of the experiment can be seen in \figref{fig:mturk}. The speaker and the listener saw the same set of objects but in a randomized order to avoid trivial position-based references such as ``the left one". After the listener clicked on the presumed target, both speaker and listener received feedback about whether the right object had been selected.
 
 
-\paragraph{Annotation}
-After collecting the data, the different utterances were labeled as belonging to one of the following categories: type-only ("banana"), color-and-type ("yellow banana"),  color-only ("yellow"), category-only ("fruit"), color-and-category ("yellow fruit"), description ("has green stem"), color-modifier ("funky carrot"), and negation ("yellow but not banana"). Before sorting, two participants had to be excluded because they did not finish the experiment, and therefore could not be paid. Furthermore, trials in which the speaker did not produce any utterances, and trials in which the listener could not identify the target correctly were excluded, too. The remaining utterances (94\% of the original set) were cleaned manually for misspellings and abbreviations, e.g., ``banan" for banana. Afterwards, the speakers that continuously refused to name objects but used unnatural descriptions instead (e.g., "monkeys love..." for banana) were excluded, too, as they misunderstood the task and the resulting expressions were therefore not relevant for the study.
+\subsection{Annotation}
+After collecting the data, the different utterances were labeled as belonging to one of the following categories: type-only ("banana"), color-and-type ("yellow banana"),  color-only ("yellow"), category-only ("fruit"), color-and-category ("yellow fruit"), description ("has green stem"), color-modifier ("funky carrot"), and negation ("yellow but not banana"). Before sorting, two participants were excluded because they did not finish the experiment. Trials on which the speaker did not produce any utterances and trials on which the listener did not identify the target correctly were excluded as well. The remaining utterances (94\% of the original set) were cleaned manually for misspellings and abbreviations, e.g., ``banan" for banana. Finally, there were some speakers \jd{how many, elisa?} who consistently used roundabout descriptions instead of direct referring expressions (e.g., "monkeys love..." for banana). These participants were excluded because they were clearly not trying to simply communicate the target.
 
 The resulting utterances were then categorized according to the categories laid out above. Only five utterances (0.003\%) were assigned to the category "other".
 
@@ -166,10 +166,10 @@ The resulting utterances were then categorized according to the categories laid 
 	\includegraphics[width=.5\textwidth]{graphs/typ_norm_full_2}
 	\caption{Typicality norming study.
 	}
-	\label{fig:typ_norm_full_2}
+	\label{fig:typicalitynorming}
 \end{figure}
 
-\paragraph{Typicality norming}
+\subsection{Typicality norming}
 %For further analysis of the objects, we conducted two norming studies - an object and a color norming study. Both had 75 participants that were recruited over Mechanical Turk.
 %
 %In the object norming study, the participants were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a type, e.g., banana, or a category, e.g., fruit). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every type and category expression from the set, resulting in 189 different trials.
@@ -178,8 +178,48 @@ The resulting utterances were then categorized according to the categories laid 
 %
 %Due to the amount of trials, each participant only saw a subset of 90. The decision on which trials were shown was random with a slight preference on fitting combinations, e.g., seeing a blue banana and asking for "banana", in contrast to seeing a blue carrot and asking for "apple". The amount of data per combination ranged from 13 to 60. The assumed typicality values are the averaged slider values for each combination ranging from 0.004 (very atypical) to 0.989 (very typical). 
 
-To get empirical typicality values of the objects, we conducted a norming study. 66 participants  have been recruited via Mechanical turk, two of which had to be excluded because they were non-English speakers, and two because they only clicked randomly.
-They were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a color-type combination, e.g., blue banana, or red apple). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every color-type combination from the set, resulting in 484 different trials. Each participant answered 110 trials in which type consistent trials (showing all kinds of bananas when utterance contains the word banana) were always present, and non-fitting trials which were selected randomly. The amount of data per combination ranged from 1 to 62. The assumed typicality values are the averaged slider values for each combination ranging from 0 (very atypical) to 0.983 (very typical). 
+To evaluate the model we report below, we collected empirical typicality values for each utterance-object pair. Ratings were collected across three separate studies. The first study collected typicalities for adjective\&noun-object pairs, e.g., ``yellow banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The second study collected typicalities for noun-object pairs, e.g., ``banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The third study collected typicalities for adjective-color pairs, e.g., ``yellow'' as applied to a color patch of the average yellow from the yellow banana image or to a color patch of the average orange from the orange pear image.  On each trial, participants saw one of the images used in the production experiment in isolation and were asked: ``How typical is this object for a \textsc{utterance}'', where \textsc{utterance} was replaced by an utterance of interest. In the color typicality study, they were asked ``How typical is this color for the color \textsc{color}?'', where \textsc{color} was replaced by one of the relevant color terms.  They then adjusted a sliding scale with endpoints labeled ``very atypical'' and ``very typical'' to indicated their response. A screenshot of a typical trial is shown in \figref{fig:typicalitynorming}. An overview of the differences between the three typicality norming studies differed is shown in \tableref{tab:normingoverview}. Each participant saw each `correct' combination of utterances and objects (22 total) as well as a number of randomly sampled trials from the total set of items in each study, shown in the table.
+
+\begin{table*}
+\caption{Overview of typicality norming studies.}
+\begin{tabular}{l l l l l l l}
+\toprule
+Utterances & Example & Images & Participants & Trials & Items & Excluded\\
+\midrule
+Adj Noun & \emph{yellow banana} & object & \jd{elisa, fill in} & 110 & 484 & \jd{elisa, fill in}\\ 
+Noun & \emph{banana} & object & \jd{elisa, fill in} & 90 & \jd{elisa, fill in} & \jd{elisa, fill in}\\
+Adj & \emph{yellow} & color patch & \jd{elisa, fill in} & 90 & \jd{elisa, fill in} & \jd{elisa, fill in}\\
+\bottomrule
+\end{tabular}
+\label{tab:normingoverview}
+\end{table*}
+
+\jd{elisa: number of exclusions in each study?}
+
+Slider values were coded as falling between 0 (`very atypical') and 1 (`very typical'). For each utterance-object combination we computed mean typicality ratings. For example, mean typicalities for the banana items are shown in \tableref{tab:bananatypicalities}.
+
+\begin{table}
+\caption{Mean typicalities for banana items. Combinations where a deterministic semantics would return TRUE are marked in boldface.}
+\begin{tabular}{r r r r r}
+\toprule
+%Utterance & Item & Typicality\\
+ & \multicolumn{3}{c}{Banana items} & Other \\
+ Utterance & yellow & brown  & blue & \\ 
+ \midrule
+\emph{banana} & \textbf{.98} & \textbf{.66} & \textbf{.42} & .05  \\
+ \midrule
+\emph{yellow banana} & \textbf{.98} & .33 & .17 & .05 \\
+\emph{brown banana} & .28 & \textbf{.90} & .18 & .04\\
+\emph{blue banana} & .20 & .18 & \textbf{.91} & .06\\
+ 
+\bottomrule
+\end{tabular}
+\label{tab:bananatypicalities}
+\end{table}
+
+%66 participants  were recruited via Mechanical Turk. Two participants were excluded because they were not self-reported English speakers, and two because their responses were random. \jd{measured how?}
+%
+%They were shown a colored food item, e.g., a blue banana, and asked "How typical is this object for an X?" (X being a color-type combination, e.g., blue banana, or red apple). The participants could rate the fitness on a continuous draggable scale from "very atypical" to "very typical". Every object in the set was paired with every color-type combination from the set, resulting in 484 different trials. Each participant answered 110 trials in which type consistent trials (showing all kinds of bananas when utterance contains the word banana) were always present, and non-fitting trials which were selected randomly. The amount of data per combination ranged from 1 to 62. The assumed typicality values are the averaged slider values for each combination ranging from 0 (very atypical) to 0.983 (very typical). 
 
 \subsection{\bf Results}
 
@@ -189,12 +229,12 @@ They were shown a colored food item, e.g., a blue banana, and asked "How typical
 %To test for the independent effects of informativeness, length, frequency, and typicality on sub-level mention, we conducted a mixed effects logistic regression. Frequency was coded as the difference between the sub and the basic level's log frequency, as extracted from the Google Books Ngram English corpus ranging from 1960 to 2008. Length was coded as the ratio of the sub to the basic level's length.\footnote{We used the mean empirical lengths in characters of the utterances participants produced. For example, the minivan, when referred to at the subcategory level, was sometimes called ``minivan'' and sometimes ``van'' leading to a mean empirical length of 5.64. This is the value that was used, rather than 7, the length of ``minivan''.} That is, a higher frequency difference indicates a \emph{lower} cost for the sub level term compared to the basic level, while a higher length ratio reflects a \emph{higher} cost for the sub level term compared to the basic level.\footnote{We replicate the well-documented negative correlation between length and log frequency ($r = -.53$ in our dataset).} Typicality was coded as the ratio of the target's sub to basic level label typicality. That is, the higher the ratio, the more typical the object was for the sub level label compared to the basic level.
 %For instance, the panda was relatively atypical for its basic level ``bear'' (mean rating 0.75) compared to the sub level term ``panda bear'' (mean rating 0.98), which resulted in a relatively \emph{high} typicality ratio.
 
-\begin{figure}[bt]
+\begin{figure*}[bt]
 \centering
-\includegraphics[width=.5\textwidth]{graphs/cuny_graph}
+\includegraphics[width=\textwidth]{graphs/cuny_graph}
 \caption{Proportion of Color ("blue"), Type ("banana"), and ColorAndType ("blue banana") utterances as a function of mean object typicality ???for the Type utterance???, across conditions. "COLOR banana" cases are circled in their respective color.}
 \label{fig:qualitativemodel}
-\end{figure}
+\end{figure*}
 
 %Condition was coded as a three-level factor: \emph{sub necessary}, \emph{basic sufficient}, and \emph{super sufficient}, where item22 and item23 were collapsed into \emph{basic sufficient}. Condition was Helmert-coded: two contrasts over the three condition levels were included in the model, comparing each level against the mean of the remaining levels (in order: \emph{sub necessary}, \emph{basic sufficient}, \emph{super sufficient}). This allowed us to determine whether the probability of type mention  for neighboring conditions were significantly different from each other, as suggested by \figref{fig:qualitativemodel}.\footnote{Adding terms that code the ratio of the sub vs super level frequency and length did not lead to an improvement of model fit.} The model included random by-speaker and by-domain intercepts. 
 %
