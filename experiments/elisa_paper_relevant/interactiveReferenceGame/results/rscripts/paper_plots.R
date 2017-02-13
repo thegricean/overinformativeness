@@ -6,7 +6,7 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/results")
-setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/26_24_without_cup/results")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -41,7 +41,7 @@ table(d$context,d$colorMentioned)
 
 # get meantypicalities from previous study
 typ = read.csv(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
-typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
+typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
@@ -254,6 +254,48 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
 ggsave("graphs/paper/utterance_by_conttyp.png",width=12,height=9)
+
+
+
+# plot utterance choice proportions by typicality thick for poster
+agr = production %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
+  group_by(Utterance,context,NormedTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+
+# change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
+
+# change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative-cc", "overinformative", "overinformative-cc")
+
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point(size=2) +
+  geom_smooth(method="lm",size=2.25) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                       breaks=c("Type", "Color", "ColorAndType", "Other"),
+                       labels=c("Only Type", "Only Color", "Color + Type", "Other")) +
+  xlab("Typicality") +
+  ylab("Empirical utterance proportion") +
+  theme(axis.title=element_text(size=25,colour="#757575")) +
+  theme(axis.text.x=element_text(size=20,colour="#757575")) +
+  theme(axis.text.y=element_text(size=20,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.5,colour="#757575"), axis.ticks.length=unit(1,"mm")) +
+  theme(strip.text.x=element_text(size=30,colour="#757575")) +
+  theme(legend.position="top") +
+  theme(legend.title=element_text(size=25,color="#757575")) +
+  theme(legend.text=element_text(size=20,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
+ggsave("graphs/paper/utterance_by_conttyp_poster.png",width=12,height=9)
+
 
 
 
