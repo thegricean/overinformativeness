@@ -257,100 +257,94 @@ var items_target = _.shuffle([
 
 
 
-
-
-
-
-
-
 var items_target_2 = _.shuffle([
 {
 "label": "avocado_black",
-"item": ["blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["brown banana", "yellow banana", "brown carrot", "pink carrot", "yellow pear", "orange pear", "orange pepper", "black pepper", "red tomato", "green tomato"]
 },
 {
 "label": "avocado_green",
-"item": ["blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red tomato", "green tomato"]
 },
 {
 "label": "avocado_red",
-"item": ["blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["blue apple", "red apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "pink carrot", "green pear", "orange pear", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "apple_blue",
-"item": ["black avocado", "red avocado", "green avocado", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "orange carrot", "green pear", "yellow pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato"]
 },
 {
 "label": "apple_red",
-"item": ["black avocado", "red avocado", "green avocado", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["red avocado", "green avocado", "blue banana", "yellow banana", "brown carrot", "pink carrot", "green pear", "yellow pear", "red pepper", "black pepper", "pink tomato"]
 },
 {
 "label": "apple_green",
-"item": ["black avocado", "red avocado", "green avocado", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "green avocado", "brown banana", "yellow banana", "orange carrot", "pink carrot", "green pear", "green pepper", "red pepper", "orange pepper", "red tomato", "green tomato"]
 },
 {
 "label": "banana_blue",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["red avocado", "green avocado", "blue apple", "red apple", "green apple", "brown carrot", "pink carrot", "yellow pear", "green pepper", "red pepper", "orange pepper", "green tomato"]
 },
 {
 "label": "banana_brown",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["red avocado", "red apple", "brown carrot", "pink carrot", "yellow pear", "orange pear", "green pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "banana_yellow",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["red avocado", "green avocado", "blue apple", "red apple", "orange carrot", "brown carrot", "pink carrot", "yellow pear", "orange pear", "green pepper", "red pepper", "black pepper", "pink tomato", "green tomato"]
 },
 {
 "label": "carrot_orange",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["green avocado", "red apple", "green apple", "blue banana", "green pear", "yellow pear", "orange pear", "green pepper", "orange pepper", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "carrot_pink",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "blue apple", "green apple", "brown banana", "yellow banana", "green pear", "orange pear", "red pepper", "orange pepper", "black pepper", "pink tomato", "green tomato"]
 },
 {
 "label": "carrot_brown",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "yellow pear", "orange pear", "green pepper", "red pepper", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "pear_green",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "pink carrot", "green pepper", "green tomato"]
 },
 {
 "label": "pear_orange",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "green avocado", "blue apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "orange pepper", "black pepper", "red tomato", "green tomato"]
 },
 {
 "label": "pear_yellow",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "yellow banana", "brown carrot", "green pepper", "red pepper", "orange pepper", "black pepper", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "pepper_green",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "green avocado", "green apple", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "yellow pear", "red tomato", "pink tomato", "green tomato"]
 },
 {
 "label": "pepper_black",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "orange carrot", "brown carrot", "yellow pear", "orange pear", "red tomato", "green tomato"]
 },
 {
 "label": "pepper_orange",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "green avocado", "blue apple", "green apple", "yellow banana", "orange carrot", "green pear", "red tomato"]
 },
 {
 "label": "pepper_red",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "red tomato", "pink tomato", "green tomato"]
+"item": ["black avocado", "red avocado", "red apple", "blue banana", "brown banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear"]
 },
 {
 "label": "tomato_green",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper"]
+"item": ["black avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "orange pear", "green pepper", "red pepper"]
 },
 {
 "label": "tomato_pink",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper"]
+"item": ["red avocado", "brown banana", "brown carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "black pepper"]
 },
 {
 "label": "tomato_red",
-"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "brown banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear", "orange pear", "green pepper", "red pepper", "orange pepper", "black pepper"]
+"item": ["black avocado", "red avocado", "green avocado", "blue apple", "red apple", "green apple", "blue banana", "yellow banana", "orange carrot", "brown carrot", "pink carrot", "green pear", "yellow pear"]
 }
   ]);
 	
