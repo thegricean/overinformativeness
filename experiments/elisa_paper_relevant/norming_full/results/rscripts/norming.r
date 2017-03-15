@@ -6,10 +6,16 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_full/results")
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/29_complete_typicality_norming/results")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/elisa_paper_relevant/norming_full/results")
 
 theme_set(theme_bw(18))
 source("rscripts/helpers.r")
+
+d = read.csv(file="data/meantypicalities.csv")
+# d$Comb = gsub(" ","_",d$Combo)
+# d$RedItem = ifelse(d$Utterance == d$Comb, d$Comb, "other") ## CONTINUE HERE
+# head(d)
+# summary(d)
 
 # first time
 # d0 = read.table(file="../mturk0/norming.csv",sep=",",header=T)
@@ -23,7 +29,13 @@ source("rscripts/helpers.r")
 # d4$workerid = d4$workerid + 20 + 10 + 9 + 9
 # d5 = read.table(file="../mturk5/norming.csv",sep=",",header=T)
 # d5$workerid = d5$workerid + 20 + 10 + 9 + 9 + 9
-# d = rbind(d0,d1,d2,d3,d4,d5)
+# d6 = read.table(file="../mturk6/norming.csv",sep=",",header=T)
+# d6$workerid = d6$workerid + 20 + 10 + 9 + 9 + 9 + 9
+# d7 = read.table(file="../mturk7/norming.csv",sep=",",header=T)
+# d7$workerid = d7$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9
+# d8 = read.table(file="../mturk8/norming.csv",sep=",",header=T)
+# d8$workerid = d8$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9
+# d = rbind(d0,d1,d2,d3,d4,d5,d6,d7,d8)
 # write.table(d, file="data/norming.csv",sep="\t",row.names=F,col.names=T,quote=F)
 
 d = read.table(file="data/norming.csv",sep="\t", header=T)#, quote="")
@@ -83,14 +95,33 @@ ggplot(d, aes(Color)) +
 # sanity check
 d[d$object == d$InvUtterance & d$response < .6,c("workerid","Third","object","utterance","response")]
 table(d[d$object == d$InvUtterance & d$response < .6,]$Third)
-d = droplevels(d[!d$workerid %in% c(12,20),]) # exclude 2 people because they didn't give higher ratings to utterances that correctly applied to the objects (i.e., random clickers)
+
+# exclude non-native speakers
 d = droplevels(d[!d$language == "Chinese",])
 d = droplevels(d[!d$language == "Urdu/English",])
-  
+length(unique(d$workerid))
+
+# exclude people who didn't systematically give higher ratings for "true" cases (excluded four cases where mean(match) - mean(no_match) < .35)
+d$Match = ifelse(d$object == d$InvUtterance, "match","no_match")
+means = d %>%
+  group_by(workerid,Match) %>%
+  summarise(mean=mean(response))
+tmp = means %>%
+  group_by(workerid) %>%
+  summarise(diff=mean[1]-mean[2])
+tmp = as.data.frame(tmp)
+tmp = tmp[order(tmp[,c("diff")]),]
+problematic = tmp[tmp$diff < .35,]$workerid
+problematic
+
+d = droplevels(d[!d$workerid %in% problematic,]) 
+length(unique(d$workerid)) # 87 participants left
+
 items = as.data.frame(table(d$Utterance,d$object))
 nrow(items)
 colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
+it_low = items[items$Freq < 5,]
 
 agr = d %>% 
   group_by(Item,Color,Utterance) %>%
@@ -102,6 +133,20 @@ agr$YMax = agr$MeanTypicality + agr$ci.high
 agr$Combo = paste(agr$Color,agr$Item,sep="_")
 agr$Color = as.factor(as.character(agr$Color))
 
+# determine final sample to run based on large CIs
+# agr$Diff = agr$YMax-agr$YMin
+# agr$Object = paste(agr$Item,agr$Color,sep="_")
+# it_low$Combined = paste(it_low$Utterance,it_low$Object)
+# agr$Combined = paste(agr$Utterance,agr$Object)
+# not_in_it_low = agr %>%
+#   filter(! Combined %in% as.character(it_low$Combined))
+# nrow(not_in_it_low)
+# head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object","Diff")],18)
+# 
+# rerun = rbind(it_low[,c("Utterance","Object")],head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],18))
+# nrow(rerun)
+# write.csv(rerun,file="data/undersampled56.csv",row.names=F,quote=F)
+
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
@@ -112,7 +157,6 @@ ggsave("graphs/typicalities.png",height=20, width=35)
 
 agr$Combo = paste(agr$Color,agr$Item,sep=" ")
 agr$RoundMTypicality = round(agr$MeanTypicality, digits=3);
-
 
 write.csv(agr[,c("Item","Color","Utterance","Combo","RoundMTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
 
@@ -169,13 +213,7 @@ output = paste(output,"}",sep="")
 write.table(output,file="../../../../models/10_bda_comparison/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
 
 
-
-
-
-
-d$Correct = d$InvUtterance == d$object
-
-ggplot(d, aes(x=response,fill=Correct)) +
+ggplot(d, aes(x=response,fill=Match)) +
   geom_histogram() +
   facet_wrap(~workerid)
 ggsave("graphs/subject_variability.png",height=20, width=20)
