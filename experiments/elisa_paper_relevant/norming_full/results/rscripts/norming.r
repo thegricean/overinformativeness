@@ -122,6 +122,8 @@ nrow(items)
 colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
 it_low = items[items$Freq < 5,]
+write.csv(it_low[,c("Utterance","Object")],file="data/rerun_undersampled.csv",row.names=F,quote=F)
+nrow(it_low)
 
 agr = d %>% 
   group_by(Item,Color,Utterance) %>%
@@ -134,18 +136,18 @@ agr$Combo = paste(agr$Color,agr$Item,sep="_")
 agr$Color = as.factor(as.character(agr$Color))
 
 # determine final sample to run based on large CIs
-# agr$Diff = agr$YMax-agr$YMin
-# agr$Object = paste(agr$Item,agr$Color,sep="_")
-# it_low$Combined = paste(it_low$Utterance,it_low$Object)
-# agr$Combined = paste(agr$Utterance,agr$Object)
-# not_in_it_low = agr %>%
-#   filter(! Combined %in% as.character(it_low$Combined))
-# nrow(not_in_it_low)
-# head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object","Diff")],18)
-# 
+agr$Diff = agr$YMax-agr$YMin
+agr$Object = paste(agr$Item,agr$Color,sep="_")
+it_low$Combined = paste(it_low$Utterance,it_low$Object)
+agr$Combined = paste(agr$Utterance,agr$Object)
+not_in_it_low = agr %>%
+  filter(! Combined %in% as.character(it_low$Combined))
+nrow(not_in_it_low)
+# head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object","Diff")],40)
+
 # rerun = rbind(it_low[,c("Utterance","Object")],head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],18))
 # nrow(rerun)
-# write.csv(rerun,file="data/undersampled56.csv",row.names=F,quote=F)
+write.csv(head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],40),file="data/rerun_bigerrors.csv",row.names=F,quote=F)
 
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   geom_point() +
