@@ -264,11 +264,11 @@ var items_target_2 = _.shuffle([
 },
 {
 "label": "avocado_green",
-"item": ["brown carrot", "green pepper"]
+"item": ["brown carrot"]
 },
 {
 "label": "avocado_red",
-"item": ["orange pear", "orange pepper", "red tomato", "green tomato"]
+"item": ["orange pear", "orange pepper"]
 },
 {
 "label": "apple_blue",
@@ -276,11 +276,11 @@ var items_target_2 = _.shuffle([
 },
 {
 "label": "apple_red",
-"item": ["red avocado", "yellow banana", "pink tomato"]
+"item": ["yellow banana", "pink tomato"]
 },
 {
 "label": "apple_green",
-"item": ["black avocado", "yellow banana", "green pepper", "green tomato"]
+"item": ["black avocado"]
 },
 {
 "label": "banana_blue",
@@ -295,10 +295,6 @@ var items_target_2 = _.shuffle([
 "item": ["red avocado", "blue apple", "red pepper", "black pepper"]
 },
 {
-"label": "carrot_orange",
-"item": ["orange pepper", "red tomato"]
-},
-{
 "label": "carrot_pink",
 "item": ["green pear", "black pepper", "pink tomato"]
 },
@@ -307,20 +303,16 @@ var items_target_2 = _.shuffle([
 "item": ["blue apple"]
 },
 {
-"label": "pear_green",
-"item": ["green pepper"]
-},
-{
 "label": "pear_orange",
 "item": ["green apple", "blue banana", "orange pepper"]
 },
 {
 "label": "pear_yellow",
-"item": ["red pepper", "orange pepper"]
+"item": ["red pepper"]
 },
 {
 "label": "pepper_green",
-"item": ["black avocado", "red avocado", "pink carrot", "green pear", "yellow pear"]
+"item": ["black avocado", "red avocado", "pink carrot"]
 },
 {
 "label": "pepper_black",
@@ -332,11 +324,11 @@ var items_target_2 = _.shuffle([
 },
 {
 "label": "pepper_red",
-"item": ["red avocado", "brown banana", "green pear", "orange pear"]
+"item": ["brown banana", "green pear", "orange pear"]
 },
 {
 "label": "tomato_green",
-"item": ["green pepper", "red pepper"]
+"item": ["red pepper"]
 },
 {
 "label": "tomato_pink",
@@ -344,7 +336,7 @@ var items_target_2 = _.shuffle([
 },
 {
 "label": "tomato_red",
-"item": ["green apple", "orange carrot", "green pear", "red pepper"]
+"item": ["green pear"]
 }
   ]);
 	
