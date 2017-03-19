@@ -259,6 +259,10 @@ var items_target = _.shuffle([
 
 var items_target_2 = _.shuffle([
 {
+"label": "apple_red",
+"item": ["brown banana"],
+},
+{
 "label": "carrot_pink",
 "item": ["green pepper"],
 },
