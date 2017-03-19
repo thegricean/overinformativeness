@@ -259,72 +259,136 @@ var items_target = _.shuffle([
 
 var items_target_2 = _.shuffle([
 {
-"label": "avocado_red",
-"item": ["orange carrot", "black pepper", "green tomato"]
+"label": "apple_blue",
+"item": ["green tomato"],
 },
 {
-"label": "apple_red",
-"item": ["green avocado", "pink carrot"]
+"label": "apple_blue",
+"item": ["orange pear"],
 },
 {
 "label": "apple_green",
-"item": ["yellow banana", "pink carrot"]
+"item": ["blue banana"],
+},
+{
+"label": "apple_green",
+"item": ["brown carrot"],
+},
+{
+"label": "apple_green",
+"item": ["yellow pear"],
+},
+{
+"label": "apple_red",
+"item": ["green tomato"],
+},
+{
+"label": "apple_red",
+"item": ["orange carrot"],
+},
+{
+"label": "avocado_black",
+"item": ["green pear"],
+},
+{
+"label": "avocado_green",
+"item": ["orange pepper"],
+},
+{
+"label": "avocado_green",
+"item": ["red apple"],
+},
+{
+"label": "avocado_red",
+"item": ["yellow pear"],
 },
 {
 "label": "banana_blue",
-"item": ["green apple", "green pepper", "orange pepper"]
+"item": ["orange carrot"],
 },
 {
-"label": "banana_brown",
-"item": ["orange pear"]
+"label": "banana_blue",
+"item": ["red tomato"],
 },
 {
 "label": "banana_yellow",
-"item": ["orange carrot"]
+"item": ["green apple"],
 },
 {
 "label": "carrot_orange",
-"item": ["red apple", "blue banana", "green tomato", "red tomato"]
+"item": ["red avocado"],
 },
 {
-"label": "carrot_brown",
-"item": ["green apple"]
+"label": "carrot_orange",
+"item": ["red pepper"],
+},
+{
+"label": "carrot_orange",
+"item": ["yellow banana"],
+},
+{
+"label": "carrot_pink",
+"item": ["green apple"],
+},
+{
+"label": "carrot_pink",
+"item": ["red apple"],
+},
+{
+"label": "carrot_pink",
+"item": ["red tomato"],
 },
 {
 "label": "pear_green",
-"item": ["black avocado"]
+"item": ["pink tomato"],
 },
 {
 "label": "pear_orange",
-"item": ["blue apple"]
+"item": ["brown banana"],
 },
 {
 "label": "pear_yellow",
-"item": ["red avocado", "green apple"]
+"item": ["pink tomato"],
+},
+{
+"label": "pepper_black",
+"item": ["red avocado"],
 },
 {
 "label": "pepper_green",
-"item": ["pink tomato", "red tomato"]
+"item": ["blue banana"],
 },
 {
 "label": "pepper_orange",
-"item": ["green avocado", "red tomato"]
+"item": ["blue banana"],
 },
 {
 "label": "pepper_red",
-"item": ["orange carrot"]
+"item": ["pink tomato"],
 },
 {
 "label": "tomato_green",
-"item": ["blue apple", "red apple"]
+"item": ["orange carrot"],
+},
+{
+"label": "tomato_green",
+"item": ["red avocado"],
 },
 {
 "label": "tomato_pink",
-"item": ["green pear", "yellow pear", "red pepper"]
+"item": ["green pepper"],
 },
 {
 "label": "tomato_red",
-"item": ["blue banana", "pink carrot"]
+"item": ["green pepper"],
+},
+{
+"label": "tomato_red",
+"item": ["orange carrot"],
+},
+{
+"label": "tomato_red",
+"item": ["orange pepper"],
 }
   ]);
 	
