@@ -35,7 +35,15 @@ d = read.csv(file="data/meantypicalities.csv")
 # d7$workerid = d7$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9
 # d8 = read.table(file="../mturk8/norming.csv",sep=",",header=T)
 # d8$workerid = d8$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9
-# d = rbind(d0,d1,d2,d3,d4,d5,d6,d7,d8)
+# d9 = read.table(file="../mturk9/norming.csv",sep=",",header=T)
+# d9$workerid = d9$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9 + 9
+# d10 = read.table(file="../mturk10/norming.csv",sep=",",header=T)
+# d10$workerid = d10$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9
+# d11 = read.table(file="../mturk11/norming.csv",sep=",",header=T)
+# d11$workerid = d11$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9
+# d12 = read.table(file="../mturk12/norming.csv",sep=",",header=T)
+# d12$workerid = d12$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9
+# d = rbind(d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12)
 # write.table(d, file="data/norming.csv",sep="\t",row.names=F,col.names=T,quote=F)
 
 d = read.table(file="data/norming.csv",sep="\t", header=T)#, quote="")
@@ -97,8 +105,10 @@ d[d$object == d$InvUtterance & d$response < .6,c("workerid","Third","object","ut
 table(d[d$object == d$InvUtterance & d$response < .6,]$Third)
 
 # exclude non-native speakers
+unique(d$language)
 d = droplevels(d[!d$language == "Chinese",])
 d = droplevels(d[!d$language == "Urdu/English",])
+d = droplevels(d[!d$language == "Italian",])
 length(unique(d$workerid))
 
 # exclude people who didn't systematically give higher ratings for "true" cases (excluded four cases where mean(match) - mean(no_match) < .35)
@@ -111,43 +121,64 @@ tmp = means %>%
   summarise(diff=mean[1]-mean[2])
 tmp = as.data.frame(tmp)
 tmp = tmp[order(tmp[,c("diff")]),]
+head(tmp,10)
 problematic = tmp[tmp$diff < .35,]$workerid
 problematic
 
 d = droplevels(d[!d$workerid %in% problematic,]) 
-length(unique(d$workerid)) # 87 participants left
+length(unique(d$workerid)) # 120 participants left
 
 items = as.data.frame(table(d$Utterance,d$object))
 nrow(items)
 colnames(items) = c("Utterance","Object","Freq")
 items = items[order(items[,c("Freq")]),]
-it_low = items[items$Freq < 5,]
-write.csv(it_low[,c("Utterance","Object")],file="data/rerun_undersampled.csv",row.names=F,quote=F)
-nrow(it_low)
+ggplot(items, aes(x=Freq)) +
+  geom_histogram()
+table(items$Freq)
+# it_low = items[items$Freq < 5,]
+# it_five = items[items$Freq == 5,]
+# nrow(it_low)
+# nrow(it_five)
+# write.csv(it_low[,c("Utterance","Object")],file="data/rerun_less5.csv",row.names=F,quote=F)
+# write.csv(it_five[,c("Utterance","Object")],file="data/rerun_5.csv",row.names=F,quote=F)
+
+# z-score ratings
+zscored = d %>%
+  group_by(workerid) %>%
+  summarise(Range=max(response) - min(response))
+zscored = as.data.frame(zscored)
+row.names(zscored) = as.character(zscored$workerid)
+ggplot(zscored,aes(x=Range)) +
+  geom_histogram()
+
+d$Range = zscored[as.character(d$workerid),]$Range
+d$zresponse = d$response / d$Range
 
 agr = d %>% 
   group_by(Item,Color,Utterance) %>%
-  summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
+  summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response),MeanZTypicality = mean(zresponse), ci.low.z=ci.low(zresponse),ci.high.z=ci.high(zresponse))
 agr = as.data.frame(agr)
 agr$YMin = agr$MeanTypicality - agr$ci.low
 agr$YMax = agr$MeanTypicality + agr$ci.high
+agr$YMinZ = agr$MeanZTypicality - agr$ci.low.z
+agr$YMaxZ = agr$MeanZTypicality + agr$ci.high.z
 
 agr$Combo = paste(agr$Color,agr$Item,sep="_")
 agr$Color = as.factor(as.character(agr$Color))
 
 # determine final sample to run based on large CIs
-agr$Diff = agr$YMax-agr$YMin
-agr$Object = paste(agr$Item,agr$Color,sep="_")
-it_low$Combined = paste(it_low$Utterance,it_low$Object)
-agr$Combined = paste(agr$Utterance,agr$Object)
-not_in_it_low = agr %>%
-  filter(! Combined %in% as.character(it_low$Combined))
-nrow(not_in_it_low)
+# agr$Diff = agr$YMax-agr$YMin
+# agr$Object = paste(agr$Item,agr$Color,sep="_")
+# it_low$Combined = paste(it_low$Utterance,it_low$Object)
+# agr$Combined = paste(agr$Utterance,agr$Object)
+# not_in_it_low = agr %>%
+#   filter(! Combined %in% as.character(it_low$Combined))
+# nrow(not_in_it_low)
 # head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object","Diff")],40)
 
 # rerun = rbind(it_low[,c("Utterance","Object")],head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],18))
 # nrow(rerun)
-write.csv(head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],40),file="data/rerun_bigerrors.csv",row.names=F,quote=F)
+# write.csv(head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],40),file="data/rerun_bigerrors.csv",row.names=F,quote=F)
 
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   geom_point() +
@@ -156,6 +187,21 @@ ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
 ggsave("graphs/typicalities.png",height=20, width=35)
+
+ggplot(agr, aes(x=Combo,y=MeanZTypicality,color=Color)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMinZ,ymax=YMaxZ),width=.25) +
+  facet_wrap(~Utterance,scales="free_x",nrow=4) +
+  scale_color_manual(values=levels(agr$Color)) +
+  theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
+ggsave("graphs/ztypicalities.png",height=20, width=35)
+
+ggplot(agr, aes(x=MeanTypicality,y=MeanZTypicality)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=YMinZ,ymax=YMaxZ),width=.025,alpha=.5) +
+  geom_errorbarh(aes(xmin=YMin,xmax=YMax),height=.025,alpha=.5) +
+  geom_abline(intercept=0,slope=1,linetype="dashed", color="gray40")
+ggsave("graphs/scale_unscaled_correlation.png",height=4, width=6)
 
 agr$Combo = paste(agr$Color,agr$Item,sep=" ")
 agr$RoundMTypicality = round(agr$MeanTypicality, digits=3);
