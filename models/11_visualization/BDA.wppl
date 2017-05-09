@@ -43,7 +43,8 @@ var modelAnalysis = function() {
   // Combine params together
   var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
   console.log(params)
-  return _.flatten(map(function(conditionObj) {
+  
+  var predictionsPerCondition = _.flatten(map(function(conditionObj) {
     // Extract condition information
     var conditionInfo = _.values(conditionObj).concat(_.values(params));
     var conditionName = conditionObj.conditionName;
@@ -62,6 +63,11 @@ var modelAnalysis = function() {
       return conditionInfo.concat(s).concat(Math.exp(modelOutput.score(s)));
     }, modelOutput.support());
   }, conditions));
+
+  // TODO: write function transforming this huge list of every condition to just the
+  // relevant datapoints for making our visualizations
+  var collapsedPredictions = predictionsPerCondition; 
+  return collapsedPredictions;
 };
 
 var outputERP = Infer({method:'enumerate'}, modelAnalysis);
