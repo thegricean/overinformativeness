@@ -209,23 +209,17 @@ agr$RoundMTypicality = round(agr$MeanTypicality, digits=3);
 write.csv(agr[,c("Item","Color","Utterance","Combo","RoundMTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
 
 
-# do something awful:
-for (u in unique(agr$Utterance)) {
-  cat(paste("\"",u,"\" : {\n",sep=""))
-  cat(paste(paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$RoundMTypicality,sep=" : "),",\n",sep=""))
-  cat("},\n")
-}
 
 #write json file with color+type utterances
-output = "{\n"
-for (u in unique(agr$Utterance)) {
-  output1 = paste("    \"",u,"\" : {\n",sep="")
-  output2 = paste("        \"",paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$RoundMTypicality,sep="\" : "),",\n",sep="",collapse="")
-  output = paste(output,output1,output2,"    },\n",sep="")
-}
-output = paste(output,"}",sep="")
+# output = "{\n"
+# for (u in unique(agr$Utterance)) {
+#   output1 = paste("    \"",u,"\" : {\n",sep="")
+#   output2 = paste("        \"",paste(agr[agr$Utterance == u,]$Combo,agr[agr$Utterance == u,]$RoundMTypicality,sep="\" : "),",\n",sep="",collapse="")
+#   output = paste(output,output1,output2,"    },\n",sep="")
+# }
+# output = paste(output,"}",sep="")
 #cat(output)
-write.table(output,file="../../../models/10_bda_comparison/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
+#write.table(output,file="../../../models/10_bda_comparison/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
 
 
 
