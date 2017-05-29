@@ -118,8 +118,11 @@ ggsave("graphs/typicalities.png",height=9, width=15)
 
 
 agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
-subset(agr[agr$utterance=="vegetable",], select=c("Combo", "MeanTypicality"))
+subset(agr[agr$utterance=="vegetable",], select=c("Item","Color","utterance","Combo", "MeanTypicality"))
 
+short = agr[agr$utterance == agr$Item,]
+short$Typicality = short$MeanTypicality
+write.csv(short[,c("Item","Color","Typicality")], file="data/meantyp_short.csv",row.names=F,quote=F)
 
 agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","utterance","Combo","MeanTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+write.csv(agr[,c("Item","Color","utterance","Combo","Typicality","YMin","YMax")], file="data/meantyp_short.csv",row.names=F,quote=F)
