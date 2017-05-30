@@ -7,9 +7,6 @@ console.log("Loading data complete...",+data.length+" data points");
 var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
-var typics = refModule.readCSV("./bdaInput/meantyp_short.csv");
-console.log(typics);
-
 // Cache so we don't have to incur cost of loading json every iteration
 var realValuedLexicon = refModule.getLexicon('realValued');
 
@@ -22,21 +19,44 @@ var globalConfig = {
   'outputFileName' : 'empiricalCosts_noiseAdd'
 };
 
+var transformChunk = function(chunk){
+  // [0] condition - stays
+  // [1] targetColor [2] targetType - transformed into 1 string
+  // [3] [4] [5] [6] dist - get rid of
+  // [7] [8] [9] [10] [11] params - stay
+  // [12] utterance - becomes utteranceType or stays
+  // [13] probability - stays
+  var cond = chunk[0];
+  var target = chunk[1].concat("_").concat(chunk[2]);
+  var typ = realValuedLexicon[chunk[2]][target];
+  var al = chunk[7];
+  var cc = chunk[8];
+  var tc = chunk[9];
+  var lw = chunk[10];
+  var tw = chunk[11];
+  var uttType = chunk[12] == chunk[1] ? 'colorOnly' : chunk[12] == chunk[2] ? 'typeOnly' : 'colorType';
+  var prob = chunk[13];
+  return [cond, typ, al, cc, tc, lw, tw, uttType, prob];
+};
+
 var modelAnalysis = function() {
   // Params for all versions of the model
   var baseParams = {
-    alpha : 1,//uniformDraw(_.range(0, 20, 2)),
-    colorCost : 2,//uniformDraw(_.range(-3, 3.1, 1.5)),
-    typeCost : 3//uniformDraw(_.range(-3, 3.1, 1.5))
+    alpha : uniformDraw(_.range(0, 20, 2)),//alpha : 1,
+    colorCost : uniformDraw(_.range(-3, 3.1, 1.5)),//colorCost : 2,
+    typeCost : uniformDraw(_.range(-3, 3.1, 1.5))//typeCost : 3
   };
 
   // Additional params for particular versions
   var empCostParams = (globalConfig.costsChoice == 'empirical' ? {
-    lengthWeight : uniformDraw([.25,.75])//_.range(0, 1.01, 0.25))
+    // lengthWeight : uniformDraw([.25,.75])
+    lengthWeight : uniformDraw(_.range(0, 1.01, 0.25))
   } : {});
 
   var empTypicalitiesParams = (globalConfig.lexiconChoice == 'empirical' ? {
-    typWeight : 5//uniformDraw(_.range(0, 10.1, 2))
+    // typWeight : 5//uniformDraw(_.range(0, 10.1, 2))
+    typWeight : uniformDraw(_.range(0, 10.1, 2))
+
   } : {});
   
   var noiseParams = (globalConfig.noiseType != 'none' ? {
@@ -67,46 +87,21 @@ var modelAnalysis = function() {
     }, modelOutput.support());
   }, conditions));
 
-  // TODO: write function transforming this huge list of every condition to just the
+  // function transforming this huge list of every condition to just the
   // relevant datapoints for making our visualizations
   // before: condition, targetColor, targetType, distColor1, distType1, distColor2, distType2, alpha, colorCost, typeCost, lengthWeight, typWeight, utterance, probability
-  // after: condition, targetTypicality (typicality of color for object, right now easier: color and object for later look-up), alpha, colorCost, typeCost, lengthWeight, typWeight, utterance(Type), probability
-  var collapsedPredictions = 
-    map(function(chunk){
-      var target = chunk[1].concat("_").concat(chunk[2]);
-      // TODO: get rid of all the undefined 
-      var typ = map(function(blob){
-        if (blob['Item'] == chunk[2] && blob['Color'] == chunk[1]) {
-          return blob['Typicality'];
-        };
-      },typics);
-      console.log("target");
-      console.log(target);
-      console.log("typ");
-      console.log(typ);
-      console.log("");
-      // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
-      // problem returns undefined when not in if statement
-      if (chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target){
-        // [0] condition - stays
-        // [1] targetColor [2] targetType - transformed into 1 string
-        // [3] [4] [5] [6] dist - get rid of
-        // [7] [8] [9] [10] [11] params - stay
-        // [12] utterance - becomes utteranceType or stays
-        // [13] probability - stays
-        var cond = chunk[0];
-        var al = chunk[7];
-        var cc = chunk[8];
-        var tc = chunk[9];
-        var lw = chunk[10];
-        var tw = chunk[11];
-        var uttType = chunk[12] == chunk[1] ? 'colorOnly' : chunk[12] == chunk[2] ? 'typeOnly' : 'colorType';
-        var prob = chunk[13];
-        return [cond, target, al, cc, tc, lw, tw, uttType, prob];
-      };
-    },predictionsPerCondition);
+  // after: condition, targetTypicality, alpha, colorCost, typeCost, lengthWeight, typWeight, utteranceType, probability
+  var collapsedPredictions = reduce(function(chunk, mem){
+    var target = chunk[1].concat("_").concat(chunk[2]);
+    // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
+    var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
+    var toAdd = _.isNull(newChunk) ? [] : [newChunk];
+    return mem.concat(toAdd)
+  },[],predictionsPerCondition);
+
   // console.log("collapsedPredictions");
   // console.log(collapsedPredictions);
+  
   return collapsedPredictions;
 };
 

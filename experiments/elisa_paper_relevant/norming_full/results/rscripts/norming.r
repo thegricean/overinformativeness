@@ -252,7 +252,7 @@ for (u in unique(t$utterance)) {
 
 output = paste(output,"}",sep="")
 #cat(output)
-write.table(output,file="../../../../models/10_bda_comparison/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
+write.table(output,file="../../../../models/11_visualization/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
 
 
 ggplot(d, aes(x=response,fill=Match)) +
