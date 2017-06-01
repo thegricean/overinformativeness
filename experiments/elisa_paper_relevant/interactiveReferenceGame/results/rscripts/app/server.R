@@ -5,42 +5,40 @@ library(lme4)
 library(tidyr)
 library(shiny)
 
-setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
-source("rscripts/helpers.r")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
+source("helpers.r")
 # runApp("rscripts/app")
 
-d = read.table(file="../../../../models/10_bda_comparison/bdaOutput/MAPnegcostPredictives.csv",sep=",", header=T, quote="")
-typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
-typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
-row.names(typ) = paste(typ$Color,typ$Item)
-
+# df = read.table(file="data/trialCSV.csv",sep=";", header=T, quote="")
+df = read.table(file="data/visualizationPredictives.csv",sep=",", header=T, quote="")
+typ = read.csv(file='data/meantyp_short.csv',sep=',',header=T,quote="")
+typ$target = paste(typ$Color,typ$Item, sep = '_')
+typ = typ[c('Typicality','target')]
+df = merge(df,typ,by='target')
+# print(df)
 
 shinyServer(
   function(input, output) {
-    output$map <- renderPlot({
-      data <- switch(input$var, 
-                     "Percent White" = counties$white,
-                     "Percent Black" = counties$black,
-                     "Percent Hispanic" = counties$hispanic,
-                     "Percent Asian" = counties$asian)
-      
-      color <- switch(input$var, 
-                      "Percent White" = "black",
-                      "Percent Black" = "darkgreen",
-                      "Percent Hispanic" = "darkorange",
-                      "Percent Asian" = "darkviolet")
-      
-      legend <- switch(input$var, 
-                       "Percent White" = "% White",
-                       "Percent Black" = "% Black",
-                       "Percent Hispanic" = "% Hispanic",
-                       "Percent Asian" = "% Asian")
-      
-      percent_map(var = data, 
-                  color = color, 
-                  legend.title = legend, 
-                  max = input$range[2], 
-                  min = input$range[1])
-    })
+    dat <- reactive({
+      test <- df[df$alpha == input$alpha & df$colorCost == input$colorcost & df$typeCost == input$typecost & df$lengthWeight == input$lengthWeight & df$typWeight == input$typWeight,]
+      # print(test)
+   })
+    output$plot2<-renderPlot({
+      ggplot(dat(), aes(x=Typicality,y=modelPrediction,color=uttType)) +
+        geom_point(size=.5) +
+        geom_smooth(method="lm",size=.6) +
+        #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+        facet_wrap(~condition) +
+        scale_color_manual(values=c("green", "turquoise", "red")) +
+        theme(axis.title=element_text(size=14,colour="#757575")) +
+        theme(axis.text.x=element_text(size=10,colour="#757575")) +
+        theme(axis.text.y=element_text(size=10,colour="#757575")) +
+        theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+        theme(strip.text.x=element_text(size=12,colour="#757575")) +
+        theme(legend.title=element_text(size=14,color="#757575")) +
+        theme(legend.text=element_text(size=11,colour="#757575")) +
+        theme(strip.background=element_rect(colour="#939393",fill="white")) +
+        theme(panel.background=element_rect(colour="#939393"))
+    },height = 400,width = 600)
   }
 )
