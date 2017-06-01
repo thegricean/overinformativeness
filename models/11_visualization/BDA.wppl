@@ -37,14 +37,13 @@ var transformChunk = function(chunk){
   var tw = chunk[11];
   var uttType = chunk[12] == chunk[1] ? 'colorOnly' : chunk[12] == chunk[2] ? 'typeOnly' : 'colorType';
   var prob = chunk[13];
-  // return [cond, typ, al, cc, tc, lw, tw, uttType, prob];
-  // console.log([cond, target, al, cc, tc, lw, tw, uttType, prob, typ]);
   return [cond, target, al, cc, tc, lw, tw, uttType, prob];
-  // return chunk[0] == 'informative-cc' && target == 'red_tomato' ? [cond, target, chunk[3], chunk[4], chunk[5], chunk[6], chunk[12]] : null;
 };
 
 var collapseProbs = function(chunk, memo){
+  // building up new list and having flag whether duplicate in target, condition & uttType was found in data
   var initialized_data = [[], false];
+  // check whether chunk is in list, if no, add it to list, if not, take average of their probs
   var replacedMemo = reduce(function(oldChunk, accumulated_data){
     var accumulated_memo = accumulated_data[0];
     var accumulated_flag = accumulated_data[1];
@@ -113,29 +112,13 @@ var modelAnalysis = function() {
   // function transforming this huge list of every condition to just the
   // relevant datapoints for making our visualizations
   // before: condition, targetColor, targetType, distColor1, distType1, distColor2, distType2, alpha, colorCost, typeCost, lengthWeight, typWeight, utterance, probability
-  // after: condition, targetTypicality, alpha, colorCost, typeCost, lengthWeight, typWeight, utteranceType, probability
-  
+  // after: condition, target, alpha, colorCost, typeCost, lengthWeight, typWeight, utteranceType, probability
   var collapsedPredictions = reduce(function(chunk, mem){
     var target = chunk[1].concat("_").concat(chunk[2]);
     // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
     var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
     return _.isNull(newChunk) ? mem.concat([]) : collapseProbs(newChunk, mem);
   },[],predictionsPerCondition);
-
-  // var collapsedPredictions = reduce(function(chunk, mem){
-  //   var target = chunk[1].concat("_").concat(chunk[2]);
-  //   // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
-  //   var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
-  //   var toAdd = _.isNull(newChunk) ? [] : [newChunk];
-  //   return mem.concat(toAdd)
-  // },[],predictionsPerCondition);
-
-  // console.log("collapsedPredictions");
-  // console.log(collapsedPredictions[0]);
-  // console.log(collapsedPredictions.length);
-  // console.log("");
-
-  // refModule.writeCSV(collapsedPredictions,"./bdaOutput/collapsedPredictions.csv");
   
   return collapsedPredictions;
 };
