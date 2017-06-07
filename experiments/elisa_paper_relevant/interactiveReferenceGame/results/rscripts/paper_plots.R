@@ -67,24 +67,6 @@ production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", p
 production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
 
-
-
-#old
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|re", production$refExp, ignore.case = TRUE), T, F)
-production$CleanedResponse = gsub("(^| )([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana|banada|nana|bannan|babanana|B)($| )"," banana",as.character(production$refExp))
-production$CleanedResponse = gsub("(^| )([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt|carrote)($| )"," carrot",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("(^| )([Pp]earr|pea)$"," pear",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("(^| )([Tt]omaot|tokm|tmatoe|tamato|toato|tom|[Tt]omatoe|tomamt|tomtato|toamoat|mato|totomato|tomatop)($| )"," tomato",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("(^| )([Aa]ppe|APPLE|appl|app|apale|aple|ap)($| )"," apple",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("(^| )([Pp]eper|pepp|peppre|pep|bell|jalapeno|jalpaeno|eppper)($| )"," pepper",as.character(production$CleanedResponse))
-production$CleanedResponse = gsub("(^| )([Aa]vacado|avodado|avacdo|[Aa]vacadfo|avo|avacoda|avo|advocado|avavcado|avacodo|guacamole|gaucamole|guacolome|advacado)($| )"," avocado",as.character(production$CleanedResponse))
-production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
-#end of old 
-
 prop.table(table(production$ColorMentioned,production$ItemMentioned))
 
 production[!production$ColorMentioned & !production$ItemMentioned,c("CleanedResponse","context","gameid")]
@@ -333,3 +315,18 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance,label=nameClick
 #get banana values
 agr[agr$context=="informative\nwith color competitor" & agr$Utterance=="ColorAndType" & agr$nameClickedObj=="banana_yellow",c("NormedTypicality","Probability")]
 
+# create csv file with results
+production$target = paste(production$clickedColor, production$clickedType, sep="_")
+production$condition = production$context
+agr = production %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,condition,target) %>%
+  gather(uttType,Mentioned,-condition,-NormedTypicality,-target) %>%
+  group_by(uttType,condition,NormedTypicality,target) %>%
+  summarise(empiricProb=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+
+# change context names to have nicer facet labels 
+levels(agr$condition) = c("informative","informative-cc", "overinformative", "overinformative-cc")
+agr$uttType = ifelse(agr$uttType == "Color", "colorOnly", ifelse(agr$uttType == "Type", "typeOnly", ifelse(agr$uttType == "ColorAndType", "colorType","other")))
+
+write.csv(agr,file='rscripts/app/data/empiricalReferenceProbs.csv', row.names = FALSE)

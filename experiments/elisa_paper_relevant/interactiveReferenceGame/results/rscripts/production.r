@@ -6,7 +6,7 @@ library(tidyr)
 
 theme_set(theme_bw(18))
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/26_24_without_cup/results")
-setwd("/Users/elisakreiss/Documents/Stanford/Study/overinformativeness/experiments/26_24_without_cup/results")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
@@ -58,7 +58,7 @@ table(d$context,d$typeMentioned)
 table(d$context,d$colorMentioned)
 
 typ = read.csv(file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
-typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/Study/overinformativeness/experiments/25_object_norming/results/data/meantypicalities.csv")
+typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 head(typ)
@@ -374,4 +374,3 @@ summary(m.1)
 ranef(m.1)
 
 anova(m.1,m)
-

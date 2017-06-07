@@ -10,27 +10,34 @@ source("helpers.r")
 theme_set(theme_bw(18))
 # runApp("rscripts/app")
 
-# df = read.table(file="data/trialCSV.csv",sep=";", header=T, quote="")
-df = read.table(file="data/visualizationPredictives.csv",sep=",", header=T, quote="")
-typ = read.csv(file='data/meantyp_short.csv',sep=',',header=T,quote="")
-typ$target = paste(typ$Color,typ$Item, sep = '_')
-typ = typ[c('Typicality','target')]
-df = merge(df,typ,by='target')
-# print(df)
+# wrong file.. need one with actual results
+# empiric = read.table(file="data/empiricalReferenceProbs.csv",sep=",", header=T,check.names = FALSE)
+# head(empiric)
+# df = read.table(file="data/visualizationPredictives.csv",sep=",", header=T, quote="")
+# typ = read.csv(file='data/meantyp_short.csv',sep=',',header=T,quote="")
+# typ$target = paste(typ$Color,typ$Item, sep = '_')
+# typ = typ[c('Typicality','target')]
+# df = merge(df,typ,by='target')
+# df = merge(df,empiric,by=c('target','uttType','condition'))
+# print(head(df))
+# new_df = select(df, condition, alpha, colorCost, typeCost, lengthWeight, typWeight, uttType, modelPrediction, Typicality, empiricProb)
+# write.csv(new_df,file='data/allData.csv', row.names = FALSE)
+df = read.table(file="data/allData.csv",sep=",", header=T,check.names = FALSE)
 
 shinyServer(
   function(input, output) {
     dat <- reactive({
       test <- df[df$alpha == input$alpha & df$colorCost == input$colorcost & df$typeCost == input$typecost & df$lengthWeight == input$lengthWeight & df$typWeight == input$typWeight,]
-      # print(levels(test$uttType))
    })
+    
     output$plot2<-renderPlot({
       ggplot(dat(), aes(x=Typicality,y=modelPrediction,color=uttType)) +
         geom_point(size=1) +
         geom_smooth(method="lm",size=1.3) +
         #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
         facet_wrap(~condition) +
-        ylim(0,1) +
+        coord_cartesian(ylim=c(0,1)) +
+        # ylim(0,1) +
         #green, turquoise, red
         scale_color_manual(name="Utterance",
                            breaks=c("typeOnly", "colorOnly", "colorType"),
@@ -48,5 +55,17 @@ shinyServer(
         theme(strip.background=element_rect(colour="#939393",fill="white")) +
         theme(panel.background=element_rect(colour="#939393"))
     },height = 400,width = 550)
+    
+    output$plot3 <- renderPlot({
+      ggplot(dat(), aes(x=empiricProb,y=modelPrediction)) +
+        geom_point() +
+        geom_abline() +
+        coord_cartesian(ylim=c(0,1)) +
+        geom_smooth(method="lm",size=1.3)
+    })
+    
+    output$corr <- reactive({
+      text <- paste("Correlation coefficient: ", round(cor.test(dat()$empiricProb,dat()$modelPrediction)$estimate,4)*100,"%")
+    })
   }
 )
