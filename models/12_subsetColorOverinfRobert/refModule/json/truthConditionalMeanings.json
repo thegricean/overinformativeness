@@ -1,0 +1,168 @@
+{
+  "apple" : {
+    "blue_apple" : 0,
+    "green_apple" : 0,
+    "red_apple" : 0
+  },
+  "avocado" : {
+    "black_avocado" : 0,
+    "green_avocado" : 0,
+    "red_avocado" : 0
+  },
+  "banana" : {
+    "blue_banana" : 0,
+    "brown_banana" : 0,
+    "yellow_banana" : 0
+  },
+  "carrot" : {
+    "brown_carrot" : 0,
+    "orange_carrot" : 0,
+    "pink_carrot" : 0
+  },
+  "pear" : {
+    "green_pear" : 0,
+    "orange_pear" : 0,
+    "yellow_pear" : 0
+  },
+  "pepper" : {
+    "black_pepper" : 0,
+    "orange_pepper" : 0,
+    "red_pepper" : 0,
+    "green_pepper" : 0
+  },
+  "tomato" : {
+    "green_tomato" : 0,
+    "pink_tomato" : 0,
+    "red_tomato" : 0
+  },
+  "fruit" : {
+    "blue_apple" : 0,
+    "green_apple" : 0,
+    "red_apple" : 0,
+    "black_avocado" : 0,
+    "green_avocado" : 0,
+    "red_avocado" : 0,
+    "blue_banana" : 0,
+    "brown_banana" : 0,
+    "yellow_banana" : 0,
+    "green_pear" : 0,
+    "orange_pear" : 0,
+    "yellow_pear" : 0
+  },
+  "vegetable" : {
+    "brown_carrot" : 0,
+    "orange_carrot" : 0,
+    "pink_carrot" : 0,
+    "green_tomato" : 0,
+    "pink_tomato" : 0,
+    "red_tomato" : 0,
+    "black_pepper" : 0,
+    "orange_pepper" : 0,
+    "red_pepper" : 0,
+    "green_pepper" : 0
+  },
+  "yellow" : {
+    "yellow_banana" : 0,
+    "yellow_pear" : 0
+  },
+  "orange" : {
+    "orange_carrot" : 0,
+    "orange_pear" : 0,
+    "orange_pepper" : 0
+  },           
+  "red" : {
+    "red_apple" : 0,
+    "red_avocado" : 0,
+    "red_pepper" : 0,
+    "red_tomato" : 0
+  },    
+  "pink" : {
+    "pink_carrot" : 0,
+    "pink_tomato" : 0
+  },   
+  "green" : {
+    "green_apple" : 0,
+    "green_avocado" : 0,
+    "green_pear" : 0,
+    "green_pepper" : 0,
+    "green_tomato" : 0
+  },    
+  "blue" : {
+    "blue_apple" : 0,
+    "blue_banana" : 0
+  },    
+  "brown" : {
+    "brown_banana" : 0,
+    "brown_carrot" : 0
+  },    
+  "black" : {
+    "black_avocado" : 0,
+    "black_pepper" : 0
+  },
+  "black_avocado" : {
+    "black_avocado" : 0
+  },
+  "black_pepper" : {
+    "black_pepper" : 0
+  },
+  "blue_apple" : {
+    "blue_apple" : 0
+  },
+  "blue_banana" : {
+    "blue_banana" : 0
+  },
+  "brown_banana" : {
+    "brown_banana" : 0
+  },
+  "green_apple" : {
+    "green_apple" : 0
+  },
+  "green_avocado" : {
+    "green_avocado" : 0
+  },
+  "green_pear" : {
+    "green_pear" : 0
+  },
+  "green_pepper" : {
+    "green_pepper" : 0
+  },
+  "orange_carrot" : {
+    "orange_carrot" : 0
+  },
+  "orange_pear" : {
+    "orange_pear" : 0
+  },
+  "orange_pepper" : {
+    "orange_pepper" : 0
+  },
+  "pink_carrot" : {
+    "pink_carrot" : 0
+  },
+  "pink_tomato" : {
+    "pink_tomato" : 0
+  },
+  "red_apple" : {
+    "red_apple" : 0
+  },
+  "red_avocado" : {
+    "red_avocado" : 0
+  },
+  "red_pepper" : {
+    "red_pepper" : 0
+  },
+  "red_tomato" : {
+    "red_tomato" : 0
+  },
+  "yellow_banana" : {
+    "yellow_banana" : 0
+  },
+  "yellow_pear" : {
+    "yellow_pear" : 0
+  },
+  "brown_carrot" : {
+    "brown_carrot" : 0
+  },
+  "green_tomato" : {
+    "green_tomato" : 0            
+  }
+}

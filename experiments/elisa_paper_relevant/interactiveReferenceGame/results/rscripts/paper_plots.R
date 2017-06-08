@@ -325,8 +325,15 @@ agr = production %>%
   summarise(empiricProb=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
 agr = as.data.frame(agr)
 
-# change context names to have nicer facet labels 
 levels(agr$condition) = c("informative","informative-cc", "overinformative", "overinformative-cc")
 agr$uttType = ifelse(agr$uttType == "Color", "colorOnly", ifelse(agr$uttType == "Type", "typeOnly", ifelse(agr$uttType == "ColorAndType", "colorType","other")))
 
 write.csv(agr,file='rscripts/app/data/empiricalReferenceProbs.csv', row.names = FALSE)
+
+# empirical length
+empLength = as.data.frame(levels(production$nameClickedObj))
+uttType = as.data.frame(c('color','type','color_and_type'))
+more = merge(empLength,uttType)
+colnames(more)[1] <- "target"
+colnames(more)[2] <- "utterance"
+more$empLen = nchar(production[production$nameClickedObj == more$target & more$utterance == production$UtteranceType])

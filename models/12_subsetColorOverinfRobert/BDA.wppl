@@ -1,0 +1,77 @@
+// run using:
+// webppl BDA.wppl --require ./refModule/
+
+var data = refModule.readCSV("./bdaInput/bda_data.csv");
+console.log("Loading data complete...",+data.length+" data points");
+
+var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+console.log("Loading unique conditions complete..."+conditions.length+" conditions");
+
+// Cache so we don't have to incur cost of loading json every iteration
+var realValuedLexicon = refModule.getLexicon('realValued');
+
+// Fix some configuration options
+var globalConfig = {
+  'lexiconChoice' : 'empirical',
+  'costsChoice' : 'empirical',
+  'noiseType' : 'none',
+  'storePredictives' : false,
+  // 'outputFileName' : 'empiricalCosts_noiseAdd'
+  'outputFileName' : 'full'
+};
+
+
+var modelAnalysis = function() {
+  // Params for all versions of the model
+  var baseParams = {
+    alpha : uniformDraw(_.range(0, 11, 5)),//alpha : 1,
+    colorCost : uniformDraw(_.range(-3, 0.1, 1.5)),//colorCost : 2,
+    typeCost : uniformDraw(_.range(-3, 0.1, 1.5))//typeCost : 3
+  };
+
+  // Additional params for particular versions
+  var empCostParams = (globalConfig.costsChoice == 'empirical' ? {
+    // lengthWeight : uniformDraw([.25,.75])
+    lengthWeight : uniformDraw(_.range(0, 0.51, 0.25))
+  } : {});
+
+  var empTypicalitiesParams = (globalConfig.lexiconChoice == 'empirical' ? {
+    // typWeight : 5//uniformDraw(_.range(0, 10.1, 2))
+    typWeight : uniformDraw(_.range(0, 5, 2))
+
+  } : {});
+  
+  var noiseParams = (globalConfig.noiseType != 'none' ? {
+    noiseRate : uniformDraw(_.range(0, 1.1, 0.5))
+  } : {});
+
+  // Combine params together
+  var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
+  console.log(params)
+  
+  var predictionsPerCondition = _.flatten(map(function(conditionObj) {
+    // Extract condition information
+    var conditionInfo = _.values(conditionObj).concat(_.values(params));
+    var conditionName = conditionObj.conditionName;
+    var context = [[conditionObj.t_color, conditionObj.t_type],
+		   [conditionObj.d1_color, conditionObj.d1_type],
+		   [conditionObj.d2_color, conditionObj.d2_type]];
+    var target = context[0];
+
+    // Run model
+    var modelParams = extend(params, globalConfig, {'lexicon': realValuedLexicon});
+    var speakerModel = initializeModel(modelParams);
+    var modelOutput = speakerModel(target, context);
+    
+    // Store predictives for each datapoint
+    return map(function(s){
+      return conditionInfo.concat(s).concat(Math.exp(modelOutput.score(s)));
+    }, modelOutput.support());
+  }, conditions));
+  
+  return predictionsPerCondition;
+};
+
+var outputERP = Infer({method:'enumerate'}, modelAnalysis);
+
+refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.outputFileName);

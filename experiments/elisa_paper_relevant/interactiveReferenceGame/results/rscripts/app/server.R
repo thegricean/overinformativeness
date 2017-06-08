@@ -57,15 +57,23 @@ shinyServer(
     },height = 400,width = 550)
     
     output$plot3 <- renderPlot({
-      ggplot(dat(), aes(x=empiricProb,y=modelPrediction)) +
+      ggplot(dat(), aes(x=modelPrediction,y=empiricProb)) +
         geom_point() +
         geom_abline() +
         coord_cartesian(ylim=c(0,1)) +
+        coord_cartesian(xlim=c(0,1)) +
+        theme(legend.position="bottom", aspect.ratio = 1) +
         geom_smooth(method="lm",size=1.3)
     })
     
     output$corr <- reactive({
-      text <- paste("Correlation coefficient: ", round(cor.test(dat()$empiricProb,dat()$modelPrediction)$estimate,4)*100,"%")
+      full_data <- dat()
+      text <- paste("Correlation coefficient for all data: ", round(cor.test(full_data$empiricProb,full_data$modelPrediction)$estimate,4)*100,"% (",nrow(full_data)," data points )")
+    })
+    
+    output$corr2 <- reactive({
+      inThreshold <- dat()[dat()$modelPrediction <= .99 & dat()$modelPrediction >= .01,]
+      text <- paste("Correlation coefficient in boundaries 1% - 99% in modelPrediction: ", round(cor.test(inThreshold$empiricProb,inThreshold$modelPrediction)$estimate,4)*100,"% (",nrow(inThreshold)," data points )")
     })
   }
 )

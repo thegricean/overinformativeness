@@ -30,7 +30,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         tabPanel("Plot", plotOutput("plot2"),img(src='utterance_by_conttyp_poster.png', height = 400)), 
-        tabPanel("Compare", plotOutput("plot3"), textOutput("corr"))
+        tabPanel("Compare", plotOutput("plot3"), textOutput("corr"), textOutput("corr2"))
       )
     )
   )
