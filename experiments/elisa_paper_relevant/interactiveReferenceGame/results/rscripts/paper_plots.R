@@ -106,6 +106,10 @@ production$Dist1Type = sapply(strsplit(as.character(production$Dist1),"_"), "[",
 production$Dist2Color = sapply(strsplit(as.character(production$Dist2),"_"), "[", 2)
 production$Dist2Type = sapply(strsplit(as.character(production$Dist2),"_"), "[", 1)
 
+####
+####
+####
+
 # create utterances for bda
 production$UttforBDA = "other"
 production[production$Color == 1,]$UttforBDA = as.character(production[production$Color == 1,]$clickedColor)
@@ -331,9 +335,17 @@ agr$uttType = ifelse(agr$uttType == "Color", "colorOnly", ifelse(agr$uttType == 
 write.csv(agr,file='rscripts/app/data/empiricalReferenceProbs.csv', row.names = FALSE)
 
 # empirical length
-empLength = as.data.frame(levels(production$nameClickedObj))
-uttType = as.data.frame(c('color','type','color_and_type'))
-more = merge(empLength,uttType)
-colnames(more)[1] <- "target"
-colnames(more)[2] <- "utterance"
-more$empLen = nchar(production[production$nameClickedObj == more$target & more$utterance == production$UtteranceType])
+library(rjson)
+new_prod = production[production$UtteranceType=='color_and_type' | production$UtteranceType=='color' | production$UtteranceType=='type',]
+new_prod$target = paste(new_prod$clickedColor,new_prod$clickedType,sep="_")
+new_prod$refExp = as.character(new_prod$refExp)
+new_prod$empLength = nchar(new_prod$refExp)
+blub = new_prod %>%
+  select(refExp,empLength,target,UtteranceType) %>%
+  group_by(target,UtteranceType) %>%
+  summarise(sumEmpLength = mean(empLength))
+blub = as.data.frame(select(blub,target,sumEmpLength))
+sink("empLength.json")
+myjson = toJSON(blub)
+cat(myjson)
+sink()
