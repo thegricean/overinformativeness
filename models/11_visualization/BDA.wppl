@@ -14,10 +14,10 @@ var realValuedLexicon = refModule.getLexicon('realValued');
 var globalConfig = {
   'lexiconChoice' : 'empirical',
   'costsChoice' : 'empirical',
-  'noiseType' : 'none',
+  'noiseType' : 'addition',
   'storePredictives' : false,
   // 'outputFileName' : 'empiricalCosts_noiseAdd'
-  'outputFileName' : 'visualization'
+  'outputFileName' : 'vizNoiseAdd'
 };
 
 var transformChunk = function(chunk){

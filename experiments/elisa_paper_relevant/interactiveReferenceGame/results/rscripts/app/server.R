@@ -22,7 +22,7 @@ theme_set(theme_bw(18))
 # print(head(df))
 # new_df = select(df, condition, alpha, colorCost, typeCost, lengthWeight, typWeight, uttType, modelPrediction, Typicality, empiricProb)
 # write.csv(new_df,file='data/allData.csv', row.names = FALSE)
-df = read.table(file="data/allData.csv",sep=",", header=T,check.names = FALSE)
+df = read.table(file="data/allDataPredictives.csv",sep=",", header=T,check.names = FALSE)
 
 shinyServer(
   function(input, output) {
