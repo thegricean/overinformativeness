@@ -335,17 +335,18 @@ agr$uttType = ifelse(agr$uttType == "Color", "colorOnly", ifelse(agr$uttType == 
 write.csv(agr,file='rscripts/app/data/empiricalReferenceProbs.csv', row.names = FALSE)
 
 # empirical length
-library(rjson)
+library(jsonlite)
 new_prod = production[production$UtteranceType=='color_and_type' | production$UtteranceType=='color' | production$UtteranceType=='type',]
 new_prod$target = paste(new_prod$clickedColor,new_prod$clickedType,sep="_")
+new_prod$utterance = ifelse(new_prod$UtteranceType=='color_and_type',new_prod$target,ifelse(new_prod$UtteranceType=='color',as.character(new_prod$clickedColor),as.character(new_prod$clickedType)))
 new_prod$refExp = as.character(new_prod$refExp)
 new_prod$empLength = nchar(new_prod$refExp)
 blub = new_prod %>%
-  select(refExp,empLength,target,UtteranceType) %>%
-  group_by(target,UtteranceType) %>%
-  summarise(sumEmpLength = mean(empLength))
-blub = as.data.frame(select(blub,target,sumEmpLength))
+  select(refExp,empLength,utterance) %>%
+  group_by(utterance) %>%
+  summarise(length = mean(empLength))
+blub = as.data.frame(select(blub,utterance,length))
 sink("empLength.json")
-myjson = toJSON(blub)
+myjson = toJSON(blub, pretty = TRUE)
 cat(myjson)
 sink()
