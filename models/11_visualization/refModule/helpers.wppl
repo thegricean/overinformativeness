@@ -25,16 +25,29 @@ var uniqueContexts = Infer({method: 'enumerate'}, function() {
   return sort(repeat(3, function() {return uniformDraw(objects);}));
 }).support();
 
+// just consider names for target...
+var getPossibleUtts = cache(function(target) {
+  return [target[0], target[1], target.join('_')];
+});
+
 // for all objects in a given context, can name the color, type, or both
-var getPossibleUtts = function(context) {
-  return _.uniq(_.flatten(map(function(itemArr) {
-    return [itemArr[0], itemArr[1], itemArr.join('_')];
-  },context)));
-};
+// var getPossibleUtts = cache(function(context) {
+//   return _.uniq(_.flatten(map(function(itemArr) {
+//     return [itemArr[0], itemArr[1], itemArr.join('_')];
+//   },context)));
+// });
 
 var makeObj = function(l){
   return _.object(['color', 'type'], l);
 };
+
+var getRelativeLogFrequency = cache(function(label) {
+  return refModule.getRelativeLogFrequency(label);
+});
+
+var getRelativeLength = cache(function(label) {
+  return refModule.getRelativeLength(label);
+});
 
 // from elisa
 var colorSim = {
