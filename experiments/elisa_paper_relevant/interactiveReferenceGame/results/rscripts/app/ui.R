@@ -1,9 +1,12 @@
+library(shiny)
+library(shinyjs)
+
 shinyUI(fluidPage(
   titlePanel("Overinformativeness Model Visualizations"),
-
   sidebarLayout(
     sidebarPanel(
       h4("Parameters"),
+
       helpText("Set parameters"),
 
       sliderInput("alpha",
@@ -28,9 +31,22 @@ shinyUI(fluidPage(
     ),
 
     mainPanel(
-      tabsetPanel(
-        tabPanel("Plot", plotOutput("plot2"),img(src='utterance_by_conttyp_poster.png', height = 400)), 
-        tabPanel("Compare", plotOutput("plot3"), textOutput("corr"), textOutput("corr2"))
+      useShinyjs(),
+      div(
+        id = "loading_page",
+        # h3("Loading...", align="center"),
+        tags$img(src="load_data.gif",height=200, align="middle")
+      ),
+      hidden(
+        div(
+          id = "ready",
+          tabsetPanel(
+            tabPanel("Plot",
+              plotOutput("plot2"),
+              img(src='utterance_by_conttyp_poster.png', height = 400)),
+            tabPanel("Compare", plotOutput("plot3"), textOutput("corr"), textOutput("corr2"))
+          )
+        )
       )
     )
   )
