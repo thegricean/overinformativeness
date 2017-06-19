@@ -6,8 +6,8 @@ library(tidyr)
 library(shiny)
 library(shinyjs)
 
-# setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
+# setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
 source("helpers.r")
 
 theme_set(theme_bw(18))
