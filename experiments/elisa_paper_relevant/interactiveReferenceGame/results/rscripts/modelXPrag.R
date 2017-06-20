@@ -70,3 +70,21 @@ brown = 0.657
 yellow = 0.979
 
 dat[dat$condition=="overinformative-cc" & dat$uttType=="colorType" & dat$Typicality==yellow,c("modelPrediction")]
+
+# Correlation plot
+ggplot(dat, aes(x=modelPrediction,y=empiricProb)) +
+  geom_point(aes(color=condition),size = 3) +
+  theme(legend.title=element_text(size=25,color="#757575")) +
+  theme(legend.text=element_text(size=20,colour="#757575")) +
+  geom_abline() +
+  xlab("Model predicted probability") +
+  ylab("Empirical Probability") +
+  theme(axis.title=element_text(size=25,colour="#757575")) +
+  theme(axis.text.x=element_text(size=20,colour="#757575")) +
+  theme(axis.text.y=element_text(size=20,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.5,colour="#757575"), axis.ticks.length=unit(1,"mm")) +
+  coord_cartesian(ylim=c(0,1)) +
+  coord_cartesian(xlim=c(0,1)) +
+  theme(legend.position="right", aspect.ratio = 1) +
+  geom_smooth(method="lm",size=3.25)
+ggsave("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/graphs/model/posterXPrag_corr.jpg",width=12,height=12)
