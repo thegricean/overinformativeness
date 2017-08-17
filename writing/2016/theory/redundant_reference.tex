@@ -40,8 +40,8 @@
 \title{Over overinformativeness: rationally redundant referring expressions}
 
  
-\author{{\large \bf Judith Degen, Caroline Graf, Robert X.D.~Hawkins, Noah D.~Goodman} \\
-  \{jdegen,ngoodman\}@stanford.edu\\
+\author{{\large \bf Judith Degen, Caroline Graf, Robert X.D.~Hawkins, Elisa Kreiss, \& Noah D.~Goodman} \\
+  \{jdegen\}@stanford.edu\\
   Department of Psychology, 450 Serra Mall \\
   Stanford, CA 94305 USA}
 
@@ -62,13 +62,15 @@ reference; referring expressions; informativeness; probabilistic pragmatics; exp
 \section{Introduction}
 \label{sec:intro}
 
-Reference to objects is one of the most basic and prevalent uses of language. But how do speakers choose amongst the wealth of referring expressions they have at their disposal? How does a speaker choose whether to refer to an object as \emph{the animal}, \emph{the dog}, \emph{the dalmatian}, or \emph{the big mostly white dalmatian}? The context within which the object occurs  (other non-dogs, other dogs, other dalmatians) plays a large part in determining which features the speaker chooses to include in their utterance  -- speakers aim to be sufficiently informative to uniquely establish reference to the intended object. However, speakers' utterances often exhibit what has been claimed to be \emph{overinformativeness}: referring expressions are often more specific than necessary for establishing unique reference, and they are so in systematic ways. However, providing a unified theory for speakers' systematic patterns of overinformativeness has so far proved elusive.
+Reference to objects is one of the most basic and prevalent uses of language. This requires speakers to choose from amongst a wealth of referring expressions they have at their disposal. How does a speaker choose whether to refer to an object as \emph{the animal}, \emph{the dog}, \emph{the dalmatian}, or \emph{the big mostly white dalmatian}? The context within which the object occurs  (other non-dogs, other dogs, other dalmatians) plays a large part in determining which features the speaker chooses to include in their utterance  -- speakers aim to be sufficiently informative to uniquely establish reference to the intended object. However, speakers' utterances often exhibit what has been claimed to be \emph{overinformativeness}: referring expressions are often more specific than necessary for establishing unique reference, and they are so in systematic ways. Providing a unified theory for speakers' systematic patterns of overinformativeness has so far proved elusive.
 
-This paper is concerned with  accounting precisely for these systematic patterns in overinformative referring expressions (REs). We restrict ourselves to definite descriptions of the form \emph{the (ADJ}?\emph{)}+ \emph{NOUN}, that is, noun phrases that minimally contain the definite determiner \emph{the} followed by a head noun, with any number of adjectives occurting between the determiner and the noun.\footnote{In contrast, we will \emph{not} provide a treatment of pronominal referring expressions, indefinite descriptions, names, or definite descriptions with post-nominal modification, though we offer some speculative remarks on how the approach outlined here can be applied to these cases. } A model of these REs will allow us to unify two domains in language production that have been typically treated as separate, and that have typically been treated as interesting for different reasons: the production of so-called overmodified referring expressions on the one hand, which a lot of literature in language production has been devoted to \cite{herrmann1976, Pechmann1989, nadig2002,  Maes2004, Engelhardt2006, Arts2011, Koolen2011, rubiofernandez2016}; and the production of simple nominal expressions, which has so far mostly received attention in the concepts and categorization literature \cite{Rosch1973, Rosch1976}. In the following, we review some of the key phenomena and puzzles in each of these literatures which have for the most part been treated as unrelated. We then present a model of RE production within the Rational Speech Act \cite{frank2012} framework, which treats speakers as boundedly rational agents who optimize the tradeoff between utterance cost and  informativeness. Our key innovation is to relax the assumption that semantic truth functions are deterministic. \jd{one sentence here that inspires intuition, or a paragraph foreshadowing, making it seem like the obvious solution?} It is this crucial innovation that allows us to provide a unified explanation for a great number of seemingly disparate phenomena from the modified and nominal RE literature.
+This paper is concerned with  accounting  for these systematic patterns in overinformative referring expressions (REs). We restrict ourselves to definite descriptions of the form \emph{the (ADJ}?\emph{)}+ \emph{NOUN}, that is, noun phrases that minimally contain the definite determiner \emph{the} followed by a head noun, with any number of adjectives occurring between the determiner and the noun.\footnote{In contrast, we will \emph{not} provide a treatment of pronominal referring expressions, indefinite descriptions, names, or definite descriptions with post-nominal modification, though we offer some speculative remarks on how the approach outlined here can be applied to these cases. \jd{make sure to pick this back up in the discussion}} A model of these REs will allow us to unify two domains in language production that have been typically treated as separate, and that have typically been treated as interesting for different reasons: the production of so-called overmodified referring expressions on the one hand, which a lot of literature in language production has been devoted to \cite{herrmann1976, Pechmann1989, nadig2002,  Maes2004, Engelhardt2006, Arts2011, Koolen2011, rubiofernandez2016}; and the production of simple nominal expressions, which has so far mostly received attention in the concepts and categorization literature \cite{Rosch1973, Rosch1976, adele goldberg?}. In the following, we review some of the key phenomena and puzzles in each of these literatures. We then present a model of RE production within the Rational Speech Act  framework \cite{frank2012, goodman2016}, which treats speakers as boundedly rational agents who optimize the tradeoff between utterance cost and  informativeness. Our key innovation is to relax the assumption that semantic truth functions are deterministic. Treating speakers as boundedly rational agents operating on a continuous semantics captures that adding seemingly overinformative modifiers or using seemingly too specific nouns can be useful and informative, to the extent that not doing so would be too likely to lead a listener to incorrectly infer the speaker's intention (or to invest too much processing effort in inferring the speaker's correct intention) \jd{make this cleaner?}. We thus for the first time provide a unified explanation for a number of seemingly disparate phenomena from the modified and nominal RE literature. 
+
+We spend the remainder of the paper demonstrating how the account applies to various phenomena. In \sectionref{sec:intro} we spell out the problem and introduce the overinformativeness phenomena to capture. In \sectionref{sec:models} we introduce the basic (deterministic semantics) and modified (continuous semantics) Rational Speech Act framework. In Sections 3 - 5 we  evaluate the continuous semantics RSA model on data from interactive online reference game experiments that exhibit the phenomena introduced in \sectionref{sec:intro}: size and color modifier choice under varying conditions of scene complexity; typicality effects in the choice of color modifier; and choice of nominal level of reference. We wrap up in \sectionref{sec:gd} by summarizing our findings and discussing the far-reaching implications of and further challenges for this line of work.
 
 \subsection{Production of referring expressions: a case against rational language use?}
 
-How should a cooperative speaker produce referring expressions? Grice, in his seminal work, provided some guidance by formulating his famous conversational maxims, intended as a guide to listeners' expectations about good speaker behavior \cite{grice1975}. His maxim of Quantity, consisting of two parts, requires of speakers to:
+How should a cooperative choose between competing referring expressions? Grice, in his seminal work, provided some guidance by formulating his famous conversational maxims, intended as a guide to listeners' expectations about good speaker behavior \cite{grice1975}. His maxim of Quantity, consisting of two parts, requires of speakers to:
 
 \begin{enumerate}
 	\item \emph{Quantity-1:} Make your contribution as informative as s required (for the purposes of the exchange).
@@ -85,7 +87,7 @@ Here we revisit this claim and show that systematically relaxing the requirement
 \label{sec:modified}
 
 
-Most of the literature on overinformative referring expressions has been devoted to the use of overinformative modifiers in modified referring expressions. The prevalent observation is that speakers frequently do not include only the minimal modifiers required for establishing reference, but often also include redundant modifiers \cite{Pechmann1989, nadig2002,  Maes2004, Engelhardt2006, Arts2011, Koolen2011}. However, not all modifiers are created equal: there are systematic differences in the overmodification patterns observed for size adjectives (e.g., \emph{big, small}), color adjectives (e.g., \emph{blue, red}), material adjectives (e.g., \emph{plastic, wooden}), and many others \cite{sedivy}. Here we review some key intriguing patterns of overmodification that have plagued that literature, which we provide a unifying account for in \sectionref{sec:bla}.
+Most of the literature on overinformative referring expressions has been devoted to the use of overinformative modifiers in modified referring expressions. The prevalent observation is that speakers frequently do not include only the minimal modifiers required for establishing reference, but often also include redundant modifiers \cite{Pechmann1989, nadig2002,  Maes2004, Engelhardt2006, Arts2011, Koolen2011}. However, not all modifiers are created equal: there are systematic differences in the overmodification patterns observed for size adjectives (e.g., \emph{big, small}), color adjectives (e.g., \emph{blue, red}), material adjectives (e.g., \emph{plastic, wooden}), and others \cite{sedivy2003a}. Here we review some key patterns of overmodification that have plagued that literature, before spelling out our account of these phenomena in \sectionref{sec:models}.
 
 
 
@@ -113,10 +115,10 @@ Most of the literature on overinformative referring expressions has been devoted
 \subsubsection{Asymmetry in redundant use of color and size adjectives}
 \label{sec:asymmetry}
 
- In \figref{fig:sizesufficient}, singling out the object with the green border requires only mentioning its size, as in \emph{the small pin}. But it is now well-documented that speakers routinely include redundant color adjectives as in \emph{the small blue pin}, which are not necessary for uniquely singling out the intended referent in these kinds of contexts \cite{Pechmann1989,  Belke2002, gatt2011}. However, the same is not true for size: in contexts like \figref{fig:colorsufficient}, where color is sufficient for unique reference (\emph{the blue pin}), speakers overmodify much more rarely with size. \tableref{tab:colorsizeasymmetry} shows proportions of color, size, and (overinformative) color-and-size mentions in conditions like those depicted in \figref{fig:pin} across different experiments. In all cases there is a preference for overmodifying with color but not with size.\footnote{There is quite a bit of variation in the actual numbers. We will discuss this variation in the Discussion of  \sectionref{sec:rsaevaluationbasicscene}.\jd{correct section ref?}}
+ In \figref{fig:sizesufficient}, singling out the object highlighted by the green border requires only mentioning its size (\emph{the small pin}). But it is now well-documented that speakers routinely include redundant color adjectives (\emph{the small blue pin}) which are not necessary for uniquely singling out the intended referent in these kinds of contexts \cite{Pechmann1989,  Belke2002, gatt2011}. However, the same is not true for size: in contexts like \figref{fig:colorsufficient}, where color is sufficient for unique reference (\emph{the blue pin}), speakers overmodify much more rarely with size. \tableref{tab:colorsizeasymmetry} shows proportions of color, size, and (overinformative) color-and-size mentions in conditions like those depicted in \figref{fig:pin} across different experiments. In all cases there is a preference for overmodifying with color but not with size.\footnote{There is quite a bit of variation in the actual numbers. We will discuss this variation in the Discussion of  \sectionref{sec:rsaevaluationbasicscene}.\jd{correct section ref? do we even discuss this?}}
  
  \begin{table}
- \caption{Proportions of minimally informative \emph{color} (only) or \emph{size} (only) and overinformative \emph{color\_size} mentions in color-sufficient vs.~size-sufficient conditions across experiments.\jd{keep filling in.}}
+ \caption{Proportions of minimally informative \emph{color} (only) or \emph{size} (only) and overinformative \emph{color\_size} mentions in color-sufficient vs.~size-sufficient conditions across experiments.\jd{keep filling in. this is just here for us -- can throw out for the purpose of paper submission}}
  	\begin{tabular}{l l l l l l l l}
 	\toprule
 	 & & \multicolumn{3}{c}{Color sufficient} & \multicolumn{3}{c}{Size sufficient} \\
@@ -131,52 +133,50 @@ Most of the literature on overinformative referring expressions has been devoted
 	\label{tab:colorsizeasymmetry}
  \end{table}
 
-Explanations for this asymmetry have varied. \citeA{Pechmann1989} was the first to take the asymmetry as evidence for speakers following an incremental strategy of object naming: speakers initially start to articulate an adjective denoting a feature that listeners can quickly and easily recognize (i.e., color) before they have fully inspected the display and extracted the sufficient dimension. However, this would predict that speakers routinely should produce expressions like \emph{the blue small pin}, which violate the preference for size adjectives to occur before color adjectives in English \cite{bla adjective ordering prefs}. While Pechmann did observe such violations in his dataset, most cases of overmodification did not constitute such violations, and he himself concludes that incrementality cannot (on its own) account for the asymmetry in speakers' propensity for overmodifying with color vs.~size.  
+Explanations for this asymmetry have varied. \citeA{Pechmann1989} was the first to take the asymmetry as evidence for speakers following an incremental strategy of object naming: speakers initially start to articulate an adjective denoting a feature that listeners can quickly and easily recognize (i.e., color) before they have fully inspected the display and extracted the sufficient dimension. However, this would predict that speakers routinely should produce expressions like \emph{the blue small pin}, which violate the preference for size adjectives to occur before color adjectives in English \cite{bloomfield1933, sproat1991}. While Pechmann did observe such violations in his dataset, most cases of overmodification did not constitute such violations, and he himself concluded that incrementality cannot (on its own) account for the asymmetry in speakers' propensity for overmodifying with color vs.~size.  
 
 
-Another explanation for the asymmetry is that speakers try to produce modifiers that denote features that are reasonably easy for the listener to perceive, so that, even when a feature is not fully distinguishing in context, it at least serves to restrict the number of objects that could plausibly be considered the target. Indeed, there has been some support for the idea that overmodification can be beneficial to listeners by facilitating target identification \cite{Arts2011, rubiofernandez2016, Paraboni2007}.
+Another explanation for the asymmetry is that speakers try to produce modifiers that denote features that are reasonably easy for the listener to perceive, so that, even when a feature is not fully distinguishing in context, it at least serves to restrict the number of objects that could plausibly be considered the target. Indeed, there has been some support for the idea that overmodification can be beneficial to listeners by facilitating target identification \cite{Arts2011, rubiofernandez2016, Paraboni2007}. We return to this idea in \sectionref{sec:models} \jd{make sure you do -- continuous semantics as a way of implicitly encoding this kind of knowledge of listener difficulty \textbf{out of context}}.
 
 \jd{try to find a quote from someone who says it's all just a matter of cost?}
 
-There have been various attempts to capture the color-size asymmetry in computational natural language generation models. The earliest contenders for models of definite referring expressions like the Full Brevity algorithm \cite{Dale1989} or the Greedy algorithm \cite{Dale1989} focused only on discriminatory value -- that is, an utterance's informativeness -- in generating referring expressions, which resulted in an inability to capture the color-size asymmetry: the models only produced the minimally specified expressions. Subsequently, the Incremental algorithm \cite{dale1995} incorporated a preference order on features, with color ranked higher than size. The order is traversed and each encountered feature included in the expression if it serves to exclude at least one further distractor. This results in the production of overinformative color but not size adjectives. However, the resulting asymmetry is much greater than that evident in human speakers, and is deterministic rather than exhibiting the probabilistic production patterns that human speakers exhibit. More recently, the PRO model \cite{GattEtAl2013} has sought to integrate the observation that speakers seem to have a preference for including color terms with the observation that a preference does not imply the deterministic inclusion of said color term. The model is specifically designed to capture the color-size asymmetry: in a first step, the uniquely distinguishing property (if there is one) is first selected deterministically.  In a second step, an additional property is added probabilistically, depending on both a salience parameter associated with the additional property and a parameter capturing speakers' eagerness to overmodify. If both properties are uniquely distinguishing, a property is selected probabilistically depending on its associated salience parameter. The second step proceeds as before.
+There have been various attempts to capture the color-size asymmetry in computational natural language generation models. The earliest contenders for models of definite referring expressions like the Full Brevity algorithm \cite{Dale1989} or the Greedy algorithm \cite{Dale1989} focused only on discriminatory value -- that is, an utterance's informativeness -- in generating referring expressions. This is equivalent to the very simple interpretation of Grice laid out above, and consequently these models demonstrated the same inability to capture the color-size asymmetry: they only produced the minimally specified expressions. Subsequently, the Incremental algorithm \cite{dale1995} incorporated a preference order on features, with color ranked higher than size. The order is traversed and each encountered feature included in the expression if it serves to exclude at least one further distractor. This results in the production of overinformative color but not size adjectives. However, the resulting asymmetry is much greater than that evident in human speakers, and is deterministic rather than exhibiting the probabilistic production patterns that human speakers exhibit. More recently, the PRO model \cite{GattEtAl2013, XXX newer reference now?} has sought to integrate the observation that speakers seem to have a preference for including color terms with the observation that a preference does not imply the deterministic inclusion of said color term. The model is specifically designed to capture the color-size asymmetry: in a first step, the uniquely distinguishing property (if there is one) is first selected deterministically.  In a second step, an additional property is added probabilistically, depending on both a salience parameter associated with the additional property and a parameter capturing speakers' eagerness to overmodify. If both properties are uniquely distinguishing, a property is selected probabilistically depending on its associated salience parameter. The second step proceeds as before.
 
 However, while the PRO model -- the most state-of-the-art computational model of human production of modified referring expressions -- can capture the color-size asymmetry in and of itself, it is neither flexible enough to be extended straightforwardly to other modifiers beyond color and size, nor can it straightforwardly be extended to capture the more subtle systematicity with which the preference to overmodify with color changes based on various features of context. We delve into these more subtle patterns in the next two sections before presenting our alternative model within the Rational Speech Act framework.
 
 \subsubsection{Scene variation}
 \label{sec:scenevariation}
 
-So far we have portrayed speakers' propensity to overmodify with color as a fixed quantity (though varying by experiment). However, this propensity is actually highly dependent on features of the distractor objects in the context. In particular, as the variation present in the scene increases, so does the probability of overmodifying with color \cite{Davies2013, Koolen2013}. How exactly scene variation is quantified differs across experiments. One very clear demonstration of the scene variation effect was given by \citeA{Koolen2013}, who quantified scene variation as the number of feature dimensions along which objects in a scene vary. Over the course of three experiments, they compared a low-variation condition in which objects never differed in color with a high-variation condition in which objects differed in type, color, orientation, and size. They consistently found higher rates of overmodification with color in the high-variation (28-27\%) than in the low-variation (4-10\%) conditions.
+So far we have portrayed speakers' propensity to overmodify with color as a fixed quantity (though varying by experiment). However, this propensity is highly dependent on features of the distractor objects in the context. In particular, as the variation present in the scene increases, so does the probability of overmodifying with color \cite{Davies2013, Koolen2013}. How exactly scene variation is quantified differs across experiments. One very clear demonstration of the scene variation effect was given by \citeA{Koolen2013}, who quantified scene variation as the number of feature dimensions along which objects in a scene vary. Over the course of three experiments, they compared a low-variation condition in which objects never differed in color with a high-variation condition in which objects differed in type, color, orientation, and size. They consistently found higher rates of overmodification with color in the high-variation (28-27\%) than in the low-variation (4-10\%) conditions.
 
 The effect of scene variation on propensity to overmodify has typically been explained as the result of the demands imposed on visual search: in low-variation scenes, it is easier to discern the discriminating dimensions than in high-variation scenes, where it may be easier to simply start naming features of the target that are salient \cite{Koolen2013}. 
 
 The PRO model does not have a straightforward way of capturing the effect of scene variation on probability of overmodification. One way of doing so is to make the salience and overmodification parameters directly dependent on the amount of variation in the scene. However, this requires additional free parameters and makes the model prone to overfitting. \jd{elaborate? throw out?}
 
-We show in \sectionref{bla} how scene variation effects fall straightforwardly out of our proposed model by capturing the intuition that color becomes an increasingly good property for speakers to mention as it becomes contextually more informative.
+We show in \sectionref{sec:models} how scene variation effects fall straightforwardly out of our proposed model by capturing the intuition that color becomes an increasingly good property for speakers to mention as it becomes contextually more informative.
 
 \subsubsection{Feature typicality}
 \label{sec:colortypicalityintro}
 
-Modifier type and amount of scene variation are not the only factors determining overmodification. Overmodification with color has been shown to be systematically related to the typicality of the color for the object. Building on work by \citeA{sedivy2003aa}, \citeA{Westerbeek2015} (and more recently, \citeA{rubiofernandez2016}) have shown that the more typical a color is for an object, the less likely it is to be mentioned when not necessary for unique reference. For example, speakers never refer to a yellow banana in the absence of other bananas as \emph{the yellow banana}, but they sometimes refer to a brown banana as \emph{the brown banana}, and they almost always refer to a blue banana as \emph{the blue banana}. In fact, color typicality and probability of redundant color mention exhibit a linear negative correlation \cite{Westerbeek2015}. Similar typicality effects have been shown for other (non-color) properties. For example, \citeA{Mitchell2013} showed that speakers are more likely to include an atypical than a typical property (either shape or material) when referring to everyday objects like boxes when mentioning at least one property was necessary for unique reference. %, when the shape and material was atypical (e.g., heart-shaped, made of clay) than when it was typical (e.g., square, made of cardboard). 
+Modifier type and amount of scene variation are not the only factors determining overmodification. Overmodification with color has been shown to be systematically related to the typicality of the color for the object. Building on work by \citeA{sedivy2003a}, \citeA{Westerbeek2015} (and more recently, \citeA{rubiofernandez2016}) have shown that the more typical a color is for an object, the less likely it is to be mentioned when not necessary for unique reference. For example, speakers never refer to a yellow banana in the absence of other bananas as \emph{the yellow banana}, but they sometimes refer to a brown banana as \emph{the brown banana}, and they almost always refer to a blue banana as \emph{the blue banana}. Similar typicality effects have been shown for other (non-color) properties. For example, \citeA{Mitchell2013} showed that speakers are more likely to include an atypical than a typical property (either shape or material) when referring to everyday objects like boxes when mentioning at least one property was necessary for unique reference. %, when the shape and material was atypical (e.g., heart-shaped, made of clay) than when it was typical (e.g., square, made of cardboard). 
 
-Whether speakers are more likely to mention atypical properties over typical properties because they are more salient to \emph{them} or because they are trying to make reference resolution easier for the listener, for whom presumably these properties are also salient, is an open question \cite{Westerbeek2015}. Some support for the audience design account comes from a study by \citeA{Huettig2011}, who found that listeners, after hearing a noun with a diagnostic color (e.g., \emph{frog}), are more likely to fixate objects of that diagnostic color (green), indicating that typical object features are rapidly activated and aid visual search. Nevertheless, the benefit for listeners and the salience for speakers might simply be a happy coincidence and speakers might not, in fact, be designing their utterances for their addressees. We will remain agnostic about the underlying reason for typicality effects for the time being and will return to this issue in the General Discussion. % \jd{will we, though? the model assumes that typicality affects the literal listener, who speakers reason about, so in a sense we're making a strong audience design claim.}
+Whether speakers are more likely to mention atypical properties over typical properties because they are more salient to \emph{them} or because they are trying to make reference resolution easier for the listener, for whom presumably these properties are also salient, is an open question \cite{Westerbeek2015}. Some support for the audience design account comes from a study by \citeA{Huettig2011}, who found that listeners, after hearing a noun with a diagnostic color (e.g., \emph{frog}), are more likely to fixate objects of that diagnostic color (green), indicating that typical object features are rapidly activated and aid visual search. \jd{isnt' there also something that paula did, and maybe a study by arts et al 2011?} Nevertheless, the benefit for listeners and the salience for speakers might simply be a happy coincidence and speakers might not, in fact, be designing their utterances for their addressees. We will remain agnostic about the underlying reason for typicality effects for the time being and will return to this issue in the General Discussion. % \jd{will we, though? the model assumes that typicality affects the literal listener, who speakers reason about, so in a sense we're making a strong audience design claim.}
 
-Irrespective of the source of typicality effects, it is unclear how the PRO model could accommodate them. As for the scene variation effects, it is possible to make the salience and overmodification eagerness parameters directly dependent on the typicality of the feature value for the object the speaker wants to refer to. However, as mentioned above, in the absence of a principled motivation for the way in which these parameters interact, this is simply an exercise in model-fitting without adding explanatory value. In addition, one is left with the task of explaining how scene variation and typicality should interact. 
-
-We show in \sectionref{sec} that the production model we propose straightforwardly accounts for these typicality effects.
+Irrespective of the source of typicality effects, it is unclear how the PRO model could accommodate them. In addition, one is left with the task of explaining how scene variation and typicality should interact. We show in \sectionref{sec:colortypicality} that the production model we propose straightforwardly accounts for these typicality effects in a principled way \jd{and it gets away from the target object's typicality and integrates the other objects in the context's properties as well}.
 
 \subsection{Nominal referring expressions}
 \label{sec:nominal}
 
-A problem related to the issue of how many additional features to include in a modified referring expression, but which has received much less attention in the language production literature, is that of deciding at which taxonomic level to refer to an object to in a simple nominal expression. That is, even in the absence of adjectives, a referring expression can be more or less informative: \emph{the dalmatian} communicates more information about the object in question than \emph{the dog}, which in turn is globally more informative than \emph{the animal}. Thus, this choice can be considered analogous to the choice of adding more modifiers -- in both cases, the speaker has a choice of being more or less specific about the intended referent. However, the choice of reference level in simple nominal referring expressions is also interestingly different from that of adding modifiers in that there is no additional word-level cost associated with being more specific -- the choice is between different one-word utterances, not between utterances of different lengths (in words). 
+A problem related to the issue of how many additional features to include in a modified referring expression, but which has received much less attention in the language production literature, is that of deciding at which taxonomic level to refer to an object in a simple nominal expression. That is, even in the absence of adjectives, a referring expression can be more or less informative: \emph{the dalmatian} communicates more information about the object in question than \emph{the dog} (being a dalmatian entails being a dog), which in turn is globally more informative than \emph{the animal}. Thus, this choice can be considered analogous to the choice of adding more modifiers -- in both cases, the speaker has a choice of being more or less specific about the intended referent. However, the choice of reference level in simple nominal referring expressions is also interestingly different from that of adding modifiers in that there is no additional word-level cost associated with being more specific -- the choice is between different one-word utterances, not between utterances that differ in word length. 
 
 Nevertheless, cost affects the choice of reference level: in particular, speakers prefer more frequent nouns over less frequent ones \cite{bla}, and they prefer shorter ones over longer ones \cite{bla}. This may go part of the way towards explaining the well-documented effect from the concepts and categorization literature that speakers prefer to refer at the \emph{basic level} \cite{Rosch1976, Tanaka1991}. That is, in the absence of other constraints, even when a superordinate level term would be sufficient for establishing reference (as in \figref{fig:dogcontexts}d), speakers prefer to say \emph{the dog} rather than \emph{the animal}. 
 
-However, there are nevertheless cases  of contexts where either the superordinate (\figref{fig:dogcontexts}d) or the basic level (\figref{fig:dogcontexts}b and \figref{fig:dogcontexts}c) term would be sufficient for unique reference, where speakers prefer to use the subordinate level term \emph{the dalmatian}. This is the case when the object is a particularly good instance of the subordinate level term or a particularly bad instance of the basic level term. For example, penguins, which are rated as particularly atypical birds, are often referred to at the subordinate level \emph{penguin} rather than at the basic level \emph{bird}, despite the general preference for the basic level \cite{Jolicoeur1984}.
+However, there are nevertheless cases  of contexts where either the superordinate (\figref{fig:dogcontexts}d) or the basic level (\figref{fig:dogcontexts}b and \figref{fig:dogcontexts}c) term would be sufficient for unique reference, where speakers prefer to use the subordinate level term \emph{the dalmatian}. This is the case when the object is a particularly good instance of the subordinate level term or a particularly bad instance of the basic level term, compared to the other objects in the context. For example, penguins, which are rated as particularly atypical birds, are often referred to at the subordinate level \emph{penguin} rather than at the basic level \emph{bird}, despite the general preference for the basic level \cite{Jolicoeur1984}.
 
 \subsection{Summary}
 \label{sec:introsummary}
 
-In sum, the production of modified and simple nominal referring expressions is governed by a rich interplay of many factors, including an utterance's informativeness, its cost relative to alternative utterances, and the typicality of an object or its features. We are here especially interested in cases where speakers appear to be overinformative -- either by adding more modifiers or by referring at a more specific level than necessary for establishing unique reference. A summary of the effects we will focus on in the remainder of the paper is provided in \tableref{tab:effects}.
+In sum, the production of modified and simple nominal referring expressions is governed by a rich interplay of many factors, including an utterance's informativeness, its cost relative to alternative utterances, and the typicality of an object or its features. In the next section, we provide an explicit computational account of how these different factors interact, with a focus on cases where speakers appear to be overinformative -- either by adding more modifiers or by referring at a more specific level than necessary for establishing unique reference. A summary of the effects we will focus on in the remainder of the paper is provided in \tableref{tab:effects}.
 
 \begin{table}
 \caption{List of effects a theory of referring expression production should account for.}
@@ -203,12 +203,12 @@ To date, there is no theory to account for all of these different phenomena; and
 \section{Modeling speakers' choice of referring expression}
 \label{sec:models}
 
-Here we propose an extension to the production component of the Rational Speech Act \cite<RSA>{frank2012, goodmanstuhlmueller2013} modeling framework. This extension provides a principled explanation for the phenomena reviewed in the previous section and  holds promise for being generalizable to many further production phenomena related to overinformativeness, which we discuss in the General Discussion. We proceed by first presenting the general framework in \sectionref{sec:basicrsa}, and show why the most basic model cannot account for any of the phenomena outlined above, due to its strong focus on maximizing the informativeness of one-word expressions under a deterministic semantics. In \sectionref{sec:modifiedmodel} we introduce the crucial innovation: relaxing the assumption of a deterministic semantics. We show that the model can qualitatively account both for speakers' asymmetric propensity to overmodify with color rather than with size and (in \sectionref{sec:modelkoolen}) for speakers' propensity to overmodify more with increasing scene variation. In \sectionref{sec:rsaevaluationbasicscene} we report an interactive  reference game experiment which functions as a quantitative test of the model. In \sectionref{sec:colortypicality} we explore how the model captures feature typicality effects. In \sectionref{sec:nominal} we apply the model to the choice of simple nominal referring expressions and show that the qualitative preference for referring at the basic level (and the exceptions from that rule) emerges from the interaction of informativeness, utterance cost, and typicality. We test the model on a second interactive reference game experiment that provides data for a quantitative test of the model. For all cases we report  -- modified and nominal referring expressions -- we find that introducing non-determinism into the semantic truth functions results in excellent quantitative fits to the data.
+Here we propose a computational model of referring expression production that  accounts for the phenomena introduced above. The model is formulated within the Rational Speech Act (RSA) framework \cite{frank2012, goodman2016}. It provides a principled explanation for the phenomena reviewed in the previous section and  holds promise for being generalizable to many further production phenomena related to overinformativeness, which we discuss in \sectionref{sec:gd}. We proceed by first presenting the general framework in \sectionref{sec:basicrsa}, and show why the most basic model, as formulated by \citeNP{frank2012}, does not produce the phenomena outlined above, due to its strong focus on maximizing the informativeness of one-word expressions under a deterministic semantics. In \sectionref{sec:modifiedmodel} we introduce the crucial innovation: relaxing the assumption of a deterministic semantics. We show that the model can qualitatively account both for speakers' asymmetric propensity to overmodify with color rather than with size and (in \sectionref{sec:modelkoolen}) for speakers' propensity to overmodify more with increasing scene variation. In \sectionref{sec:rsaevaluationbasicscene} we report an interactive  reference game experiment which functions as a quantitative test of the model. In \sectionref{sec:colortypicality} we explore how the model captures color typicality effects. In \sectionref{sec:nominal} we apply the model to the choice of simple nominal referring expressions. 
 
 \subsection{Basic RSA}
 \label{sec:basicrsa}
 
-As has been pointed out by \citeA{GattEtAl2013}, the basic Rational Speech Act model as formulated by \citeA{frank2012} cannot generate overinformative referring expressions for two reasons: first, it trivially cannot do so because it is limited to one-word utterances \cite<see also>{Baumann2014}. But even when allowing two-word (or $n$-word) utterances, the speaker's utility will never allow for producing more redundant than minimal referring expressions as long as words contribute non-negative costs to the overall utterance cost. To see this, and as a basis for the innovations introduced in \sectionref{sec:modifiedmodel} and \sectionref{sec:reflevelmodel} it is useful to reiterate the basic form of the model.
+As has been pointed out by \citeA{GattEtAl2013}, the basic Rational Speech Act model as formulated by \citeA{frank2012} does not generate overinformative referring expressions for two reasons: first, it trivially cannot do so because it is limited to one-word utterances \cite<see also>{Baumann2014}. But even when allowing two-word (or $n$-word) utterances, the speaker's utility will never allow for producing more redundant than minimal referring expressions as long as additional words contribute non-negative costs to the overall utterance cost. To see this, and as a basis for the innovation introduced in \sectionref{sec:modifiedmodel} it is useful to reiterate the basic form of the model.
 
 Intuitively, the production component of RSA aims to soft-maximize the utility of utterances, where utility is defined in terms of the contextual informativeness of an utterance, given each utterance's literal semantics. Formally, this is treated as a pragmatic speaker $S_1$ reasoning about a literal listener $L_0$, who can be described by the following formula:
 
@@ -216,7 +216,7 @@ Intuitively, the production component of RSA aims to soft-maximize the utility o
 P_{L_0}(o | u) \propto \denote{u}(o).
 \end{equation}
 
-The literal listener $L_0$ hears an utterance $u$ from the set of available one-word utterances $U$ in the context of a set of objects  $O$ and forms a distribution over the referenced object, $o \in O$. Here, $\denote{u}(o)$ is the deterministic lexical meaning of the utterance $u$ when applied to object $o$. That is, $P_{L_0}(o | u)$ returns a uniform distribution over all $o$ denoted by $u$. For example, in the context shown in \figref{fig:sizesufficient}, $U = \{\textrm{\emph{big}}, \textrm{\emph{small}}, \textrm{\emph{blue}}, \textrm{\emph{red}}\}$ and $O = \{o_{\textrm{big\_blue}}, o_{\textrm{big\_red}}, o_{\textrm{small\_blue}}\}$. The values of $P_{L_0}(o | u)$ for each $u$ are shown on the left in \tableref{tab:detliteral}.
+The literal listener $L_0$ hears an utterance $u$ from the set of available one-word utterances $U$ in the context of a set of objects  $O$ and forms a distribution over the referenced object, $o \in O$. Here, $\denote{u}(o)$ is the deterministic lexical meaning of the utterance $u$ when applied to object $o$. That is, $P_{L_0}(o | u)$ returns a uniform distribution over all contextually available $o$ in the extension of $u$. For example, in the context shown in \figref{fig:sizesufficient}, $U = \{\textrm{\emph{big}}, \textrm{\emph{small}}, \textrm{\emph{blue}}, \textrm{\emph{red}}\}$ and $O = \{o_{\textrm{big\_blue}}, o_{\textrm{big\_red}}, o_{\textrm{small\_blue}}\}$. The values of $P_{L_0}(o | u)$ for each $u$ are shown on the left in \tableref{tab:detliteral} (each row constitutes a probability distribution).
 
 \begin{table}
 %\centering
@@ -253,14 +253,15 @@ The pragmatic speaker in turn produces an utterance proportional to the utility 
 P_{S_1}(u | o) \propto e^{\lambda \ln P_{L_0}(o | u) - \beta_c c(u)}
 \end{equation}
 
-Both the informativeness and the cost term receive a weight.\footnote{In fact, \citeA{frank2012} did not include a cost weight in their formulation and since they ultimately assumed equal costs for all utterances, they made no use of the cost function. Subsequent work has shown that taking into account utterance cost is necessary for modeling certain interpretation phenomena like cost-based quantity implicatures \cite{degenfrankejaeger2013} and M-implicature \cite{bergen2015}. The cost function will become important for our purposes in a little while.}   Informativeness is weighted by $\lambda$. To understand the effect of $\lambda$, assume that costs are equal and the cost function can thus be disregarded. As $\lambda$ approaches infinity, the speaker increasingly only chooses utterances that maximize informativeness; if $\lambda$ is 0, informativeness is disregarded and the speaker chooses randomly from the set of all available utterances; if $\lambda$ is 1, the speaker probability-matches. For our example in \tableref{tab:detliteral}, if the speaker wants to refer to $o_{\textrm{small\_blue}}$ she has two semantically possible utterances, \emph{small} and \emph{blue}, where \emph{small} is twice as informative as \emph{blue}. She produces \emph{small} with probability 1 when $\lambda \rightarrow \infty$, probability 2/3 when $\lambda = 1$ and probability 1/4 when $\lambda = 0$. %She will produce \emph{small} with the following probabilities as $\lambda$ varies: $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = \infty) = 1$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 1) = \frac{2}{3}$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 0) = \frac{1}{4}$. 
-Similarly, if we ignore informativeness and focus only on costs, any asymmetry in costs will be exaggerated with increasing $\beta_c$, such that the speaker will choose the least costly utterance with higher and higher probability as $\beta_c$ increases.
+Informativeness and cost are both weighted by parameters $\lambda$ and $\beta_c$, respectively.\footnote{In fact, \citeA{frank2012} did not include a cost weight in their formulation and since they ultimately assumed equal costs for all utterances, they made no use of the cost function. Subsequent work has demonstrated the importance of taking into account utterance cost in modeling  interpretation phenomena like cost-based quantity implicatures \cite{degenfrankejaeger2013} and M-implicature \cite{bergen2016}.}   Informativeness is weighted by $\lambda$. Disregarding the effect of cost for the time being, the effect of $\lambda$ is as follows: as $\lambda$ approaches infinity, the speaker increasingly only chooses utterances that maximize informativeness; if $\lambda$ is 0, informativeness is disregarded and the speaker chooses randomly from the set of all available utterances; if $\lambda$ is 1, the speaker probability-matches, i.e., chooses utterances exactly proportional to their informativeness. Applied to the example in \tableref{tab:detliteral}, if the speaker wants to refer to $o_{\textrm{small\_blue}}$ they have two semantically possible utterances, \emph{small} and \emph{blue}, where \emph{small} is twice as informative as \emph{blue}. They produce \emph{small} with probability 1 when $\lambda \rightarrow \infty$, probability 2/3 when $\lambda = 1$ and probability 1/4 when $\lambda = 0$. %She will produce \emph{small} with the following probabilities as $\lambda$ varies: $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = \infty) = 1$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 1) = \frac{2}{3}$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \lambda = 0) = \frac{1}{4}$. 
 
-As noted above, this model cannot generate redundant referring expressions for multiple reasons. One of these is trivial: $U$ only contains one-word utterances. We can ameliorate this easily by allowing complex two-word utterances. We assume an intersective semantics for complex utterances $u_{\textrm{complex}}$ consisting of two sub-utterances $u_{\textrm{size}} \in \{\textrm{\emph{big}}, \textrm{\emph{small}}\}$ and $u_{\textrm{color}} \in \{\textrm{\emph{blue}}, \textrm{\emph{red}}\}$, such that $\denote{u_{\textrm{complex}}} = \denote{u_{\textrm{size}}} \wedge\denote{u_{\textrm{color}}}$. The resulting literal listener distributions are shown on the right in \tableref{tab:detliteral}. 
+Conversely, disregarding informativeness and focusing only on costs, any asymmetry in costs will be exaggerated with increasing $\beta_c$, such that the speaker will choose the least costly utterance with higher and higher probability as $\beta_c$ increases.
 
-Does this now allow for generating redundant referring expressions? To answer this, let's turn again to the case where the speaker wants to communicate the small blue object. There are now two  utterances, \emph{small} and \emph{small blue}, which are both more informative than \emph{blue} and equally informative to each other, for referring to the small blue object. Because they are equally informative in context, what we need is for the complex utterance to be the \emph{cheaper} one in order to tilt the scales in its favor. While this achieves the desired effect mathematically, the cognitive plausibility of complex utterances being cheaper than simple utterances is highly dubious. But this is the only circumstance under which overinformative referring expressions will be produced with a greater probability than minimally specified referring expressions. Thus, unless we want to introduce a highly dubious cost assumption into the model, we must look elsewhere to account for overinformativeness: to the computation of informativeness itself. This is what we turn to next.
+As noted above, this model does not generate redundant referring expressions for multiple reasons. One of these is trivial: $U$ only contains one-word utterances. We can ameliorate this easily by allowing complex two-word utterances. We assume an intersective semantics for complex utterances $u_{\textrm{complex}}$ consisting of two sub-utterances $u_{\textrm{size}} \in \{\textrm{\emph{big}}, \textrm{\emph{small}}\}$ and $u_{\textrm{color}} \in \{\textrm{\emph{blue}}, \textrm{\emph{red}}\}$, such that $\denote{u_{\textrm{complex}}} = \denote{u_{\textrm{size}}} \wedge\denote{u_{\textrm{color}}}$. The resulting literal listener distributions are shown on the right in \tableref{tab:detliteral}. 
 
-\subsection{RSA with non-deterministic semantics -- emergent color-size asymmetry}
+Unfortunately, simply including complex utterances into the set of alternatives does not solve the problem. Let's turn again to the case where the speaker wants to communicate the small blue object. There are now two  utterances, \emph{small} and \emph{small blue}, which are both more informative than \emph{blue} and equally informative as each other, for referring to the small blue object. Because they are equally informative in context, what we need is for the complex utterance to be the \emph{cheaper} one in order to tilt the scales in its favor. While this achieves the desired effect mathematically, the cognitive plausibility of complex utterances being cheaper than simple utterances is highly dubious. But this is the only circumstance under which overinformative referring expressions will be produced with a greater probability than minimally specified referring expressions. Thus, unless we want to introduce a highly dubious cost assumption into the model, we must look elsewhere to account for overinformativeness: to the computation of informativeness itself. This is what we turn to next.
+
+\subsection{RSA with continuous semantics -- emergent color-size asymmetry}
 \label{sec:modifiedmodel}
 
 Here we introduce the crucial innovation: rather than assuming a deterministic truth-conditional semantics that returns 1 (true) or 0 (false) for any combination of expression and object, we assume a non-deterministic semantics that can return intermediate values. That is, rather than assuming that an object is unambiguously big or unambiguously blue, we allow for a non-deterministic semantics, capturing that objects count as big or blue to  varying degrees \jd{mention prototype theory and cite?}. In particular, consider some of the notable differences between color and size adjectives: color adjectives are considered  \emph{absolute adjectives} while size adjectives are inherently \emph{relative} \cite{kennedymcnally2005}. That is, while both size and color adjectives are vague, size adjectives are arguably context-dependent in a way that color adjectives are not -- whether an object is big depends inherently on its comparison class; whether an object is red does not.\footnote{This is not entirely true, as has been pointed out by \red{cite}: red hair has a very different color than red wine, which in turn has a different color from a red bell pepper. If presented out of context, only the last red is likely to be judged as red \cite{is there a ref?}. For our purposes, it suffices that one can give a color judgment but not a size judgment for an object presented in isolation.} In addition, color as a property has been claimed to be inherently salient in a way that size is not \cite{arts2011,gattetal2013}. Finally, we have shown in recent work that color adjectives are much less subjective in their interpretation than size adjectives \cite{scontrasunderreview}. We use these observations as motivation for exploring the effects of the assumption that the semantics of size adjectives is inherently noisier than the semantics of color adjectives.
@@ -468,6 +469,8 @@ Some readers may have found themselves wondering about the status of the fidelit
 \section{Feature typicality}
 \label{sec:colortypicality}
 
+\jd{rewrite this intro once settled on whether or not we'll use continuous semantics as oppposed to truth-conditional  plus noise from the start?}
+
 In \sectionref{sec:rsaevaluationbasicscene} we showed that non-deterministic RSA successfully captures both the basic asymmetry in overmodification with color vs.~size as well as effects of scene variation, quantified in various different ways. But in \sectionref{sec:colortypicalityintro} we discussed a further characteristic of speakers' overmodification behavior: speakers are more likely to redundantly produce modifiers that denote atypical rather than typical object features, i.e., they are more likely to refer to a blue banana as a \emph{blue banana} rather than as a \emph{banana}, and they are more likely to refer to a yellow banana as a \emph{banana} than as a \emph{yellow banana} \cite{sedivy2003a, Westerbeek2015}. Non-deterministic RSA as we have set it up thus far does not capture this asymmetry: it knows that a particular modifier is a color modifier with a particular fidelity; it does not know anything about the typicality of the denoted properties for the referent. 
 
 We would like to warn and disillusion the reader upfront: we will not solve the problem of how to get overmodification behavior from the typicality of features compositionally. This is a problem for all theories of modification \cite{kamp1995}. However, we would like to offer a proof of concept showing that, if the non-determinism in the RSA semantics is not at the adjective type (color, size) level, but instead at the level of combinations of referring expressions and objects, the model produces precisely the sorts of typicality effects reported in the literature. 
@@ -495,12 +498,132 @@ With $\lambda$ = 12 and $\beta_c$ = 5 (that is, both informativeness and utteran
 
 So far we have shown that non-deterministic RSA can capture typicality effects in principle if we assume that fidelity does not operate at the adjective type level but instead captures the typicality of an object for the alternative (minimal and redundant) referring expressions. If an object is more typical for the redundant expression than for the minimal expression, then the bigger the difference in typicality, the greater the relative informativeness of the redundant expression, and the greater the probability of it being produced. This is related to Levinsonian stereotype inferences \cite{levinson2000}: the speaker reasons that just saying \emph{banana} will lead a listener to believe they are referring to a  stereotypical instance of banana (i.e., a yellow one). In order to prevent this (incorrect) stereotype inference they add a modifier to refer to the blue one.
 
-We can now ask whether taking into account this more fine-grained notion of non-deterministic semantics plays a role in the dataset collected in Exp.~1. 
-%\sectionref{sec:exp1-scenevar}. 
-A note upfront: the stimuli for Exp.~1 were specifically designed to be realistic objects; that is, very low typicality values or even a large degree of variation in typicality would be surprising. Nevertheless, it is plausible that typicality differences exist. If they do, there are two interesting questions to ask: first, do we replicate the typicality effects reported in the literature -- that is, are less typical objects more likely to lead to redundant adjective use than more typical objects? Second, does including empirically elicited typicality values at the object-utterance level further improve the quality of the RSA model? We address the first question in \sectionref{sec:modifiertypicalityeffects} and the second question in \sectionref{sec:modelevalcolortypicality}.
+We can now ask whether taking into account this more fine-grained notion of a non-deterministic semantics affects the probability of redundantly mentioning color. Because the stimuli for Exp.~1 were specifically designed to be realistic objects with low color-diagnosticity, they do not include objects with low typicality values or large degrees of variation in typicality. \jd{note that to the extent that there is variation, we do see typicality effects, but they are small} This makes the dataset from Exp.~1 not well-suited for investigating typicality effects. We therefore conducted a separate production experiment in the same paradigm but with two broad changes: first, objects' color varied in typicality; and second, we did not manipulate object size, focusing only on color mention. This allows us to ask two question: first, do we replicate the typicality effects reported in the literature -- that is, are less typical objects more likely to lead to redundant adjective use than more typical objects? Second, does RSA with empirically elicited typicality values as proxy for a continuous semantics capture speakers' behavior better than just typicality alone? 
 
-\subsection{Experiment 1a: Typicality effects in Exp.~1}
+\jd{foreshadow the informativeness conditions}
+
+\subsection{Experiment 2: Color typicality effects}
 \label{sec:modifiertypicalityeffects}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{pics/context_overview}
+	\caption{The four context conditions, exemplified by the \textit{banana} domain. The target is outlined in green; the color and type of the distractors differ with each condition (see text). \jd{elisa: please make this figure with exactly the same labels as in  results Figure 4 (informative, informative-cc, etc, and explain in figure caption -- in making labels shorter, also make them more legible or we'll be rejected outright for illegible figures.}
+	}
+	\label{fig:contexts}
+\end{figure}
+
+\begin{figure}[bt!]
+	\centering
+	\includegraphics[width=.5\textwidth]{pics/design_0}
+	\caption{Experimental setup.
+	}
+	\label{fig:mturk}
+\end{figure}
+
+\subsubsection{Methods}
+
+\paragraph{Participants}
+
+We recruited 120 self-reported native speakers of English over Mechanical Turk \jd{who bla}. 
+
+\paragraph{Procedure and materials}
+
+The procedure was identical to that of Exp.~1. 
+
+On each trial, exactly three objects were displayed. The stimuli were selected from seven food items (apple, avocado, banana, carrot, pear, pepper, tomato) which each occurred in three different colors that intuitively differed in typicality for that item. For example, the banana occurred in the colors yellow, brown, and blue. Each item occurred as a target and as a distractor. A pepper additionally occurred in a fourth color which only functioned as a distractor due to the need for a green color competitor.
+
+%\paragraph{\bf Design}
+Each presented context consisted of three objects, one target and two distractors. The contexts always corresponded to one out of four possible conditions. The different context conditions are referred to as ``informative without a color competitor" (\figref{fig:contexts}a), ``informative with a color competitor" (\figref{fig:contexts}b), ``overinformative without a color competitor" (\figref{fig:contexts}c), and ``overinformative with a color competitor" (\figref{fig:contexts}d). A context is referred to as overinformative when mentioning the type of the item, e.g., banana, would be sufficient for an unambiguous identification of the target. An additional mention of color would mean that the speaker uses the color adjective overinformatively, i.e., they are adding ``unnecessary" information. However, in this condition the target never has a color competitor, i.e., if the target is brown, there is no distractor of the same color in the context. This means that an only-color utterance would lead to an unambiguous identification, too. This is not possible in the overinformative condition with a color competitor (Fig.~1d). In the informative conditions, the speaker needed to mention the color in addition to the type to provide an unambiguous utterance. Again, one context type did (Fig.~1a) and one did not include a color competitor among its distractors (Fig.~1b).
+
+The item selection was randomized but conditioned on the corresponding context condition, i.e., the items had to fulfill the properties dictated by the condition. In the end, each participant saw 42 different contexts. All of the differently colored items were the target exactly twice but the context in which they occurred was drawn randomly from the four possible conditions mentioned above. All in all, there were 84 different configurations, i.e., seven target food items, each of them in three colors, where each could occur in four contexts. Trial order was randomized.
+
+
+\subsubsection{Annotation and exclusions}
+After collecting the data, the different utterances were automatically  labeled as belonging to one of the following categories: type-only ("banana"), color-and-type ("yellow banana"),  color-only ("yellow"), category-only ("fruit"), color-and-category ("yellow fruit"), description ("has green stem"), color-modifier ("funky carrot"), and negation ("yellow but not banana"). Two participants were excluded because they did not finish the experiment. Trials on which the speaker did not produce any utterances and trials on which the listener did not identify the target correctly were excluded as well. The remaining utterances (94\% of the original set) were cleaned manually for misspellings and abbreviations, e.g., ``banan'' for banana. Finally, there were 10 speakers who consistently used roundabout descriptions instead of direct referring expressions (e.g., ``monkeys love\dots'' for banana). These participants were excluded because they were not trying to communicate the target, but rather appeared to be playing the game of Taboo.
+
+The 1942 resulting utterances were then categorized according to the categories laid out above. Only five utterances (0.003\%) were assigned to the category "other".
+
+
+\subsubsection{Typicality norming}
+
+\jd{make this more structured, ie change from cogsci paper prose}
+To evaluate the model, we collected empirical typicality values for each utterance-object pair. Ratings were collected across three separate studies. The first study collected typicalities for adjective\&noun-object pairs, e.g., ``yellow banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The second study collected typicalities for noun-object pairs, e.g., ``banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The third study collected typicalities for adjective-color pairs, e.g., ``yellow'' as applied to a color patch of the average yellow from the yellow banana image or to a color patch of the average orange from the orange pear image.  On each trial, participants saw one of the images used in the production experiment in isolation and were asked: ``How typical is this object for a \textsc{utterance}'', where \textsc{utterance} was replaced by an utterance of interest. In the color typicality study, they were asked ``How typical is this color for the color \textsc{color}?'', where \textsc{color} was replaced by one of the relevant color terms.  They then adjusted a sliding scale with endpoints labeled ``very atypical'' and ``very typical'' to indicated their response. A screenshot of a typical trial is shown in \figref{fig:typicalitynorming}. An overview of the differences between the three typicality norming studies differed is shown in \tableref{tab:normingoverview}. Each participant saw each `correct' combination of utterances and objects (22 total) as well as a number of randomly sampled trials from the total set of items in each study, shown in the table.
+
+\begin{figure}[bt!]
+	\centering
+	\includegraphics[width=.5\textwidth]{pics/typ_norm_full_2}
+	\caption{A typical trial in the `Adj Noun' typicality norming study.
+	}
+	\label{fig:typicalitynorming}
+\end{figure}
+
+
+\begin{table*}
+\caption{Overview of typicality norming studies. \jd{update this to reflect updated participant number for holistic norms}}
+\begin{tabular}{l l l l l l l}
+\toprule
+Utterances & Example & Images & Participants & Trials & Items & Excluded\\
+\midrule
+Adj Noun & \emph{yellow banana} & object & 66 & 110 & 484 & 4\\ 
+Noun & \emph{banana} & object & 75 & 90 & 198 & 1\\
+Adj & \emph{yellow} & color patch & 75 & 90 & 176 & None\\
+\bottomrule
+\end{tabular}
+\label{tab:normingoverview}
+\end{table*}
+
+Slider values were coded as falling between 0 (`very atypical') and 1 (`very typical'). For each utterance-object combination we computed mean typicality ratings. For example, mean typicalities for the banana items are shown in \tableref{tab:bananatypicalities}.
+
+\begin{table}
+\caption{Mean typicalities for banana items. Combinations where a deterministic semantics would return TRUE are marked in boldface.}
+\begin{tabular}{r r r r r}
+\toprule
+%Utterance & Item & Typicality\\
+ & \multicolumn{3}{c}{Banana items} & Other \\
+ Utterance & yellow & brown  & blue & \\ 
+ \midrule
+\emph{banana} & \textbf{.98} & \textbf{.66} & \textbf{.42} & .05  \\
+ \midrule
+\emph{yellow banana} & \textbf{.98} & .33 & .17 & .05 \\
+\emph{brown banana} & .28 & \textbf{.90} & .18 & .04\\
+\emph{blue banana} & .20 & .18 & \textbf{.91} & .06\\
+\midrule
+\emph{yellow} & \textbf{.77} & .05 & .06 & .09\\
+\emph{brown} & .11 & \textbf{.87} & .01 & .12\\
+\emph{blue} & .06 & .06 & \textbf{.92} & .07\\
+\bottomrule
+\end{tabular}
+\label{tab:bananatypicalities}
+\end{table}
+
+
+\jd{change the following discussion; replace with previous prose you wrote on this for this section?}
+The way we elicited typicalities differs somewhat from the approach taken in previous work \cite<e.g.>{Westerbeek2015}, where participants are typically asked ``How typical is this color for this object?'' We deviated from this because for the purpose of testing the model (see below), what is required is the degree of applicability of an utterance to an object, rather than the degree to which an object's color is representative of that object. We expect, however, that the simple noun-object typicalities will yield very similar results as the Westerbeek question because the employed objects are color-diagnostic -- asking whether an blue or a yellow banana is a typical \emph{banana} is similar to asking whether or not the bananas' most salient property -- their color -- is typical. 
+
+\subsection{Results and discussion}
+
+Proportions of type-only (\emph{banana}), color-and-type (\emph{yellow banana}), color-only (\emph{yellow}), and other (\emph{funky carrot}) are shown in \figref{fig:proportions}. Visually inspecting just the explicitly marked \emph{yellow banana}, \emph{brown banana}, and \emph{blue banana} cases suggests a clear typicality effect in the overinformative conditions as well as a smaller typicality effect in the informative conditions. 
+
+\begin{figure}[bt]
+\centering
+\includegraphics[width=.8\textwidth]{pics/results1.png}
+\caption{For each target, proportion of color-only (\emph{yellow}), type-only (\emph{banana}), color-and-type (\emph{yellow banana}), and other (\emph{funky carrot}) utterances as a function of mean object typicality for the type-only utterance, across conditions. \emph{\textsc{color} banana} cases are circled in their respective color.}
+\label{fig:proportions}
+\end{figure}
+
+The following questions are of interest. First, do we replicate the previously documented typicality effect on redundant color mention beyond the one-item visual inspection? Second, do we observe typicality effects even when color is informative (i.e., technically necessary for establishing unique reference)? Third, are speakers sensitive to the presence of color competitors in their use of color or are typicality effects immune to the nature of the distractor items?
+
+To address these questions we conducted a mixed effects logistic regression predicting color use from fixed effects of typicality, informativeness, and color competitor presence. We used the typicality norms obtained in the noun-object typicality elicitation study reported above as the continuous typicality predictor. Informativeness was coded as a binary variable (color \emph{informative} vs.~color overinformative) as was color competitor presence (absent vs.~present). All predictors were centered before entering the analysis. The model included by-speaker and by-item random intercepts, which was the maximal random effects structure that allowed the model to converge.
+
+There was a main effect of typicality, such that the more typical an object was for the noun, the lower the log odds of color mention ($\beta$ = -3.19, $SE$ = 0.36, $p <$ .0001), replicating previously documented typicality effects. Model comparison revealed that including interaction terms was not justified by the data, suggesting that speakers produce more typical colors less often even when the color is in principle necessary for establishing reference (i.e., in the informative conditions). There was also a main effect of informativeness, such that color mention was more likely when it was informative than when it was overinformative   ($\beta$ = 3.32, $SE$ = 0.16, $p <$ .0001). Finally, there was a main effect of color competitor presence, such that color mention was less likely when a color competitor was present  ($\beta$ = -0.66, $SE$ = 0.13, $p <$ .0001). This suggests that speakers are indeed sensitive to the contextual utility of color -- color typicality alone does not capture the full set of facts about color mention.
+
+\jd{update all the following prose -- change the first section into a footnote to demonstrate that we also have typicality effects in the dataset from exp 1}
+In this section we have reported the replication of previously documented typicality effects on color mention as well as a novel demonstration of typicality effects even when color is informative. We have also shown that color mention is sensitive not only to typicality, but also to the  nature of the distractors -- when there is another distractor of the same color as the target, color is dispreferred compared to when there is not. 
+%What this suggests is that choosing to include a color modifier in a referring expression is not just a function of one factor. While it is clear that 
+Thus far we have only been concerned with analyzing the use of color, i.e., we collapsed \textsc{color} and \textsc{color-and-type} utterances into one category. However, our goal is to formulate a cognitive model that captures the production of referring expressions more generally. To this we turn next.
+
+%%% CHECK UP TO HERE -- NEXT IS OLD PROSE
 
 To assess whether we replicate the color typicality effects previously reported in the literature \cite{sedivy2003a, Westerbeek2015, rubiofernandez2016}, we elicited color typicality norms for each of our items and then included typicality as an additional predictor of redundant adjective use in the regression analysis reported previously. 
 %See \appref{app:typicalityexperiment} for a detailed description of the methodology and materials.
@@ -581,7 +704,9 @@ In the next section we evaluate whether the fit of non-deterministic RSA to the 
 \subsection{Model evaluation: color typicality}
 \label{sec:modelevalcolortypicality}
 
-\jd{insert actual numbers below! figure out what's going wrong in the bda that the returned color fidelities are lower than the returned size fidelities}
+\jd{complete overhaul of the model section after update}
+
+%\jd{insert actual numbers below! figure out what's going wrong in the bda that the returned color fidelities are lower than the returned size fidelities}
 
 In order to evaluate the effect of utterance-object level typicality we proceed in two steps: first, we present the results of performing Bayesian data analysis in the same way as reported in \sectionref{sec:modifiermodeleval}, with the only difference that instead of fixed utterance type level fidelities we include the more fine-grained fidelity values corresponding to the typicality norms. We will focus more closely on the four items shown in \figref{fig:maxtypicalitydiff} in order to demonstrate the effect of including typicality in the model \red{once you know, actually put a summary sentence here instead of "in order to see how the model bla"}. In a second step we then address the pressing question of whether more fine-grained typicalities add any predictive value. 
 
@@ -592,7 +717,7 @@ In order to generate model predictions and infer likely parameter values for the
 
 \begin{table}
 \centering
-\caption{Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.\jd{redo this whole table now that you're doing the right thing and summing. weird thing: do we want a size+type utterance (e.g.) to have more utility than just the type utterance if size modifier is "wrong"? because that's what's currently happening. ie, adding any additional modifier is adding utility}}
+\caption{\jd{get rid of this!} Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.\jd{redo this whole table now that you're doing the right thing and summing. weird thing: do we want a size+type utterance (e.g.) to have more utility than just the type utterance if size modifier is "wrong"? because that's what's currently happening. ie, adding any additional modifier is adding utility}}
 \begin{tabular}{l l l l l}
 \toprule
 Utterance & small red chair & small green chair & big red chair & big green chair\\
@@ -658,6 +783,171 @@ Because the correlations between model-predicted utterance probability posterior
 \jd{This is all well and good, but to what extent is non-deterministic RSA just a model of modifier choice in modified referring expressions? Put differently, does non-deterministic RSA provide a good account of content selection in referring expressions more generally? To answer this question we move beyond modified referring expressions and turn to simple nominal referring expressions.}
 
 In the next section we turn to extending non-deterministic RSA beyond the choice of modifier.
+
+
+%We can now ask whether taking into account this more fine-grained notion of non-deterministic semantics plays a role in the dataset collected in Exp.~1. 
+%%\sectionref{sec:exp1-scenevar}. 
+%A note upfront: the stimuli for Exp.~1 were specifically designed to be realistic objects; that is, very low typicality values or even a large degree of variation in typicality would be surprising. Nevertheless, it is plausible that typicality differences exist. If they do, there are two interesting questions to ask: first, do we replicate the typicality effects reported in the literature -- that is, are less typical objects more likely to lead to redundant adjective use than more typical objects? Second, does including empirically elicited typicality values at the object-utterance level further improve the quality of the RSA model? We address the first question in \sectionref{sec:modifiertypicalityeffects} and the second question in \sectionref{sec:modelevalcolortypicality}.
+
+%\subsection{Experiment 1a: Typicality effects in Exp.~1}
+%\label{sec:modifiertypicalityeffects}
+%
+%To assess whether we replicate the color typicality effects previously reported in the literature \cite{sedivy2003a, Westerbeek2015, rubiofernandez2016}, we elicited color typicality norms for each of our items and then included typicality as an additional predictor of redundant adjective use in the regression analysis reported previously. 
+%%See \appref{app:typicalityexperiment} for a detailed description of the methodology and materials.
+%
+%\subsubsection{Methods}
+%
+%\paragraph{Participants}
+%
+%We recruited 60 participants over Amazon's Mechanical Turk who were each paid \$0.25 for their participation.
+%
+%\paragraph{Procedure and materials}
+%
+%On each trial, participants saw one of the big versions of the items used in Exp.~1 and were asked to answer the question ``How typical is this for an \emph{X}?'' on a continuous slider with endpoints labeled ``very atypical'' to ``very typical.'' \emph{X} was a referring expression consisting of either only the correct noun (e.g., \emph{stapler}) or the noun modified by the correct color (e.g., \emph{red stapler}). \figref{fig:modifiertypstimulus} shows an example of a modified trial.
+%
+%Each participant saw each of the 36 objects once. An object was randomly displayed in one of the two colors it occurred with in Exp.~1 and was randomly displayed with either the correct modified utterance or the correct unmodified utterance, in order to obtain roughly equal numbers of object-utterance combinations.
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=.5\textwidth]{pics/redstapler.png}
+%\caption{A modified example trial from the typicality elicitation experiment.}
+%\label{fig:modifiertypstimulus}
+%\end{figure}
+%
+%Importantly, we only elicited typicality norms for unmodified utterances and utterances with color modifiers, but not utterances with size modifiers. This was because it is virtually impossible to obtain size typicality norms for objects presented in isolation, due to the inherently relational nature of size adjectives. Consequently, we only test for the effect of typicality on \emph{size-sufficient} trials.
+%
+%
+%\subsubsection{Results and discussion}
+%
+%We coded the slider endpoints as 0 (``very atypical'') and 1 (``very typical''), essentially treating each response as a typicality value between 0 and 1. For each combination of object, color, and utterance (modified/unmodified), we computed that item's mean. Mean typicalities were generally lower for unmodified than for modified utterances: mean typicality for unmodified utterances was .67 (sd=.17, mode=.76) and for modified utterances .75 (sd=.12, mode=.81). This can also be seen on the left in \figref{fig:typicalitydists}. Note that, as expected given how the stimuli were constructed, typicality was generally skewed towards the high end, even for unmodified utterances. This means that there was not much variation in  the difference in typicality between modified and unmodified utterances. We will refer to this difference as \emph{typicality gain}, reflecting the overall gain in typicality via color modification over the unmodified baseline. As can be seen on the right in \figref{fig:typicalitydists}, in most cases typicality gain was close to zero.
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=.9\textwidth]{pics/typicality-dists}
+%\caption{Typicality densities for modified and unmodified utterances (left) and histogram of typicality gains (differences between modified and unmodified typicalities, right).}
+%\label{fig:typicalitydists}
+%\end{figure}
+%
+%This makes the typicality analysis difficult: if typicality gain is close to zero for most cases (and, taking into account confidence intervals, effectively zero), it is hard to evaluate the effect of typicality on redundant adjective use. In order to maximize power, we therefore conducted the analysis only on those items for which for at least one color the confidence intervals for the modified and unmodified utterances did not overlap. There were only four such cases: \emph{(pink) golfball}, \emph{(pink) wedding cake}, \emph{(green) chair}, and \emph{(red) stapler}, for a total of 231 data points.
+%
+%Predictions differ for size-sufficient and color-sufficient trials. Given the typicality effects reported in the literature and the predictions of non-deterministic RSA, we expect greater redundant color use on size-sufficient trials with \emph{increasing} typicality gain. The predictions for redundant size use on color-sufficient trials are unclear from the previous literature. Non-deterministic RSA, however,  predicts greater redundant size use with \emph{decreasing} typicality gain: small color typicality gains reflect the relatively low out-of-context utility of color. In these cases, it may be useful to redundantly use a size modifier even if that modifier is noisy. If borne out, these predictions should surface in an interaction between sufficient property and typicality gain. Visual inspection of the empirical proportions of redundant adjective use in \figref{fig:maxtypicalitydiff} suggests that this pattern is indeed borne out.
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=.9\textwidth]{pics/maxtypicalitydiff}
+%\caption{Utterance probability for four items as a function of difference in typicality between modified and unmodified utterance (x-axis) and sufficient dimension (columns). }
+%\label{fig:maxtypicalitydiff}
+%\end{figure}
+%
+%In order to investigate the effect of typicality gain on redundant adjective use, we conducted a mixed effects logistic regression analysis predicting redundant over minimal adjective use from fixed effects of scene variation, sufficient dimension, the interaction of scene variation and sufficient property, and the interaction of typicality gain and sufficient property. This is the same model as reported in \sectionref{sec:modelempiricalresults}, with the only difference that the interaction between sufficient property and typicality gain was added. All predictors were centered before entering the analysis. The model contained the maximal random effects structure that allowed it to converge: by-participant and by-item (where item was a color-object combination) random intercepts. 
+%
+%The model summary is shown in \tableref{tab:colortypicalityresults}. We replicate the effects of sufficient property and scene variation observed earlier on this smaller dataset. Crucially, we observe a significant interaction between sufficient property and typicality gain.\footnote{Conducting the same analysis on the entire dataset (i.e., using all of the noisy typicality estimates, replicated the scene variation and sufficient property effects. The interaction of typicality gain and sufficient property went in the same direction numerically, but failed to reach significance ($\beta = 1.52$, $SE = 1.45$, $p < .29$).} Simple effects analysis reveals that this interaction is due to a positive effect of typicality gain on redundant adjective use in the size-sufficient condition ($\beta = 4.47$, $SE = 1.65$, $p < .007$) but a negative effect of typicality gain on redundant adjective use in the color-sufficient condition  ($\beta = -5.77$, $SE = 2.49$, $p < .03$). 
+%
+%\begin{table}[!tbp]
+%\caption{Model coefficients, standard errors, and p-values. Significant p-values are bolded.}
+%\begin{center}
+%\begin{tabular}{lrrl}
+%\toprule
+%\multicolumn{1}{l}{}&\multicolumn{1}{c}{Coef $\beta$}&\multicolumn{1}{c}{SE($\beta$)}&\multicolumn{1}{c}{$p$}\tabularnewline
+%\midrule
+%Intercept&$-1.85$&$0.34$&\textbf{\textless .0001}\tabularnewline
+%Scene variation&$ 4.29$&$1.16$&\textbf{\textless .001}\tabularnewline
+%Sufficient property&$ 2.72$&$0.60$&\textbf{\textless .0001}\tabularnewline
+%Scene variation : Sufficient property&$ 0.88$&$2.12$&\textless 0.68\tabularnewline
+%Sufficient property : Typicality gain&$ 9.43$&$2.68$&\textbf{\textless .001}\tabularnewline
+%\bottomrule
+%\end{tabular}\end{center}
+%\label{tab:colortypicalityresults}
+%\end{table}
+%
+%An important point is of note: the typicality elicitation procedure we employed here is somewhat different from that employed by \citeA{Westerbeek2015}, who asked their participants ``How typical is this color for this object?'' We did this for conceptual reasons: the values that go into the semantics of the RSA model are most easily conceptualized as the typicality of an object as an instance of an utterance. While the typicality of a feature for an object type no doubt plays into how good of an instance of the utterance the object is, deriving our typicalities from the  statistical properties of the subjective distributions of features over objects is beyond the scope of this paper. However, in a separate experiment we did ask participants the Westerbeek question. The correlation between mean typicality ratings from the Westerbeek version and the unmodified ``How typical is this for \emph{X}'' version was .75. The correlation between the Westerbeek version and the modified version was .64. The correlation between the Westerbeek version and typicality gain was -.52.
+%
+%For comparison, including typicality means obtained via the Westerbeek question as a predictor instead of typicality gain on the four high-powered items replicated the significant interaction between typicality and sufficient property ($\beta = -6.77$, $SE = 1.88$, $p < .0003$). Simple effects analysis revealed that the interaction is again due to a difference in slope in the two sufficient property conditions: in the size-sufficient condition, color is less likely to be mentioned with increasing color typicality   ($\beta = -3.66$, $SE = 1.18$, $p < .002$), whereas in the color-sufficient condition, size is more likely to be mentioned with increasing color typicality ($\beta = 3.09$, $SE = 1.45$, $p < .04$).\footnote{Again, conducting this analysis on the entire dataset yielded only a marginal interaction of sufficient property and color typicality in the right direction ($\beta = -1.10$, $SE = .64$, $p < .09$).}
+%
+%We thus overall find moderate evidence for typicality effects in our dataset. Typicality effects are strong for those items that clearly display typicality differences between the modified and unmodified utterance, but much weaker for the remaining items. That the evidence for typicality effects is relatively scarce is no surprise: the stimuli were specifically designed to minimize effects of typicality. However, the fact that both ways of quantifying typicality predicted redundant adjective use in the expected direction suggests that with more power or with stimuli that exhibit greater typicality variation, these effects may show up more clearly.
+%
+%In the next section we evaluate whether the fit of non-deterministic RSA to the data is improved by using the empirically elicited typicalities as the values in the non-deterministic semantics.
+%
+%\subsection{Model evaluation: color typicality}
+%\label{sec:modelevalcolortypicality}
+%
+%\jd{insert actual numbers below! figure out what's going wrong in the bda that the returned color fidelities are lower than the returned size fidelities}
+%
+%In order to evaluate the effect of utterance-object level typicality we proceed in two steps: first, we present the results of performing Bayesian data analysis in the same way as reported in \sectionref{sec:modifiermodeleval}, with the only difference that instead of fixed utterance type level fidelities we include the more fine-grained fidelity values corresponding to the typicality norms. We will focus more closely on the four items shown in \figref{fig:maxtypicalitydiff} in order to demonstrate the effect of including typicality in the model \red{once you know, actually put a summary sentence here instead of "in order to see how the model bla"}. In a second step we then address the pressing question of whether more fine-grained typicalities add any predictive value. 
+%
+%\subsubsection{Model evaluation: empirical typicalities}
+%
+%In order to generate model predictions and infer likely parameter values for the dataset reported above,  we repeated the same Bayesian data analysis procedure as described above, with one difference: instead of using the utterance-type level fidelities we fed the model the empirically elicited typicality norms. This was slightly less trivial than it sounds for two reasons. First, we only elicited typicality norms for object-utterance pairs for which the utterance was either just the simple object category noun (e.g., \emph{chair}) or the color-modified noun (e.g., \emph{green chair}); that is, we did not elicit size typicality norms (for reasons described in the previous section). Second, we did not elicit typicality norms for utterance-object pairs where the object would not be in the deterministic semantics' extension (e.g., \emph{green chair} used to refer to a red chair). In order to fill in the typicality gaps, so to speak, we assigned fidelity values to utterances as follows: object-utterance pairs where the object is in the extension of the utterance were assigned the empirically elicited typicality for that pair (e.g., \emph{chair} typicality for any chair, \emph{red chair} typicality for red chairs, see \tableref{tab:empiricalcolorfidelities}). If the object was not in the utterance extension, it received a fidelity of $1 - f_{c}$, where $f_c$ is an utterance type level fidelity parameter for color (as in the basic non-deterministic model reported above). For objects in the utterance extension where the utterance additionally contained a size modifier, the empirical fidelity was multiplied by an utterance type level size fidelity $f_{s}$. See \tableref{tab:empiricalcolorfidelities} for an overview of fidelity values for one item (red/green chair). 
+%
+%
+%\begin{table}
+%\centering
+%\caption{Fidelity values (rescaled) for one example item (chair) that occurred in two colors (red, green). Rows indicate different utterances, columns indicate different objects. See \tableref{tab:empiricalscaledunscaledtyps} for the raw and rescaled empirical typicality values for the red/green chair item.\jd{redo this whole table now that you're doing the right thing and summing. weird thing: do we want a size+type utterance (e.g.) to have more utility than just the type utterance if size modifier is "wrong"? because that's what's currently happening. ie, adding any additional modifier is adding utility}}
+%\begin{tabular}{l l l l l}
+%\toprule
+%Utterance & small red chair & small green chair & big red chair & big green chair\\
+%\midrule
+%\emph{chair} & .83 & .67 & .83 & .67 \\
+%\emph{red chair} & .84 & $.67+(1 - f_{\textrm{c}}$) & .84 & $.67 + (1 - f_{\textrm{c}}$) \\
+%\emph{green chair} & .83 + ($1 - f_{\textrm{c}}$) & .85 & .83 + ($1 - f_{\textrm{c}}$) & .85 \\
+%\emph{small chair} & .83 + $f_{\textrm{s}}$ &  .67 + $f_{\textrm{s}}$ & .83 + $(1 - f_{\textrm{s}})$ & .67 + $(1 - f_{\textrm{s}})$ \\
+%\emph{big chair} & .83 + $(1 - f_{\textrm{s}})$ & .67 + $(1 - f_{\textrm{s}})$ &  .83 + $f_{\textrm{s}}$ &  .67 + $f_{\textrm{s}}$ \\
+%\emph{small red chair} &  .84 + $f_{\textrm{s}}$ & .67 + $f_{\textrm{s}} + (1 - f_{\textrm{c}})$ & .84 + $(1 - f_{\textrm{s}})$ & .67 + $(1-f_{\textrm{s}}) + (1-f_{\textrm{c}})$ \\
+%\emph{big red chair} &  .84 + $(1-f_{\textrm{s}})$ & .67 + $(1-f_{\textrm{s}}) + (1-f_{\textrm{c}})$ &  .84 + $f_{\textrm{s}}$ & .67 + $f_{\textrm{s}} + (1-f_{\textrm{c}})$ \\
+%\emph{small green chair} & .83 + $f_{\textrm{s}} + (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \jd{conthere}\cdot .85 $ & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & $(1-f_{\textrm{s}}) \cdot .85$ \\
+%\emph{big green chair} & $(1-f_{\textrm{s}}) \cdot (1-f_{\textrm{c}})$ & .$(1-f_{\textrm{s}}) \cdot .85$ & $f_{\textrm{s}} \cdot (1-f_{\textrm{c}})$ & $f_{\textrm{s}} \cdot .85$ \\
+%\bottomrule
+%\end{tabular}
+%\label{tab:empiricalcolorfidelities}
+%\end{table}
+%
+%One final point of note: empirically elicited typicality values were rescaled to range from 0.5 to 1 (instead of from 0 to 1). This was done because a fidelity value of .5, when there are only two potential feature values (e.g., two colors in the scene, red and green), leads to a random choice between green and red items; that is, the modifier contains no information. When the fidelity value is below .5 in these two-feature value scenarios, the modifier contextually acquires the meaning of the other feature dimension, e.g., \emph{green} is more likely to pick out red than green objects. The typicality values we elicited were not degree of membership values (which is what the model expects). Rather, they are more comparable to distance from prototype values \cite<see>[for a discussion of the difference]{kamp1995}. By rescaling the empirical typicality values to fall above .5, we guaranteed that the utterance would have at least an above chance of meaning what it would mean under a deterministic semantics. \tableref{tab:empiricalscaledunscaledtyps} exemplifies the effect of rescaling the raw typicality values for the red/green chair item.
+%
+%\begin{table}
+%\centering
+%\caption{Raw and rescaled typicalities for the red and green chair items. \emph{NA} values indicate cases where typicality for that utterance-object combination was not elicited (e.g., \emph{green chair} applied to a red chair).}
+%\begin{tabular}{l l l l l}
+%\toprule
+%& \multicolumn{2}{c}{Raw} & \multicolumn{2}{c}{Rescaled}\\
+%Utterance & red chair & green chair & red chair & green chair\\
+%\midrule
+%\emph{chair} & .68 & .41 & .83 & .67\\
+%\emph{red chair} & .69 & NA & .84 & NA\\
+%\emph{green chair} & NA & .70  & NA & .85\\
+%\bottomrule
+%\end{tabular}
+%\label{tab:empiricalscaledunscaledtyps}
+%\end{table}
+%
+%\paragraph{Results} Including typicality  yielded similar item-wise model-data correlations as the basic model \red{XXX}. Posteriors over parameters are shown in \figref{fig:typicalityparamposteriors}. \red{Discuss similarities/diffs to basic model.} 
+%
+%\begin{figure}
+%\label{fig:typicalityparamposteriors}
+%%\includegraphics{bla}
+%\caption{\red{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}}
+%\end{figure}
+%
+%Posterior predictives for the cases with greatest typicality gain -- \emph{chair}, \emph{golfball}, \emph{weddingcake}, and \emph{stapler} -- are shown in \figref{fig:ppmaxtypdiff} alongside the posterior predictives from the basic model (with utterance type level fidelities). In the basic non-deterministic model, probability of redundant utterances is similar for items of different colors. In the model that includes empirically elicited typicalities, the probability of redundant utterances is greater where typicality gain is greater; that is, for cases where the unmodified utterance has low typicality and the modified utterance high typicality, analogous to the \emph{blue banana} case.
+%
+%\subsubsection{Model evaluation: interpolation analysis}
+%
+%Because the correlations between model-predicted utterance probability posterior predictives and empirical proportions are very similar across the basic and empirical typicality model, the question arises whether utterance-level typicalities add any predictive value whatsoever. In order to address this question we present a second BDA analysis in which we introduce an additional parameter in the model that functions as a weight on fidelity type: if the weight is 0, only the utterance-type level fidelities are used; if the weight is 1 only the empirical typicalities are used. Therefore, if the BDA returns posterior values for fidelity type weight greater than 0, empirical typicalities are justified.
+%
+%\paragraph{Results} Posteriors over parameters are shown in \figref{fig:interpolposteriors}. \red{insert figure} The MAP estimate for fidelity type weight is \red{XXX (HDI = [X,X])}, suggesting that utterance-level typicality adds predictive value.
+%
+%\begin{figure}
+%\label{fig:interpolposteriors}
+%%\includegraphics{bla}
+%\caption{\red{Posterior distribution over model parameters. Maximum a posteriori (MAP)  $f_{\textrm{s}}$ = 0.79, 95\% highest density interval (HDI) = [0.76,0.80]; MAP $f_{\textrm{c}}$ = 0.88, HDI = [0.86,0.91]; MAP $c_{\textrm{size}}$ = .08, HDI = [0, 1.5]; MAP $c_{\textrm{color}}$ = 0.07, HDI = [0,0.9]; MAP $\beta_c$ = 0.04, HDI = [0,1.6]; MAP $\lambda$ = 34.0, HDI = [30.8,36.5]}}
+%\end{figure}
+%
+%\subsection{Discussion}
+%
+%\red{main points: a) that non-deterministic RSA with utterance-level typicalities as fidelity values captures the color typicality effects reported in the literature qualitatively (yellow/blue banana); b) that even in our dataset, where items were designed to not exhibit great typicality effects, we find evidence of typicality effects on utterance probability, replicating previous studies; and c) BDA shows that including empirically elicited typicality norms in the model adds predictive value. This suggests that speakers are tracking typicality at a very fine-grained level}.
+%
+%\jd{This is all well and good, but to what extent is non-deterministic RSA just a model of modifier choice in modified referring expressions? Put differently, does non-deterministic RSA provide a good account of content selection in referring expressions more generally? To answer this question we move beyond modified referring expressions and turn to simple nominal referring expressions.}
+%
+%In the next section we turn to extending non-deterministic RSA beyond the choice of modifier.
 
 \section{Evaluating non-deterministic RSA for nominal choice}
 \label{sec:nominal}
@@ -902,6 +1192,8 @@ In order to ascertain whether typicality as incorporated in the non-deterministi
 
 \section{General Discussion}
 \label{sec:gd}
+
+\jd{make sure to include adele goldberg's typicality effects in kids' generalizations to the basic level in discussion (srcd poster and submitted manuscript with lauren emberson)}
 
 \subsection{Summary}
 
