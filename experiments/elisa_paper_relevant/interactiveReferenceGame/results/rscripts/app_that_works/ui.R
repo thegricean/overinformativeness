@@ -11,7 +11,7 @@ shinyUI(fluidPage(
 
       sliderInput("alpha",
                   label = "Alpha:",
-                  min = 0, max = 18, value = 18, step = 2),
+                  min = 0, max = 18, value = 10, step = 2),
 
       sliderInput("colorcost",
                   label = "Cost for mentioning color:",
@@ -23,7 +23,7 @@ shinyUI(fluidPage(
 
       sliderInput("lengthWeight",
                   label = "LengthWeight:",
-                  min = 0, max = 1, value = 0, step = 0.25),
+                  min = 0, max = 1, value = 0.5, step = 0.25),
 
       sliderInput("typWeight",
                   label = "TypicalityWeight",

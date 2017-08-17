@@ -334,6 +334,14 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=6.5)
 
 
+
+
+
+
+
+
+# TO TALK ABOUT WITH JUDITH
+
 # write unique conditions for bda
 p_no_other = droplevels(production[production$UttforBDA != "other",])
 nrow(p_no_other)

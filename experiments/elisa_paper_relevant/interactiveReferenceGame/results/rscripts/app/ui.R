@@ -1,8 +1,10 @@
 library(shiny)
 library(shinyjs)
+# setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results/rscripts/app")
+# rsconnect::setAccountInfo(name='overinformativeness-model', token='1E31995A50F072A7604AF3DF7C07EA94', secret='k44kJQBiZpb/lEJQUqJBLPH8Vzs9U2j+KXPaBjJO')
+# rsconnect::deployApp()
 
 shinyUI(fluidPage(
-  titlePanel("Overinformativeness Model Visualizations"),
   sidebarLayout(
     sidebarPanel(
       h4("Parameters"),
@@ -11,7 +13,7 @@ shinyUI(fluidPage(
 
       sliderInput("alpha",
                   label = "Alpha:",
-                  min = 0, max = 18, value = 18, step = 2),
+                  min = 0, max = 18, value = 10, step = 2),
 
       sliderInput("colorcost",
                   label = "Cost for mentioning color:",
@@ -23,7 +25,7 @@ shinyUI(fluidPage(
 
       sliderInput("lengthWeight",
                   label = "LengthWeight:",
-                  min = 0, max = 1, value = 0, step = 0.25),
+                  min = 0, max = 1, value = 0.5, step = 0.25),
 
       sliderInput("typWeight",
                   label = "TypicalityWeight",
