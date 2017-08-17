@@ -117,7 +117,7 @@ head(agr)
 ggplot(agr, aes(x=Feature)) +
   stat_count() +
   facet_wrap(~context)
-ggsave("graphs/mentioned_features_by_context.png",width=8,height=3.5)
+ggsave("graphs/empiricalData/mentioned_features_by_context.png",width=8,height=3.5)
 
 # plot utterance choice proportions with error bars
 agr = production %>%
@@ -231,6 +231,18 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_grid(Half~context)
 ggsave("graphs/utterance_by_binarytyp_byhalf.png",width=10,height=6.5)
+
+
+
+
+
+
+
+
+
+
+
+# TO TALK ABOUT WITH JUDITH
 
 production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
 production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
