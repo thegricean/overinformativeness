@@ -1,0 +1,83 @@
+var initializeModel = function(params) {
+
+  // TODO
+  // 1. make sure context is in same format for all (i.e. list of lists?)
+  var possibleUtts = function(target, context) {
+    if(params.modelVersion === 'nominal') {
+      return refModule.getNominalUtterances(target, params.taxonomy);
+    } else if(params.modelVersion === 'typicality') {
+      return refModule.getTypicalityUtterances(context);
+    } else if (params.modelVersion === 'colorSize') {
+      return refModule.getColorSizeUtterances(context);
+    } else {
+      return console.error('unknown modelVersion: ' + params.modelVersion);
+    }
+  };
+  
+  // Cost of utterance
+  // TODO
+  // 1. double-check colors, types, sizes
+  // 2. make sure length/freq either looks at right json or uses combined json
+  var uttCost = function(utt) {
+    var colorMention = _.intersection(colors, utt.split('_')).length;
+    var typeMention = _.intersection(types, utt.split('_')).length;
+    var sizeMention = _.intersection(sizes, utt.split('_')).length;
+    var len = params.lengthVsFreqCost * refModule.getRelativeLength(utt);
+    var freq = (1 - params.lengthVsFreqCost) * refModule.getRelativeLogFrequency(utt);
+    var colorPenalty = colorMention ? params.colorPenalty : 0;
+    var typePenalty = typeMention ? params.typePenalty : 0;
+
+    if(params.modelVersion === 'colorSize') {
+      return (params.colorVsSizeCost * colorMention +
+	      (1 - params.colorVsSizeCost) * sizeMention);
+    } else if (params.modelVersion == 'nominal') {
+      return len + freq;
+    } else if (params.modelVersion == 'typicality') {
+      return len + freq + colorPenalty + typePenalty;
+    } else {
+      return console.error('unknown modelVersion: ' + params.modelVersion);
+    }
+  };
+
+  // Looks up meaning in given lexicon
+  // TODO
+  // 1. use colorTyp/sizeTyp for colorSize model
+  // 2. make sure using right empirical lexicon for others
+  var meaning = function(utt, object) {
+    var colorMention = _.intersection(colors, utt.split('_')).length;
+    var typeMention = _.intersection(types, utt.split('_')).length;
+    var sizeMention = _.intersection(sizes, utt.split('_')).length;
+    var objStr = object.join("_");
+    if(params.modelVersion === 'colorSize') {
+      refModule.getColorSizeMeaning(utt, object);
+    } else {
+      var lexicalEntry = params.lexicon[utt];
+      return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
+    }
+  };
+  
+  // Selects among objects in context using lexicon
+  var literalListener = cache(function(utt, context){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(context);
+      factor(params.typWeight * meaning(utt,object)); 
+      return object;
+    });
+  });
+
+  // Selects among utterances given informativity in context and cost of production,
+  // marginalizing over possible noise in perception of context
+  // Timeit note: marginalizing over listener takes about 200-300ms per utt
+  var speaker = function(target, context) {
+    var possibleutts = possibleUtts(target, context);
+    return Infer({method:'enumerate'},function(){
+      var utt = uniformDraw(possibleutts);
+      var utility = (literalListener(utt, context).score(target)
+		     - uttCost(utt));
+      factor(params.alpha * utility);
+      return utt;
+    });
+  };
+
+  return speaker;
+};

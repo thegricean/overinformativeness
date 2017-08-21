@@ -1,0 +1,14 @@
+{
+  "name": "refModule",
+  "main": "ref.js",
+  "webppl": {
+    "wppl": [
+      "helpers.wppl",
+      "model.wppl"
+    ]
+  },
+  "dependencies": {
+    "babyparse": "*",
+    "underscore": "~1.7.0"
+  }
+}
