@@ -21,7 +21,11 @@ var realValuedLexicon = refModule.getLexicon('realValued');
 // 1. load correct taxonomy for nominal
 var paramPrior = function(modelType) {
   // Params shared by all versions of the model
-  var baseParams = {alpha : uniform(0, 1), costWeight: uniform(0, 5)};
+  var baseParams = {
+    alpha : uniform(0, 1),
+    costWeight : uniform(0, 5),
+    lexicon : refModule.constructLexicon(modelType)
+  };
 
   var specificParams = (modelType === 'colorSize' ? {
 
