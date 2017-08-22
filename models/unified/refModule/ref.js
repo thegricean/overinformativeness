@@ -40,15 +40,55 @@ var getColorSizeUtterances = function(context) {
   }, context)));
 };
 
-var getColorSizeMeaning = function(utt, object) {
-  return reduce(function(v, m) {
+var colors = ["yellow", "orange", "red", "pink", "green",
+              "purple", "white", "blue", "brown", "black"];
 
-  }, 1, utt.split("_"));
-}
+var sizes = ["big", "small"];
 
-function testPrint() {
-  console.log("this is working");
+var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch"];
+
+var makeArr = function(n, v) {
+  return repeat(n, function(foo) {return v});
 };
+
+var makeColorSizeLists = function(wordsOrObjects) {
+  var colorList = wordsOrObjects === 'words' ? colors.concat('') : colors;
+  var sizeList = wordsOrObjects === 'words' ? sizes.concat('') : sizes;
+  var typeList = wordsOrObjects === 'words' ? ['thing'] : types;
+
+  return _.flattenDepth(map(function(size) {
+    return map(function(color) {
+      return map(function(type) {
+        return [size, color, type]
+      }, typeList);
+    }, colorList);
+  }, sizeList), 2);
+};
+
+var colorSizeWordMeanings = function(params) {
+  return extend(
+    _.zipObject(colors, makeArr(colors.length, params.colorTyp)),
+    _.zipObject(sizes, makeArr(sizes.length, params.sizeTyp)),
+    _.zipObject(types, makeArr(types.length, params.typeTyp))
+  );
+};
+
+var constructLexicon = function(params, modelType) {
+  var allUtts = makeColorSizeLists('words');
+  var allObjs = makeColorSizeLists('objects');
+  var wordMeaning = colorSizeWordMeanings(params);
+  return _.zipObject(allUtts, map(function(utt) {
+    return _.zipObject(allObjs, map(function(obj) {
+      var meanings = map(function(tuple) {
+        var uttWord = tuple[0], objProp = tuple[1];
+        return (uttWord === '' ? 1 :
+                uttWord === objProp ? wordMeaning[uttWord] :
+                (1 - wordMeaning[uttWord]));
+      }, _.zip(utt, obj));
+      return _.reduce(meanings, _.multiply);
+    }, allObjs));
+  }, allUtts));
+}
 
 function readCSV(filename){
   return babyparse.parse(fs.readFileSync(filename, 'utf8'),
