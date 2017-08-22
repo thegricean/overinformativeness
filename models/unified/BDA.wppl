@@ -8,45 +8,42 @@ var globalConfig = {
   'outputFileName' : 'testing'
 };
 
-var data = refModule.readCSV("./bdaInput/bda_data.csv");
-console.log("Loading data complete...",+data.length+" data points");
+// var data = refModule.readCSV("./bdaInput/bda_data.csv");
+// console.log("Loading data complete...",+data.length+" data points");
 
-var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
-console.log("Loading unique conditions complete..."+conditions.length+" conditions");
-
-// Cache so we don't have to incur cost of loading json every iteration
-var realValuedLexicon = refModule.getLexicon('realValued');
+// var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
+// console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
 // TODO:
 // 1. load correct taxonomy for nominal
-var paramPrior = function(modelType) {
+var paramPrior = function(modelVersion) {
   // Params shared by all versions of the model
   var baseParams = {
     alpha : uniform(0, 1),
-    costWeight : uniform(0, 5),
-    lexicon : refModule.constructLexicon(modelType)
+    costWeight : uniform(0, 5)
   };
 
-  var specificParams = (modelType === 'colorSize' ? {
+  var specificParams = (modelVersion === 'colorSize' ? {
 
     colorTyp :        uniform(.5,  1),
     sizeTyp :         uniform(.5,  1),
-    colorVsSizeCost : uniform( 0,  1)
+    colorVsSizeCost : uniform( 0,  1),
+    typWeight :       1
     
-  } : modelType === 'typicality' ? {
+  } : modelVersion === 'typicality' ? {
 
     lengthVsFreqCost: uniform( 0,  1),
     typWeight :       uniform( 0, 10),
     colorPenalty:     uniform(-1,  1),
     typePenalty:      uniform(-1,  1)
     
-  } : modelType === 'nominal' ? {
+  } : modelVersion === 'nominal' ? {
 
     lengthVsFreqCost: uniform( 0,  1),
     typWeight :       uniform( 0, 10),
     taxonomy :        refModule.getTypicalityTax()
     
-  } : console.error('unknown modelType: ' + modelType));
+  } : console.error('unknown modelVersion: ' + modelVersion));
 
   return extend(globalConfig, baseParams, specificParams);
 };
@@ -54,8 +51,21 @@ var paramPrior = function(modelType) {
 var modelAnalysis = function() {
 
   var params = paramPrior(globalConfig.modelVersion);
+  var lexicon = refModule.constructLexicon(params);
+  
+  var speakerModel = initializeModel(extend(params, {lexicon: lexicon}));
 
-  var speakerModel = initializeModel(params);
+  var context = [["big", "green", "fan"],
+		 ["big", "green", "tv"],
+		 ["big", "green", "desk"],
+		 ["big", "green", "couch"],
+		 ["big", "green", "desk"],
+		 ["big", "green", "chair"],
+		 ["big", "green", "couch"],                                          
+		 ["big", "green", "chair"]];
+
+  var modelOutput = speakerModel(context[0], context);
+  console.log(modelOutput);
   // var score = reduce(function(conditionObj, memo) {
   //   // Extract condition information
   //   var conditionName = conditionObj.conditionName;
@@ -93,7 +103,9 @@ var modelAnalysis = function() {
   return params;
 };
 
-var outputERP = Infer({method:'MCMC', samples: 500, lag: 2, burn: 100, verbose: true},
-		      modelAnalysis);
+modelAnalysis();
 
-refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.outputFileName);
+// var outputERP = Infer({method:'MCMC', samples: 500, lag: 2, burn: 100, verbose: true},
+// 		      modelAnalysis);
+
+// refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.outputFileName);
