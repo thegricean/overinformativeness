@@ -9,8 +9,13 @@ var foreach = function(lst, fn) {
   foreach_(0);
 };
 
-var colors = ["yellow","orange","red","pink",
-	      "green","blue","brown","black"];
+var colors = ["yellow", "orange", "red", "pink", "green",
+	      "purple", "white", "blue", "brown", "black"];
+
+var sizes = ["big", "small"];
+
+var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch"];
+
 var objects = [["blue","apple"], ["green","apple"], ["red","apple"],
 	       ["black","avocado"], ["green","avocado"], ["red","avocado"],
 	       ["blue","banana"], ["brown","banana"], ["yellow","banana"],
