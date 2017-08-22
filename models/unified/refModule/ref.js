@@ -1,13 +1,6 @@
-var _ = require('underscore');
+var _ = require('lodash');
 var fs = require('fs');
 var babyparse = require('babyparse');
-
-var getLexicon = function(lexiconChoice) {
-  var f = (lexiconChoice === 'realValued' ? './json/realValuedMeanings.json' :
-	   lexiconChoice === 'truthConditional' ? './json/truthConditionalMeanings.json' :
-	   console.error('lexicon choice unknown with value: ' + lexiconChoice));
-  return require(f);
-};
 
 var powerset = function (set) {
   if (set.length == 0)
@@ -28,16 +21,16 @@ var getNominalUtterances = function(object, tax) {
 };
 
 var getTypicalityUtterances = function(context) {
-  return _.uniq(_.flatten(map(function(itemArr) {
+  return _.uniq(_.flatten(_.map(context, function(itemArr) {
     return [itemArr[0], itemArr[1], itemArr.join('_')];
-  }, context)));
+  })));
 };
 
 var getColorSizeUtterances = function(context) {
-  return _.uniq(_.flatten(map(function(itemArr) {
-    var type = itemArr[2];
-    return map(function(v) {return [v, type].join('_');}, powerset(itemArr.slice(2)));
-  }, context)));
+  return _.uniq(_.flatten(_.map(context, function(itemArr) {
+    return _.map(powerset(itemArr.slice(0, 2)),
+		 function(v) {return v.concat('thing').join('_');});
+  })));
 };
 
 var colors = ["yellow", "orange", "red", "pink", "green",
@@ -48,7 +41,7 @@ var sizes = ["big", "small"];
 var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch"];
 
 var makeArr = function(n, v) {
-  return repeat(n, function(foo) {return v});
+  return _.repeat(n, v);
 };
 
 var makeColorSizeLists = function(wordsOrObjects) {
@@ -56,38 +49,49 @@ var makeColorSizeLists = function(wordsOrObjects) {
   var sizeList = wordsOrObjects === 'words' ? sizes.concat('') : sizes;
   var typeList = wordsOrObjects === 'words' ? ['thing'] : types;
 
-  return _.flattenDepth(map(function(size) {
-    return map(function(color) {
-      return map(function(type) {
+  return _.flattenDepth(_.map(sizeList, function(size) {
+    return _.map(colorList, function(color) {
+      return _.map(typeList, function(type) {
         return [size, color, type]
-      }, typeList);
-    }, colorList);
-  }, sizeList), 2);
+      });
+    });
+  }), 2);
 };
 
 var colorSizeWordMeanings = function(params) {
-  return extend(
-    _.zipObject(colors, makeArr(colors.length, params.colorTyp)),
-    _.zipObject(sizes, makeArr(sizes.length, params.sizeTyp)),
-    _.zipObject(types, makeArr(types.length, params.typeTyp))
+  return _.extend(
+    _.zipObject(colors, _.times(colors.length, _.constant(params.colorTyp))),
+    _.zipObject(sizes, _.times(sizes.length, _.constant(params.sizeTyp))),
+    _.zipObject(types, _.times(types.length, _.constant(1))),
+    {'thing' : 1}
   );
 };
 
-var constructLexicon = function(params, modelType) {
-  var allUtts = makeColorSizeLists('words');
-  var allObjs = makeColorSizeLists('objects');
-  var wordMeaning = colorSizeWordMeanings(params);
-  return _.zipObject(allUtts, map(function(utt) {
-    return _.zipObject(allObjs, map(function(obj) {
-      var meanings = map(function(tuple) {
-        var uttWord = tuple[0], objProp = tuple[1];
-        return (uttWord === '' ? 1 :
-                uttWord === objProp ? wordMeaning[uttWord] :
-                (1 - wordMeaning[uttWord]));
-      }, _.zip(utt, obj));
-      return _.reduce(meanings, _.multiply);
-    }, allObjs));
-  }, allUtts));
+var constructLexicon = function(params) {
+  if(params.modelVersion === 'colorSize') {
+    var allUtts = makeColorSizeLists('words');
+    var uttKeys = _.map(allUtts, (utt) => _.filter(utt, u => u != '').join('_'));
+    var allObjs = makeColorSizeLists('objects');
+    var objKeys = _.map(allObjs, (obj) => obj.join('_'));
+    var wordMeaning = colorSizeWordMeanings(params);
+    return _.zipObject(uttKeys, _.map(allUtts, function(utt) {
+      return _.zipObject(objKeys, _.map(allObjs, function(obj) {
+	var meanings = _.map(_.zip(utt, obj), function(tuple) {
+          var uttWord = tuple[0], objProp = tuple[1];
+          return (uttWord === '' ? 1 :
+                  (uttWord === 'thing' || uttWord === objProp) ? wordMeaning[uttWord] :
+                  (1 - wordMeaning[uttWord]));
+	});
+	return _.reduce(meanings, _.multiply);
+      }));
+    }));
+  } else if (params.modelVersion === 'typicality') {
+    return require('./json/typicalityMeanings.json');
+  } else if (params.modelVersion === 'nominal') {
+    return require('./json/nominalMeanings.json');
+  } else {
+    return console.error('unknown modelVersion: ' + params.modelVersion);
+  }
 }
 
 function readCSV(filename){
@@ -198,7 +202,7 @@ var getRelativeLength = function(label) {
 
 module.exports = {
   getNominalUtterances, getColorSizeUtterances, getTypicalityUtterances,
-  powerset, getSubset, getLexicon,
+  constructLexicon, powerset, getSubset, 
   bayesianErpWriter, writeERP, writeCSV,
   readCSV, locParse, getRelativeLength,
   getRelativeLogFrequency, getTypSubset

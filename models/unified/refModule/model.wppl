@@ -1,5 +1,4 @@
 var initializeModel = function(params) {
-
   // TODO
   // 1. make sure context is in same format for all (i.e. list of lists?)
   var possibleUtts = function(target, context) {
@@ -41,34 +40,34 @@ var initializeModel = function(params) {
 
   // Looks up meaning in given lexicon
   // TODO
-  // 1. use colorTyp/sizeTyp for colorSize model
-  // 2. make sure using right empirical lexicon for others
+  // 1. make sure using right empirical lexicon for nominal/typicality
   var meaning = function(utt, object) {
+    var objStr = object.join("_");
     var lexicalEntry = params.lexicon[utt];
     return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
   };
   
   // Selects among objects in context using lexicon
   var literalListener = cache(function(utt, context){
-    return Infer({method:'enumerate'},function(){
+    return Infer({method:'enumerate', model: function(){
       var object = uniformDraw(context);
       factor(params.typWeight * meaning(utt,object)); 
       return object;
-    });
+    }});
   });
 
   // Selects among utterances given informativity in context and cost of production,
   // marginalizing over possible noise in perception of context
   // Timeit note: marginalizing over listener takes about 200-300ms per utt
   var speaker = function(target, context) {
-    var possibleutts = possibleUtts(target, context);
-    return Infer({method:'enumerate'},function(){
-      var utt = uniformDraw(possibleutts);
+    var utts = possibleUtts(target, context);
+    return Infer({method:'enumerate', model: function(){
+      var utt = uniformDraw(utts);
       var utility = (literalListener(utt, context).score(target)
 		     - uttCost(utt));
       factor(params.alpha * utility);
       return utt;
-    });
+    }});
   };
 
   return speaker;
