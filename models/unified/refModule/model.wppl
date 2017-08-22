@@ -3,12 +3,12 @@ var initializeModel = function(params) {
   // TODO
   // 1. make sure context is in same format for all (i.e. list of lists?)
   var possibleUtts = function(target, context) {
-    if(params.modelVersion === 'nominal') {
+    if (params.modelVersion === 'colorSize') {
+      return refModule.getColorSizeUtterances(context);
+    } else if(params.modelVersion === 'nominal') {
       return refModule.getNominalUtterances(target, params.taxonomy);
     } else if(params.modelVersion === 'typicality') {
       return refModule.getTypicalityUtterances(context);
-    } else if (params.modelVersion === 'colorSize') {
-      return refModule.getColorSizeUtterances(context);
     } else {
       return console.error('unknown modelVersion: ' + params.modelVersion);
     }
@@ -44,16 +44,8 @@ var initializeModel = function(params) {
   // 1. use colorTyp/sizeTyp for colorSize model
   // 2. make sure using right empirical lexicon for others
   var meaning = function(utt, object) {
-    var colorMention = _.intersection(colors, utt.split('_')).length;
-    var typeMention = _.intersection(types, utt.split('_')).length;
-    var sizeMention = _.intersection(sizes, utt.split('_')).length;
-    var objStr = object.join("_");
-    if(params.modelVersion === 'colorSize') {
-      refModule.getColorSizeMeaning(utt, object);
-    } else {
-      var lexicalEntry = params.lexicon[utt];
-      return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
-    }
+    var lexicalEntry = params.lexicon[utt];
+    return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
   };
   
   // Selects among objects in context using lexicon
