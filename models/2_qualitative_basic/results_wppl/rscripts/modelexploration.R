@@ -100,12 +100,20 @@ ggplot(dp[dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
 
-dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
-ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
+# dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
+dp$typicality_insufficient = as.numeric(as.character(dp$typicality_insufficient))
+dp$Utt = as.factor(ifelse(dp$Utterance == "sufficient","small",ifelse(dp$Utterance == "insufficient", "blue",ifelse(dp$Utterance == "redundant","small blue","NA"))))
+ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != 0.95 & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
   geom_point(size=8,shape=15) +
+  # ylim(c(.5,1)) +
+  # xlim(c(.5,1)) +
+  scale_x_continuous(limits=c(.45,1),breaks=seq(.5,1,.1)) +
+  scale_y_continuous(limits=c(.45,1),breaks=seq(.5,1,.1)) +
   scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
-  xlab("Fidelity of sufficient utterance") +
-  ylab("Fidelity of insufficient utterance") +
-  facet_wrap(~Utterance)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.5,width=10)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.8,width=11)
+  xlab("Semantic value of size") +
+  ylab("Semantic value of color") +
+  facet_wrap(~Utt)
+# ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.5,width=10)
+# ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.8,width=11)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fidelityeffect-paper.pdf",sep=""),height=1.75,width=5.2)
+ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-paper.pdf",height=1.75,width=5.2)
