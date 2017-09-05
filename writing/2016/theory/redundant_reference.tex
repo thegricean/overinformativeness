@@ -213,15 +213,28 @@ As has been pointed out by \citeA{GattEtAl2013}, the basic Rational Speech Act m
 Intuitively, the production component of RSA aims to soft-maximize the utility of utterances, where utility is defined in terms of the contextual informativeness of an utterance, given each utterance's literal semantics. Formally, this is treated as a pragmatic speaker $S_1$ reasoning about a literal listener $L_0$, who can be described by the following formula:
 
 \begin{equation}
-P_{L_0}(o | u) \propto \denote{u}(o).
+P_{L_0}(o | u) \propto \mathcal{L}(u,o).
+%P_{L_0}(o | u) \propto \denote{u}(o).
 %P_{L_0}(o | u) \propto \mathcal{U}(o|\{u \textrm{ is true of } o\}).
 \end{equation}
 
-%\begin{equation*}%P_{L_0}(o | u) \propto \left\{% \begin{array}{rl}%  1 & \text{if } \denote{u}(o) = \text{true}\\%   0 & \text{otherwise}% \end{array} \right.%\end{equation*}
+%\begin{equation*}
+%P_{L_0}(o | u) \propto \left\{
+% \begin{array}{rl}
+%  1 & \text{if } \denote{u}(o) = \text{true}\\
+%   0 & \text{otherwise}
+% \end{array} \right.
+%\end{equation*}
 
-The literal listener $L_0$ observes an utterance $u$ from the set of  utterances $U$, consisting of single adjectives denoting features available in the context of a set of objects  $O$, and returns a distribution over objects $o \in O$. Here, $\denote{u}(o)$ is the deterministic lexical meaning of the utterance $u$ when applied to object $o$:
+The literal listener $L_0$ observes an utterance $u$ from the set of  utterances $U$, consisting of single adjectives denoting features available in the context of a set of objects  $O$, and returns a distribution over objects $o \in O$. Here, $\mathcal{L}(u,o)$ is the lexicon that encodes deterministic lexical meanings such that:
 
-\begin{equation}\denote{u}(o) = \left\{ \begin{array}{rl}  1 & \text{if } u \text{ is true of } o\\   0 & \text{otherwise} \end{array} \right.\end{equation}
+\begin{equation}
+\mathcal{L}(u,o) = \left\{
+ \begin{array}{rl}
+  1 & \text{if } u \text{ is true of } o\\
+   0 & \text{otherwise}
+ \end{array} \right.
+\end{equation}
 
 %\begin{equation*}
 %\denote{u}:O \rightarrow \{\text{true, false}\} 
@@ -230,61 +243,85 @@ The literal listener $L_0$ observes an utterance $u$ from the set of  utterances
 
 \begin{table}
 %\centering
-\caption{Row-wise literal listener distributions $P_{L_0}(o | u)$ for each utterance $u$ in the context depicted in \figref{fig:sizesufficient}, allowing only one-word utterances (left) or one- and two-word utterances (right).}
-\begin{tabular}{l r r r}
+\caption{Row-wise literal listener distributions $P_{L_0}(o | u)$ for each utterance $u$ in the context depicted in \figref{fig:sizesufficient}, allowing only one-word utterances (left) or one- and two-word utterances (middle) under a deterministic semantics, or one- and two-word utterances under a non-deterministic semantics (right).\jd{fill in non-deterministic values}}
+%\begin{tabular}{l r r r}
+%\toprule
+%& $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ \\
+%\midrule
+%\emph{big} & .5 & .5 & 0\\
+%\emph{small} & 0 & 0 & 1\\
+%\emph{blue} & .5 & 0 & .5\\
+%\emph{red} & 0 & 1 & 0\\
+%\bottomrule
+%\end{tabular}
+\begin{tabular}{l r r r r r r r r r}
 \toprule
+& \multicolumn{3}{c}{deterministic (simple)} & \multicolumn{3}{c}{deterministic (complex)} & \multicolumn{3}{c}{non-deterministic}\\
+& $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ & $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$
 & $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ \\
 \midrule
-\emph{big} & .5 & .5 & 0\\
-\emph{small} & 0 & 0 & 1\\
-\emph{blue} & .5 & 0 & .5\\
-\emph{red} & 0 & 1 & 0\\
-\bottomrule
-\end{tabular}
-\begin{tabular}{l r r r}
-\toprule
-& $o_{\textrm{big\_blue}}$ & $o_{\textrm{big\_red}}$ & $o_{\textrm{small\_blue}}$ \\
-\midrule
-\emph{big} & .5 & .5 & 0\\
-\emph{small} & 0 & 0 & 1\\
-\emph{blue} & .5 & 0 & .5\\
-\emph{red} & 0 & 1 & 0\\
-\emph{big blue} & 1 & 0 & 0\\
-\emph{big red} & 0 & 1 & 0\\
-\emph{small blue} & 0 & 0 & 1\\
+\emph{big} & .5 & .5 & 0 & .5 & .5 & 0 & & & \\
+\emph{small} & 0 & 0 & 1 & 0 & 0 & 1 & & & \\
+\emph{blue} & .5 & 0 & .5 & .5 & 0 & .5 & & & \\
+\emph{red} & 0 & 1 & 0 & 0 & 1 & 0 & & & \\
+\emph{big blue} & NA & NA & NA & 1 & 0 & 0 & & & \\
+\emph{big red} & NA & NA & NA & 0 & 1 & 0 & & & \\
+\emph{small blue} & NA & NA & NA & 0 & 0 & 1 & & & \\
 \bottomrule
 \end{tabular}
 \label{tab:detliteral}
 \end{table}
 
-The pragmatic speaker in turn produces an utterance proportional to the utility of that utterance, where utility is a function of both the utterance's \emph{informativeness}  with respect to the literal listener $P_{L_0}(o | u)$ and the utterance's \emph{cost} $c(u)$:
+The pragmatic speaker in turn produces an utterance proportional to the utility of that utterance:
 
 \begin{equation}
-P_{S_1}(u | o) \propto e^{\alpha \ln P_{L_0}(o | u) - \beta_c c(u)}
+P_{S_1}(u | o) \propto e^{\alpha U(u,o)}
+%P_{S_1}(u | o) \propto e^{\alpha \ln P_{L_0}(o | u) - \beta_c c(u)}
 \end{equation}
 
-Informativeness and cost are both weighted by parameters $\alpha$ and $\beta_c$, respectively.\footnote{\citeA{frank2012} did not include a cost weight in their formulation because they assumed equal costs for all utterances. Subsequent work has demonstrated the importance of taking into account utterance cost in modeling  interpretation phenomena like cost-based quantity implicatures \cite{degenfrankejaeger2013} and M-implicature \cite{bergen2016}.}  In order to understand the effect of $\alpha$, it is useful to ignore cost for the time being: as $\alpha$ approaches infinity, the speaker increasingly only chooses utterances that maximize informativeness; if $\alpha$ is 0, informativeness is disregarded and the speaker chooses randomly from the set of all available utterances; if $\alpha$ is 1, the speaker probability-matches, i.e., chooses utterances proportional to their informativeness \cite<equivalent to Luce's choice rule,>{luce1959}. Applied to the example in \tableref{tab:detliteral}, if the speaker wants to refer to $o_{\textrm{small\_blue}}$ they have two semantically possible utterances, \emph{small} and \emph{blue}, where \emph{small} is twice as informative as \emph{blue}. They produce \emph{small} with probability 1 when $\alpha \rightarrow \infty$, probability 2/3 when $\alpha = 1$ and probability 1/4 when $\alpha = 0$. %She will produce \emph{small} with the following probabilities as $\alpha$ varies: $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = \infty) = 1$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = 1) = \frac{2}{3}$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = 0) = \frac{1}{4}$. 
+The speaker's utility $U(u,o)$ is a function of both the utterance's \emph{informativeness}  with respect to the literal listener $P_{L_0}(o | u)$ and the utterance's \emph{cost} $c(u)$:
+
+\begin{equation}
+U(u,o) = \ln P_{L_0}(o | u) - \beta_c c(u)
+\end{equation}
+
+Two free parameters enter the computation: the speaker's overall utility is weighted by parameter $\alpha$ and utterance cost is weighted by parameter $\beta_c$.\footnote{\citeA{frank2012} did not include cost in their formulation because they assumed equal costs for all utterances. Subsequent work has demonstrated the importance of taking into account utterance cost in modeling  interpretation phenomena like cost-based quantity implicatures \cite{degenfrankejaeger2013} and M-implicature \cite{bergen2016}, and we include it here because of the premium that has been placed on cost in explanations of overinformative referring expressions \cite{bla}.}  In order to understand the effect of $\alpha$, it is useful to ignore cost for the time being: as $\alpha$ approaches infinity, the speaker increasingly only chooses utterances that maximize informativeness; if $\alpha$ is 0, informativeness is disregarded and the speaker chooses randomly from the set of all available utterances; if $\alpha$ is 1, the speaker probability-matches, i.e., chooses utterances proportional to their informativeness \cite<equivalent to Luce's choice rule,>{luce1959}. Applied to the example in \tableref{tab:detliteral}, if the speaker wants to refer to $o_{\textrm{small\_blue}}$ they have two semantically possible utterances, \emph{small} and \emph{blue}, where \emph{small} is twice as informative as \emph{blue}. They produce \emph{small} with probability 1 when $\alpha \rightarrow \infty$, probability 2/3 when $\alpha = 1$ and probability 1/4 when $\alpha = 0$. %She will produce \emph{small} with the following probabilities as $\alpha$ varies: $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = \infty) = 1$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = 1) = \frac{2}{3}$, $P_{S_1}(\textrm{\emph{small}} | o_{\textrm{small\_blue}} ; \alpha = 0) = \frac{1}{4}$. 
 
 Conversely, disregarding informativeness and focusing only on cost, any asymmetry in costs will be exaggerated with increasing $\beta_c$, such that the speaker will choose the least costly utterance with higher and higher probability as $\beta_c$ increases.
 
-As noted above, this model does not generate redundant referring expressions for multiple reasons. One of these is trivial: $U$ only contains one-word utterances. We can ameliorate this easily by allowing complex two-word utterances. We assume an intersective semantics for complex utterances $u_{\textrm{complex}}$ that consist of a two adjective sequence $u_{\textrm{size}} \in \{\textrm{\emph{big}}, \textrm{\emph{small}}\}$ and $u_{\textrm{color}} \in \{\textrm{\emph{blue}}, \textrm{\emph{red}}\}$, such that $\denote{u_{\textrm{complex}}} = \denote{u_{\textrm{size}}} \wedge\denote{u_{\textrm{color}}}$. The resulting literal listener distributions are shown on the right in \tableref{tab:detliteral}. 
+As noted above, this model does not generate redundant referring expressions for multiple reasons. One of these is trivial: $U$ only contains one-word utterances. We can ameliorate this easily by allowing complex two-word utterances. We assume an intersective semantics for complex utterances $u_{\textrm{complex}}$ that consist of a two adjective sequence $u_{\textrm{size}} \in \{\textrm{\emph{big}}, \textrm{\emph{small}}\}$ and $u_{\textrm{color}} \in \{\textrm{\emph{blue}}, \textrm{\emph{red}}\}$, such that $\denote{u_{\textrm{complex}}} = \denote{u_{\textrm{size}}} \wedge\denote{u_{\textrm{color}}}$. \jd{robert, i don't know how to write this in `lexicon' notation} The resulting literal listener distributions are shown in the middle in \tableref{tab:detliteral}. 
 
-Unfortunately, simply including complex utterances into the set of alternatives does not solve the problem. Let's turn again to the case where the speaker wants to communicate the small blue object. There are now two  utterances, \emph{small} and \emph{small blue}, which are both more informative than \emph{blue} and equally informative as each other, for referring to the small blue object. Because they are equally contextually informative, the only way for the complex utterance to be chosen with greater probability than the simple utterance is if it was the \emph{cheaper} one. While this would achieve the desired mathematical effect, the cognitive plausibility of complex utterances being cheaper than simple utterances is highly dubious. Even if it wasn't dubious, we previously mentioned that proportions of overinformative referring expressions are variable across experiments. The only way to achieve that variability under the basic model is to assume that the costs of utterances vary from task to task. This is also highly implausible. Thus, unless we want to introduce dubious cost assumptions, we must look elsewhere to account for overinformativeness. We propose that the place to look is the computation of informativeness itself. This is what we turn to next.
+Unfortunately, simply including complex utterances into the set of alternatives does not solve the problem. Let's turn again to the case where the speaker wants to communicate the small blue object. There are now two  utterances, \emph{small} and \emph{small blue}, which are both more informative than \emph{blue} and equally informative as each other, for referring to the small blue object. Because they are equally contextually informative, the only way for the complex utterance to be chosen with greater probability than the simple utterance is if it was the \emph{cheaper} one. While this would achieve the desired mathematical effect, the cognitive plausibility of complex utterances being cheaper than simple utterances is highly dubious. Even if it wasn't dubious: as  mentioned previously,  proportions of overinformative referring expressions are variable across experiments. The only way to achieve that variability under the basic model is to assume that the costs of utterances vary from task to task. This also seems to us like an implausible assumption. Thus, unless we want to introduce dubious cost assumptions, we must look elsewhere to account for overinformativeness. We propose that the place to look is the computation of informativeness itself. This is what we turn to next.
 
 \subsection{RSA with continuous semantics -- emergent color-size asymmetry}
 \label{sec:modifiedmodel}
 
-Here we introduce the crucial innovation: rather than assuming a deterministic truth-conditional semantics that returns true (1) or false (0) for any combination of expression and object, we assume a non-deterministic, continuous, semantics that returns real values in the interval $[0,1]$. Formally, the only change is in the meaning function that the literal listener accesses:
+Here we introduce the crucial innovation: rather than assuming a deterministic truth-conditional semantics that returns true (1) or false (0) for any combination of expression and object, we assume a non-deterministic, continuous, semantics that returns real values in the interval $[0,1]$. Formally, the only change is in the values that the lexicon returns:
 
 \begin{equation}
-\denote{u}(o) = \mathcal{L}(u,o)
+\mathcal{L}(u,o) = x \in \mathbb{R} : x \in [0, 1]
 \end{equation}
 
-$\mathcal{L}(u,o)$ is the lexicon that returns values in the interval $[0,1]$. Rather than assuming that an object is unambiguously big or unambiguously blue, this non-deterministic semantics captures that objects count as big or blue to  varying degrees \cite<similar to approaches in fuzzy logic and prototype theory>{zadeh, rosch XXX}. In particular, consider some of the notable differences between color and size adjectives: color adjectives are considered  \emph{absolute adjectives} while size adjectives are inherently \emph{relative} \cite{kennedymcnally2005}. That is, while both size and color adjectives are vague, size adjectives are arguably context-dependent in a way that color adjectives are not -- whether an object is big depends inherently on its comparison class; whether an object is red does not.\footnote{This is not entirely true, as has been pointed out by \red{cite}: red hair has a very different color than red wine, which in turn has a different color from a red bell pepper. If presented out of context, only the last red is likely to be judged as red \cite{is there a ref?}. For our purposes, it suffices that one can give a color judgment but not a size judgment for an object presented in isolation.} In addition, color as a property has been claimed to be inherently salient in a way that size is not \cite{arts2011,gattetal2013}. Finally, we have shown in recent work that color adjectives are rated as less subjective than size adjectives \cite{scontras2017}. We use these observations as motivation for exploring the effects of the assumption that the semantics of size adjectives is inherently noisier than the semantics of color adjectives.
 
-The greater an utterance type's semantic value, the less uncertainty there is on the literal listener's end; conversely, the lower an utterance type's semantic value, the more uncertainty there is in the literal listener. We defer a discussion of the psychological and linguistic interpretaion of these semantic values to the Discussion in \sectionref{sec:modifierdiscussion}. \jd{or straight to the GD?}
+%\begin{equation}
+%\denote{u}(o) = \mathcal{L}(u,o)
+%\end{equation}
 
-\jd{need to update the following -- there is no more intuitive interpretation of the values as fidelities. you also need to say what happens what happens at the utterance TYPE level (ie what are the semantic values of utterance-object combinations that would return false under standard semantics)} \jd{CONTINUE HERE}
+Rather than returning only 0 and 1, $\mathcal{L}(u,o)$ is now a lexicon that returns values in the interval $[0,1]$. That is, rather than assuming that an object is unambiguously big (or not) or unambiguously blue (or not), this non-deterministic semantics captures that objects count as big or blue to  varying degrees \cite<similar to approaches in fuzzy logic and prototype theory>{zadeh, rosch XXX}. In the most basic formulation of this non-deterministic semantics model, we allow color and size adjectives to differ in the degree to which they apply to objects, while not changing these degrees within adjective type. 
+
+To understand the motivation for this, consider some of the notable differences between color and size adjectives: color adjectives are typically treated as  \emph{absolute adjectives} while size adjectives are inherently \emph{relative} \cite{kennedymcnally2005}. That is, while both size and color adjectives are vague, size adjectives are arguably context-dependent in a way that color adjectives are not -- whether an object is big depends inherently on its comparison class; whether an object is red does not.\footnote{This is not entirely true, as has been pointed out by \red{cite}: red hair has a very different color than red wine, which in turn has a different color from a red bell pepper. If presented out of context, only the last red is likely to be judged as red \cite{is there a ref?}. For our purposes, it suffices that one can give a color judgment but not a size judgment for an object presented in isolation.} In addition, color as a property has been claimed to be inherently salient in a way that size is not \cite{arts2011,gattetal2013}. Finally, we have shown in recent work that color adjectives are rated as less subjective than size adjectives \cite{scontras2017}. We use these observations as motivation for exploring the effects of the assumption that the semantic value of size adjectives is inherently lower (i.e., that size adjectives are inherently noisier) than that of color adjectives.
+
+The more extreme (closer to 0 and 1) an utterance type's semantic value, the less uncertainty there is on the literal listener's end about whether an object exhibits the property denoted by the observed expression; conversely, the less extreme (closer to 0.5) an utterance type's semantic value, the more uncertainty there is in the literal listener. We defer a discussion of the psychological and linguistic interpretation of these semantic values to the Discussion in \sectionref{sec:modifierdiscussion}. \jd{or straight to the GD?}
+
+Compositionally, the meaning of a complex two-word utterance that contains both a color and a size adjective is defined via the product rule as:
+
+\begin{equation} 
+\mathcal{L}(u_{\text{complex}},o) = \mathcal{L}(u_{\text{size}},o) \times \mathcal{L}(u_{\text{color}},o)
+\end{equation} 
+
+\jd{insert resulting values in table 3} The resulting literal listener values are shown on the right in \tableref{tab:detliteral}. \jd{describe important rows, then go into the larger exploration in fig 3}
+
+
 
 The effects of assuming non-deterministic meanings in contexts like those depicted in \figref{fig:sizesufficient} and \figref{fig:colorsufficient} are visualized in \figref{fig:basicasymmetry}.\footnote{Here we show the results for $\alpha = 30$  and no utterance cost (i.e., $\beta_c = 0$). For a visualization of model behavior under varying $\alpha$s, see \appref{app:modelexploration}.} To orient the reader to the graph: the standard deterministic semantics of utterances is approximated where the  semantic values of both size and color utterances are close to 1 (.999, top right-most point in graph).  In this case, the simple sufficient (\emph{small pin}) and complex redundant utterance (\emph{small blue pin}) are equally likely around .5, because they are both equally informative and utterances are assumed to have 0 cost. All other utterances are highly unlikely. The interesting question is under which circumstances, if any,  the standard color-size asymmetry emerges: redundant utterances are more likely than sufficient utterances for \jd{fidelities greater than .5 where the fidelity of the insufficient dimension is higher than the fidelity of the sufficient dimension (see, e.g., the right side of the top row) --- XXX update this!!}. 
 
@@ -293,8 +330,10 @@ Let's focus on a concrete example. Assume the context in \figref{fig:sizesuffici
 \jd{XXX not clear this is useful --- A final observation regarding the probability of producing the insufficient utterance (e.g., \emph{blue pin} in the size sufficient contexts in \figref{fig:sizesufficient}). The probability of producing the insufficient utterance is very high where its fidelity is high and the fidelity of the sufficient utterance is intermediate. This is because intermediate fidelity values lead to an utterance being randomly interpreted correctly or incorrectly; that is, \emph{small pin} with  fidelity($u_{\textrm{size}}) = .5$ will apply equally to big and small objects in the context. The effect of this is that the literal listener returns a uniform distribution over all three objects in context upon observing \emph{small pin}, adding no information. In contrast, a literal listener that observes \emph{blue pin} assigns equal probability to the target and the color competitor, but lower probability to the distractor. Thus, even though the literal listener cannot distinguish between target and color competitor, the increased probability of correctly choosing the target by chance, due to the reduced probability of choosing the distractor, warrants the use of the insufficient \emph{blue pin} utterance.}  
 
 \begin{figure}
-\includegraphics[width=\textwidth]{pics/modelexploration-fidelityeffect-unlogged-wide}
-\caption{\jd{update this figure and change from sufficient/insufficient to color/size and just say that you're assuming size is sufficient and color insufficient , and that this only works for exactly the context in 1a; also set up the issue of free parameters, be clear baout this} Probability of producing insufficient, sufficient, and redundant utterance in contexts as depicted in \figref{fig:sizesufficient} and \figref{fig:colorsufficient}, as a function of fidelity of sufficient and insufficient utterance type (for $\alpha = 30$ and $ \beta_c = 0$).}
+%\includegraphics[width=\textwidth]{pics/modelexploration-fidelityeffect-unlogged-wide}
+\includegraphics[width=\textwidth]{pics/modelexploration-fidelityeffect-paper}
+
+\caption{Probability of producing sufficient \emph{small pin}, insufficient \emph{blue pin}, and redundant \emph{small blue pin} contexts as depicted in \figref{fig:sizesufficient}, as a function of semantic value of color and size utterances (for $\alpha = 30$ and $ \beta_c = 0$).}
 \label{fig:basicasymmetry}
 \end{figure}
 
@@ -1209,6 +1248,21 @@ In order to ascertain whether typicality as incorporated in the non-deterministi
 
 \section{General Discussion}
 \label{sec:gd}
+
+\begin{table}
+\caption{Differences across model structures.}
+\begin{tabular}{l l l l }
+\toprule
+& Color/size & Color typicality & Nominal choice \\
+\midrule
+Cost function & \jd{?} & empirical & empirical \\
+Set of alternatives & contextually available & contextually available & target alternatives\\
+Grammatical penalty & \jd{none?} & \jd{yes?} & none \\
+\jd{Typicality weight} & none & \jd{yes?} & \jd{yes?}\\
+\bottomrule
+\end{tabular}
+\label{tab:modeldiffs}
+\end{table}
 
 \jd{make sure to include adele goldberg's typicality effects in kids' generalizations to the basic level in discussion (srcd poster and submitted manuscript with lauren emberson)}
 
