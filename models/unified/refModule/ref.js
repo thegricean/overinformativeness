@@ -27,9 +27,12 @@ var getTypicalityUtterances = function(context) {
 };
 
 var getColorSizeUtterances = function(context) {
-  return _.uniq(_.flatten(_.map(context, function(itemArr) {
-    return _.map(powerset(itemArr.slice(0, 2)),
-		 function(v) {return v.concat('thing').join('_');});
+  return _.uniq(_.flattenDeep(_.map(context, function(itemArr) {
+    return _.map(powerset(itemArr.slice(0, 2)), function(modifier) {
+      return _.map([itemArr[2], 'thing'], function(noun) {
+	return modifier.concat(noun).join('_');
+      });
+    });
   })));
 };
 
@@ -47,7 +50,7 @@ var makeArr = function(n, v) {
 var makeColorSizeLists = function(wordsOrObjects) {
   var colorList = wordsOrObjects === 'words' ? colors.concat('') : colors;
   var sizeList = wordsOrObjects === 'words' ? sizes.concat('') : sizes;
-  var typeList = wordsOrObjects === 'words' ? ['thing'] : types;
+  var typeList = wordsOrObjects === 'words' ? types.concat('thing') : types;
 
   return _.flattenDepth(_.map(sizeList, function(size) {
     return _.map(colorList, function(color) {
