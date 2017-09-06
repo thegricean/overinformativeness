@@ -1,4 +1,4 @@
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/2_qualitative_basic/")
 
 typtype = "unlogged" 
 # typtype = "logged"
@@ -89,20 +89,23 @@ dp = dp %>%
 nrow(dp)
 head(dp)
 
-dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
-dp$Utterance = factor(x=as.character(dp$utterance),levels=c("insufficient","sufficient","redundant"))
-ggplot(dp[dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
-  geom_point(size=8,shape=15) +
-  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
-  xlab("Fidelity of sufficient utterance") +
-  ylab("Fidelity of insufficient utterance") +
-  facet_grid(alpha~Utterance) 
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=15,width=9.5)
-
 # dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
+dp$Utterance = factor(x=as.character(dp$utterance),levels=c("insufficient","sufficient","redundant"))
 dp$typicality_insufficient = as.numeric(as.character(dp$typicality_insufficient))
 dp$Utt = factor(x=ifelse(dp$Utterance == "sufficient","'small'",ifelse(dp$Utterance == "insufficient", "'blue'",ifelse(dp$Utterance == "redundant","'small blue'","NA"))),levels=c("'small'","'blue'","'small blue'"))
+
+ggplot(dp[dp$typicality_sufficient != "0.95" & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
+  geom_point(size=8,shape=15) +
+  scale_x_continuous(limits=c(.45,1),breaks=seq(.5,1,.1)) +
+  scale_y_continuous(limits=c(.45,1),breaks=seq(.5,1,.1)) +
+  scale_colour_gradientn(colors=rev(rainbow(4,start=0,end=4/6)),name="Probability\nof utterance") +
+  xlab("Semantic value of size") +
+  ylab("Semantic value of color") +
+  facet_grid(alpha~Utt) 
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/2_qualitative_basic/results_wppl/graphs/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=8.5,width=5.5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fullfidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=8.5,width=5.5)
+
+# dp$typicality_insufficient = as.factor(as.character(dp$typicality_insufficient))
 ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != 0.95 & dp$typicality_insufficient != .95,], aes(x=typicality_sufficient,y=typicality_insufficient,color=probability)) +
   geom_point(size=8,shape=15) +
   # ylim(c(.5,1)) +
@@ -118,3 +121,27 @@ ggplot(dp[dp$alpha == 30 & dp$typicality_sufficient != 0.95 & dp$typicality_insu
 # ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-",typtype,"-",searchtype,".pdf",sep=""),height=3.8,width=11)
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/2_qualitative_basic/results_wppl/graphs/modelexploration-fidelityeffect-paper.pdf",sep=""),height=1.75,width=5)
 ggsave("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/modelexploration-fidelityeffect-paper.pdf",height=1.75,width=5)
+
+# write speaker results to simulations for documentation
+fig3 = dp %>%
+  filter(alpha == 30 & typicality_sufficient != 0.95 & typicality_insufficient != .95  & typicality_sufficient > .45  & typicality_insufficient > .45) %>%
+  mutate(sem_color = typicality_insufficient, sem_size = typicality_sufficient, utterance = ifelse(Utterance == "insufficient", "color", ifelse(Utterance == "sufficient", "size", "color_size"))) %>%
+  select(sem_color, sem_size, utterance, probability)
+summary(fig3)
+nrow(fig3)
+write.csv(fig3, file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/colorsize_qualitative_basic_alpha30.csv",row.names=F, quote=F)
+
+appa = dp %>%
+  filter(typicality_sufficient != 0.95 & typicality_insufficient != .95  & typicality_sufficient > .45  & typicality_insufficient > .45) %>%
+  mutate(sem_color = typicality_insufficient, sem_size = typicality_sufficient, utterance = ifelse(Utterance == "insufficient", "color", ifelse(Utterance == "sufficient", "size", "color_size"))) %>%
+  select(sem_color, sem_size, utterance, probability)
+nrow(appa)
+write.csv(appa, file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/colorsize_qualitative_basic_alphavaries.csv",row.names=F, quote=F)
+
+
+
+
+
+
+
+
