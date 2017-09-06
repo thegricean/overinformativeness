@@ -5,7 +5,7 @@ var initializeModel = function(params) {
     if (params.modelVersion === 'colorSize') {
       return refModule.getColorSizeUtterances(context);
     } else if(params.modelVersion === 'nominal') {
-      return refModule.getNominalUtterances(target, params.taxonomy);
+      return refModule.getNominalUtterances(target[0], params.lexicon);
     } else if(params.modelVersion === 'typicality') {
       return refModule.getTypicalityUtterances(context);
     } else {
@@ -61,7 +61,7 @@ var initializeModel = function(params) {
     var utts = possibleUtts(target, context);
     return Infer({method:'enumerate', model: function(){
       var utt = uniformDraw(utts);
-      var utility = (literalListener(utt, context).score(target)
+      var utility = ((1-params.costWeight) * literalListener(utt, context).score(target)
 		     - params.costWeight * uttCost(utt));
       factor(params.alpha * utility);
       return utt;

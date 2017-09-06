@@ -15,8 +15,8 @@ var powerset = function (set) {
 };
 
 var getNominalUtterances = function(object, tax) {
-  return _.keys(_.omit(tax, function(value, key, tax) {
-    return !_.has(value, object);
+  return _.keys(_.pickBy(tax, function(value, key) {
+    return _.has(value, object);
   }));
 };
 
@@ -89,9 +89,9 @@ var constructLexicon = function(params) {
       }));
     }));
   } else if (params.modelVersion === 'typicality') {
-    return require('./json/typicalityMeanings.json');
+    return require('./json/typicality-meanings.json');
   } else if (params.modelVersion === 'nominal') {
-    return require('./json/nominalMeanings.json');
+    return require('./json/nominal-meanings.json');
   } else {
     return console.error('unknown modelVersion: ' + params.modelVersion);
   }
