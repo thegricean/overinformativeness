@@ -48,6 +48,13 @@ exp1$Typicality01 = exp1$Typicality/100
 exp1$PriorProbability = d[paste(exp1$Color,exp1$Object),]$Probability
 exp1$logPriorProbability = log(exp1$PriorProbability)
 
+ggplot(exp1, aes(x=Typicality01,y=RedundantProbability,group=1)) +
+  geom_smooth(method="lm",color="gray60") +
+  geom_point() +
+  ylab("Prob. of color") +
+  xlab("Typicality of color") 
+ggsave("/Users/titlis/cogsci/conferences_talks/_2017/9_boston_cuny/westerbeek-results.pdf",height=2.2,width=3)
+
 ggplot(exp1, aes(x=Typicality01,y=RedundantProbability,color=Color,group=1)) +
   geom_point() +
   geom_smooth(method="lm",color="gray60") +
