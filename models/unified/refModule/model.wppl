@@ -21,18 +21,16 @@ var initializeModel = function(params) {
     var colorMention = _.intersection(colors, utt.split('_')).length;
     var typeMention = _.intersection(types, utt.split('_')).length;
     var sizeMention = _.intersection(sizes, utt.split('_')).length;
-    var len = params.lengthVsFreqCost * refModule.getRelativeLength(utt);
-    var freq = (1 - params.lengthVsFreqCost) * refModule.getRelativeLogFrequency(utt);
-    var colorPenalty = colorMention ? params.colorPenalty : 0;
-    var typePenalty = typeMention ? params.typePenalty : 0;
-
+    
+    var w = (params.modelVersion === 'colorSize' ?
+	     params.colorVsSizeCost :
+	     params.lengthVsFreqCost);
     if(params.modelVersion === 'colorSize') {
-      return (params.colorVsSizeCost * colorMention +
-	      (1 - params.colorVsSizeCost) * sizeMention);
-    } else if (params.modelVersion == 'nominal') {
-      return len + freq;
-    } else if (params.modelVersion == 'typicality') {
-      return len + freq + colorPenalty + typePenalty;
+      return (w * colorMention +
+	      (1 - w) * sizeMention);
+    } else if (_.includes(['nominal', 'typicality'], params.modelVersion))  {
+      return (w * refModule.getRelativeLength(params, utt) +
+	      (1 - w) * refModule.getRelativeLogFrequency(params, utt));
     } else {
       return console.error('unknown modelVersion: ' + params.modelVersion);
     }
@@ -64,7 +62,7 @@ var initializeModel = function(params) {
     return Infer({method:'enumerate', model: function(){
       var utt = uniformDraw(utts);
       var utility = (literalListener(utt, context).score(target)
-		     - uttCost(utt));
+		     - params.costWeight * uttCost(utt));
       factor(params.alpha * utility);
       return utt;
     }});

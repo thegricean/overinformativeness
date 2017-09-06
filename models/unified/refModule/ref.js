@@ -177,14 +177,12 @@ var locParse = function(filename) {
         skipEmptyLines : true}).data;
 };
 
-var getFrequencyData = function() {
-  var frequencyData = require("./json/frequencies.json");
-  return frequencyData;
+var getFrequencyData = function(modelVersion) {
+  return require("./json/" + modelVersion + "-freq.json");
 };
 
-var getLengthData = function() {
-  var lengthData = require("./json/lengths.json");
-  return lengthData;
+var getLengthData = function(modelVersion) {
+  return require("./json/" + modelVersion + "-length.json");
 };
 
 var standardizeVal = function(data, val) {
@@ -193,13 +191,13 @@ var standardizeVal = function(data, val) {
   return (val - minVal)/(maxVal - minVal);
 };
 
-var getRelativeLogFrequency = function(label) {
-  var frequencyData = getFrequencyData();
+var getRelativeLogFrequency = function(params, label) {
+  var frequencyData = getFrequencyData(params.modelVersion);
   return 1-standardizeVal(frequencyData, frequencyData[label]);
 };
 
-var getRelativeLength = function(label) {
-  var lengthData = getLengthData();
+var getRelativeLength = function(params, label) {
+  var lengthData = getLengthData(params.modelVersion);
   return standardizeVal(lengthData, lengthData[label]);
 };
 
