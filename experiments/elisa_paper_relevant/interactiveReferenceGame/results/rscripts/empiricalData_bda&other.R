@@ -42,7 +42,7 @@ production$CleanedResponse = gsub("(^| )([Pp]eper|pepp|peppre|pep|bell|jalapeno|
 production$CleanedResponse = gsub("(^| )([Aa]vacado|avodado|avacdo|[Aa]vacadfo|avo|avacoda|avo|advocado|avavcado|avacodo|guacamole|gaucamole|guacolome|advacado|avacado,|avacado\\\\)($| )"," avocado",as.character(production$CleanedResponse))
 # categorize responses
 production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|purple|violet|yellow|gold|orange|prange|silver|blue|blu|pink|red|purlpe|pruple|puyrple|purplke|yllow|grean|dark|purp|yel|gree|gfeen|bllack|blakc|grey|neon|gray|blck|blu|blac|lavender|ornage|pinkish|^or ", production$refExp, ignore.case = TRUE), T, F)
-production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado|jalpaeno?", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$CleanedResponse, ignore.case = TRUE), T, F)
@@ -123,7 +123,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance,label=nameClick
   theme(legend.text=element_text(size=11,colour="#757575")) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-#get banana values
+# get banana values
 agr[agr$context=="informative\nwith color competitor" & agr$Utterance=="ColorAndType" & agr$nameClickedObj=="banana_yellow",c("NormedTypicality","Probability")]
 
 # create csv file with results
@@ -141,6 +141,49 @@ agr$uttType = ifelse(agr$uttType == "Color", "colorOnly", ifelse(agr$uttType == 
 
 write.csv(agr,file='rscripts/app/data/empiricalReferenceProbs.csv', row.names = FALSE)
 
+###########
+### BDA ###
+###########
+
+# write unique conditions for bda
+p_no_other = droplevels(production[production$UttforBDA != "other",])
+nrow(p_no_other)
+
+p_no_other$DistractorCombo = as.factor(ifelse(as.character(p_no_other$Dist1) < as.character(p_no_other$Dist2), paste(p_no_other$Dist1, p_no_other$Dist2), paste(p_no_other$Dist2, p_no_other$Dist1)))
+
+nrow(unique(p_no_other[,c("nameClickedObj","DistractorCombo")]))
+p_no_other$BDADist1 = sapply(strsplit(as.character(p_no_other$DistractorCombo)," "), "[", 1)
+p_no_other$BDADist2 = sapply(strsplit(as.character(p_no_other$DistractorCombo)," "), "[", 2)
+p_no_other$BDADist1Color = sapply(strsplit(as.character(p_no_other$BDADist1),"_"), "[", 2)
+p_no_other$BDADist1Type = sapply(strsplit(as.character(p_no_other$BDADist1),"_"), "[", 1)
+p_no_other$BDADist2Color = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 2)
+p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 1)
+
+
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/unique_conditions_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+
+# write data for bda
+write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+
+# Analysis
+# Exclude all "other" utterances
+an = droplevels(production[production$UttforBDA != "other",])
+nrow(an)
+
+centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+centered$ColorOrType = centered$ColorAndType | centered$Color
+
+m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+summary(m)
+ranef(m)
+
+m.1 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+summary(m.1)
+ranef(m.1)
+
+anova(m.1,m)
+
+###
 
 # empirical length
 library(jsonlite)
