@@ -46,7 +46,7 @@ production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|
 production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$DescriptionMentioned = ifelse(grepl("like|round|sauce|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$Other = ifelse(production$CatMentioned | production$NegationMentioned | production$ColorModifierMentioned | production$DescriptionMentioned, T, F)
 
 # summarize utterance types
@@ -78,6 +78,8 @@ production$Dist1Type = sapply(strsplit(as.character(production$Dist1),"_"), "[",
 production$Dist2Color = sapply(strsplit(as.character(production$Dist2),"_"), "[", 2)
 production$Dist2Type = sapply(strsplit(as.character(production$Dist2),"_"), "[", 1)
 
+production$pink = ifelse(production$clickedColor == 'pink',T,F)
+production = droplevels(production[production$pink == FALSE,])
 ####
 ####
 ####
@@ -160,10 +162,10 @@ p_no_other$BDADist2Color = sapply(strsplit(as.character(p_no_other$BDADist2),"_"
 p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 1)
 
 
-write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/unique_conditions_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/unique_conditions_nopink.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # write data for bda
-write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/bda_data_nopink.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # Analysis
 # Exclude all "other" utterances

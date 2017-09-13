@@ -46,7 +46,7 @@ production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|
 production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$CleanedResponse, ignore.case = TRUE), T, F)
-production$DescriptionMentioned = ifelse(grepl("like|round|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
+production$DescriptionMentioned = ifelse(grepl("like|round|sauce|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$CleanedResponse, ignore.case = TRUE), T, F)
 production$Other = ifelse(production$CatMentioned | production$NegationMentioned | production$ColorModifierMentioned | production$DescriptionMentioned, T, F)
 
 # summarize utterance types
@@ -59,6 +59,8 @@ production$UtteranceType = as.factor(
 production$Color = ifelse(production$UtteranceType == "color",1,0)
 production$ColorAndType = ifelse(production$UtteranceType == "color_and_type",1,0)
 production$Type = ifelse(production$UtteranceType == "type",1,0)
+# we don't specify 'other' here again because utterances that are not Cat,Neg,ColorMod,Description are "Hi" or "Hello" or clarification questions such as "do you know if i can just tell u what the picture is or do i have to tell u it's color?" and therefore non-interpretable
+# those are 6 utterances (there are still though in UtteranceType == "OTHER")
 # production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
 production$Half = ifelse(production$roundNum < 21,1,2)
