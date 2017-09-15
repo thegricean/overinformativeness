@@ -14,13 +14,11 @@ var globalConfig = {
 // var conditions = refModule.readCSV("./bdaInput/unique_conditions.csv");
 // console.log("Loading unique conditions complete..."+conditions.length+" conditions");
 
-// TODO:
-// 1. load correct taxonomy for nominal
 var paramPrior = function(modelVersion) {
   // Params shared by all versions of the model
   var baseParams = {
-    alpha : uniform(0, 1),
-    costWeight : uniform(0, 5)
+    alpha : uniform(0, 10),
+    costWeight : uniform(0, 1)
   };
 
   var specificParams = (modelVersion === 'colorSize' ? {
@@ -30,19 +28,11 @@ var paramPrior = function(modelVersion) {
     colorVsSizeCost : uniform( 0,  1),
     typWeight :       1
     
-  } : modelVersion === 'typicality' ? {
+  } : _.includes(['typicality', 'nominal'], modelVersion) ? {
 
     lengthVsFreqCost: uniform( 0,  1),
-    typWeight :       uniform( 0, 10),
-    colorPenalty:     uniform(-1,  1),
-    typePenalty:      uniform(-1,  1)
-    
-  } : modelVersion === 'nominal' ? {
-
-    lengthVsFreqCost: uniform( 0,  1),
-    typWeight :       uniform( 0, 10),
-    taxonomy :        refModule.getTypicalityTax()
-    
+    typWeight :       uniform( 0, 10)
+        
   } : console.error('unknown modelVersion: ' + modelVersion));
 
   return extend(globalConfig, baseParams, specificParams);
@@ -51,56 +41,41 @@ var paramPrior = function(modelVersion) {
 var modelAnalysis = function() {
 
   var params = paramPrior(globalConfig.modelVersion);
-  var lexicon = refModule.constructLexicon(params);
-  
-  var speakerModel = initializeModel(extend(params, {lexicon: lexicon}));
+  var lexicon = refModule.constructLexicon(params);  
+  var speakerModel = initializeModel(extend(params, {lexicon}));
 
-  var context = [["big", "green", "fan"],
-		 ["big", "green", "tv"],
-		 ["big", "green", "desk"],
-		 ["big", "green", "couch"],
-		 ["big", "green", "desk"],
-		 ["big", "green", "chair"],
-		 ["big", "green", "couch"],                                          
-		 ["big", "green", "chair"]];
+  var score = reduce(function(conditionObj, memo) {
+    // Extract condition information
+    var conditionName = conditionObj.conditionName;
+    var context = [[conditionObj.t_color, conditionObj.t_type],
+  		   [conditionObj.d1_color, conditionObj.d1_type],
+  		   [conditionObj.d2_color, conditionObj.d2_type]];
+    var target = context[0];
 
-  var modelOutput = speakerModel(context[0], context);
-  console.log(modelOutput);
-  // var score = reduce(function(conditionObj, memo) {
-  //   // Extract condition information
-  //   var conditionName = conditionObj.conditionName;
-  //   var context = [[conditionObj.t_color, conditionObj.t_type],
-  // 		   [conditionObj.d1_color, conditionObj.d1_type],
-  // 		   [conditionObj.d2_color, conditionObj.d2_type]];
-  //   var target = context[0];
-
-  //   // Run model
-  //   var modelParams = extend(params, globalConfig, {'lexicon': realValuedLexicon});
-  //   var speakerModel = initializeModel(modelParams);
-  //   var modelOutput = speakerModel(target, context);
+    // Run model
+    var modelOutput = speakerModel(target, context);
     
-  //   // Store predives
-  //   if(globalConfig.storePredictives) {
-  //     foreach(modelOutput.support(), function(s){
-  // 	var key = _.values(conditionObj).concat(s);
-  // 	var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
-  // 	globalStore.predictives = extend(globalStore.predictives, newPair);
-  //     });
-  //   }
+    // Store predives
+    if(globalConfig.storePredictives) {
+      foreach(modelOutput.support(), function(s){
+  	var key = _.values(conditionObj).concat(s);
+  	var newPair = _.zipObject([key], [Math.exp(modelOutput.score(s))]);
+  	globalStore.predictives = extend(globalStore.predictives, newPair);
+      });
+    }
     
-  //   // condition on data
-  //   var itemData = refModule.getSubset(data, conditionObj);
-  //   return memo + reduce(function(datum, memo) {
-  //     return modelOutput.score(datum.utterance) + memo;
-  //   }, 0, itemData);
-  // }, 0, conditions);
+    // condition on data
+    var itemData = refModule.getSubset(data, conditionObj);
+    return memo + reduce(function(datum, memo) {
+      return modelOutput.score(datum.utterance) + memo;
+    }, 0, itemData);
+  }, 0, conditions);
 
-  // console.log(params);
-  // console.log(score);
+  console.log(params);
+  console.log(score);
 
-  // factor(score);
-  // return {predictive: globalStore.predictives, params : params};
-  return params;
+  factor(score);
+  return {predictive: globalStore.predictives, params : params};
 };
 
 modelAnalysis();
