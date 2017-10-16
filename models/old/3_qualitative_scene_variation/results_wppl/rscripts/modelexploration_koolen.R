@@ -1,4 +1,4 @@
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/3_qualitative_scene_variation/")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/3_qualitative_scene_variation/")
 
 typtype = "unlogged" 
 # typtype = "logged"
@@ -88,10 +88,60 @@ ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativenes
 ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/koolen-full-exploration.pdf",sep=""),height=19,width=19)
 
 # paper plot, basic koolen effect
-agr$Variation = as.factor(ifelse(agr$condition %in% c("lowvariation_exp1","lowvariation_exp2"),"low","high"))
+agr$Variation = factor(ifelse(agr$condition %in% c("lowvariation_exp1","lowvariation_exp2"),"low","high"),levels=c("low","high"))
 agr$Experiment = as.factor(ifelse(agr$condition %in% c("lowvariation_exp1","highvariation_exp1"),"Exp 1","Exp 2"))
-ggplot(agr[agr$UtteranceType == "redundant" & agr$typicality_type == .9 & agr$typicality_color == .999 & agr$typicality_size == .8 & agr$alpha == 30,], aes(x=Experiment,y=probability,fill=Variation)) +
-  geom_bar(stat="identity",position="dodge") +
-  ylab("Probability of redundant color")
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/3_qualitative_scene_variation/results_wppl/graphs/scene_variation_koolen/koolen-effect.pdf",sep=""),height=3,width=4)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/koolen-effect.pdf",sep=""),height=3,width=4)
+agr = as.data.frame(agr)
+agr_koolen = agr %>%
+  filter(UtteranceType == "redundant" & typicality_type == .9 & typicality_color == .999 & typicality_size == .8 & alpha == 30) %>%
+  select(Experiment,probability,Variation) %>%
+  mutate(Type="model")
+agr_koolen
+ggplot(agr_koolen, aes(x=Experiment,y=probability,fill=Variation)) +
+  geom_bar(stat="identity",position="dodge",color="black") +
+  scale_fill_manual(values=c("gray20","gray80")) +
+  ylab("Probability of redundancy") +
+  xlab("") +
+  theme(legend.position=c(.8,.5))
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/3_qualitative_scene_variation/results_wppl/graphs/scene_variation_koolen/koolen-effect.pdf",sep=""),height=2.5,width=2.5)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/koolen-effect.pdf",sep=""),height=2.5,width=2.5)
+
+### load new simulated data from unified/simulations
+colors = c("green","brown","blue","red")
+types = c("chair","fan","couch","thing")
+sizes = c("big","small")
+
+d = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/koolen_exp1_low.csv",header=F)
+colnames(d) = c("Utt","Prob")
+d = d %>%
+  filter(Prob > 0) %>%
+  mutate(ColorMentioned = grepl("green",Utt)) %>%
+  group_by(ColorMentioned) %>%
+  summarize(Probability = sum(Prob))
+d
+
+d = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/koolen_exp1_high.csv",header=F)
+colnames(d) = c("Utt","Prob")
+d = d %>%
+  filter(Prob > 0) %>%
+  mutate(ColorMentioned = grepl("blue",Utt)) %>%
+  group_by(ColorMentioned) %>%
+  summarize(Probability = sum(Prob))
+d
+
+d = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/koolen_exp2_low.csv",header=F)
+colnames(d) = c("Utt","Prob")
+d = d %>%
+  filter(Prob > 0) %>%
+  mutate(ColorMentioned = grepl("red",Utt)) %>%
+  group_by(ColorMentioned) %>%
+  summarize(Probability = sum(Prob))
+d
+
+d = read.csv("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/unified/simulations/koolen_exp2_high.csv",header=F)
+colnames(d) = c("Utt","Prob")
+d = d %>%
+  filter(Prob > 0) %>%
+  mutate(ColorMentioned = grepl("brown",Utt)) %>%
+  group_by(ColorMentioned) %>%
+  summarize(Probability = sum(Prob))
+d
