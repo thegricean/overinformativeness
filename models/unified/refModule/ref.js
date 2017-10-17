@@ -39,7 +39,11 @@ var getColorSizeUtterances = function(context) {
 var colors = ["yellow", "orange", "red", "pink", "green",
               "purple", "white", "blue", "brown", "black"];
 
-var sizes = ["size", "othersize"];
+var reduced_colors = ["color", "othercolor"];              
+
+var sizes = ["big", "small"];
+
+var reduced_sizes = ["size", "othersize"];
 
 var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch",
 	     'belt',  'flower',  'yarn',  'turtle',  'butterfly',
@@ -49,6 +53,8 @@ var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch",
 	     'hairdryer',  'shoe',  'bucket',  'rug',  'comb',  'guitar',
 	     'stapler',  'cushion',  'chair',  'book',  'bike',  'rock',  'napkin',
 	     'balloon', 'framee'];
+
+var reduced_types = ['item'];       
 
 var makeArr = function(n, v) {
   return _.repeat(n, v);
@@ -68,11 +74,34 @@ var makeColorSizeLists = function(wordsOrObjects) {
   }), 2);
 };
 
+var makeColorSizeReducedLists = function(wordsOrObjects) {
+  var colorList = wordsOrObjects === 'words' ? reduced_colors.concat('') : reduced_colors;
+  var sizeList = wordsOrObjects === 'words' ? reduced_sizes.concat('') : reduced_sizes;
+  var typeList = wordsOrObjects === 'words' ? reduced_types.concat('') : reduced_types;
+
+  return _.flattenDepth(_.map(sizeList, function(size) {
+    return _.map(colorList, function(color) {
+      return _.map(typeList, function(type) {
+        return [size, color, type]
+      });
+    });
+  }), 2);
+};
+
 var colorSizeWordMeanings = function(params) {
   return _.extend(
     _.zipObject(colors, _.times(colors.length, _.constant(params.colorTyp))),
     _.zipObject(sizes, _.times(sizes.length, _.constant(params.sizeTyp))),
     _.zipObject(types, _.times(types.length, _.constant(1))),
+    {'thing' : 1}
+ );
+};
+
+var colorSizeReducedWordMeanings = function(params) {
+  return _.extend(
+    _.zipObject(reduced_colors, _.times(reduced_colors.length, _.constant(params.colorTyp))),
+    _.zipObject(reduced_sizes, _.times(reduced_sizes.length, _.constant(params.sizeTyp))),
+    _.zipObject(reduced_types, _.times(reduced_types.length, _.constant(1))),
     {'thing' : 1}
  );
 };
@@ -95,6 +124,23 @@ var constructLexicon = function(params) {
 	return _.reduce(meanings, _.multiply);
       }));
     }));
+  } else if (params.modelVersion === 'colorSizeReduced') {
+    var allUtts = makeColorSizeReducedLists('words');
+    var uttKeys = _.map(allUtts, (utt) => _.filter(utt, u => u != '').join('_'));
+    var allObjs = makeColorSizeReducedLists('objects');
+    var objKeys = _.map(allObjs, (obj) => obj.join('_'));
+    var wordMeaning = colorSizeWordMeanings(params);
+    return _.zipObject(uttKeys, _.map(allUtts, function(utt) {
+      return _.zipObject(objKeys, _.map(allObjs, function(obj) {
+  var meanings = _.map(_.zip(utt, obj), function(tuple) {
+          var uttWord = tuple[0], objProp = tuple[1];
+          return (uttWord === '' ? 1 :
+                  (uttWord === 'thing' || uttWord === objProp) ? wordMeaning[uttWord] :
+                  (1 - wordMeaning[uttWord]));
+  });
+  return _.reduce(meanings, _.multiply);
+      }));
+    }));   
   } else if (params.modelVersion === 'typicality') {
     return require('./json/typicality-meanings.json');
   } else if (params.modelVersion === 'nominal') {
@@ -156,7 +202,7 @@ var supportWriter = function(s, p, handle) {
   }
 };
 
-// Note this is highly specific to a single type of erp
+// Note this is highly specific to a single type of erp -- extend to capture colorsize contexts
 var bayesianErpWriter = function(erp, filePrefix) {
   var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
   fs.writeSync(predictiveFile, ["condition", "TargetColor","TargetType","Dist1Color","Dist1Type","Dist2Color","Dist2Type",
