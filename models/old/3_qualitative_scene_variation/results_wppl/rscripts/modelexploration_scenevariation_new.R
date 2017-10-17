@@ -1,4 +1,4 @@
-setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/3_qualitative_scene_variation/")
+setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/3_qualitative_scene_variation/")
 
 typtype = "unlogged" 
 # typtype = "logged"
@@ -43,7 +43,6 @@ ggplot(d[d$typicality_color %in% c("0.8","0.9","0.95","0.999") & d$alpha == 30 &
   geom_smooth(method="lm") +
   xlab("Scene variation") +
   facet_grid(typicality_color~utterancetype)
-<<<<<<< HEAD
 
 d$RedundantDimension = as.factor(ifelse(d$sufficientdimension == "color","size redundant","color redundant"))
 ggplot(d[d$typicality_color == .999 & d$alpha == 30 & d$typicality_size == .8 & d$utterancetype != "other" & d$utterancetype == "redundant",], aes(x=scenevariation,y=probability,group=RedundantDimension,shape=numdistractors)) +
@@ -53,5 +52,4 @@ ggplot(d[d$typicality_color == .999 & d$alpha == 30 & d$typicality_size == .8 & 
   xlab("Scene variation") +
   facet_wrap(~RedundantDimension)
 ggsave(paste("/Users/titlis/cogsci/conferences_talks/_2016/10_amlap_bilbao/scenevar_qualitative.pdf",sep=""),height=2.5,width=6)
-=======
->>>>>>> df080bffb41e084391dd1d71abbfe7df07e1843f
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/scenevariation-effect.pdf",sep=""),height=2.5,width=6)

@@ -101,9 +101,9 @@ ggplot(agr_koolen, aes(x=Experiment,y=probability,fill=Variation)) +
   scale_fill_manual(values=c("gray20","gray80")) +
   ylab("Probability of redundancy") +
   xlab("") +
-  theme(legend.position=c(.8,.5))
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/3_qualitative_scene_variation/results_wppl/graphs/scene_variation_koolen/koolen-effect.pdf",sep=""),height=2.5,width=2.5)
-ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/koolen-effect.pdf",sep=""),height=2.5,width=2.5)
+  theme(plot.margin=unit(c(0.5,0,-0.3,0),"cm"))
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/old/3_qualitative_scene_variation/results_wppl/graphs/scene_variation_koolen/koolen-effect.pdf",sep=""),height=2.5,width=3)
+ggsave(paste("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/writing/2016/theory/pics/koolen-effect.pdf",sep=""),height=2.5,width=3)
 
 ### load new simulated data from unified/simulations
 colors = c("green","brown","blue","red")
