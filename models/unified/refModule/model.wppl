@@ -38,9 +38,9 @@ var initializeModel = function(params) {
 
   // Looks up meaning in given lexicon
   // TODO
-  // 1. make sure using right empirical lexicon for nominal/typicality
+  // 1. Fix lexicon for colorSize (currently data says 'size'/'othersize')
   var meaning = function(utt, object) {
-    var objStr = object.join("_");
+    var objStr = _.values(object).join("_");
     var lexicalEntry = params.lexicon[utt];
     return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
   };
