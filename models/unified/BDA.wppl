@@ -24,9 +24,9 @@ var paramPrior = function(modelVersion) {
 
   var specificParams = (modelVersion === 'colorSize' ? {
 
-    colorTyp :        uniform(.5,  1),
-    sizeTyp :         uniform(.5,  1),
-    colorVsSizeCost : uniform( 0,  1),
+    colorTyp :        .5,//uniform(.5,  1),
+    sizeTyp :         1,//uniform(.5,  1),
+    colorVsSizeCost : .5,//uniform( 0,  1),
     typWeight :       1
     
   } : _.includes(['typicality', 'nominal'], modelVersion) ? {
