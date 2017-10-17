@@ -18,9 +18,9 @@ var initializeModel = function(params) {
   // 1. double-check colors, types, sizes
   // 2. make sure length/freq either looks at right json or uses combined json
   var uttCost = function(utt) {
-    var colorMention = _.intersection(colors, utt.split('_')).length;
-    var typeMention = _.intersection(types, utt.split('_')).length;
-    var sizeMention = _.intersection(sizes, utt.split('_')).length;
+    var colorMention = _.intersection(refModule.colors, utt.split('_')).length;
+    var typeMention = _.intersection(refModule.types, utt.split('_')).length;
+    var sizeMention = _.intersection(refModule.sizes, utt.split('_')).length;
     
     var w = (params.modelVersion === 'colorSize' ?
 	     params.colorVsSizeCost :

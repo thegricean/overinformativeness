@@ -222,5 +222,6 @@ module.exports = {
   constructLexicon, powerset, getSubset, 
   bayesianErpWriter, writeERP, writeCSV,
   getData, getConditions,
-  getRelativeLength, getRelativeLogFrequency, getTypSubset
+  getRelativeLength, getRelativeLogFrequency, getTypSubset,
+  colors, sizes, types
 };
