@@ -29,7 +29,7 @@ var getTypicalityUtterances = function(context) {
 var getColorSizeUtterances = function(context) {
   return _.uniq(_.flattenDeep(_.map(context, function(obj) {
     return _.map(powerset([obj.size, obj.color]), function(modifier) {
-      return _.map([obj.item, 'thing'], function(noun) {
+      return _.map([obj.item], function(noun) {
 	return modifier.concat(noun).join('_');
       });
     });
@@ -39,9 +39,16 @@ var getColorSizeUtterances = function(context) {
 var colors = ["yellow", "orange", "red", "pink", "green",
               "purple", "white", "blue", "brown", "black"];
 
-var sizes = ["big", "small"];
+var sizes = ["size", "othersize"];
 
-var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch"];
+var types = ["fan", "tv", "desk", "couch", "desk", "chair", "couch",
+	     'belt',  'flower',  'yarn',  'turtle',  'butterfly',
+	     'tack',  'billiardball',  'jacket',  'coathanger',  'candle',
+	     'binder',  'ornament',  'phone',  'weddingcake',  'toothbrush',
+	     'bracelet',  'pepper',  'golfball',  'cap',  'teacup',  'avocado',
+	     'hairdryer',  'shoe',  'bucket',  'rug',  'comb',  'guitar',
+	     'stapler',  'cushion',  'chair',  'book',  'bike',  'rock',  'napkin',
+	     'balloon', 'framee'];
 
 var makeArr = function(n, v) {
   return _.repeat(n, v);
@@ -50,7 +57,7 @@ var makeArr = function(n, v) {
 var makeColorSizeLists = function(wordsOrObjects) {
   var colorList = wordsOrObjects === 'words' ? colors.concat('') : colors;
   var sizeList = wordsOrObjects === 'words' ? sizes.concat('') : sizes;
-  var typeList = wordsOrObjects === 'words' ? types.concat('thing') : types;
+  var typeList = wordsOrObjects === 'words' ? types.concat('') : types;
 
   return _.flattenDepth(_.map(sizeList, function(size) {
     return _.map(colorList, function(color) {
@@ -67,7 +74,7 @@ var colorSizeWordMeanings = function(params) {
     _.zipObject(sizes, _.times(sizes.length, _.constant(params.sizeTyp))),
     _.zipObject(types, _.times(types.length, _.constant(1))),
     {'thing' : 1}
-  );
+ );
 };
 
 var constructLexicon = function(params) {
