@@ -27,9 +27,9 @@ var getTypicalityUtterances = function(context) {
 };
 
 var getColorSizeUtterances = function(context) {
-  return _.uniq(_.flattenDeep(_.map(context, function(itemArr) {
-    return _.map(powerset(itemArr.slice(0, 2)), function(modifier) {
-      return _.map([itemArr[2], 'thing'], function(noun) {
+  return _.uniq(_.flattenDeep(_.map(context, function(obj) {
+    return _.map(powerset([obj.size, obj.color]), function(modifier) {
+      return _.map([obj.item, 'thing'], function(noun) {
 	return modifier.concat(noun).join('_');
       });
     });
@@ -101,6 +101,15 @@ function readCSV(filename){
   return babyparse.parse(fs.readFileSync(filename, 'utf8'),
 			 {header:true}).data;
 };
+
+// TODO: these paths could cause problems if we refactor module
+function getData(modelVersion) {
+  return require('../bdaInput/bda_data_' + modelVersion + '.json');
+}
+
+function getConditions(modelVersion) {
+  return require('../bdaInput/unique_conditions_' + modelVersion + '.json');
+}
 
 function writeCSV(jsonCSV, filename){
   fs.writeFileSync(filename, babyparse.unparse(jsonCSV) + '\n');
@@ -205,6 +214,6 @@ module.exports = {
   getNominalUtterances, getColorSizeUtterances, getTypicalityUtterances,
   constructLexicon, powerset, getSubset, 
   bayesianErpWriter, writeERP, writeCSV,
-  readCSV, locParse, getRelativeLength,
-  getRelativeLogFrequency, getTypSubset
+  getData, getConditions,
+  getRelativeLength, getRelativeLogFrequency, getTypSubset
 };
