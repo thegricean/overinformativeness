@@ -12,7 +12,6 @@ One can do this in two different ways, one which is fast, and one which is slow.
 
 	- **Conditions file:** bdaInput/unique_conditions_colorSize_reduced.json
 	- **Data file:** bdaInput/data_bda_colorsize_reduced.csv -- still needs to be converted to .json -- the current contents of bda_data_colorSize_reduced.json are incorrect and appear to be based on the typicality dataset
-
 The fast way is what I did for the paper because in that section we're not interested in differences between items.	
 
 2. The slow way is to represent each context as consisting of objects that vary in color and type. Ie, the big/small pink/white wedding cake vs the big/small blue/red pin. This results in 1085 unique conditions so is much larger and takes much longer to run through than the reduced version in 1., but it can in principle incorporate differences in costs between colors, for instance. I haven't done this because it hasn't been necessary.
