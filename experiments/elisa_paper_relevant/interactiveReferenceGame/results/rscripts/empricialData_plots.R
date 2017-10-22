@@ -12,15 +12,20 @@ d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
 d[d$listenerMessages != "",c("listenerMessages","speakerMessages")]
 # exclude NA referential expressions 
 d = d[!(is.na(d$refExp)),]
+# 61 pairs
+unique(d$gameid)
 
 # first figure out how often target was chosen
 table(d$context,d$targetStatusClickedObj)
 # exclude trials with distractor choices
 d = droplevels(d[d$targetStatusClickedObj == "target",])
+# 59 pairs
 # exclude participants that were not paid because they didn't finish it
 d = droplevels(d[!(d$gameid == "6444-b" | d$gameid == "4924-4"), ])
+# 57 pairs - weirdly also 57 here when leave out line 21
 # exclude tabu players
 d = droplevels(d[!(d$gameid == "1544-1" | d$gameid == "4885-8" | d$gameid == "8360-7" | d$gameid == "4624-5" | d$gameid == "5738-a" | d$gameid == "8931-5" | d$gameid == "8116-a" | d$gameid == "6180-c" | d$gameid == "1638-6" | d$gameid == "6836-b"), ])
+# 47 pairs
 
 # get meantypicalities from previous study
 typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
@@ -217,3 +222,72 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(panel.background=element_rect(colour="#939393"))
 ggsave("graphs/empiricalData/utterance_by_conttyp_poster.png",width=12,height=9)
 
+
+# plot utterance choice proportions by typicality for color/non-color
+agr = production %>%
+  select(ColorMentioned,Type,Other,NormedTypicality,context) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
+  group_by(Utterance,context,NormedTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+# change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("ColorMentioned", "Type", "Other"))
+# change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+# plot
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point(size=.5) +
+  geom_smooth(method="lm",size=.6) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                       breaks=c("ColorMentioned", "Type", "Other"),
+                       labels=c("Color Mentioned", "Type Only", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(size=10,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(legend.title=element_text(size=14,color="#757575")) +
+  theme(legend.text=element_text(size=11,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
+ggsave("graphs/empiricalData/utterance_by_conttyp_colorNoncolor.png",width=12,height=9)
+
+# plot utterance choice proportions by typicality no pink
+nopink = production[!production$clickedColor == "pink",]
+agr = nopink %>%
+  select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
+  gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
+  group_by(Utterance,context,NormedTypicality) %>%
+  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+agr = as.data.frame(agr)
+agr$YMin = agr$Probability - agr$ci.low
+agr$YMax = agr$Probability + agr$ci.high
+# change order of Utterance column
+agr$Utterance <- as.character(agr$Utterance)
+agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
+# change context names to have nicer facet labels 
+levels(agr$context) = c("informative","informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+# plot
+ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
+  geom_point(size=.5) +
+  geom_smooth(method="lm",size=.6) +
+  #geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~context) +
+  scale_color_discrete(name="Utterance",
+                       breaks=c("Type", "Color", "ColorAndType", "Other"),
+                       labels=c("Only Type", "Only Color", "Color + Type", "Other")) +
+  theme(axis.title=element_text(size=14,colour="#757575")) +
+  theme(axis.text.x=element_text(size=10,colour="#757575")) +
+  theme(axis.text.y=element_text(size=10,colour="#757575")) +
+  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=12,colour="#757575")) +
+  theme(legend.title=element_text(size=14,color="#757575")) +
+  theme(legend.text=element_text(size=11,colour="#757575")) +
+  theme(strip.background=element_rect(colour="#939393",fill="white")) +
+  theme(panel.background=element_rect(colour="#939393"))
+ggsave("graphs/empiricalData/utterance_by_conttyp_nopink.png",width=12,height=9)

@@ -20,7 +20,7 @@ def transformString(utt):
 	return adj + " " + noun
 
 
-with open('rerun_less5.csv', 'rb') as csvfile:
+with open('rerun_less15.csv', 'rb') as csvfile:
 	uttObjDict = csv.reader(csvfile, delimiter=',', quotechar='|')
 	for row in uttObjDict:
 		print "{"

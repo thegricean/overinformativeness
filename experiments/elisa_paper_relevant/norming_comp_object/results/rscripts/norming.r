@@ -8,7 +8,6 @@ theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results")
 
-theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="../part1/results/data/norming.csv",sep=",", header=T)#, quote="")

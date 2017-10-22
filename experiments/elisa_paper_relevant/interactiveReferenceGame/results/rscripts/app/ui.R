@@ -9,11 +9,14 @@ shinyUI(fluidPage(
     sidebarPanel(
       h4("Parameters"),
 
-      helpText("Set parameters"),
+      # helpText("Set parameters"),
+      
+      selectInput("noise", label = "Noise:",
+                  choices = list("No Noise" = 1, "Additional Noise" = 2), selected = 1),
 
       sliderInput("alpha",
                   label = "Alpha:",
-                  min = 0, max = 18, value = 10, step = 2),
+                  min = 0, max = 20, value = 10, step = 2),
 
       sliderInput("colorcost",
                   label = "Cost for mentioning color:",
@@ -24,12 +27,21 @@ shinyUI(fluidPage(
                   min = -3, max = 3, value = -1.5, step = 1.5),
 
       sliderInput("lengthWeight",
-                  label = "LengthWeight:",
+                  label = "Length weight:",
                   min = 0, max = 1, value = 0.5, step = 0.25),
 
       sliderInput("typWeight",
-                  label = "TypicalityWeight",
-                  min = 0, max = 10, value = 6, step = 2)
+                  label = "Typicality weight:",
+                  min = 0, max = 10, value = 6, step = 2),
+      
+      conditionalPanel(
+        condition = "input.noise == 2",
+        sliderInput("noiseRate",
+                    label = "Noise rate:",
+                    min = 0.5, max = 1, value = 0.5, step = 0.5)
+      ),
+      
+      actionButton("reset", "Reset")
     ),
 
     mainPanel(
@@ -46,7 +58,7 @@ shinyUI(fluidPage(
             tabPanel("Plot",
               plotOutput("plot2"),
               img(src='utterance_by_conttyp_poster.png', height = 400)),
-            tabPanel("Compare", plotOutput("plot3"), textOutput("corr"), textOutput("corr2"))
+            tabPanel("Correlation", plotOutput("plot3"), textOutput("corr"), textOutput("corr2"))
           )
         )
       )

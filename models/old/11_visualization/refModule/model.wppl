@@ -13,9 +13,19 @@ var initializeModel = function(params) {
       else if(params.noiseType === 'replacement') {
 	var replaceIndex = randomInteger(trueContext.length);
 	var replaceObj = uniformDraw(objects);
-	return (trueContext.slice(0,replaceIndex)
-		.concat([replaceObj])
-		.concat(trueContext.slice(replaceIndex+1,trueContext.length)));
+  return (trueContext.slice(0,replaceIndex)
+    .concat([replaceObj])
+    .concat(trueContext.slice(replaceIndex+1,trueContext.length)));
+  // var blub = trueContext.slice(0,replaceIndex)
+  // console.log("blub");
+  // console.log(blub);
+  // var bum = blub.concat([replaceObj])
+  // console.log("bum");
+  // console.log(bum);
+  // var bam = bum.concat(trueContext.slice(replaceIndex+1,trueContext.length));
+  // console.log("bam");
+  // console.log(bam);
+	// return bam;
       } else {
 	console.error("unknown noiseType: " + params.noiseType);
       }
@@ -42,8 +52,18 @@ var initializeModel = function(params) {
   // Looks up meaning in given lexicon
   // (if no entry, listener assigns vanishingly small probability)
   var meaning = function(utt, object) {
+    // console.log("utt");
+    // console.log(utt);
+    // console.log("object");
+    // console.log(object);
     var objStr = object.join("_");
+    // console.log("objStr");
+    // console.log(objStr);
+    // console.log("params.lexicon[utt]");
+    // console.log(params.lexicon[utt]);
     var lexicalEntry = params.lexicon[utt];
+    // console.log('_.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : "HERE"');
+    // console.log(_.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : "HERE");
     return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
   };
 
@@ -52,6 +72,8 @@ var initializeModel = function(params) {
     return Infer({method:'enumerate'},function(){
       var object = uniformDraw(context);
       factor(params.typWeight * meaning(utt,object)); 
+      // console.log("object");
+      // console.log(object);
       return object;
     });
   });
@@ -65,9 +87,32 @@ var initializeModel = function(params) {
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var utility = expectation(noisyContextPrior, function(context) {
-	return literalListener(utt, context).score(target);
+        console.log("noisyContextPrior");
+        console.log(noisyContextPrior);
+        console.log("utt");
+        console.log(utt);
+        console.log("context");
+        console.log(context);
+        console.log("target");
+        console.log(target);
+        console.log("literalListener(utt, context)");
+        console.log(literalListener(utt, context));
+        console.log("literalListener(utt, context).score(target)");
+        console.log(literalListener(utt, context).score(target));
+	      return literalListener(utt, context).score(target);
       });
+      // console.log("getUtteranceCost(utt)");
+      // console.log(getUtteranceCost(utt));
+      console.log("utility");
+      console.log(utility);
+      //
+      //
+      // something is wrong with utility!
+      //
+      //
       factor(params.alpha * utility - getUtteranceCost(utt));
+      // console.log("utt");
+      // console.log(utt);
       return utt;
     });
   };

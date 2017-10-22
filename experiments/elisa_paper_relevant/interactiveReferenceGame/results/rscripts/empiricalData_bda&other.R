@@ -171,8 +171,11 @@ an = droplevels(production[production$UttforBDA != "other",])
 nrow(an)
 
 centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+# ColorOrType is the same as ColorMentioned
 centered$ColorOrType = centered$ColorAndType | centered$Color
 
+# Informative is a negative value, Overinformative is a positive value
+# CC is negative, nonCC is positive
 m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)

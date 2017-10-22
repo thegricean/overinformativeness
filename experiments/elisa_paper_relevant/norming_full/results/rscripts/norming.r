@@ -137,10 +137,15 @@ ggplot(items, aes(x=Freq)) +
 table(items$Freq)
 # it_low = items[items$Freq < 5,]
 # it_five = items[items$Freq == 5,]
+nopinkutt = items
+nopinkutt$Freq = ifelse(grepl("pink", nopinkutt$Utterance), 0, nopinkutt$Freq)
+it_15 = nopinkutt[nopinkutt$Freq < 10,]
 # nrow(it_low)
 # nrow(it_five)
+nrow(it_15)
 # write.csv(it_low[,c("Utterance","Object")],file="data/rerun_less5.csv",row.names=F,quote=F)
 # write.csv(it_five[,c("Utterance","Object")],file="data/rerun_5.csv",row.names=F,quote=F)
+write.csv(it_15[,c("Utterance","Object")],file="data/rerun_less15.csv",row.names=F,quote=F)
 
 # z-score ratings
 zscored = d %>%
