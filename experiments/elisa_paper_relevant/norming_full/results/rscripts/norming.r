@@ -11,7 +11,7 @@ setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/exper
 theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
-d = read.csv(file="data/meantypicalities.csv")
+# d = read.csv(file="data/meantypicalities.csv")
 # d$Comb = gsub(" ","_",d$Combo)
 # d$RedItem = ifelse(d$Utterance == d$Comb, d$Comb, "other") ## CONTINUE HERE
 # head(d)
@@ -45,6 +45,19 @@ d = read.csv(file="data/meantypicalities.csv")
 # d12$workerid = d12$workerid + 20 + 10 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9 + 9
 # d = rbind(d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12)
 # write.table(d, file="data/norming.csv",sep="\t",row.names=F,col.names=T,quote=F)
+# d1 = read.table(file="data/norming.csv",sep="\t", header=T)
+# d2 = read.table(file="data/norming_purple/norming0.csv",sep=",", header=T)
+# d2$workerid = d2$workerid + 130
+# d3 = read.table(file="data/norming_purple/norming1.csv",sep=",", header=T)
+# d3$workerid = d3$workerid + 130 + 9
+# d4 = read.table(file="data/norming_purple/norming2.csv",sep=",", header=T)
+# d4$workerid = d4$workerid + 130 + 9 + 9
+# d5 = read.table(file="data/norming_purple/norming3.csv",sep=",", header=T)
+# d5$workerid = d5$workerid + 130 + 9 + 9 + 9
+# d6 = read.table(file="data/norming_purple/norming4.csv",sep=",", header=T)
+# d6$workerid = d6$workerid + 130 + 9 + 9 + 9 + 9
+# dat = rbind(d1,d2,d3,d4,d5,d6)
+# write.table(d_nopink, file="data/norming_purple.csv",sep="\t",row.names=F,col.names=T,quote=F)
 
 d = read.table(file="data/norming.csv",sep="\t", header=T)#, quote="")
 head(d)
@@ -126,7 +139,12 @@ problematic = tmp[tmp$diff < .35,]$workerid
 problematic
 
 d = droplevels(d[!d$workerid %in% problematic,]) 
-length(unique(d$workerid)) # 120 participants left
+length(unique(d$workerid)) # 160 participants left
+
+# exclude pink
+df = droplevels(d[!(d$UttColor == 'pink'),])
+df$Color = ifelse(df$Color == 'pink', 'purple', df$Color)
+df$object = paste(df$Item,df$Color,sep="_")
 
 items = as.data.frame(table(d$Utterance,d$object))
 nrow(items)
@@ -137,18 +155,18 @@ ggplot(items, aes(x=Freq)) +
 table(items$Freq)
 # it_low = items[items$Freq < 5,]
 # it_five = items[items$Freq == 5,]
-nopinkutt = items
-nopinkutt$Freq = ifelse(grepl("pink", nopinkutt$Utterance), 0, nopinkutt$Freq)
-it_15 = nopinkutt[nopinkutt$Freq < 10,]
+# nopinkutt = items
+# nopinkutt$Freq = ifelse(grepl("pink", nopinkutt$Utterance), 0, nopinkutt$Freq)
+# it_15 = nopinkutt[nopinkutt$Freq < 10,]
 # nrow(it_low)
 # nrow(it_five)
-nrow(it_15)
+# nrow(it_15)
 # write.csv(it_low[,c("Utterance","Object")],file="data/rerun_less5.csv",row.names=F,quote=F)
 # write.csv(it_five[,c("Utterance","Object")],file="data/rerun_5.csv",row.names=F,quote=F)
-write.csv(it_15[,c("Utterance","Object")],file="data/rerun_less15.csv",row.names=F,quote=F)
+# write.csv(it_15[,c("Utterance","Object")],file="data/rerun_less15.csv",row.names=F,quote=F)
 
 # z-score ratings
-zscored = d %>%
+zscored = df %>%
   group_by(workerid) %>%
   summarise(Range=max(response) - min(response))
 zscored = as.data.frame(zscored)
@@ -156,10 +174,10 @@ row.names(zscored) = as.character(zscored$workerid)
 ggplot(zscored,aes(x=Range)) +
   geom_histogram()
 
-d$Range = zscored[as.character(d$workerid),]$Range
-d$zresponse = d$response / d$Range
+df$Range = zscored[as.character(df$workerid),]$Range
+df$zresponse = df$response / df$Range
 
-agr = d %>% 
+agr = df %>% 
   group_by(Item,Color,Utterance) %>%
   summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response),MeanZTypicality = mean(zresponse), ci.low.z=ci.low(zresponse),ci.high.z=ci.high(zresponse))
 agr = as.data.frame(agr)
@@ -188,6 +206,7 @@ agr$Color = as.factor(as.character(agr$Color))
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  xlab("Object") +
   facet_wrap(~Utterance,scales="free_x",nrow=4) +
   scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
@@ -196,6 +215,7 @@ ggsave("graphs/typicalities.png",height=20, width=35)
 ggplot(agr, aes(x=Combo,y=MeanZTypicality,color=Color)) +
   geom_point() +
   geom_errorbar(aes(ymin=YMinZ,ymax=YMaxZ),width=.25) +
+  xlab("Object") +
   facet_wrap(~Utterance,scales="free_x",nrow=4) +
   scale_color_manual(values=levels(agr$Color)) +
   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
@@ -257,10 +277,10 @@ for (u in unique(t$utterance)) {
 
 output = paste(output,"}",sep="")
 #cat(output)
-write.table(output,file="../../../../models/11_visualization/refModule/json/completeTypicalities.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
+write.table(output,file="../../completeTypicalities_purple.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
 
 
-ggplot(d, aes(x=response,fill=Match)) +
+ggplot(df, aes(x=response,fill=Match)) +
   geom_histogram() +
   facet_wrap(~workerid)
 ggsave("graphs/subject_variability.png",height=20, width=20)

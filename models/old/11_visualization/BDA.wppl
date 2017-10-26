@@ -14,10 +14,10 @@ var realValuedLexicon = refModule.getLexicon('realValued');
 var globalConfig = {
   'lexiconChoice' : 'empirical',
   'costsChoice' : 'empirical',
-  'noiseType' : 'replacement',
+  'noiseType' : 'Additional',
   'storePredictives' : false,
-  // 'outputFileName' : 'empiricalCosts_noiseAdd'
-  'outputFileName' : 'vizNoiseRep_1'
+  // 'outputFileName' : 'empiricalCosts_noiseRep'
+  'outputFileName' : 'vizNoiseAdd_1'
 };
 
 // var transformChunk = function(chunk){
@@ -40,8 +40,8 @@ var globalConfig = {
 //   return [cond, target, al, cc, tc, lw, tw, uttType, prob];
 // };
 var transformChunk = function(chunk){
-  console.log("chunk");
-  console.log(chunk);
+  // console.log("chunk");
+  // console.log(chunk);
   // [0] condition - stays
   // [1] targetColor [2] targetType - transformed into 1 string
   // [3] [4] [5] [6] dist - get rid of
@@ -133,7 +133,7 @@ var modelAnalysis = function() {
 
   // Combine params together
   var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
-  console.log(params)
+  // console.log(params)
   
   var predictionsPerCondition = _.flatten(map(function(conditionObj) {
     // Extract condition information
@@ -144,28 +144,28 @@ var modelAnalysis = function() {
 		   [conditionObj.d2_color, conditionObj.d2_type]];
     var target = context[0];
 
-    console.log("conditionObj");
-    console.log(conditionObj);
+    // console.log("conditionObj");
+    // console.log(conditionObj);
 
     // Run model
     var modelParams = extend(params, globalConfig, {'lexicon': realValuedLexicon});
     var speakerModel = initializeModel(modelParams);
     // console.log("modelParams");
     // console.log(modelParams);
-    console.log("target");
-    console.log(target);
-    console.log("context");
-    console.log(context);
+    // console.log("target");
+    // console.log(target);
+    // console.log("context");
+    // console.log(context);
     var modelOutput = speakerModel(target, context);
-    console.log("YEY");
+    // console.log("YEY");
     
     // Store predictives for each datapoint
     return map(function(s){
       return conditionInfo.concat(s).concat(Math.exp(modelOutput.score(s)));
     }, modelOutput.support());
   }, conditions));
-  console.log("predictionsPerCondition");
-  console.log(predictionsPerCondition);
+  // console.log("predictionsPerCondition");
+  // console.log(predictionsPerCondition);
 
   // function transforming this huge list of every condition to just the
   // relevant datapoints for making our visualizations
@@ -176,8 +176,8 @@ var modelAnalysis = function() {
   // before: condition, targetColor, targetType, distColor1, distType1, distColor2, distType2, alpha, colorCost, typeCost, lengthWeight, noiseRate, typWeight, utterance, probability
   // after: condition, target, alpha, colorCost, typeCost, lengthWeight, typWeight, utteranceType, probability
   var collapsedPredictions = reduce(function(chunk, mem){
-    console.log("chunky-lunky");
-    console.log(chunk);
+    // console.log("chunky-lunky");
+    // console.log(chunk);
     var target = chunk[1].concat("_").concat(chunk[2]);
     // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
     // no noise

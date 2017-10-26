@@ -10,7 +10,7 @@ banana,brown,0.657
 banana,yellow,0.979
 carrot,brown,0.565
 carrot,orange,0.976
-carrot,pink,0.503
+carrot,purple,0.503
 pear,green,0.953
 pear,orange,0.686
 pear,yellow,0.924
@@ -19,5 +19,5 @@ pepper,green,0.941
 pepper,orange,0.841
 pepper,red,0.934
 tomato,green,0.738
-tomato,pink,0.412
+tomato,purple,0.412
 tomato,red,0.962

@@ -10,7 +10,7 @@ banana_brown,carrot_brown
 banana_yellow,pear_yellow
 carrot_brown,banana_brown
 carrot_orange,pepper_orange
-carrot_pink,tomato_pink
+carrot_purple,tomato_purple
 pear_green,apple_green
 pear_orange,carrot_orange
 pear_yellow,banana_yellow
@@ -19,5 +19,5 @@ pepper_green,avocado_green
 pepper_orange,pear_orange
 pepper_red,tomato_red
 tomato_green,pear_green
-tomato_pink,carrot_pink
+tomato_purple,carrot_purple
 tomato_red,pepper_red

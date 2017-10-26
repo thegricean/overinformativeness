@@ -87,24 +87,25 @@ var initializeModel = function(params) {
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var utility = expectation(noisyContextPrior, function(context) {
-        console.log("noisyContextPrior");
-        console.log(noisyContextPrior);
-        console.log("utt");
-        console.log(utt);
-        console.log("context");
-        console.log(context);
-        console.log("target");
-        console.log(target);
-        console.log("literalListener(utt, context)");
-        console.log(literalListener(utt, context));
-        console.log("literalListener(utt, context).score(target)");
-        console.log(literalListener(utt, context).score(target));
+        // HERE IS THE ERROR FOR REPLACEMENT; utility
+        // console.log("noisyContextPrior");
+        // console.log(noisyContextPrior);
+        // console.log("utt");
+        // console.log(utt);
+        // console.log("context");
+        // console.log(context);
+        // console.log("target");
+        // console.log(target);
+        // console.log("literalListener(utt, context)");
+        // console.log(literalListener(utt, context));
+        // console.log("literalListener(utt, context).score(target)");
+        // console.log(literalListener(utt, context).score(target));
 	      return literalListener(utt, context).score(target);
       });
       // console.log("getUtteranceCost(utt)");
       // console.log(getUtteranceCost(utt));
-      console.log("utility");
-      console.log(utility);
+      // console.log("utility");
+      // console.log(utility);
       //
       //
       // something is wrong with utility!

@@ -18,7 +18,7 @@ fullTyp$Obj_utt = sapply(strsplit(as.character(fullTyp$Utterance),"_"), "[", 2)
 fullTyp$ID = seq.int(nrow(fullTyp))
 
 fullTyp$ColTyp = lapply(fullTyp$ID, function(x) colTyp[colTyp$Combo == fullTyp$Combo[x] & colTyp$color_utterance == fullTyp$Col_utt[x],]$MeanTypicality)
-fullTyp$ObjTyp = lapply(fullTyp$ID, function(x) objTyp[objTyp$Combo == fullTyp$Combo[x] & objTyp$utterance == fullTyp$Obj_utt[x],]$MeanTypicality)
+fullTyp$ObjTyp = lapply(fullTyp$ID, function(x) objTyp[objTyp$Combo == fullTyp$Combo[x] & objTyp$utterance == fullTyp$Obj_utt[x],]$Typicality)
 
 fullTyp$ColTyp <- as.numeric(fullTyp$ColTyp)
 fullTyp$ObjTyp <- as.numeric(fullTyp$ObjTyp)
@@ -42,7 +42,7 @@ ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSigmSum, group=1)) +
   ylim(0, 1)
 # geom_line() +
 # theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/normSigmSum.png",height=10, width=13)
+ggsave("graphs/normSigmSum_purple.png",height=10, width=13)
 
 ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSum, group=1)) +
   geom_point() +
@@ -51,7 +51,7 @@ ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSum, group=1)) +
   ylim(0, 1)
 # geom_line() +
 # theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/normSum.png",height=10, width=13)
+ggsave("graphs/normSum_Purple.png",height=10, width=13)
 
 ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSigmSum, group=1)) +
   geom_point() +
@@ -62,7 +62,7 @@ ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSigmSum, group=1)) +
   ylim(0, 1)
   # geom_line() +
   # theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/normSigmSum_label.png",height=20, width=20)
+ggsave("graphs/normSigmSum_label_purple.png",height=20, width=20)
 
 ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSum, group=1)) +
   geom_point() +
@@ -73,7 +73,7 @@ ggplot(fullTyp, aes(x=RoundMTypicality, y=NormSum, group=1)) +
   ylim(0, 1)
 # geom_line() +
 # theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/normSum_label.png",height=20, width=20)
+ggsave("graphs/normSum_label_purple.png",height=20, width=20)
 
 
 

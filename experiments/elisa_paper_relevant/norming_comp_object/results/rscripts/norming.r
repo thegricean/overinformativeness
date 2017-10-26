@@ -94,7 +94,10 @@ nocups = nocups[grep("purple",nocups$object,invert=T),]
 nocups = nocups[grep("cup",nocups$utterance,invert=T),]
 nocups = droplevels(nocups)
 
-agr = nocups %>% 
+df = nocups
+df$Color = ifelse(df$Color == 'pink', 'purple', df$Color)
+
+agr = df %>% 
   group_by(Item,Color,utterance) %>%
   summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
 agr = as.data.frame(agr)
@@ -124,4 +127,4 @@ short$Typicality = short$MeanTypicality
 write.csv(short[,c("Item","Color","Typicality")], file="data/meantyp_short.csv",row.names=F,quote=F)
 
 agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","utterance","Combo","Typicality","YMin","YMax")], file="data/meantyp_short.csv",row.names=F,quote=F)
+write.csv(agr[,c("Item","Color","utterance","Combo","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
