@@ -5,21 +5,43 @@ library(bootstrap)
 library(tidyr)
 library(shiny)
 library(shinyjs)
-
-source("helpers.R")
+library(tidyverse)
 
 theme_set(theme_bw(18))
 # runApp("rscripts/app")
 
-df <- read.table(file="data/allDataPredictives.csv",sep=",", header=T,check.names = FALSE)
+# df <- read.table(file="data/completeDataPredictives.csv", sep=",", header=T, check.names = FALSE)
+# df <- read.table(file="data/nonoiseDataPredictives.csv", sep=",", header=T, check.names = FALSE)
+# df <- read_csv(file="data/nonoiseDataPredictives.csv")
+# df <- read_csv(file="data/completeDataPredictives_nopink.csv", guess_max = 500000)
+
+# fastest
+df <- read_csv(file="data/completeDataPredictives.csv", guess_max = 500000)
+# df <- df[df$condition == 'informative' | df$condition == 'informative-cc',]
+
+# head(df)
 
 shinyServer(
-  function(input, output) {
-
+  function(input, output, session) {
+    
+    observeEvent(input$reset, {
+      updateSelectInput(session, "noise", selected = 1)
+      updateSliderInput(session, "alpha", value = 10)
+      updateSliderInput(session, "colorcost", value = 0)
+      updateSliderInput(session, "typecost", value = -1.5)
+      updateSliderInput(session, "lengthWeight", value = 0.5)
+      updateSliderInput(session, "typWeight", value = 6)
+      updateSliderInput(session, "noiseRate", value = 0.5)
+    })
+    
     dat <- reactive({
-      test <- df[df$alpha == input$alpha & df$colorCost == input$colorcost & df$typeCost == input$typecost & df$lengthWeight == input$lengthWeight & df$typWeight == input$typWeight,]
+      if (input$noise == 1)
+        # Can also set the label and select items
+        test <- df[df$alpha == input$alpha & df$colorCost == input$colorcost & df$typeCost == input$typecost & df$lengthWeight == input$lengthWeight & df$typWeight == input$typWeight & df$noise == input$noise,]
+      else
+        test <- df[df$alpha == input$alpha & df$colorCost == input$colorcost & df$typeCost == input$typecost & df$lengthWeight == input$lengthWeight & df$typWeight == input$typWeight & df$noise == input$noise & df$noiseRate == input$noiseRate,]
    })
-
+    
     hide("loading_page")
     shinyjs::show("ready")
 

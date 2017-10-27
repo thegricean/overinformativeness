@@ -8,7 +8,6 @@ theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/25_object_norming/results")
 
-theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 d = read.table(file="../part1/results/data/norming.csv",sep=",", header=T)#, quote="")
@@ -95,7 +94,10 @@ nocups = nocups[grep("purple",nocups$object,invert=T),]
 nocups = nocups[grep("cup",nocups$utterance,invert=T),]
 nocups = droplevels(nocups)
 
-agr = nocups %>% 
+df = nocups
+df$Color = ifelse(df$Color == 'pink', 'purple', df$Color)
+
+agr = df %>% 
   group_by(Item,Color,utterance) %>%
   summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
 agr = as.data.frame(agr)
@@ -125,4 +127,4 @@ short$Typicality = short$MeanTypicality
 write.csv(short[,c("Item","Color","Typicality")], file="data/meantyp_short.csv",row.names=F,quote=F)
 
 agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","utterance","Combo","Typicality","YMin","YMax")], file="data/meantyp_short.csv",row.names=F,quote=F)
+write.csv(agr[,c("Item","Color","utterance","Combo","Typicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)

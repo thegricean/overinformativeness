@@ -17,7 +17,7 @@
   "carrot" : {
     "brown_carrot" : 0,
     "orange_carrot" : 0,
-    "pink_carrot" : 0
+    "purple_carrot" : 0
   },
   "pear" : {
     "green_pear" : 0,
@@ -32,7 +32,7 @@
   },
   "tomato" : {
     "green_tomato" : 0,
-    "pink_tomato" : 0,
+    "purple_tomato" : 0,
     "red_tomato" : 0
   },
   "fruit" : {
@@ -52,9 +52,9 @@
   "vegetable" : {
     "brown_carrot" : 0,
     "orange_carrot" : 0,
-    "pink_carrot" : 0,
+    "purple_carrot" : 0,
     "green_tomato" : 0,
-    "pink_tomato" : 0,
+    "purple_tomato" : 0,
     "red_tomato" : 0,
     "black_pepper" : 0,
     "orange_pepper" : 0,
@@ -76,9 +76,9 @@
     "red_pepper" : 0,
     "red_tomato" : 0
   },    
-  "pink" : {
-    "pink_carrot" : 0,
-    "pink_tomato" : 0
+  "purple" : {
+    "purple_carrot" : 0,
+    "purple_tomato" : 0
   },   
   "green" : {
     "green_apple" : 0,
@@ -135,11 +135,11 @@
   "orange_pepper" : {
     "orange_pepper" : 0
   },
-  "pink_carrot" : {
-    "pink_carrot" : 0
+  "purple_carrot" : {
+    "purple_carrot" : 0
   },
-  "pink_tomato" : {
-    "pink_tomato" : 0
+  "purple_tomato" : {
+    "purple_tomato" : 0
   },
   "red_apple" : {
     "red_apple" : 0

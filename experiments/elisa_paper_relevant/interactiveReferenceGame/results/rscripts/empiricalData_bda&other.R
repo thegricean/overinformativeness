@@ -28,7 +28,11 @@ typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 
 production = d
-production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$MeanTypicality
+# rename pink items to purple
+production$clickedColor = ifelse(as.character(production$clickedColor) == 'pink', 'purple', as.character(production$clickedColor))
+production$nameClickedObj = ifelse(as.character(production$nameClickedObj) == 'tomato_pink', 'tomato_purple', ifelse(as.character(production$nameClickedObj) == 'carrot_pink', 'carrot_purple', as.character(production$nameClickedObj)))
+
+production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 
 # utterance analysis / categorization
@@ -160,10 +164,10 @@ p_no_other$BDADist2Color = sapply(strsplit(as.character(p_no_other$BDADist2),"_"
 p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 1)
 
 
-write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/unique_conditions_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/unique_conditions_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # write data for bda
-write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
 
 # Analysis
 # Exclude all "other" utterances
@@ -171,8 +175,11 @@ an = droplevels(production[production$UttforBDA != "other",])
 nrow(an)
 
 centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+# ColorOrType is the same as ColorMentioned
 centered$ColorOrType = centered$ColorAndType | centered$Color
 
+# Informative is a negative value, Overinformative is a positive value
+# CC is negative, nonCC is positive
 m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m)
 ranef(m)

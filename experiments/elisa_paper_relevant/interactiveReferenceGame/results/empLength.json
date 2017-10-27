@@ -13,7 +13,7 @@
   },
   {
     "utterance": "black",
-    "length": 7.6562
+    "length": 6.4333
   },
   {
     "utterance": "black_avocado",
@@ -73,7 +73,7 @@
   },
   {
     "utterance": "orange",
-    "length": 7.4167
+    "length": 7.1429
   },
   {
     "utterance": "orange_carrot",
@@ -85,7 +85,7 @@
   },
   {
     "utterance": "orange_pepper",
-    "length": 13.625
+    "length": 13.6842
   },
   {
     "utterance": "pear",
@@ -96,15 +96,15 @@
     "length": 6.2679
   },
   {
-    "utterance": "pink",
+    "utterance": "purple",
     "length": 6.3077
   },
   {
-    "utterance": "pink_carrot",
+    "utterance": "purple_carrot",
     "length": 12.7451
   },
   {
-    "utterance": "pink_tomato",
+    "utterance": "purple_tomato",
     "length": 12.8929
   },
   {
