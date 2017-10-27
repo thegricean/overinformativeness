@@ -1,4 +1,5 @@
-{
+[
+  {
     "apple": 5,
     "avocado": 7,
     "banana": 6,
@@ -37,3 +38,4 @@
     "yellow_banana": 13,
     "yellow_pear": 11
   }
+]
