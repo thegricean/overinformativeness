@@ -1,5 +1,6 @@
 library(gbNgram)
 library(jsonlite)
+library(tidyr)
 
 # search single-word utteranes (for some reason you need to do this in two steps for correct results)
 d1 <- ngram(terms=c("apple","avocado","banana","carrot","pear","pepper","tomato","black","blue","brown","green","orange"))
