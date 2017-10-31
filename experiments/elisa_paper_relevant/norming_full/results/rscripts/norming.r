@@ -124,7 +124,7 @@ d = droplevels(d[!d$language == "Urdu/English",])
 d = droplevels(d[!d$language == "Italian",])
 length(unique(d$workerid))
 
-# exclude people who didn't systematically give higher ratings for "true" cases (excluded four cases where mean(match) - mean(no_match) < .35)
+# exclude people who didn't systematically give higher ratings for "true" cases (excluded 11 cases where mean(match) - mean(no_match) < .35)
 d$Match = ifelse(d$object == d$InvUtterance, "match","no_match")
 means = d %>%
   group_by(workerid,Match) %>%
