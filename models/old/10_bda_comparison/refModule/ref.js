@@ -58,16 +58,22 @@ var supportWriter = function(s, p, handle) {
 
 // Note this is highly specific to a single type of erp
 var bayesianErpWriter = function(erp, filePrefix) {
+  // console.log("erp");
+  // console.log(erp);
   var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
   fs.writeSync(predictiveFile, ["condition", "TargetColor","TargetType","Dist1Color","Dist1Type","Dist2Color","Dist2Type",
-				"value", "prob", "MCMCprob"] + '\n');
+        "value", "modelPrediction", "inferenceProb"] + '\n');
 
   var paramFile = fs.openSync(filePrefix + "Params.csv", 'w');
-  fs.writeSync(paramFile, ["parameter", "value", "MCMCprob"] + '\n');
+  fs.writeSync(paramFile, ["parameter", "value", "prob"] + '\n');
 
   var supp = erp.support();
   supp.forEach(function(s) {
     supportWriter(s.predictive, erp.score(s), predictiveFile);
+    // console.log("s");
+    // console.log(s);
+    // console.log("erp.score(s)");
+    // console.log(erp.score(s));
     supportWriter(s.params, erp.score(s), paramFile);
   });
   fs.closeSync(predictiveFile);

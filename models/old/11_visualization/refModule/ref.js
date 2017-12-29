@@ -4,8 +4,8 @@ var babyparse = require('babyparse');
 
 var getLexicon = function(lexiconChoice) {
   var f = (lexiconChoice === 'realValued' ? './json/realValuedMeanings.json' :
-	   lexiconChoice === 'truthConditional' ? './json/truthConditionalMeanings.json' :
-	   console.error('lexicon choice unknown with value: ' + lexiconChoice));
+     lexiconChoice === 'truthConditional' ? './json/truthConditionalMeanings.json' :
+     console.error('lexicon choice unknown with value: ' + lexiconChoice));
   return require(f);
 };
 
@@ -15,7 +15,7 @@ function testPrint() {
 
 function readCSV(filename){
   return babyparse.parse(fs.readFileSync(filename, 'utf8'),
-			 {header:true}).data;
+       {header:true}).data;
 };
 
 function writeCSV(jsonCSV, filename){
@@ -59,7 +59,7 @@ var supportWriter = function(s, p, handle) {
 // Note this is highly specific to a single type of erp
 var bayesianErpWriter = function(erp, filePrefix) {
   var predictiveFile = fs.openSync(filePrefix + "Predictives.csv", 'w');
-  fs.writeSync(predictiveFile, ["condition", "TargetColor","TargetType","Dist1Color","Dist1Type","Dist2Color","Dist2Type","alpha", "colorCost","typeCost","lengthWeight","typWeight","value", "modelPrediction", "inferenceProb"] + '\n');
+  fs.writeSync(predictiveFile, ["line","condition", "obj","alpha", "colorCost","typeCost","lengthWeight","typWeight","uttType", "modelPrediction","inferenceProb"] + '\n');
 
   var supp = erp.support();
   supp.forEach(function(s) {

@@ -17,7 +17,7 @@ var globalConfig = {
   'noiseType' : 'none',
   'storePredictives' : false,
   // 'outputFileName' : 'empiricalCosts_noiseRep'
-  'outputFileName' : 'bsc_optimal'
+  'outputFileName' : 'bsc_1'
 };
 
 var transformChunk = function(chunk){
@@ -40,8 +40,8 @@ var transformChunk = function(chunk){
   return [cond, target, al, cc, tc, lw, tw, uttType, prob];
 };
 // var transformChunk = function(chunk){
-//   console.log("chunk");
-//   console.log(chunk);
+//   // console.log("chunk");
+//   // console.log(chunk);
 //   // [0] condition - stays
 //   // [1] targetColor [2] targetType - transformed into 1 string
 //   // [3] [4] [5] [6] dist - get rid of
@@ -107,28 +107,29 @@ var collapseProbs = function(chunk, memo){
 // };
 
 var modelAnalysis = function() {
-  // Params for all versions of the model\\23760
+  // Params for all versions of the model
   var baseParams = {
-    // alpha : uniformDraw(_.range(6, 7, 0.25)),// bis 21!
-    alpha : 10,
-    colorCost : 0,
-    // typeCost : uniformDraw(_.range(-3, 0.25, 0.25))//
-    typeCost : -1.25
+    // alpha = done
+    // alpha : uniformDraw(_.range(0, 1, 2)),//uniformDraw(_.range(0, 20, 2)),//alpha : 1,
+    // colorCost : uniformDraw(_.range(-3, 3.1, 1.5)),//colorCost : 2,
+    // typeCost : uniformDraw(_.range(-3, 3.1, 1.5))//typeCost : 3
+    alpha : 0,
+    colorCost : 3,
+    typeCost: 1.5
   };
 
   // Additional params for particular versions
   var empCostParams = (globalConfig.costsChoice == 'empirical' ? {
+    // lengthWeight : uniformDraw([.25,.75])
     // lengthWeight : uniformDraw(_.range(0, 1.01, 0.25))
-    // lengthWeight : uniformDraw(_.range(0.25, 0.875, 0.125))
-    lengthWeight : 0.5
-    // lengthWeight : uniformDrift({a: 0, b: 5, w: 10/20})
+    lengthWeight : .5
   } : {});
 
   var empTypicalitiesParams = (globalConfig.lexiconChoice == 'empirical' ? {
-    // typWeight : uniformDraw(_.range(0, 10.1, 1))
-    // typWeight : uniformDraw(_.range(5, 7, 0.25))
-    typWeight : 6
-    // typWeight : uniformDrift({a: 0, b: 2, w: 10/20})
+    // typWeight : 5//uniformDraw(_.range(0, 10.1, 2))
+    // typWeight : uniformDraw(_.range(0, 10.1, 2))
+    typWeight : 8
+
   } : {});
   
   var noiseParams = (globalConfig.noiseType != 'none' ? {
@@ -137,7 +138,7 @@ var modelAnalysis = function() {
 
   // Combine params together
   var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
-  console.log(params)
+  // console.log(params)
   
   var predictionsPerCondition = _.flatten(map(function(conditionObj) {
     // Extract condition information
@@ -186,20 +187,15 @@ var modelAnalysis = function() {
     // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
     // no noise
     var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
-    // console.log("newChunk");
-    // console.log(newChunk);
     // noise
     // var newChunk = chunk[13] == chunk[1] || chunk[13] == chunk[2] || chunk[13] == target ? transformChunk(chunk) : null;
     return _.isNull(newChunk) ? mem.concat([]) : collapseProbs(newChunk, mem);
   },[],predictionsPerCondition);
   
-  // console.log("collapsedPredictions");
-  // console.log(collapsedPredictions);
   return collapsedPredictions;
 };
 
 var outputERP = Infer({method:'enumerate'}, modelAnalysis);
-
 // console.log(outputERP);
 
 refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.outputFileName);
