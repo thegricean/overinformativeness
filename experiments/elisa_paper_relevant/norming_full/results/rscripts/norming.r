@@ -186,8 +186,9 @@ agr$YMax = agr$MeanTypicality + agr$ci.high
 agr$YMinZ = agr$MeanZTypicality - agr$ci.low.z
 agr$YMaxZ = agr$MeanZTypicality + agr$ci.high.z
 
-agr$Combo = paste(agr$Color,agr$Item,sep="_")
+agr$Combo = paste(agr$Color,agr$Item,sep=" ")
 agr$Color = as.factor(as.character(agr$Color))
+agr$Utterance = gsub("_"," ",agr$Utterance)
 
 # determine final sample to run based on large CIs
 # agr$Diff = agr$YMax-agr$YMin
@@ -204,13 +205,45 @@ agr$Color = as.factor(as.character(agr$Color))
 # write.csv(head(not_in_it_low[order(not_in_it_low[,c("Diff")],decreasing=T),c("Utterance","Object")],40),file="data/rerun_bigerrors.csv",row.names=F,quote=F)
 
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
-  geom_point() +
+  geom_point(size=4) +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  xlab("Object") +
-  facet_wrap(~Utterance,scales="free_x",nrow=4) +
+  ylab("Typicality") +
+  xlab("Objects") +
+  facet_wrap(~Utterance,scales="free_x",nrow=8) +
   scale_color_manual(values=levels(agr$Color)) +
-  theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/typicalities.png",height=20, width=35)
+  theme(axis.title=element_text(size=55)) +
+  theme(axis.text.x = element_text(angle=45,size=35,vjust=1,hjust=1)) +
+  theme(axis.text.y=element_text(size=30)) +
+  # theme(axis.title.x = element_text(margin = margin(t = 0, r = 55, b = 0, l = 0))) +
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 60, b = 0, l = 0))) +
+  theme(axis.ticks=element_line(size=.25), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=50)) +
+  # theme(legend.title=element_text(size=25,color="#757575")) +
+  # theme(legend.text=element_text(size=20,colour="#757575")) +
+  theme(legend.position="none") +
+  theme(strip.background=element_rect(colour="#939393",fill="lightgrey")) +
+  theme(panel.background=element_rect(colour="#939393"))
+#ggsave("graphs/typicalities.png",height=49, width=40)
+ggsave("../../../../../../Uni/BachelorThesis/graphs/typicalities_adjnounobj.png",height=49, width=40)
+
+# ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
+#   geom_point() +
+#   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+#   ylab("Typicality") +
+#   xlab("Objects") +
+#   facet_wrap(~Utterance,scales="free_x",nrow=8) +
+#   scale_color_manual(values=levels(agr$Color)) +
+#   theme(axis.title=element_text(size=45,colour="#757575")) +
+#   theme(axis.text.x = element_text(angle=45,size=25,vjust=1,hjust=1,colour="#757575")) +
+#   theme(axis.text.y=element_text(size=20,colour="#757575")) +
+#   theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+#   theme(strip.text.x=element_text(size=35,colour="#757575")) +
+#   # theme(legend.title=element_text(size=25,color="#757575")) +
+#   # theme(legend.text=element_text(size=20,colour="#757575")) +
+#   theme(legend.position="none") +
+#   theme(strip.background=element_rect(colour="#939393",fill="white")) +
+#   theme(panel.background=element_rect(colour="#939393"))
+# ggsave("graphs/typicalities.png",height=35, width=40)
 
 ggplot(agr, aes(x=Combo,y=MeanZTypicality,color=Color)) +
   geom_point() +
@@ -271,12 +304,12 @@ t$Combo = paste(t$Color,t$Item,sep="_")
 
 for (u in unique(t$utterance)) {
   output1 = paste("    \"",u,"\" : {\n",sep="")
-  output2 = paste("        \"",paste(t[t$utterance == u,]$Combo,t[t$utterance == u,]$MeanTypicality,sep="\" : "),",\n",sep="",collapse="")
+  output2 = paste("        \"",paste(t[t$utterance == u,]$Combo,t[t$utterance == u,]$Typicality,sep="\" : "),",\n",sep="",collapse="")
   output = paste(output,output1,output2,"    },\n",sep="")
 }
 
 output = paste(output,"}",sep="")
-#cat(output)
+cat(output)
 write.table(output,file="../../completeTypicalities_purple.json",quote=FALSE,sep="",row.names=FALSE,col.names=FALSE)
 
 

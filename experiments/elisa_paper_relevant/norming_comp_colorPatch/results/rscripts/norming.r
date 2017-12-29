@@ -73,52 +73,52 @@ ggplot(d, aes(Color)) +
 ##########
 # old (no purple)
 
-items = as.data.frame(table(d$color_utterance,d$item_color))
-nrow(items)
-colnames(items) = c("Utterance","Object","Freq")
-items = items[order(items[,c("Freq")]),]
-items = items[grep("cup",items$Object,invert=T),]
-items = items[grep("purple",items$Object,invert=T),]
-# items = items[grep("pepper_green",items$Object,invert=T),]
-items = items[grep("cup",items$Utterance,invert=T),]
-nrow(items)
-write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
-
-nocups = d[grep("cup",d$item_color,invert=T),]
-nocups = nocups[grep("cup",nocups$item_color,invert=T),]
-# nocups = nocups[grep("pepper_green",nocups$item_color,invert=T),]
-nocups = nocups[grep("purple",nocups$item_color,invert=T),]
-nocups = nocups[grep("purple",nocups$color_utterance,invert=T),]
-nocups = droplevels(nocups)
-
-agr = nocups %>% 
-  group_by(Item,Color,color_utterance) %>%
-  summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
-agr = as.data.frame(agr)
-agr$YMin = agr$MeanTypicality - agr$ci.low
-agr$YMax = agr$MeanTypicality + agr$ci.high
-
-agr$Combo = paste(agr$Color,agr$Item)
-agr$Color = as.factor(as.character(agr$Color))
-#agr$OrdCombo = factor(agr$Combo, levels=agr[order(agr$MeanTypicality), "Combo"])
-#agr$OrdCombo = factor(x=as.character(agr$Combo), levels=agr[order(agr$MeanTypicality,decreasing=T), "Combo"])
-#agr = agr[order(agr[,c("MeanTypicality")],decreasing=T),]
-
-ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
-  facet_wrap(~color_utterance,scales="free_x",nrow=4) +
-  scale_color_manual(values=levels(agr$Color)) +
-  theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/merged_typicalities.png",height=9, width=15)
-
-
-agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
-
-#agr$Typicality = agr$MeanTypicality
-write.csv(agr[,c("Item","Color","color_utterance","Combo","MeanTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
-
-subset(agr[agr$color_utterance=="black",], select=c("Combo", "MeanTypicality"))
+# items = as.data.frame(table(d$color_utterance,d$item_color))
+# nrow(items)
+# colnames(items) = c("Utterance","Object","Freq")
+# items = items[order(items[,c("Freq")]),]
+# items = items[grep("cup",items$Object,invert=T),]
+# items = items[grep("purple",items$Object,invert=T),]
+# # items = items[grep("pepper_green",items$Object,invert=T),]
+# items = items[grep("cup",items$Utterance,invert=T),]
+# nrow(items)
+# write.csv(items[1:74,c("Utterance","Object")],file="data/rerun.csv",row.names=F,quote=F)
+# 
+# nocups = d[grep("cup",d$item_color,invert=T),]
+# nocups = nocups[grep("cup",nocups$item_color,invert=T),]
+# # nocups = nocups[grep("pepper_green",nocups$item_color,invert=T),]
+# nocups = nocups[grep("purple",nocups$item_color,invert=T),]
+# nocups = nocups[grep("purple",nocups$color_utterance,invert=T),]
+# nocups = droplevels(nocups)
+# 
+# agr = nocups %>% 
+#   group_by(Item,Color,color_utterance) %>%
+#   summarise(MeanTypicality = mean(response), ci.low=ci.low(response),ci.high=ci.high(response))
+# agr = as.data.frame(agr)
+# agr$YMin = agr$MeanTypicality - agr$ci.low
+# agr$YMax = agr$MeanTypicality + agr$ci.high
+# 
+# agr$Combo = paste(agr$Color,agr$Item)
+# agr$Color = as.factor(as.character(agr$Color))
+# #agr$OrdCombo = factor(agr$Combo, levels=agr[order(agr$MeanTypicality), "Combo"])
+# #agr$OrdCombo = factor(x=as.character(agr$Combo), levels=agr[order(agr$MeanTypicality,decreasing=T), "Combo"])
+# #agr = agr[order(agr[,c("MeanTypicality")],decreasing=T),]
+# 
+# ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
+#   geom_point() +
+#   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+#   facet_wrap(~color_utterance,scales="free_x",nrow=4) +
+#   scale_color_manual(values=levels(agr$Color)) +
+#   theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
+# ggsave("graphs/merged_typicalities.png",height=9, width=15)
+# 
+# 
+# agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
+# 
+# #agr$Typicality = agr$MeanTypicality
+# write.csv(agr[,c("Item","Color","color_utterance","Combo","MeanTypicality","YMin","YMax")], file="data/meantypicalities.csv",row.names=F,quote=F)
+# 
+# subset(agr[agr$color_utterance=="black",], select=c("Combo", "MeanTypicality"))
 
 #######
 # new with purple
@@ -178,13 +178,32 @@ agr$Color = as.factor(as.character(agr$Color))
 # agr$OrdCombo = factor(x=as.character(agr$Combo), levels=agr[order(agr$MeanTypicality,decreasing=T), "Combo"])
 # agr = agr[order(agr[,c("MeanTypicality")],decreasing=T),]
 
+# ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
+#   geom_point() +
+#   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+#   facet_wrap(~color_utterance,scales="free_x",nrow=4) +
+#   scale_color_manual(values=levels(agr$Color)) +
+#   theme(axis.text.x = element_text(angle=45,size=11,vjust=1,hjust=1))
+# ggsave("graphs/merged_typicalities.png",height=9, width=15)
+
 ggplot(agr, aes(x=Combo,y=MeanTypicality,color=Color)) +
-  geom_point() +
+  geom_point(size=2) +
+  ylab("Typicality") +
+  xlab("Objects") +
+  theme(legend.position="none") +
   geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
   facet_wrap(~color_utterance,scales="free_x",nrow=4) +
   scale_color_manual(values=levels(agr$Color)) +
-  theme(axis.text.x = element_text(angle=45,size=5,vjust=1,hjust=1))
-ggsave("graphs/merged_typicalities.png",height=9, width=15)
+  theme(axis.title=element_text(size=25)) +
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 60, b = 0, l = 0))) +
+  theme(axis.text.x = element_text(angle=45,size=20,vjust=1,hjust=1)) +
+  theme(axis.text.y=element_text(size=10)) +
+  theme(axis.ticks=element_line(size=.25), axis.ticks.length=unit(.75,"mm")) +
+  theme(strip.text.x=element_text(size=25)) +
+  theme(strip.background=element_rect(colour="#939393",fill="lightgrey")) +
+  theme(panel.background=element_rect(colour="#939393")) 
+ggsave("graphs/merged_typicalities.png",height=15, width=17)
+ggsave("../../../../../../Uni/BachelorThesis/graphs/typicalities_colpatch.png",height=15, width=17)
 
 agr$MeanTypicality = round(agr$MeanTypicality, digits = 3)
 

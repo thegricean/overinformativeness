@@ -9,8 +9,8 @@ theme_set(theme_bw(18))
 setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
 source("rscripts/helpers.r")
 
-frq = t(as.data.frame(fromJSON(file='../../../../models/11_visualization/refModule/json/frequencies.json')))
-length = t(as.data.frame(fromJSON(file='../../../../models/11_visualization/refModule/json/lengths.json')))
+frq = t(as.data.frame(fromJSON(file='../../../../models/old/10_bda_comparison/refModule/json/frequencies.json')))
+length = t(as.data.frame(fromJSON(file='../../../../models/old/10_bda_comparison/refModule/json/lengths.json')))
 d = as.data.frame(rownames(frq))
 d$target = d$`rownames(frq)`
 d$frq = frq[,1]
@@ -24,5 +24,10 @@ blub2 = paste("correlation: ",blub,"%")
 
 ggplot(agr,aes(x=length,y=frq)) +
   geom_point() +
-  annotate("text", x=12.5, y=-3.5, label= blub2)
-ggsave("graphs/frq_length_corr.png",height=8.0,width=12)
+  annotate("text", x=11, y=-6.5, label= blub2, size=12, colour="#757575") +
+  ylab("LogFrequency") +
+  xlab("Length") +
+  theme(axis.title=element_text(size=30,colour="#757575")) +
+  theme(axis.text.x=element_text(size=20,colour="#757575")) +
+  theme(axis.text.y=element_text(size=20,colour="#757575"))
+ggsave("graphs/frq_length_corr.png",height=9,width=12)
