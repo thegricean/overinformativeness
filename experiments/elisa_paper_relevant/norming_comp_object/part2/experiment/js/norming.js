@@ -547,6 +547,7 @@ function init() {
   }
 
   exp.all_stims = _.shuffle(exp.all_stims);
+  console.log(exp.all_stims);
 
   exp.trials = [];
   exp.catch_trials = [];

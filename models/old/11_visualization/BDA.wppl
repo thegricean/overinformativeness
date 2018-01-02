@@ -14,34 +14,13 @@ var realValuedLexicon = refModule.getLexicon('realValued');
 var globalConfig = {
   'lexiconChoice' : 'empirical',
   'costsChoice' : 'empirical',
-  'noiseType' : 'Additional',
+  'noiseType' : 'none',
   'storePredictives' : false,
   // 'outputFileName' : 'empiricalCosts_noiseRep'
-  'outputFileName' : 'vizNoiseAdd_1'
+  'outputFileName' : 'bsc_optimal'
 };
 
-// var transformChunk = function(chunk){
-//   // [0] condition - stays
-//   // [1] targetColor [2] targetType - transformed into 1 string
-//   // [3] [4] [5] [6] dist - get rid of
-//   // [7] [8] [9] [10] [11] params - stay
-//   // [12] utterance - becomes utteranceType or stays
-//   // [13] probability - stays
-//   var cond = chunk[0];
-//   var target = chunk[1].concat("_").concat(chunk[2]);
-//   // var typ = realValuedLexicon[chunk[2]][target];
-//   var al = chunk[7];
-//   var cc = chunk[8];
-//   var tc = chunk[9];
-//   var lw = chunk[10];
-//   var tw = chunk[11];
-//   var uttType = chunk[12] == chunk[1] ? 'colorOnly' : chunk[12] == chunk[2] ? 'typeOnly' : 'colorType';
-//   var prob = chunk[13];
-//   return [cond, target, al, cc, tc, lw, tw, uttType, prob];
-// };
 var transformChunk = function(chunk){
-  // console.log("chunk");
-  // console.log(chunk);
   // [0] condition - stays
   // [1] targetColor [2] targetType - transformed into 1 string
   // [3] [4] [5] [6] dist - get rid of
@@ -56,35 +35,34 @@ var transformChunk = function(chunk){
   var tc = chunk[9];
   var lw = chunk[10];
   var tw = chunk[11];
-  var noise = chunk[12]
-  var uttType = chunk[13] == chunk[1] ? 'colorOnly' : chunk[13] == chunk[2] ? 'typeOnly' : 'colorType';
-  var prob = chunk[14];
-  return [cond, target, al, cc, tc, lw, tw, noise, uttType, prob];
+  var uttType = chunk[12] == chunk[1] ? 'colorOnly' : chunk[12] == chunk[2] ? 'typeOnly' : 'colorType';
+  var prob = chunk[13];
+  return [cond, target, al, cc, tc, lw, tw, uttType, prob];
 };
-
-// no noise
-// var collapseProbs = function(chunk, memo){
-//   // building up new list and having flag whether duplicate in target, condition & uttType was found in data
-//   var initialized_data = [[], false];
-//   // check whether chunk is in list, if no, add it to list, if not, take average of their probs
-//   var replacedMemo = reduce(function(oldChunk, accumulated_data){
-//     var accumulated_memo = accumulated_data[0];
-//     var accumulated_flag = accumulated_data[1];
-//     var replace = chunk[1] == oldChunk[1] ? 
-//     chunk[0] == oldChunk[0] ?
-//     chunk[7] == oldChunk[7] ? true : false : false : false;
-//     var replacedChunk = replace ? 
-//                         [oldChunk[0], oldChunk[1], oldChunk[2], oldChunk[3], oldChunk[4], 
-//                         oldChunk[5], oldChunk[6], oldChunk[7], (oldChunk[8]+chunk[8])/2] : 
-//                         oldChunk;
-//     var new_flag = replace || accumulated_flag ? true : false;
-//     var new_memo = [replacedChunk].concat(accumulated_memo);
-//     return [new_memo, new_flag];
-//   },initialized_data,memo); 
-//   return replacedMemo[1] ? replacedMemo[0] : replacedMemo[0].concat([chunk]);
+// var transformChunk = function(chunk){
+//   console.log("chunk");
+//   console.log(chunk);
+//   // [0] condition - stays
+//   // [1] targetColor [2] targetType - transformed into 1 string
+//   // [3] [4] [5] [6] dist - get rid of
+//   // [7] [8] [9] [10] [11] params - stay
+//   // [12] utterance - becomes utteranceType or stays
+//   // [13] probability - stays
+//   var cond = chunk[0];
+//   var target = chunk[1].concat("_").concat(chunk[2]);
+//   // var typ = realValuedLexicon[chunk[2]][target];
+//   var al = chunk[7];
+//   var cc = chunk[8];
+//   var tc = chunk[9];
+//   var lw = chunk[10];
+//   var tw = chunk[11];
+//   var noise = chunk[12]
+//   var uttType = chunk[13] == chunk[1] ? 'colorOnly' : chunk[13] == chunk[2] ? 'typeOnly' : 'colorType';
+//   var prob = chunk[14];
+//   return [cond, target, al, cc, tc, lw, tw, noise, uttType, prob];
 // };
 
-// noise
+// no noise
 var collapseProbs = function(chunk, memo){
   // building up new list and having flag whether duplicate in target, condition & uttType was found in data
   var initialized_data = [[], false];
@@ -94,10 +72,10 @@ var collapseProbs = function(chunk, memo){
     var accumulated_flag = accumulated_data[1];
     var replace = chunk[1] == oldChunk[1] ? 
     chunk[0] == oldChunk[0] ?
-    chunk[8] == oldChunk[8] ? true : false : false : false;
+    chunk[7] == oldChunk[7] ? true : false : false : false;
     var replacedChunk = replace ? 
                         [oldChunk[0], oldChunk[1], oldChunk[2], oldChunk[3], oldChunk[4], 
-                        oldChunk[5], oldChunk[6], oldChunk[7], oldChunk[8], (oldChunk[9]+chunk[9])/2] : 
+                        oldChunk[5], oldChunk[6], oldChunk[7], (oldChunk[8]+chunk[8])/2] : 
                         oldChunk;
     var new_flag = replace || accumulated_flag ? true : false;
     var new_memo = [replacedChunk].concat(accumulated_memo);
@@ -106,25 +84,51 @@ var collapseProbs = function(chunk, memo){
   return replacedMemo[1] ? replacedMemo[0] : replacedMemo[0].concat([chunk]);
 };
 
+// noise
+// var collapseProbs = function(chunk, memo){
+//   // building up new list and having flag whether duplicate in target, condition & uttType was found in data
+//   var initialized_data = [[], false];
+//   // check whether chunk is in list, if no, add it to list, if not, take average of their probs
+//   var replacedMemo = reduce(function(oldChunk, accumulated_data){
+//     var accumulated_memo = accumulated_data[0];
+//     var accumulated_flag = accumulated_data[1];
+//     var replace = chunk[1] == oldChunk[1] ? 
+//     chunk[0] == oldChunk[0] ?
+//     chunk[8] == oldChunk[8] ? true : false : false : false;
+//     var replacedChunk = replace ? 
+//                         [oldChunk[0], oldChunk[1], oldChunk[2], oldChunk[3], oldChunk[4], 
+//                         oldChunk[5], oldChunk[6], oldChunk[7], oldChunk[8], (oldChunk[9]+chunk[9])/2] : 
+//                         oldChunk;
+//     var new_flag = replace || accumulated_flag ? true : false;
+//     var new_memo = [replacedChunk].concat(accumulated_memo);
+//     return [new_memo, new_flag];
+//   },initialized_data,memo); 
+//   return replacedMemo[1] ? replacedMemo[0] : replacedMemo[0].concat([chunk]);
+// };
+
 var modelAnalysis = function() {
-  // Params for all versions of the model
+  // Params for all versions of the model\\23760
   var baseParams = {
-    // alpha = done
-    alpha : uniformDraw(_.range(0, 1, 2)),//uniformDraw(_.range(0, 20, 2)),//alpha : 1,
-    colorCost : uniformDraw(_.range(-3, 3.1, 1.5)),//colorCost : 2,
-    typeCost : uniformDraw(_.range(-3, 3.1, 1.5))//typeCost : 3
+    // alpha : uniformDraw(_.range(6, 7, 0.25)),// bis 21!
+    alpha : 10,
+    colorCost : 0,
+    // typeCost : uniformDraw(_.range(-3, 0.25, 0.25))//
+    typeCost : -1.25
   };
 
   // Additional params for particular versions
   var empCostParams = (globalConfig.costsChoice == 'empirical' ? {
-    // lengthWeight : uniformDraw([.25,.75])
-    lengthWeight : uniformDraw(_.range(0, 1.01, 0.25))
+    // lengthWeight : uniformDraw(_.range(0, 1.01, 0.25))
+    // lengthWeight : uniformDraw(_.range(0.25, 0.875, 0.125))
+    lengthWeight : 0.5
+    // lengthWeight : uniformDrift({a: 0, b: 5, w: 10/20})
   } : {});
 
   var empTypicalitiesParams = (globalConfig.lexiconChoice == 'empirical' ? {
-    // typWeight : 5//uniformDraw(_.range(0, 10.1, 2))
-    typWeight : uniformDraw(_.range(0, 10.1, 2))
-
+    // typWeight : uniformDraw(_.range(0, 10.1, 1))
+    // typWeight : uniformDraw(_.range(5, 7, 0.25))
+    typWeight : 6
+    // typWeight : uniformDrift({a: 0, b: 2, w: 10/20})
   } : {});
   
   var noiseParams = (globalConfig.noiseType != 'none' ? {
@@ -133,7 +137,7 @@ var modelAnalysis = function() {
 
   // Combine params together
   var params = extend(baseParams, empCostParams, noiseParams, empTypicalitiesParams);
-  // console.log(params)
+  console.log(params)
   
   var predictionsPerCondition = _.flatten(map(function(conditionObj) {
     // Extract condition information
@@ -181,15 +185,21 @@ var modelAnalysis = function() {
     var target = chunk[1].concat("_").concat(chunk[2]);
     // take out all chunks where utterance doesn't correspond to target (all non-fitting utterances)
     // no noise
-    // var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
+    var newChunk = chunk[12] == chunk[1] || chunk[12] == chunk[2] || chunk[12] == target ? transformChunk(chunk) : null;
+    // console.log("newChunk");
+    // console.log(newChunk);
     // noise
-    var newChunk = chunk[13] == chunk[1] || chunk[13] == chunk[2] || chunk[13] == target ? transformChunk(chunk) : null;
+    // var newChunk = chunk[13] == chunk[1] || chunk[13] == chunk[2] || chunk[13] == target ? transformChunk(chunk) : null;
     return _.isNull(newChunk) ? mem.concat([]) : collapseProbs(newChunk, mem);
   },[],predictionsPerCondition);
   
+  // console.log("collapsedPredictions");
+  // console.log(collapsedPredictions);
   return collapsedPredictions;
 };
 
 var outputERP = Infer({method:'enumerate'}, modelAnalysis);
+
+// console.log(outputERP);
 
 refModule.bayesianErpWriter(outputERP, "./bdaOutput/" + globalConfig.outputFileName);

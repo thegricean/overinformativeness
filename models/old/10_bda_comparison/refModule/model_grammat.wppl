@@ -1,0 +1,77 @@
+var initializeModel = function(params) {
+
+  // construct prior over possible misperceptions, based on version in params
+  // 1. if 'none', there's no noise, and this prior is a delta on true context
+  // 2. if 'addition', then we supplement the context with a 'ghost object'
+  // 3. if 'replacement', then we swap out one of the objects with a 'misperception'
+  var getNoisyContextPrior = function(trueContext) {
+    return Infer({method: 'enumerate'}, function() {
+      if(params.noiseType === 'none' || flip(1 - params.noiseRate))
+	return trueContext;
+      else if(params.noiseType === 'addition')
+	return trueContext.concat([uniformDraw(objects)]);
+      else if(params.noiseType === 'replacement') {
+	var replaceIndex = randomInteger(trueContext.length);
+	var replaceObj = uniformDraw(objects);
+	return (trueContext.slice(0,replaceIndex)
+		.concat([replaceObj])
+		.concat(trueContext.slice(replaceIndex+1,trueContext.length)));
+      } else {
+	console.error("unknown noiseType: " + params.noiseType);
+      }
+    });
+  };
+  
+  // Cost of full utterances is sum of individual word costs,
+  // Use empirical costs as a base
+  var getUtteranceCost = function(utt) {
+    var adjustment = reduce(function(word, memo) {
+      var cost = _.includes(colors, word) ? (word == utt ? params.colorCost + params.gramCost : params.colorCost) : params.typeCost;
+      return memo + cost;
+    }, 0, utt.split('_'));
+
+    if(params.costsChoice === 'empirical') {
+      var lengthTerm = params.lengthWeight * refModule.getRelativeLength(utt);
+      var freqTerm = (1 - params.lengthWeight) * refModule.getRelativeLogFrequency(utt);
+      return lengthTerm + freqTerm + adjustment;
+    } else {
+      return adjustment;
+    }
+  };
+
+  // Looks up meaning in given lexicon
+  // (if no entry, listener assigns vanishingly small probability)
+  var meaning = function(utt, object) {
+    var objStr = object.join("_");
+    var lexicalEntry = params.lexicon[utt];
+    return _.has(lexicalEntry, objStr) ? lexicalEntry[objStr] : -100; 
+  };
+
+  // Selects among objects in context using lexicon
+  var literalListener = cache(function(utt, context){
+    return Infer({method:'enumerate'},function(){
+      var object = uniformDraw(context);
+      factor(params.typWeight*meaning(utt,object)); 
+      return object;
+    });
+  });
+
+  // Selects among utterances given informativity in context and cost of production,
+  // marginalizing over possible noise in perception of context
+  // Timeit note: marginalizing over listener takes about 200-300ms per utt
+  var speaker = function(target, context) {
+    var possibleutts = getPossibleUtts(context);
+    var noisyContextPrior = getNoisyContextPrior(context);
+    return Infer({method:'enumerate'},function(){
+      var utt = uniformDraw(possibleutts);
+      var listener = Infer({method: 'enumerate'}, function() {
+      	var noisyContext = sample(noisyContextPrior);
+      	return sample(literalListener(utt, noisyContext));
+      });
+      factor(params.alpha * listener.score(target) - getUtteranceCost(utt));
+      return utt;
+    });
+  };
+
+  return speaker;
+};

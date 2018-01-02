@@ -9,14 +9,14 @@ var foreach = function(lst, fn) {
   foreach_(0);
 };
 
-var colors = ["yellow","orange","red","pink",
+var colors = ["yellow","orange","red","purple",
 	      "green","blue","brown","black"];
 var objects = [["blue","apple"], ["green","apple"], ["red","apple"],
 	       ["black","avocado"], ["green","avocado"], ["red","avocado"],
 	       ["blue","banana"], ["brown","banana"], ["yellow","banana"],
-	       ["brown","carrot"], ["orange","carrot"], ["pink","carrot"],
+	       ["brown","carrot"], ["orange","carrot"], ["purple","carrot"],
 	       ["green","pear"], ["orange","pear"], ["yellow","pear"],
-	       ["green","tomato"], ["pink","tomato"], ["red","tomato"],	       
+	       ["green","tomato"], ["purple","tomato"], ["red","tomato"],	       
 	       ["black","pepper"], ["green","pepper"], ["orange","pepper"],
 	       ["red","pepper"]];
 
@@ -46,7 +46,7 @@ var colorSim = {
     orange : .3,
     red : .09,
     black : .05,
-    pink : .05
+    purple : .05
   }, "black" : {
     yellow : 0.05,
     blue : .2,
@@ -55,9 +55,9 @@ var colorSim = {
     orange : .05,
     red : .1,
     black : 1,
-    pink : .05
+    purple : .05
   },
-  "pink" : {
+  "purple" : {
     yellow : 0.05,
     blue : .05,
     brown : .05,
@@ -65,7 +65,7 @@ var colorSim = {
     orange : .1,
     red : .3,
     black : .05,
-    pink : 1
+    purple : 1
   },
   "blue" : {
     yellow : .05,
@@ -75,7 +75,7 @@ var colorSim = {
     orange : .05,
     red : .05,
     black : .2,
-    pink : .05
+    purple : .05
   },
   "brown" : {
     yellow : .4,
@@ -85,7 +85,7 @@ var colorSim = {
     orange : .4,
     red : .1,
     black : .2,
-    pink : .05
+    purple : .05
   },
   "green" : {
     yellow : .5,
@@ -95,7 +95,7 @@ var colorSim = {
     orange : .05,
     red : .05,
     black : .05,
-    pink : .05
+    purple : .05
   },
   "orange" : {
     yellow : .3,
@@ -105,7 +105,7 @@ var colorSim = {
     orange : 1,
     red : .5,
     black : .05,
-    pink : .1
+    purple : .1
   },
   "red" : {
     yellow : .09,
@@ -115,7 +115,7 @@ var colorSim = {
     orange : .5,
     red : 1,
     black : .05,
-    pink : .3
+    purple : .3
   }
 };
 

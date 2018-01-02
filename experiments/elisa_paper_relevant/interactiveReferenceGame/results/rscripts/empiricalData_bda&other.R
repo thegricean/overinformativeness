@@ -188,7 +188,45 @@ m.1 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + (1|gameid) + 
 summary(m.1)
 ranef(m.1)
 
+m.2 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + (1|gameid) + (1|Item), data = centered, family="binomial")
+summary(m.2)
+ranef(m.2)
+
 anova(m.1,m)
+
+
+
+
+
+
+# Overinf only
+an = droplevels(production[production$UttforBDA != "other",])
+an = droplevels(an[an$Informative == 'overinformative',])
+nrow(an)
+
+centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+# ColorOrType is the same as ColorMentioned
+centered$ColorOrType = centered$ColorAndType | centered$Color
+
+m.1 = glmer(ColorOrType ~ cNormedTypicality + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+summary(m.1)
+ranef(m.1)
+
+# Inf only
+an = droplevels(production[production$UttforBDA != "other",])
+an = droplevels(an[an$Informative == 'informative',])
+nrow(an)
+
+centered = cbind(an,myCenter(an[,c("NormedTypicality","Informative","CC")]))
+# ColorOrType is the same as ColorMentioned
+centered$ColorOrType = centered$ColorAndType | centered$Color
+
+m.1 = glmer(ColorOrType ~ cNormedTypicality + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+summary(m.1)
+ranef(m.1)
+
+
+
 
 ###
 

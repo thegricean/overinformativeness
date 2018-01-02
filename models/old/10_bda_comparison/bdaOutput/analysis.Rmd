@@ -6,8 +6,9 @@ output: html_notebook
 # Set up environment
 
 ```{r}
-setwd("~/Repos/overinformativeness/models/10_bda_comparison/")
-setwd("~/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/")
+# setwd("~/Repos/overinformativeness/models/10_bda_comparison/")
+# setwd("~/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/")
+setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/10_bda_comparison")
 
 library(ggplot2)
 library(dplyr)
@@ -39,8 +40,15 @@ source("./bdaOutput/helpers.R")
 ### Load in model results
 
 ```{r}
-params <- read.csv("./empiricalCosts_noiseAddParams.csv", sep = ",", row.names = NULL)
-params %>% group_by(parameter, value) %>% summarize(prob = sum(MCMCprob))
+params <- read.csv("./bsc_finererParams.csv", sep = ",", row.names = NULL)
+# params2 <- read.csv("./bsc_nonoise_rough_2Params.csv", sep = ",", row.names = NULL)
+# params <- rbind(params1,params2)
+# params <- droplevels(params[params$prob != -Inf,])
+# nrow(params[params$parameter=='alpha' & params$value==12,])
+blub <- unique(params[,c('parameter','value')])
+blub
+#unique(params[params$parameter=='alpha',])
+params %>% group_by(parameter, value) %>% summarize(prob = sum(prob))
 ```
 
 look at MAP, credible intervals...
@@ -55,7 +63,10 @@ params %>%
 
 ```{r}
 numSamples = nrow(params)/length(levels(params$parameter))
-params.samples <- params[rep(row.names(params), exp(params$MCMCprob)*numSamples), 1:2]
+#numSamples = 10000
+params.samples <- params[rep(row.names(params), exp(params$prob)*numSamples), 1:2]
+
+unique(params.samples[params.samples$parameter=='alpha',])
 
 #pdf(file="../writing/2016/journal-manuscript/figures/AnswererParamPosteriors.pdf",
         #width = 6, height = 3)
@@ -68,12 +79,18 @@ answererParamPosteriors = ggplot(params.samples, aes(x=value))+
     geom_histogram(aes(y=..density..),
                    data=subset(params.samples, parameter == "typWeight"),
                    binwidth = .25, colour="black", fill="white") +
+  geom_histogram(aes(y=..density..),
+                   data=subset(params.samples, parameter == "lengthWeight"),
+                   binwidth = .25, colour="black", fill="white") +
     geom_histogram(aes(y=..density..),
-                 data =subset(params.samples, parameter == "cost_color" ),
+                 data =subset(params.samples, parameter == "colorCost" ),
                  binwidth = .5, colour="black", fill="white") +
     geom_histogram(aes(y=..density..),
-                 data=subset(params.samples, parameter == "cost_type"),
+                 data=subset(params.samples, parameter == "typeCost"),
                  binwidth = .25, colour="black", fill="white") +
+    # geom_histogram(aes(y=..density..),
+    #              data=subset(params.samples, parameter == "gramCost"),
+    #              binwidth = .25, colour="black", fill="white") +
 
     geom_density(aes(y=..density..),
                  data =subset(params.samples, parameter == "alpha" ),
@@ -81,11 +98,17 @@ answererParamPosteriors = ggplot(params.samples, aes(x=value))+
     geom_density(aes(y=..density..),
                  data=subset(params.samples, parameter == "typWeight"),
                  adjust = 5, alpha=.2, fill="#FF6666")+
-    geom_density(aes(y=..density..),
-                 data=subset(params.samples, parameter == "cost_color"),
+  geom_density(aes(y=..density..),
+                 data=subset(params.samples, parameter == "lengthWeight"),
                  adjust = 5, alpha=.2, fill="#FF6666")+
     geom_density(aes(y=..density..),
-                 data=subset(params.samples, parameter == "cost_type"),
+                 data=subset(params.samples, parameter == "colorCost"),
+                 adjust = 5, alpha=.2, fill="#FF6666")+
+    # geom_density(aes(y=..density..),
+    #              data=subset(params.samples, parameter == "gramCost"),
+    #              adjust = 5, alpha=.2, fill="#FF6666")+
+    geom_density(aes(y=..density..),
+                 data=subset(params.samples, parameter == "typeCost"),
                  adjust = 5, alpha=.2, fill="#FF6666")+
 
     ggtitle("Parameter Posteriors (500 iterations)") +
@@ -101,7 +124,7 @@ Looks like there's a super narrow range where the pragmatic model makes much muc
 # Import empirical data
 
 ```{r}
-empirical = read.csv("./bdaInput/bda_data.csv") %>%
+empirical = read.csv("/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/10_bda_comparison/bdaInput/bda_data.csv") %>%
   mutate(target_item = paste(t_color, t_type, sep = "_")) %>%
   mutate(color = ifelse(as.character(utterance) == as.character(t_color),1,0)) %>%
   mutate(type = ifelse(as.character(utterance) == as.character(t_type),1,0)) %>%
@@ -124,9 +147,9 @@ agr = as.data.frame(agr)
 # Import predictives data
 
 ```{r}
-colors <- c("yellow","orange","red","pink", "green","blue","brown","black")
+colors <- c("yellow","orange","red","purple", "green","blue","brown","black")
 types <- c('apple', 'avocado', 'banana', 'carrot', 'pear', 'tomato', 'pepper')
-predictive<-read.csv("./bdaOutput/empiricalCosts_noiseAddPredictives.csv") %>%
+predictive<-read.csv("/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/10_bda_comparison/bdaOutput/MAP_shinyPredictives.csv") %>%
   rowwise() %>%
   mutate(target_item = paste0(c(as.character(TargetColor), as.character(TargetType)), collapse = '_')) %>%
   filter(value %in% c(as.character(TargetColor), as.character(TargetType), target_item)) %>%
@@ -135,7 +158,7 @@ predictive<-read.csv("./bdaOutput/empiricalCosts_noiseAddPredictives.csv") %>%
                                    'color_type'))) %>%
   rename(conditionName = condition) %>%
   group_by(conditionName, Utterance, target_item) %>%
-  summarize(modelProbability=mean(prob)) 
+  summarize(modelProbability=mean(inferenceProb)) 
 ```
 
 # Plot predictives w/ empirical data
@@ -170,7 +193,7 @@ summary(lm(Probability ~ modelProbability, data = combined))
 Plot qualitative pattern
 
 ```{r}
-typ = read.csv(file="~/cogsci/projects/stanford/projects/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
+typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item,sep="_")
 combined$NounTypicality = typ[as.character(combined$target_item),]$MeanTypicality

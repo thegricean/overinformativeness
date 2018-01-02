@@ -62,16 +62,30 @@ var initializeModel = function(params) {
   var speaker = function(target, context) {
     var possibleutts = getPossibleUtts(context);
     var noisyContextPrior = getNoisyContextPrior(context);
+
+    // console.log("blub");
+    // console.log(Infer({method:'enumerate'},function(){
+    //   var utt = uniformDraw(possibleutts);
+    //   var listener = Infer({method: 'enumerate'}, function() {
+    //     var noisyContext = sample(noisyContextPrior);
+    //     return sample(literalListener(utt, noisyContext));
+    //   });
+    //   factor(params.alpha * listener.score(target) - getUtteranceCost(utt));
+    //   return utt;
+    // }));
+    
     return Infer({method:'enumerate'},function(){
       var utt = uniformDraw(possibleutts);
       var listener = Infer({method: 'enumerate'}, function() {
-	var noisyContext = sample(noisyContextPrior);
-	return sample(literalListener(utt, noisyContext));
+      	var noisyContext = sample(noisyContextPrior);
+      	return sample(literalListener(utt, noisyContext));
       });
       factor(params.alpha * listener.score(target) - getUtteranceCost(utt));
       return utt;
     });
   };
 
+  // console.log("speaker");
+  // console.log(speaker);
   return speaker;
 };
