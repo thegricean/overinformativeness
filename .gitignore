@@ -6,7 +6,7 @@ writing/2017/cogsci/distrib_learn.pdf
 *predictionsWithEmpiricalLength_ict.csv
 *Params.csv
 *Predictives.csv
-*/.RData
+*.RData
 */node_modules/
 *.bbl
 *.blg
