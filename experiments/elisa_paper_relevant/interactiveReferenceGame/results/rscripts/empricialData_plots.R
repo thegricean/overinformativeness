@@ -40,31 +40,31 @@ production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5,
 ###
 # step-by-step categorization
 #
-# basic categories/labels, no spelling errors
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|yellow|orange|blue|pink|red|grey", production$refExp, ignore.case = TRUE), T, F)
-production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$refExp, ignore.case = TRUE), T, F)
-# sorted utterances
-nrow(production[production$ItemMentioned | production$ColorMentioned,])
-#
-# identify utterances with negation,... to exclude them from ItemMentioned and ColorMentioned
-production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$refExp, ignore.case = TRUE), T, F)
-production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$refExp, ignore.case = TRUE), T, F)
-production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$refExp, ignore.case = TRUE), T, F)
-production$DescriptionMentioned = ifelse(grepl("like|round|sauce|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$refExp, ignore.case = TRUE), T, F)
-production$Other = ifelse(production$CatMentioned | production$NegationMentioned | production$ColorModifierMentioned | production$DescriptionMentioned, T, F)
-# utterances that have an identified color/type and no negation,...
-nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
-# remaining trials without "other"
-nrow(production[!production$Other,])
-#
-# suffixes, abbreviations, non-precoded labels
-production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|violet|yellow|gold|orange|silver|blue|blu|pink|dark|purp|yel|gree|red|grey|neon|blac|lavender|pinkish|gray", production$refExp, ignore.case = TRUE), T, F)
-production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado|jalapeno|guacamole", production$refExp, ignore.case = TRUE), T, F)
-# utterances that have an identified color/type and no negation,...
-nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
-#
-# unsorted utterances
-# nrow(production[!production$ColorMentioned & !production$ItemMentioned & !production$Other,])
+# # basic categories/labels, no spelling errors
+# production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|yellow|orange|blue|pink|red|grey", production$refExp, ignore.case = TRUE), T, F)
+# production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$refExp, ignore.case = TRUE), T, F)
+# # sorted utterances
+# nrow(production[production$ItemMentioned | production$ColorMentioned,])
+# #
+# # identify utterances with negation,... to exclude them from ItemMentioned and ColorMentioned
+# production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$refExp, ignore.case = TRUE), T, F)
+# production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$refExp, ignore.case = TRUE), T, F)
+# production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$refExp, ignore.case = TRUE), T, F)
+# production$DescriptionMentioned = ifelse(grepl("like|round|sauce|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$refExp, ignore.case = TRUE), T, F)
+# production$Other = ifelse(production$CatMentioned | production$NegationMentioned | production$ColorModifierMentioned | production$DescriptionMentioned, T, F)
+# # utterances that have an identified color/type and no negation,...
+# nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
+# # remaining trials without "other"
+# nrow(production[!production$Other,])
+# #
+# # suffixes, abbreviations, non-precoded labels
+# production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|violet|yellow|gold|orange|silver|blue|blu|pink|dark|purp|yel|gree|red|grey|neon|blac|lavender|pinkish|gray", production$refExp, ignore.case = TRUE), T, F)
+# production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado|jalapeno|guacamole", production$refExp, ignore.case = TRUE), T, F)
+# # utterances that have an identified color/type and no negation,...
+# nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
+# #
+# # unsorted utterances
+# # nrow(production[!production$ColorMentioned & !production$ItemMentioned & !production$Other,])
 ###
 
 # clean responses
@@ -280,7 +280,7 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=gameid,linetype=binContext,g
   guides(linetype=guide_legend(title="Context"))
 ggsave(here("graphs","empiricalData","bysubject_variability.png"),width=12,height=6)
 
-# plot utterance choice proportions by typicality thick for poster
+# plot utterance choice proportions by typicality thick for poster/thesis
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
   gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
