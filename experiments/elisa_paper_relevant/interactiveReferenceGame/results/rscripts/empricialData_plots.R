@@ -3,32 +3,31 @@ library(ggplot2)
 library(bootstrap)
 library(lme4)
 library(tidyr)
+library(here)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
-source("rscripts/helpers.r")
+# setwd("/Users/elisakreiss/Documents/Business/Projects/Overinformativeness/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
+source(here("rscripts","helpers.r"))
 
-d = read.table(file="data/results.csv",sep="\t", header=T, quote="")
+d = read.table(file=here("data","results.csv"),sep="\t", header=T, quote="")
 d[d$listenerMessages != "",c("listenerMessages","speakerMessages")]
 # exclude NA referential expressions 
-d = d[!(is.na(d$refExp)),]
-# 61 pairs
+d = droplevels(d[!(is.na(d$refExp)),])
+# 59 pairs
 unique(d$gameid)
 
-# first figure out how often target was chosen
-table(d$context,d$targetStatusClickedObj)
-# exclude trials with distractor choices
-d = droplevels(d[d$targetStatusClickedObj == "target",])
-# 59 pairs
 # exclude participants that were not paid because they didn't finish it
 d = droplevels(d[!(d$gameid == "6444-b" | d$gameid == "4924-4"), ])
-# 57 pairs - weirdly also 57 here when leave out line 21
 # exclude tabu players
 d = droplevels(d[!(d$gameid == "1544-1" | d$gameid == "4885-8" | d$gameid == "8360-7" | d$gameid == "4624-5" | d$gameid == "5738-a" | d$gameid == "8931-5" | d$gameid == "8116-a" | d$gameid == "6180-c" | d$gameid == "1638-6" | d$gameid == "6836-b"), ])
 # 47 pairs
+# figure out how often target was chosen
+table(d$context,d$targetStatusClickedObj)
+# exclude trials with distractor choices
+d = droplevels(d[d$targetStatusClickedObj == "target",])
 
 # get meantypicalities from previous study
-typ = read.csv(file="/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_comp_object/results/data/meantypicalities.csv")
+typ = read.csv(file=here("..", "..", "norming_comp_object", "results", "data", "meantypicalities.csv"))
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 
@@ -38,6 +37,36 @@ production$NormedTypicality = typ[paste(production$clickedColor,production$click
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 
 # utterance analysis / categorization
+###
+# step-by-step categorization
+#
+# # basic categories/labels, no spelling errors
+# production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|yellow|orange|blue|pink|red|grey", production$refExp, ignore.case = TRUE), T, F)
+# production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado", production$refExp, ignore.case = TRUE), T, F)
+# # sorted utterances
+# nrow(production[production$ItemMentioned | production$ColorMentioned,])
+# #
+# # identify utterances with negation,... to exclude them from ItemMentioned and ColorMentioned
+# production$CatMentioned = ifelse(grepl("fruit|fru7t|veg|veggi|veggie|vegetable", production$refExp, ignore.case = TRUE), T, F)
+# production$NegationMentioned = ifelse(grepl("not|isnt|arent|isn't|aren't|non", production$refExp, ignore.case = TRUE), T, F)
+# production$ColorModifierMentioned = ifelse(grepl("normal|abnormal|healthy|dying|natural|regular|funky|rotten|noraml|norm", production$refExp, ignore.case = TRUE), T, F)
+# production$DescriptionMentioned = ifelse(grepl("like|round|sauce|long|rough|grass|doc|bunnies|bunny|same|stem|inside|ground|with|smile|monkey|sphere", production$refExp, ignore.case = TRUE), T, F)
+# production$Other = ifelse(production$CatMentioned | production$NegationMentioned | production$ColorModifierMentioned | production$DescriptionMentioned, T, F)
+# # utterances that have an identified color/type and no negation,...
+# nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
+# # remaining trials without "other"
+# nrow(production[!production$Other,])
+# #
+# # suffixes, abbreviations, non-precoded labels
+# production$ColorMentioned = ifelse(grepl("green|purple|white|black|brown|violet|yellow|gold|orange|silver|blue|blu|pink|dark|purp|yel|gree|red|grey|neon|blac|lavender|pinkish|gray", production$refExp, ignore.case = TRUE), T, F)
+# production$ItemMentioned = ifelse(grepl("apple|banana|carrot|tomato|pear|pepper|avocado|jalapeno|guacamole", production$refExp, ignore.case = TRUE), T, F)
+# # utterances that have an identified color/type and no negation,...
+# nrow(production[!production$Other & (production$ItemMentioned | production$ColorMentioned),])
+# #
+# # unsorted utterances
+# # nrow(production[!production$ColorMentioned & !production$ItemMentioned & !production$Other,])
+###
+
 # clean responses
 production$CleanedResponse = gsub("(^| )([bB]ananna|[Bb]annna|[Bb]anna|[Bb]annana|[Bb]anan|[Bb]ananaa|ban|bana|banada|nana|bannan|babanana|B)($| )"," banana",as.character(production$refExp))
 production$CleanedResponse = gsub("(^| )([Cc]arot|[Cc]arrrot|[Cc]arrott|car|carrpt|carrote|carr)($| )"," carrot",as.character(production$CleanedResponse))
@@ -66,7 +95,7 @@ production$Color = ifelse(production$UtteranceType == "color",1,0)
 production$ColorAndType = ifelse(production$UtteranceType == "color_and_type",1,0)
 production$Type = ifelse(production$UtteranceType == "type",1,0)
 # we don't specify 'other' here again because utterances that are not Cat,Neg,ColorMod,Description are "Hi" or "Hello" or clarification questions such as "do you know if i can just tell u what the picture is or do i have to tell u it's color?" and therefore non-interpretable
-# those are 6 utterances (there are still though in UtteranceType == "OTHER")
+# those are 6 utterances (they are still though in UtteranceType == "OTHER")
 # production$Other = ifelse(production$UtteranceType == "OTHER",1,0)
 production$Item = production$clickedType
 production$Half = ifelse(production$roundNum < 21,1,2)
@@ -83,7 +112,7 @@ head(agr)
 ggplot(agr, aes(x=Feature)) +
   stat_count() +
   facet_wrap(~context)
-ggsave("graphs/empiricalData/mentioned_features_by_context.png",width=8,height=3.5)
+ggsave(here("graphs","empiricalData","mentioned_features_by_context.png"),width=8,height=3.5)
 
 
 # plot utterance choice proportions with error bars
@@ -113,7 +142,7 @@ ggplot(agr, aes(x=Utterance,y=Probability)) +
   theme(strip.text.x=element_text(size=12,colour="#757575")) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-ggsave("graphs/empiricalData/mentioned_features_by_context_other.png",width=7,height=7)
+ggsave(here("graphs","empiricalData","mentioned_features_by_context_other.png"),width=7,height=7)
 
 
 # plot utterance choice proportions by binary typicality
@@ -148,7 +177,7 @@ ggplot(agr, aes(x=binaryTypicality,y=Probability,color=Utterance,group=Utterance
   theme(legend.text=element_text(size=11,colour="#757575")) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-ggsave("graphs/empiricalData/utterance_by_binarytyp.png",width=10,height=6.5)
+ggsave(here("graphs","empiricalData","utterance_by_binarytyp.png"),width=10,height=6.5)
 
 
 # plot utterance choice proportions by typicality
@@ -183,7 +212,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(legend.text=element_text(size=11,colour="#757575")) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-ggsave("graphs/empiricalData/utterance_by_conttyp.png",width=12,height=9)
+ggsave(here("graphs","empiricalData","utterance_by_conttyp.png"),width=12,height=9)
 
 # plot typical vs atypical by item
 # value for typical/atypical separation in mean of all midtypical object ratings
@@ -215,7 +244,7 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=clickedType,linetype=binCont
   theme(legend.text=element_text(size=20,colour="#757575")) +
   guides(color=guide_legend(title="Object")) +
   guides(linetype=guide_legend(title="Context"))
-ggsave("graphs/empiricalData/byitem_variability.png",width=12,height=6)
+ggsave(here("graphs","empiricalData","byitem_variability.png"),width=12,height=6)
 
 
 # plot typical vs atypical by subject
@@ -249,9 +278,9 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=gameid,linetype=binContext,g
   theme(legend.text=element_text(size=20,colour="#757575")) +
   guides(color=guide_legend(title="Object")) +
   guides(linetype=guide_legend(title="Context"))
-ggsave("graphs/empiricalData/bysubject_variability.png",width=12,height=6)
+ggsave(here("graphs","empiricalData","bysubject_variability.png"),width=12,height=6)
 
-# plot utterance choice proportions by typicality thick for poster
+# plot utterance choice proportions by typicality thick for poster/thesis
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
   gather(Utterance,Mentioned,-context,-NormedTypicality) %>%
@@ -293,8 +322,8 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   labs(color = "Utterance") +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-# ggsave("graphs/empiricalData/utterance_by_conttyp_poster.png",width=12,height=9)
-ggsave("../../../../../../Uni/BachelorThesis/graphs/empiricalProportions.png",width=12,height=7)
+ggsave(here("graphs","empiricalData","utterance_by_conttyp_poster.png"),width=12,height=9)
+# ggsave("../../../../../../Uni/BachelorThesis/graphs/empiricalProportions.png",width=12,height=7)
 
 
 # plot utterance choice proportions by typicality for color/non-color
@@ -330,4 +359,4 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(legend.text=element_text(size=20,colour="#757575")) +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-ggsave("graphs/empiricalData/utterance_by_conttyp_colorNoncolor.png",width=12,height=9)
+ggsave(here("graphs","empiricalData","utterance_by_conttyp_colorNoncolor.png"),width=12,height=9)

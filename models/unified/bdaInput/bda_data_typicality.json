@@ -85,19 +85,19 @@
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -115,7 +115,7 @@
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange"
   },
@@ -173,7 +173,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -191,21 +191,21 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -225,7 +225,7 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green"
   },
@@ -233,7 +233,7 @@
     "condition": "overinformative",
     "t_color": "orange",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -295,7 +295,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -335,19 +335,19 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "apple"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -525,7 +525,7 @@
     "t_item": "pear",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -553,7 +553,7 @@
     "condition": "overinformative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -565,17 +565,17 @@
     "t_item": "apple",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -583,7 +583,7 @@
     "condition": "informative",
     "t_color": "brown",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -601,11 +601,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -645,19 +645,19 @@
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -691,7 +691,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "avocado",
@@ -725,7 +725,7 @@
     "t_item": "apple",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -735,7 +735,7 @@
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -785,7 +785,7 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "banana"
   },
@@ -805,7 +805,7 @@
     "t_item": "pear",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -835,17 +835,17 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -905,7 +905,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -915,7 +915,7 @@
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown"
   },
@@ -931,11 +931,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -945,7 +945,7 @@
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -961,13 +961,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "brown",
     "t2_item": "banana",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -995,7 +995,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -1103,7 +1103,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -1161,13 +1161,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -1185,7 +1185,7 @@
     "t_item": "pear",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -1245,7 +1245,7 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red"
   },
@@ -1255,7 +1255,7 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue"
   },
@@ -1561,23 +1561,23 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -1585,7 +1585,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow"
   },
@@ -1595,19 +1595,19 @@
     "t_item": "apple",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "apple"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -1615,19 +1615,19 @@
     "t_item": "avocado",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -1795,7 +1795,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange_pear"
   },
@@ -1851,13 +1851,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -1911,13 +1911,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "pear",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -1931,13 +1931,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -2045,7 +2045,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -2161,13 +2161,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -2225,7 +2225,7 @@
     "t_item": "pepper",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
@@ -2301,13 +2301,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -2325,19 +2325,19 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -2351,7 +2351,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "banana",
@@ -2443,9 +2443,9 @@
     "condition": "overinformative",
     "t_color": "green",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -2455,7 +2455,7 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -2473,7 +2473,7 @@
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "tomato",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -2525,7 +2525,7 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_avocado"
   },
@@ -2543,7 +2543,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -2631,13 +2631,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -2665,7 +2665,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "tomato"
   },
@@ -2683,7 +2683,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -2711,23 +2711,23 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -2835,7 +2835,7 @@
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -2851,13 +2851,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "pepper",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -2891,13 +2891,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -2985,7 +2985,7 @@
     "t_item": "banana",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "yellow_banana"
   },
@@ -3071,13 +3071,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -3105,19 +3105,19 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -3300,14 +3300,24 @@
     "response": "black_avocado"
   },
   {
+    "condition": "informative-cc",
+    "t_color": "black",
+    "t_item": "avocado",
+    "d1_color": "red",
+    "d1_item": "avocado",
+    "d2_color": "black",
+    "t2_item": "pepper",
+    "response": "black"
+  },
+  {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -3335,7 +3345,7 @@
     "t_item": "apple",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -3371,11 +3381,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -3393,7 +3403,7 @@
     "condition": "overinformative-cc",
     "t_color": "green",
     "t_item": "apple",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -3495,7 +3505,7 @@
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -3513,7 +3523,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -3525,7 +3535,7 @@
     "t_item": "pepper",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pepper"
   },
@@ -3631,13 +3641,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -3645,7 +3655,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -3731,11 +3741,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -3765,19 +3775,19 @@
     "t_item": "apple",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_apple"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -3831,13 +3841,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "pear",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -3903,7 +3913,7 @@
     "condition": "informative",
     "t_color": "black",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -3921,19 +3931,19 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "pepper",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
     "t_color": "brown",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -4031,13 +4041,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "green",
     "t2_item": "avocado",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
@@ -4055,7 +4065,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -4295,7 +4305,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -4311,23 +4321,23 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -4345,7 +4355,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_tomato"
   },
@@ -4381,13 +4391,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
     "d2_color": "blue",
     "t2_item": "banana",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -4411,13 +4421,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -4475,7 +4485,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -4543,7 +4553,7 @@
     "condition": "overinformative",
     "t_color": "red",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
@@ -4581,13 +4591,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -4635,7 +4645,7 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -4661,13 +4671,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -4705,7 +4715,7 @@
     "t_item": "banana",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -4795,7 +4805,7 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_pepper"
   },
@@ -4825,7 +4835,7 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_pepper"
   },
@@ -4841,13 +4851,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "blue",
     "t2_item": "banana",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -4911,11 +4921,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -4931,7 +4941,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
@@ -4975,7 +4985,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -5033,7 +5043,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -5061,13 +5071,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -5115,7 +5125,7 @@
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -5251,13 +5261,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -5271,13 +5281,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -5285,7 +5295,7 @@
     "t_item": "banana",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -5325,7 +5335,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -5361,13 +5371,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -5403,7 +5413,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -5493,7 +5503,7 @@
     "condition": "overinformative",
     "t_color": "green",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -5521,11 +5531,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -5545,19 +5555,19 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -5583,7 +5593,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -5611,13 +5621,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -5635,7 +5645,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "avocado"
   },
@@ -5661,13 +5671,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -5695,7 +5705,7 @@
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange_carrot"
   },
@@ -5761,13 +5771,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
     "d2_color": "red",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -5805,7 +5815,7 @@
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -5845,7 +5855,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -5923,7 +5933,7 @@
     "condition": "overinformative-cc",
     "t_color": "orange",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -5963,7 +5973,7 @@
     "condition": "overinformative-cc",
     "t_color": "green",
     "t_item": "apple",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -5975,7 +5985,7 @@
     "t_item": "pepper",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange"
   },
@@ -5995,19 +6005,19 @@
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "pepper",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -6025,7 +6035,7 @@
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -6121,13 +6131,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -6135,7 +6145,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -6181,13 +6191,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -6203,7 +6213,7 @@
     "condition": "informative",
     "t_color": "green",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -6211,7 +6221,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
@@ -6305,7 +6315,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -6420,6 +6430,16 @@
     "response": "black_avocado"
   },
   {
+    "condition": "overinformative-cc",
+    "t_color": "black",
+    "t_item": "avocado",
+    "d1_color": "black",
+    "d1_item": "pepper",
+    "d2_color": "orange",
+    "t2_item": "pepper",
+    "response": "black"
+  },
+  {
     "condition": "overinformative",
     "t_color": "blue",
     "t_item": "banana",
@@ -6525,7 +6545,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -6565,7 +6585,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -6591,7 +6611,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
@@ -6625,19 +6645,19 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "brown"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -6671,23 +6691,23 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "banana",
     "d2_color": "orange",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
@@ -6701,13 +6721,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -6735,7 +6755,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -6775,7 +6795,7 @@
     "t_item": "apple",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_apple"
   },
@@ -6811,13 +6831,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -6835,7 +6855,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "avocado"
   },
@@ -6915,7 +6935,7 @@
     "t_item": "banana",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow_banana"
   },
@@ -6935,7 +6955,7 @@
     "t_item": "apple",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "blue_apple"
   },
@@ -6965,7 +6985,7 @@
     "t_item": "pepper",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
@@ -7041,7 +7061,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
@@ -7063,7 +7083,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
@@ -7081,19 +7101,19 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
     "t_color": "green",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -7155,7 +7175,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -7177,17 +7197,17 @@
     "d1_item": "pear",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "orange_pepper"
+    "response": "orange"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -7265,19 +7285,19 @@
     "t_item": "pear",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -7285,7 +7305,7 @@
     "t_item": "apple",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -7395,19 +7415,19 @@
     "t_item": "banana",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -7433,7 +7453,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -7481,13 +7501,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -7575,7 +7595,7 @@
     "t_item": "banana",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "banana"
   },
@@ -7595,7 +7615,7 @@
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -7605,7 +7625,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -7671,13 +7691,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -7713,7 +7733,7 @@
     "condition": "overinformative",
     "t_color": "yellow",
     "t_item": "banana",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -7753,7 +7773,7 @@
     "condition": "overinformative-cc",
     "t_color": "green",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pepper",
@@ -7765,7 +7785,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -7815,7 +7835,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -7835,7 +7855,7 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "blue_apple"
   },
@@ -7865,29 +7885,29 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange_carrot"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -7913,7 +7933,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -7935,29 +7955,29 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "red",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -7981,11 +8001,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -7995,7 +8015,7 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -8091,7 +8111,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "pear",
@@ -8115,7 +8135,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -8163,7 +8183,7 @@
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "apple",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -8223,7 +8243,7 @@
     "condition": "overinformative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
@@ -8271,11 +8291,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -8361,13 +8381,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -8393,7 +8413,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -8411,13 +8431,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -8425,7 +8445,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -8461,13 +8481,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -8485,7 +8505,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green"
   },
@@ -8565,7 +8585,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -8691,13 +8711,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -8735,7 +8755,7 @@
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -8755,7 +8775,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "avocado"
   },
@@ -8795,7 +8815,7 @@
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -8901,13 +8921,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -8935,7 +8955,7 @@
     "t_item": "apple",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue"
   },
@@ -9011,13 +9031,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -9031,11 +9051,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -9081,13 +9101,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
@@ -9121,13 +9141,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -9195,19 +9215,19 @@
     "t_item": "pepper",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -9221,13 +9241,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -9263,7 +9283,7 @@
     "condition": "overinformative",
     "t_color": "orange",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -9275,7 +9295,7 @@
     "t_item": "banana",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue"
   },
@@ -9385,7 +9405,7 @@
     "t_item": "apple",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -9405,7 +9425,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -9443,7 +9463,7 @@
     "condition": "overinformative-cc",
     "t_color": "black",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
@@ -9493,7 +9513,7 @@
     "condition": "overinformative",
     "t_color": "green",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
@@ -9501,13 +9521,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -9541,13 +9561,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -9591,9 +9611,9 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "tomato",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -9605,7 +9625,7 @@
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange"
   },
@@ -9621,9 +9641,9 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
@@ -9635,7 +9655,7 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -9645,7 +9665,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -9665,7 +9685,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange_pear"
   },
@@ -9755,7 +9775,7 @@
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -9815,7 +9835,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -9823,7 +9843,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
@@ -9855,7 +9875,7 @@
     "t_item": "apple",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "apple"
   },
@@ -9881,13 +9901,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pepper",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -9935,7 +9955,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green"
   },
@@ -9951,29 +9971,29 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
     "t_color": "red",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -10015,7 +10035,7 @@
     "t_item": "banana",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow"
   },
@@ -10043,7 +10063,7 @@
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -10083,7 +10103,7 @@
     "condition": "informative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -10113,7 +10133,7 @@
     "condition": "overinformative-cc",
     "t_color": "black",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
@@ -10123,7 +10143,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -10141,13 +10161,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -10191,23 +10211,23 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -10235,7 +10255,7 @@
     "t_item": "pear",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -10303,7 +10323,7 @@
     "condition": "informative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -10351,13 +10371,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -10395,7 +10415,7 @@
     "t_item": "apple",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "apple"
   },
@@ -10493,7 +10513,7 @@
     "condition": "overinformative",
     "t_color": "yellow",
     "t_item": "banana",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "pepper",
@@ -10561,13 +10581,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -10611,13 +10631,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -10665,7 +10685,7 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -10691,11 +10711,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -10751,13 +10771,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "pear",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -10775,7 +10795,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -10875,7 +10895,7 @@
     "t_item": "apple",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "blue"
   },
@@ -10885,7 +10905,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -11001,13 +11021,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -11071,13 +11091,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -11093,7 +11113,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -11101,19 +11121,19 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
     "t_color": "orange",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -11143,7 +11163,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -11163,7 +11183,7 @@
     "condition": "informative",
     "t_color": "brown",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -11175,7 +11195,7 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "avocado"
   },
@@ -11195,7 +11215,7 @@
     "t_item": "banana",
     "d1_color": "yellow",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -11205,7 +11225,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -11363,7 +11383,7 @@
     "condition": "informative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -11371,13 +11391,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -11401,13 +11421,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
     "d2_color": "yellow",
     "t2_item": "banana",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
@@ -11425,7 +11445,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange"
   },
@@ -11465,7 +11485,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black"
   },
@@ -11485,7 +11505,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
@@ -11503,7 +11523,7 @@
     "condition": "overinformative-cc",
     "t_color": "green",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pepper",
@@ -11555,7 +11575,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -11621,9 +11641,9 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -11651,13 +11671,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -11675,7 +11695,7 @@
     "t_item": "banana",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue_banana"
   },
@@ -11695,7 +11715,7 @@
     "t_item": "pepper",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
@@ -11715,7 +11735,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -11745,7 +11765,7 @@
     "t_item": "pepper",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_pepper"
   },
@@ -11765,7 +11785,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "black"
   },
@@ -11775,7 +11795,7 @@
     "t_item": "pepper",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "black"
   },
@@ -11853,7 +11873,7 @@
     "condition": "informative",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -11871,13 +11891,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -11915,7 +11935,7 @@
     "t_item": "banana",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "banana"
   },
@@ -11931,13 +11951,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
     "d2_color": "yellow",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -12015,7 +12035,7 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -12035,7 +12055,7 @@
     "t_item": "pear",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow"
   },
@@ -12075,7 +12095,7 @@
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green"
   },
@@ -12091,19 +12111,19 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "pear",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -12225,7 +12245,7 @@
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -12235,19 +12255,19 @@
     "t_item": "banana",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue_banana"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -12283,7 +12303,7 @@
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -12321,13 +12341,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -12361,13 +12381,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
@@ -12441,13 +12461,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -12455,7 +12475,7 @@
     "t_item": "apple",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "blue_apple"
   },
@@ -12511,13 +12531,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -12531,13 +12551,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -12545,7 +12565,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow_pear"
   },
@@ -12633,7 +12653,7 @@
     "condition": "informative",
     "t_color": "brown",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -12641,13 +12661,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -12695,7 +12715,7 @@
     "t_item": "apple",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_apple"
   },
@@ -12765,19 +12785,19 @@
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -12855,7 +12875,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_avocado"
   },
@@ -12875,7 +12895,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -12885,7 +12905,7 @@
     "t_item": "apple",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_apple"
   },
@@ -12925,7 +12945,7 @@
     "t_item": "pear",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange_pear"
   },
@@ -13041,13 +13061,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -13055,7 +13075,7 @@
     "t_item": "banana",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "brown_banana"
   },
@@ -13085,7 +13105,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -13165,17 +13185,17 @@
     "t_item": "banana",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "banana"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -13195,19 +13215,19 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_avocado"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -13285,7 +13305,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -13323,7 +13343,7 @@
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "pepper",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "tomato",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -13341,11 +13361,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -13421,13 +13441,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -13525,7 +13545,7 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_avocado"
   },
@@ -13535,7 +13555,7 @@
     "t_item": "pepper",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pepper"
   },
@@ -13585,7 +13605,7 @@
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -13601,13 +13621,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -13615,7 +13635,7 @@
     "t_item": "pepper",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
@@ -13641,13 +13661,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -13725,7 +13745,7 @@
     "t_item": "pepper",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_pepper"
   },
@@ -13735,19 +13755,19 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -13801,13 +13821,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -13833,7 +13853,7 @@
     "condition": "overinformative",
     "t_color": "brown",
     "t_item": "banana",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "tomato",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -13871,13 +13891,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -13905,7 +13925,7 @@
     "t_item": "pear",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -13931,13 +13951,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "orange",
     "t2_item": "pear",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -13945,7 +13965,7 @@
     "t_item": "pepper",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_pepper"
   },
@@ -14035,7 +14055,7 @@
     "t_item": "pepper",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_pepper"
   },
@@ -14043,7 +14063,7 @@
     "condition": "overinformative",
     "t_color": "red",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "pear",
@@ -14065,7 +14085,7 @@
     "t_item": "pear",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_pear"
   },
@@ -14105,13 +14125,13 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "pepper",
@@ -14155,7 +14175,7 @@
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -14175,7 +14195,7 @@
     "t_item": "banana",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "banana"
   },
@@ -14195,19 +14215,19 @@
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative",
@@ -14243,7 +14263,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -14261,13 +14281,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -14311,11 +14331,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "tomato",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -14415,7 +14435,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow_pear"
   },
@@ -14461,23 +14481,23 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -14485,7 +14505,7 @@
     "t_item": "pear",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "orange_pear"
   },
@@ -14541,19 +14561,19 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pear",
     "d2_color": "yellow",
     "t2_item": "pear",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
     "t_color": "red",
     "t_item": "apple",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -14591,13 +14611,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -14645,7 +14665,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "yellow_pear"
   },
@@ -14713,7 +14733,7 @@
     "condition": "informative-cc",
     "t_color": "orange",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
@@ -14755,7 +14775,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -14785,7 +14805,7 @@
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -14885,19 +14905,19 @@
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "black",
     "t2_item": "pepper",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -14915,7 +14935,7 @@
     "t_item": "pear",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "pear"
   },
@@ -14925,7 +14945,7 @@
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "carrot"
   },
@@ -14955,7 +14975,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -14981,13 +15001,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -15005,7 +15025,7 @@
     "t_item": "avocado",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black"
   },
@@ -15013,7 +15033,7 @@
     "condition": "overinformative",
     "t_color": "blue",
     "t_item": "apple",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "yellow",
     "t2_item": "pear",
@@ -15051,13 +15071,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -15115,7 +15135,7 @@
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -15145,7 +15165,7 @@
     "t_item": "apple",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue_apple"
   },
@@ -15161,7 +15181,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "green",
     "d1_item": "apple",
@@ -15185,7 +15205,7 @@
     "t_item": "apple",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green"
   },
@@ -15335,7 +15355,7 @@
     "t_item": "avocado",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black_avocado"
   },
@@ -15371,23 +15391,23 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "pepper",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -15445,7 +15465,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -15455,7 +15475,7 @@
     "t_item": "pepper",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_pepper"
   },
@@ -15493,7 +15513,7 @@
     "condition": "informative",
     "t_color": "brown",
     "t_item": "carrot",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
@@ -15601,13 +15621,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -15621,13 +15641,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -15661,13 +15681,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "orange",
     "d1_item": "pepper",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -15741,13 +15761,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "overinformative",
@@ -15791,13 +15811,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pepper",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -15825,7 +15845,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -15865,7 +15885,7 @@
     "t_item": "pepper",
     "d1_color": "yellow",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pepper"
   },
@@ -15935,7 +15955,7 @@
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -16035,7 +16055,7 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_pepper"
   },
@@ -16101,13 +16121,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -16155,7 +16175,7 @@
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "orange_carrot"
   },
@@ -16215,19 +16235,19 @@
     "t_item": "avocado",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_avocado"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -16241,13 +16261,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative",
@@ -16373,7 +16393,7 @@
     "condition": "overinformative",
     "t_color": "brown",
     "t_item": "banana",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "tomato",
     "d2_color": "red",
     "t2_item": "tomato",
@@ -16435,19 +16455,19 @@
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative-cc",
@@ -16461,23 +16481,23 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -16541,13 +16561,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "yellow",
     "d1_item": "banana",
     "d2_color": "brown",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
@@ -16675,7 +16695,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -16691,13 +16711,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative-cc",
@@ -16725,7 +16745,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "red_avocado"
   },
@@ -16755,7 +16775,7 @@
     "t_item": "avocado",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "avocado"
   },
@@ -16781,13 +16801,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "blue",
     "d1_item": "apple",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -16795,13 +16815,13 @@
     "t_item": "banana",
     "d1_color": "blue",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "brown_banana"
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
@@ -16821,13 +16841,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -16875,7 +16895,7 @@
     "t_item": "banana",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "banana"
   },
@@ -16953,7 +16973,7 @@
     "condition": "overinformative",
     "t_color": "yellow",
     "t_item": "pear",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "green",
     "t2_item": "tomato",
@@ -16985,7 +17005,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -17061,23 +17081,23 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -17205,7 +17225,7 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_avocado"
   },
@@ -17275,7 +17295,7 @@
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_tomato"
   },
@@ -17315,7 +17335,7 @@
     "t_item": "pear",
     "d1_color": "green",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -17341,23 +17361,23 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "black",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -17415,7 +17435,7 @@
     "t_item": "carrot",
     "d1_color": "red",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -17505,19 +17525,19 @@
     "t_item": "avocado",
     "d1_color": "red",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "green_avocado"
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -17531,13 +17551,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
-    "response": "pink_carrot"
+    "response": "purple_carrot"
   },
   {
     "condition": "informative",
@@ -17551,13 +17571,13 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "orange",
     "t2_item": "pear",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -17671,13 +17691,13 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "red",
     "d1_item": "avocado",
     "d2_color": "yellow",
     "t2_item": "banana",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "informative",
@@ -17685,7 +17705,7 @@
     "t_item": "tomato",
     "d1_color": "black",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -17715,7 +17735,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -17745,7 +17765,7 @@
     "t_item": "apple",
     "d1_color": "black",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_apple"
   },
@@ -17795,7 +17815,7 @@
     "t_item": "tomato",
     "d1_color": "yellow",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_tomato"
   },
@@ -17855,7 +17875,7 @@
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -17871,11 +17891,11 @@
   },
   {
     "condition": "overinformative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "tomato"
   },
@@ -17905,7 +17925,7 @@
     "t_item": "pepper",
     "d1_color": "blue",
     "d1_item": "apple",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "red_pepper"
   },
@@ -17941,13 +17961,13 @@
   },
   {
     "condition": "informative-cc",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "tomato",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",
-    "response": "pink_tomato"
+    "response": "purple_tomato"
   },
   {
     "condition": "overinformative",
@@ -17995,7 +18015,7 @@
     "t_item": "pepper",
     "d1_color": "orange",
     "d1_item": "pepper",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "black"
   },
@@ -18005,7 +18025,7 @@
     "t_item": "banana",
     "d1_color": "yellow",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "blue"
   },
@@ -18065,7 +18085,7 @@
     "t_item": "pear",
     "d1_color": "orange",
     "d1_item": "carrot",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "pear"
   },
@@ -18151,7 +18171,7 @@
   },
   {
     "condition": "overinformative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
@@ -18201,13 +18221,13 @@
   },
   {
     "condition": "informative",
-    "t_color": "pink",
+    "t_color": "purple",
     "t_item": "carrot",
     "d1_color": "green",
     "d1_item": "avocado",
     "d2_color": "orange",
     "t2_item": "carrot",
-    "response": "pink"
+    "response": "purple"
   },
   {
     "condition": "informative-cc",
@@ -18225,7 +18245,7 @@
     "t_item": "carrot",
     "d1_color": "brown",
     "d1_item": "banana",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "carrot",
     "response": "brown_carrot"
   },
@@ -18235,7 +18255,7 @@
     "t_item": "tomato",
     "d1_color": "orange",
     "d1_item": "pear",
-    "d2_color": "pink",
+    "d2_color": "purple",
     "t2_item": "tomato",
     "response": "green_tomato"
   },
@@ -18263,7 +18283,7 @@
     "condition": "overinformative",
     "t_color": "green",
     "t_item": "avocado",
-    "d1_color": "pink",
+    "d1_color": "purple",
     "d1_item": "carrot",
     "d2_color": "red",
     "t2_item": "tomato",

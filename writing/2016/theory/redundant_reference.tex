@@ -464,7 +464,7 @@ On each trial participants saw an array of objects. The array contained the same
 \caption{Listener's perspective.}
 \label{fig:listenerpersp}
 \end{subfigure}
-\caption{Example displays from the  (a) speaker's and the  (b)  listener's perspective on a \emph{size-sufficient 4-2} trial.}
+\caption{Example displays from the  (a) speaker's and the (b) listener's perspective on a \emph{size-sufficient 4-2} trial.}
 \label{fig:speakerlistenerperspective}
 \end{figure}
 
@@ -561,11 +561,11 @@ In \sectionref{sec:rsaevaluationbasicscene} we showed that non-deterministic RSA
 
 We would like to warn and disillusion the reader upfront: we will not solve the problem of how to get overmodification behavior from the typicality of features compositionally. This is a problem for all theories of modification \cite{kamp1995}. However, we would like to offer a proof of concept showing that, if the non-determinism in the RSA semantics is not at the adjective type (color, size) level, but instead at the level of combinations of referring expressions and objects, the model produces precisely the sorts of typicality effects reported in the literature. 
 
-Let us elaborate. Where before we took a fidelity to be a number between 0 and 1 indicating how likely a type of modifier (size, color) was to correctly apply to an object, we now treat it as indicating how good an instance of a particular referring expression the object in question is. For example, take the banana case: assume three contexts of objects with yellow, brown, and blue objects. Assume further that one of the objects is a banana, and the only difference between the three contexts is whether the banana is blue, brown, or yellow. In every context there is another object of the same color as the banana, so color is redundant, while there are no other bananas, so object category mention is sufficient for reference. Assume further the fidelity values shown in \tableref{tab:colorobjectfidelities}. These values should be read as follows: a yellow banana is a very good or typical instance of a\emph{banana} -- \emph{banana} applied to yellow bananas has a high fidelity of .9. In contrast, brown bananas are less typical instances of \emph{banana}s (.35), and blue bananas are highly atypical \emph{banana}s (.1) but still better than objects of an other non-banana type (.015). Going along the diagonal, you can see that we assume for each remaining utterance that its fidelity is very high (.99) when applied to an object in its extension and very low otherwise (.015).
+Let us elaborate. Where before we took a fidelity to be a number between 0 and 1 indicating how likely a type of modifier (size, color) was to correctly apply to an object, we now treat it as indicating how good an instance of a particular referring expression the object in question is. For example, take the banana case: assume three contexts of objects with yellow, brown, and blue objects. Assume further that one of the objects is a banana, and the only difference between the three contexts is whether the banana is blue, brown, or yellow. In every context there is another object of the same color as the banana, so color is redundant, while there are no other bananas, so object category mention is sufficient for reference. Assume further the fidelity values shown in \tableref{tab:colorobjectfidelities}. These values should be read as follows: a yellow banana is a very good or typical instance of a \emph{banana} -- \emph{banana} applied to yellow bananas has a high fidelity of .9. In contrast, brown bananas are less typical instances of \emph{banana}s (.35), and blue bananas are highly atypical \emph{banana}s (.1) but still better than objects of an other non-banana type (.015). Going along the diagonal, you can see that we assume for each remaining utterance that its fidelity is very high (.99) when applied to an object in its extension and very low otherwise (.015).
 
 \begin{table}
 \centering
-\caption{Hypothetical fidelity values for utterances (rows) as applied to objects (columns).}
+\caption{Hypothetical fidelity values for utterances (rows) as applied to objects (columns). \ek{judith: are you sure about these values? Haven't double checked them now.}}
 \begin{tabular}{l l l l l}
 \toprule
 Utterance & yellow banana & brown banana & blue banana & other\\
@@ -591,109 +591,134 @@ We can now ask whether taking into account this more fine-grained notion of a no
 \subsection{Experiment 2: Color typicality effects}
 \label{sec:modifiertypicalityeffects}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=.5\textwidth]{pics/context_overview}
-	\caption{The four context conditions, exemplified by the \textit{banana} domain. The target is outlined in green; the color and type of the distractors differ with each condition (see text). \jd{elisa: please make this figure with exactly the same labels as in  results Figure 4 (informative, informative-cc, etc, and explain in figure caption -- in making labels shorter, also make them more legible or we'll be rejected outright for illegible figures.}
-	}
-	\label{fig:contexts}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=.5\textwidth]{pics/context_overview}
+%	\caption{The four context conditions, exemplified by the \textit{banana} domain. The target is outlined in green; the color and type of the distractors differ with each condition (see text). \jd{elisa: please make this figure with exactly the same labels as in  results Figure 4 (informative, informative-cc, etc, and explain in figure caption -- in making labels shorter, also make them more legible or we'll be rejected outright for illegible figures.}
+%	}
+%	\label{fig:contexts}
+%\end{figure}
+
+\begin{figure}[bt!]
+	% following line responsible for centered subfigure captions -- maybe don't do it
+	% \captionsetup[subfigure]{justification=centering}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth]{pics/cond_inf.png}
+		\caption{informative (without color competitor)}
+		\label{fig:condInf}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth]{pics/cond_infcc.png}
+		\centering
+		\caption{informative-cc (with color competitor)}
+		\label{fig:condInfcc}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth]{pics/cond_overinf.png}
+		\caption{overinformative (without color competitor)}
+		\label{fig:condOverinf}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth]{pics/cond_overinfcc.png}
+		\centering
+		\caption{overinformative-cc (with color competitor)}
+		\label{fig:condOverinfcc}
+	\end{subfigure}
+	\caption{The four different context conditions in our reference game study. They differ in the presence of an object of the same type (informative vs. overinformative) and in the presence of another object of the same color as the target (with color competitor vs. without color competitor). The green border marks the object that needs to be communicated, i.e., the intended referent.}
+	\label{fig:conditions}
 \end{figure}
+
 
 \begin{figure}[bt!]
 	\centering
-	\includegraphics[width=.5\textwidth]{pics/design_0}
-	\caption{Experimental setup.
+	\includegraphics[width=1\textwidth]{pics/design_0}
+	\caption{Example displays from the speaker's (left) and listener's (right) perspective in an informative-cc (i.e., presence of another object of the same type and one with the same color) condition.
 	}
 	\label{fig:mturk}
 \end{figure}
 
-\subsubsection{Methods}
+\subsubsection{Method}
 
 \paragraph{Participants}
+We recruited 61 pairs of participants (122 participants total) over Amazon's Mechanical Turk who were each paid \ek{Judith: how much?} for their participation. 
+Two participant-pairs were excluded because they did not finish the experiment and therefore could not receive payment. Trials in which the speaker did not produce any utterances were excluded as well, which resulted in the exclusion of two additional participant-pairs.
+Finally, there were 10 speakers who consistently used roundabout descriptions instead of direct referring expressions (e.g., ``monkeys love...'' for banana). These pairs were also excluded because they were clearly not trying to simply communicate the target.
 
-We recruited 120 self-reported native speakers of English over Mechanical Turk \jd{who bla}. 
+\paragraph{Procedure}
 
-\paragraph{Procedure and materials}
+The procedure was identical to that of Exp.~1. \\
+%\ek{check spelling with chapter 3 -- L/listener S/speaker}\\ In the same way as described for Exp.~1, two Turkers were randomly matched to form one chat pair. One of the players was randomly assigned to the role of the speaker, while the other one was assigned to the role of the listener. The speaker was instructed to communicate a target object out of a three-object context to the listener. The order of the objects was different for both participants, and on the speaker's side, the target could be identified by a green border surrounding it (see Figure~\ref{fig:mturk}). The speaker and the listener could communicate freely through a chat box. The listener was instructed to click on the object they identified as the target.\\
 
-The procedure was identical to that of Exp.~1. 
+\paragraph{Materials}
 
-On each trial, exactly three objects were displayed. The stimuli were selected from seven food items (apple, avocado, banana, carrot, pear, pepper, tomato) which each occurred in three different colors that intuitively differed in typicality for that item. For example, the banana occurred in the colors yellow, brown, and blue. Each item occurred as a target and as a distractor. A pepper additionally occurred in a fourth color which only functioned as a distractor due to the need for a green color competitor.
+Each participant proceeded through 42 trials. In this experiment, there were no filler trials, since pilot studies with and without fillers delivered very similar results. Each array presented to the participants consisted of three objects that could differ in their type and in their color. One of the three objects functioned as a target and the other two as its distractors.
+The stimuli were selected from seven food items (apple, avocado, banana, carrot, pear, pepper, tomato), which all occurred in a typical, mid-typical and atypical color for that object. For example, the banana appeared in the colors yellow (typical), brown (midtypical), and blue (atypical). 
+All items were presented as targets and as distractors. Pepper additionally occurred in a fourth color, which only functioned as a distractor due to the need for a green color competitor (as explained in the following paragraph). \\
+%All of these objects are highly \textit{color-diagnostic}. Color diagnosticity describes the degree to which an item is associated with a certain color \ek{cite Tanaka:1999}. For example, a cup is not particularly color-diagnostic because cups appear in various colors, but a banana is usually associated with yellow which makes it highly color-diagnostic.\\
+%We also balanced the occurrence of salient colors (for example red, purple and blue) such that they appeared as typical and atypical colors to avoid pure saliency effects. In other words, we controlled for physical salience. \\
+The different context conditions are referred to as ``informative'' (see Figure~\ref{fig:condInf}), ``informative-cc'' (see Figure~\ref{fig:condInfcc}), ``overinformative'' (see Figure~\ref{fig:condOverinf}), and ``overinformative-cc'' (see Figure~\ref{fig:condOverinfcc}). \\
+A context is referred to as ``overinformative'' when mentioning the type of the item, e.g., banana, would be sufficient for an unambiguous identification of the target. If a speaker additionally includes a color term, the expression becomes overinformative. However, in this condition, the target never has a color competitor. This means that a color-only utterance would lead to an unambiguous identification as well. This is not possible in the overinformative condition with a color competitor (Figure~\ref{fig:condOverinfcc}). \\
+In the informative conditions, the speaker needs to mention the color in addition to the type to provide an unambiguous utterance. Again, one context type did (Figure~\ref{fig:condInf}) and one did not include a color competitor among its distractors (Figure~\ref{fig:condOverinfcc}).\\
+In the end, each participant saw 42 different contexts. All of the differently colored items were the target exactly twice, but the context in which they occurred was drawn randomly from the four possible conditions mentioned above. In total, there were 84 different configurations (seven target food items, each of them in three colors, where each could occur in four contexts). The trial order was randomized.
 
-%\paragraph{\bf Design}
-Each presented context consisted of three objects, one target and two distractors. The contexts always corresponded to one out of four possible conditions. The different context conditions are referred to as ``informative without a color competitor" (\figref{fig:contexts}a), ``informative with a color competitor" (\figref{fig:contexts}b), ``overinformative without a color competitor" (\figref{fig:contexts}c), and ``overinformative with a color competitor" (\figref{fig:contexts}d). A context is referred to as overinformative when mentioning the type of the item, e.g., banana, would be sufficient for an unambiguous identification of the target. An additional mention of color would mean that the speaker uses the color adjective overinformatively, i.e., they are adding ``unnecessary" information. However, in this condition the target never has a color competitor, i.e., if the target is brown, there is no distractor of the same color in the context. This means that an only-color utterance would lead to an unambiguous identification, too. This is not possible in the overinformative condition with a color competitor (Fig.~1d). In the informative conditions, the speaker needed to mention the color in addition to the type to provide an unambiguous utterance. Again, one context type did (Fig.~1a) and one did not include a color competitor among its distractors (Fig.~1b).
+\subsubsection{Data pre-processing and exclusion}
+We analyzed data from 1974 trials. Identical to Exp.~1, participants communicated freely which led to a vast amount of different referring expressions. To test the model's predictions, the utterance produced for each trial was classified as belonging to one of the following categories: \textit{type-only} (``banana''), \textit{color-and-type} (``yellow banana''), and \textit{color-only} (``yellow'') utterances. Referential expressions that included categories (``yellow fruit''), descriptions (``has green stem''), color-circumscriptions (``funky carrot''), and negations (``yellow but not banana'') were regarded as \textit{other} and excluded. To this end we conducted the following semi-automatic data pre-processing.\\
+%Only five utterances (0.003\%) were assigned to the category "other".\\
 
-The item selection was randomized but conditioned on the corresponding context condition, i.e., the items had to fulfill the properties dictated by the condition. In the end, each participant saw 42 different contexts. All of the differently colored items were the target exactly twice but the context in which they occurred was drawn randomly from the four possible conditions mentioned above. All in all, there were 84 different configurations, i.e., seven target food items, each of them in three colors, where each could occur in four contexts. Trial order was randomized.
+The referring expressions were analyzed similarly to Exp.~1. First, 32 trials (1.6\%) were excluded because the listener selected the wrong referent. Then 109 trials (5.6\%) were excluded because the referring expressions included one of the exceptional cases described above (e.g., using negations). 
+Afterwards, an R script automatically checked the remaining 1833 utterances whether they contained a precoded color term (i.e. \emph{green, purple, white, black, brown, yellow, orange, blue, pink, red, grey}) or type (i.e. \emph{apple, banana, carrot, tomato, pear, pepper, avocado}). This way, 96.5\% of cases were classified as mentioning type and/or color. 
+However, this did not capture that sometimes, participants produced meaning-equivalent modifications of color/type terms for instance by adding suffixes (e.g., \emph{pinkish}), using abbreviations (e.g., \emph{yel} for \emph{yellow}), or using non-precoded color and type labels (e.g., \emph{lavender} or \emph{jalapeno}). By this step, 97.4\% of all trials could be labeled. Expressions containing a typo (e.g., \emph{blakc} instead of \emph{black}) could also not be classified automatically. In the next step, one of the authors (EK) therefore manually checked the automatic coding to include these kinds of modifications in the analysis. This covered another 2.3\% of trials. 
+% Most of the time, participants converged on a convention of producing only the target's size and/or color, e.g., \emph{purple} or \emph{big blue}, but not an article (e.g., \emph{the}) or the noun corresponding to the object's type  (e.g., \emph{comb}). Articles were omitted in 93.1 \% of cases and nouns were omitted in 71.5 \% of cases. We did not analyze this any further.
 
-
-\subsubsection{Annotation and exclusions}
-After collecting the data, the different utterances were automatically  labeled as belonging to one of the following categories: type-only ("banana"), color-and-type ("yellow banana"),  color-only ("yellow"), category-only ("fruit"), color-and-category ("yellow fruit"), description ("has green stem"), color-modifier ("funky carrot"), and negation ("yellow but not banana"). Two participants were excluded because they did not finish the experiment. Trials on which the speaker did not produce any utterances and trials on which the listener did not identify the target correctly were excluded as well. The remaining utterances (94\% of the original set) were cleaned manually for misspellings and abbreviations, e.g., ``banan'' for banana. Finally, there were 10 speakers who consistently used roundabout descriptions instead of direct referring expressions (e.g., ``monkeys love\dots'' for banana). These participants were excluded because they were not trying to communicate the target, but rather appeared to be playing the game of Taboo.
-
-The 1942 resulting utterances were then categorized according to the categories laid out above. Only five utterances (0.003\%) were assigned to the category "other".
+There were 6 cases (0.3\%) that could not be categorized. Those were mostly greetings (e.g.,\emph{Hi}), other comments (e.g., \emph{I have instructions to follow sometimes}) and not certainly identifiable utterances (e.g., \emph{re}). 
+After the exclusion, 1827 cases classified as one of \emph{color}, \emph{type}, or \emph{color-and-type} entered the analysis.
 
 
 \subsubsection{Typicality norming}
-
-\jd{make this more structured, ie change from cogsci paper prose}
-To evaluate the model, we collected empirical typicality values for each utterance-object pair. Ratings were collected across three separate studies. The first study collected typicalities for adjective\&noun-object pairs, e.g., ``yellow banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The second study collected typicalities for noun-object pairs, e.g., ``banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. The third study collected typicalities for adjective-color pairs, e.g., ``yellow'' as applied to a color patch of the average yellow from the yellow banana image or to a color patch of the average orange from the orange pear image.  On each trial, participants saw one of the images used in the production experiment in isolation and were asked: ``How typical is this object for a \textsc{utterance}'', where \textsc{utterance} was replaced by an utterance of interest. In the color typicality study, they were asked ``How typical is this color for the color \textsc{color}?'', where \textsc{color} was replaced by one of the relevant color terms.  They then adjusted a sliding scale with endpoints labeled ``very atypical'' and ``very typical'' to indicated their response. A screenshot of a typical trial is shown in \figref{fig:typicalitynorming}. An overview of the differences between the three typicality norming studies differed is shown in \tableref{tab:normingoverview}. Each participant saw each `correct' combination of utterances and objects (22 total) as well as a number of randomly sampled trials from the total set of items in each study, shown in the table.
+\ek{judith: not sure whether you want the typicality norming in this section or not (see experiment 1)}
+To evaluate the empirical data from the multi-player reference game and the RSA model, we collected empirical typicality values for each utterance-object pair across three separate studies. The first study collected typicalities for ``adjective \& noun''-object pairs, e.g., ``yellow banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. (\figref{fig:colorobj}). The second study collected typicalities for noun-object pairs, e.g., ``banana'' as applied to a yellow banana, a blue banana, an orange pear, etc. (\figref{fig:obj}). The third study collected typicalities for adjective-color pairs, e.g., ``yellow'' as applied to a color patch of the average yellow from the yellow banana stimulus or to a color patch of the average orange from the orange pear stimulus (\figref{fig:colorpatch}). \\
+On each trial, participants saw one of the stimuli used in the production experiment in isolation and were asked: ``How typical is this object for a \textsc{utterance}'', where \textsc{utterance} was replaced by an utterance of interest. In the color typicality study, they were asked ``How typical is this color for the color \textsc{color}?'', where \textsc{color} was replaced by one of the relevant color terms. They then adjusted a continuous sliding scale with endpoints labeled ``very atypical'' and ``very typical'' to indicate their response. An overview of the differences between the three typicality norming studies is shown in Table~\ref{tab:normingoverview}. \\
 
 \begin{figure}[bt!]
-	\centering
-	\includegraphics[width=.5\textwidth]{pics/typ_norm_full_2}
-	\caption{A typical trial in the `Adj Noun' typicality norming study.
-	}
-	\label{fig:typicalitynorming}
+	\subcaptionbox{Adjective \& Noun -- Object. \label{fig:colorobj}} {\includegraphics[width=2in]{pics/typnorm_colorobj}} \hfill
+	\subcaptionbox{Noun -- Object. \label{fig:obj}} 
+	{\includegraphics[width=2in]{pics/typnorm_obj}} \hfill
+	\subcaptionbox{Adjective -- Color Patch. \label{fig:colorpatch}} {\includegraphics[width=2in]{pics/typnorm_colorpatch}}%
+	\caption{The three different types of typicality norming studies. They differed in the utterance that was asked for and the object that was displayed. The figure descriptions follow the principle of utterance -- object.}
+	\label{fig:typ_norm}
 \end{figure}
 
-
-\begin{table*}
-\caption{Overview of typicality norming studies. \jd{update this to reflect updated participant number for holistic norms}}
-\begin{tabular}{l l l l l l l}
-\toprule
-Utterances & Example & Images & Participants & Trials & Items & Excluded\\
-\midrule
-Adj Noun & \emph{yellow banana} & object & 66 & 110 & 484 & 4\\ 
-Noun & \emph{banana} & object & 75 & 90 & 198 & 1\\
-Adj & \emph{yellow} & color patch & 75 & 90 & 176 & None\\
-\bottomrule
-\end{tabular}
-\label{tab:normingoverview}
-\end{table*}
-
-Slider values were coded as falling between 0 (`very atypical') and 1 (`very typical'). For each utterance-object combination we computed mean typicality ratings. For example, mean typicalities for the banana items are shown in \tableref{tab:bananatypicalities}.
-
-\begin{table}
-\caption{Mean typicalities for banana items. Combinations where a deterministic semantics would return TRUE are marked in boldface.}
-\begin{tabular}{r r r r r}
-\toprule
-%Utterance & Item & Typicality\\
- & \multicolumn{3}{c}{Banana items} & Other \\
- Utterance & yellow & brown  & blue & \\ 
- \midrule
-\emph{banana} & \textbf{.98} & \textbf{.66} & \textbf{.42} & .05  \\
- \midrule
-\emph{yellow banana} & \textbf{.98} & .33 & .17 & .05 \\
-\emph{brown banana} & .28 & \textbf{.90} & .18 & .04\\
-\emph{blue banana} & .20 & .18 & \textbf{.91} & .06\\
-\midrule
-\emph{yellow} & \textbf{.77} & .05 & .06 & .09\\
-\emph{brown} & .11 & \textbf{.87} & .01 & .12\\
-\emph{blue} & .06 & .06 & \textbf{.92} & .07\\
-\bottomrule
-\end{tabular}
-\label{tab:bananatypicalities}
+\begin{table}[bt!]
+	\begin{tabular}{l l l l l l l}
+		\toprule
+		Utterances & Example & Images & Participants & Trials & Items & Excluded\\
+		\midrule
+		Adj Noun & \emph{yellow banana} & object & 174 & 110 & 484 & 14\\ 
+		Noun & \emph{banana} & object & 75 & 90 & 154 (198) & 1\\
+		Adj & \emph{yellow} & color patch & 110 & 90 & 176 & None\\
+		\bottomrule
+	\end{tabular}
+	\vspace{2mm}
+	\caption{Overview of typicality norming studies; the value in brackets shows the number of items including \textit{fruit}, \textit{vegetable} and \textit{cup}.}
+	\label{tab:normingoverview}
 \end{table}
 
+Slider values were coded as falling between 0 (`very atypical') and 1 (`very typical'). 
+For each utterance-object combination, we computed mean typicality ratings (see Table~\ref{tab:bananatypicalities}).
 
-\jd{change the following discussion; replace with previous prose you wrote on this for this section?}
-The way we elicited typicalities differs somewhat from the approach taken in previous work \cite<e.g.>{Westerbeek2015}, where participants are typically asked ``How typical is this color for this object?'' We deviated from this because for the purpose of testing the model (see below), what is required is the degree of applicability of an utterance to an object, rather than the degree to which an object's color is representative of that object. We expect, however, that the simple noun-object typicalities will yield very similar results as the Westerbeek question because the employed objects are color-diagnostic -- asking whether an blue or a yellow banana is a typical \emph{banana} is similar to asking whether or not the bananas' most salient property -- their color -- is typical. 
+The way we elicited typicalities differs somewhat from the approach taken in previous work, e.g., \cite{Westerbeek:2015}, where participants are typically asked ``How typical is this color for this object?'' We deviated from this because for the purpose of testing the model, we require the degree of applicability of an utterance to an object, rather than the degree to which an object's color is representative of that object. We expect, however, that the simple noun-object typicalities will yield very similar results because the employed objects are color-diagnostic -- asking whether a blue or a yellow banana is a typical \textit{banana} is similar to asking whether or not the bananas' most salient property -- their color -- is typical. \\
 
-\subsection{Results and discussion}
+\subsubsection{Results}
 
 Proportions of type-only (\emph{banana}), color-and-type (\emph{yellow banana}), color-only (\emph{yellow}), and other (\emph{funky carrot}) are shown in \figref{fig:proportions}. Visually inspecting just the explicitly marked \emph{yellow banana}, \emph{brown banana}, and \emph{blue banana} cases suggests a clear typicality effect in the overinformative conditions as well as a smaller typicality effect in the informative conditions. 
 
 \begin{figure}[bt]
 \centering
-\includegraphics[width=.8\textwidth]{pics/results1.png}
+\includegraphics[width=1\textwidth]{pics/empiricalProportions_typ.png}
 \caption{For each target, proportion of color-only (\emph{yellow}), type-only (\emph{banana}), color-and-type (\emph{yellow banana}), and other (\emph{funky carrot}) utterances as a function of mean object typicality for the type-only utterance, across conditions. \emph{\textsc{color} banana} cases are circled in their respective color.}
 \label{fig:proportions}
 \end{figure}
@@ -702,7 +727,7 @@ The following questions are of interest. First, do we replicate the previously d
 
 To address these questions we conducted a mixed effects logistic regression predicting color use from fixed effects of typicality, informativeness, and color competitor presence. We used the typicality norms obtained in the noun-object typicality elicitation study reported above as the continuous typicality predictor. Informativeness was coded as a binary variable (color \emph{informative} vs.~color overinformative) as was color competitor presence (absent vs.~present). All predictors were centered before entering the analysis. The model included by-speaker and by-item random intercepts, which was the maximal random effects structure that allowed the model to converge.
 
-There was a main effect of typicality, such that the more typical an object was for the noun, the lower the log odds of color mention ($\beta$ = -3.19, $SE$ = 0.36, $p <$ .0001), replicating previously documented typicality effects. Model comparison revealed that including interaction terms was not justified by the data, suggesting that speakers produce more typical colors less often even when the color is in principle necessary for establishing reference (i.e., in the informative conditions). There was also a main effect of informativeness, such that color mention was more likely when it was informative than when it was overinformative   ($\beta$ = 3.32, $SE$ = 0.16, $p <$ .0001). Finally, there was a main effect of color competitor presence, such that color mention was less likely when a color competitor was present  ($\beta$ = -0.66, $SE$ = 0.13, $p <$ .0001). This suggests that speakers are indeed sensitive to the contextual utility of color -- color typicality alone does not capture the full set of facts about color mention.
+There was a main effect of typicality, such that the more typical an object was for the noun, the lower the log odds of color mention ($\beta$ = -4.20, $SE$ = 0.45, $p <$ .0001), replicating previously documented typicality effects. Model comparison revealed that including interaction terms was not justified by the data, suggesting that speakers produce more typical colors less often even when the color is in principle necessary for establishing reference (i.e., in the informative conditions). There was also a main effect of informativeness, such that color mention was more likely when it was informative than when it was overinformative ($\beta$ = -5.57, $SE$ = 0.33, $p <$ .0001). Finally, there was a main effect of color competitor presence, such that color mention was less likely when a color competitor was present  ($\beta$ = 0.71, $SE$ = 0.16, $p <$ .0001). This suggests that speakers are indeed sensitive to the contextual utility of color -- color typicality alone does not capture the full set of facts about color mention.
 
 \jd{update all the following prose -- change the first section into a footnote to demonstrate that we also have typicality effects in the dataset from exp 1}
 In this section we have reported the replication of previously documented typicality effects on color mention as well as a novel demonstration of typicality effects even when color is informative. We have also shown that color mention is sensitive not only to typicality, but also to the  nature of the distractors -- when there is another distractor of the same color as the target, color is dispreferred compared to when there is not. 
@@ -714,6 +739,7 @@ Thus far we have only been concerned with analyzing the use of color, i.e., we c
 To assess whether we replicate the color typicality effects previously reported in the literature \cite{sedivy2003a, Westerbeek2015, rubiofernandez2016}, we elicited color typicality norms for each of our items and then included typicality as an additional predictor of redundant adjective use in the regression analysis reported previously. 
 %See \appref{app:typicalityexperiment} for a detailed description of the methodology and materials.
 
+\subsection{\ek{judith: Typicality norming Exp.~1?}}
 \subsubsection{Methods}
 
 \paragraph{Participants}
