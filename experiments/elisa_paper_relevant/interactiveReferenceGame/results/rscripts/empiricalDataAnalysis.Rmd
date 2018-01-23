@@ -13,7 +13,7 @@ In this thesis, we extend RSA to capture the phenomenon of overinformative refer
 We introduce the modified RSA framework and explain how our integration of non-deterministic semantics enables the model to generate these utterances. To obtain non-deterministic semantic values, we conducted three norming studies in which participants rated the applicability of an utterance to an object. Furthermore, we report on a multi-player reference game study, where we empirically investigated the typicality effect in referring expressions in different contexts. We evaluate our model by comparing its predictions to the elicited empirical values and we find that RSA can generate overinformative referring expressions that exhibit a typicality effect.
 To the best of our knowledge, this makes RSA stand out as the only model so far that can incorporate typicality effects in overinformative referring expressions.
 
-#### 1.2 Further Information
+#### 1.2 Further information
 
 For a detailed report on the experiment and its result, please consult the [Bachelor's Thesis](http://www.elisakreiss.com/posters.html) by Elisa Kreiss. We are currently writing on a bigger paper where this experiment contributes one part (for a manuscript, please contact [Judith Degen](https://sites.google.com/site/judithdegen/home)).
 This work was presented as a talk at CUNY 2017, and as posters at XPRAG 2017 and CogSci 2017.
@@ -268,7 +268,7 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=clickedType,linetype=binCont
   guides(linetype=guide_legend(title="Context"))
 ```
 
-#### 3.5Plot utterance choice proportions by typicality for color/non-color
+#### 3.5 Plot utterance choice proportions by typicality for color/non-color
 This graph visualizes the data as it is checked in the statistical analysis later on.
 
 ```{r}
@@ -437,7 +437,7 @@ ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
 
 
 ## 4 BDA 
-#### 4.1 BDA Data Preparation
+#### 4.1 BDA data preparation
 
 ```{r}
 # create utterances for bda
@@ -486,7 +486,9 @@ p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_")
 # write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
 ```
 
-## 4.2 Statistical Analysis
+## 4.2 Statistical analysis
+We conducted a mixed effects logistic regression predicting color use from fixed effects of typicality, informativeness, and color competitor presence. We used the typicality norms obtained in the noun-object typicality elicitation study as the continuous typicality predictor. Informativeness was coded as a binary variable (color informative vs. color overinformative) as was color competitor presence (absent vs. present). All predictors were centered before entering the analysis. The model included by-speaker and by-item random intercepts, which was the maximal random effects structure that allowed the model to converge.
+There was a main effect of typicality, such that the more typical an object was for the noun, the lower the log odds of color mention (β = -4.20, SE = 0.45, p < .0001), replicating previously documented typicality effects. Model comparison revealed that including interaction terms was not justified by the data, suggesting that speakers produce more typical colors less often even when the color is in principle necessary for establishing reference (i.e., in the informative conditions). There was also a main effect of informativeness, such that color mention was more likely when it was informative than when it was overinformative (β = -5.57, SE = 0.33, p < .0001). Finally, there was a main effect of color competitor presence, such that color mention was less likely when a color competitor was present (β = 0.71, SE = 0.16, p < .0001). This suggests that speakers are indeed sensitive to the contextual utility of color – color typicality alone does not capture the full set of facts about color mention.
 
 ```{r}
 # Analysis
@@ -500,23 +502,23 @@ centered$ColorOrType = centered$ColorAndType | centered$Color
 
 # Informative is a negative value, Overinformative is a positive value
 # CC is negative, nonCC is positive
-m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
-summary(m)
+# m = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + cNormedTypicality:cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
+# summary(m)
 # ranef(m)
 
 m.1 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + (1|gameid) + (1|Item), data = centered, family="binomial")
 summary(m.1)
 # ranef(m.1)
 
-m.2 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + (1|gameid) + (1|Item), data = centered, family="binomial")
-summary(m.2)
+# m.2 = glmer(ColorOrType ~ cNormedTypicality + cInformative + cCC + cNormedTypicality : cInformative + (1|gameid) + (1|Item), data = centered, family="binomial")
+# summary(m.2)
 # ranef(m.2)
 
-anova(m.1,m)
+# anova(m.1,m)
 ```
 
 
-## 5 Empirical Length Calculation
+## 5 Empirical length calculation
 
 ```{r}
 # empirical length
