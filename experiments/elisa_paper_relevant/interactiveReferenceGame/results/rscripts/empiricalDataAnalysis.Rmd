@@ -310,7 +310,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
 
 #### 3.6 Plot utterances by typicality but dependent on distractor typicality
 ##### 3.6.1 Prepare data frame for visualization
-Values are added to the data frame that describe the similarity of one distractor to the target object. This values were taken from the norming study asking for "How typical is this object for a COLOR TYPE?". If at least one of the distractors has a typicality value >= 0.1, the context is classified as a simDist-context (i.e., context with a similar distractor). Informative contexts are excluded because they are all considered simDist-contexts due to the high similarity of same-type distractors.
+Values are added to the data frame that describe the similarity of one distractor to the target object. This values were taken from the norming study asking for "How typical is this object for a TYPE?". If at least one of the distractors has a typicality value >= 0.1, the context is classified as a simDist-context (i.e., context with a similar distractor). Informative contexts are excluded because they are all considered simDist-contexts due to the high similarity of same-type distractors.
 
 ```{r}
 # add correct distractor names
@@ -331,17 +331,18 @@ production$Dist2Type = sapply(strsplit(as.character(production$Dist2),"_"), "[",
 production$Dist1_rev = paste(production$Dist1Color, production$Dist1Type, sep="_")
 production$Dist2_rev = paste(production$Dist2Color, production$Dist2Type, sep="_")
 
-production$target = paste(production$clickedColor, production$clickedType, sep="_")
+comboTyp = read.csv(here("..","..","norming_comp_object","results","data","meantypicalities.csv"))
+comboTyp$Combo = gsub(" ", "_", comboTyp$Combo)
+comboTyp = droplevels(comboTyp[,c("utterance","Combo","Typicality")])
 
-comboTyp = read.csv(here("..","..","norming_full","results","data","meantypicalities.csv"))
-comboTyp = droplevels(comboTyp[,c("Utterance","Combo","RoundMTypicality")])
-
-distBins = production[,c("context","Color","Type","ColorAndType","Other","target","Dist1_rev","Dist2_rev","NormedTypicality")]
-distBins = merge(distBins,comboTyp,by.x=c("target","Dist1_rev"),by.y=c("Utterance","Combo"))
-distBins = merge(distBins,comboTyp,by.x=c("target","Dist2_rev"),by.y=c("Utterance","Combo"))
+distBins = production[,c("context","Color","Type","ColorAndType","Other","clickedType","Dist1_rev","Dist2_rev","NormedTypicality")]
+distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist1_rev"),by.y=c("utterance","Combo"))
+distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist2_rev"),by.y=c("utterance","Combo"))
 distBins$TargetTypicality = distBins$NormedTypicality
-distBins$Dist1Typicality = distBins$RoundMTypicality.x
-distBins$Dist2Typicality = distBins$RoundMTypicality.y
+distBins$Dist1Typicality = distBins$Typicality.x
+distBins$Dist2Typicality = distBins$Typicality.y
+## items that have higher ratings regarding similar competitor objects
+# distBins = droplevels(distBins[distBins$clickedType == "apple" | distBins$clickedType == "pear" | distBins$clickedType == "tomato",])
 distBins = distBins[,c("context","Color","Type","ColorAndType","Other","TargetTypicality","Dist1Typicality","Dist2Typicality")]
 distBins$Similar = ifelse(distBins$Dist1Typicality >= 0.1 | distBins$Dist2Typicality >= 0.1, T, F)
 
@@ -444,6 +445,8 @@ production$UttforBDA = "other"
 production[production$Color == 1,]$UttforBDA = as.character(production[production$Color == 1,]$clickedColor)
 production[production$Type == 1,]$UttforBDA = as.character(production[production$Type == 1,]$clickedType)
 production[production$ColorAndType == 1,]$UttforBDA = paste(as.character(production[production$ColorAndType == 1,]$clickedColor),as.character(production[production$ColorAndType == 1,]$clickedType),sep="_")
+
+production$target = paste(production$clickedColor, production$clickedType, sep="_")
 
 production$Informative = as.factor(ifelse(production$context %in% c("informative","informative-cc"),"informative","overinformative"))
 production$CC = as.factor(ifelse(production$context %in% c("informative-cc","overinformative-cc"),"cc","no-cc"))
