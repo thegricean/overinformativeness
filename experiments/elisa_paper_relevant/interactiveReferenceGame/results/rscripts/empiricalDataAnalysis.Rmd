@@ -1,22 +1,27 @@
 ---
-title: "Typicality Effects in Reference Game"
+title: "Typicality Effects in a Reference Game Study (E. Kreiss, J. Degen, R.X.D. Hawkins, N.D. Goodman)"
 output: html_notebook
 ---
-## Introduction
+## 1. Introduction
 
-Some introductory words about the study
+If you have any questions or comments related to this work, please consult [Elisa Kreiss](http://www.elisakreiss.com/index.html) or [Judith Degen](https://sites.google.com/site/judithdegen/home).
 
-<!-- Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.  -->
-<!-- Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*. -->
+#### 1.1 Abstract
 
-<!-- When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).  -->
+Modeling natural language use is one of the great challenges of research in Cognitive Science. Frank and Goodman (2012) suggested a Rational Speech-Act framework (RSA), which is a probabilistic Bayesian model of natural language. It treats speakers and listeners as agents that reason recursively about each other and already yielded remarkable results in various language domains, such as scalar implicature, gradable adjectives and nominal reference (e.g., Degen, Franke, and Jäger (2013); Goodman and Frank (2016); Goodman and Stuhlmüller (2013); Qing and Franke (2014)).
+In this thesis, we extend RSA to capture the phenomenon of overinformative referring expressions with typicality effects, i.e., the phenomenon of including a property that is unnecessary for a unique identification, especially when it is atypical for the object.
+We introduce the modified RSA framework and explain how our integration of non-deterministic semantics enables the model to generate these utterances. To obtain non-deterministic semantic values, we conducted three norming studies in which participants rated the applicability of an utterance to an object. Furthermore, we report on a multi-player reference game study, where we empirically investigated the typicality effect in referring expressions in different contexts. We evaluate our model by comparing its predictions to the elicited empirical values and we find that RSA can generate overinformative referring expressions that exhibit a typicality effect.
+To the best of our knowledge, this makes RSA stand out as the only model so far that can incorporate typicality effects in overinformative referring expressions.
 
-<!-- The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed. -->
+#### 1.2 Further Information
 
-## Import, clean and categorize empirical data
+For a detailed report on the experiment and its result, please consult the [Bachelor's Thesis](http://www.elisakreiss.com/posters.html) by Elisa Kreiss. We are currently writing on a bigger paper where this experiment contributes one part (for a manuscript, please contact [Judith Degen](https://sites.google.com/site/judithdegen/home)).
+This work was presented as a talk at CUNY 2017, and as posters at XPRAG 2017 and CogSci 2017.
 
-#### Basic setup 
-import libraries & data, exclude data that cannot be used for analysis
+## 2. Import, clean and categorize empirical data
+
+#### 2.1 Basic setup 
+* import libraries & data, exclude data that cannot be used for analysis
 
 ```{r}
 library(dplyr)
@@ -55,7 +60,16 @@ production$NormedTypicality = typ[paste(production$clickedColor,production$click
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 ```
 
-#### Spelling correction and categorization of referential expression production
+#### 2.2 Spelling correction and categorization of referential expression production
+* main labels:
+    + Color (if only a color is mentioned in referring expression, e.g., _the yellow one_)
+    + Type (if only the type in mentioned in referring expression, e.g., _the banana_)
+    + ColorAndType (if both color and type are mentioned in referring expression, e.g., _the yellow banana_)
+* if referring expressions included one of the following exceptional cases they are not listed under the main labels but as "Other":
+    + CatMentioned (if a category was mentioned, e.g., _the yellow fruit_)
+    + NegationMentioned (if a negation was mentioned, e.g., _the yellow one but not the banana_)
+    + ColorModifierMentioned (if an unusual color description was used, e.g., _the funky carrot_)
+    + DescriptionMentioned (if more complex descriptions were used, e.g., _monkeys love..._ or _the long one with a stem_)
 
 ```{r}
 # utterance analysis / categorization for big paper
@@ -122,9 +136,10 @@ production$Type = ifelse(production$UtteranceType == "type",1,0)
 production$Item = production$clickedType
 ```
 
-## Plots
+## 3 Plots
 
-#### Plot utterance choice proportions by typicality
+#### 3.1 Plot utterance choice proportions by typicality
+We see a clear typicality effect, especially in the overinformative conditions and a small typicality effect in the informative conditions. In a context where mentioning the color is not useful (overinformative contexts), saying _banana_ is preferred when it is yellow, but _blue banana_ is preferred when it is blue. In other words, the more atypical a color is for an object, the more we tend to mention this property.
 
 ```{r}
 agr = production %>%
@@ -164,7 +179,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   theme(panel.background=element_rect(colour="#939393"))
 ```
 
-#### Histogram of mentioned features by context
+#### 3.2 Histogram of mentioned features by context
 
 ```{r}
 agr = production %>%
@@ -187,7 +202,8 @@ ggplot(agr, aes(x=Feature)) +
   theme(panel.background=element_rect(colour="#939393"))
 ```
 
-#### Plot of utterance choice proportions with error bars
+#### 3.3 Plot of utterance choice proportions with error bars
+The overall use of the different utterance types throughout the different contexts without considering the typicality of the target object (i.e., yellow vs. blue banana).
 
 ```{r}
 agr = production %>%
@@ -218,9 +234,9 @@ ggplot(agr, aes(x=Utterance,y=Probability)) +
   theme(panel.background=element_rect(colour="#939393"))
 ```
 
-#### Plot typical vs atypical by item
-value for typical/atypical separation in mean of all midtypical object ratings
-result in 1020 typical vs 922 atypical entries
+#### 3.4 Plot by-item variation
+We see that almost all items show a very similar typicality effect in informative and overinformative conditions. Only pepper shows a slightly smaller effect in the overinformative conditions and not an effect in the informative conditions.
+The value for the separation of typical and atypical is the mean of all midtypical object ratings. This resulted in 1020 typical and 922 atypical entries.
 
 ```{r}
 production$binTyp = ifelse(production$NormedTypicality >= 0.784, 'typical', 'atypical')
@@ -252,7 +268,8 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=clickedType,linetype=binCont
   guides(linetype=guide_legend(title="Context"))
 ```
 
-#### Plot utterance choice proportions by typicality for color/non-color
+#### 3.5Plot utterance choice proportions by typicality for color/non-color
+This graph visualizes the data as it is checked in the statistical analysis later on.
 
 ```{r}
 agr = production %>%
@@ -291,8 +308,8 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
 
 ```
 
-#### Plot utterances by typicality but dependent on distractor typicality
-Prepare data frame for visualization
+#### 3.6 Plot utterances by typicality but dependent on distractor typicality
+##### 3.6.1 Prepare data frame for visualization
 Values are added to the data frame that describe the similarity of one distractor to the target object. This values were taken from the norming study asking for "How typical is this object for a COLOR TYPE?". If at least one of the distractors has a typicality value >= 0.1, the context is classified as a simDist-context (i.e., context with a similar distractor). Informative contexts are excluded because they are all considered simDist-contexts due to the high similarity of same-type distractors.
 
 ```{r}
@@ -335,7 +352,7 @@ simDists = distBins[distBins$Similar==TRUE,c("context","Color","Type","ColorAndT
 nonsimDists = distBins[distBins$Similar==FALSE,c("context","Color","Type","ColorAndType","Other","TargetTypicality")]
 ```
 
-Plot results from contexts with at least one distractor which is similar to the target
+##### 3.6.2 Plot results from contexts with at least one distractor which is similar to the target
 
 ```{r}
 agr = simDists %>%
@@ -376,7 +393,7 @@ ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
   theme(panel.background=element_rect(colour="#939393"))
 ```
 
-Plot results from contexts in which both distractors show little similarity to the target
+##### 3.6.3 Plot results from contexts in which both distractors show little similarity to the target
 
 ```{r}
 agr = nonsimDists %>%
@@ -418,8 +435,8 @@ ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
 ```
 
 
-## BDA 
-#### BDA Data Preparation
+## 4 BDA 
+#### 4.1 BDA Data Preparation
 
 ```{r}
 # create utterances for bda
@@ -466,7 +483,7 @@ p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_")
 # write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
 ```
 
-## Statistical Analysis
+## 4.2 Statistical Analysis
 
 ```{r}
 # Analysis
@@ -496,7 +513,7 @@ anova(m.1,m)
 ```
 
 
-## Empirical Length Calculation
+## 5 Empirical Length Calculation
 
 ```{r}
 # empirical length
