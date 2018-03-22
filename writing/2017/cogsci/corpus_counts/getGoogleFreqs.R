@@ -3,7 +3,7 @@ library(jsonlite)
 library(tidyr)
 
 # search single-word utteranes (for some reason you need to do this in two steps for correct results)
-d1 <- ngram(terms=c("apple","avocado","banana","carrot","pear","pepper","tomato","black","blue","brown","green","orange"))
+d1 <- ngram(terms=c("apple","avocado","banana","carrot","pear","pepper","tomato","black","blue","brown","green","orange"),yr.start=1960)
 d2 <- ngram(terms=c("purple","red","yellow"),yr.start=1960)
 d1 = as.data.frame(colSums(d1[,-length(colnames(d1))]))
 d2 = as.data.frame(colSums(d2[,-length(colnames(d2))]))
@@ -48,7 +48,7 @@ freqs = d %>%
   spread(Utterance,logFrequency)
 
 # write(toJSON(freqs, pretty=TRUE),file="/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/models/10_bda_comparison/refModule/json/frequencies.json")
-write(toJSON(freqs, pretty=TRUE),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/old/11_visualization/refModule/json/frequencies.json")
+write(toJSON(freqs, pretty=TRUE),file="/Users/elisakreiss/Documents/Business/Projects/Overinformativeness/overinformativeness/models/frequencies.json")
 
 lengths = data.frame(Utterance = c("black_avocado","black_pepper","blue_apple","blue_banana","brown_banana","brown_carrot","green_apple","green_avocado","green_pear","green_pepper","green_tomato","orange_carrot","orange_pear","orange_pepper","purple_carrot","purple_tomato","red_apple","red_avocado","red_pepper","red_tomato","yellow_banana","yellow_pear","apple","avocado","banana","carrot","pear","pepper","tomato","black","blue","brown","green","orange","purple","red","yellow"))
 lengths$Length = nchar(as.character(lengths$Utterance))
