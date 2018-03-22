@@ -280,6 +280,15 @@ ggplot(agr, aes(x=binTyp,y=PropColorMentioned,color=gameid,linetype=binContext,g
   guides(linetype=guide_legend(title="Context"))
 ggsave(here("graphs","empiricalData","bysubject_variability.png"),width=12,height=6)
 
+
+#
+#
+#
+#
+#
+#
+
+
 # plot utterance choice proportions by typicality thick for poster/thesis
 agr = production %>%
   select(Color,Type,ColorAndType,Other,NormedTypicality,context) %>%
@@ -292,10 +301,10 @@ agr$YMax = agr$Probability + agr$ci.high
 # change order of Utterance column
 agr$Utterance <- as.character(agr$Utterance)
 agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
-agr$Utterance <- ifelse(agr$Utterance == "Type", "Only Type",
-                        ifelse(agr$Utterance == "Color", "Only Color",
-                               ifelse(agr$Utterance == "ColorAndType", "Color + Type",
-                                      ifelse(agr$Utterance == "Other", "Other","ERROR"))))
+agr$Utterance <- ifelse(agr$Utterance == "Type", "type-only",
+                        ifelse(agr$Utterance == "Color", "color-only",
+                               ifelse(agr$Utterance == "ColorAndType", "color-and-type",
+                                      ifelse(agr$Utterance == "Other", "other","ERROR"))))
 # change context names to have nicer facet labels 
 levels(agr$context) = c("informative","informative-cc", "overinformative", "overinformative-cc")
 # plot
@@ -307,7 +316,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   # scale_color_discrete(name="Utterance",
   #                      breaks=c("Type", "Color", "ColorAndType", "Other"),
   #                      labels=c("Only Type", "Only Color", "Color + Type", "Other")) +
-  xlab("Typicality") +
+  xlab("Typicality of object for type-only utterance") +
   ylab("Empirical utterance proportion") +
   coord_cartesian(xlim=c(0.4,1),ylim=c(0, 1)) +
   scale_color_manual(values=c("#56B4E9", "#E69F00", "#9fdf9f", "#999999")) +
@@ -322,7 +331,7 @@ ggplot(agr, aes(x=NormedTypicality,y=Probability,color=Utterance)) +
   labs(color = "Utterance") +
   theme(strip.background=element_rect(colour="#939393",fill="white")) +
   theme(panel.background=element_rect(colour="#939393"))
-ggsave(here("graphs","empiricalData","utterance_by_conttyp_poster.png"),width=12,height=9)
+ggsave(here("graphs","empiricalData","utterance_by_conttyp_bigpaper.png"),width=11,height=9)
 # ggsave("../../../../../../Uni/BachelorThesis/graphs/empiricalProportions.png",width=12,height=7)
 
 
