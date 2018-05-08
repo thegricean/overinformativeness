@@ -32,9 +32,9 @@ library(tidyr)
 library(here)
 
 theme_set(theme_bw(18))
-source(here("rscripts","helpers.r"))
+source(here("analysis","helpers.r"))
 
-d = read.table(file=here("data","results.csv"),sep="\t", header=T, quote="")
+d = read.table(file=here("data","data_exp2.csv"),sep="\t", header=T, quote="")
 
 # Exclude data and participants that cannot be used for analysis
 # exclude NA referential expressions 
@@ -49,13 +49,16 @@ d = droplevels(d[!(d$gameid == "1544-1" | d$gameid == "4885-8" | d$gameid == "83
 d = droplevels(d[d$targetStatusClickedObj == "target",])
 
 # get meantypicalities from previous study
-typ = read.csv(file=here("..", "..", "norming_comp_object", "results", "data", "meantypicalities.csv"))
+typ = read.csv(file=here("data", "typicality_exp2_type.csv"))
 typ = typ[as.character(typ$Item) == as.character(typ$utterance),]
 row.names(typ) = paste(typ$Color,typ$Item)
 
 production = d
 # correct for change in labelling (we realized what we considered pink was mostly considered purple)
 production$clickedColor = ifelse(as.character(production$clickedColor) == 'pink', 'purple', as.character(production$clickedColor))
+production$alt1Name = gsub("pink", "purple", production$alt1Name)
+production$alt2Name = gsub("pink", "purple", production$alt2Name)
+
 production$NormedTypicality = typ[paste(production$clickedColor,production$clickedType),]$Typicality
 production$binaryTypicality = as.factor(ifelse(production$NormedTypicality > .5, "typical", "atypical"))
 ```
@@ -314,14 +317,23 @@ Values are added to the data frame that describe the similarity of one distracto
 
 ```{r}
 # add correct distractor names
-dists = read.csv(here("data","dist_lexicon.csv"))
+dists = read.csv(here("data","lexicon","distractors_exp2.csv"))
 row.names(dists) = dists$target
+
+# cc_only = production[production$context=="overinformative-cc" | production$context=="rinformative-cc", c("alt1Name","alt2Name","nameClickedObj")]
+# cc_only$dDist1 = grepl("distractor_",cc_only$alt1Name)
+# cc_only$dDist2 = grepl("distractor_",cc_only$alt2Name)
+# cc_only$Dist1 = as.character(cc_only$alt1Name)
+# cc_only$Dist2 = as.character(cc_only$alt2Name)
+# cc_only$Dist1 = ifelse(cc_only$dDist1, as.character(dists[cc_only$nameClickedObj,]$distractor), cc_only$Dist1)
+# cc_only$Dist2 = ifelse(cc_only$dDist2, as.character(dists[cc_only$nameClickedObj,]$distractor), cc_only$Dist2)
+
 production$dDist1 = grepl("distractor_",production$alt1Name)
 production$dDist2 = grepl("distractor_",production$alt2Name)
 production$Dist1 = as.character(production$alt1Name)
 production$Dist2 = as.character(production$alt2Name)
-production[production$dDist1,]$Dist1 = as.character(dists[as.character(production[production$dDist1,]$nameClickedObj),]$distractor)
-production[production$dDist2,]$Dist2 = as.character(dists[as.character(production[production$dDist2,]$nameClickedObj),]$distractor)
+production$Dist1 = ifelse(production$dDist1, as.character(dists[production$nameClickedObj,]$distractor), production$Dist1)
+production$Dist2 = ifelse(production$dDist2, as.character(dists[production$nameClickedObj,]$distractor), production$Dist2)
 
 production$Dist1Color = sapply(strsplit(as.character(production$Dist1),"_"), "[", 2)
 production$Dist1Type = sapply(strsplit(as.character(production$Dist1),"_"), "[", 1)
@@ -331,108 +343,108 @@ production$Dist2Type = sapply(strsplit(as.character(production$Dist2),"_"), "[",
 production$Dist1_rev = paste(production$Dist1Color, production$Dist1Type, sep="_")
 production$Dist2_rev = paste(production$Dist2Color, production$Dist2Type, sep="_")
 
-comboTyp = read.csv(here("..","..","norming_comp_object","results","data","meantypicalities.csv"))
-comboTyp$Combo = gsub(" ", "_", comboTyp$Combo)
-comboTyp = droplevels(comboTyp[,c("utterance","Combo","Typicality")])
-
-distBins = production[,c("context","Color","Type","ColorAndType","Other","clickedType","Dist1_rev","Dist2_rev","NormedTypicality")]
-distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist1_rev"),by.y=c("utterance","Combo"))
-distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist2_rev"),by.y=c("utterance","Combo"))
-distBins$TargetTypicality = distBins$NormedTypicality
-distBins$Dist1Typicality = distBins$Typicality.x
-distBins$Dist2Typicality = distBins$Typicality.y
-## items that have higher ratings regarding similar competitor objects
-# distBins = droplevels(distBins[distBins$clickedType == "apple" | distBins$clickedType == "pear" | distBins$clickedType == "tomato",])
-distBins = distBins[,c("context","Color","Type","ColorAndType","Other","TargetTypicality","Dist1Typicality","Dist2Typicality")]
-distBins$Similar = ifelse(distBins$Dist1Typicality >= 0.1 | distBins$Dist2Typicality >= 0.1, T, F)
-
-# exclude informative conditions (because object of same type is always present --> high typicality)
-distBins = droplevels(distBins[distBins$context == "overinformative" | distBins$context == "overinformative-cc",])
-
-simDists = distBins[distBins$Similar==TRUE,c("context","Color","Type","ColorAndType","Other","TargetTypicality")]
-nonsimDists = distBins[distBins$Similar==FALSE,c("context","Color","Type","ColorAndType","Other","TargetTypicality")]
+# comboTyp = typ
+# comboTyp$Combo = gsub(" ", "_", comboTyp$Combo)
+# comboTyp = droplevels(comboTyp[,c("utterance","Combo","Typicality")])
+# 
+# distBins = production[,c("context","Color","Type","ColorAndType","Other","clickedType","Dist1_rev","Dist2_rev","NormedTypicality")]
+# distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist1_rev"),by.y=c("utterance","Combo"))
+# distBins = merge(distBins,comboTyp,by.x=c("clickedType","Dist2_rev"),by.y=c("utterance","Combo"))
+# distBins$TargetTypicality = distBins$NormedTypicality
+# distBins$Dist1Typicality = distBins$Typicality.x
+# distBins$Dist2Typicality = distBins$Typicality.y
+# ## items that have higher ratings regarding similar competitor objects
+# # distBins = droplevels(distBins[distBins$clickedType == "apple" | distBins$clickedType == "pear" | distBins$clickedType == "tomato",])
+# distBins = distBins[,c("context","Color","Type","ColorAndType","Other","TargetTypicality","Dist1Typicality","Dist2Typicality")]
+# distBins$Similar = ifelse(distBins$Dist1Typicality >= 0.1 | distBins$Dist2Typicality >= 0.1, T, F)
+# 
+# # exclude informative conditions (because object of same type is always present --> high typicality)
+# distBins = droplevels(distBins[distBins$context == "overinformative" | distBins$context == "overinformative-cc",])
+# 
+# simDists = distBins[distBins$Similar==TRUE,c("context","Color","Type","ColorAndType","Other","TargetTypicality")]
+# nonsimDists = distBins[distBins$Similar==FALSE,c("context","Color","Type","ColorAndType","Other","TargetTypicality")]
 ```
 
 ##### 3.6.2 Plot results from contexts with at least one distractor which is similar to the target
 
 ```{r}
-agr = simDists %>%
-  select(Color,Type,ColorAndType,Other,TargetTypicality,context) %>%
-  gather(Utterance,Mentioned,-context,-TargetTypicality) %>%
-  group_by(Utterance,context,TargetTypicality) %>%
-  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
-agr = as.data.frame(agr)
-agr$YMin = agr$Probability - agr$ci.low
-agr$YMax = agr$Probability + agr$ci.high
-# change order of Utterance column
-agr$Utterance <- as.character(agr$Utterance)
-agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
-agr$Utterance <- ifelse(agr$Utterance == "Type", "Only Type",
-                        ifelse(agr$Utterance == "Color", "Only Color",
-                               ifelse(agr$Utterance == "ColorAndType", "Color + Type",
-                                      ifelse(agr$Utterance == "Other", "Other","ERROR"))))
-# change context names to have nicer facet labels 
-levels(agr$context) = c("overinformative", "overinformative\nwith color competitor")
-# levels(agr$context) = c("informative", "informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
-# plot
-ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
-  geom_smooth(method="lm",size=.6) +
-  geom_point(size=.5) +
-  facet_wrap(~context) +
-  xlab("Typicality") +
-  ylab("Empirical utterance proportion") +
-  coord_cartesian(xlim=c(0.4,1),ylim=c(0, 1)) +
-  scale_color_manual(values=c("#56B4E9", "#E69F00", "#9fdf9f", "#999999")) +
-  theme(axis.title=element_text(size=14,colour="#757575")) +
-  theme(axis.text.x=element_text(size=10,colour="#757575")) +
-  theme(axis.text.y=element_text(size=10,colour="#757575")) +
-  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
-  theme(strip.text.x=element_text(size=12,colour="#757575")) +
-  theme(legend.title=element_text(size=14,color="#757575")) +
-  theme(legend.text=element_text(size=11,colour="#757575")) +
-  theme(strip.background=element_rect(colour="#939393",fill="white")) +
-  theme(panel.background=element_rect(colour="#939393"))
+# agr = simDists %>%
+#   select(Color,Type,ColorAndType,Other,TargetTypicality,context) %>%
+#   gather(Utterance,Mentioned,-context,-TargetTypicality) %>%
+#   group_by(Utterance,context,TargetTypicality) %>%
+#   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+# agr = as.data.frame(agr)
+# agr$YMin = agr$Probability - agr$ci.low
+# agr$YMax = agr$Probability + agr$ci.high
+# # change order of Utterance column
+# agr$Utterance <- as.character(agr$Utterance)
+# agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
+# agr$Utterance <- ifelse(agr$Utterance == "Type", "Only Type",
+#                         ifelse(agr$Utterance == "Color", "Only Color",
+#                                ifelse(agr$Utterance == "ColorAndType", "Color + Type",
+#                                       ifelse(agr$Utterance == "Other", "Other","ERROR"))))
+# # change context names to have nicer facet labels 
+# levels(agr$context) = c("overinformative", "overinformative\nwith color competitor")
+# # levels(agr$context) = c("informative", "informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+# # plot
+# ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
+#   geom_smooth(method="lm",size=.6) +
+#   geom_point(size=.5) +
+#   facet_wrap(~context) +
+#   xlab("Typicality") +
+#   ylab("Empirical utterance proportion") +
+#   coord_cartesian(xlim=c(0.4,1),ylim=c(0, 1)) +
+#   scale_color_manual(values=c("#56B4E9", "#E69F00", "#9fdf9f", "#999999")) +
+#   theme(axis.title=element_text(size=14,colour="#757575")) +
+#   theme(axis.text.x=element_text(size=10,colour="#757575")) +
+#   theme(axis.text.y=element_text(size=10,colour="#757575")) +
+#   theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+#   theme(strip.text.x=element_text(size=12,colour="#757575")) +
+#   theme(legend.title=element_text(size=14,color="#757575")) +
+#   theme(legend.text=element_text(size=11,colour="#757575")) +
+#   theme(strip.background=element_rect(colour="#939393",fill="white")) +
+#   theme(panel.background=element_rect(colour="#939393"))
 ```
 
 ##### 3.6.3 Plot results from contexts in which both distractors show little similarity to the target
 
 ```{r}
-agr = nonsimDists %>%
-  select(Color,Type,ColorAndType,Other,TargetTypicality,context) %>%
-  gather(Utterance,Mentioned,-context,-TargetTypicality) %>%
-  group_by(Utterance,context,TargetTypicality) %>%
-  summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
-agr = as.data.frame(agr)
-agr$YMin = agr$Probability - agr$ci.low
-agr$YMax = agr$Probability + agr$ci.high
-# change order of Utterance column
-agr$Utterance <- as.character(agr$Utterance)
-agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
-agr$Utterance <- ifelse(agr$Utterance == "Type", "Only Type",
-                        ifelse(agr$Utterance == "Color", "Only Color",
-                               ifelse(agr$Utterance == "ColorAndType", "Color + Type",
-                                      ifelse(agr$Utterance == "Other", "Other","ERROR"))))
-# change context names to have nicer facet labels
-levels(agr$context) = c("overinformative", "overinformative\nwith color competitor")
-# levels(agr$context) = c("informative", "informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
-# plot
-ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
-  geom_smooth(method="lm",size=.6) +
-  geom_point(size=.5) +
-  facet_wrap(~context) +
-  xlab("Typicality") +
-  ylab("Empirical utterance proportion") +
-  coord_cartesian(xlim=c(0.4,1),ylim=c(0, 1)) +
-  scale_color_manual(values=c("#56B4E9", "#E69F00", "#9fdf9f", "#999999")) +
-  theme(axis.title=element_text(size=14,colour="#757575")) +
-  theme(axis.text.x=element_text(size=10,colour="#757575")) +
-  theme(axis.text.y=element_text(size=10,colour="#757575")) +
-  theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
-  theme(strip.text.x=element_text(size=12,colour="#757575")) +
-  theme(legend.title=element_text(size=14,color="#757575")) +
-  theme(legend.text=element_text(size=11,colour="#757575")) +
-  theme(strip.background=element_rect(colour="#939393",fill="white")) +
-  theme(panel.background=element_rect(colour="#939393"))
+# agr = nonsimDists %>%
+#   select(Color,Type,ColorAndType,Other,TargetTypicality,context) %>%
+#   gather(Utterance,Mentioned,-context,-TargetTypicality) %>%
+#   group_by(Utterance,context,TargetTypicality) %>%
+#   summarise(Probability=mean(Mentioned),ci.low=ci.low(Mentioned),ci.high=ci.high(Mentioned))
+# agr = as.data.frame(agr)
+# agr$YMin = agr$Probability - agr$ci.low
+# agr$YMax = agr$Probability + agr$ci.high
+# # change order of Utterance column
+# agr$Utterance <- as.character(agr$Utterance)
+# agr$Utterance <- factor(agr$Utterance, levels=c("Type", "Color", "ColorAndType", "Other"))
+# agr$Utterance <- ifelse(agr$Utterance == "Type", "Only Type",
+#                         ifelse(agr$Utterance == "Color", "Only Color",
+#                                ifelse(agr$Utterance == "ColorAndType", "Color + Type",
+#                                       ifelse(agr$Utterance == "Other", "Other","ERROR"))))
+# # change context names to have nicer facet labels
+# levels(agr$context) = c("overinformative", "overinformative\nwith color competitor")
+# # levels(agr$context) = c("informative", "informative\nwith color competitor", "overinformative", "overinformative\nwith color competitor")
+# # plot
+# ggplot(agr, aes(x=TargetTypicality,y=Probability,color=Utterance)) +
+#   geom_smooth(method="lm",size=.6) +
+#   geom_point(size=.5) +
+#   facet_wrap(~context) +
+#   xlab("Typicality") +
+#   ylab("Empirical utterance proportion") +
+#   coord_cartesian(xlim=c(0.4,1),ylim=c(0, 1)) +
+#   scale_color_manual(values=c("#56B4E9", "#E69F00", "#9fdf9f", "#999999")) +
+#   theme(axis.title=element_text(size=14,colour="#757575")) +
+#   theme(axis.text.x=element_text(size=10,colour="#757575")) +
+#   theme(axis.text.y=element_text(size=10,colour="#757575")) +
+#   theme(axis.ticks=element_line(size=.25,colour="#757575"), axis.ticks.length=unit(.75,"mm")) +
+#   theme(strip.text.x=element_text(size=12,colour="#757575")) +
+#   theme(legend.title=element_text(size=14,color="#757575")) +
+#   theme(legend.text=element_text(size=11,colour="#757575")) +
+#   theme(strip.background=element_rect(colour="#939393",fill="white")) +
+#   theme(panel.background=element_rect(colour="#939393"))
 ```
 
 
@@ -480,10 +492,10 @@ p_no_other$BDADist2Color = sapply(strsplit(as.character(p_no_other$BDADist2),"_"
 p_no_other$BDADist2Type = sapply(strsplit(as.character(p_no_other$BDADist2),"_"), "[", 1)
 
 
-# write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/unique_conditions_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(unique(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type")]),file=here("models","bdaInput","typicality","unique_conditions.csv"),sep=",",col.names=F,row.names=F,quote=F)
 
 # write data for bda
-# write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file="/Users/elisakreiss/Documents/Stanford/overinformativeness/models/unified/bdaInput/bda_data_typicality_purple.csv",sep=",",col.names=F,row.names=F,quote=F)
+write.table(p_no_other[,c("context","clickedColor","clickedType","BDADist1Color","BDADist1Type","BDADist2Color","BDADist2Type","UttforBDA")],file=here("models","bdaInput","typicality","bda_data.csv"),sep=",",col.names=F,row.names=F,quote=F)
 ```
 
 ## 4.2 Statistical analysis

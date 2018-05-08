@@ -4,13 +4,13 @@ library(bootstrap)
 library(lme4)
 library(tidyr)
 library(rjson)
+library(here)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/interactiveReferenceGame/results")
-source("rscripts/helpers.r")
+source(here("rscripts","helpers.r"))
 
-frq = t(as.data.frame(fromJSON(file='../../../../models/old/10_bda_comparison/refModule/json/frequencies.json')))
-length = t(as.data.frame(fromJSON(file='../../../../models/old/10_bda_comparison/refModule/json/lengths.json')))
+frq = t(as.data.frame(fromJSON(file=here("data","typicality-freq.json"))))
+length = t(as.data.frame(fromJSON(file=here("data","typicality-length.json"))))
 d = as.data.frame(rownames(frq))
 d$target = d$`rownames(frq)`
 d$frq = frq[,1]
@@ -18,6 +18,8 @@ d$length = length[,1]
 
 agr = d %>%
   select(target,frq,length)
+
+write.csv(agr,file=here("data","frq_length.csv"),row.names = FALSE)
 
 blub = round(cor.test(agr$frq,agr$length)$estimate,4)*100
 blub2 = paste("correlation: ",blub,"%")

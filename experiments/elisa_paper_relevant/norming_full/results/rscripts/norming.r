@@ -5,10 +5,9 @@ library(lme4)
 library(tidyr)
 
 theme_set(theme_bw(18))
-setwd("/Users/elisakreiss/Documents/Stanford/overinformativeness/experiments/elisa_paper_relevant/norming_full/results")
+setwd("/Users/elisakreiss/Documents/Business/Projects/Overinformativeness/overinformativeness/experiments/elisa_paper_relevant/norming_full/results")
 setwd("/Users/titlis/cogsci/projects/stanford/projects/overinformativeness/experiments/elisa_paper_relevant/norming_full/results")
 
-theme_set(theme_bw(18))
 source("rscripts/helpers.r")
 
 # d = read.csv(file="data/meantypicalities.csv")
